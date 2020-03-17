@@ -7,19 +7,52 @@
 		},
 		{
 			"include": "#strings"
+		},
+		{
+			"include": "#constants"
 		}
 	],
 	"repository": {
+		"comments": {
+			"patterns": [
+				{
+					"name": "comment.line.rpg",
+					"match": "((*).*)$"
+				}
+			]	
+		},
+		"constants": {
+			"patterns": [
+				{
+					"name": "constant.numeric.rpg",
+					"match": "[0-9]"
+				},
+				{
+					"name": "constant.other.rpg",
+					"match": "(?i)[*]\\b(BLANK|BLANKS|ZERO|ZEROS|HIVAL|LOVAL|ALL|ON|OFF|DATE|MONTH|DAY|YEAR|CANCL|DETC|DETL|GETIN|INIT|OFL|TERM|TOTC|TOTL|DEFN|ENTRY|INZSR|LDA|LIKE|LOCK|NAMVAR|OFF|ON|PDA|PSSR|FILE|EQUATE|PLACE)\\b"
+				},
+				{
+					"name": "constant.other.rpg",
+					"match": "(?i)\\b(UDATE|UMONTH|UDAY|UYEAR)\\b"
+				}
+			]
+		},
 		"keywords": {
-			"patterns": [{
-				"name": "keyword.control.rpg",
-				"match": "\\b(if|while|for|return)\\b"
-			}]
+			"patterns": [
+				{
+					"name": "keyword.control.rpg",
+					"match": "(?i)\\b(ACQ|ADD|AND|BEGSR|BITOFF|BITON|CAB|CALL|CAS|CAT|CHAIN|CHECK|CHEKR|CLEAR|CLOSE|COMIT|COMP|DEBUG|DEFN|DELET|DIV|DO|DOU|DOW|DSPLY|DUMP|ELSE|END|ENDSR|EXCPT|EXFMT|EXSR|FEOD|FORCE|FREE|GOTO|IF|IN|ITER|KFLD|KLIST|LEAVE|LOKUP|MHHZO|MHLZO|MLHZO|MLLZO|MOVE|MOVEA|MOVEL|MULT|MVR|NEXT|OCUR|OPEN|OR|OTHER|OUT|PARM|PLIST|POST|READ|READC|READE|READP|REDPE|REL|RESET|RETRN|ROLBK|SCAN|SELEC|SETGT|SETLL|SETOF|SETON|SHTDN|SORTA|SQRT|SUB|SUBST|TAG|TESTB|TESTN|TESTZ|TIME|UNLCK|UPDAT|WH|WRITE|XFOOT|XLATE|Z-ADD|Z-SUB)\\b"
+				},
+				{
+					"name": "keyword.operator.rpg",
+					"match": "(?i)\\b(GT|LT|EQ|NE|GE|LE)\\b"
+				}
+			]
 		},
 		"strings": {
-			"name": "string.quoted.double.rpg",
-			"begin": "\"",
-			"end": "\"",
+			"name": "string.quoted.single.rpg",
+			"begin": "'",
+			"end": "'",
 			"patterns": [
 				{
 					"name": "constant.character.escape.rpg",

@@ -1,0 +1,63 @@
+     F***************************************************************
+     F* THIS PROGRAM READS THE CONTENTS OF AN INVOICE HEADER FILE   
+     F* AND PRINTS THE INVOICES PROCESSED FOR THE DATE SET IN THE   
+     F* LOCAL DATA AREA.  THERE ARE LEVEL BREAKS AND TOTALS FOR      
+     F* EACH STORE.                                                 
+     F***************************************************************
+     F*
+     FINVHDR  IP  F      62            DISK
+     FPRINTER O   F     132     OF     PRINTER
+     IINVHDR  NS  01   1NC
+     I                                        1   3 STORE L1
+     I                                        4  13 INVNO
+     I                                       14  20 CUSTNO
+     I                                       21  45 STNAM
+     I                                       46  53 INVDAT
+     I                                       54  622TOTINV
+     I           UDS
+     I                                        1   8 RPTDAT
+     C   01      INVDAT    COMP RPTDAT                   11
+     C   01 11             ADD  TOTINV    L1TOT   92
+     C   01 11             ADD  TOTINV    LRTOT   92
+     OPRINTER H  101   1P
+     O       OR        OF
+     O                         PAGE  Z  106
+     O                                  102 'PAGE'
+     O                                   59 'VERY BIG'
+     O                                   72 'STORES, INC.'
+     O                         UDATE Y   17
+     O                                    8 'RUN DATE'
+     O        H  1     1P
+     O       OR        OF
+     O                                   73 'DAILY SALES BY STORE'
+     O        H  2     1P
+     O       OR        OF
+     O                         RPTDAT    83
+     O                                   63 'FOR DATE:'
+     O        H  1     1P
+     O       OR        OF
+     O                                    6 'STORE'
+     O                                   18 'INVOICE'
+     O                                   28 'CUSTOMER'
+     O                                   58 'CUSTOMER'
+     O                                   78 'INVOICE'
+     O        H  2     1P
+     O       OR        OF
+     O                                    6 'NUMBER'
+     O                                   18 'NUMBER'
+     O                                   28 'NUMBER'
+     O                                   58 'NAME'
+     O                                   78 'TOTAL'
+     O        D  0     L1
+     O                         STORE      6
+     O        D  1     01 11
+     O                         INVNO     18
+     O                         CUSTNO    28
+     O                         STNAM     58
+     O                         TOTINV1B  78
+     O        T  1     L1
+     O                                   45 'STORE TOTAL...'
+     O                         L1TOT 1B  78
+     O        T 1      LR
+     O                                   45 'GRAND TOTAL...'
+     O                         LRTOT 1   78 
