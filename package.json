@@ -1,0 +1,38 @@
+{
+    "name": "ibmi-languages",
+    "displayName": "IBMi Languages",
+    "description": "Provide syntax highlighting for IBMi languages such as RPG, CL, DDS, and MI.",
+    "version": "0.0.1",
+    "engines": {
+        "vscode": "^1.43.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "contributes": {
+        "languages": [
+            {
+                "id": "rpg",
+                "aliases": [
+                    "RPG",
+                    "rpg"
+                ],
+                "extensions": [
+                    ".RPG",
+                    ".rpg"
+                ],
+                "configuration": "./language-configuration.json"
+            }
+        ],
+        "grammars": [
+            {
+                "language": "rpg",
+                "scopeName": "source.rpg",
+                "path": "./syntaxes/rpg.tmLanguage.json"
+            }
+        ]
+    },
+    "devDependencies": {
+        "js-yaml": "^3.13.1"
+    }
+}
