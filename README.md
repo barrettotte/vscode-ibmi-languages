@@ -1,6 +1,6 @@
-# VSCode-IBMi
+# vscode-ibmi-languages
 
-Syntax highlighting for IBMi languages such as RPG, CL, DDS, and MI.
+Somewhat decent syntax highlighting for IBMi languages such as RPG, CL, DDS, and MI.
 
 Inspired by the first RPG extension https://github.com/NielsLiisberg/RPG-for-VSCode
 
@@ -13,12 +13,6 @@ For example if there is an image subfolder under your extension project workspac
 \!\[feature X\]\(images/feature-x.png\)
 
 > Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
-
-
-
-## Commands
-* Start a new grammar extension - ```yo code``` > 'New Language Support'
-
 
 
 ## References
