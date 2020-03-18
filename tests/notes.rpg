@@ -1,16 +1,20 @@
+       * Hello world
       C                     MOVEL'HELLO'   HELLO  11
       C                     MOVE 'WORLD'   HELLO
       C           HELLO     DSPLY          WAIT    1
       C                     SETON                     LR
 
-* TODO:
-*  - Specs (col 6)
-*  - Comments (col 7+)
-*  - Preprocessor (/EJECT, )
-*  - 
+       * TODO:
+       *  - Specs (col 6)
+       *  - Comments (col 7+)
+       *  - Preprocessor (/EJECT, )
+       *  - Some kind of special highlight for specs?
+       *  - Support for .sqlrpg TODO: research
+       *  - research more indicators to mark as constants
+       *  - highlight *INXX as constant
+       *  - X'...' as a constant ?
 
-
-******* RPG III *******
+       ******* RPG/400 *******
 
 * Opcodes
 

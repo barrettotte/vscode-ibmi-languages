@@ -5,6 +5,8 @@
      F* EACH STORE.                                                 
      F***************************************************************
      F*
+     F* Stolen from https://en.wikipedia.org/wiki/IBM_RPG_II
+     F*
      FINVHDR  IP  F      62            DISK
      FPRINTER O   F     132     OF     PRINTER
      IINVHDR  NS  01   1NC

@@ -17,7 +17,8 @@
 			"patterns": [
 				{
 					"name": "comment.line.rpg",
-					"match": "((*).*)$"
+					"begin": "(?i)^[ \t]{0,5}[ hfelidco][*]",
+					"end": "\n"
 				}
 			]	
 		},
@@ -45,7 +46,7 @@
 				},
 				{
 					"name": "keyword.operator.rpg",
-					"match": "(?i)\\b(GT|LT|EQ|NE|GE|LE)\\b"
+					"match": "(?i)\\b(GT|LT|EQ|NE|GE|LE|:)\\b"
 				}
 			]
 		},
