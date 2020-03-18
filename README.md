@@ -2,16 +2,22 @@
 
 Somewhat decent syntax highlighting for IBMi languages such as RPG, CL, DDS, and MI.
 
-I made this extension because I do a lot more reading than writing with IBMi languages.
-I respect the legacy of the green screen, but I needed some syntax highlighting in my life; my brain is too small.
+**WARNING**: The file extensions are probably pretty opinionated (read section below), I am fully open to pull requests.
 
-Inspired and derived from an existing RPG extension https://github.com/NielsLiisberg/RPG-for-VSCode .
-Without this brilliant guy, I wouldn't have thought to start working on this.
+I made this extension because I do a lot more reading than writing with IBMi languages and I always have VS Code open.
+I used https://github.com/worksofliam and 
 
+I respect the legacy of the green screen, but sometimes I need some syntax highlighting in my life; my brain is too small.
+Pretty much all I did was crawl through IBM documentation on my lunch breaks and throw some syntax in here when I got the chance.
+
+
+I wanted to add a lot of legacy syntax highlighting because I am fascinnated by old code.
+By all means, I probably got a couple things wrong; submit a pull request if you see something please!
+(That goes for anything in here)
 
 
 ## Features
-* Syntax highlighting for RPG/400
+* Syntax highlighting for RPG II, RPG III, RPG/400
 * Syntax highlighting for RPGLE fixed/free
 * Syntax highlighting for Control Language (CL) - Both CLLE and CL
 * Syntax highlighting for Machine Interface (MI)
@@ -23,13 +29,30 @@ Every project starts out fun, but later becomes stale, we'll see if I get here.
 
 * Syntax highlighting for display files (.dspf)
 * Syntax highlighting for printer files (.prtf)
-* Syntax highlighting for system 38 RPG (.rpg38)
-* Syntax highlighting for system 38 logical and physicals (.lf38) and (.pf38)
 * Syntax highlighting for cmd ? I dont know...maybe as an optional language
 
 
+## File Types (case insensitive)
+Generally I lumped legacy file types together out of convenience.
+If you want different syntax highlighting for a CL vs CLLE file, you've come to the wrong place.
+
+| Extension(s)      | Description                |
+| ----------------- | -------------------------- |
+| .cl, .clp, .clle  | Control Language           |
+| .cmd              | Command                    |
+| .dspf             | DDS Display file           |
+| .lf               | DDS Logical file           |
+| .pf, .dds         | DDS Physical file          |
+| .prtf             | DDS Printer file           |
+| .rpg, .sqlrpg     | RPG II + RPG III + RPG/400 |
+| .rpgle, .sqlrpgle | RPGLE and SQLRPGLE         |
+
 
 ## References
+This extension was inspired and derived from an existing RPG extension https://github.com/NielsLiisberg/RPG-for-VSCode .
+Without this brilliant guy, I wouldn't have thought to start working on this.
+
+
 * Liam's Flight400 project (great for testing) - https://github.com/worksofliam/flight400
 * RPG/400 - https://www.ibm.com/support/knowledgecenter/SSAE4W_9.6.0/com.ibm.etools.iseries.langref.doc/evferlsh02.htm#ToC
 * RPG for VS Code - https://github.com/NielsLiisberg/RPG-for-VSCode
