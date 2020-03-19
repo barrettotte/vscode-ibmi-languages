@@ -19,7 +19,9 @@
                 ],
                 "extensions": [
                     ".RPG",
-                    ".rpg"
+                    ".rpg",
+                    ".RPG38",
+                    ".rpg38"
                 ],
                 "configuration": "./language-configuration.json"
             }

@@ -3,13 +3,16 @@
 	"name": "RPG",
 	"patterns": [
 		{
+			"include": "#comments"
+		},
+		{
+			"include": "#constants"
+		},
+		{
 			"include": "#keywords"
 		},
 		{
 			"include": "#strings"
-		},
-		{
-			"include": "#constants"
 		}
 	],
 	"repository": {
@@ -17,23 +20,35 @@
 			"patterns": [
 				{
 					"name": "comment.line.rpg",
-					"begin": "(?i)^[ \t]{0,5}[ hfelidco][*]",
+					"match": "((?<=((?<=^[\\s]{5}[c|C])[\\s\\S]{53}))[\\s\\S]+)|((?<=((?<=^[\\s]{5}[f|F|l|L|i|I|o|O])[\\s\\S]{74}))[\\s\\S]+)|((?<=((?<=^[\\s]{5}[e|E])[\\s\\S]{51}))[\\s\\S]+)"
+				},
+				{
+					"name": "comment.line.rpg",
+					"begin": "(?i)^[\\s]{0,5}[\\s\\S][*]",
 					"end": "\n"
 				}
-			]	
+			]
 		},
 		"constants": {
 			"patterns": [
 				{
-					"name": "constant.numeric.rpg",
-					"match": "[0-9]"
+					"name": "constant.language.rpg",
+					"match": "(?i)[*]\\b(IN)([0-9]{0,2})\\b"
 				},
 				{
-					"name": "constant.other.rpg",
+					"name": "constant.language.rpg",
+					"match": "(?i)\\b(LR|1P|L1|L2|L3|L4|L5|L6|L7|L8|L9)\\b"
+				},
+				{
+					"name": "constant.numeric.rpg",
+					"match": "\\b[0-9]+\\b"
+				},
+				{
+					"name": "constant.language.rpg",
 					"match": "(?i)[*]\\b(BLANK|BLANKS|ZERO|ZEROS|HIVAL|LOVAL|ALL|ON|OFF|DATE|MONTH|DAY|YEAR|CANCL|DETC|DETL|GETIN|INIT|OFL|TERM|TOTC|TOTL|DEFN|ENTRY|INZSR|LDA|LIKE|LOCK|NAMVAR|OFF|ON|PDA|PSSR|FILE|EQUATE|PLACE)\\b"
 				},
 				{
-					"name": "constant.other.rpg",
+					"name": "constant.language.rpg",
 					"match": "(?i)\\b(UDATE|UMONTH|UDAY|UYEAR)\\b"
 				}
 			]
@@ -41,12 +56,20 @@
 		"keywords": {
 			"patterns": [
 				{
-					"name": "keyword.control.rpg",
-					"match": "(?i)\\b(ACQ|ADD|AND|BEGSR|BITOFF|BITON|CAB|CALL|CAS|CAT|CHAIN|CHECK|CHEKR|CLEAR|CLOSE|COMIT|COMP|DEBUG|DEFN|DELET|DIV|DO|DOU|DOW|DSPLY|DUMP|ELSE|END|ENDSR|EXCPT|EXFMT|EXSR|FEOD|FORCE|FREE|GOTO|IF|IN|ITER|KFLD|KLIST|LEAVE|LOKUP|MHHZO|MHLZO|MLHZO|MLLZO|MOVE|MOVEA|MOVEL|MULT|MVR|NEXT|OCUR|OPEN|OR|OTHER|OUT|PARM|PLIST|POST|READ|READC|READE|READP|REDPE|REL|RESET|RETRN|ROLBK|SCAN|SELEC|SETGT|SETLL|SETOF|SETON|SHTDN|SORTA|SQRT|SUB|SUBST|TAG|TESTB|TESTN|TESTZ|TIME|UNLCK|UPDAT|WH|WRITE|XFOOT|XLATE|Z-ADD|Z-SUB)\\b"
+					"name": "keyword.operator.rpg",
+					"match": "(?i)(IF|WH|DOW|DOU|CAB|AND|OR)(GT|LT|EQ|NE|GE|LE|:)\\b"
 				},
 				{
-					"name": "keyword.operator.rpg",
-					"match": "(?i)\\b(GT|LT|EQ|NE|GE|LE|:)\\b"
+					"name": "keyword.control.rpg",
+					"match": "(?i)\\b(BEGSR|ENDSR|GOTO|ELSE|ENDIF|END|IF|SELEC|RETRN|CAS)"
+				},
+				{
+					"name": "keyword.other.rpg",
+					"match": "(?i)(ACQ|BITOFF|BITON|CAB|CALL|CAT|CHAIN|CHECK|CHEKR|CLEAR|CLOSE|COMIT|COMP|DEBUG|DEFN|DELET|DO|DOU|DOW|DSPLY|DUMP|EXCPT|EXFMT|EXSR|FEOD|FORCE|FREE|ITER|KFLD|KLIST|LEAVE|LOKUP|MHHZO|MHLZO|MLHZO|MLLZO|MOVEL|MOVEA|MOVE|MVR|NEXT|OCUR|OPEN|OTHER|OUT|PARM|PLIST|POST|READ|READC|READE|READP|REDPE|REL|RESET|ROLBK|SCAN|SETGT|SETLL|SETOF|SETON|SHTDN|SORTA|SQRT|SUBST|TAG|TESTB|TESTN|TESTZ|TIME|UNLCK|UPDAT|WRITE|XFOOT|XLATE|Z-ADD|Z-SUB)"
+				},
+				{
+					"name": "keyword.other.rpg",
+					"match": "\\b(?i)(AND|OR|SUB|ADD|DIV|MULT|IN)\\b"
 				}
 			]
 		},

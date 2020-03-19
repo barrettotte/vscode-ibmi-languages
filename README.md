@@ -61,6 +61,8 @@ Without this brilliant guy, I wouldn't have thought to start working on this.
   * Dart syntax example - https://github.com/Dart-Code/Dart-Code/blob/master/syntaxes/dart.json
   * Naming Conventions - https://macromates.com/manual/en/language_grammars#naming_conventions
   * TextMate Grammar - https://www.apeth.com/nonblog/stories/textmatebundle.html
+  * https://stackoverflow.com/questions/23463803/are-there-any-standards-for-tmlanguage-keyword-types
+* Regex tool - https://rubular.com/
 * VS Code Language extensions - https://code.visualstudio.com/api/language-extensions/overview
 
 
