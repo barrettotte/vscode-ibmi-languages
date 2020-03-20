@@ -5,31 +5,37 @@ Somewhat decent syntax highlighting for IBMi languages such as RPG, CL, DDS, and
 **WARNING**: The file extensions are probably pretty opinionated (read section below), I am fully open to pull requests.
 
 I made this extension because I do a lot more reading than writing with IBMi languages and I always have VS Code open.
-I used https://github.com/worksofliam and 
+I also wanted to learn how to make a simple language extension for VS Code and get better with regular expressions.
 
 I respect the legacy of the green screen, but sometimes I need some syntax highlighting in my life; my brain is too small.
-Pretty much all I did was crawl through IBM documentation on my lunch breaks and throw some syntax in here when I got the chance.
+Pretty much all I did was crawl through various IBM documentation on my lunch breaks and throw some regular expressions in here when I got the chance.
+The regex I made isn't too great and probably messes up a good bit, but I think it works for like 75% of cases.
 
-
-I wanted to add a lot of legacy syntax highlighting because I am fascinnated by old code.
+I wanted to add a lot of legacy syntax highlighting because I am fascinated by old code.
 By all means, I probably got a couple things wrong; submit a pull request if you see something please!
 (That goes for anything in here)
 
 
+## Inspiration
+This extension was inspired and derived from an existing RPG extension https://github.com/NielsLiisberg/RPG-for-VSCode .
+Without this brilliant guy, I wouldn't have thought to start working on this.
+Also check out his repository https://github.com/NielsLiisberg/RPG-vsCode-Getting-Started for an introduction to an RPG + VS Code workflow.
+
+
 ## Features
-* Syntax highlighting for RPG II, RPG III, RPG/400
-* Syntax highlighting for RPGLE fixed/free
-* Syntax highlighting for Control Language (CL) - Both CLLE and CL
-* Syntax highlighting for Machine Interface (MI)
-* Syntax highlighting for physical and logical files (.pf and .lf)
+- [ ] Syntax highlighting for RPG II, RPG III, RPG/400
+- [ ] Syntax highlighting for Control Language (CL) - CL/CLLE
+- [ ] Syntax highlighting for RPGLE fixed/free
+- [ ] Syntax highlighting for Machine Interface (MI)
+- [ ] Syntax highlighting for physical and logical files
 
 
 ## Stretch Features
-Every project starts out fun, but later becomes stale, we'll see if I get here.
+Every side project starts out fun, but later becomes stale, we'll see if I get here.
 
-* Syntax highlighting for display files (.dspf)
-* Syntax highlighting for printer files (.prtf)
-* Syntax highlighting for cmd ? I dont know...maybe as an optional language
+- [ ] Syntax highlighting for display files (.dspf)
+- [ ] Syntax highlighting for printer files (.prtf)
+- [ ] Syntax highlighting for cmd ? I dont know...maybe as an optional language
 
 
 ## File Types (case insensitive)
@@ -49,9 +55,6 @@ If you want different syntax highlighting for a CL vs CLLE file, you've come to 
 
 
 ## References
-This extension was inspired and derived from an existing RPG extension https://github.com/NielsLiisberg/RPG-for-VSCode .
-Without this brilliant guy, I wouldn't have thought to start working on this.
-
 
 * Liam's Flight400 project (great for testing) - https://github.com/worksofliam/flight400
 * RPG/400 - https://www.ibm.com/support/knowledgecenter/SSAE4W_9.6.0/com.ibm.etools.iseries.langref.doc/evferlsh02.htm#ToC
