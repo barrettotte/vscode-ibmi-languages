@@ -23,7 +23,7 @@ Also check out his repository https://github.com/NielsLiisberg/RPG-vsCode-Gettin
 
 
 ## Features
-- [ ] Syntax highlighting for RPG II, RPG III, RPG/400
+- [x] Syntax highlighting for RPG II, RPG III, RPG/400
 - [ ] Syntax highlighting for Control Language (CL) - CL/CLLE
 - [ ] Syntax highlighting for RPGLE fixed/free
 - [ ] Syntax highlighting for Machine Interface (MI)

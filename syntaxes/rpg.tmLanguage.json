@@ -26,6 +26,15 @@
 					"name": "comment.line.rpg",
 					"begin": "(?i)^[\\s]{0,5}[\\s\\S][*]",
 					"end": "\n"
+				},
+				{
+					"name": "comment.line.rpg",
+					"match": "[*]{2}[\\s\\S]*"
+				},
+				{
+					"name": "comment.line.rpg",
+					"begin": "(?i)^[\\s]{0,5}[\\s\\S][/](EJECT|COPY|TITLE|SPACE)",
+					"end": "\n"
 				}
 			]
 		},
@@ -49,7 +58,7 @@
 				},
 				{
 					"name": "constant.numeric.rpg",
-					"match": "(?i)(?<=(Z-ADD|MOVEL))(([0-9]*[.][0-9]*)|([0-9]+))"
+					"match": "(?i)(?<=(Z-ADD|MOVEL|((IF |WH |DOW|DOU|DO |CAB|CAS|AND|OR )(GT|LT|EQ|NE|GE|LE))))(([0-9]*[.][0-9]*)|([0-9]+))"
 				},
 				{
 					"name": "constant.numeric.rpg",
@@ -68,20 +77,28 @@
 		"keywords": {
 			"patterns": [
 				{
+					"name": "keyword.other.rpg",
+					"match": "(^[\\s]{5}[h|H|f|F|e|E|l|L|i|I|c|C|o|O])"
+				},
+				{
 					"name": "keyword.operator.rpg",
 					"match": "(?i)(IF|WH|DOW|DOU|DO|CAB|CAS|AND|OR)(GT|LT|EQ|NE|GE|LE|:)"
 				},
 				{
 					"name": "keyword.control.rpg",
-					"match": "(?i)\\b(END)\\b"
+					"match": "(?i)\\b(DO|END)\\b"
 				},
 				{
 					"name": "keyword.control.rpg",
-					"match": "(?i)\\b(BEGSR|ENDSR|GOTO|ELSE|ENDIF|ENDCS|ENDDO|ENDSL|SELEC|RETRN|CAS|DO)"
+					"match": "(?i)\\b(BEGSR|ENDSR|GOTO|ELSE|ENDIF|ENDCS|ENDDO|ENDSL|SELEC|RETRN|CAS)"
 				},
 				{
 					"name": "keyword.other.rpg",
-					"match": "(?i)(ACQ|BITOFF|BITON|CAB|CALL|CAT|CHAIN|CHECK|CHEKR|CLEAR|CLOSE|COMIT|COMP|DEBUG|DEFN|DELET|DSPLY|DUMP|EXCPT|EXFMT|EXSR|FEOD|FORCE|FREE|ITER|KFLD|KLIST|LEAVE|LOKUP|MHHZO|MHLZO|MLHZO|MLLZO|MOVEL|MOVEA|MOVE|MVR|OCUR|OPEN|OTHER|OUT|PLIST|POST|READC|READE|READP|REDPE|REL|RESET|ROLBK|SCAN|SETGT|SETLL|SETOF|SETON|SHTDN|SORTA|SQRT|SUBST|TAG|TESTB|TESTN|TESTZ|UNLCK|UPDAT|WRITE|XFOOT|XLATE|Z-ADD|Z-SUB)"
+					"match": "(?i)(ACQ|BITOFF|BITON|CAB|CALL|CAT|CHAIN|CHECK|CHEKR|CLEAR|CLOSE|COMIT|COMP|DEBUG|DEFN|DELET|DSPLY|DUMP|EXCPT|EXFMT|EXSR|FEOD|FORCE|FREE|ITER|KFLD|KLIST|LEAVE|LOKUP|MHHZO|MHLZO|MLHZO|MLLZO|MOVEL|MOVEA|MOVE|MVR|OCUR|OPEN|OTHER|OUT|PLIST|POST|READC|READE|READP|REDPE|REL|ROLBK|SCAN|SETGT|SETLL|SETOF|SETON|SHTDN|SORTA|SQRT|SUBST|TAG|TESTB|TESTN|TESTZ|UNLCK|UPDAT|WRITE|XFOOT|XLATE|Z-ADD|Z-SUB)"
+				},
+				{
+					"name": "keyword.other.rpg",
+					"match": "(?i)[\\s](RESET)"
 				},
 				{
 					"name": "keyword.other.rpg",

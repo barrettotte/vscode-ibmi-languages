@@ -3,11 +3,7 @@
      C                     MOVE 'WORLD'   HELLO
      C           HELLO     DSPLY          WAIT    1
      C                     SETON                     LR    Done program!
-
-      * TODO:
-      *  - Preprocessor (/EJECT, /COPY, /TITLE, /SPACE)
-      *  - Some kind of special highlight for specs?
-      *  - exsr <name> highlighting
+      /EJECT
 
 
 ..... *. 1 ...+... 2 ...+... 3 ...+... 4 ...+... 5 ...+... 6 ...+... 7 ...+... 8
@@ -28,100 +24,100 @@
 
       * Opcodes
 
-ACQ      Acquire
-ADD      Add
-AND      And
-BEGSR    Begin subroutine
-BITOFF   Set bits off
-BITON    Set bits on
-CAB      Compare and branch
-CALL     Call a program
-CAS      Conditionally invoke subroutine
-CAT      Concatenate two character strings
-CHAIN    Random retrieval from a file
-CHECK    Check characters
-CHEKR    Check characters reverse
-CLEAR    Clear
-CLOSE    Close files
-COMIT    Commit
-COMP     Compare
-DEBUG    Debug function
-DEFN     Field definition
-DELET    Delete record
-DIV      Divide
-DO       Do loop begin
-DOU      Do until loop begin
-DOW      Do while loop begin
-DSPLY    Display function
-DUMP     Program dump
-ELSE     Else
-END      End a Group
-ENDSR    End of Subroutine
-EXCPT    Calculation Time Output
-EXFMT    Write/Then Read Format
-EXSR     Invoke Subroutine
-FEOD     Force End of Data
-FORCE    Force a Certain File to Be Read Next Cycle
-FREE     Deactivate a Program
-GOTO     Go To
-IF       If
-IN       Retrieve a Data Area
-ITER     Iterate
-KFLD     Define Parts of a Key
-KLIST    Define a Composite Key
-LEAVE    Leave a Do Group
-LOKUP    Look Up
-MHHZO    Move High to High Zone
-MHLZO    Move High to Low Zone
-MLHZO    Move Low to High Zone
-MLLZO    Move Low to Low Zone
-MOVE     Move
-MOVEA    Move Array
-MOVEL    Move Left
-MULT     Multiply
-MVR      Move Remainder
-NEXT     Next
-OCUR     Set/Get Occurrence of a Data Structure
-OPEN     Open File for Processing
-OR       Or
-OTHER    Otherwise Select
-OUT      Write a Data Area
-PARM     Identify Parameters
-PLIST    Identify a Parameter List
-POST     Post
-READ     Read a Record
-READC    Read Next Changed Record
-READE    Read Equal Key
-READP    Read Prior Record
-REDPE    Read Prior Equal
-REL      Release
-RESET    Reset
-RETRN    Return to Caller
-ROLBK    Roll Back
-SCAN     Scan Character String
-SELEC    Begin a Select Group
-SETGT    Set Greater Than
-SETLL    Set Lower Limit
-SETOF    Set Off
-SETON    Set On
-SHTDN    Shut Down
-SORTA    Sort an Array
-SQRT     Square Root
-SUB      Subtract
-SUBST    Substring
-TAG      Tag
-TESTB    Test Bit
-TESTN    Test Numeric
-TESTZ    Test Zone
-TIME     Time of Day
-UNLCK    Unlock a Data Area or Release a Record
-UPDAT    Modify Existing Record
-WH       When True Then Select
-WRITE    Create New Records
-XFOOT    Summing the Elements of an Array
-XLATE    Translate
-Z-ADD    Zero and Add
-Z-SUB    Zero and Subtract
+ ACQ      Acquire
+ ADD      Add
+ AND      And
+ BEGSR    Begin subroutine
+ BITOFF   Set bits off
+ BITON    Set bits on
+ CAB      Compare and branch
+ CALL     Call a program
+ CAS      Conditionally invoke subroutine
+ CAT      Concatenate two character strings
+ CHAIN    Random retrieval from a file
+ CHECK    Check characters
+ CHEKR    Check characters reverse
+ CLEAR    Clear
+ CLOSE    Close files
+ COMIT    Commit
+ COMP     Compare
+ DEBUG    Debug function
+ DEFN     Field definition
+ DELET    Delete record
+ DIV      Divide
+ DO       Do loop begin
+ DOU      Do until loop begin
+ DOW      Do while loop begin
+ DSPLY    Display function
+ DUMP     Program dump
+ ELSE     Else
+ END      End a Group
+ ENDSR    End of Subroutine
+ EXCPT    Calculation Time Output
+ EXFMT    Write/Then Read Format
+ EXSR     Invoke Subroutine
+ FEOD     Force End of Data
+ FORCE    Force a Certain File to Be Read Next Cycle
+ FREE     Deactivate a Program
+ GOTO     Go To
+ IF       If
+ IN       Retrieve a Data Area
+ ITER     Iterate
+ KFLD     Define Parts of a Key
+ KLIST    Define a Composite Key
+ LEAVE    Leave a Do Group
+ LOKUP    Look Up
+ MHHZO    Move High to High Zone
+ MHLZO    Move High to Low Zone
+ MLHZO    Move Low to High Zone
+ MLLZO    Move Low to Low Zone
+ MOVE     Move
+ MOVEA    Move Array
+ MOVEL    Move Left
+ MULT     Multiply
+ MVR      Move Remainder
+ NEXT     Next
+ OCUR     Set/Get Occurrence of a Data Structure
+ OPEN     Open File for Processing
+ OR       Or
+ OTHER    Otherwise Select
+ OUT      Write a Data Area
+ PARM     Identify Parameters
+ PLIST    Identify a Parameter List
+ POST     Post
+ READ     Read a Record
+ READC    Read Next Changed Record
+ READE    Read Equal Key
+ READP    Read Prior Record
+ REDPE    Read Prior Equal
+ REL      Release
+ RESET    Reset
+ RETRN    Return to Caller
+ ROLBK    Roll Back
+ SCAN     Scan Character String
+ SELEC    Begin a Select Group
+ SETGT    Set Greater Than
+ SETLL    Set Lower Limit
+ SETOF    Set Off
+ SETON    Set On
+ SHTDN    Shut Down
+ SORTA    Sort an Array
+ SQRT     Square Root
+ SUB      Subtract
+ SUBST    Substring
+ TAG      Tag
+ TESTB    Test Bit
+ TESTN    Test Numeric
+ TESTZ    Test Zone
+ TIME     Time of Day
+ UNLCK    Unlock a Data Area or Release a Record
+ UPDAT    Modify Existing Record
+ WH       When True Then Select
+ WRITE    Create New Records
+ XFOOT    Summing the Elements of an Array
+ XLATE    Translate
+ Z-ADD    Zero and Add
+ Z-SUB    Zero and Subtract
 
 
       * Relational Operators
