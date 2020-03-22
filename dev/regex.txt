@@ -1,0 +1,10 @@
+
+
+# Recognize F spec external file type (before format type)
+(?=(?<=((?<=^[\s]{5}[F|f]).{8})).{4}(E|e))
+
+# Recognize F spec external file type (after format type)
+(?<=(?<=(?<=^[\s]{5}[F|f])[\s\S]{8})[\s\S]{4}(E|e).{0}).
+
+
+(?=(?<=(?<=^[\s]{5}[F|f])[\s\S]{8})[\s\S]{4}(E|e)).

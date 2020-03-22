@@ -14,34 +14,37 @@
             {
                 "id": "cl",
                 "aliases": [
-                    "CL",
-                    "CLLE",
-                    "CLP",
                     "cl",
                     "clle",
-                    "clp"
+                    "clp",
+                    "clp38"
                 ],
                 "extensions": [
                     ".CL",
                     ".CLLE",
                     ".CLP",
+                    ".CLP38",
                     ".cl",
                     ".clle",
-                    ".clp"
+                    ".clp",
+                    ".clp38"
                 ],
                 "configuration": "./cl.language-configuration.json"
             },
             {
                 "id": "rpg",
                 "aliases": [
-                    "RPG",
-                    "rpg"
+                    "rpg",
+                    "rpg/400",
+                    "rpg38"
                 ],
                 "extensions": [
                     ".RPG",
                     ".rpg",
                     ".RPG38",
-                    ".rpg38"
+                    ".rpg38",
+                    ".SQLRPG",
+                    ".sqlrpg"
                 ],
                 "configuration": "./rpg.language-configuration.json"
             }

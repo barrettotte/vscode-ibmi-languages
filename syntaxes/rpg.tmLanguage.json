@@ -33,7 +33,7 @@
 				},
 				{
 					"name": "comment.line.rpg",
-					"begin": "(?i)^[\\s]{0,5}[\\s\\S][/](EJECT|COPY|TITLE|SPACE)",
+					"begin": "(?i)^[\\s]{0,5}[\\s\\S][/|\\+](EJECT|COPY|TITLE|SPACE|Exec SQL|End-Exec|)",
 					"end": "\n"
 				}
 			]
@@ -41,24 +41,120 @@
 		"constants": {
 			"patterns": [
 				{
+					"name": "constant.language.rpg.h.datefmt",
+					"match": "(?<=((?<=^[\\s]{5}[h|H])[\\s\\S]{12}))(?i)(M|D|Y)"
+				},
+				{
+					"name": "constant.language.rpg.h.datedit",
+					"match": "(?<=((?<=^[\\s]{5}[h|H])[\\s\\S]{13}))(?i)(&)"
+				},
+				{
+					"name": "constant.language.rpg.h.invprint",
+					"match": "(?<=((?<=^[\\s]{5}[h|H])[\\s\\S]{14}))(?i)(I|J|D)"
+				},
+				{
+					"name": "constant.language.rpg.h.altseq",
+					"match": "(?<=((?<=^[\\s]{5}[h|H])[\\s\\S]{19}))(?i)(S|D)"
+				},
+				{
+					"name": "constant.language.rpg.h.filetrans",
+					"match": "(?<=((?<=^[\\s]{5}[h|H])[\\s\\S]{36}))(?i)(F)"
+				},
+				{
+					"name": "constant.language.rpg.f.type",
+					"match": "(?=(?<=((?<=^[\\s]{5}[F|f]).{8})).{4}(F|f|E|e))(?i)(I|O|U|C)"
+				},
+				{
+					"name": "constant.language.rpg.f.designation",
+					"match": "(?=(?<=((?<=^[\\s]{5}[F|f]).{9})).{3}(F|f|E|e))(?i)(P|S|R|T|F)"
+				},
+				{
+					"name": "constant.language.rpg.f.eof",
+					"match": "(?=(?<=((?<=^[\\s]{5}[F|f]).{10})).{2}(F|f|E|e))(?i)(E)"
+				},
+				{
+					"name": "constant.language.rpg.f.sequence",
+					"match": "(?=(?<=((?<=^[\\s]{5}[F|f]).{11})).{1}(F|f|E|e))(?i)(A|D)"
+				},
+				{
+					"name": "constant.language.rpg.f.format",
+					"match": "(?=(?<=((?<=^[\\s]{5}[F|f]).{12}))(F|f|E|e))."
+				},
+				{
+					"name": "constant.language.rpg.f.mode",
+					"match": "(?<=(?<=(?<=^[\\s]{5}[F|f])[\\s\\S]{8})[\\s\\S]{4}(F|f|E|e).{8})(?i)(L)"
+				},
+				{
+					"name": "constant.language.rpg.f.addrtype",
+					"match": "(?<=(?<=(?<=^[\\s]{5}[F|f])[\\s\\S]{8})[\\s\\S]{4}(F|f).{11})(?i)(A|P)"
+				},
+				{
+					"name": "constant.language.rpg.f.organization",
+					"match": "(?<=(?<=(?<=^[\\s]{5}[F|f])[\\s\\S]{8})[\\s\\S]{4}(F|f).{12})(?i)(I|T)"
+				},
+				{
+					"name": "constant.language.rpg.f.ovind",
+					"match": "(?<=(?<=(?<=^[\\s]{5}[F|f])[\\s\\S]{8})[\\s\\S]{4}(F|f).{13})(?i)(O(A|B|C|D|E|F|G|V))"
+				},
+				{
+					"name": "constant.language.rpg.f.extncode",
+					"match": "(?<=(?<=(?<=^[\\s]{5}[F|f])[\\s\\S]{8})[\\s\\S]{4}(F|f).{19})(?i)(E|L)"
+				},
+				{
+					"name": "constant.language.rpg.f.device",
+					"match": "(?<=(?<=(?<=^[\\s]{5}[F|f])[\\s\\S]{8})[\\s\\S]{4}(F|f|E|e).{20})(?i)(WORKSTN|DISK|PRINTER|SPECIAL|SEQ)"
+				},
+				{
+					"name": "constant.language.rpg.f.continuation",
+					"match": "(?<=(?<=(?<=^[\\s]{5}[F|f])[\\s\\S]{8})[\\s\\S]{4}(F|f|E|e).{33})(?i)(K)"
+				},
+				{
+					"name": "constant.language.rpg.f.addition",
+					"match": "(?<=(?<=(?<=^[\\s]{5}[F|f])[\\s\\S]{8})[\\s\\S]{4}(F|f|E|e).{46})(?i)(A)"
+				},
+				{
+					"name": "constant.language.rpg.f.condition",
+					"match": "(?<=(?<=(?<=^[\\s]{5}[F|f])[\\s\\S]{8})[\\s\\S]{4}(F|f|E|e).{51})(?i)([U](1|2|3|4|5|6|7|8|C))"
+				},
+				{
+					"name": "constant.language.rpg.fx.addrtype",
+					"match": "(?<=(?<=(?<=^[\\s]{5}[F|f])[\\s\\S]{8})[\\s\\S]{4}(E|e).{11})(?i)(K)"
+				},
+				{
+					"name": "constant.language.rpg.c.level",
+					"match": "(?<=((?<=^[\\s]{5}[c|C])[\\s\\S]{0}))(?i)((L(1|2|3|4|5|6|7|8|9|O|R))|SR|AN|OR)"
+				},
+				{
+					"name": "constant.language.rpg.c.n01",
+					"match": "(?<=((?<=^[\\s]{5}[c|C])[\\s\\S]{2}))((i?)(N|\\s)((L(1|2|3|4|5|6|7|8|9|O|R))|(K(A|B|C|D|E|F|G|H|I|J|K|L|M|N|P|Q|R|S|T|U|V|W|X|Y))|MR|RT|(H(1|2|3|4|5|6|7|8|9))|(O(A|B|C|D|E|F|G|V))|(U(1|2|3|4|5|6|7|8))))"
+				},
+				{
+					"name": "constant.language.rpg.c.n02",
+					"match": "(?<=((?<=^[\\s]{5}[c|C])[\\s\\S]{5}))((i?)(N|\\s)((L(1|2|3|4|5|6|7|8|9|O|R))|(K(A|B|C|D|E|F|G|H|I|J|K|L|M|N|P|Q|R|S|T|U|V|W|X|Y))|MR|RT|(H(1|2|3|4|5|6|7|8|9))|(O(A|B|C|D|E|F|G|V))|(U(1|2|3|4|5|6|7|8))))"
+				},
+				{
+					"name": "constant.language.rpg.c.n03",
+					"match": "(?<=((?<=^[\\s]{5}[c|C])[\\s\\S]{8}))((i?)(N|\\s)((L(1|2|3|4|5|6|7|8|9|O|R))|(K(A|B|C|D|E|F|G|H|I|J|K|L|M|N|P|Q|R|S|T|U|V|W|X|Y))|MR|RT|(H(1|2|3|4|5|6|7|8|9))|(O(A|B|C|D|E|F|G|V))|(U(1|2|3|4|5|6|7|8))))"
+				},
+				{
+					"name": "constant.language.rpg.c.opext",
+					"match": "(?<=((?<=^[\\s]{5}[c|C])[\\s\\S]{46}))(?i)(H|N|P)"
+				},
+				{
+					"name": "constant.language.rpg.c.hi",
+					"match": "(?<=((?<=^[\\s]{5}[c|C])[\\s\\S]{47}))((i?)((L(1|2|3|4|5|6|7|8|9|O|R))|(K(A|B|C|D|E|F|G|H|I|J|K|L|M|N|P|Q|R|S|T|U|V|W|X|Y))|RT|(H(1|2|3|4|5|6|7|8|9))|(O(A|B|C|D|E|F|G|V))|(U(1|2|3|4|5|6|7|8))))"
+				},
+				{
+					"name": "constant.language.rpg.c.lo",
+					"match": "(?<=((?<=^[\\s]{5}[c|C])[\\s\\S]{49}))((i?)((L(1|2|3|4|5|6|7|8|9|O|R))|(K(A|B|C|D|E|F|G|H|I|J|K|L|M|N|P|Q|R|S|T|U|V|W|X|Y))|RT|(H(1|2|3|4|5|6|7|8|9))|(O(A|B|C|D|E|F|G|V))|(U(1|2|3|4|5|6|7|8))))"
+				},
+				{
+					"name": "constant.language.rpg.c.eq",
+					"match": "(?<=((?<=^[\\s]{5}[c|C])[\\s\\S]{51}))((i?)((L(1|2|3|4|5|6|7|8|9|O|R))|(K(A|B|C|D|E|F|G|H|I|J|K|L|M|N|P|Q|R|S|T|U|V|W|X|Y))|RT|(H(1|2|3|4|5|6|7|8|9))|(O(A|B|C|D|E|F|G|V))|(U(1|2|3|4|5|6|7|8))))"
+				},
+				{
 					"name": "constant.language.rpg",
 					"match": "(?i)[*]\\b(IN)([0-9]{0,2})\\b"
-				},
-				{
-					"name": "constant.language.rpg",
-					"match": "(?i)\\b(LR|1P|L1|L2|L3|L4|L5|L6|L7|L8|L9)"
-				},
-				{
-					"name": "constant.language.rpg",
-					"match": "(?i)\\b(OF)\\b"
-				},
-				{
-					"name": "constant.language.rpg",
-					"match": "(?i)(?<=(Z-ADD))(UDAY|UMONTH|UYEAR)"
-				},
-				{
-					"name": "constant.numeric.rpg",
-					"match": "(?i)(?<=(Z-ADD|MOVEL|((IF |WH |DOW|DOU|DO |CAB|CAS|AND|OR )(GT|LT|EQ|NE|GE|LE))))(([0-9]*[.][0-9]*)|([0-9]+))"
 				},
 				{
 					"name": "constant.numeric.rpg",
@@ -85,24 +181,8 @@
 					"match": "(?i)(IF|WH|DOW|DOU|DO|CAB|CAS|AND|OR)(GT|LT|EQ|NE|GE|LE|:)"
 				},
 				{
-					"name": "keyword.control.rpg",
-					"match": "(?i)\\b(DO|END)\\b"
-				},
-				{
-					"name": "keyword.control.rpg",
-					"match": "(?i)\\b(BEGSR|ENDSR|GOTO|ELSE|ENDIF|ENDCS|ENDDO|ENDSL|SELEC|RETRN|CAS)"
-				},
-				{
 					"name": "keyword.other.rpg",
-					"match": "(?i)(ACQ|BITOFF|BITON|CAB|CALL|CAT|CHAIN|CHECK|CHEKR|CLEAR|CLOSE|COMIT|COMP|DEBUG|DEFN|DELET|DSPLY|DUMP|EXCPT|EXFMT|EXSR|FEOD|FORCE|FREE|ITER|KFLD|KLIST|LEAVE|LOKUP|MHHZO|MHLZO|MLHZO|MLLZO|MOVEL|MOVEA|MOVE|MVR|OCUR|OPEN|OTHER|OUT|PLIST|POST|READC|READE|READP|REDPE|REL|ROLBK|SCAN|SETGT|SETLL|SETOF|SETON|SHTDN|SORTA|SQRT|SUBST|TAG|TESTB|TESTN|TESTZ|UNLCK|UPDAT|WRITE|XFOOT|XLATE|Z-ADD|Z-SUB)"
-				},
-				{
-					"name": "keyword.other.rpg",
-					"match": "(?i)[\\s](RESET)"
-				},
-				{
-					"name": "keyword.other.rpg",
-					"match": "\\b(?i)(AND|OR|SUB|ADD|DIV|MULT|IN|TIME|READ|PARM|NEXT)\\b"
+					"match": "(?<=((?<=^[\\s]{5}[C|c])[\\s\\S]{21}))[\\s\\S]{0}(?i)(Z-SUB|Z-ADD|XLATE|XFOOT|WRITE|WH|UPDAT|UNLCK|TIME|TESTZ|TESTN|TESTB|TAG|SUBST|SUB|SQRT|SORTA|SHTDN|SETON|SETOF|SETLL|SETGT|SELEC|SCAN|ROLBK|RETRN|RESET|REL|REDPE|READP|READE|READC|READ|POST|PLIST|PARM|OUT|OTHER|OR|OPEN|OCUR|NEXT|MVR|MULT|MOVEL|MOVEA|MOVE|MLLZO|MLHZO|MHLZO|MHHZO|LOKUP|LEAVE|KLIST|KFLD|ITER|IN|IF|GOTO|FREE|FORCE|FEOD|EXSR|EXFMT|EXCPT|ENDSR|END|ELSE|DUMP|DSPLY|DOW|DOU|DO|DIV|DELET|DEFN|DEBUG|COMP|COMIT|CLOSE|CLEAR|CHEKR|CHECK|CHAIN|CAT|CAS|CALL|CAB|BITON|BITOF|BEGSR|AND|ADD|ACQ)"
 				}
 			]
 		},

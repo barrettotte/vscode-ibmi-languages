@@ -11,5 +11,5 @@ with open('ops.txt', 'r') as f:
             opgroups.append('{"name": "keyword.other.cl", "match": "(?i)\\\\b(' + '|'.join(sorted(ops, reverse=True)) + ')\\\\b"}')
             ops = []
             i = 0
-with open('opregex.json', 'w') as f:
+with open('regex.json', 'w') as f:
     f.write('[' + (',\n'.join(sorted(opgroups, reverse=True))) + ']')

@@ -25,10 +25,9 @@ Also check out his repository https://github.com/NielsLiisberg/RPG-vsCode-Gettin
 ## Features
 - [x] Syntax highlighting for RPG II, RPG III, RPG/400
 - [ ] Syntax highlighting for Control Language (CL) - CL/CLLE
-- [ ] Syntax highlighting for RPGLE fixed/free
-- [ ] Syntax highlighting for Machine Interface (MI)
 - [ ] Syntax highlighting for physical and logical files
-
+- [ ] Syntax highlighting for Machine Interface (MI)
+- [ ] Syntax highlighting for RPGLE fixed/free
 
 ## Stretch Features
 Every side project starts out fun, but later becomes stale, we'll see if I get here.
@@ -42,16 +41,15 @@ Every side project starts out fun, but later becomes stale, we'll see if I get h
 Generally I lumped legacy file types together out of convenience.
 If you want different syntax highlighting for a CL vs CLLE file, you've come to the wrong place.
 
-| Extension(s)      | Description                |
-| ----------------- | -------------------------- |
-| .cl, .clp, .clle  | Control Language           |
-| .cmd              | Command                    |
-| .dspf             | DDS Display file           |
-| .lf               | DDS Logical file           |
-| .pf, .dds         | DDS Physical file          |
-| .prtf             | DDS Printer file           |
-| .rpg, .sqlrpg     | RPG II + RPG III + RPG/400 |
-| .rpgle, .sqlrpgle | RPGLE and SQLRPGLE         |
+| Extension(s)                  | Description                |
+| ----------------------------- | -------------------------- |
+| .cl, .clp, .clp38 .clle       | Control Language           |
+| .dspf, .dspf38                | DDS Display file           |
+| .lf, .lf38                    | DDS Logical file           |
+| .pf, .pf38, .dds              | DDS Physical file          |
+| .prtf, .prtf38                | DDS Printer file           |
+| .rpg, .rpg36, .rpg38, .sqlrpg | RPG II + RPG III + RPG/400 |
+| .rpgle, .sqlrpgle             | RPGLE and SQLRPGLE         |
 
 
 ## References
