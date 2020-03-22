@@ -12,6 +12,26 @@
     "contributes": {
         "languages": [
             {
+                "id": "cl",
+                "aliases": [
+                    "CL",
+                    "CLLE",
+                    "CLP",
+                    "cl",
+                    "clle",
+                    "clp"
+                ],
+                "extensions": [
+                    ".CL",
+                    ".CLLE",
+                    ".CLP",
+                    ".cl",
+                    ".clle",
+                    ".clp"
+                ],
+                "configuration": "./cl.language-configuration.json"
+            },
+            {
                 "id": "rpg",
                 "aliases": [
                     "RPG",
@@ -23,10 +43,15 @@
                     ".RPG38",
                     ".rpg38"
                 ],
-                "configuration": "./language-configuration.json"
+                "configuration": "./rpg.language-configuration.json"
             }
         ],
         "grammars": [
+            {
+                "language": "cl",
+                "scopeName": "source.cl",
+                "path": "./syntaxes/cl.tmLanguage.json"
+            },
             {
                 "language": "rpg",
                 "scopeName": "source.rpg",

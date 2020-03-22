@@ -1,0 +1,2246 @@
+	ADDACC (Add Access Code) command
+ 	ADDAJE (Add Autostart Job Entry) command
+ 	ADDALRACNE (Add Alert Action Entry) command
+ 	ADDALRD (Add Alert Description) command
+ 	ADDALRSLTE (Add Alert Selection Entry) command
+ 	ADDASPCPYD (Add ASP Copy Description) command
+ 	ADDAUTLE (Add Authorization List Entry) command
+ 	ADDBKP (Add Breakpoint) command
+ 	ADDBNDDIRE (Add Binding Directory Entry) command
+ 	ADDCADMRE (Add Cluster Administrative Domain Managed Resource Entry) command
+ 	ADDCADNODE (Add Cluster Administrative Domain Node Entry) command
+ 	ADDCCSCLT (Add Change Control Server Client) command
+ 	ADDCFGLE (Add Configuration List Entries) command
+ 	ADDCICSCVT (Add CICS CVT Entry) command
+ 	ADDCICSDCT (Add CICS DCT Entry) command
+ 	ADDCICSFCT (Add CICS FCT Entry) command
+ 	ADDCICSGLT (Add CICS GLT Entry) command
+ 	ADDCICSJCT (Add CICS JCT Entry) command
+ 	ADDCICSPCT (Add CICS PCT Entry) command
+ 	ADDCICSPPT (Add CICS PPT Entry) command
+ 	ADDCICSSIT (Add CICS SIT Entry) command
+ 	ADDCICSTCS (Add CICS TCS Entry) command
+ 	ADDCICSTCT (Add CICS TCT Entry) command
+ 	ADDCICSTST (Add CICS TST Entry) command
+ 	ADDCKMKSFE (Add Crytographic Key Management Keystore File Entry) command
+ 	ADDCLUMON (Add Cluster Monitor) command
+ 	ADDCLUNODE (Add Cluster Node Entry) command
+ 	ADDCMDCRQA (Add Command Change Request Activity) command
+ 	ADDCMNE (Add Communications Entry) command
+ 	ADDCOMSNMP (Add Community for SNMP) command
+ 	ADDCRGDEVE (Add Cluster Resource Group Device Entry) command
+ 	ADDCRGNODE (Add Cluster Resource Group Node Entry) command
+ 	ADDCRQA (Add Change Request Activity) command
+ 	ADDDEVDMNE (Add Device Domain Entry) command
+ 	ADDDIRE (Add Directory Entry) command
+ 	ADDDIRINST (Add Directory Server Instance) command 
+ 	ADDDIRSHD (Add Directory Shadow System) command
+ 	ADDDLOAUT (Add Document Library Object Authority) command
+ 	ADDDNSSIG (Add Domain Name System Signature) command 
+ 	ADDDPRREG (Add DataPropagator Registration) command
+ 	ADDDPRSUB (Add DataPropagator Subscription) command
+ 	ADDDPRSUBM (Add DataPropagator Subscription Member) command
+ 	ADDDSTCLGE (Add Distribution Catalog Entry) command
+ 	ADDDSTLE (Add Distribution List Entry) command
+ 	ADDDSTQ (Add Distribution Queue) command
+ 	ADDDSTRTE (Add Distribution Route) command
+ 	ADDDSTSYSN (Add Secondary System Name) command
+ 	ADDDTADFN (Add Data Definition) command
+ 	ADDDWDFN (Add Disk Watcher Definition) command
+ 	ADDEMLCFGE (Add Configuration Entry) command
+ 	ADDENVVAR (Add Environment Variable) command
+ 	ADDEWCBCDE (Add Wireless Controller Barcode Entry) command
+ 	ADDEWCM (Add Wireless Controller Member) command
+ 	ADDEWCPTCE (Add Wireless Controller PTC Entry) command
+ 	ADDEWLM (Add Wireless Line Member) command
+ 	ADDEXITPGM (Add Exit Program) command
+ 	ADDFCTE (Add Forms Control Entry) command
+ 	ADDFNTTBLE (Add Font Table Entry) command
+ 	ADDHACFGD (Add HA Configuration Description) command 
+ 	ADDHDBDLFM (Add Host Database to DataLink File Manager) command
+ 	ADDHYSSTGD (Add HyperSwap Storage Description) command 
+ 	ADDICFDEVE (Add Intersystem Communications Function Device Entry) command
+ 	ADDIMGCLGE (Add Image Catalog Entry) command
+ 	ADDIPSIFC (Add IP over SNA Interface) command
+ 	ADDIPSLOC (Add IP over SNA Location) command
+ 	ADDIPSRTE (Add IP over SNA Route) command
+ 	ADDJOBJS (Add Job using Advanced Job Scheduler) command
+ 	ADDJOBQE (Add Job Queue Entry) command
+ 	ADDJOBSCDE (Add Job Schedule Entry) command
+ 	ADDJWDFN (Add Job Watcher Definition) command
+ 	ADDKRBKTE (Add Kerberos Keytab Entry) command
+ 	ADDKRBTKT (Add Kerberos Ticket) command
+ 	ADDLANADPI (Add LAN Adapter Information) command
+ 	ADDLFM (Add Logical File Member) command
+ 	ADDLIBLE (Add Library List Entry) command
+ 	ADDLICCRQA (Add License Change Request Activity) command
+ 	ADDLICKEY (Add License Key Information) command
+ 	ADDLNK (Add Link) command
+ 	ADDMEDBRM (Add Media to BRMS) command
+ 	ADDMEDIBRM (Add Media Information to BRMS) command
+ 	ADDMFS (Add Mounted File System) command
+ 	ADDMLMBRM (Add Media Library Media to BRMS) command
+ 	ADDMSGD (Add Message Description) command
+ 	ADDMSTPART (Add Master Key Part) command
+ 	ADDNCK (Add Nickname) command
+ 	ADDNETJOBE (Add Network Job Entry) command
+ 	ADDNETTBLE (Add Network Table Entry) command
+ 	ADDNODLE (Add Node List Entry) command
+ 	ADDNWSSTGL (Add Server Storage Link) command
+ 	ADDOBJCRQA (Add Object Change Request Activity) command
+ 	ADDOPTCTG (Add Optical Cartridge) command
+ 	ADDOPTSVR (Add Optical Server) command
+ 	ADDOSPFARA (Add OSPF Area) command
+ 	ADDOSPFIFC (Add OSPF Interface) command
+ 	ADDOSPFLNK (Add OSPF Virtual Link) command
+ 	ADDOSPFRNG (Add OSPF Range) command
+ 	ADDPCLTBLE (Add Protocol Table Entry) command
+ 	ADDPEXDFN (Add Performance Explorer Definition) command
+ 	ADDPEXFTR (Add Performance Explorer Filter) command
+ 	ADDPFCST (Add Physical File Constraint) command
+ 	ADDPFM (Add Physical File Member) command
+ 	ADDPFTRG (Add Physical File Trigger) command
+ 	ADDPFVLM (Add Physical File Variable Length Member) command
+ 	ADDPFXDLFM (Add Prefix to DataLink File Manager) command
+ 	ADDPGM (Add Program) command
+ 	ADDPJE (Add Prestart Job Entry) command
+ 	ADDPRBACNE (Add Problem Action Entry) command
+ 	ADDPRBSLTE (Add Problem Selection Entry) command
+ 	ADDPRDCRQA (Add Product Change Request Activity) command
+ 	ADDPRDLICI (Add License Information) command
+ 	ADDPTFCRQA (Add PTF Change Request Activity) command
+ 	ADDRDBDIRE (Add Relational Database Directory Entry) command
+ 	ADDREXBUF (Add REXX Buffer) command
+ 	ADDRIPACP (Add Routing Information Protocol Accepted Route) command
+ 	ADDRIPFLT (Add Routing Information Protocol Filter) command
+ 	ADDRIPIFC (Add Routing Information Protocol Interface) command
+ 	ADDRIPIGN (Add Ignored Routing Information Protocol Neighbor) command
+ 	ADDRJECMNE (Add RJE Communication Entry) command
+ 	ADDRJERDRE (Add RJE Reader Entry) command
+ 	ADDRJEWTRE (Add RJE Writer Entry) command
+ 	ADDRMTDFN (Add Remote Definition) command
+ 	ADDRMTJRN (Add Remote Journal) command
+ 	ADDRPTOND (Add Report to OnDemand) command
+ 	ADDRPYLE (Add Reply List Entry) command
+ 	ADDRSCCRQA (Add Resource Change Request Activity) command
+ 	ADDRTGE (Add Routing Entry) command
+ 	ADDSCHIDXE (Add Search Index Entry) command
+ 	ADDSMTPLE (Add SMTP List Entry) command
+ 	ADDSOCE (Add Sphere of Control Entry) command
+ 	ADDSRVTBLE (Add Service Table Entry) command
+ 	 ADDSVCCPYD (Add SAN Volume Controller ASP Copy Description) command 
+ 	ADDSVRAUTE (Add Server Authentication Entry) command
+ 	ADDTAPCTG (Add Tape Cartridge) command
+ 	ADDTCPHTE (Add TCP/IP Host Table Entry) command
+ 	ADDTCPIFC (Add TCP/IP Interface) command
+ 	ADDTCPPORT (Add TCP/IP Port Restriction) command
+ 	ADDTCPPTP (Add TCP/IP Point-to-Point Profile) command
+ 	ADDTCPRSI (Add TCP/IP Remote System) command
+ 	ADDTCPRTE (Add TCP/IP Route) command
+ 	ADDTCPSVR (Add TCP/IP Server) command
+ 	ADDTRC (Add Trace) command
+ 	ADDTRCFTR (Add Trace Filter) command
+ 	ADDUSRSMTP (Add User SMTP) command 
+ 	ADDUSRSNMP (Add User for SNMP) command
+ 	ADDWLCGRP (Add Workload Group) command 
+ 	ADDWLCPRDE (Add Workload Product Entry) command 
+ 	ADDWSE (Add Work Station Entry) command
+ 	ALCOBJ (Allocate Object) command
+ 	ANSLIN (Answer Line) command
+ 	ANSQST (Answer Questions) command
+ 	ANZCMDPFR (Analyze Command Performance) command
+ 	ANZDBF (Analyze Database Files) command
+ 	ANZDBFKEY (Analyze Database File Keys) command
+ 	ANZDFTPWD (Analyze Default Passwords) command
+ 	ANZDPRJRN (Analyze DataPropagator Journaling) command
+ 	ANZLIBBRM (Analyze Libraries using BRMS) command
+ 	ANZOBJCVN (Analyze Object Conversion) command
+ 	ANZPFRDTA (Analyze Performance Data) command
+ 	ANZPGM (Analyze Programs) command
+ 	ANZPRB (Analyze Problem) command
+ 	ANZPRFACT (Analyze Profile Activity) command
+ 	ANZQRY (Analyze Query) command
+ 	ANZUSROBJ (Analyze User Objects) command
+ 	APING (Verify APPC Connection) command
+ 	APYJRNCHG (Apply Journaled Changes) command
+ 	APYJRNCHGX (Apply Journaled Changes Extend) command
+ 	APYPTF (Apply Program Temporary Fix) command
+ 	APYRMTPTF (Apply Remote Program Temporary Fix) command
+ 	AREXEC (Run Remote Command) command
+ 	ARPING (Send Address Resolution Protocol Request) command 
+ 	ASKQST (Ask Question) command
+ 	BCHJOB (Batch Job) command
+ 	CALL (Call Program) command
+ 	CALLPRC (Call Bound Procedure) command
+ 	CALLSUBR (Call Subroutine) command
+ 	CD (Change Current Directory) command
+ 	CFGACCWEB (Configure Access for Web) command 
+ 	CFGACCWEB2 (Configure Access for Web) command
+ 	CFGDEVASP (Configure ASP Device) command 
+ 	CFGDEVMLB (Configure Device Media Library) command
+ 	CFGDSTSRV (Configure Distribution Service) command
+ 	CFGGEOMIR (Configure Geographic Mirror) command 
+ 	CFGIPS (Configure IP over SNA) command
+ 	CFGPFRCOL (Configure Performance Collection) command
+ 	CFGPM400 (Configure PM/400) command
+ 	CFGPMAGT (Configure PM Agent) command
+ 	CFGRPDS (Configure VM/MVS Bridge) command
+ 	CFGSYSSEC (Configure System Security) command
+ 	CFGTCP (Configure TCP/IP) command
+ 	CFGTCPAPP (Configure TCP/IP Applications) command
+ 	CFGTCPBP (Configure TCP/IP BOOTP) command
+ 	CFGTCPFTP (Configure TCP/IP FTP) command
+ 	CFGTCPHTTP (Configure TCP/IP HTTP) command
+ 	CFGTCPLPD (Configure TCP/IP LPD) command
+ 	CFGTCPPTP (Configure Point-to-Point TCP/IP) command
+ 	CFGTCPRTD (Configure TCP/IP RouteD) command
+ 	CFGTCPRXC (Configure TCP/IP REXEC) command
+ 	CFGTCPSMTP (Configure TCP/IP SMTP) command
+ 	CFGTCPSNMP (Configure TCP/IP SNMP) command
+ 	CFGTCPTELN (Configure TCP/IP TELNET) command
+ 	CHDIR (Change Current Directory) command
+ 	CHGACGCDE (Change Accounting Code) command
+ 	CHGACTPRFL (Change Active Profile List) command
+ 	CHGACTSCDE (Change Activation Schedule Entry) command
+ 	CHGAJE (Change Autostart Job Entry) command
+ 	CHGALRACNE (Change Alert Action Entry) command
+ 	CHGALRD (Change Alert Description) command
+ 	CHGALRSLTE (Change Alert Selection Entry) command
+ 	CHGALRTBL (Change Alert Table) command
+ 	CHGAMTDFT (Change Application Management Toolset Defaults) command 
+ 	CHGASPA (Change Auxiliary Storage Pool Attribute) command
+ 	CHGASPACT (Change ASP Activity) command
+ 	CHGASPCPYD (Change ASP Copy Description) command
+ 	CHGASPSSN (Change ASP Session) command
+ 	CHGATR (Change Attribute) command
+ 	CHGAUD (Change Auditing Value) command
+ 	CHGAUT (Change Authority) command
+ 	CHGAUTJS (Change Job Authority using Advanced Job Scheduler) command
+ 	CHGAUTLE (Change Authorization List Entry) command
+ 	CHGBCKUP (Change Backup Options) command
+ 	CHGBPA (Change BOOTP Attributes) command
+ 	CHGCAD (Change Cluster Administrative Domain) command
+ 	CHGCCSA (Change Change Control Server Attributes) command
+ 	CHGCDEFNT (Change Coded Font) command
+ 	CHGCFGL (Change Configuration List) command
+ 	CHGCFGLE (Change Configuration List Entries) command
+ 	CHGCICSCVT (Change CICS CVT Entry) command
+ 	CHGCICSDCT (Change CICS DCT Entry) command
+ 	CHGCICSFCT (Change CICS FCT Entry) command
+ 	CHGCICSGRP (Change CICS Group) command
+ 	CHGCICSJCT (Change CICS JCT Entry) command
+ 	CHGCICSPCT (Change CICS PCT Entry) command
+ 	CHGCICSPPT (Change CICS PPT Entry) command
+ 	CHGCICSSIT (Change CICS SIT Entry) command
+ 	CHGCICSSTS (Change CICS Status) command
+ 	CHGCICSTCS (Change CICS TCS Entry) command
+ 	CHGCICSTCT (Change CICS TCT Entry) command
+ 	CHGCICSTST (Change CICS TST Entry) command
+ 	CHGCLNUP (Change Cleanup) command
+ 	CHGCLS (Change Class) command
+ 	CHGCLU (Change Cluster Configuration) command
+ 	CHGCLUMON (Change Cluster Monitor) command
+ 	CHGCLUNODE (Change Cluster Node Entry) command
+ 	CHGCLURCY (Change Cluster Recovery) command
+ 	CHGCLUVER (Change Cluster Version) command
+ 	CHGCMD (Change Command) command
+ 	CHGCMDCRQA (Change Command Change Request Activity) command
+ 	CHGCMDDFT (Change Command Default) command
+ 	CHGCMNE (Change Communications Entry) command
+ 	CHGCNTINF (Change Contact Information) command
+ 	CHGCOMSNMP (Change Community for SNMP) command
+ 	CHGCOSD (Change Class-of-Service Description) command
+ 	CHGCRG (Change Cluster Resource Group) command
+ 	CHGCRGDEVE (Change Cluster Resource Group Device Entry) command
+ 	CHGCRGPRI (Change Cluster Resource Group Primary) command
+ 	CHGCRQA (Change Change Request Activity) command
+ 	CHGCRQD (Change Change Request Description) command
+ 	CHGCSI (Change Communications Side Information) command
+ 	CHGCTLAPPC (Change Controller Description (APPC)) command
+ 	CHGCTLASC (Change Controller Description (Async)) command
+ 	CHGCTLBSC (Change Controller Description (BSC)) command
+ 	CHGCTLFNC (Change Controller Description (Finance)) command
+ 	CHGCTLHOST (Change Controller Description (SNA Host)) command
+ 	CHGCTLLWS (Change Controller Description (Local WS)) command
+ 	CHGCTLNET (Change Controller Description (Network)) command
+ 	CHGCTLRTL (Change Controller Description (Retail)) command
+ 	CHGCTLRWS (Change Controller Description (Remote WS)) command
+ 	CHGCTLTAP (Change Controller Description (Tape)) command
+ 	CHGCTLVWS (Change Controller Description (Virtual WS)) command
+ 	CHGCURDIR (Change Current Directory) command
+ 	CHGCURLIB (Change Current Library) command
+ 	CHGDBG (Change Debug) command
+ 	CHGDDMF (Change Distributed Data Management File) command
+ 	CHGDDMTCPA (Change Distributed Data Management TCP/IP Attributes) command
+ 	CHGDEVAPPC (Change Device Description (APPC)) command
+ 	CHGDEVASC (Change Device Description (Async)) command
+ 	CHGDEVASP (Change Device Description (ASP)) command
+ 	CHGDEVBSC (Change Device Description (BSC)) command
+ 	CHGDEVCRP (Change Device Description (Crypto)) command
+ 	CHGDEVDSP (Change Device Description (Display)) command
+ 	CHGDEVFNC (Change Device Description (Finance)) command
+ 	CHGDEVHOST (Change Device Description (SNA Host)) command
+ 	CHGDEVINTR (Change Device Description (Intra)) command
+ 	CHGDEVMLB (Change Device Description (Media Lib)) command
+ 	CHGDEVNET (Change Device Description (Network)) command
+ 	CHGDEVNWSH (Change Device Description (NWSH)) command
+ 	CHGDEVOPT (Change Device Description (Optical)) command
+ 	CHGDEVPRT (Change Device Description (Printer)) command
+ 	CHGDEVRTL (Change Device Description (Retail)) command
+ 	CHGDEVSNPT (Change Device Description (SNPT)) command
+ 	CHGDEVSNUF (Change Device Description (SNUF)) command
+ 	CHGDEVTAP (Change Device Description (Tape)) command
+ 	CHGDHCPA (Change Dynamic Host Configuration Protocol Attributes) command
+ 	CHGDHCPSVR (Change Dynamic Host Configuration Protocol Server) command
+ 	CHGDIRE (Change Directory Entry) command
+ 	CHGDIRSHD (Change Directory Shadow System) command
+ 	CHGDIRSVRA (Change Directory Server Attributes) command
+ 	CHGDLJS (Change Data Library using Advanced Job Scheduler) command
+ 	CHGDLOAUD (Change Document Library Object Auditing Level) command
+ 	CHGDLOAUT (Change Document Library Object Authority) command
+ 	CHGDLOOWN (Change Document Library Object Owner) command
+ 	CHGDLOPGP (Change Document Library Object Primary Group) command
+ 	CHGDNSA (Change Domain Name System Server Attributes) command
+ 	CHGDOCD (Change Document Description) command
+ 	CHGDSPF (Change Display File) command
+ 	CHGDSTA (Change Distribution Attributes) command
+ 	CHGDSTD (Change Distribution) command
+ 	CHGDSTL (Change Distribution List) command
+ 	CHGDSTPWD (Change IBM Service Tools Password) command
+ 	CHGDSTQ (Change Distribution Queue) command
+ 	CHGDSTRTE (Change Distribution Route) command
+ 	CHGDTA (Change Data) command
+ 	CHGDTAARA (Change Data Area) command
+ 	CHGDTAJS (Change Parameter Data) command
+ 	CHGEMLCFGE (Change Configuration Entry) command
+ 	CHGENVVAR (Change Environment Variable) command
+ 	CHGEWCBCDE (Change Wireless Controller Barcode Entry) command
+ 	CHGEWCM (Change Wireless Controller Member) command
+ 	CHGEWCPTCE (Change Wireless Controller PTC Entry) command
+ 	CHGEWLM (Change Wireless Line Member) command
+ 	CHGEXPSCDE (Change Expiration Schedule Entry) command
+ 	CHGFCNARA (Change Functional Area) command
+ 	CHGFCNUSG (Change Function Usage) command
+ 	CHGFCT (Change Forms Control Table) command
+ 	CHGFCTE (Change Forms Control Entry) command
+ 	CHGFNTRSC (Change Font Resource) command
+ 	CHGFNTTBLE (Change Font Table Entry) command
+ 	CHGFTPA (Change FTP Attributes) command
+ 	CHGFTR (Change Filter) command
+ 	CHGGPHFMT (Change Graph Format) command
+ 	CHGGPHPKG (Change Graph Package) command
+ 	CHGGRPA (Change Group Attributes) command
+ 	CHGHACFGD (Change HA Configuration Description) command 
+ 	CHGHLLPTR (Change High-Level Language Pointer) command
+ 	CHGHTTPA (Change HTTP Attributes) command
+ 	CHGHYSSTGD (Change HyperSwap Storage Description) command 
+ 	CHGHYSSTS (Change HyperSwap Status) command
+ 	CHGICFDEVE (Change Intersystem Communications Function Device Entry) command
+ 	CHGICFF (Change Intersystem Communications Function File) command
+ 	CHGIMGCLG (Change Image Catalog) command
+ 	CHGIMGCLGE (Change Image Catalog Entry) command
+ 	CHGIPLA (Change IPL Attributes) command
+ 	CHGIPSIFC (Change IP over SNA Interface) command
+ 	CHGIPSLOC (Change IP over SNA Location) command
+ 	CHGIPSTOS (Change IP over SNA Type of Service) command
+ 	CHGJOB (Change Job) command
+ 	CHGJOBD (Change Job Description) command
+ 	CHGJOBJS (Change Job using Advanced Job Scheduler) command
+ 	CHGJOBMLBA (Change Job Media Library Attributes) command
+ 	CHGJOBQ (Change Job Queue) command
+ 	CHGJOBQE (Change Job Queue Entry) command
+ 	CHGJOBSCDE (Change Job Schedule Entry) command
+ 	CHGJOBTYP (Change Job Type) command
+ 	CHGJRN (Change Journal) command
+ 	CHGJRNA (Change Journal Attributes) command
+ 	CHGJRNOBJ (Change Journaled Object) command
+ 	CHGKBDMAP (Change Keyboard Map) command
+ 	CHGKRBPWD (Change Kerberos Password) command
+ 	CHGLANADPI (Change LAN Adapter Information) command
+ 	CHGLF (Change Logical File) command
+ 	CHGLFM (Change Logical File Member) command
+ 	CHGLIB (Change Library) command
+ 	CHGLIBL (Change Library List) command
+ 	CHGLICCRQA (Change License Change Request Activity) command
+ 	CHGLICINF (Change License Information) command
+ 	CHGLINASC (Change Line Description (Async)) command
+ 	CHGLINBSC (Change Line Description (BSC)) command
+ 	CHGLINDDI (Change Line Description (DDI)) command
+ 	CHGLINETH (Change Line Description (Ethernet)) command
+ 	CHGLINFAX (Change Line Description (Fax)) command
+ 	CHGLINFR (Change Line Description (Frame Relay)) command
+ 	CHGLINPPP (Change Line Description (PPP)) command
+ 	CHGLINSDLC (Change Line Description (SDLC)) command
+ 	CHGLINTDLC (Change Line Description (TDLC)) command
+ 	CHGLINTRN (Change Line Description (Token-Ring)) command
+ 	CHGLINWLS (Change Line Description (Wireless)) command
+ 	CHGLINX25 (Change Line Description (X.25)) command
+ 	CHGLNKLBRM (Change Link List) command
+ 	CHGLPDA (Change LPD Attributes) command
+ 	CHGMEDBRM (Change Media using BRMS) command
+ 	CHGMGDSYSA (Change Managed System Attributes) command
+ 	CHGMGRSRVA (Change Manager Services Attributes) command
+ 	CHGMGTCOL (Change Management Collection) command
+ 	CHGMNU (Change Menu) command
+ 	CHGMOD (Change Module) command
+ 	CHGMODD (Change Mode Description) command
+ 	CHGMSGD (Change Message Description) command
+ 	CHGMSGF (Change Message File) command
+ 	CHGMSGQ (Change Message Queue) command
+ 	CHGNCK (Change Nickname) command
+ 	CHGNETA (Change Network Attributes) command
+ 	CHGNETJOBE (Change Network Job Entry) command
+ 	CHGNFSEXP (Change Network File System Export) command
+ 	CHGNFYJS (Change Notification Command using Advanced Job Scheduler) command
+ 	CHGNODGRPA (Change Node Group Attributes) command
+ 	CHGNTBD (Change NetBIOS Description) command
+ 	CHGNTPA (Change Network Time Protocol Attributes) command
+ 	CHGNWIFR (Change Network Interface (Frame-Relay Network)) command
+ 	CHGNWSA (Change Network Server Attributes) command
+ 	CHGNWSCFG (Change Network Server Configuration) command
+ 	CHGNWSD (Change Network Server Description) command
+ 	CHGNWSSTG (Change Network Server Storage Space) command
+ 	CHGNWSUSRA (Change Network Server User Attributes) command
+ 	CHGOBJAUD (Change Object Auditing) command
+ 	CHGOBJCRQA (Change Object Change Request Activity) command
+ 	CHGOBJD (Change Object Description) command
+ 	CHGOBJOWN (Change Object Owner) command
+ 	CHGOBJPGP (Change Object Primary Group) command
+ 	CHGOPTA (Change Optical Attributes) command
+ 	CHGOPTVOL (Change Optical Volume) command
+ 	CHGOSPFA (Change OSPF Attributes) command
+ 	CHGOSPFARA (Change OSPF Area) command
+ 	CHGOSPFIFC (Change OSPF Interface) command
+ 	CHGOSPFLNK (Change OSPF Virtual Link) command
+ 	CHGOSPFRNG (Change OSPF Range) command
+ 	CHGOUTQ (Change Output Queue) command
+ 	CHGOWN (Change Owner) command
+ 	CHGPCOPRF (Change PC Organizer Profile) command
+ 	CHGPDGPRF (Change Print Descriptor Group Profile) command
+ 	CHGPDMDFT (Change Programming Development Manager Defaults) command
+ 	CHGPEXDFN (Change Performance Explorer Definition) command
+ 	CHGPF (Change Physical File) command
+ 	CHGPFCST (Change Physical File Constraint) command
+ 	CHGPFM (Change Physical File Member) command
+ 	CHGPFTRG (Change Physical File Trigger) command
+ 	CHGPGM (Change Program) command
+ 	CHGPGMVAR (Change Program Variable) command
+ 	CHGPGP (Change Primary Group) command
+ 	CHGPGRJS (Change Pager Command using Advanced Job Scheduler) command
+ 	CHGPJ (Change Prestart Job) command
+ 	CHGPJE (Change Prestart Job Entry) command
+ 	CHGPLDOND (Change Policy Level Date) command
+ 	CHGPOPA (Change POP Server Attributes) command
+ 	CHGPRB (Change Problem) command
+ 	CHGPRBACNE (Change Problem Action Entry) command
+ 	CHGPRBSLTE (Change Problem Selection Entry) command
+ 	CHGPRDCRQA (Change Product Change Request Activity) command
+ 	CHGPRDOBJD (Change Product Object Description) command
+ 	CHGPRF (Change Profile) command
+ 	CHGPRTF (Change Printer File) command
+ 	CHGPRXCMD (Change Proxy Command) command
+ 	CHGPSFCFG (Change Print Services Facility Configuration) command
+ 	CHGPTFCRQA (Change PTF Change Request Activity) command
+ 	CHGPTR (Change Pointer) command
+ 	CHGPWD (Change Password) command
+ 	CHGPWRSCD (Change Power On/Off Schedule) command
+ 	CHGPWRSCDE (Change Power Schedule Entry) command
+ 	CHGQRYA (Change Query Attributes) command
+ 	CHGQSTDB (Change Question/Answer Database) command
+ 	CHGRCYAP (Change Recovery for Access Paths) command
+ 	CHGRDBDIRE (Change Relational Database Directory Entry) command
+ 	CHGRIPA (Change Routing Information Protocol Attributes) command
+ 	CHGRIPFLT (Change Routing Information Protocol Filter) command
+ 	CHGRIPIFC (Change Routing Information Protocol Interface) command
+ 	CHGRJECMNE (Change RJE Communication Entry) command
+ 	CHGRJERDRE (Change RJE Reader Entry) command
+ 	CHGRJEWTRE (Change RJE Writer Entry) command
+ 	CHGRMTDFN (Change Remote Definition) command
+ 	CHGRMTJRN (Change Remote Journal) command
+ 	CHGRPYLE (Change Reply List Entry) command
+ 	CHGRSCCRQA (Change Resource Change Request Activity) command
+ 	CHGRTDA (Change RouteD Attributes) command
+ 	CHGRTGE (Change Routing Entry) command
+ 	CHGRWSPWD (Change Remote Workstation Controller Password) command
+ 	CHGRXCA (Change REXEC Attributes) command
+ 	CHGS36 (Change S/36 Configuration) command
+ 	CHGS36A (Change S/36 Environment Attributes) command
+ 	CHGS36MSGL (Change S/36 Message List) command
+ 	CHGS36PGMA (Change S/36 Program Attributes) command
+ 	CHGS36PRCA (Change S/36 Proc Attributes) command
+ 	CHGS36SRCA (Change S/36 Source Attributes) command
+ 	CHGSAVF (Change Save File) command
+ 	CHGSBSD (Change Subsystem Description) command
+ 	CHGSCDBRM (Change Job Scheduler) command
+ 	CHGSCHIDX (Change Search Index) command
+ 	CHGSECA (Change Security Attributes) command
+ 	CHGSECAUD (Change Security Auditing) command
+ 	CHGSHRPOOL (Change Shared Storage Pool) command
+ 	CHGSMTPA (Change SMTP Attributes) command
+ 	CHGSNMPA (Change SNMP Attributes) command
+ 	CHGSPLFA (Change Spooled File Attributes) command
+ 	CHGSRCPF (Change Source Physical File) command
+ 	CHGSRVA (Change Service Attributes) command
+ 	CHGSRVAGT (Change Service Agent) command
+ 	CHGSRVAGTA (Change Service Agent Attributes) command
+ 	CHGSRVCFG (Change Service Configuration) command
+ 	CHGSRVPGM (Change Service Program) command
+ 	CHGSRVPVDA (Change Service Provider Attributes) command
+ 	CHGSSND (Change Session Description) command
+ 	CHGSSNMAX (Change Session Maximum) command
+ 	CHGSVCCPYD (Change SAN Volume Controller ASP Copy Description) command 
+ 	CHGSVCSSN (Change SAN Volume Controller ASP Session) command 
+ 	CHGSVRAUTE (Change Server Authentication Entry) command
+ 	CHGSYSDIRA (Change System Directory Attributes) command
+ 	CHGSYSJOB (Change System Job) command
+ 	CHGSYSLIBL (Change System Library List) command
+ 	CHGSYSVAL (Change System Value) command
+ 	CHGTAPCTG (Change Tape Cartridge) command
+ 	CHGTAPF (Change Tape File) command
+ 	CHGTCPA (Change TCP/IP Attributes) command
+ 	CHGTCPDMN (Change TCP/IP Domain) command
+ 	CHGTCPHTE (Change TCP/IP Host Table Entry) command
+ 	CHGTCPIFC (Change TCP/IP Interface) command
+ 	CHGTCPRTE (Change TCP/IP Route) command
+ 	CHGTCPSVR (Change TCP/IP Server) command
+ 	CHGTELNA (Change TELNET Attributes) command
+ 	CHGTFTPA (Change TFTP Attributes) command
+ 	CHGTIMZON (Change Time Zone Description) command
+ 	CHGUSRAUD (Change User Auditing) command
+ 	CHGUSRPRF (Change User Profile) command
+ 	CHGUSRPRTI (Change User Print Information) command
+ 	CHGUSRSMTP (Change User SMTP) command 
+ 	CHGUSRSNMP (Change User for SNMP) command
+ 	CHGUSRTRC (Change User Trace) command
+ 	CHGVAR (Change Variable) command
+ 	CHGVTMAP (Change VT Keyboard Map) command
+ 	CHGWLCGRP (Change Workload Group) command 
+ 	CHGWSE (Change Work Station Entry) command
+ 	CHGWTR (Change Writer) command
+ 	CHKASPBAL (Check Auxiliary Storage Pool Balance) command
+ 	CHKCMNTRC (Check Communications Trace) command
+ 	CHKDLO (Check Document Library Object) command
+ 	CHKDNSCFG (Check Domain Name System Configuration) command
+ 	CHKDNSZNE (Check Domain Name System Zone) command
+ 	CHKEXPBRM (Check Expired Media for BRMS) command
+ 	CHKIGCTBL (Check DBCS Font Table) command
+ 	CHKIN (Check In Object) command
+ 	CHKMSTKVV (Check Master Key Verification Value) command
+ 	CHKOBJ (Check Object) command
+ 	CHKOBJITG (Check Object Integrity) command
+ 	CHKOPTVOL (Check Optical Volume) command
+ 	CHKOUT (Check Out Object) command
+ 	CHKPFRCOL (Check Performance Collection) command
+ 	CHKPRDOPT (Check Product Option) command
+ 	CHKPWD (Check Password) command
+ 	CHKRCDLCK (Check Record Locks) command
+ 	CHKTAP (Check Tape) command
+ 	CLOF (Close File) command
+ 	CLOSE (Close Database File) command
+ 	CLRJOBQ (Clear Job Queue) command
+ 	CLRLIB (Clear Library) command
+ 	CLRMSGQ (Clear Message Queue) command
+ 	CLRMSTKEY (Clear Master Key) command
+ 	CLROUTQ (Clear Output Queue) command
+ 	CLRPFM (Clear Physical File Member) command
+ 	CLRPOOL (Clear Pool) command
+ 	CLRSAVF (Clear Save File) command
+ 	CLRSVRSEC (Clear Server Security Data) command
+ 	CLRTRCDTA (Clear Trace Data) command
+ 	CMD (Command Definition) command
+ 	CMPJRNIMG (Compare Journal Images) command
+ 	CMPPFM (Compare Physical File Member) command
+ 	CNLRJERDR (Cancel RJE Reader) command
+ 	CNLRJEWTR (Cancel RJE Writer) command
+ 	COMMIT (Commit) command
+ 	COPY (Copy Object) command
+ 	COPYRIGHT (Copyright) command
+ 	CPROBJ (Compress Object) command
+ 	CPY (Copy Object) command
+ 	CPYAUDJRNE (Copy Audit Journal Entries) command
+ 	CPYCFGL (Copy Configuration List) command
+ 	CPYDOC (Copy Document) command
+ 	CPYDSTRPSO (Copy Distribution Repository Object) command
+ 	CPYF (Copy File) command
+ 	CPYFCNARA (Copy Functional Area) command
+ 	CPYFRMARCF (Copy From Archive File) command 
+ 	CPYFRMDIR (Copy From Directory) command
+ 	CPYFRMIMPF (Copy From Import File) command
+ 	CPYFRMLDIF (Copy From LDIF File) command
+ 	CPYFRMMSD (Copy From Main Storage Dump) command 
+ 	CPYFRMPCD (Copy From PC Document) command
+ 	CPYFRMPCFF (Copy From Portable Compiled Format File) command
+ 	CPYFRMQRYF (Copy From Query File) command
+ 	CPYFRMSTMF (Copy From Stream File) command
+ 	CPYFRMTAP (Copy From Tape) command
+ 	CPYGPHFMT (Copy Graph Format) command
+ 	CPYGPHPKG (Copy Graph Package) command
+ 	CPYIGCSRT (Copy DBCS Master Sort Table) command
+ 	CPYIGCTBL (Copy DBCS Font Table) command
+ 	CPYJOBJS (Copy Job using Advanced Job Scheduler) command
+ 	CPYLIB (Copy Library) command
+ 	CPYMEDIBRM (Copy Media Information for BRMS) command
+ 	CPYOPT (Copy Optical) command
+ 	CPYPFRCOL (Copy Performance Collection) command
+ 	CPYPTF (Copy Program Temporary Fix) command
+ 	CPYPTFCVR (Copy Program Temporary Fix Cover Letter) command
+ 	CPYPTFGRP (Copy Program Temporary Fix Group) command
+ 	CPYPTFSAVF (Copy Program Temporary Fix to Save File) command
+ 	CPYSPLF (Copy Spooled File) command
+ 	CPYSRCF (Copy Source File) command
+ 	CPYTCPHT (Copy TCP/IP Host Table) command
+ 	CPYTOARCF (Copy To Archive File) command 
+ 	CPYTODIR (Copy To Directory) command
+ 	CPYTOIMPF (Copy To Import File) command
+ 	CPYTOLDIF (Copy To LDIF File) command
+ 	CPYTOMSD (Copy To Main Storage Dump) command 
+ 	CPYTOPCD (Copy To PC Document) command
+ 	CPYTOPCFF (Copy To Portable Compiled Format File) command
+ 	CPYTOSTMF (Copy To Stream File) command
+ 	CPYTOTAP (Copy To Tape) command
+ 	CPYVPNCFGF (Copy VPN Configuration File) command 
+ 	CRTAFPDTA (Create Advanced Function Printer Data) command
+ 	CRTALRTBL (Create Alert Table) command
+ 	CRTAUTHLR (Create Authority Holder) command
+ 	CRTAUTL (Create Authorization List) command
+ 	CRTBNDC (Create Bound C Program) command
+ 	CRTBNDCBL (Create Bound COBOL Program) command
+ 	CRTBNDCL (Create Bound CL Program) command
+ 	CRTBNDCPP (Create Bound C++ Program) command
+ 	CRTBNDDIR (Create Binding Directory) command
+ 	CRTBNDRPG (Create Bound RPG Program) command
+ 	CRTCAD (Create Cluster Administrative Domain) command
+ 	CRTCBLMOD (Create COBOL Module) command
+ 	CRTCBLPGM (Create COBOL Program) command
+ 	CRTCFGL (Create Configuration List) command
+ 	CRTCICSC (Create CICS ILE C Object) command
+ 	CRTCICSCBL (Create CICS COBOL Object) command
+ 	CRTCICSGRP (Create CICS Group) command
+ 	CRTCICSMAP (Create CICS Map) command
+ 	CRTCKMKSF (Create Crytographic Key Management Keystore File) command
+ 	CRTCLD (Create C Locale Description) command
+ 	CRTCLMOD (Create CL Module) command
+ 	CRTCLPGM (Create CL Program) command
+ 	CRTCLS (Create Class) command
+ 	CRTCLU (Create Cluster) command
+ 	CRTCMD (Create Command) command
+ 	CRTCMOD (Create C Module) command
+ 	CRTCOSD (Create Class-of-Service Description) command
+ 	CRTCPPMOD (Create C++ Module) command
+ 	CRTCRG (Create Cluster Resource Group) command
+ 	CRTCRQD (Create Change Request Description) command
+ 	CRTCSI (Create Communications Side Information) command
+ 	CRTCTLAPPC (Create Controller Description (APPC)) command
+ 	CRTCTLASC (Create Controller Description (Async)) command
+ 	CRTCTLBSC (Create Controller Description (BSC)) command
+ 	CRTCTLFNC (Create Controller Description (Finance)) command
+ 	CRTCTLHOST (Create Controller Description (SNA Host)) command
+ 	CRTCTLLWS (Create Controller Description (Local WS)) command
+ 	CRTCTLNET (Create Controller Description (Network)) command
+ 	CRTCTLRTL (Create Controller Description (Retail)) command
+ 	CRTCTLRWS (Create Controller Description (Remote WS)) command
+ 	CRTCTLTAP (Create Controller Description (Tape)) command
+ 	CRTCTLVWS (Create Controller Description (Virtual WS)) command
+ 	CRTDDMF (Create Distributed Data Management File) command
+ 	CRTDDNSCFG (Create Dynamic Domain Name System Configuration) command 
+ 	CRTDEVAPPC (Create Device Description (APPC)) command
+ 	CRTDEVASC (Create Device Description (Async)) command
+ 	CRTDEVASP (Create Device Description (ASP)) command
+ 	CRTDEVBSC (Create Device Description (BSC)) command
+ 	CRTDEVCRP (Create Device Description (Crypto)) command
+ 	CRTDEVDSP (Create Device Description (Display)) command
+ 	CRTDEVFNC (Create Device Description (Finance)) command
+ 	CRTDEVHOST (Create Device Description (SNA Host)) command
+ 	CRTDEVINTR (Create Device Description (Intra)) command
+ 	CRTDEVMLB (Create Device Description (Media Lib)) command
+ 	CRTDEVNET (Create Device Description (Network)) command
+ 	CRTDEVNWSH (Create Device Description (NWSH)) command
+ 	CRTDEVOPT (Create Device Description (Optical)) command
+ 	CRTDEVPRT (Create Device Description (Printer)) command
+ 	CRTDEVRTL (Create Device Description (Retail)) command
+ 	CRTDEVSNPT (Create Device Description (SNPT)) command
+ 	CRTDEVSNUF (Create Device Description (SNUF)) command
+ 	CRTDEVTAP (Create Device Description (Tape)) command
+ 	CRTDFUDSPF (Create Data File Utility Display File) command
+ 	CRTDIR (Create Directory) command
+ 	CRTDOC (Create Document) command
+ 	CRTDPRTBL (Create DataPropagator Tables) command
+ 	CRTDSPF (Create Display File) command
+ 	CRTDSTL (Create Distribution List) command
+ 	CRTDTAARA (Create Data Area) command
+ 	CRTDTADCT (Create Data Dictionary) command
+ 	CRTDTAQ (Create Data Queue) command
+ 	CRTDUPOBJ (Create Duplicate Object) command
+ 	CRTEDTD (Create Edit Description) command
+ 	CRTFCNARA (Create Functional Area) command
+ 	CRTFCT (Create Forms Control Table) command
+ 	CRTFLR (Create Folder) command
+ 	CRTFMWPRD (Create Firmware Product) command
+ 	CRTFNTRSC (Create Font Resource) command
+ 	CRTFNTTBL (Create Font Table) command
+ 	CRTFORMDF (Create Form Definition) command
+ 	CRTFTR (Create Filter) command
+ 	CRTGDF (Create Graphics Data File) command
+ 	CRTGPHFMT (Create Graph Format) command
+ 	CRTGPHPKG (Create Graph Package) command
+ 	CRTGSS (Create Graphics Symbol Set) command
+ 	CRTHSTDTA (Create Historical Data) command
+ 	CRTICFF (Create Intersystem Communications Function File) command
+ 	CRTIGCDCT (Create DBCS Conversion Dictionary) command
+ 	CRTIMGCLG (Create Image Catalog) command
+ 	CRTINSTOND (Create Instance for OnDemand) command
+ 	CRTJOBD (Create Job Description) command
+ 	CRTJOBQ (Create Job Queue) command
+ 	CRTJRN (Create Journal) command
+ 	CRTJRNRCV (Create Journal Receiver) command
+ 	CRTLF (Create Logical File) command
+ 	CRTLIB (Create Library) command
+ 	CRTLINASC (Create Line Description (Async)) command
+ 	CRTLINBSC (Create Line Description (BSC)) command
+ 	CRTLINDDI (Create Line Description (DDI)) command
+ 	CRTLINETH (Create Line Description (Ethernet)) command
+ 	CRTLINFAX (Create Line Description (Fax)) command
+ 	CRTLINFR (Create Line Description (Frame Relay)) command
+ 	CRTLINPPP (Create Line Description (PPP)) command
+ 	CRTLINSDLC (Create Line Description (SDLC)) command
+ 	CRTLINTDLC (Create Line Description (TDLC)) command
+ 	CRTLINTRN (Create Line Description (Token-Ring)) command
+ 	CRTLINWLS (Create Line Description (Wireless)) command
+ 	CRTLINX25 (Create Line Description (X.25)) command
+ 	CRTLOCALE (Create Locale) command
+ 	CRTMNU (Create Menu) command
+ 	CRTMODD (Create Mode Description) command
+ 	CRTMSGF (Create Message File) command
+ 	CRTMSGFMNU (Create Menu from Message Files) command
+ 	CRTMSGQ (Create Message Queue) command
+ 	CRTNODGRP (Create Node Group) command
+ 	CRTNODL (Create Node List) command
+ 	CRTNTBD (Create NetBIOS Description) command
+ 	CRTNWIFR (Create Network Interface (Frame-Relay Network)) command
+ 	CRTNWSCFG (Create Network Server Configuration) command
+ 	CRTNWSD (Create Network Server Description) command
+ 	CRTNWSSTG (Create Network Server Storage Space) command
+ 	CRTOUTQ (Create Output Queue) command
+ 	CRTOVL (Create Overlay) command
+ 	CRTPAGDFN (Create Page Definition) command
+ 	CRTPAGSEG (Create Page Segment) command
+ 	CRTPDFMAP (Create PDF Map) command
+ 	CRTPDG (Create Print Descriptor Group) command
+ 	CRTPEXDTA (Create Performance Explorer Data) command
+ 	CRTPF (Create Physical File) command
+ 	CRTPFRDTA (Create Performance Data) command
+ 	CRTPFRSUM (Create Performance Summary) command
+ 	CRTPGM (Create Program) command
+ 	CRTPNLGRP (Create Panel Group) command
+ 	CRTPRDDFN (Create Product Definition) command
+ 	CRTPRDLOD (Create Product Load) command
+ 	CRTPRTF (Create Printer File) command
+ 	CRTPRXCMD (Create Proxy Command) command
+ 	CRTPSFCFG (Create Print Services Facility Configuration) command
+ 	CRTPTF (Create Program Temporary Fix) command
+ 	CRTPTFPKG (Create Program Temporary Fix Package) command
+ 	CRTQMFORM (Create Query Management Form) command
+ 	CRTQMQRY (Create Query Management Query) command
+ 	CRTQSTDB (Create Question/Answer Database) command
+ 	CRTQSTLOD (Create Question/Answer Database Load) command
+ 	CRTRJEBSCF (Create RJE BSC File) command
+ 	CRTRJECFG (Create RJE Configuration) command
+ 	CRTRJECMNF (Create RJE Communication File) command
+ 	CRTRNDCCFG (Create Remote Name Daemon Control Configuration) command
+ 	CRTRPGMOD (Create RPG Module) command
+ 	CRTRPGPGM (Create RPG/400 Program) command
+ 	CRTRPTPGM (Create Auto Report RPG Program) command
+ 	CRTS36CBL (Create S/36 COBOL Program) command
+ 	CRTS36DSPF (Create S/36 Display File) command
+ 	CRTS36MNU (Create S/36 Menu) command
+ 	CRTS36MSGF (Create S/36 Message File) command
+ 	CRTS36RPG (Create RPG II Program) command
+ 	CRTS36RPGR (Create Console Display File) command
+ 	CRTS36RPT (Create S/36 RPG II Auto Report) command
+ 	CRTSAVF (Create Save File) command
+ 	CRTSBSD (Create Subsystem Description) command
+ 	CRTSCHIDX (Create Search Index) command
+ 	CRTSPADCT (Create Spelling Aid Dictionary) command
+ 	CRTSQLCBL (Create SQL COBOL Program) command
+ 	CRTSQLCBLI (Create SQL ILE COBOL Object) command
+ 	CRTSQLCI (Create SQL ILE C Object) command
+ 	CRTSQLCPPI (Create SQL ILE C++ Object) command
+ 	CRTSQLPKG (Create SQL Package) command
+ 	CRTSQLPLI (Create SQL PL/I Program) command
+ 	CRTSQLRPG (Create SQL RPG Program) command
+ 	CRTSQLRPGI (Create SQL ILE RPG Object) command
+ 	CRTSRCPF (Create Source Physical File) command
+ 	CRTSRVCFG (Create Service Configuration) command
+ 	CRTSRVPGM (Create Service Program) command
+ 	CRTSSND (Create Session Description) command
+ 	CRTTAPCGY (Create Tape Category) command
+ 	CRTTAPF (Create Tape File) command
+ 	CRTTBL (Create Table) command
+ 	CRTTIMZON (Create Time Zone Description) command
+ 	CRTUDFS (Create User-Defined File System) command
+ 	CRTUSRPRF (Create User Profile) command
+ 	CRTVLDL (Create Validation List) command
+ 	CRTWSCST (Create Workstation Customizing Object) command
+ 	CVTCLSRC (Convert CL Source) command
+ 	CVTDAT (Convert Date) command
+ 	CVTDIR (Convert Directory) command
+ 	CVTDLSNAM (Convert Document Library Services Name) command
+ 	CVTEDU (Convert Education) command
+ 	CVTIPSIFC (Convert IP Address) command
+ 	CVTIPSLOC (Convert Network ID / Location) command
+ 	CVTNAMSMTP (Convert SMTP Names) command
+ 	CVTOPTBKU (Convert Optical Backup) command
+ 	CVTOVLPFM (Convert Overlay to PFM) command
+ 	CVTPAGSPFM (Convert Page Segment to PFM) command
+ 	CVTPCDPAGS (Convert PC Document to Page Segment) command
+ 	CVTPFMPAGS (Convert Physical File Member to Page Segment) command
+ 	CVTPFRCOL (Convert Performance Collection) command
+ 	CVTPFRTHD (Convert Performance Thread Data) command
+ 	CVTRJEDTA (Convert RJE Data) command
+ 	CVTRPCSRC (Convert Remote Procedure Call Source) command
+ 	CVTRPGSRC (Convert RPG Source) command
+ 	CVTTCPCL (Convert TCP/IP CL Source) command
+ 	CVTTOFLR (Convert To Folder) command
+ 	CVTUSRCERT (Convert User Certificate) command
+ 	DATA (Data) command
+ 	DB2LDIF (Copy To LDIF File) command
+ 	DCL (Declare CL Variable) command
+ 	DCLF (Declare File) command
+ 	DCLPRCOPT (Declare Processing Options) command
+ 	DCPOBJ (Decompress Object) command
+ 	DEL (Remove Link) command
+ 	DEP (Dependent Definition) command
+ 	DIG (Start DIG Query) command
+ 	DLCOBJ (Deallocate Object) command
+ 	DLTALR (Delete Alert) command
+ 	DLTALRTBL (Delete Alert Table) command
+ 	DLTAPARDTA (Delete APAR Data) command
+ 	DLTAUTHLR (Delete Authority Holder) command
+ 	DLTAUTL (Delete Authorization List) command
+ 	DLTBNDDIR (Delete Binding Directory) command
+ 	DLTCAD (Delete Cluster Administrative Domain) command
+ 	DLTCFGL (Delete Configuration List) command
+ 	DLTCHTFMT (Delete Chart Format) command
+ 	DLTCICSGRP (Delete CICS Group) command
+ 	DLTCLD (Delete C Locale Description) command
+ 	DLTCLS (Delete Class) command
+ 	DLTCLU (Delete Cluster) command
+ 	DLTCMD (Delete Command) command
+ 	DLTCMNTRC (Delete Communications Trace) command
+ 	DLTCNNL (Delete Connection List) command
+ 	DLTCOSD (Delete Class-of-Service Description) command
+ 	DLTCRG (Delete Cluster Resource Group) command
+ 	DLTCRGCLU (Delete Cluster Resource Group Cluster) command
+ 	DLTCRQD (Delete Change Request Description) command
+ 	DLTCSI (Delete Communications Side Information) command
+ 	DLTCTLD (Delete Controller Description) command
+ 	DLTDEVD (Delete Device Description) command
+ 	DLTDEVMLB (Delete Device Media Library) command
+ 	DLTDFUPGM (Delete Data File Utility Program) command
+ 	DLTDLO (Delete Document Library Object) command
+ 	DLTDOCL (Delete Document List) command
+ 	DLTDST (Delete Distribution) command
+ 	DLTDSTL (Delete Distribution List) command
+ 	DLTDTAARA (Delete Data Area) command
+ 	DLTDTADCT (Delete Data Dictionary) command
+ 	DLTDTAQ (Delete Data Queue) command
+ 	DLTEDTD (Delete Edit Description) command
+ 	DLTEXPSPLF (Delete Expired Spooled Files) command
+ 	DLTF (Delete File) command
+ 	DLTFCNARA (Delete Functional Area) command
+ 	DLTFCT (Delete Forms Control Table) command
+ 	DLTFNTRSC (Delete Font Resource) command
+ 	DLTFNTTBL (Delete Font Table) command
+ 	DLTFORMDF (Delete Form Definition) command
+ 	DLTFTR (Delete Filter) command
+ 	DLTGPHFMT (Delete Graph Format) command
+ 	DLTGPHPKG (Delete Graph Package) command
+ 	DLTGSS (Delete Graphic Symbol Set) command
+ 	DLTHSTDTA (Delete Historical Data) command
+ 	DLTIGCDCT (Delete DBCS Conversion Dictionary) command
+ 	DLTIGCSRT (Delete DBCS Sort Table) command
+ 	DLTIGCTBL (Delete DBCS Font Table) command
+ 	DLTIMGCLG (Delete Image Catalog) command
+ 	DLTINTSVR (Delete Integrated Server) command
+ 	DLTIPXD (Delete IPX Description) command
+ 	DLTJOBD (Delete Job Description) command
+ 	DLTJOBQ (Delete Job Queue) command
+ 	DLTJRN (Delete Journal) command
+ 	DLTJRNRCV (Delete Journal Receiver) command
+ 	DLTKRBCCF (Delete Kerberos Credentials Cache File) command
+ 	DLTLIB (Delete library) command
+ 	DLTLICPGM (Delete Licensed Program) command
+ 	DLTLIND (Delete Line Description) command
+ 	DLTLNXSVR (Delete Linux Server) command
+ 	DLTLOCALE (Delete Locale) command
+ 	DLTMEDDFN (Delete Media Definition) command
+ 	DLTMGTCOL (Delete Management Collection) command
+ 	DLTMNU (Delete Menu) command
+ 	DLTMOD (Delete Module) command
+ 	DLTMODD (Delete Mode Description) command
+ 	DLTMSGF (Delete Message File) command
+ 	DLTMSGQ (Delete Message Queue) command
+ 	DLTNETF (Delete Network File) command
+ 	DLTNODGRP (Delete Node Group) command
+ 	DLTNODL (Delete Node List) command
+ 	DLTNTBD (Delete NetBIOS Descriptions) command
+ 	DLTNWID (Delete Network Interface Description) command
+ 	DLTNWSCFG (Delete Network Server Configuration) command
+ 	DLTNWSD (Delete Network Server Description) command
+ 	DLTNWSSTG (Delete Network Server Storage Space) command
+ 	DLTOBJ (Delete Object) command
+ 	DLTOUTQ (Delete Output Queue) command
+ 	DLTOVL (Delete Overlay) command
+ 	DLTOVR (Delete Override) command
+ 	DLTOVRDEVE (Delete Override Program Device Entry) command
+ 	DLTPAGDFN (Delete Page Definition) command
+ 	DLTPAGSEG (Delete Page Segment) command
+ 	DLTPDFMAP (Delete PDF Map) command
+ 	DLTPDG (Delete Print Descriptor Group) command
+ 	DLTPEXDTA (Delete Performance Explorer Data) command
+ 	DLTPFRCOL (Delete Performance Collection) command
+ 	DLTPGM (Delete Program) command
+ 	DLTPNLGRP (Delete Panel Group) command
+ 	DLTPRB (Delete Problem) command
+ 	DLTPRDDFN (Delete Product Definition) command
+ 	DLTPRDLOD (Delete Product Load) command
+ 	DLTPSFCFG (Delete Print Services Facility Configuration) command
+ 	DLTPTF (Delete Program Temporary Fix) command
+ 	DLTQMFORM (Delete Query Management Form) command
+ 	DLTQMQRY (Delete Query Management Query) command
+ 	DLTQRY (Delete Query) command
+ 	DLTQST (Delete Questions and Answers) command
+ 	DLTQSTDB (Delete Question/Answer Database) command
+ 	DLTRJECFG (Delete RJE Configuration) command
+ 	DLTRMTPTF (Delete Remote Program Temporary Fix) command
+ 	DLTSBMCRQ (Delete Submitted Change Request) command
+ 	DLTSBSD (Delete Subsystem Description) command
+ 	DLTSCHIDX (Delete Search Index) command
+ 	DLTSMGOBJ (Delete System Manager Object) command
+ 	DLTSPADCT (Delete Spelling Aid Dictionary) command
+ 	DLTSPLF (Delete Spooled File) command
+ 	DLTSQLPKG (Delete SQL Package) command
+ 	DLTSRVCFG (Delete Service Configuration) command
+ 	DLTSRVPGM (Delete Service Program) command
+ 	DLTSSND (Delete Session Description) command
+ 	DLTTAPCGY (Delete Tape Category) command
+ 	DLTTBL (Delete Table) command
+ 	DLTTIMZON (Delete Time Zone Description) command
+ 	DLTTRC (Delete Trace) command
+ 	DLTUDFS (Delete User-Defined File System) command
+ 	DLTUSRIDX (Delete User Index) command
+ 	DLTUSRPRF (Delete User Profile) command
+ 	DLTUSRQ (Delete User Queue) command
+ 	DLTUSRSPC (Delete User Space) command
+ 	DLTUSRTRC (Delete User Trace) command
+ 	DLTVLDL (Delete Validation List) command
+ 	DLTWNTSVR (Delete Windows Server) command
+ 	DLTWSCST (Delete Workstation Customizing Object) command
+ 	DLYJOB (Delay Job) command
+ 	DLYSRVAGTP (Delay SRVAGT Problem Reporting) command
+ 	DMP (Dump Object) command
+ 	DMPBRM (Dump BRMS) command
+ 	DMPCICS (Dump CICS) command
+ 	DMPCLPGM (Dump CL Program) command
+ 	DMPCLUTRC (Dump Cluster Trace) command
+ 	DMPCMNTRC (Dump Communications Trace) command
+ 	DMPDLO (Dump Document Library Object) command
+ 	DMPDNSJRNF (Dump Domain Name System Journal File) command 
+ 	DMPJOB (Dump Job) command
+ 	DMPJOBINT (Dump Job Internal) command
+ 	DMPMEMINF (Dump Main Memory Information) command
+ 	DMPOBJ (Dump Object) command
+ 	DMPSYSOBJ (Dump System Object) command
+ 	DMPTAP (Dump Tape) command
+ 	DMPTRC (Dump Trace) command
+ 	DMPUSRPRF (Dump User Profile) command
+ 	DMPUSRTRC (Dump User Trace) command
+ 	DO (Do Group) command
+ 	DOFOR (Do For) command
+ 	DOUNTIL (Do Until) command
+ 	DOWHILE (Do While) command
+ 	DSCJOB (Disconnect Job) command
+ 	DSPACC (Display Access Code) command
+ 	DSPACCAUT (Display Access Code Authority) command
+ 	DSPACTPJ (Display Active Prestart Jobs) command
+ 	DSPACTPRFL (Display Active Profile List) command
+ 	DSPACTSCD (Display Activation Schedule) command
+ 	DSPAPPNINF (Display APPN Information) command
+ 	DSPASPBRM (Display Auxiliary Storage Pool Information) command
+ 	DSPASPCPYD (Display ASP Copy Description) command
+ 	DSPASPSSN (Display ASP Session) command
+ 	DSPASPSTS (Display Auxiliary Storage Pool Status) command
+ 	DSPAUDJRNE (Display Audit Journal Entries) command
+ 	DSPAUT (Display Authority) command
+ 	DSPAUTHLR (Display Authority Holder) command
+ 	DSPAUTL (Display Authorization List) command
+ 	DSPAUTLDLO (Display Auth List Document Library Objects) command
+ 	DSPAUTLOBJ (Display Authorization List Object) command
+ 	DSPAUTUSR (Display Authorized Users) command
+ 	DSPBCKSTS (Display Backup Status) command
+ 	DSPBCKUP (Display Backup Options) command
+ 	DSPBCKUPL (Display Backup List) command
+ 	DSPBKP (Display Breakpoints) command
+ 	DSPBKUBRM (Display Backup Plan using BRMS) command
+ 	DSPBNDDIR (Display Binding Directory) command
+ 	DSPCCSA (Display Change Control Server Attributes) command
+ 	DSPCDEFNT (Display Coded Font) command
+ 	DSPCFGL (Display Configuration List) command
+ 	DSPCHT (Display Chart) command
+ 	DSPCICSCVT (Display CICS CVT Entry) command
+ 	DSPCICSDCT (Display CICS DCT Entry) command
+ 	DSPCICSFCT (Display CICS FCT Entry) command
+ 	DSPCICSGLT (Display CICS GLT Entry) command
+ 	DSPCICSJCT (Display CICS JCT Entry) command
+ 	DSPCICSPCT (Display CICS PCT Entry) command
+ 	DSPCICSPPT (Display CICS PPT Entry) command
+ 	DSPCICSSIT (Display CICS SIT Entry) command
+ 	DSPCICSSTS (Display CICS Status) command
+ 	DSPCICSTCS (Display CICS TCS Entry) command
+ 	DSPCICSTCT (Display CICS TCT Entry) command
+ 	DSPCICSTST (Display CICS TST Entry) command
+ 	DSPCKMKSFE (Display Crytographic Key Management Keystore File Entry) command
+ 	DSPCLS (Display Class) command
+ 	DSPCLUINF (Display Cluster Information) command
+ 	DSPCMD (Display Command) command
+ 	DSPCNNL (Display Connection List) command
+ 	DSPCNNSTS (Display Connection Status) command
+ 	DSPCOSD (Display Class-of-Service Description) command
+ 	DSPCPCST (Display Check Pending Constraint) command
+ 	DSPCRGINF (Display Cluster Resource Group Information) command
+ 	DSPCSI (Display Communications Side Information) command
+ 	DSPCTLD (Display Controller Description) command
+ 	DSPCURDIR (Display Current Directory) command
+ 	DSPDBG (Display Debug) command
+ 	DSPDBGWCH (Display Debug Watch) command
+ 	DSPDBR (Display Data Base Relations) command
+ 	DSPDDMF (Display Distributed Data Management File) command
+ 	DSPDEVD (Display Device Description) command
+ 	DSPDIRE (Display Directory Entries) command
+ 	DSPDLFA (Display DataLink File Attributes) command
+ 	DSPDLOAUD (Display Document Library Object Auditing Level) command
+ 	DSPDLOAUT (Display Document Library Object Authority) command
+ 	DSPDLONAM (Display Document Library Object Name) command
+ 	DSPDOC (Display Document) command
+ 	DSPDSTCLGE (Display Distribution Catalog Entries) command
+ 	DSPDSTL (Display Distribution List) command
+ 	DSPDSTLOG (Display Distribution Log) command
+ 	DSPDSTSRV (Display Distribution Services) command
+ 	DSPDTA (Display Data) command
+ 	DSPDTAARA (Display Data Area) command
+ 	DSPDTADCT (Display Data Dictionary) command
+ 	DSPDUPBRM (Display Duplicate Media) command
+ 	DSPEDTD (Display Edit Description) command
+ 	DSPEWCBCDE (Display Wireless Controller Barcode Entry) command
+ 	DSPEWCM (Display Wireless Controller Member) command
+ 	DSPEWCPTCE (Display Wireless Controller PTC Entry) command
+ 	DSPEWLM (Display Wireless Line Member) command
+ 	DSPEXPSCD (Display Expiration Schedule) command
+ 	DSPF (Display File) command
+ 	DSPFCNUSG (Display Function Usage) command
+ 	DSPFD (Display File Description) command
+ 	DSPFFD (Display File Field Description) command
+ 	DSPFLR (Display Folder) command
+ 	DSPFMWSTS (Display Firmware Status) command
+ 	DSPFNTRSCA (Display Font Resource Attributes) command
+ 	DSPFNTTBL (Display Font Table) command
+ 	DSPGDF (Display Graphics Data File) command
+ 	DSPHACFGD (Display HA Configuration Description) command 
+ 	DSPHDWRSC (Display Hardware Resources) command
+ 	DSPHFS (Display Hierarchical File Sys.) command
+ 	DSPHLPDOC (Display Help Document) command
+ 	DSPHSTGPH (Display Historical Graph) command
+ 	DSPHSTJS (Display History using Advanced Job Scheduler) command
+ 	DSPHYSSTGD (Display HyperSwap Storage Description) command 
+ 	DSPHYSSTS (Display HyperSwap Status) command
+ 	DSPIGCDCT (Display DBCS Conversion Dictionary) command
+ 	DSPIPLA (Display IPL Attributes) command
+ 	DSPIPXD (Display IPX Description) command
+ 	DSPJOB (Display Job) command
+ 	DSPJOBD (Display Job Description) command
+ 	DSPJOBJS (Display Job using Advanced Job Scheduler) command
+ 	DSPJOBLOG (Display Job Log) command
+ 	DSPJOBTBL (Display Job Tables) command
+ 	DSPJRN (Display Journal) command
+ 	DSPJRNRCVA (Display Journal Receiver Attributes) command
+ 	DSPJVMJOB (Display Java Virtual Machine Jobs) command 
+ 	DSPKBDMAP (Display Keyboard Map) command
+ 	DSPKRBCCF (Display Kerberos Credentials Cache File) command
+ 	DSPKRBKTE (Display Kerberos Keytab Entries) command
+ 	DSPLANADPP (Display LAN Adapter Profile) command
+ 	DSPLANMLB (Display LAN Media Library) command
+ 	DSPLANSTS (Display LAN Status) command
+ 	DSPLIB (Display Library) command
+ 	DSPLIBD (Display Library Description) command
+ 	DSPLIBL (Display Library List) command
+ 	DSPLICKEY (Display License Key Information) command
+ 	DSPLIND (Display Line Description) command
+ 	DSPLNK (Display Object Links) command
+ 	DSPLOG (Display Log) command
+ 	DSPLOGBRM (Display Log for BRMS) command
+ 	DSPLOGJS (Display Log for Job Scheduler) command
+ 	DSPMFSINF (Display Mounted File System Information) command
+ 	DSPMGDSYSA (Display Managed System Attributes) command
+ 	DSPMNUA (Display Menu Attributes) command
+ 	DSPMOD (Display Module) command
+ 	DSPMODD (Display Mode Description) command
+ 	DSPMODSRC (Display Module Source) command
+ 	DSPMODSTS (Display Mode Status) command
+ 	DSPMSG (Display Messages) command
+ 	DSPMSGD (Display Message Description) command
+ 	DSPNCK (Display Nickname) command
+ 	DSPNETA (Display Network Attributes) command
+ 	DSPNODGRP (Display Node Group) command
+ 	DSPNTBD (Display NetBIOS Description) command
+ 	DSPNWID (Display Network Interface Description) command
+ 	DSPNWSA (Display Network Server Attributes) command
+ 	DSPNWSCFG (Display Network Server Configuration) command
+ 	DSPNWSD (Display Network Server Description) command
+ 	DSPNWSSTG (Display Network Server Storage Space) command
+ 	DSPNWSUSRA (Display Network Server User Attributes) command
+ 	DSPOBJAUT (Display Object Authority) command
+ 	DSPOBJD (Display Object Description) command
+ 	DSPOPCLNK (Display OptiConnect Link Status) command
+ 	DSPOPT (Display Optical) command
+ 	DSPOPTLCK (Display Optical Locks) command
+ 	DSPOPTSVR (Display Optical Server) command
+ 	DSPOSPF (Display OSPF) command
+ 	DSPOVR (Display Override) command
+ 	DSPPDFMAPE (Display PDF Map Entries) command
+ 	DSPPDGPRF (Display Print Descriptor Group Profile) command
+ 	DSPPFM (Display Physical File Member) command
+ 	DSPPFRDTA (Display Performance Data) command
+ 	DSPPFRGPH (Display Performance Graph) command
+ 	DSPPGM (Display Program) command
+ 	DSPPGMADP (Display Program Adopt) command
+ 	DSPPGMREF (Display Program References) command
+ 	DSPPGMVAR (Display Program Variable) command
+ 	DSPPRB (Display Problems) command
+ 	DSPPSFCFG (Display Print Services Facility Configuration) command
+ 	DSPPTF (Display Program Temporary Fix) command
+ 	DSPPTFAPYI (Display PTF Apply Information) command 
+ 	DSPPTFCVR (Display Program Temporary Fix Cover Letter) command
+ 	DSPPWRSCD (Display Power On/Off Schedule) command
+ 	DSPRCDLCK (Display Record Locks) command
+ 	DSPRCVCMD (Display Received Commands) command
+ 	DSPRCYAP (Display Recovery for Access Paths) command
+ 	DSPRDBDIRE (Display Relational Database Directory Entries) command
+ 	DSPRIP (Display Routing Information Protocol Information) command
+ 	DSPRJECFG (Display RJE Configuration) command
+ 	DSPRMTDFN (Display Remote Definition) command
+ 	DSPS36 (Display S/36 Configuration) command
+ 	DSPSAVF (Display Save File) command
+ 	DSPSBMCRQ (Display Submitted Change Requests) command
+ 	DSPSBMCRQA (Display Submitted Change Request Activity) command
+ 	DSPSBMCRQM (Display Submitted Change Request Messages) command
+ 	DSPSBSD (Display Subsystem Description) command
+ 	DSPSECA (Display Security Attributes) command
+ 	DSPSECAUD (Display Security Auditing) command
+ 	DSPSFWRSC (Display Software Resources) command
+ 	DSPSOCSTS (Display Sphere of Control Status) command
+ 	DSPSPLF (Display Spooled File) command
+ 	DSPSRVA (Display Service Attributes) command
+ 	DSPSRVAGT (Display Service Agent) command
+ 	DSPSRVPGM (Display Service Program) command
+ 	DSPSRVPVDA (Display Service Provider Attributes) command
+ 	DSPSRVSTS (Display Service Status) command
+ 	DSPSSTUSR (Display Service Tools User ID) command
+ 	DSPSVCCPYD (Display SAN Volume Controller ASP Copy Description) command 
+ 	DSPSVCSSN (Display SAN Volume Controller ASP Session) command 
+ 	DSPSVRAUTE (Display Server Authentication Entries) command
+ 	DSPSYSSTS (Display System Status) command
+ 	DSPSYSVAL (Display System Value) command
+ 	DSPTAP (Display Tape) command
+ 	DSPTAPCGY (Display Tape Category) command
+ 	DSPTAPCTG (Display Tape Cartridge) command
+ 	DSPTAPSTS (Display Tape Status) command
+ 	DSPTM (Display Trademarks) command
+ 	DSPTRC (Display Trace) command
+ 	DSPTRCDTA (Display Trace Data) command
+ 	DSPUDFS (Display User-Defined File System) command
+ 	DSPUSRPMN (Display User Permission) command
+ 	DSPUSRPRF (Display User Profile) command
+ 	DSPUSRPRTI (Display User Print Information) command
+ 	DSPVTMAP (Display VT Keyboard Map) command
+ 	DSPWLCGRP (Display Workload Group) command 
+ 	DSPWSUSR (Display Work Station User) command
+ 	DUPMEDBRM (Duplicate Media using BRMS) command
+ 	DUPOPT (Duplicate Optical) command
+ 	DUPTAP (Duplicate Tape) command
+ 	EDTAUTL (Edit Authorization List) command
+ 	EDTBCKUPL (Edit Backup List) command
+ 	EDTCLU (Edit Control Language Utility) command 
+ 	EDTCPCST (Edit Check Pending Constraints) command
+ 	EDTDLFA (Edit DataLink File Attributes) command
+ 	EDTDLOAUT (Edit Document Library Object Authority) command
+ 	EDTDOC (Edit Document) command
+ 	EDTF (Edit File) command
+ 	EDTIGCDCT (Edit DBCS Conversion Dictionary) command
+ 	EDTLIBL (Edit Library List) command
+ 	EDTOBJAUT (Edit Object Authority) command
+ 	EDTQST (Edit Questions and Answers) command
+ 	EDTRBDAP (Edit Rebuild of Access Paths) command
+ 	EDTRCYAP (Edit Recovery for Access Paths) command
+ 	EDTS36PGMA (Edit S/36 Program Attributes) command
+ 	EDTS36PRCA (Edit S/36 Procedure Attributes) command
+ 	EDTS36SRCA (Edit S/36 Source Attributes) command
+ 	EDTWSOAUT (Edit Workstation Object Authority) command
+ 	EJTEMLOUT (Eject Emulation Output) command
+ 	ELEM (Element Definition) command
+ 	ELSE (Else) command
+ 	EMLPRTKEY (Emulate Printer Keys) command
+ 	ENDACCWEB (End Access for Web) command 
+ 	ENDACCWEB2 (End Access for Web) command
+ 	ENDAGTSRV (End Agent Services) command
+ 	ENDASPBAL (End Auxiliary Storage Pool Balance) command
+ 	ENDASPSSN (End ASP Session) command
+ 	ENDBCHJOB (End Batch Job) command
+ 	ENDCAD (End Cluster Administrative Domain) command
+ 	ENDCBLDBG (End COBOL Debug) command
+ 	ENDCHTSVR (End Clustered Hash Table Server) command
+ 	ENDCICS (End CICS Control Region) command
+ 	ENDCICSUSR (End CICS User Shell) command
+ 	ENDCLNUP (End Cleanup) command
+ 	ENDCLUNOD (End Cluster Node) command
+ 	ENDCMNSVR (End Communications Server) command
+ 	ENDCMNTRC (End Communications Trace) command
+ 	ENDCMTCTL (End Commitment Control) command
+ 	ENDCPYSCN (End Copy Screen) command
+ 	ENDCRG (End Cluster Resource Group) command
+ 	ENDCTLRCY (End Controller Recovery) command
+ 	ENDDBG (End Debug Mode) command
+ 	ENDDBGSVR (End Debug Server) command
+ 	ENDDBMON (End Database Monitor) command
+ 	ENDDEVRCY (End Device Recovery) command
+ 	ENDDIRSHD (End Directory Shadowing) command
+ 	ENDDO (End Do Group) command
+ 	ENDDPRAPY (End DataPropagator Apply) command
+ 	ENDDPRCAP (End DataPropagator Capture) command
+ 	ENDDSKRGZ (End Disk Reorganization) command
+ 	ENDDW (End Disk Watcher) command
+ 	ENDEPMENV (End EPM Environments) command
+ 	ENDFNTDWN (End Font Downloader) command
+ 	ENDGRPJOB (End Group Job) command
+ 	ENDHOSTSVR (End Host Server) command
+ 	ENDINP (End Input) command
+ 	ENDIPSIFC (End IP over SNA Interface) command
+ 	ENDISDB (End Interactive Source Debugger) command
+ 	ENDJOB (End Job) command
+ 	ENDJOBABN (End Job Abnormal) command
+ 	ENDJOBTRC (End Job Trace) command
+ 	ENDJRN (End Journal) command
+ 	ENDJRNAP (End Journal Access Path) command
+ 	ENDJRNLIB (End Journal Library) command
+ 	ENDJRNOBJ (End Journal Object) command
+ 	ENDJRNPF (End Journal Physical File) command
+ 	ENDJS (End Advanced Job Scheduler) command
+ 	ENDJW (End Job Watcher) command
+ 	ENDLINRCY (End Line Recovery) command
+ 	ENDLOGSVR (End Job Log Server) command
+ 	ENDMGDSYS (End Managed System Services) command
+ 	ENDMGRSRV (End Manager Services) command
+ 	ENDMOD (End Mode) command
+ 	ENDMONOND (End Monitor for OnDemand) command
+ 	ENDMSF (End Mail Server Framework) command
+ 	ENDNFSSVR (End Network File System Server) command
+ 	ENDNWIRCY (End Network Interface Recovery) command
+ 	ENDPASTHR (End Pass-Through) command
+ 	ENDPEX (End Performance Explorer) command
+ 	ENDPFRCOL (End Performance Collection) command
+ 	ENDPFRTRC (End Performance Trace) command
+ 	ENDPGM (End Program) command
+ 	ENDPGMEXP (End Program Export List) command
+ 	ENDPGMPRF (End Program Profiling) command
+ 	ENDPJ (End Prestart Jobs) command
+ 	ENDPRTEML (End Printer Emulation) command
+ 	ENDRCV (End Receive) command
+ 	ENDRDR (End Reader) command
+ 	ENDRJESSN (End RJE Session) command
+ 	ENDRMTSPT (End Remote Support) command
+ 	ENDRPCBIND (End Remote Procedure Call Binder Daemon) command
+ 	ENDRQS (End Request) command
+ 	ENDS36 (End S/36 Session) command
+ 	ENDSBMCRQA (End Submitted Change Request Activity) command
+ 	ENDSBS (End Subsystem) command
+ 	ENDSELECT (End Select) command
+ 	ENDSRVAGT (End Service Agent) command
+ 	ENDSRVJOB (End Service Job) command
+ 	ENDSUBR (End Subroutine) command
+ 	 ENDSVCSSN (End SAN Volume Controller ASP Session) command 
+ 	ENDSYS (End System) command
+ 	ENDSYSMGR (End System Manager) command
+ 	ENDTCP (End TCP/IP) command
+ 	ENDTCPABN (End TCP/IP Abnormal) command
+ 	ENDTCPCNN (End TCP/IP Connection) command
+ 	ENDTCPIFC (End TCP/IP Interface) command
+ 	ENDTCPPTP (End Point-to-Point TCP/IP) command
+ 	ENDTCPSVR (End TCP/IP Server) command
+ 	ENDTFMMGR (End Transform Manager) command
+ 	ENDTIESSN (End TIE Session) command
+ 	ENDTRC (End Trace) command
+ 	ENDTRPMGR (End Trap Manager) command
+ 	ENDVPNCNN (End VPN Connection) command 
+ 	ENDWCH (End Watch) command
+ 	ENDWTR (End Writer) command
+ 	EOF (End of File) command
+ 	ERASE (Remove Link) command
+ 	EXPORT (Export a Program Symbol) command
+ 	EXPORTFS (Change Network File System Export) command
+ 	EXTMEDIBRM (Extract Media Information) command
+ 	EXTPGMINF (Extract Program Information) command
+ 	FILDOC (File Document) command
+ 	FMTDTA (Format Data) command
+ 	FNDKEYOND (Find Key for OnDemand) command
+ 	FNDSTRAMT (Find String using Application Management Toolset) command 
+ 	FNDSTRAMT2 (Find String with List using Application Management Toolset) command 
+ 	FNDSTRPDM (Find String using Programming Development Manager) command
+ 	FNDSTRPDM2 (Find String with List using Programming Development Manager) command 
+ 	FTP (Start TCP/IP File Transfer) command
+ 	GENCAT (Generate Message Catalog) command
+ 	GENCKMKSFE (Generate Crytographic Key Management Keystore File Entry) command
+ 	GENCMDDOC (Generate Command Documentation) command
+ 	GENCSRC (Generate C/C++ Source) command
+ 	GENDNSDSRR (Generate Domain Name System Delgation Signer Resource Record) command 
+ 	GENDNSKEY (Generate Domain Name System Key) command 
+ 	GENJVMDMP (Generate Java Virtual Machine Dump) command 
+ 	GENLICKEY (Generate License Key) command
+ 	GO (Go to Menu) command
+ 	GOTO (Go To) command
+ 	GRTACCAUT (Grant Access Code Authority) command
+ 	GRTDPRAUT (Grant DataPropagator Authority) command
+ 	GRTOBJAUT (Grant Object Authority) command
+ 	GRTUSRAUT (Grant User Authority) command
+ 	GRTUSRPMN (Grant User Permission) command
+ 	GRTWSOAUT (Grant Workstation Object Authority) command
+ 	HLDCMNDEV (Hold Communications Device) command
+ 	HLDDSTQ (Hold Distribution Queue) command
+ 	HLDJOB (Hold Job) command
+ 	HLDJOBJS (Hold Job using Advanced Job Scheduler) command
+ 	HLDJOBQ (Hold Job Queue) command
+ 	HLDJOBSCDE (Hold Job Schedule Entry) command
+ 	HLDOUTQ (Hold Output Queue) command
+ 	HLDPTF (Hold Program Temporary Fix) command
+ 	HLDRDR (Hold Reader) command
+ 	HLDSBMCRQA (Hold Submitted Change Request Activity) command
+ 	HLDSPLF (Hold Spooled File) command
+ 	HLDWTR (Hold Writer) command
+ 	HOST (Start HOST Query) command
+ 	IF (If) command
+ 	INCLUDE (Include CL Source) command
+ 	INSCICSGRP (Install CICS Group) command
+ 	INSINTSVR (Install Integrated Server) command
+ 	INSPTF (Install Program Temporary Fix) command
+ 	INSRMTPRD (Install Remote Product) command
+ 	INSWNTSVR (Install Windows Server) command
+ 	INZBRM (Initialize BRMS) command
+ 	INZCICS (Initialize CICS Tables) command
+ 	INZDLFM (Initialize DataLink File Manager) command
+ 	INZDPRCAP (Initialize DataPropagator Capture) command
+ 	INZDSTQ (Initialize Distribution Queue) command
+ 	INZMEDBRM (Initialize Media using BRMS) command
+ 	INZNWSCFG (Initialize Network Server Configuration) command
+ 	INZOPT (Initialize Optical) command
+ 	INZPCS (Initialize Client Access/400) command
+ 	INZPFM (Initialize Physical File Member) command
+ 	INZSYS (Initialize System) command
+ 	INZTAP (Initialize Tape) command
+ 	ITERATE (Iterate) command
+ 	JAVA (Run Java Program) command
+ 	LDIF2DB (Copy From LDIF File) command
+ 	LEAVE (Leave) command
+ 	LNKDTADFN (Link/Unlink Data Definition) command
+ 	LODIMGCLG (Load or Unload Image Catalog) command
+ 	LODIMGCLGE (Load/Unload/Mount Image Catalog Entry) command
+ 	LODIPFTR (Load/Unload IP Filter) command 
+ 	LODOPTFMW (Load Optical Firmware) command
+ 	LODPTF (Load Program Temporary Fix) command
+ 	LODQSTDB (Load Question/Answer Database) command
+ 	LODRUN (Load and Run) command
+ 	LPR (Send TCP/IP Spooled File) command
+ 	MD (Create Directory) command
+ 	MGRBRM (Migrate using BRMS) command
+ 	MGRMEDRDAR (Migrate Media) command
+ 	MKDIR (Create Directory) command
+ 	MONMSG (Monitor Message) command
+ 	MONSWABRM (Monitor Save While Active) command
+ 	MOUNT (Add Mounted File System) command
+ 	MOV (Move Object) command
+ 	MOVDOC (Move Document) command
+ 	MOVE (Move Object) command
+ 	MOVMEDBRM (Move Media using BRMS) command
+ 	MOVOBJ (Move Object) command
+ 	MOVSPLFBRM (Move Spooled Files using BRMS) command
+ 	MRGFORMD (Merge Form Description) command
+ 	MRGMSGCLG (Merge Message Catalog) command
+ 	MRGMSGF (Merge Message File) command
+ 	MRGSPLFOND (Merge Spooled Files) command
+ 	MRGSRC (Merge Source) command
+ 	MRGTCPHT (Merge TCP/IP Host Table) command
+ 	NETSTAT (Work with TCP/IP Network Status) command
+ 	NSLOOKUP (Start NSLOOKUP Query) command
+ 	NSUPDATE (Run Domain Name System Update) command
+ 	OPNDBF (Open Data Base File) command
+ 	OPNQRYF (Open Query File) command
+ 	ORDSPTPTF (Order Supported Product PTFs) command
+ 	OTHERWISE (Otherwise) command
+ 	OVRDBF (Override with Data Base File) command
+ 	OVRDSPF (Override with Display File) command
+ 	OVRICFDEVE (Override Intersystem Communications Function Program Device Entry) command
+ 	OVRICFF (Override Intersystem Communications Function File) command
+ 	OVRMSGF (Override Message File) command
+ 	OVRPRTF (Override with Printer File) command
+ 	OVRSAVF (Override with Save File) command
+ 	OVRTAPF (Override with Tape File) command
+ 	PARM (Parameter Definition) command
+ 	PGM (Program) command
+ 	PING (Verify TCP/IP Connection) command
+ 	PKGINSOBJ (Package Installable Object) command
+ 	PKGPRDDST (Package Product for Distribution) command
+ 	PKGPRDOPT (Package Product Option) command
+ 	PMTCTL (Prompt Control Definition) command
+ 	POSDBF (Position Data Base File) command
+ 	PRTACTRPT (Print Activity Report) command
+ 	PRTADPOBJ (Print Adopting Objects) command
+ 	PRTAFPDTA (Print Advanced Function Printer Data) command
+ 	PRTCADMRE (Print Cluster Administrative Domain Managed Resource Entry) command
+ 	PRTCICSTRC (Print CICS Trace) command
+ 	PRTCMDUSG (Print Command Usage) command
+ 	PRTCMNSEC (Print Communications Security) command
+ 	PRTCMNTRC (Print Communications Trace) command
+ 	PRTCPTRPT (Print Component Report) command
+ 	PRTDEVADR (Print Device Addresses) command
+ 	PRTDIRINF (Print Directory Information) command
+ 	PRTDOC (Print Document) command
+ 	PRTDSKINF (Print Disk Information) command
+ 	PRTERRLOG (Print Error Log) command
+ 	PRTINTDTA (Print Internal Data) command
+ 	PRTIPSCFG (Print IP over SNA) command
+ 	PRTJOBDAUT (Print Job Description Authority) command
+ 	PRTJOBRPT (Print Job Interval Report) command
+ 	PRTJOBTRC (Print Job Trace) command
+ 	PRTJVMJOB (Print Java Virtual Machine Job) command 
+ 	PRTLBLBRM (Print Labels using BRMS) command
+ 	PRTLCKRPT (Print Lock Report) command
+ 	PRTMEDBRM (Print Media Exceptions for BRMS) command
+ 	PRTMOVBRM (Print Media Movement) command
+ 	PRTOPCACT (Print OptiConnect Activity) command
+ 	PRTOPCJOB (Print OptiConnect Jobs) command
+ 	PRTPEXRPT (Print Performance Explorer Report) command
+ 	PRTPFDDTA (Print PFD Data) command
+ 	PRTPOLRPT (Print Pool Report) command
+ 	PRTPRFINT (Print Profile Internals) command
+ 	PRTPUBAUT (Print Publicly Authorized Objects) command
+ 	PRTPVTAUT (Print Private Authorities) command
+ 	PRTQAUT (Print Queue Authority) command
+ 	PRTRPTBRM (Print Report for BRMS) command
+ 	PRTRPTOND (Print Report from OnDemand) command
+ 	PRTRSCRPT (Print Resource Report) command
+ 	PRTSBSDAUT (Print Subsystem Description) command
+ 	PRTSCDJS (Print Schedule using Advanced Job Scheduler) command
+ 	PRTSQLINF (Print SQL Information) command
+ 	PRTSWL (Print Stop Word List) command
+ 	PRTSYSINF (Print System Information) command
+ 	PRTSYSRPT (Print System Report) command
+ 	PRTSYSSECA (Print System Security Attributes) command
+ 	PRTTCPPTP (Print TCP/IP Point-to-Point Profile) command
+ 	PRTTNSRPT (Print Transaction Report) command
+ 	PRTTRC (Print Trace Data) command
+ 	PRTTRCRPT (Print Job Trace Report) command
+ 	PRTTRGPGM (Print Trigger Programs) command
+ 	PRTTXTOND (Print Text for OnDemand) command
+ 	PRTUSROBJ (Print User Objects) command
+ 	PRTUSRPRF (Print User Profile) command
+ 	PWRDWNSYS (Power Down System) command
+ 	QRYDOCLIB (Query Document Library) command
+ 	QRYDST (Query Distributions) command
+ 	QRYPRBSTS (Query Problem Status) command
+ 	QRYTIEF (Query TIE Files) command
+ 	QSH (Start QSH) command
+ 	QUAL (Qualifier Definition) command
+ 	RCLACTGRP (Reclaim Activation Group) command
+ 	RCLAPPN (Reclaim APPN) command 
+ 	RCLDBXREF (Reclaim Database Cross-Reference) command
+ 	RCLDDMCNV (Reclaim Distributed Data Management Conversations) command
+ 	RCLDLO (Reclaim Document Library Object) command
+ 	RCLLIB (Reclaim Library) command
+ 	RCLLNK (Reclaim Object Links) command
+ 	RCLOBJOWN (Reclaim Objects by Owner) command
+ 	RCLOPT (Reclaim Optical) command
+ 	RCLRSC (Reclaim Resources) command
+ 	RCLSPLSTG (Reclaim Spool Storage) command
+ 	RCLSTG (Reclaim Storage) command
+ 	RCLTMPSTG (Reclaim Temporary Storage) command
+ 	RCVDST (Receive Distribution) command
+ 	RCVF (Receive File) command
+ 	RCVJRNE (Receive Journal Entry) command
+ 	RCVMSG (Receive Message) command
+ 	RCVNETF (Receive Network File) command
+ 	RCVTIEF (Receive TIE File) command
+ 	RD (Remove Directory) command
+ 	READFILE (Read a File) command
+ 	REN (Rename Object) command
+ 	RETURN (Return) command
+ 	RGZDLO (Reorganize Document Library Object) command
+ 	RGZPFM (Reorganize Physical File Member) command
+ 	RLSCMNDEV (Release Communications Device) command
+ 	RLSDSTQ (Release Distribution Queue) command
+ 	RLSIFSLCK (Release File System Locks) command
+ 	RLSJOB (Release Job) command
+ 	RLSJOBJS (Release Job using Advanced Job Scheduler) command
+ 	RLSJOBQ (Release Job Queue) command
+ 	RLSJOBSCDE (Release Job Schedule Entry) command
+ 	RLSOUTQ (Release Output Queue) command
+ 	RLSPTF (Release Program Temporary Fix) command
+ 	RLSRDR (Release Reader) command
+ 	RLSRMTPHS (Release Remote Phase) command
+ 	RLSSBMCRQA (Release Submitted Change Request Activity) command
+ 	RLSSPLF (Release Spooled File) command
+ 	RLSWTR (Release Writer) command
+ 	RMDIR (Remove Directory) command
+ 	RMVACC (Remove Access Code) command
+ 	RMVACCWEB (Remove Access for Web) command 
+ 	RMVACCWEB2 (Remove Access for Web) command
+ 	RMVAJE (Remove Autostart Job Entry) command
+ 	RMVALRD (Remove Alert Description) command
+ 	RMVASPCPYD (Remove ASP Copy Description) command
+ 	RMVAUTLE (Remove Authorization List Entry) command
+ 	RMVBKP (Remove Breakpoint) command
+ 	RMVBNDDIRE (Remove Binding Directory Entry) command
+ 	RMVCADMRE (Remove Cluster Administrative Domain Managed Resource Entry) command
+ 	RMVCADNODE (Remove Cluster Administrative Domain Node Entry) command
+ 	RMVCCSCLT (Remove Change Control Server Client) command
+ 	RMVCFGLE (Remove Configuration List Entries) command
+ 	RMVCICSCVT (Remove CICS CVT Entry) command
+ 	RMVCICSDCT (Remove CICS DCT Entry) command
+ 	RMVCICSFCT (Remove CICS FCT Entry) command
+ 	RMVCICSGLT (Remove CICS GLT Entry) command
+ 	RMVCICSJCT (Remove CICS JCT Entry) command
+ 	RMVCICSPCT (Remove CICS PCT Entry) command
+ 	RMVCICSPPT (Remove CICS PPT Entry) command
+ 	RMVCICSSIT (Remove CICS SIT Entry) command
+ 	RMVCICSTCS (Remove CICS TCS Entry) command
+ 	RMVCICSTCT (Remove CICS TCT Entry) command
+ 	RMVCICSTST (Remove CICS TST Entry) command
+ 	RMVCKMKSFE (Remove Crytographic Key Management Keystore File Entry) command
+ 	RMVCLUMON (Remove Cluster Monitor) command
+ 	RMVCLUNODE (Remove Cluster Node Entry) command
+ 	RMVCMNE (Remove Communications Entry) command
+ 	RMVCOMSNMP (Remove Community for SNMP) command
+ 	RMVCRGDEVE (Remove Cluster Resource Group Device Entry) command
+ 	RMVCRGNODE (Remove Cluster Resource Group Node Entry) command
+ 	RMVCRQDA (Remove Change RequestD Activity) command
+ 	RMVDEVDMNE (Remove Device Domain Entry) command
+ 	RMVDFRID (Remove Defer Identifier) command
+ 	RMVDIR (Remove Directory) command
+ 	RMVDIRE (Remove Directory Entry) command
+ 	RMVDIRINST (Remove Directory Server Instance) command 
+ 	RMVDIRSHD (Remove Directory Shadow System) command
+ 	RMVDLOAUT (Remove Document Library Object Authority) command
+ 	RMVDPRREG (Remove DataPropagator Registration) command
+ 	RMVDPRSUB (Remove DataPropagator Subscription) command
+ 	RMVDPRSUBM (Remove DataPropagator Subscription Member) command
+ 	RMVDSTCLGE (Remove Distribution Catalog Entry) command
+ 	RMVDSTLE (Remove Distribution List Entry) command
+ 	RMVDSTQ (Remove Distribution Queue) command
+ 	RMVDSTRTE (Remove Distribution Route) command
+ 	RMVDSTSYSN (Remove Secondary System Name) command
+ 	RMVDWDFN (Remove Disk Watcher Definition) command
+ 	RMVEMLCFGE (Remove Configuration Entry) command
+ 	RMVENVVAR (Remove Environment Variable) command
+ 	RMVEWCBCDE (Remove Wireless Controller Barcode Entry) command
+ 	RMVEWCPTCE (Remove Wireless Controller PTC Entry) command
+ 	RMVEXITPGM (Remove Exit Program) command
+ 	RMVFCTE (Remove Forms Control Entry) command
+ 	RMVFNTTBLE (Remove Font Table Entry) command
+ 	RMVFTRACNE (Remove Filter Action Entry) command
+ 	RMVFTRSLTE (Remove Filter Selection Entry) command
+ 	RMVHACFGD (Remove HA Configuration Description) command 
+ 	RMVHSTJS (Remove History using Advanced Job Scheduler) command
+ 	RMVHYSSTGD (Remove HyperSwap Storage Description) command 
+ 	RMVICFDEVE (Remove Intersystem Communications Function Device Entry) command
+ 	RMVIMGCLGE (Remove Image Catalog Entry) command
+ 	RMVIPSIFC (Remove IP over SNA Interface) command
+ 	RMVIPSLOC (Remove IP over SNA Location) command
+ 	RMVIPSRTE (Remove IP over SNA Route) command
+ 	RMVJOBJS (Remove Job using Advanced Job Scheduler) command
+ 	RMVJOBQE (Remove Job Queue Entry) command
+ 	RMVJOBSCDE (Remove Job Schedule Entry) command
+ 	RMVJRNCHG (Remove Journaled Changes) command
+ 	RMVJWDFN (Remove Job Watcher Definition) command
+ 	RMVKRBKTE (Remove Kerberos Keytab Entry) command
+ 	RMVLANADPI (Remove LAN Adapter Information) command
+ 	RMVLANADPT (Remove LAN Adapter) command
+ 	RMVLIBLE (Remove Library List Entry) command
+ 	RMVLICKEY (Remove License Key Information) command
+ 	RMVLNK (Remove Link) command
+ 	RMVLOGEBRM (Remove Log Entries from BRMS) command
+ 	RMVLOGEJS (Remove Log Entries from Job Scheduler) command
+ 	RMVM (Remove Member) command
+ 	RMVMEDBRM (Remove Media Volumes from BRMS) command
+ 	RMVMEDIBRM (Remove Media Information from BRMS) command
+ 	RMVMFS (Remove Mounted File System) command
+ 	RMVMSG (Remove Message) command
+ 	RMVMSGD (Remove Message Description) command
+ 	RMVNCK (Remove Nickname) command
+ 	RMVNETJOBE (Remove Network Job Entry) command
+ 	RMVNETTBLE (Remove Network Table Entry) command
+ 	RMVNODLE (Remove Node List Entry) command
+ 	RMVNWSSTGL (Remove Server Storage Link) command
+ 	RMVOPTCTG (Remove Optical Cartridge) command
+ 	RMVOPTSVR (Remove Optical Server) command
+ 	RMVOSPFARA (Remove OSPF Area) command
+ 	RMVOSPFIFC (Remove OSPF Interface) command
+ 	RMVOSPFLNK (Remove OSPF Virtual Link) command
+ 	RMVOSPFRNG (Remove OSPF Range) command
+ 	RMVPCLTBLE (Remove Protocol Table Entry) command
+ 	RMVPEXDFN (Remove Performance Explorer Definition) command
+ 	RMVPEXFTR (Remove Performance Explorer Filter) command
+ 	RMVPFCST (Remove Physical File Constraint) command
+ 	RMVPFTRG (Remove Physical File Trigger) command
+ 	RMVPGM (Remove Program) command
+ 	RMVPJE (Remove Prestart Job Entry) command
+ 	RMVPTF (Remove Program Temporary Fix) command
+ 	RMVRDBDIRE (Remove Relational Database Directory Entry) command
+ 	RMVREXBUF (Remove REXX Buffer) command
+ 	RMVRIPACP (Remove Routing Information Protocol Accepted Route) command
+ 	RMVRIPFLT (Remove Routing Information Protocol Filter) command
+ 	RMVRIPIFC (Remove Routing Information Protocol Interface) command
+ 	RMVRIPIGN (Remove Ignored Routing Information Protocol Neighbor) command
+ 	RMVRJECMNE (Remove RJE Communication Entry) command
+ 	RMVRJERDRE (Remove RJE Reader Entry) command
+ 	RMVRJEWTRE (Remove RJE Writer Entry) command
+ 	RMVRMTDFN (Remove Remote Definition) command
+ 	RMVRMTJRN (Remove Remote Journal) command
+ 	RMVRMTPTF (Remove Remote Program Temporary Fix) command
+ 	RMVRPTOND (Remove Report from OnDemand) command
+ 	RMVRPYLE (Remove Reply List Entry) command
+ 	RMVRTGE (Remove Routing Entry) command
+ 	RMVSCHIDXE (Remove Search Index Entry) command
+ 	RMVSMTPLE (Remove SMTP List Entry) command
+ 	RMVSOCE (Remove Sphere of Control Entry) command
+ 	RMVSRVTBLE (Remove Service Table Entry) command
+ 	RMVSVCCPYD (Remove SAN Volume Controller ASP Copy Description) command 
+ 	RMVSVRAUTE (Remove Server Authentication Entry) command
+ 	RMVTAPCTG (Remove Tape Cartridge) command
+ 	RMVTCPHTE (Remove TCP/IP Host Table Entry) command
+ 	RMVTCPIFC (Remove TCP/IP Interface) command
+ 	RMVTCPPORT (Remove TCP/IP Port Restriction) command
+ 	RMVTCPPTP (Remove TCP/IP Point-to-Point Profile) command
+ 	RMVTCPRSI (Remove TCP/IP Remote System) command
+ 	RMVTCPRTE (Remove TCP/IP Route) command
+ 	RMVTCPSVR (Remove TCP/IP Server) command
+ 	RMVTCPTBL (Remove TCP/IP Table) command
+ 	RMVTRC (Remove Trace) command
+ 	RMVTRCFTR (Remove Trace Filter) command
+ 	RMVUSRSMTP (Remove User SMTP) command 
+ 	RMVUSRSNMP (Remove User for SNMP) command
+ 	RMVWLCGRP (Remove Workload Group) command 
+ 	RMVWLCPRDE (Remove Workload Product Entry) command 
+ 	RMVWSE (Remove Work Station Entry) command
+ 	RNDC (Run Remote Name Daemon Control Command) command
+ 	RNM (Rename Object) command
+ 	RNMDIRE (Rename Directory Entry) command
+ 	RNMDLO (Rename Document Library Object) command
+ 	RNMDSTL (Rename Distribution List) command
+ 	RNMJOBJS (Rename Job using Advanced Job Scheduler) command
+ 	RNMLANADPI (Rename LAN Adapter) command
+ 	RNMM (Rename Member) command
+ 	RNMNCK (Rename Nickname) command
+ 	RNMOBJ (Rename Object) command
+ 	RNMTCPHTE (Rename TCP/IP Host Table Entry) command
+ 	ROLLBACK (Rollback) command
+ 	RPCBIND (Start Remote Procedure Call Binder Daemon) command
+ 	RPCGEN (Convert Remote Procedure Call Source) command
+ 	RPLDOC (Replace Document) command
+ 	RRTJOB (Reroute Job) command
+ 	RSMBKP (Resume Breakpoint) command
+ 	RSMCTLRCY (Resume Controller Recovery) command
+ 	RSMDEVRCY (Resume Device Recovery) command
+ 	RSMLINRCY (Resume Line Recovery) command
+ 	RSMNWIRCY (Resume Network Interface Recovery) command
+ 	RSMRTVBRM (Resume Retrieve using BRMS) command
+ 	RST (Restore Object) command
+ 	RSTAPARDTA (Restore APAR Data) command
+ 	RSTAUT (Restore Authority) command
+ 	RSTAUTBRM (Restore Authority using BRMS) command
+ 	RSTBRM (Restore Object using BRMS) command
+ 	RSTCFG (Restore Configuration) command
+ 	RSTDFROBJ (Restore Deferred Objects) command
+ 	RSTDLO (Restore Document Library Object) command
+ 	RSTDLOBRM (Restore Document Library Object using BRMS) command
+ 	RSTLIB (Restore Library) command
+ 	RSTLIBBRM (Restore Library using BRMS) command
+ 	RSTLICPGM (Restore Licensed Program) command
+ 	RSTOBJ (Restore Object) command
+ 	RSTOBJBRM (Restore Object using BRMS) command
+ 	RSTPFRCOL (Restore Performance Collection) command
+ 	RSTS36F (Restore S/36 File) command
+ 	RSTS36LIBM (Restore S/36 Library Members) command
+ 	RSTSYSINF (Restore System Information) command
+ 	RSTUSRPRF (Restore User Profiles) command
+ 	RTNSUBR (Return from Subroutine) command
+ 	RTVASPCPYD (Retrieve ASP Copy Description) command
+ 	RTVASPSSN (Retrieve ASP Session) command
+ 	RTVAUTLE (Retrieve Authorization List Entry) command
+ 	RTVBCKUP (Retrieve Backup Options) command
+ 	RTVBNDSRC (Retrieve Binder Source) command
+ 	RTVCFGSRC (Retrieve Configuration Source) command
+ 	RTVCFGSTS (Retrieve Configuration Status) command
+ 	RTVCLDSRC (Retrieve C Locale Description) command
+ 	RTVCLNUP (Retrieve Cleanup) command
+ 	RTVCLSRC (Retrieve CL Source) command
+ 	RTVCLU (Retrieve Cluster) command
+ 	RTVCRG (Retrieve Cluster Resource Group) command
+ 	RTVCURDIR (Retrieve Current Directory) command
+ 	RTVDIRINF (Retrieve Directory Information) command
+ 	RTVDLOAUT (Retrieve Document Library Object Authority) command
+ 	RTVDLONAM (Retrieve Document Library Object Name) command
+ 	RTVDOC (Retrieve Document) command
+ 	RTVDSKINF (Retrieve Disk Information) command
+ 	RTVDTAARA (Retrieve Data Area) command
+ 	RTVGRPA (Retrieve Group Attributes) command
+ 	RTVIMGCLG (Retrieve Image Catalog) command
+ 	RTVJOBA (Retrieve Job Attributes) command
+ 	RTVJRNE (Retrieve Journal Entry) command
+ 	RTVLIBD (Retrieve Library Description) command
+ 	RTVMBRD (Retrieve Member Description) command
+ 	RTVMSG (Retrieve Message) command
+ 	RTVNETA (Retrieve Network Attributes) command
+ 	RTVOBJD (Retrieve Object Description) command
+ 	RTVPDGPRF (Retrieve Print Descriptor Group Profile) command
+ 	RTVPRD (Retrieve Product) command
+ 	RTVPTF (Retrieve Program Temporary Fix) command
+ 	RTVPWRSCDE (Retrieve Power Schedule Entry) command
+ 	RTVQMFORM (Retrieve Query Management Form) command
+ 	RTVQMQRY (Retrieve Query Mgmt Query) command
+ 	RTVS36A (Retrieve S/36 Environment Attributes) command
+ 	RTVSMGOBJ (Retrieve System Manager Object) command
+ 	RTVSRVAGT (Retrieve Service Agent) command
+ 	RTVSVCCPYD (Retrieve SVC Copy Description) command 
+ 	RTVSVCSSN (Retrieve SVC Session) command 
+ 	RTVSWLSRC (Retrieve Stop Word List Source) command
+ 	RTVSYSINF (Retrieve System Information) command
+ 	RTVSYSVAL (Retrieve System Value) command
+ 	RTVTBLSRC (Retrieve Table Source) command
+ 	RTVTCPINF (Retrieve TCP/IP Information) command 
+ 	RTVUSRPRF (Retrieve User Profile) command
+ 	RTVUSRPRTI (Retrieve User Print Information) command
+ 	RTVWSCST (Retrieve Workstation Customizing Object Source) command
+ 	RUNBCKUP (Run Backup) command
+ 	RUNDNSUPD (Run Domain Name System Update) command
+ 	RUNJVA (Run Java Program) command
+ 	RUNLPDA (Run LPDA-2) command
+ 	RUNQRY (Run Query) command
+ 	RUNRMTCMD (Run Remote Command) command
+ 	RUNRNDCCMD (Run Remote Name Daemon Control Command) command
+ 	RUNSMGCMD (Run System Manager Command) command
+ 	RUNSMGOBJ (Run System Manager Object) command
+ 	RUNSQL (Run SQL) command 
+ 	RUNSQLSTM (Run SQL Statement) command
+ 	RVKACCAUT (Revoke Access Code Authority) command
+ 	RVKDPRAUT (Revoke DataPropagator Authority) command
+ 	RVKOBJAUT (Revoke Object Authority) command
+ 	RVKPUBAUT (Revoke Public Authority) command
+ 	RVKUSRPMN (Revoke User Permission) command
+ 	RVKWSOAUT (Revoke Workstation Object Authority) command
+ 	SAV (Save Object) command
+ 	SAVAPARDTA (Save APAR Data) command
+ 	SAVBRM (Save Object using BRMS) command
+ 	SAVCFG (Save Configuration) command
+ 	SAVCHGOBJ (Save Changed Objects) command
+ 	SAVCICSGRP (Save CICS Group) command
+ 	SAVDLO (Save Document Library Object) command
+ 	SAVDLOBRM (Save Document Library Object using BRMS) command
+ 	SAVFLRLBRM (Save Folder List using BRMS) command
+ 	SAVLIB (Save Library) command
+ 	SAVLIBBRM (Save Library using BRMS) command
+ 	SAVLICPGM (Save Licensed Program) command
+ 	SAVMEDIBRM (Save Media Information using BRMS) command
+ 	SAVOBJ (Save Object) command
+ 	SAVOBJBRM (Save Object using BRMS) command
+ 	SAVOBJLBRM (Save Object List using BRMS) command
+ 	SAVPFRCOL (Save Performance Collection) command
+ 	SAVRST (Save Restore) command
+ 	SAVRSTCFG (Save Restore Configuration) command
+ 	SAVRSTCHG (Save Restore Changed Objects) command
+ 	SAVRSTDLO (Save Restore Document Library Object) command
+ 	SAVRSTLIB (Save Restore Library) command
+ 	SAVRSTOBJ (Save Restore Object) command
+ 	SAVS36F (Save S/36 File) command
+ 	SAVS36LIBM (Save S/36 Library Members) command
+ 	SAVSAVFBRM (Save Save Files using BRMS) command
+ 	SAVSAVFDTA (Save Save File Data) command
+ 	SAVSECDTA (Save Security Data) command
+ 	SAVSYS (Save System) command
+ 	SAVSYSBRM (Save System using BRMS) command
+ 	SAVSYSINF (Save System Information) command
+ 	SBMCMDJS (Submit Console Command) command
+ 	SBMCODEJOB (Submit CODE Batch Job) command
+ 	SBMCRQ (Submit Change Request) command
+ 	SBMDBJOB (Submit Data Base Jobs) command
+ 	SBMFNCJOB (Submit Finance Job) command
+ 	SBMJOB (Submit Job) command
+ 	SBMJOBJS (Submit Job using Advanced Job Scheduler) command
+ 	SBMNETJOB (Submit Network Job) command
+ 	SBMNWSCMD (Submit Network Server Command) command
+ 	SBMRJEJOB (Submit RJE Job) command
+ 	SBMRMTCMD (Submit Remote Command) command
+ 	SELECT (Select) command
+ 	SETASPGRP (Set Auxiliary Storage Pool Group) command
+ 	SETATNPGM (Set Attention Program) command
+ 	SETCSTDTA (Set Customization Data) command
+ 	SETDEPJS (Set Dependent Job using Advanced Job Scheduler) command
+ 	SETDLJS (Set Data Library using Advanced Job Scheduler) command
+ 	SETDNSRVK (Set DNSSEC REVOKE Bit) command 
+ 	SETKBDMAP (Set Keyboard Map) command
+ 	SETMEDBRM (Set Media Controls using BRMS) command
+ 	SETMSTKEY (Set Master Key) command
+ 	SETOBJACC (Set Object Access) command
+ 	SETPGMINF (Set Program Information) command
+ 	SETRTVBRM (Set Retrieve Controls for BRMS) command
+ 	SETSTPJS (Set Step using Advanced Job Scheduler) command
+ 	SETTAPCGY (Set Tape Category) command
+ 	SETUPGENV (Set Upgrade Environment) command
+ 	SETUSRBRM (Set User Usage for BRMS) command
+ 	SETVTMAP (Set VT Keyboard Map) command
+ 	SETVTTBL (Set VT Mapping Tables) command
+ 	SIGNOFF (Sign Off) command
+ 	SLTCMD (Select Command) command
+ 	SNDARPRQS (Send Address Resolution Protocol Request) command 
+ 	SNDBRKMSG (Send Break Message) command
+ 	SNDDST (Send Distribution) command
+ 	SNDDSTJS (Send Distribution using Advanced Job Scheduler) command
+ 	SNDDSTQ (Send Distribution Queue) command
+ 	SNDF (Send File) command
+ 	SNDJRNE (Send Journal Entry) command
+ 	SNDLIC (Send License) command
+ 	SNDMSG (Send Message) command
+ 	SNDNETF (Send Network File) command
+ 	SNDNETMSG (Send Network Message) command
+ 	SNDNETSPLF (Send Network Spooled File) command
+ 	SNDPGMMSG (Send Program Message) command
+ 	SNDPRD (Send Product) command
+ 	SNDPTF (Send Program Temporary Fix) command
+ 	SNDPTFORD (Send Program Temporary Fix Order) command
+ 	SNDRCVF (Send/Receive File) command
+ 	SNDRJECMD (Send RJE Command) command
+ 	SNDRPTJS (Send Reports using Advanced Job Scheduler) command
+ 	SNDRPY (Send Reply) command
+ 	SNDSMGOBJ (Send System Manager Object) command
+ 	SNDSMTPEMM (Send SMTP E-mail Message) command 
+ 	SNDSRVRQS (Send Service Request) command
+ 	SNDTCPSPLF (Send TCP/IP Spooled File) command
+ 	SNDTIEF (Send TIE File) command
+ 	SNDUSRMSG (Send User Message) command
+ 	STATFS (Display Mounted File System Information) command
+ 	STRACCWEB (Start Access for Web) command 
+ 	STRACCWEB2 (Start Access for Web) command
+ 	STRAFPU (Start Advanced Function Printer Utilities) command
+ 	STRAGTSRV (Start Agent Services) command
+ 	STRAMT (Start Application Management Toolset) command 
+ 	STRAPF (Advanced Printer Function) command
+ 	STRARCBRM (Start Archive using BRMS) command
+ 	STRASMOND (Start Archived Storage Management) command
+ 	STRASPBAL (Start Auxiliary Storage Pool Balance) command
+ 	STRASPSSN (Start ASP Session) command
+ 	STRBALBRM (Start Media Balancing for BRMS) command
+ 	STRBGU (Start Business Graphics Utility) command
+ 	STRBKUBRM (Start Backup using BRMS) command
+ 	STRCAD (Start Cluster Administrative Domain) command
+ 	STRCBLDBG (Start COBOL Debug) command
+ 	STRCGU (Start Character Generator Utility) command
+ 	STRCHTSVR (Start Clustered Hash Table Server) command
+ 	STRCICS (Start CICS Control Region) command
+ 	STRCICSUSR (Start CICS User Shell) command
+ 	STRCLNUP (Start Cleanup) command
+ 	STRCLUNOD (Start Cluster Node) command
+ 	STRCMNSVR (Start Communications Server) command
+ 	STRCMNTRC (Start Communications Trace) command
+ 	STRCMTCTL (Start Commitment Control) command
+ 	STRCODE (Start CODE) command
+ 	STRCODECMD (Start CODE Command) command
+ 	STRCPYSCN (Start Copy Screen) command
+ 	STRCRG (Start Cluster Resource Group) command
+ 	STRDBG (Start Debug) command
+ 	STRDBGSVR (Start Debug Server) command
+ 	STRDBMON (Start Database Monitor) command
+ 	STRDBRDR (Start Data Base Reader) command
+ 	STRDFU (Start Data File Utility) command
+ 	STRDIGQRY (Start DIG Query) command
+ 	STRDIRSHD (Start Directory Shadowing) command
+ 	STRDNSQRY (Start NSLOOKUP Query) command
+ 	STRDPRAPY (Start DataPropagator Apply) command
+ 	STRDPRCAP (Start DataPropagator Capture) command
+ 	STRDSKRGZ (Start Disk Reorganization) command
+ 	STRDSMOND (Start Disk Storage Management) command
+ 	STRDW (Start Disk Watcher) command
+ 	STREDU (Start Education) command
+ 	STREML3270 (Start 3270 Display Emulation) command
+ 	STREPMENV (Start EPM Environment) command
+ 	STREXPBRM (Start Expiration for BRMS) command
+ 	STRFMA (Start Font Management Aid) command
+ 	STRFNTDWN (Start Font Downloader) command
+ 	STRGRPJS (Start Group using Advanced Job Scheduler) command
+ 	STRHOSTQRY (Start HOST Query) command
+ 	STRHOSTSVR (Start Host Server) command
+ 	STRIDD (Start IDDU) command
+ 	STRIMPOND (Start Import into OnDemand) command
+ 	STRIMPSMTP (Start Import for SMTP Users) command 
+ 	STRIPSIFC (Start IP over SNA Interface) command
+ 	STRISDB (Start Interactive Source Debugger) command
+ 	STRITF (Start Interactive Terminal Facility) command
+ 	STRJOBTRC (Start Job Trace) command
+ 	STRJRN (Start Journal) command
+ 	STRJRNAP (Start Journal Access Path) command
+ 	STRJRNLIB (Start Journal Library) command
+ 	STRJRNOBJ (Start Journal Object) command
+ 	STRJRNPF (Start Journal Physical File) command
+ 	STRJS (Start Advanced Job Scheduler) command
+ 	STRJW (Start Job Watcher) command
+ 	STRLOGSVR (Start Job Log Server) command
+ 	STRMGDSYS (Start Managed System Services) command
+ 	STRMGRBRM (Start Migration using BRMS) command
+ 	STRMGRSRV (Start Manager Services) command
+ 	STRMNTBRM (Start Maintenance for BRMS) command
+ 	STRMOD (Start Mode) command
+ 	STRMONOND (Start Monitor for OnDemand) command
+ 	STRMSF (Start Mail Server Framework) command
+ 	STRNETINS (Start Network Install) command
+ 	STRNFSSVR (Start Network File System Server) command
+ 	STROBJCVN (Start Object Conversion) command
+ 	STROVLU (Start Overlay Utility) command
+ 	STRPASTHR (Start Pass-Through) command
+ 	STRPCCMD (Start PC Command) command
+ 	STRPCO (Start PC Organizer) command
+ 	STRPDM (Start Programming Development Manager) command
+ 	STRPEX (Start Performance Explorer) command
+ 	STRPFRCOL (Start Performance Collection) command
+ 	STRPFRG (Start Performance Graphics) command
+ 	STRPFRT (Start Performance Tools) command
+ 	STRPFRTRC (Start Performance Trace) command
+ 	STRPFU (Start Print Format Utility) command
+ 	STRPGMEXP (Start Program Export List) command
+ 	STRPGMMNU (Start Programmer Menu) command
+ 	STRPGMPRF (Start Program Profiling) command
+ 	STRPJ (Start Prestart Jobs) command
+ 	STRPRTEML (Start Printer Emulation) command
+ 	STRPRTWTR (Start Printer Writer) command
+ 	STRQM (Start DB2 UDB Query Manager) command
+ 	STRQMPRC (Start Query Management Proc) command
+ 	STRQMQRY (Start Query Management Query) command
+ 	STRQRY (Start Query) command
+ 	STRQSH (Start QSH) command
+ 	STRQST (Start Question and Answer) command
+ 	STRRCYBRM (Start Recovery using BRMS) command
+ 	STRREXPRC (Start REXX Procedure) command
+ 	STRRJECSL (Start RJE Console) command
+ 	STRRJERDR (Start RJE Reader) command
+ 	STRRJESSN (Start RJE Session) command
+ 	STRRJEWTR (Start RJE Writer) command
+ 	STRRLU (Start Report Layout Utility) command
+ 	STRRMCRDAR (Start Report Management Cycle) command
+ 	STRRMTSPT (Start Remote Support) command
+ 	STRRMTWTR (Start Remote Writer) command
+ 	STRRSESVR (Start Remote Systems Explorer Server) command
+ 	STRS36 (Start S/36 Session) command
+ 	STRS36PRC (Start S/36 Procedure) command
+ 	STRSAVSYNC (Start Save Synchronization) command
+ 	STRSBS (Start Subsystem) command
+ 	STRSBSBRM (Start Subsystems using BRMS) command
+ 	STRSCHIDX (Start Search Index) command
+ 	STRSDA (Start Screen Design Aid) command
+ 	STRSEU (Start Source Entry Utility) command
+ 	STRSPLRCL (Start Spool Reclaim) command
+ 	STRSPTN (Start Support Network) command
+ 	STRSQL (Start SQL Interactive Session) command
+ 	STRSRVAGT (Start Service Agent) command
+ 	STRSRVJOB (Start Service Job) command
+ 	STRSST (Start System Service Tools) command
+ 	STRSVCSSN (Start SAN Volume Controller ASP Session) command 
+ 	STRSYSMGR (Start System Manager) command
+ 	STRTCP (Start TCP/IP) command
+ 	STRTCPFTP (Start TCP/IP File Transfer) command
+ 	STRTCPIFC (Start TCP/IP Interface) command
+ 	STRTCPPTP (Start TCP/IP Point-to-Point) command
+ 	STRTCPSVR (Start TCP/IP Server) command
+ 	STRTCPTELN (Start TCP/IP TELNET) command
+ 	STRTFMMGR (Start Transform Manager) command
+ 	STRTIESSN (Start TIE Session) command
+ 	STRTRC (Start Trace) command
+ 	STRTRPMGR (Start Trap Manager) command
+ 	STRVPNCNN (Start VPN Connection) command 
+ 	STRWCH (Start Watch) command
+ 	SUBR (Subroutine) command
+ 	TELNET (Start TCP/IP TELNET) command
+ 	TFRBCHJOB (Transfer Batch Job) command
+ 	TFRCTL (Transfer Control) command
+ 	TFRGRPJOB (Transfer to Group Job) command
+ 	TFRJOB (Transfer Job) command
+ 	TFRPASTHR (Transfer Pass-Through) command
+ 	TFRSECJOB (Transfer Secondary Job) command
+ 	TRACEROUTE (Trace Route of an IP Packet) command
+ 	TRCASPBAL (Trace Auxiliary Storage Pool Balance) command
+ 	TRCCNN (Trace Connection) command
+ 	TRCCPIC (Trace CPI Communications) command
+ 	TRCICF (Trace Intersystem Communications Function) command
+ 	TRCINT (Trace Internal) command
+ 	TRCJOB (Trace Job) command
+ 	TRCREX (Trace REXX) command
+ 	TRCTCPAPP (Trace TCP/IP Application) command
+ 	TRCTCPRTE (Trace TCP/IP Packet Route) command
+ 	TRNCKMKSF (Translate Crytographic Key Management Keystore File) command
+ 	UNMOUNT (Remove Mounted File System) command
+ 	UPDDTA (Update Data with Temp Program) command
+ 	UPDPGM (Update Program) command
+ 	UPDPTFINF (Update PTF Information) command
+ 	UPDSRVPGM (Update Service Program) command
+ 	UPDSYSINF (Update System Information) command
+ 	UPDTCPINF (Update TCP/IP Information) command 
+ 	VFYAPPCCNN (Verify APPC Connection) command
+ 	VFYCMN (Verify Communications) command
+ 	VFYIMGCLG (Verify Image Catalog) command
+ 	VFYLNKLPDA (Verify Link supporting LPDA-2) command
+ 	VFYMOVBRM (Verify Moves using BRMS) command
+ 	VFYOPCCNN (Verify OptiConnect Connections) command
+ 	VFYOPT (Verify Optical) command
+ 	VFYPRT (Verify Printer) command
+ 	VFYSRVAGT (Verify Service Agent) command
+ 	VFYSRVCFG (Verify Service Configuration) command
+ 	VFYTAP (Verify Tape) command
+ 	VFYTCPCNN (Verify TCP/IP Connection) command
+ 	VRYCFG (Vary Configuration) command
+ 	WAIT (Wait) command
+ 	WHEN (When) command
+ 	WRKACTJOB (Work with Active Jobs) command
+ 	WRKALR (Work with Alerts) command
+ 	WRKALRD (Work with Alert Descriptions) command
+ 	WRKALRTBL (Work with Alert Table) command
+ 	WRKAPPNSTS (Work with APPN Status) command
+ 	WRKARMJOB (Work with ARM Jobs) command
+ 	WRKASPBRM (Work with Auxiliary Storage Pool Descriptions) command
+ 	WRKASPCPYD (Work with ASP Copy Descriptions) command
+ 	WRKASPJOB (Work with Auxiliary Storage Pool Jobs) command
+ 	WRKAUT (Work with Authority) command
+ 	WRKAUTL (Work with Authorization Lists) command
+ 	WRKBNDDIR (Work with Binding Directories) command
+ 	WRKBNDDIRE (Work with Binding Directory Entries) command
+ 	WRKBPTBL (Work with BOOTP table) command
+ 	WRKCADMRE (Work with Cluster Administrative Domain Managed Resource Entries) command 
+ 	WRKCALBRM (Work with Calendars using BRMS) command
+ 	WRKCFGL (Work with Configuration Lists) command
+ 	WRKCFGSTS (Work with Configuration Status) command
+ 	WRKCHTFMT (Work with Chart Formats) command
+ 	WRKCICSCVT (Work with CICS CVT) command
+ 	WRKCICSDCT (Work with CICS DCT) command
+ 	WRKCICSFCT (Work with CICS FCT) command
+ 	WRKCICSGLT (Work with CICS GLT) command
+ 	WRKCICSGRP (Work with CICS Group) command
+ 	WRKCICSJCT (Work with CICS JCT) command
+ 	WRKCICSPCT (Work with CICS PCT) command
+ 	WRKCICSPPT (Work with CICS PPT) command
+ 	WRKCICSSIT (Work with CICS SIT) command
+ 	WRKCICSSTS (Work CICS Status) command
+ 	WRKCICSTCS (Work with CICS TCS) command
+ 	WRKCICSTCT (Work with CICS TCT) command
+ 	WRKCICSTST (Work with CICS TST) command
+ 	WRKCLS (Work with Classes) command
+ 	WRKCLSBRM (Work with Classes using BRMS) command
+ 	WRKCLU (Work with Cluster) command
+ 	WRKCMD (Work with Commands) command
+ 	WRKCMTDFN (Work with Commitment Definitions) command
+ 	WRKCNNL (Work with Connection Lists) command
+ 	WRKCNRBRM (Work with Containers using BRMS) command
+ 	WRKCNTINF (Work with Contact Information) command
+ 	WRKCOSD (Work with COS Descriptions) command
+ 	WRKCRQD (Work with Change Request Descriptions) command
+ 	WRKCSI (Work with Communications Side Information) command
+ 	WRKCTLD (Work with Controller Descriptions) command
+ 	WRKCTLGBRM (Work with Control Groups) command
+ 	WRKDBFIDD (Work with Database Files using IDDU) command
+ 	WRKDDMF (Work with Distributed Data Management Files) command
+ 	WRKDEVBRM (Work with Devices using BRMS) command
+ 	WRKDEVD (Work with Device Descriptions) command
+ 	WRKDEVTBL (Work with Device Tables) command
+ 	WRKDIRE (Work with Directory Entries) command
+ 	WRKDIRLOC (Work with Directory Locations) command
+ 	WRKDIRSHD (Work with Directory Shadow Systems) command
+ 	WRKDOC (Work with Documents) command
+ 	WRKDOCLIB (Work with Document Libraries) command
+ 	WRKDOCPRTQ (Work with Document Print Queue) command
+ 	WRKDPCQ (Work with DSNX/PC Queues) command
+ 	WRKDSKSTS (Work with Disk Status) command
+ 	WRKDSTCLGE (Work with Distribution Catalog Entries) command
+ 	WRKDSTL (Work with Distribution Lists) command
+ 	WRKDSTQ (Work with Distribution Queue) command
+ 	WRKDTAARA (Work with Data Areas) command
+ 	WRKDTADCT (Work with Data Dictionaries) command
+ 	WRKDTADFN (Work with Data Definitions) command
+ 	WRKDTAQ (Work with Data Queues) command
+ 	WRKEDTD (Work with Edit Descriptions) command
+ 	WRKENVVAR (Work with Environment Variables) command
+ 	WRKF (Work with Files) command
+ 	WRKFCNARA (Work with Functional Areas) command
+ 	WRKFCNUSG (Work with Function Usage) command
+ 	WRKFCT (Work with Forms Control Table) command
+ 	WRKFLR (Work with Folders) command
+ 	WRKFLRBRM (Work with Saved Folders) command
+ 	WRKFNTRSC (Work with Font Resources) command
+ 	WRKFORMDF (Work with Form Definitions) command
+ 	WRKFTR (Work with Filters) command
+ 	WRKFTRACNE (Work with Filter Action Entry) command
+ 	WRKFTRSLTE (Work with Filter Selection Entry) command
+ 	WRKGSS (Work with Graphics Symbol Sets) command
+ 	WRKHACFGD (Work with HA Configuration Description) command 
+ 	WRKHDWPRD (Work with Hardware Products) command
+ 	WRKHDWRSC (Work with Hardware Resources) command
+ 	WRKHLDOPTF (Work with Held Optical Files) command
+ 	WRKHSTJS (Work with History using Advanced Job Scheduler) command
+ 	WRKHYSSTS (Work with HyperSwap Status) command 
+ 	WRKIMGCLG (Work with Image Catalogs) command
+ 	WRKIMGCLGE (Work with Image Catalog Entries) command
+ 	WRKIPXD (Work with IPX Descriptions) command
+ 	WRKJOB (Work with Job) command
+ 	WRKJOBD (Work with Job Descriptions) command
+ 	WRKJOBJS (Work with Jobs using Advanced Job Scheduler) command
+ 	WRKJOBLOG (Work with Job Logs) command
+ 	WRKJOBQ (Work with Job Queue) command
+ 	WRKJOBQD (Work with Job Queue Description) command
+ 	WRKJOBSCDE (Work with Job Schedule Entries) command
+ 	WRKJRN (Work with Journal) command
+ 	WRKJRNA (Work with Journal Attributes) command
+ 	WRKJRNRCV (Work with Journal Receivers) command
+ 	WRKJVMJOB (Work with Java Virtual Machine Jobs) command 
+ 	WRKLANADPT (Work with LAN Adapters) command
+ 	WRKLBRM (Work with Lists using BRMS) command
+ 	WRKLIB (Work with Libraries) command
+ 	WRKLIBAMT (Work with Libraries using Application Management Toolset) command 
+ 	WRKLIBPDM (Work with Libraries using Programming Development Manager) command
+ 	WRKLICINF (Work with License Information) command
+ 	WRKLIND (Work with Line Descriptions) command
+ 	WRKLNK (Work with Object Links) command
+ 	WRKLNKBRM (Work with Link Information) command
+ 	WRKLOCBRM (Work with Locations using BRMS) command
+ 	WRKMBRAMT (Work with Members using Application Management Toolset) command 
+ 	WRKMBRPDM (Work with Members using Programming Development Manager) command
+ 	WRKMEDBRM (Work with Media using BRMS) command
+ 	WRKMEDIBRM (Work with Media Information) command
+ 	WRKMGRIBRM (Work with Migration Information) command
+ 	WRKMLBBRM (Work with Media Libraries) command
+ 	WRKMLBRSCQ (Work with Media Library Resource Queue) command
+ 	WRKMLBSTS (Work with Media Library Status) command
+ 	WRKMLMBRM (Work with Media Library Media) command
+ 	WRKMNU (Work with Menus) command
+ 	WRKMOD (Work with Modules) command
+ 	WRKMODD (Work with Mode Descriptions) command
+ 	WRKMSG (Work with Messages) command
+ 	WRKMSGD (Work with Message Descriptions) command
+ 	WRKMSGF (Work with Message Files) command
+ 	WRKMSGQ (Work with Message Queues) command
+ 	WRKNAMSMTP (Work with Names for SMTP) command
+ 	WRKNCK (Work with Nickname) command
+ 	WRKNETF (Work with Network Files) command
+ 	WRKNETJOBE (Work with Network Job Entries) command
+ 	WRKNETTBLE (Work with Network Table Entry) command
+ 	WRKNODL (Work with Node List) command
+ 	WRKNODLE (Work with Node List Entries) command
+ 	WRKNTBD (Work with NetBIOS Descriptions) command
+ 	WRKNWID (Work with Network Interfaces) command
+ 	WRKNWSCFG (Work with Network Server Configurations) command
+ 	WRKNWSD (Work with Network Servers) command
+ 	WRKNWSENR (Work with Network Server User Enrollment) command
+ 	WRKNWSSTG (Work with Network Server Storage Spaces) command
+ 	WRKNWSSTS (Work with Network Server Status) command
+ 	WRKOBJ (Work with Objects) command
+ 	WRKOBJAMT (Work with Objects using Application Management Toolset) command 
+ 	WRKOBJBRM (Work with Saved Objects) command
+ 	WRKOBJLCK (Work with Object Locks) command
+ 	WRKOBJOWN (Work with Objects by Owner) command
+ 	WRKOBJPDM (Work with Objects using Programming Development Manager) command
+ 	WRKOBJPGP (Work with Objects by Primary Group) command
+ 	WRKOBJPVT (Work with Objects by Private Authority) command
+ 	WRKOPCACT (Work with OptiConnect Activity) command
+ 	WRKOPTDIR (Work with Optical Directories) command
+ 	WRKOPTF (Work with Optical Files) command
+ 	WRKOPTVOL (Work with Optical Volumes) command
+ 	WRKOUTQ (Work with Output Queue) command
+ 	WRKOUTQD (Work with Output Queue Descriptions) command
+ 	WRKOVL (Work with Overlays) command
+ 	WRKPAGDFN (Work with Page Definitions) command
+ 	WRKPAGSEG (Work with Page Segments) command
+ 	WRKPCLTBLE (Work with Protocol Table Entry) command
+ 	WRKPCYBRM (Work with Policies using BRMS) command
+ 	WRKPDFMAPE (Work with PDF Map Entries) command
+ 	WRKPEXDFN (Work with Performance Explorer Definitions) command
+ 	WRKPEXFTR (Work with Performance Explorer Filters) command
+ 	WRKPFCST (Work with Physical File Constraints) command
+ 	WRKPFDL (Work with Physical File DataLinks) command
+ 	WRKPGM (Work with Programs) command
+ 	WRKPGMTBL (Work with Program Tables) command
+ 	WRKPMRMTS (Work with Remote Systems) command
+ 	WRKPMRPTO (Work with Top Ten Omissions) command
+ 	WRKPMSCH (Work with Scheduled Jobs) command
+ 	WRKPNLGRP (Work with Panel Groups) command
+ 	WRKPRB (Work with Problems) command
+ 	WRKPRDINF (Work with Product Information) command
+ 	WRKPRTSTS (Work with Printing Status) command
+ 	WRKPSFCFG (Work with Print Services Facility Configuration) command
+ 	WRKPTF (Work with Program Temporary Fix) command
+ 	WRKPTFGRP (Work with Program Temporary Fix Groups) command
+ 	WRKPTFORD (Work with Program Temporary Fix Orders) command
+ 	WRKQMFORM (Work with Query Management Forms) command
+ 	WRKQMQRY (Work with Query Management Queries) command
+ 	WRKQRY (Work With Queries) command
+ 	WRKQST (Work with Questions) command
+ 	WRKRCVCRQA (Work with Received Change Request Activities) command
+ 	WRKRCYBRM (Work with Recovery Activities) command
+ 	WRKRDBDIRE (Work with Relational Database Directory Entry) command
+ 	WRKRDR (Work with Readers) command
+ 	WRKREGINF (Work with Registration Information) command
+ 	WRKRJESSN (Work with RJE Session) command
+ 	WRKRMTDFN (Work with Remote Definitions) command
+ 	WRKRPYLE (Work with Reply List Entries) command
+ 	WRKRTDCFG (Work with RouteD Configuration) command
+ 	WRKS36 (Work with S/36 Configuration) command
+ 	WRKS36PGMA (Work with S/36 Program Attributes) command
+ 	WRKS36PRCA (Work with S/36 Procedure Attributes) command
+ 	WRKS36SRCA (Work with S/36 Source Attributes) command
+ 	WRKSAVFBRM (Work with Save Files) command
+ 	WRKSBMCRQ (Work with Submitted Change Requests) command
+ 	WRKSBMCRQA (Work with Submitted Change Request Activities) command
+ 	WRKSBMJOB (Work with Submitted Jobs) command
+ 	WRKSBS (Work with Subsystems) command
+ 	WRKSBSD (Work with Subsystem Description) command
+ 	WRKSBSJOB (Work with Subsystem Jobs) command
+ 	WRKSCHIDX (Work with Search Indexes) command
+ 	WRKSCHIDXE (Work with Search Index Entries) command
+ 	WRKSFWAGR (Work with Software Agreements) command
+ 	WRKSHRPOOL (Work with Shared Storage Pools) command
+ 	WRKSMTPEMM (Work with SMTP E-Mail Messages) command 
+ 	WRKSMTPUSR (Work with All SMTP Users) command 
+ 	WRKSOC (Work with Sphere of Control) command
+ 	WRKSPADCT (Work with Spelling Aid Dictionaries) command
+ 	WRKSPLF (Work with Spooled Files) command
+ 	WRKSPLFA (Work with Spooled File Attributes) command
+ 	WRKSPLFBRM (Work with Saved Spooled Files) command
+ 	WRKSPTPRD (Work with Supported Products) command
+ 	WRKSRVAGT (Work with Service Agent) command
+ 	WRKSRVPGM (Work with Service Program) command
+ 	WRKSRVPVD (Work with Service Providers) command
+ 	WRKSRVRQS (Work with Service Requesters) command
+ 	WRKSRVTBLE (Work with Service Table Entries) command
+ 	WRKSSND (Work with Session Description) command
+ 	WRKSYSACT (Work with System Activity) command
+ 	WRKSYSSTS (Work with System Status) command
+ 	WRKSYSVAL (Work with System Value) command
+ 	WRKTAPCTG (Work with Tape Cartridges) command
+ 	WRKTBL (Work with Tables) command
+ 	WRKTCPPTP (Work with Point-to-Point TCP/IP Profiles) command
+ 	WRKTCPSTS (Work with TCP/IP Network Status) command
+ 	WRKTIE (Work with TIE) command
+ 	WRKTIMZON (Work with Time Zone Descriptions) command
+ 	WRKTRC (Work with Traces) command
+ 	WRKUSRJOB (Work with User Jobs) command
+ 	WRKUSRPRF (Work with User Profiles) command
+ 	WRKUSRTBL (Work with User Tables) command
+ 	WRKWCH (Work with Watches) command
+ 	WRKWTR (Work with Writers) command
