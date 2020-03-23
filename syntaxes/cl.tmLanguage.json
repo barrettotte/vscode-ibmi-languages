@@ -43,7 +43,7 @@
                 },
                 {
                     "name": "constant.other.cl",
-                    "match": "(?i)[*](NO|YES|CHAR|DEC|LGL|INT|UINT|PTR|FILE|NULL|INQ|INFO|COMP|PAUSE|OMIT|ALL)"
+                    "match": "(?i)[*][A-Za-z]+"
                 },
                 {
                     "name": "constant.other.cl",
@@ -156,13 +156,17 @@
             ]
         },
         "strings": {
-            "name": "string.quoted.single.cl",
-            "begin": "'",
-            "end": "'",
             "patterns": [
                 {
-                    "name": "constant.character.escape.cl",
-                    "match": "\\\\."
+                    "name": "string.quoted.single.cl",
+                    "begin": "(x|X)?'",
+                    "end": "'",
+                    "patterns": [
+                        {
+                            "name": "constant.character.escape.cl",
+                            "match": "\\\\."
+                        }
+                    ]
                 }
             ]
         },
@@ -170,7 +174,7 @@
             "patterns": [
                 {
                     "name": "support.function.cl",
-                    "match": "(?i)(LIBL|OUTQ|CMDLBL|OPNID|RCDFMT|COND|THEN|TOFILE|FROMFILE|FROMSTMF|TOSTMF|TOMSGQ|FILE|LIB|OUTPUT|SYSVAL|RTNVAR|RTNUSRPRF|USRPRF|MSGTYPE|MSGRPY|MSGID|MSGF|MSGDTA|MSG|DTAARA|OBJTYPE|OBJ|VALUE|TYPE|LEN|EXEC|DLY|VAR|ADDRESS|CLASS|CLASSPATH|JOB|CURUSER|NBR|SYSNAME|USER|TOPGMQ|TOUSR|PRC|DEV|CLEAR)(?=\\()"
+                    "match": "(?i)[A-Za-z]+(?=\\()"
                 }
             ]
         },
