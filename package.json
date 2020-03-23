@@ -14,10 +14,10 @@
             {
                 "id": "cl",
                 "aliases": [
-                    "cl",
-                    "clle",
-                    "clp",
-                    "clp38"
+                    "CL",
+                    "CLLE",
+                    "CLP",
+                    "CLP38"
                 ],
                 "extensions": [
                     ".CL",
@@ -34,9 +34,9 @@
             {
                 "id": "rpg",
                 "aliases": [
-                    "rpg",
-                    "rpg/400",
-                    "rpg38"
+                    "RPG",
+                    "RPG/400",
+                    "RPG38"
                 ],
                 "extensions": [
                     ".RPG",

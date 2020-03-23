@@ -11,3 +11,15 @@
       *
      C* Calc spec
      CLRNLR MRNL1VARA      ADD  VARB      RES   30 1HRTLRH2COMMENT! 
+      *
+     E* Extension spec
+     E    FFILE   TFILE   ATBL  1239999128L6AALTNAM64 P8DTHIS IS A COMMENT
+      *
+     L* Line Counter spec
+     LSOMEFILE101FL300OL
+      *
+     I* Input spec
+     ISOMEFILE3ANOL41   NZX2    CA3   ND4
+      *
+     O* Output spec
+     O                NKA 01 L2FIELDXJB+NNNPWASD

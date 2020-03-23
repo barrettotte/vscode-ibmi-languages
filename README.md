@@ -28,12 +28,26 @@ Also check out his repository https://github.com/NielsLiisberg/RPG-vsCode-Gettin
 
 
 - [x] Syntax highlighting for RPG III and RPG/400 - H,F,E,L,I,C,O specs
+  - [x] Control - H spec
+  - [x] File - F spec (program-described and external)
+  - [x] Extension - E spec
+  - [x] Line Counter - L spec
+  - [x] Input - I spec
+  - [x] Calculation - C spec
+  - [ ] Output - O spec
 - [x] Syntax highlighting for Control Language (CL)
 - [ ] Syntax highlighting for physical files
 - [ ] Syntax highlighting for logical files
 - [ ] Syntax highlighting for display files
 - [ ] Syntax highlighting for Machine Interface (MI)
 - [ ] Syntax highlighting for RPGLE fixed
+  - [ ] Control - H spec
+  - [ ] File - F spec
+  - [ ] Definition - D spec
+  - [ ] Input - I spec
+  - [ ] Calculation - C spec
+  - [ ] Output - O spec
+  - [ ] Procedure - P spec
 - [ ] Syntax highlighting for RPGLE free
 
 
