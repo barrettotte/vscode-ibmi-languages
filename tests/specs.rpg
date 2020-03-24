@@ -1,25 +1,42 @@
       *TESTING FOR SYNTAX HIGHLIGHTER
       *
-     H* Control spec     
+     H* Control spec (H prompt)    
      H        1   Y&J    D              1 F                               QWERTY
       *
-     F* Externally described file
+     F* Externally described file (FX prompt)
      FSOMEFILEIFEAE        L  K        DISK         K            A    UC  comment
       *
-     F* Program described file
+     F* Program described file (F prompt)
      FSOMEFIL2OPEDF           ATOV    LPRINTER      K            A    U6
       *
-     C* Calc spec
-     CLRNLR MRNL1VARA      ADD  VARB      RES   30 1HRTLRH2COMMENT! 
-      *
-     E* Extension spec
+     E* Extension spec (E prompt)
      E    FFILE   TFILE   ATBL  1239999128L6AALTNAM64 P8DTHIS IS A COMMENT
       *
-     L* Line Counter spec
+     L* Line Counter spec (L prompt)
      LSOMEFILE101FL300OL
       *
-     I* Input spec
+     I* Input spec record identification (I prompt)
      ISOMEFILE3ANOL41   NZX2    CA3   ND4
+     I*
+     I* Input spec record identification external (IX prompt)
+     IMYRECORD    H4
+     I* Input spec field description (J prompt)
+     I                                    P123499997MYFLD L4M2RTH4U7H6
+     I* Input spec field description external (JX prompt)
+     I              EXTFILENAM                      MYFLD L4M5  U3RTH7
+     I* Data structure input specification (DS prompt)
+     IMYDS      EUDSEXTFILENAM             12345555
+     I* Data structure subfield input spec (SS prompt)
+     I              EXTFLDNAME            P123488885MYFLD
+     I* Data structure subfield init spec (SV prompt)
+     I I            SOMETHING             P123456785MYFLD     
       *
-     O* Output spec
+     C* Calc spec (C prompt)
+     CLRNLR MRNL1VARA      ADD  VARB      RES   30 1HRTLRH2COMMENT! 
+      *
+     O* Output spec (O prompt)
      O                NKA 01 L2FIELDXJB+NNNPWASD
+     O* Output spec disk (OD prompt)
+     OMYFILE  TADD    NKA L4NRTWASD
+     O* Output spec field description (P prompt)
+     O                NKA L4NU2MYFLDMXBNNNNLMYCONST

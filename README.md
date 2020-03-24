@@ -29,12 +29,12 @@ Also check out his repository https://github.com/NielsLiisberg/RPG-vsCode-Gettin
 
 - [x] Syntax highlighting for RPG III and RPG/400 - H,F,E,L,I,C,O specs
   - [x] Control - H spec
-  - [x] File - F spec (program-described and external)
+  - [x] File - F spec
   - [x] Extension - E spec
   - [x] Line Counter - L spec
   - [x] Input - I spec
   - [x] Calculation - C spec
-  - [ ] Output - O spec
+  - [x] Output - O spec
 - [x] Syntax highlighting for Control Language (CL)
 - [ ] Syntax highlighting for physical files
 - [ ] Syntax highlighting for logical files
@@ -73,10 +73,15 @@ If you want different syntax highlighting for a CLP vs CLLE file, I'm sorry to d
 | .rpgle, .sqlrpgle             | RPGLE and SQLRPGLE         |
 
 
-
 ## Screenshots
 See **screenshots/** for more examples of syntax highlighting.
 
+#### RPG/400
+[![RPG/400](screenshots/rpg400.png)](screenshots/rpg400.png)
+
+
+#### Control Language (CL)
+[![CL](screenshots/cl.png)](screenshots/cl.png)
 
 
 ## References
@@ -91,11 +96,3 @@ See **screenshots/** for more examples of syntax highlighting.
   * https://stackoverflow.com/questions/23463803/are-there-any-standards-for-tmlanguage-keyword-types
 * Regex tool - https://rubular.com/
 * VS Code Language extensions - https://code.visualstudio.com/api/language-extensions/overview
-
-
-## Known Issues
-
-Calling out known issues can help limit users opening duplicate issues against your extension.
-
-## Release Notes
-See CHANGELOG.md
