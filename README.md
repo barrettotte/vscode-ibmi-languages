@@ -63,11 +63,11 @@ If you want different syntax highlighting for a CLP vs CLLE file, I'm sorry to d
 See **screenshots/** for more examples of syntax highlighting.
 
 #### RPG/400
-[![RPG/400](screenshots/rpg400.png)](screenshots/rpg400.png)
+[![RPG/400](https://github.com/barrettotte/vscode-ibmi-languages/blob/master/screenshots/cl.png)](https://github.com/barrettotte/vscode-ibmi-languages/blob/master/screenshots/cl.png)
 
 
 #### Control Language (CL)
-[![CL](screenshots/cl.png)](screenshots/cl.png)
+[![CL](https://github.com/barrettotte/vscode-ibmi-languages/blob/master/screenshots/cl.png)](https://github.com/barrettotte/vscode-ibmi-languages/blob/master/screenshots/cl.png)
 
 
 ## Publishing

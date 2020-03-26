@@ -116,5 +116,8 @@
         "RPGLE",
         "ISERIES"
     ],
-    "license": "MIT"
+    "license": "MIT",
+    "repository": {
+        "url": "https://github.com/barrettotte/vscode-ibmi-languages"
+    }
 }
