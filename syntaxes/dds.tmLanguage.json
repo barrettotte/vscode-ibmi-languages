@@ -28,7 +28,27 @@
 			"patterns": [
 				{
 					"name": "constant.language.dds.pf.nametype",
-					"match": "(?<=((?<=^[\\s]{5}[h|H])[\\s\\S]{12}))(?i)(M|D|Y)"
+					"match": "(?<=((?<=^[\\s]{5}[A|a|\\s])[\\s\\S]{10}))(?i)(R|K)"
+				},
+				{
+					"name": "constant.language.dds.pf.ref",
+					"match": "(?<=((?<=^[\\s]{5}[A|a|\\s])[\\s\\S]{22}))(?i)(R)"
+				},
+				{
+					"name": "constant.language.dds.pf.len",
+					"match": "(?<=((?<=^[\\s]{5}[A|a|\\s])[\\s\\S]{23}))(?i)[0-9|\\s]{5}"
+				},
+				{
+					"name": "constant.language.dds.pf.datatype",
+					"match": "(?<=((?<=^[\\s]{5}[A|a|\\s])[\\s\\S]{28}))(?i)(P|S|B|F|A|L|T|Z|H|J|E|O|G|5)"
+				},
+				{
+					"name": "constant.language.dds.pf.decpos",
+					"match": "(?<=((?<=^[\\s]{5}[A|a|\\s])[\\s\\S]{29}))(?i)[0-9|\\s]{2}"
+				},
+				{
+					"name": "constant.language.dds.pf.use",
+					"match": "(?<=((?<=^[\\s]{5}[A|a|\\s])[\\s\\S]{31}))(?i)(B)"
 				},
                 {
                     "name": "constant.numeric.dds",
