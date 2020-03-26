@@ -33,7 +33,7 @@
                     ".clp",
                     ".clp38"
                 ],
-                "configuration": "./cl.language-configuration.json"
+                "configuration": "./configurations/cl.language-configuration.json"
             },
             {
                 "id": "dds",
@@ -64,7 +64,7 @@
                     ".prtf",
                     ".prtf38"
                 ],
-                "configuration": "./dds.language-configuration.json"
+                "configuration": "./configurations/dds.language-configuration.json"
             },
             {
                 "id": "rpg",
@@ -81,7 +81,7 @@
                     ".SQLRPG",
                     ".sqlrpg"
                 ],
-                "configuration": "./rpg.language-configuration.json"
+                "configuration": "./configurations/rpg.language-configuration.json"
             }
         ],
         "grammars": [
@@ -109,7 +109,10 @@
         "RPG",
         "IBMi",
         "AS/400",
+        "SQLRPG",
+        "SQLRPGLE",
         "CL",
+        "CONTROL LANGUAGE",
         "DDS",
         "DSPF",
         "MI",
