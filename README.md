@@ -70,6 +70,11 @@ See **screenshots/** for more examples of syntax highlighting.
 [![CL](screenshots/cl.png)](screenshots/cl.png)
 
 
+## Publishing
+* ```npm install -g vsce```
+* ```vsce package```
+* ```vsce publish```
+
 ## References
 * Liam's Flight400 project (great for testing) - https://github.com/worksofliam/flight400
 * RPG/400 - https://www.ibm.com/support/knowledgecenter/SSAE4W_9.6.0/com.ibm.etools.iseries.langref.doc/evferlsh02.htm#ToC

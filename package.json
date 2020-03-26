@@ -3,6 +3,10 @@
     "displayName": "IBMi Languages",
     "description": "Provide syntax highlighting for IBMi languages such as RPG, CL, DDS, and MI.",
     "version": "0.0.1",
+    "publisher": "barrettotte",
+    "author": {
+        "name": "Barrett Otte"
+    },
     "engines": {
         "vscode": "^1.43.0"
     },
@@ -101,5 +105,16 @@
     "devDependencies": {
         "js-yaml": "^3.13.1"
     },
+    "keywords": [
+        "RPG",
+        "IBMi",
+        "AS/400",
+        "CL",
+        "DDS",
+        "DSPF",
+        "MI",
+        "RPGLE",
+        "ISERIES"
+    ],
     "license": "MIT"
 }
