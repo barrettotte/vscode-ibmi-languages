@@ -1,3 +1,4 @@
 .wakatime-project
 !.vscode/launch.json
 node_modules
+*.vsix
