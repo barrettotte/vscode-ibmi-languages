@@ -321,8 +321,8 @@
 					"match": "(?<=((?<=^[\\s]{5}[o|O])[\\s\\S]{22}))(?i)((\\s|N)?(([0-9]{2})|(K(A|B|C|D|E|F|G|H|I|J|K|L|M|N|P|Q|R|S|T|U|V|W|X|Y))|((H|L)(1|2|3|4|5|6|7|8|9|R))|(MR|RT|1P)|(U(1|2|3|4|5|6|7|8))|(O(A|B|C|D|E|F|G|V))))"
 				},
 				{
-					"name": "constant.language.rpg.o.editcodes",
-					"match": "(?<=((?<=^[\\s]{5}[o|O])[\\s\\S]{30}))(?i)([0-9]|A|B|C|D|J|K|L|M|N|O|P|Q|X|Y|Z){2}"
+					"name": "constant.language.rpg.o.editcode",
+					"match": "(?<=((?<=^[\\s]{5}[o|O])[\\s\\S]{31}))((?i)(([0-9])|A|B|C|D|J|K|L|M|N|O|P|Q|X|Y|Z))"
 				},
 				{
 					"name": "constant.language.rpg.o.blankafter",
