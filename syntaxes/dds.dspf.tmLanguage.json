@@ -107,7 +107,7 @@
 		"strings": {
 			"name": "string.quoted.single.dds.dspf",
 			"begin": "'",
-			"end": "(\n|')",
+			"end": "(')",
 			"patterns": [
 				{
 					"name": "constant.character.escape.dds.dspf",

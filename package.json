@@ -78,6 +78,19 @@
                 "configuration": "./configurations/dds.language-configuration.json"
             },
             {
+                "id": "dds.prtf",
+                "aliases": [
+                    "PRTF"
+                ],
+                "extensions": [
+                    ".PRTF",
+                    ".PRTF38",
+                    ".prtf",
+                    ".prtf38"
+                ],
+                "configuration": "./configurations/dds.language-configuration.json"
+            },
+            {
                 "id": "rpg",
                 "aliases": [
                     "RPG",
@@ -115,6 +128,11 @@
                 "language": "dds.pf",
                 "scopeName": "source.dds.pf",
                 "path": "./syntaxes/dds.pf.tmLanguage.json"
+            },
+            {
+                "language": "dds.prtf",
+                "scopeName": "source.dds.prtf",
+                "path": "./syntaxes/dds.prtf.tmLanguage.json"
             },
             {
                 "language": "rpg",
