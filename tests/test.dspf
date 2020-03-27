@@ -1,0 +1,76 @@
+     A*%%TS  SD  20191211  003314  OTTEB       REL-V7R3M0  5770-WDS
+     A*%%EC
+     A                                      DSPSIZ(24 80 *DS3)
+     A                                      INDARA
+     A          R ALDR001
+     A*%%TS  SD  20191211  003314  OTTEB       REL-V7R3M0  5770-WDS
+     A                                      CA03(03 'EXIT')
+     A                                      CA05(05 'REFRESH')
+     A                                      CA12(12 'CANCEL')
+     A*
+     A                                  2  4DATE
+     A                                      EDTCDE(Y)
+     A                                  3  4TIME
+     A                                  4  4USER
+     A*
+     A                                  2 29'Anilist Search'
+     A                                  3 23'https://graphql.anilist.co'
+     A                                  4 27'Barrett Otte  2019'
+     A*
+     A            ALDONAME      18A  O  6 53
+     A            ALDOURL       32A  O  7 43
+     A                                 10  5'Username ...'
+     A            ALDIUSRNM     18A  B 10 18CHECK(LC)
+     A                                 13  5'Id .........'
+     A            ALDOID        10A  O 13 18
+     A                                 15  5'Hours'
+     A                                 18 41'+-----------------+----------------
+     A                                      +'
+     A                                 16  5'watched ....'
+     A            ALDOHOURS     10A  O 16 18
+     A                                  8 41'+-----------------+----------------
+     A                                      +'
+     A                                  9 41'!'
+     A                                  9 59'!'
+     A                                  9 75'!'
+     A                                 10 41'!'
+     A                                 10 43'Completed:'
+     A            ALDOLCOMP      4A  O 10 54
+     A                                 13 43'Dropped:'
+     A            ALDOLDROP      4A  O 13 54
+     A                                 16 43'Planned:'
+     A            ALDOLPLAN      4A  O 16 54
+     A                                 17 41'!'
+     A                                 16 41'!'
+     A                                 15 41'!'
+     A                                 14 41'!'
+     A                                 13 41'!'
+     A                                 12 41'!'
+     A                                 11 41'!'
+     A                                 10 59'!'
+     A                                 10 61'Current:'
+     A            ALDOLCURR      4A  O 10 70
+     A                                 13 61'Paused:'
+     A            ALDOLPAUS      4A  O 13 70
+     A                                 16 61'Repeat:'
+     A            ALDOLREPT      4A  O 16 70
+     A                                 11 59'!'
+     A                                 12 59'!'
+     A                                 13 59'!'
+     A                                 14 59'!'
+     A                                 15 59'!'
+     A                                 16 59'!'
+     A                                 17 59'!'
+     A                                 10 75'!'
+     A                                 11 75'!'
+     A                                 12 75'!'
+     A                                 13 75'!'
+     A                                 14 75'!'
+     A                                 15 75'!'
+     A                                 16 75'!'
+     A                                 17 75'!'
+     A*
+     A            ALDOERROR     30A  O 20 22
+     A                                 22 11'F3=Exit'
+     A                                 22 31'F5=Refresh'
+     A                                 22 53'F12=Cancel'

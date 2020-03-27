@@ -1,6 +1,6 @@
 {
 	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
-	"name": "DDS",
+	"name": "DDS.PF",
 	"patterns": [
 		{
 			"include": "#comments"
@@ -19,8 +19,8 @@
 		"comments": {
 			"patterns": [
 				{
-					"name": "comment.line.dds",
-					"match": "(((?i)^[\\s]{0,5}[\\s\\S][A|a|\\s]))(\\*).*"
+					"name": "comment.line.dds.pf",
+					"match": "(((?i)^[\\s]{0,5}[\\s\\S]))(\\*).*"
 				}
 			]
 		},
@@ -51,7 +51,7 @@
 					"match": "(?<=((?<=^[\\s]{5}[A|a|\\s])[\\s\\S]{31}))(?i)(B)"
 				},
                 {
-                    "name": "constant.numeric.dds",
+                    "name": "constant.numeric.dds.pf",
                     "match": "(\\b[0-9]+)|([0-9]*[.][0-9]*)"
                 }
 			]
@@ -59,26 +59,30 @@
 		"keywords": {
 			"patterns": [
 				{
-					"name": "keyword.other.dds.spec",
+					"name": "keyword.other.dds.pf.spec",
 					"match": "(^[\\s]{5}[A|a])"
 				},
 				{
-					"name": "keyword.other.dds.funcs",
-					"match": "(?<=((?<=^[\\s]{5}[A|a|\\s])[\\s\\S]{38}))[\\s\\S]{0}(?i)(ABSVAL|ALIAS|ALTSEQ|ALWNULL|CCSID|CHECK|CHKMSGID|CMP|COLHDG|COMP|DATFMT|DATSEP|DESCEND|DFT|DIGIT|EDTCDE|EDTWRD|FCFO|FIFO|FLTPCN|FORMAT|LIFO|NOALTSEQ|RANGE|REF|REFFLD|REFSHIFT|SIGNED|TEXT|TIMFMT|TIMSEP|UNIQUE|UNSIGNED|VALUES|VARLEN|ZONE)"
+					"name": "keyword.operator.dds.pf",
+					"match": "\\+"
+				},
+				{
+					"name": "keyword.other.dds.pf.funcs",
+					"match": "(?<=((?<=^[\\s]{5}[A|a|\\s])[\\s\\S]{38}))(?i)(ZONE|VARLEN|VALUES|UNSIGNED|UNIQUE|TIMSEP|TIMFMT|TEXT|REFSHIFT|REFFLD|REF|RANGE|NOALTSEQ|LIFO|FORMAT|FLTPCN|FIFO|FCFO|EDTCDE|EDTWRD|DIGIT|DFT|DESCEND|DATSEP|DATFMT|COMP|COLHDG|CMP|CHKMSGID|CHECK|CCSID|ALWNULL|ALTSEQ|ALIAS|ABSVAL)"
 				}
 			]
 		},
 		"strings": {
-			"name": "string.quoted.single.dds",
+			"name": "string.quoted.single.dds.pf",
 			"begin": "'",
 			"end": "(\n|')",
 			"patterns": [
 				{
-					"name": "constant.character.escape.dds",
+					"name": "constant.character.escape.dds.pf",
 					"match": "\\\\."
 				}
 			]
 		}
 	},
-	"scopeName": "source.dds"
+	"scopeName": "source.dds.pf"
 }

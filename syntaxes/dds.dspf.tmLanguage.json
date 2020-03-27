@@ -1,0 +1,120 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "DDS.DSPF",
+	"patterns": [
+		{
+			"include": "#comments"
+		},
+		{
+			"include": "#constants"
+		},
+		{
+			"include": "#keywords"
+		},
+		{
+			"include": "#strings"
+		}
+	],
+	"repository": {
+		"comments": {
+			"patterns": [
+				{
+					"name": "comment.line.dds.dspf",
+					"match": "(((?i)^[\\s]{0,5}[\\s\\S]))(\\*).*"
+				}
+			]
+		},
+		"constants": {
+			"patterns": [
+				{
+					"name": "constant.language.dds.dspf.andor",
+					"match": "(?<=((?<=^[\\s]{5}[A|a|\\s])[\\s\\S]{0}))(?i)(A|O)"
+                },
+                {
+                    "name": "constant.language.dds.dspf.n01",
+                    "match": "(?<=((?<=^[\\s]{5}[A|a|\\s])[\\s\\S]{1}))(?i)(N|\\s)[0-9]{2}"
+                },
+                {
+                    "name": "constant.language.dds.dspf.n02",
+                    "match": "(?<=((?<=^[\\s]{5}[A|a|\\s])[\\s\\S]{4}))(?i)(N|\\s)[0-9]{2}"
+                },
+                {
+                    "name": "constant.language.dds.dspf.n03",
+                    "match": "(?<=((?<=^[\\s]{5}[A|a|\\s])[\\s\\S]{7}))(?i)(N|\\s)[0-9]{2}"
+                }, 
+                {
+                    "name": "constant.language.dds.dspf.nameType",
+                    "match": "(?<=((?<=^[\\s]{5}[A|a|\\s])[\\s\\S]{10}))(?i)(R|H)"
+                },
+                {
+                    "name": "constant.language.dds.dspf.ref",
+                    "match": "(?<=((?<=^[\\s]{5}[A|a|\\s])[\\s\\S]{22}))(?i)(R)"
+                },
+                {
+                    "name": "constant.language.dds.dspf.len",
+                    "match": "(?<=((?<=^[\\s]{5}[A|a|\\s])[\\s\\S]{23}))[0-9|\\s]{5}"
+                },
+                {
+                    "name": "constant.language.dds.dspf.dataType",
+                    "match": "(?<=((?<=^[\\s]{5}[A|a|\\s])[\\s\\S]{28}))(?i)(A|D|E|F|G|I|J|L|M|N|O|S|T|W|X|Y|Z)"
+                },
+                {
+                    "name": "constant.language.dds.dspf.decpos",
+                    "match": "(?<=((?<=^[\\s]{5}[A|a|\\s])[\\s\\S]{29}))[0-9|\\s]{2}"
+                },
+                {
+                    "name": "constant.language.dds.dspf.usage",
+                    "match": "(?<=((?<=^[\\s]{5}[A|a|\\s])[\\s\\S]{31}))(?i)(O|I|B|H|M|P)"
+                },
+                {
+                    "name": "constant.language.dds.dspf.locline",
+                    "match": "(?<=((?<=^[\\s]{5}[A|a|\\s])[\\s\\S]{32}))([0-9]|\\s){3}"
+                },
+                {
+                    "name": "constant.language.dds.dspf.locpos",
+                    "match": "(?<=((?<=^[\\s]{5}[A|a|\\s])[\\s\\S]{35}))([0-9]|\\s){3}"
+                },
+                {
+                    "name": "constant.numeric.dds.dspf",
+                    "match": "\\b([0-9]+)\\b"
+                }
+			]
+		},
+		"keywords": {
+			"patterns": [
+				{
+					"name": "keyword.other.dds.dspf.spec",
+					"match": "(^[\\s]{5}[A|a])"
+				},
+				{
+					"name": "keyword.operator.dds.dspf",
+					"match": "\\+"
+				},
+                {
+                    "name": "keyword.other.dds.dspf.func", 
+                    "match": "((?i)(C(A|F)))[0-9]{2}"
+                },
+				{
+					"name": "keyword.other.dds.dspf.funcs",
+					"match": "(?i)(WRDWRAP|WINDOW|WDWTITLE|WDWBORDER|VLDCMDKEY|VALUES|VALNUM|USRRSTDSP|USRDSPMGT|USRDFN|USER|UNLOCK|TIMSEP|TIMFMT|TIME|TEXT|SYSNAME|SNGCHCFLD|SLNO|SFLSNGCHC|SFLSIZ|SFLSCROLL|SFLRTNSEL|SFLROLVAL|SFLRNA|SFLRCDNBR|SFLPGMQ|SFLPAG|SFLNXTCHG|SFLMSGRCD|SFLMSGKEY|SFLMSG|SFLMODE|SFLMLTCHC|SFLLIN|SFLINZ|SFLFOLD|SFLENTER|SFLEND|SFLDSPCTL|SFLDSP|SFLDROP|SFLDLT|SFLCTL|SFLCRRRN|SFLCSRPRG|SFLCLR|SFLCHCCTL|SETOFF|SETOF|RTNDTA|RTNCSRLOC|ROLLUP|ROLLDOWN|RMVWDW|RETLCKSTS|RETKEY|REFFLD|REF|RANGE|PUTRETAIN|PUTOVR|PULLDOWN|PSHBTNFLD|PSHBTNCHC|PROTECT|PRINT|PASSRCD|PAGEDOWN|PAGEUP|OVRDTA|OVRATR|OVERLAY|OPENPRT|NOCCSID|MSGLOC|MSGID|MSGCON|MSGALARM|MOUBTN|MNUCNL|MNUBARSW|MNUBARSEP|MNUBARDSP|MNUBARCHC|MNUBAR|MLTCHFLD|MDTOFF|MAPVAL|LOWER|LOGOUT|LOGINP|LOCK|KEEP|INZRCD|INZINP|INVITE|INDTXT|INDARA|HTML|HOME|HLPTITLE|HLPSEQ|HLPSCHIDX|HLPRTN|HLPRCD|HLPPNLGRP|HLPID|HLPFULL|HLPEXCLD|HLPDOC|HLPCMDKEY|HLPCLR|HLPBDY|HLPARA|HELP|GETRETAIN|FRCDTA|FLTPCN|FLTFIXDEC|FLDCSRPRG|ERRSFL|ERRMSG|ERRMSGID|ERASEINP|ERASE|ENTFLDATR|EDTWRD|EDTMSK|EDTCDE|DUP|DSPSIZ|DSPRL|DSPMOD|DSPATR|DLTEDT|DLTCHK|DFTVAL|DFT|DATSEP|DATFMT|DATE|CSRLOC|CSRINPONLY|COMP|COLOR|CNTFLD|CLEAR|CHRID|CHOICE|CHKMSGID|CHGINPDFT|CHECK|CHCUNAVAIL|CHCSLT|CHCCTL|CHCAVAIL|CHCACCEL|CHANGE|BLKFOLD|BLINK|BLANKS|AUTO|ASSUME|ALWROL|ALWGPH|ALTPAGEDWN|ALTPAGEUP|ALTNAME|ALTHELP|ALIAS|ALARM)"
+                },
+                {
+                    "name": "keyword.other.dds.dspf.funcs",
+                    "match": "\\b(?i)(CMP|CLRL|SFL)\\b"
+                }
+			]
+		},
+		"strings": {
+			"name": "string.quoted.single.dds.dspf",
+			"begin": "'",
+			"end": "(\n|')",
+			"patterns": [
+				{
+					"name": "constant.character.escape.dds.dspf",
+					"match": "\\\\."
+				}
+			]
+		}
+	},
+	"scopeName": "source.dds.dspf"
+}

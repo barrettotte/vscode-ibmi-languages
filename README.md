@@ -29,9 +29,7 @@ Also check out his repository https://github.com/NielsLiisberg/RPG-vsCode-Gettin
 
 - [x] Syntax highlighting for RPG III and RPG/400 - H,F,E,L,I,C,O specs
 - [x] Syntax highlighting for Control Language (CL)
-- [ ] Syntax highlighting for physical files
-- [ ] Syntax highlighting for logical files
-- [ ] Syntax highlighting for display files
+- [ ] Syntax highlighting for DDS files - physical, logical, display, and printer
 - [ ] Syntax highlighting for Machine Interface (MI)
 - [ ] Syntax highlighting for RPGLE fixed - H,F,D,I,C,O,P specs
 - [ ] Syntax highlighting for RPGLE free
@@ -39,9 +37,7 @@ Also check out his repository https://github.com/NielsLiisberg/RPG-vsCode-Gettin
 
 ## Stretch Features
 Every side project starts out fun, but later becomes stale, we'll see if I get here.
-
-- [ ] Syntax highlighting for embedded SQL (.sqlrpg, .sqlrpgle)
-- [ ] Syntax highlighting for printer files (.prtf, .prtf38)
+- [ ] Syntax highlighting for embedded SQL
 
 
 ## File Types (case insensitive)

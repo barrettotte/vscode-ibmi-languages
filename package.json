@@ -36,33 +36,44 @@
                 "configuration": "./configurations/cl.language-configuration.json"
             },
             {
-                "id": "dds",
+                "id": "dds.dspf",
+                "aliases": [
+                    "DSPF"
+                ],
+                "extensions": [
+                    ".DSPF",
+                    ".DSPF38",
+                    ".dspf",
+                    ".dspf38"
+                ],
+                "configuration": "./configurations/dds.language-configuration.json"
+            },
+            {
+                "id": "dds.lf",
+                "aliases": [
+                    "LF"
+                ],
+                "extensions": [
+                    ".LF",
+                    ".LF38",
+                    ".lf",
+                    ".lf38"
+                ],
+                "configuration": "./configurations/dds.language-configuration.json"
+            },
+            {
+                "id": "dds.pf",
                 "aliases": [
                     "DDS",
-                    "DSPF",
-                    "LF",
-                    "PF",
-                    "PRTF"
+                    "PF"
                 ],
                 "extensions": [
                     ".DDS",
                     ".PF",
                     ".PF38",
-                    ".LF",
-                    ".LF38",
-                    ".DSPF",
-                    ".DSPF38",
-                    ".PRTF",
-                    ".PRTF38",
                     ".dds",
                     ".pf",
-                    ".pf38",
-                    ".lf",
-                    ".lf38",
-                    ".dspf",
-                    ".dspf38",
-                    ".prtf",
-                    ".prtf38"
+                    ".pf38"
                 ],
                 "configuration": "./configurations/dds.language-configuration.json"
             },
@@ -91,9 +102,19 @@
                 "path": "./syntaxes/cl.tmLanguage.json"
             },
             {
-                "language": "dds",
-                "scopeName": "source.dds",
-                "path": "./syntaxes/dds.tmLanguage.json"
+                "language": "dds.dspf",
+                "scopeName": "source.dds.dspf",
+                "path": "./syntaxes/dds.dspf.tmLanguage.json"
+            },
+            {
+                "language": "dds.lf",
+                "scopeName": "source.dds.lf",
+                "path": "./syntaxes/dds.lf.tmLanguage.json"
+            },
+            {
+                "language": "dds.pf",
+                "scopeName": "source.dds.pf",
+                "path": "./syntaxes/dds.pf.tmLanguage.json"
             },
             {
                 "language": "rpg",

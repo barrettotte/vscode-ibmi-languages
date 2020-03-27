@@ -1,0 +1,4 @@
+     A* Test display file
+      *
+     AAN01n02n03R RECORD1   R12345J99B123654CF03(03 'EXIT')
+     A          R #SFLRCD                   TEXT('Subfile record.')

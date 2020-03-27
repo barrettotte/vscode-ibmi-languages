@@ -244,7 +244,6 @@
 					"name": "constant.language.rpg.c.level",
 					"match": "(?<=((?<=^[\\s]{5}[c|C])[\\s\\S]{0}))(?i)((L(1|2|3|4|5|6|7|8|9|O|R))|SR|AN|OR)"
 				},
-				
 				{
 					"name": "constant.language.rpg.c.n01",
 					"match": "(?<=((?<=^[\\s]{5}[c|C])[\\s\\S]{2}))((i?)(N|\\s)((L(1|2|3|4|5|6|7|8|9|O|R))|(K(A|B|C|D|E|F|G|H|I|J|K|L|M|N|P|Q|R|S|T|U|V|W|X|Y))|MR|RT|(H(1|2|3|4|5|6|7|8|9))|(O(A|B|C|D|E|F|G|V))|(U(1|2|3|4|5|6|7|8))))"
