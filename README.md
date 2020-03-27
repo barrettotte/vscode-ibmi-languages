@@ -72,11 +72,11 @@ See **screenshots/** for more examples of syntax highlighting.
 
 
 #### Data Description Specification - Physical File (DDS)
-[![PF](https://github.com/barrettotte/vscode-ibmi-languages/blob/master/screenshots/pf.png)](https://github.com/barrettotte/vscode-ibmi-languages/blob/master/screenshots/pi.png)
+[![PF](https://github.com/barrettotte/vscode-ibmi-languages/blob/master/screenshots/pf.PNG)](https://github.com/barrettotte/vscode-ibmi-languages/blob/master/screenshots/pf.PNG)
 
 
 #### Machine Interface (MI)
-[![MI](https://github.com/barrettotte/vscode-ibmi-languages/blob/master/screenshots/mi.png)](https://github.com/barrettotte/vscode-ibmi-languages/blob/master/screenshots/mi.png)
+[![MI](https://github.com/barrettotte/vscode-ibmi-languages/blob/master/screenshots/mi.PNG)](https://github.com/barrettotte/vscode-ibmi-languages/blob/master/screenshots/mi.PNG)
 
 
 ## Publishing
