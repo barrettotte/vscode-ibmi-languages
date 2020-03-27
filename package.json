@@ -91,6 +91,17 @@
                 "configuration": "./configurations/dds.language-configuration.json"
             },
             {
+                "id": "mi",
+                "aliases": [
+                    "MI"
+                ],
+                "extensions": [
+                    ".MI",
+                    ".mi"
+                ],
+                "configuration": "./configurations/mi.language-configuration.json"
+            },
+            {
                 "id": "rpg",
                 "aliases": [
                     "RPG",
@@ -135,6 +146,11 @@
                 "path": "./syntaxes/dds.prtf.tmLanguage.json"
             },
             {
+                "language": "mi",
+                "scopeName": "source.mi",
+                "path": "./syntaxes/mi.tmLanguage.json"
+            },
+            {
                 "language": "rpg",
                 "scopeName": "source.rpg",
                 "path": "./syntaxes/rpg.tmLanguage.json"
@@ -155,6 +171,7 @@
         "DDS",
         "DSPF",
         "MI",
+        "MACHINE INTERFACE",
         "RPGLE",
         "ISERIES"
     ],

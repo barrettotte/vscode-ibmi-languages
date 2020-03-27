@@ -1,0 +1,246 @@
+/********************************************************************/
+/********************************************************************/
+/*                                                                  */
+/*     Program Name: MISC1                                          */
+/*                                                                  */
+/*     Programming Language: MI                                     */
+/*                                                                  */
+/*     Description: This program materializes the objects found     */
+/*                  within the QTEMP library (context).  For each   */
+/*                  object found, a message is sent to the          */
+/*                  interactive user message queue showing the      */
+/*                  name of the object and the object's type and    */
+/*                  subtype.                                        */
+/*                                                                  */
+/*                  Several new MI instructions are used by this    */
+/*                  program:                                        */
+/*                                                                  */
+/*                  1. Materialize Context (MATCTX)                 */
+/*                  2. Modify Automatic Storage (MODASA)            */
+/*                  3. Divide (DIV)                                 */
+/*                  4. Convert Hex to Character (CVTHC)             */
+/*                  5. Override Program Attributes (OVRPGATR)       */
+/*                                                                  */
+/*                                                                  */
+/*     Header Files Included: None                                  */
+/*                                                                  */
+/* From: https://www.ibm.com/support/knowledgecenter                */
+/*       /ssw_ibm_i_72/rzatk/MIcompro.htm                           */
+/*                                                                  */
+/********************************************************************/
+/* Entry point                                                     */
+
+ENTRY * EXT;
+
+/* Declare layout of Process Communications Object (PCO)           */
+
+/* The PCO is a control area that is unique to each job on the     */
+/* system.  Within the PCO, there are two data elements that can   */
+/* be used.  The first is a space pointer to the system entry      */
+/* point table (SEPT), the second is the address of the QTEMP      */
+/* library.  The use of any other data element in the PCO is NOT   */
+/* supported.                                                      */
+
+DCL DD PCO CHAR(80) BASPCO;
+ DCL SPCPTR SEPT@             DEF(PCO)        POS( 1);
+ DCL SYSPTR QTEMP@            DEF(PCO)        POS(65);
+
+/* The SEPT is an array of system pointers that address IBM        */
+/* programs in QSYS.  Within this array of pointers, some of the   */
+/* offsets represent fixed (upward compatible) assignments.  All   */
+/* IBM i APIs, for instance, are fixed at certain offsets within   */
+/* the SEPT and you can call these APIs directly via the SEPT.     */
+/* Calling APIs in this way avoids having to resolve to the API    */
+/* (that is, performance is improved) and prevents someone from    */
+/* placing their version of the API earlier in the library list    */
+/* than the IBM-supplied API (that is, avoids counterfeits).       */
+/* All APIs, and their offsets, can be found in the source member  */
+/* QLIEPTI of file H in the optionally installed QSYSINC library.  */
+/* You should only use the SEPT for those programs identified in   */
+/* member QLIEPTI.  The use of any other SEPT offsets is NOT       */
+/* supported.                                                      */
+
+/* Because the offset values in member QLIEPTI are oriented to the */
+/* C language, they are assuming a base of 0.  Because MI arrays   */
+/* use a default base of 1, we will declare the SEPT array with    */
+/* an explicit base of 0.  Because the array can grow over time    */
+/* (and we don't necessarily want to have to change the upper      */
+/* bound every release), we'll just define the array as having 2   */
+/* elements and use the OVRPGATR instruction later in the program  */
+/* to instruct the translator to ignore the array bounds when      */
+/* referring to the array.  For example, later we will use         */
+/* SEPT(4267) to call the Send Nonprogram Message (QMHSNDM) API.   */
+
+DCL SYSPTR SEPT(0:1) BAS(SEPT@);  /* use Base 0 to match QLIEPTI   */
+
+/* Declare template for Materialize Context (MATCTX)               */
+
+DCL DD MATCTXOPTS CHAR(44);
+ DCL DD MATCTXCTL    CHAR( 2) DEF(MATCTXOPTS) POS( 1) INIT(X'0500');
+ DCL DD MATCTXSELCTL CHAR(42) DEF(MATCTXOPTS) POS( 3);
+
+/* Declare Small Receiver for initial MATCTX                       */
+
+DCL DD S_RECEIVER CHAR(8) BDRY(16);
+ DCL DD S_BYTPRV     BIN( 4)  DEF(S_RECEIVER) POS( 1) INIT(8);
+ DCL DD S_BYTAVL     BIN( 4)  DEF(S_RECEIVER) POS( 5);
+DCL SPCPTR S_RECEIVER@ INIT(S_RECEIVER);
+
+/* Declare Large Receiver Layout for second MATCTX                 */
+
+DCL DD L_RECEIVER    CHAR(129) BAS(L_RECEIVER@);
+ DCL DD L_BYTPRV     BIN( 4)  DEF(L_RECEIVER) POS( 1);
+ DCL DD L_BYTAVL     BIN( 4)  DEF(L_RECEIVER) POS( 5);
+ DCL DD L_CONTEXT    CHAR(32) DEF(L_RECEIVER) POS( 9);
+  DCL DD L_OBJ_TYPE  CHAR( 1) DEF(L_CONTEXT)  POS( 1);
+  DCL DD L_OBJ_STYPE CHAR( 1) DEF(L_CONTEXT)  POS( 2);
+  DCL DD L_OBJ_NAME  CHAR(30) DEF(L_CONTEXT)  POS( 3);
+ DCL DD L_CTX_OPTS   CHAR( 4) DEF(L_RECEIVER) POS(41);
+ DCL DD L_RCV_OPTS   CHAR( 4) DEF(L_RECEIVER) POS(45);
+ DCL DD L_SPC_SIZ    BIN( 4)  DEF(L_RECEIVER) POS(49);
+ DCL DD L_SPC_IVAL   CHAR( 1) DEF(L_RECEIVER) POS(53);
+ DCL DD L_PERF_CLS   CHAR( 4) DEF(L_RECEIVER) POS(54);
+ DCL DD *            CHAR( 7) DEF(L_RECEIVER) POS(58);
+ DCL DD *            CHAR(16) DEF(L_RECEIVER) POS(65);
+ DCL SYSPTR L_ACC_GROUP;
+ DCL DD L_EXT_ATTR   CHAR( 1) DEF(L_RECEIVER) POS(81);
+ DCL DD *            CHAR( 7) DEF(L_RECEIVER) POS(82);
+ DCL DD L_TIMESTAMP  CHAR( 8) DEF(L_RECEIVER) POS(89);
+ DCL DD L_ENTRY      CHAR(32) DEF(L_RECEIVER) POS(97);
+
+/* Individual object entry layout                                  */
+
+DCL DD OBJ_ENTRY     CHAR(32) BAS(OBJ_ENTRY@);
+ DCL DD OBJ_INFO_X   CHAR( 2) DEF(OBJ_ENTRY)  POS( 1);
+  DCL DD OBJ_TYPE_X  CHAR( 1) DEF(OBJ_INFO_X) POS( 1);
+  DCL DD OBJ_STYPE_X CHAR( 1) DEF(OBJ_INFO_X) POS( 2);
+ DCL DD OBJ_NAME     CHAR(30) DEF(OBJ_ENTRY)  POS( 3);
+
+/* Define basing pointers:                                         */
+
+DCL SPCPTR L_RECEIVER@;
+DCL SPCPTR OBJ_ENTRY@;
+
+/* Define various working variables                                */
+
+DCL DD SIZE          BIN( 4);    /* number of objects materialized */
+DCL DD NUM_DONE      BIN( 4)     /* number of objects processed    */
+                       AUTO INIT(0);
+/* Define needed parameters for QMHSNDM API                        */
+
+DCL DD MSG_ID        CHAR (7) INIT("       ");
+DCL SPCPTR MSG_ID@   INIT(MSG_ID);
+DCL DD MSG_FILE      CHAR(20) INIT("                    ");
+DCL SPCPTR MSG_FILE@ INIT(MSG_FILE);
+DCL DD MSG_TEXT      CHAR(57);
+ DCL DD *            CHAR( 8) DEF(MSG_TEXT)   POS( 1)
+                       INIT("OBJECT: ");
+ DCL DD OBJ_NAME_T   CHAR(30) DEF(MSG_TEXT)   POS( 9);
+ DCL DD *            CHAR(15) DEF(MSG_TEXT)   POS(39)
+                       INIT(" TYPE/SUBTYPE: ");
+ DCL DD OBJ_INFO_C   CHAR( 4) DEF(MSG_TEXT)   POS(54);
+  DCL DD OBJ_TYPE_C  CHAR( 2) DEF(OBJ_INFO_C) POS( 1);
+  DCL DD OBJ_STYPE_C CHAR( 2) DEF(OBJ_INFO_C) POS( 3);
+DCL SPCPTR MSG_TEXT@ INIT(MSG_TEXT);
+DCL DD MSG_SIZE      BIN( 4)  INIT(57);
+DCL SPCPTR MSG_SIZE@ INIT(MSG_SIZE);
+DCL DD MSG_TYPE      CHAR(10) INIT("*INFO     ");
+DCL SPCPTR MSG_TYPE@ INIT(MSG_TYPE);
+DCL DD MSG_QS        CHAR(20) INIT("*REQUESTER          ");
+DCL SPCPTR MSG_QS@   INIT(MSG_QS);
+DCL DD MSG_QSN       BIN( 4)  INIT(1);
+DCL SPCPTR MSG_QSN@  INIT(MSG_QSN);
+DCL DD REPLY_Q       CHAR(20) INIT("                    ");
+DCL SPCPTR REPLY_Q@  INIT(REPLY_Q);
+DCL DD MSG_KEY       CHAR( 4);
+DCL SPCPTR MSG_KEY@  INIT(MSG_KEY);
+DCL DD ERR_COD       BIN( 4)  INIT(0);
+DCL SPCPTR ERR_COD@  INIT(ERR_COD);
+DCL OL QMHSNDMOL (MSG_ID@, MSG_FILE@, MSG_TEXT@, MSG_SIZE@,
+                  MSG_TYPE@, MSG_QS@, MSG_QSN@, REPLY_Q@,
+                  MSG_KEY@, ERR_COD@) ARG;
+
+/* Start the instruction stream                                    */
+
+/* Materialize the amount of storage needed to store object info   */
+
+            MATCTX     S_RECEIVER@, QTEMP@, MATCTXOPTS;
+
+/* If no objects are in the library, then exit                     */
+
+            CMPNV(B)   S_BYTAVL, 96 / EQ(DONE);
+
+/* Allocate the necessary storage (we could also have used CRTS
+   to allocate the storage and a SPCPTR to the space for the
+   large receiver variable)                                         */
+
+            MODASA     L_RECEIVER@, S_BYTAVL;
+
+/* Set the bytes provided field to indicate the allocated storage  */
+
+            CPYNV      L_BYTPRV, S_BYTAVL;
+
+/* Materialize the objects within the library                      */
+
+            MATCTX     L_RECEIVER@, QTEMP@, MATCTXOPTS;
+
+/* Calculate how many objects were returned:                       */
+/* 1. Find the lower of bytes provided and bytes available         */
+/*    (L_BYTPRV and L_BYTAVL) as the number of objects could have  */
+/*    changed since the first materialize                          */
+/* 2. Subtract the size of the fixed MATCTX header (96)            */
+/* 3. Divide the remainder by the size of each entry returned      */
+
+            CMPNV(B)   L_BYTPRV, L_BYTAVL / HI(ITS_AVL);
+            CPYNV      SIZE, L_BYTPRV;
+            B          CONTINUE;
+ITS_AVL:    CPYNV      SIZE, L_BYTAVL;
+CONTINUE:   SUBN(SB)   SIZE, 96 / ZER(DONE);
+            DIV        SIZE, SIZE, 32;
+
+/* Address the first object returned                               */
+
+            SETSPP     OBJ_ENTRY@, L_ENTRY;
+
+/* Loop through all materialized entries                           */
+
+MORE:
+
+/* Convert the hex object type and subtype to character form       */
+
+            CVTHC      OBJ_INFO_C, OBJ_INFO_X;
+
+/* Copy the object name to the message variable                    */
+
+            CPYBLA     OBJ_NAME_T, OBJ_NAME;
+
+/* Unconstrain the array bounds (at compile time)                  */
+
+            OVRPGATR   1,3;
+
+/* Send a message to caller's msg queue containing the object info */
+
+            CALLX      SEPT(4267), QMHSNDMOL, *;
+
+/* resume normal array constraint                                  */
+
+            OVRPGATR   1,4;
+
+/* and move on to the next entry                                   */
+
+            ADDN(S)    NUM_DONE, 1;
+            ADDSPP     OBJ_ENTRY@, OBJ_ENTRY@, 32;
+            CMPNV(B)   NUM_DONE, SIZE / LO(MORE);
+
+/* When all entries are processed, end the program.                */
+/*                                                                 */
+/* Note that this program may not actually display all objects     */
+/* in QTEMP.  If L_BYTAVL is greater than L_BYTPRV, additional     */
+/* objects were inserted into QTEMP between the time of the        */
+/* "small" MATCTX and the "large" MATCTX.  The processing of these */
+/* additional objects is not addressed in this program and is      */
+/* the responsibility of the user of this program.                 */
+/*                                                                 */
+
+DONE:       RTX        *;
+            PEND;
