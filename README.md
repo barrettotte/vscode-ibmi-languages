@@ -71,6 +71,17 @@ See **screenshots/** for more examples of syntax highlighting.
 * ```vsce package```
 * ```vsce publish```
 
+
+## Known Bugs
+
+#### RPG/400:
+C Spec, EQ field extends to comment space if comment starts with numeric.
+Suggested: regex for numeric literal highlighting to not extend past column 60
+```     
+     C           PCVKEY    SETLLCP1107C                  8585=1 <==> FD
+```
+
+
 ## References
 * Liam's Flight400 project (great for testing) - https://github.com/worksofliam/flight400
 * RPG/400 - https://www.ibm.com/support/knowledgecenter/SSAE4W_9.6.0/com.ibm.etools.iseries.langref.doc/evferlsh02.htm#ToC
