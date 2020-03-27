@@ -49,6 +49,17 @@
                 "configuration": "./configurations/dds.language-configuration.json"
             },
             {
+                "id": "dds.icff",
+                "aliases": [
+                    "ICFF"
+                ],
+                "extensions": [
+                    ".ICFF",
+                    ".icff"
+                ],
+                "configuration": "./configurations/dds.language-configuration.json"
+            },
+            {
                 "id": "dds.lf",
                 "aliases": [
                     "LF"
@@ -129,6 +140,11 @@
                 "language": "dds.dspf",
                 "scopeName": "source.dds.dspf",
                 "path": "./syntaxes/dds.dspf.tmLanguage.json"
+            },
+            {
+                "language": "dds.icff",
+                "scopeName": "source.dds.icff",
+                "path": "./syntaxes/dds.icff.tmLanguage.json"
             },
             {
                 "language": "dds.lf",

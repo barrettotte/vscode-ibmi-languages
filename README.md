@@ -26,11 +26,10 @@ Also check out his repository https://github.com/NielsLiisberg/RPG-vsCode-Gettin
 
 ## Features
 
-
 - [x] Syntax highlighting for RPG III and RPG/400 - H,F,E,L,I,C,O specs
 - [x] Syntax highlighting for Control Language (CL)
-- [x] Syntax highlighting for DDS files - physical, logical, display, and printer
-- [ ] Syntax highlighting for Machine Interface (MI)
+- [x] Syntax highlighting for DDS files - physical, logical, display, printer, and ICF
+- [ ] Syntax highlighting for some Machine Interface (MI) -> could not find complete docs for all syntax
 - [ ] Syntax highlighting for RPGLE fixed - H,F,D,I,C,O,P specs
 - [ ] Syntax highlighting for RPGLE free
 
@@ -44,19 +43,21 @@ Every side project starts out fun, but later becomes stale, we'll see if I get h
 Generally I lumped legacy file types together out of convenience.
 If you want different syntax highlighting for a CLP vs CLLE file, I'm sorry to disappoint you.
 
-| Extension(s)                  | Description                |
-| ----------------------------- | -------------------------- |
-| .cl, .clp, .clp38 .clle       | Control Language           |
-| .dspf, .dspf38                | DDS Display file           |
-| .lf, .lf38                    | DDS Logical file           |
-| .pf, .pf38, .dds              | DDS Physical file          |
-| .prtf, .prtf38                | DDS Printer file           |
-| .rpg, .rpg38, .sqlrpg         | RPG III + RPG/400          |
-| .rpgle, .sqlrpgle             | RPGLE and SQLRPGLE         |
+| Extension(s)                  | Description        |
+| ----------------------------- | ------------------ |
+| .cl, .clp, .clp38 .clle       | Control Language   |
+| .dspf, .dspf38                | DDS Display file   |
+| .icff                         | DDS ICF file       |
+| .lf, .lf38                    | DDS Logical file   |
+| .pf, .pf38, .dds              | DDS Physical file  |
+| .prtf, .prtf38                | DDS Printer file   |
+| .rpg, .rpg38, .sqlrpg         | RPG/400            |
+| .rpgle, .sqlrpgle             | RPGLE and SQLRPGLE |
 
 
 ## Screenshots
 See **screenshots/** for more examples of syntax highlighting.
+
 
 #### RPG/400
 [![RPG/400](https://github.com/barrettotte/vscode-ibmi-languages/blob/master/screenshots/rpg400.png)](https://github.com/barrettotte/vscode-ibmi-languages/blob/master/screenshots/rpg400.png)
@@ -64,6 +65,14 @@ See **screenshots/** for more examples of syntax highlighting.
 
 #### Control Language (CL)
 [![CL](https://github.com/barrettotte/vscode-ibmi-languages/blob/master/screenshots/cl.png)](https://github.com/barrettotte/vscode-ibmi-languages/blob/master/screenshots/cl.png)
+
+
+#### Data Description Specification - Physical File (DDS)
+[![PF](https://github.com/barrettotte/vscode-ibmi-languages/blob/master/screenshots/pf.png)](https://github.com/barrettotte/vscode-ibmi-languages/blob/master/screenshots/pi.png)
+
+
+#### Machine Interface (MI)
+[![MI](https://github.com/barrettotte/vscode-ibmi-languages/blob/master/screenshots/mi.png)](https://github.com/barrettotte/vscode-ibmi-languages/blob/master/screenshots/mi.png)
 
 
 ## Publishing

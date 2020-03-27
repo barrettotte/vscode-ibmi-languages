@@ -101,7 +101,7 @@
                 {
                     "name": "keyword.other.dds.dspf.funcs",
                     "match": "\\b(?i)(CMP|CLRL|SFL)\\b"
-                }
+				}
 			]
 		},
 		"strings": {
