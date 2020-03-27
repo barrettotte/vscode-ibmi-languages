@@ -29,9 +29,13 @@ Also check out his repository https://github.com/NielsLiisberg/RPG-vsCode-Gettin
 - [x] Syntax highlighting for RPG III and RPG/400 - H,F,E,L,I,C,O specs
 - [x] Syntax highlighting for Control Language (CL)
 - [x] Syntax highlighting for DDS files - physical, logical, display, printer, and ICF
-- [ ] Syntax highlighting for some Machine Interface (MI) -> could not find complete docs for all syntax
+- [x] Syntax highlighting for some Machine Interface (MI) - **see below**
 - [ ] Syntax highlighting for RPGLE fixed - H,F,D,I,C,O,P specs
 - [ ] Syntax highlighting for RPGLE free
+
+
+**If anyone stumbles across this and has any awesome material for machine interface, please send me an email.**
+I really only made the bare basics for MI and I'd love to add to it
 
 
 ## Stretch Features
@@ -79,6 +83,23 @@ See **screenshots/** for more examples of syntax highlighting.
 * ```npm install -g vsce```
 * ```vsce package```
 * ```vsce publish```
+
+
+## Changelog
+
+#### 0.1.0 - Base extension
+* Base RPG/400 and CL highlighting
+
+
+#### 0.2.0 - Physical/Logical files and misc fixes
+* Logical and physical file highlighting
+* Misc regular expression fixes to RPG/400
+
+
+#### 0.3.0 - DSPF, ICFF, basic MI, and more fixes
+* Misc regular expression fixes for RPG/400 and CL
+* Display and ICF DDS file highlighting
+* Basic Machine Interface (MI) highlighting
 
 
 ## Known Bugs
