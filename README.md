@@ -29,7 +29,7 @@ Also check out his repository https://github.com/NielsLiisberg/RPG-vsCode-Gettin
 
 - [x] Syntax highlighting for RPG III and RPG/400 - H,F,E,L,I,C,O specs
 - [x] Syntax highlighting for Control Language (CL)
-- [ ] Syntax highlighting for DDS files - physical, logical, display, and printer
+- [x] Syntax highlighting for DDS files - physical, logical, display, and printer
 - [ ] Syntax highlighting for Machine Interface (MI)
 - [ ] Syntax highlighting for RPGLE fixed - H,F,D,I,C,O,P specs
 - [ ] Syntax highlighting for RPGLE free
@@ -59,7 +59,7 @@ If you want different syntax highlighting for a CLP vs CLLE file, I'm sorry to d
 See **screenshots/** for more examples of syntax highlighting.
 
 #### RPG/400
-[![RPG/400](https://github.com/barrettotte/vscode-ibmi-languages/blob/master/screenshots/cl.png)](https://github.com/barrettotte/vscode-ibmi-languages/blob/master/screenshots/cl.png)
+[![RPG/400](https://github.com/barrettotte/vscode-ibmi-languages/blob/master/screenshots/rpg400.png)](https://github.com/barrettotte/vscode-ibmi-languages/blob/master/screenshots/rpg400.png)
 
 
 #### Control Language (CL)
@@ -76,6 +76,7 @@ See **screenshots/** for more examples of syntax highlighting.
 
 #### RPG/400:
 C Spec, EQ field extends to comment space if comment starts with numeric.
+
 Suggested: regex for numeric literal highlighting to not extend past column 60
 ```     
      C           PCVKEY    SETLLCP1107C                  8585=1 <==> FD
