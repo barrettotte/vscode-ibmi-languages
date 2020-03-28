@@ -40,7 +40,7 @@ I really only made the bare basics for MI and I'd love to add to it
 
 ## Stretch Features
 Every side project starts out fun, but later becomes stale, we'll see if I get here.
-- [ ] Syntax highlighting for embedded SQL
+- [ ] Syntax highlighting for embedded SQL - using actual DB2 grammar
 
 
 ## File Types (case insensitive)
@@ -111,6 +111,13 @@ Suggested: regex for numeric literal highlighting to not extend past column 60
 ```     
      C           PCVKEY    SETLLCP1107C                  8585=1 <==> FD
 ```
+
+
+## Future Improvements
+* CL:   Label definition
+* DSPF: CHECK parms as constants
+* DSPF: DPATR parms as constants
+* DSPF: COLOR parms as constants
 
 
 ## References
