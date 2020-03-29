@@ -116,6 +116,7 @@
                 "id": "rpg",
                 "aliases": [
                     "RPG",
+                    "SQLRPG",
                     "RPG/400",
                     "RPG38"
                 ],
@@ -128,6 +129,20 @@
                     ".sqlrpg"
                 ],
                 "configuration": "./configurations/rpg.language-configuration.json"
+            },
+            {
+                "id": "rpgle",
+                "aliases": [
+                    "RPGLE",
+                    "SQLRPGLE"
+                ],
+                "extensions": [
+                    ".RPGLE",
+                    ".SQLRPGLE",
+                    ".rpgle",
+                    ".sqlrpgle"
+                ],
+                "configuration": "./configurations/rpgle.language-configuration.json"
             }
         ],
         "grammars": [
@@ -170,6 +185,11 @@
                 "language": "rpg",
                 "scopeName": "source.rpg",
                 "path": "./syntaxes/rpg.tmLanguage.json"
+            },
+            {
+                "language": "rpgle",
+                "scopeName": "source.rpgle",
+                "path": "./syntaxes/rpgle.tmLanguage.json"
             }
         ]
     },
@@ -178,6 +198,7 @@
     },
     "keywords": [
         "RPG",
+        "RPGLE",
         "IBMi",
         "AS/400",
         "SQLRPG",
@@ -188,7 +209,6 @@
         "DSPF",
         "MI",
         "MACHINE INTERFACE",
-        "RPGLE",
         "ISERIES"
     ],
     "license": "MIT",

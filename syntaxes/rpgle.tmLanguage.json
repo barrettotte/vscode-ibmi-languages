@@ -1,0 +1,373 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "RPGLE",
+	"patterns": [
+		{
+			"include": "#rpglecommon"
+		},
+		{
+			"include": "#fixedformat"
+		},
+		{
+			"include": "#sql"
+		}
+	],
+	"repository": {
+		"comments": {
+			"patterns": [
+				{
+					"name": "comment.line.rpgle.fixed",
+					"match": "(?<=((?<=^[\\s]{5}((H|h|F|f|D|d|I|i|C|c|O|o|P|p))).{74})).*"
+				},
+				{
+					"name": "comment.line.rpgle.fixed",
+					"begin": "(?i)^[\\s]{0,5}.[*]",
+					"end": "\n"
+				},
+				{
+					"name": "comment.line.rpg.fixed.precompiler",
+					"begin": "(?i)^[\\s]{0,5}.[/|\\+](EJECT|COPY|TITLE|SPACE|FREE|END-FREE)",
+					"end": "\n"
+				},
+				{
+					"name": "comment.line.rpgle.fixed",
+					"match": "[*]{2}(?i)(free).*"
+				},
+				{
+					"name": "comment.line.rpgle.free",
+					"match": "(\/\/).*"
+				}
+			]
+		},
+		"constants": {
+			"patterns": [
+				{
+					"name": "constant.language.rpgle.indicator",
+					"match": "(?i)[*]\\b(IN)([0-9]{0,2})\\b"
+				},
+				{
+                    "name": "constant.other.rpgle",
+                    "match": "(?i)[*][A-Za-z]+"
+				},
+				{
+					"name": "constant.numeric.rpgle",
+					"match": "\\b\\d+\\.?\\d*?\\b"
+				}
+			]
+		},
+		"rpglecommon": {
+			"patterns": [
+				{
+					"include": "#comments"
+				},
+				{
+					"include": "#constants"
+				},
+				{
+					"include": "#strings"
+				},
+				{
+					"include": "#keywords"
+				}
+			]
+		},
+		"fixedformat": {
+			"patterns": [
+				{
+					"name": "rpgle.fixed.h",
+					"begin": "(?<=^\\s{5}(H|h))",
+					"end": "(?<=\\n)",
+					"patterns": [
+						{
+							"name": "entity.name.function.rpgle.fixed.h.keywords",
+							"match": "\\b(?i)(VALIDATE|USRPRF|TIMFMT|THREAD|TEXT|SRTSEQ|PRFDTA|OPTION|OPTIMIZE|OPENOPT|NOMAIN|MAIN|LANGID|INTPREC|INDENT|GENLVL|FTRANS|FORMSALIGN|FLTDIV|FIXNBR|EXTBININT|EXPROPTS|ENBPFRCOL|DFTNAME|DFTACTGRP|DECEDIT|DEBUG|DATFMT|DATEDIT|CVTOPT|DCLOPT|CURSYM|COPYRIGHT|CCSIDCVT|CCSID|COPYNEST|BNDDIR|AUT|ALWNULL|ALTSEQ|ALLOC|ACTGRP)\\b"
+						},
+						{
+							"include": "#rpglecommon"
+						}
+					]
+				},
+				{
+					"name": "rpgle.fixed.f",
+					"begin": "(?<=^\\s{5}(F|f))",
+					"end": "(?<=\\n)",
+					"patterns": [
+						{
+							"name": "constant.language.rpgle.fixed.f.type",
+							"match": "(?=(?<=((?<=^[\\s]{5}[F|f]).{10})))(?i)(I|O|U|C)"
+						},
+						{
+							"name": "constant.language.rpgle.fixed.f.designation",
+							"match": "(?=(?<=((?<=^[\\s]{5}[F|f]).{11})).{3})(?i)(P|S|R|T|F)"
+						},
+						{
+							"name": "constant.language.rpgle.fixed.f.eof",
+							"match": "(?=(?<=((?<=^[\\s]{5}[F|f]).{12})).{2})(?i)(E)"
+						},
+						{
+							"name": "constant.language.rpgle.fixed.f.addition",
+							"match": "(?=(?<=((?<=^[\\s]{5}[F|f]).{13})).{2})(?i)(A)"
+						},
+						{
+							"name": "constant.language.rpgle.fixed.f.sequence",
+							"match": "(?=(?<=((?<=^[\\s]{5}[F|f]).{14})).{2})(?i)(A|D)"
+						},
+						{
+							"name": "constant.language.rpgle.fixed.f.format",
+							"match": "(?=(?<=((?<=^[\\s]{5}[F|f]).{15})).{2})(?i)(E|F)"
+						},
+						{
+							"name": "constant.language.rpgle.fixed.fi.recordlen",
+							"match": "(?<=(?<=(?<=^[\\s]{5}[F|f]).{10}).{5}(F|f))([0-9]|\\s){5}"
+						},
+						{
+							"name": "constant.language.rpgle.fixed.f.limitproc",
+							"match": "(?<=(?<=(?<=^[\\s]{5}[F|f]).{10}).{5}(F|f|E|e).{5})(?i)(L)"
+						},
+						{
+							"name": "constant.language.rpgle.fixed.fi.keyfieldlen",
+							"match": "(?<=(?<=(?<=^[\\s]{5}[F|f]).{10}).{5}(F|f).{6})(?i)([0-9]|\\s){5}"
+						},
+						{
+							"name": "constant.language.rpgle.fixed.f.addrtype",
+							"match": "(?<=(?<=(?<=^[\\s]{5}[F|f]).{10}).{5}(F|f|E|e).{11})(?i)(A|D|F|G|K|P|T|Z)"
+						},
+						{
+							"name": "constant.language.rpgle.fixed.fi.fileorg",
+							"match": "(?<=(?<=(?<=^[\\s]{5}[F|f]).{10}).{5}(F|f).{12})(?i)(I|T)"
+						},
+						{
+							"name": "constant.language.rpgle.fixed.f.device",
+							"match": "(?<=(?<=(?<=^[\\s]{5}[F|f]).{10}).{5}(F|f|E|e).{13})(?i)(PRINTER|DISK|WORKSTN|SPECIAL|SEQ)"
+						},
+						{
+							"name": "entity.name.function.rpgle.fixed.f",
+							"match": "\\b(?i)(WORKSTN|USROPN|USAGE|TIMFMT|TEMPLATE|STATIC|SPECIAL|SLN|SFILE|SEQ|SAVEIND|SAVEDS|RENAME|RECNO|RAFDATA|QUALIFIED|PRTCTL|PRINTER|PREFIX|PLIST|PGMNAME|PASS|OFLIND|MAXDEV|LIKEFILE|KEYLOC|KEYED|INFSR|INFDS|INDDS|INCLUDE|IGNORE|HANDLER|FORMOFL|FORMLEN|EXTMBR|EXTIND|EXTFILE|EXTDESC|DISK|DEVID|DATFMT|DATA|COMMIT|BLOCK|ALIAS)\\b"
+						},
+						{
+							"include": "#rpglecommon"
+						}
+					]
+				},
+				{
+					"name": "rpgle.fixed.d",
+					"begin": "(?<=^\\s{5}(D|d))",
+					"end": "(?<=\\n)",
+					"patterns": [
+						{
+							"name": "constant.other.rpgle.fixed.d.external",
+							"match": "(?<=((?<=^[\\s]{5}[D|d]).{15}))(?i)(E)"
+						},
+						{
+							"name": "constant.other.rpgle.fixed.d.dstype",
+							"match": "(?<=((?<=^[\\s]{5}[D|d]).{16}))(?i)(S|U)"
+						},
+						{
+							"name": "constant.other.rpgle.fixed.d.dectype",
+							"match": "(?<=((?<=^[\\s]{5}[D|d]).{17}))(?i)(DS|PI|PR|(S\\s)|(C\\s))"
+						},
+						{
+							"name": "constant.other.rpgle.fixed.d.from",
+							"match": "(?<=((?<=^[\\s]{5}[D|d]).{21}))([0-9]|\\s){5}"
+						},
+						{
+							"name": "constant.other.rpgle.fixed.d.to",
+							"match": "(?<=((?<=^[\\s]{5}[D|d]).{26}))((\\+|\\-|\\s)(([0-9]|\\s){6}))"
+						},
+						{
+							"name": "constant.other.rpgle.fixed.d.datatype",
+							"match": "(?<=((?<=^[\\s]{5}[D|d]).{33}))(?i)(A|B|D|F|G|I|N|P|S|T|U|Z|\\*)"
+						},
+						{
+							"name": "constant.other.rpgle.fixed.d.decpos",
+							"match": "(?<=((?<=^[\\s]{5}[D|d]).{34}))([0-9]|\\s){2}"
+						},
+						{
+							"name": "entity.name.function.rpgle.fixed.d.keywords",
+							"match": "\\b(?i)(ZONED|VARYING|VARUCS2|VARGRAPH|VARCHAR|VALUE|UNS|UCS2|TOFILE|TIMFMT|TIMESTAMP|TIME|TEMPLATE|STATIC|RTNPARM|QUALIFIED|PSDS|PROCPTR|PREFIX|POS|POINTER|PERRCD|PACKEVEN|PACKED|OVERLAY|OPTIONS|OPDESC|OCCURS|OBJECT|NOOPT|LIKEREC|LIKEFILE|LIKEDS|LIKE|LEN|INZ|IND|INT|IMPORT|GRAPH|FROMFILE|FLOAT|EXTPROC|EXTPGM|EXTNAME|EXTFMT|EXTFLD|EXT|EXPORT|DTAARA|DIM|DESCEND|DATFMT|DATE|CTDATA|CONST|CLASS|CHAR|CCSID|BINDEC|BASED|ASCEND|ALTSEQ|ALT|ALIGN|ALIAS)\\b"
+						},
+						{
+							"include": "#rpglecommon"
+						}
+					]
+				},
+				{
+					"name": "rpgle.fixed.i",
+					"begin": "(?<=^\\s{5}(I|i))",
+					"end": "(?<=\\n)",
+					"patterns": [
+						{
+							"name": "constant.other.rpgle.fixed.i.seq",
+							"match": "(?<=((?<=^[\\s]{5}[i|I]).{10}))(?i)[A-Za-z0-9]{2}"
+						},
+						{
+							"name": "constant.other.rpgle.fixed.i.number",
+							"match": "(?<=((?<=^[\\s]{5}[i|I]).{12}))(?i)(N)"
+						},
+						{
+							"name": "constant.other.rpgle.fixed.i.option",
+							"match": "(?<=((?<=^[\\s]{5}[i|I]).{13}))(?i)(O)"
+						},
+						{
+							"name": "constant.other.rpgle.fixed.i.recordid",
+							"match": "(?<=((?<=^[\\s]{5}[i|I]).{14}))(?i)(([0-9]{2})|((H|L)([1-9]))|(RT)|((U)([1-8]))|(\\*\\*))"
+						},
+						{
+							"name": "constant.other.rpgle.fixed.i.pos1",
+							"match": "(?<=((?<=^[\\s]{5}[i|I]).{16}))(?i)([0-9]|\\s){5}"
+						},
+						{
+							"name": "constant.other.rpgle.fixed.i.not1",
+							"match": "(?<=((?<=^[\\s]{5}[i|I]).{21}))(?i)(N)"
+						},
+						{
+							"name": "constant.other.rpgle.fixed.i.czd1",
+							"match": "(?<=((?<=^[\\s]{5}[i|I]).{22}))(?i)(C|Z|D)"
+						},
+						{
+							"name": "constant.other.rpgle.fixed.i.char1",
+							"match": "(?<=((?<=^[\\s]{5}[i|I]).{23}))(?i)([A-Z])"
+						},
+						{
+							"name": "constant.other.rpgle.fixed.i.pos2",
+							"match": "(?<=((?<=^[\\s]{5}[i|I]).{24}))(?i)([0-9]|\\s){5}"
+						},
+						{
+							"name": "constant.other.rpgle.fixed.i.not2",
+							"match": "(?<=((?<=^[\\s]{5}[i|I]).{29}))(?i)(N)"
+						},
+						{
+							"name": "constant.other.rpgle.fixed.i.czd2",
+							"match": "(?<=((?<=^[\\s]{5}[i|I]).{30}))(?i)(C|Z|D)"
+						},
+						{
+							"name": "constant.other.rpgle.fixed.i.char2",
+							"match": "(?<=((?<=^[\\s]{5}[i|I]).{31}))(?i)([A-Z])"
+						},
+						{
+							"name": "constant.other.rpgle.fixed.i.pos3",
+							"match": "(?<=((?<=^[\\s]{5}[i|I]).{32}))(?i)([0-9]|\\s){5}"
+						},
+						{
+							"name": "constant.other.rpgle.fixed.i.not3",
+							"match": "(?<=((?<=^[\\s]{5}[i|I]).{37}))(?i)(N)"
+						},
+						{
+							"name": "constant.other.rpgle.fixed.i.czd3",
+							"match": "(?<=((?<=^[\\s]{5}[i|I]).{38}))(?i)(C|Z|D)"
+						},
+						{
+							"name": "constant.other.rpgle.fixed.i.char3",
+							"match": "(?<=((?<=^[\\s]{5}[i|I]).{39}))(?i)([A-Z])"
+						},
+						{
+							"include": "#rpglecommon"
+						}
+					]
+				},
+				{
+					"name": "rpgle.fixed.c",
+					"begin": "(?<=^\\s{5}(C|c))",
+					"end": "(?<=\\n)",
+					"patterns": [
+						{
+							"name": "constant.other.rpgle.fixed.c.ctrl",
+							"match": "(?<=((?<=^[\\s]{5}[C|c]).{0}))(?i)((L[0-9])|LR|SR)"
+						},
+						{
+							"name": "constant.other.rpgle.fixed.c.n01",
+							"match": "(?<=((?<=^[\\s]{5}[C|c]).{2}))(?i)((N|\\s)(([0-9]{2})|(K[A-N])|(K[P-Y])|((H|L)[1-9])|LR|MR|RT|(U[1-8])|(O[A-G])|OV))"
+						},
+						{
+							"name": "keyword.operator.rpgle.fixed.c.extfactor2",
+							"begin": "(?<=((?<=^[\\s]{5}[C|c]).{19}))(?i)((\\s{10})|CALLP|WHEN\\s{2}|RETURN|ON-ERROR|IF\\s{2}|FOR|EVALR|EVAL|ELSEIF|DOW\\s{2}|DOU\\s{2})",
+							"end": "(?<=\\n)",
+							"patterns": [
+								{
+									"include": "#rpglecommon"
+								},
+								{
+									"name": "variable.other.rpgle.fixed.c.extfactor2",
+									"match": "((?i)[@#a-zA-Z_][@#a-zA-Z0-9_]*)|\\(|\\)|\\%"
+								}
+							]
+						},
+						{
+							"include": "#rpglecommon"
+						},
+						{
+							"name": "keyword.operator.rpgle.fixed.c.operation",
+							"match": "(?<=((?<=^[\\s]{5}[C|c]).{19}))(?i)(Z-SUB|Z-ADD|XML-SAX|XML-INTO|XLATE|XFOOT|WRITE|WHEN|UPDATE|UNLOCK|TIME|TESTZ|TESTN|TESTB|TEST|TAG|SUBST|SUBDIR|SUB|SQRT|SORTA|SHTDN|SETON|SETOFF|SETLL|SETGT|SELECT|SCAN|ROLBK|RETURN|RESET|REL|REALLOC|READPE|READP|READE|READC|READ|POST|PLIST|PARM|OUT|OTHER|OR|OPEN|ON-EXIT|ON-ERROR|OCCUR|NEXT|MVR|MULT|MOVEL|MOVEA|MOVE|MONITOR|MLLZO|MLHZO|MHLZO|MHHZO|LOOKUP|LEAVESR|LEAVE|KLIST|KFLD|ITER|IN|IF|GOTO|FORCE|FOR|FEOD|EXTRCT|EXSR|EXFMT|EXCEPT|EVAL-CORR|EVALR|EVAL|ENDSR|ENDIF|ENDDO|ENDCS|ENDWH|ENDSL|END|ELSEIF|ELSE|DUMP|DSPLY|DOW|DOU|DO|DIV|DELETE|DEFINE|DEALLOC|DATA-INTO|COMP|COMMIT|CLOSE|CLEAR|CHECKR|CHECK|CHAIN|CAT|CAS|CALLP|CALLB|CALL|CAB|BITON|BITOFF|BEGSR|AND|ALLOC|ADDUR|ADD|ACQ)"
+						},
+						{
+							"name": "constant.other.rpgle.fixed.c.len",
+							"match": "(?<=((?<=^[\\s]{5}[C|c]).{57}))([0-9]|\\s){5}"
+						},
+						{
+							"name": "constant.other.rpgle.fixed.c.decpos",
+							"match": "(?<=((?<=^[\\s]{5}[C|c]).{62}))([0-9]|\\s){2}"
+						},
+						{
+							"name": "constant.other.rpgle.fixed.c.hi",
+							"match": "(?<=((?<=^[\\s]{5}[C|c]).{64}))(?i)(([0-9]{2})|(K[A-N])|(K[P-Y])|((H|L)[1-9])|LR|MR|(U[1-8])|(O[A-G])|OV)"
+						},
+						{
+							"name": "constant.other.rpgle.fixed.c.lo",
+							"match": "(?<=((?<=^[\\s]{5}[C|c]).{66}))(?i)(([0-9]{2})|(K[A-N])|(K[P-Y])|((H|L)[1-9])|LR|MR|(U[1-8])|(O[A-G])|OV)"
+						},
+						{
+							"name": "constant.other.rpgle.fixed.c.eq",
+							"match": "(?<=((?<=^[\\s]{5}[C|c]).{68}))(?i)(([0-9]{2})|(K[A-N])|(K[P-Y])|((H|L)[1-9])|LR|MR|(U[1-8])|(O[A-G])|OV)"
+						}
+					]
+				}
+			]
+		},
+		"keywords": {
+			"patterns": [
+				{
+					"name": "keyword.other.rpgle.fixed.specs",
+					"match": "^[\\s]{5}(?i)(H|F|D|I|C|O|P)"
+				},
+				{
+					"name": "keyword.operator.rpg",
+					"match": "((?i)(AND|COMP|CAB|CAS|DOU|DOW|IF|OR|WHEN)(GT|LT|EQ|NE|GE|LE|(\\s{2})))|(:|\\,|\\-|\\+|=|<>|<|>|(\\b(?i)(AND|OR|NOT)\\b))"
+				},
+				{
+					"name": "keyword.operator.rpgle.bif",
+					"match": "[%](?i)(YEARS|XML|XLATE|XFOOT|UNSH|UNS|UCS2|TRIMR|TRIML|TRIM|TLOOKUP|TIMESTAMP|TIME|THIS|SUBST|SUBDT|SUBARR|STR|STATUS|SQRT|SIZE|SHTDN|SECONDS|SCANRPL|SCAN|REPLACE|REM|REALLOC|PROC|PARSER|PARMNUM|PARMS|PADDR|OPEN|OCCUR|NULLIND|MSECONDS|MONTHS|MINUTES|MIN|MAX|LOOKUP|LEN|KDS|INTH|INT|HOURS|HANDLER|GRAPH|FOUND|FLOAT|FIELDS|ERROR|EQUAL|EOF|ELEM|EDITW|EDITFLT|EDITC|DIV|DIFF|DECPOS|DECH|DEC|DAYS|DATE|DATA|CHECKR|CHECK|CHAR|BITXOR|BITOR|BITNOT|BITAND|ALLOC|ADDR|ABS)"
+				}
+			]
+		},
+		"strings": {
+			"name": "string.quoted.single.rpgle",
+			"begin": "'",
+			"end": "(\n|')",
+			"patterns": [
+				{
+					"name": "constant.character.escape.rpgle",
+					"match": "\\\\."
+				}
+			]
+		},
+		"sql": {
+			"patterns": [
+				{
+					"name": "variable.other.rpgle.sql",
+					"begin": "(?i)^[(\\s)]*(exec)\\s+(sql)\\b",
+					"end": "\\;\\n",
+					"patterns": [
+						{
+							"name": "variable.parameter.rpgle.sql",
+							"match": "[:][a-zA-Z_][a-zA-Z0-9_]*"
+						},
+						{
+							"include": "source.sql"
+						}
+					]
+			  	}
+			]
+		}
+	},
+	"scopeName": "source.rpgle"
+}
