@@ -111,10 +111,12 @@ See **screenshots/** for more examples of syntax highlighting.
 * Basic Machine Interface (MI) highlighting
 
 
-#### 0.4.0 - RPGLE Fixed and Free format
-* Added RPGLE Fixed/Free
-* RPG/400: Embedded SQL and various small fixes I missed
-* 
+#### 0.4.0 - RPGLE Fixed and Free Format with Embedded SQL
+* RPGLE: Added fixed format highlighting
+* RPGLE: Added free format highlighting
+* RPGLE: Added basic embedded SQL highlighting
+* RPG/400: Added basic embedded SQL highlighting
+* RPG/400: Fixed a handful of highlighting errors I missed
 
 
 ## Known Bugs
