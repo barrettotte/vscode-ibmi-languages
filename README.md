@@ -39,8 +39,9 @@ Also check out his repository https://github.com/NielsLiisberg/RPG-vsCode-Gettin
 - [x] Syntax highlighting for Control Language (CL)
 - [x] Syntax highlighting for DDS files - physical, logical, display, printer, and ICF
 - [x] Syntax highlighting for some Machine Interface (MI) - **see below**
-- [ ] Syntax highlighting for RPGLE fixed - H,F,D,I,C,O,P specs
-- [ ] Syntax highlighting for RPGLE free
+- [x] Syntax highlighting for RPGLE fixed - H,F,D,I,C,O,P specs
+- [x] Syntax highlighting for RPGLE free
+- [x] Support for a mix of RPGLE free and fixed format
 
 
 **If anyone stumbles across this and has any awesome material for machine interface, please send me an email.**
@@ -74,6 +75,18 @@ See **screenshots/** for more examples of syntax highlighting.
 
 #### RPG/400
 [![RPG/400](https://github.com/barrettotte/vscode-ibmi-languages/blob/master/screenshots/rpg400.png)](https://github.com/barrettotte/vscode-ibmi-languages/blob/master/screenshots/rpg400.png)
+
+
+#### RPGLE Fixed Format
+[![MI](https://github.com/barrettotte/vscode-ibmi-languages/blob/master/screenshots/rpglefixed.PNG)](https://github.com/barrettotte/vscode-ibmi-languages/blob/master/screenshots/rpglefixed.PNG)
+
+
+#### RPGLE Free Format
+[![MI](https://github.com/barrettotte/vscode-ibmi-languages/blob/master/screenshots/rpglefree.PNG)](https://github.com/barrettotte/vscode-ibmi-languages/blob/master/screenshots/rpglefree.PNG)
+
+
+#### RPGLE Free with Embedded SQL
+[![MI](https://github.com/barrettotte/vscode-ibmi-languages/blob/master/screenshots/sqlrpgle.PNG)](https://github.com/barrettotte/vscode-ibmi-languages/blob/master/screenshots/sqlrpgle.PNG)
 
 
 #### Control Language (CL)
@@ -128,6 +141,11 @@ Suggested: regex for numeric literal highlighting to not extend past column 60
 ```     
      C           PCVKEY    SETLLCP1107C                  8585=1 <==> FD
 ```
+
+
+#### RPGLE
+Precompiler commands ```/IF, /ELSE, /ELSEIF, /ENDIF``` have not been fully explored. 
+I know there are going to be some bugs with this for sure, please report problem with a code snippet.
 
 
 ## Future Improvements
