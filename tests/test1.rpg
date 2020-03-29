@@ -34,6 +34,16 @@
      C* Calc spec (C prompt)
      CLRNLR MRNL1VARA      ADD  VARB      RES   30 1HRTLRH2COMMENT! 
       *
+     C* Test embedded SQL
+      *
+     C/Exec SQL
+     C+ select count(*)
+     C+   into :VAR123
+     C+   from MYTABLE
+     C+  where COL1 = :VAR4 and COL2 = 0
+     C+  and SUBSTR(DATA,1,4)='WASD'
+     C/End-Exec
+      *
      O* Output spec (O prompt)
      O                NKA 01 L2FIELDXJB+NNNPWASD
      O* Output spec disk (OD prompt)

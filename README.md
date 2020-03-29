@@ -130,5 +130,5 @@ Suggested: regex for numeric literal highlighting to not extend past column 60
   * Naming Conventions - https://macromates.com/manual/en/language_grammars#naming_conventions
   * TextMate Grammar - https://www.apeth.com/nonblog/stories/textmatebundle.html
   * https://stackoverflow.com/questions/23463803/are-there-any-standards-for-tmlanguage-keyword-types
-* Regex tool - https://rubular.com/
+* Regex tool - https://regexr.com/
 * VS Code Language extensions - https://code.visualstudio.com/api/language-extensions/overview
