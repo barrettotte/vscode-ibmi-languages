@@ -79,7 +79,7 @@
 			"patterns": [
 				{
 					"name": "rpgle.fixed.h",
-					"begin": "(?<=^\\s{5}(H|h))",
+					"begin": "(?i)(?<=^\\s{5}H)",
 					"end": "(?<=\\n)",
 					"patterns": [
 						{
@@ -93,7 +93,7 @@
 				},
 				{
 					"name": "rpgle.fixed.f",
-					"begin": "(?<=^\\s{5}(F|f))",
+					"begin": "(?i)(?<=^\\s{5}F)",
 					"end": "(?<=\\n)",
 					"patterns": [
 						{
@@ -155,7 +155,7 @@
 				},
 				{
 					"name": "rpgle.fixed.d",
-					"begin": "(?<=^\\s{5}(D|d))",
+					"begin": "(?i)(?<=^\\s{5}D)",
 					"end": "(?<=\\n)",
 					"patterns": [
 						{
@@ -197,7 +197,7 @@
 				},
 				{
 					"name": "rpgle.fixed.i",
-					"begin": "(?<=^\\s{5}(I|i))",
+					"begin": "(?i)(?<=^\\s{5}I)",
 					"end": "(?<=\\n)",
 					"patterns": [
 						{
@@ -271,7 +271,7 @@
 				},
 				{
 					"name": "rpgle.fixed.c",
-					"begin": "(?<=^\\s{5}(C|c))",
+					"begin": "(?i)(?<=^\\s{5}C)",
 					"end": "(?<=\\n)",
 					"patterns": [
 						{
@@ -322,6 +322,70 @@
 						{
 							"name": "constant.other.rpgle.fixed.c.eq",
 							"match": "(?i)(?<=((?<=^[\\s]{5}C).{68}))(([0-9]{2})|(K[A-N])|(K[P-Y])|((H|L)[1-9])|LR|MR|(U[1-8])|(O[A-G])|OV)"
+						}
+					]
+				},
+				{
+					"name": "rpgle.fixed.o",
+					"begin": "(?i)(?<=^\\s{5}O)",
+					"end": "(?<=\\n)",
+					"patterns": [
+						{
+							"name": "constant.other.rpgle.fixed.o.type",
+							"match": "(?i)(?<=((?<=^[\\s]{5}O).{10}))(H|D|T|E)"
+						},
+						{
+							"name": "constant.other.rpgle.fixed.o.fetch",
+							"match": "(?i)(?<=((?<=^[\\s]{5}O).{11}))(F|R)"
+						},
+						{
+							"name": "constant.other.rpgle.fixed.o.n01",
+							"match": "(?i)(?<=((?<=^[\\s]{5}O).{14}))((N|\\s)(([0-9]{2})|(K[A-N])|(K[P-Y])|((H|L)[1-9])|LR|MR|RT|1P|(U[1-8])|(O[A-G])|OV))"
+						},
+						{
+							"name": "constant.other.rpgle.fixed.o.n02",
+							"match": "(?i)(?<=((?<=^[\\s]{5}O).{17}))((N|\\s)(([0-9]{2})|(K[A-N])|(K[P-Y])|((H|L)[1-9])|LR|MR|RT|1P|(U[1-8])|(O[A-G])|OV))"
+						},
+						{
+							"name": "constant.other.rpgle.fixed.o.n03",
+							"match": "(?i)(?<=((?<=^[\\s]{5}O).{20}))((N|\\s)(([0-9]{2})|(K[A-N])|(K[P-Y])|((H|L)[1-9])|LR|MR|RT|1P|(U[1-8])|(O[A-G])|OV))"
+						},
+						{
+							"name": "constant.other.rpgle.fixed.o.spacebefore",
+							"match": "(?i)(?<=((?<=^[\\s]{5}O).{33}))([0-9]|\\s){3}"
+						},
+						{
+							"name": "constant.other.rpgle.fixed.o.spaceafter",
+							"match": "(?i)(?<=((?<=^[\\s]{5}O).{36}))([0-9]|\\s){3}"
+						},
+						{
+							"name": "constant.other.rpgle.fixed.o.skipbefore",
+							"match": "(?i)(?<=((?<=^[\\s]{5}O).{39}))([0-9]|\\s){3}"
+						},
+						{
+							"name": "constant.other.rpgle.fixed.o.skipafter",
+							"match": "(?i)(?<=((?<=^[\\s]{5}O).{42}))([0-9]|\\s){3}"
+						},
+						{
+							"include": "#rpglecommon"
+						}
+					]
+				},
+				{
+					"name": "rpgle.fixed.p",
+					"begin": "(?i)(?<=^\\s{5}P)",
+					"end": "(?<=\\n)",
+					"patterns": [
+						{
+							"name": "constant.other.rpgle.fixed.p.beginend",
+							"match": "(?i)(?<=((?<=^[\\s]{5}P).{17}))(B|E)"
+						},
+						{
+							"name": "entity.name.function.rpgle.fixed.p.keywords",
+							"match": "(?i)(?<=((?<=^[\\s]{5}P).{37}))(EXPORT|PGMINFO|SERIALIZE)"
+						},
+						{
+							"include": "#rpglecommon"
 						}
 					]
 				}
