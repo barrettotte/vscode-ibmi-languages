@@ -2,7 +2,12 @@
 
 Somewhat decent syntax highlighting for IBMi languages such as RPG, CL, DDS, MI, and RPGLE fixed/free.
 
-**WARNING**: The file extensions are probably pretty opinionated (read section below), I am fully open to pull requests.
+
+![Visual Studio Marketplace Version](https://img.shields.io/visual-studio-marketplace/v/barrettotte.ibmi-languages.svg)
+![Visual Studio Marketplace Downloads](https://img.shields.io/visual-studio-marketplace/d/barrettotte.ibmi-languages.svg)
+![Visual Studio Marketplace Rating](https://img.shields.io/visual-studio-marketplace/r/barrettotte.ibmi-languages.svg)
+![GitHub](https://img.shields.io/github/license/barrettotte/vscode-ibmi-languages.svg)
+
 
 I made this extension because I do a lot more reading than writing with IBMi languages and I always have VS Code open.
 I also wanted to learn how to make a simple language extension for VS Code and get better with regular expressions.
@@ -13,6 +18,9 @@ The regex I made probably isn't too efficient and it does mess up sometimes, but
 
 I wanted to add a lot of legacy syntax highlighting because I am always fascinated by old code.
 For fixed format RPG, I had SEU pulled up and wrote regex to match based on column positions and format specification.
+
+
+**WARNING**: The file extensions are probably pretty opinionated (read section below), I am fully open to pull requests.
 
 By all means, I probably got a couple things wrong; submit a pull request if you see something please!
 (That goes for anything in here)
