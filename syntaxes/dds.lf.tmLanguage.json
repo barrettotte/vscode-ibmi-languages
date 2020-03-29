@@ -20,7 +20,7 @@
 			"patterns": [
 				{
 					"name": "comment.line.dds.lf",
-					"match": "(((?i)^[\\s]{0,5}[\\s\\S]))(\\*).*"
+					"match": "(((?i)^[\\s]{0,5}.))(\\*).*"
 				}
 			]
 		},
@@ -28,27 +28,27 @@
 			"patterns": [
 				{
 					"name": "constant.language.dds.lf.nametype",
-					"match": "(?<=((?<=^[\\s]{5}[A|a|\\s])[\\s\\S]{10}))(?i)(R|K|J|S|O)"
+					"match": "(?i)(?<=((?<=^[\\s]{5}[A|\\s]).{10}))(R|K|J|S|O)"
 				},
 				{
 					"name": "constant.language.dds.lf.ref",
-					"match": "(?<=((?<=^[\\s]{5}[A|a|\\s])[\\s\\S]{22}))(?i)(R)"
+					"match": "(?i)(?<=((?<=^[\\s]{5}[A|\\s]).{22}))R"
 				},
 				{
 					"name": "constant.language.dds.lf.len",
-					"match": "(?<=((?<=^[\\s]{5}[A|a|\\s])[\\s\\S]{23}))(?i)[0-9|\\s]{5}"
+					"match": "(?i)(?<=((?<=^[\\s]{5}[A|\\s]).{23}))[0-9|\\s]{5}"
 				},
 				{
 					"name": "constant.language.dds.lf.datatype",
-					"match": "(?<=((?<=^[\\s]{5}[A|a|\\s])[\\s\\S]{28}))(?i)(P|S|B|F|A|L|T|Z|H|J|E|O|G|5)"
+					"match": "(?i)(?<=((?<=^[\\s]{5}[A|\\s]).{28}))(P|S|B|F|A|L|T|Z|H|J|E|O|G|5)"
 				},
 				{
 					"name": "constant.language.dds.lf.decpos",
-					"match": "(?<=((?<=^[\\s]{5}[A|a|\\s])[\\s\\S]{29}))(?i)[0-9|\\s]{2}"
+					"match": "(?i)(?<=((?<=^[\\s]{5}[A|\\s]).{29}))[0-9|\\s]{2}"
 				},
 				{
 					"name": "constant.language.dds.lf.use",
-					"match": "(?<=((?<=^[\\s]{5}[A|a|\\s])[\\s\\S]{31}))(?i)(B|I|N)"
+					"match": "(?i)(?<=((?<=^[\\s]{5}[A|\\s]).{31}))(B|I|N)"
 				},
                 {
                     "name": "constant.numeric.dds.lf",
@@ -60,7 +60,7 @@
 			"patterns": [
 				{
 					"name": "keyword.other.dds.lf.spec",
-					"match": "(^[\\s]{5}[A|a])"
+					"match": "(?i)(^[\\s]{5}A)"
 				},
 				{
 					"name": "keyword.operator.dds.lf",
@@ -68,7 +68,7 @@
 				},
 				{
 					"name": "keyword.other.dds.lf.funcs",
-					"match": "(?<=((?<=^[\\s]{5}[A|a|\\s])[\\s\\S]{38}))(?i)((ZONE|VARLEN|VALUES|UNSIGNED|UNIQUE|TIMSEP|TIMFMT|TEXT|SST|RENAME|REFSHIFT|REFACCPTH|RANGE|PFILE|NOALTSEQ|LIFO|JREF|JOIN|JFLD|JFILE|JDUPSEQ|JDFTVAL|FORMAT|FLTPCN|FIFO|FCFO|EDTCDE|EDTWRD|DYNSLT|DIGIT|DESCEND|DATSEP|DATFMT|CONCAT|COMP|COLHDG|CMP|CHKMSGID|CHECK|CCSID|ALTSEQ|ALL|ALIAS|ABSVAL)+)"
+					"match": "(?i)(?<=((?<=^[\\s]{5}[A|\\s]).{38}))((ZONE|VARLEN|VALUES|UNSIGNED|UNIQUE|TIMSEP|TIMFMT|TEXT|SST|RENAME|REFSHIFT|REFACCPTH|RANGE|PFILE|NOALTSEQ|LIFO|JREF|JOIN|JFLD|JFILE|JDUPSEQ|JDFTVAL|FORMAT|FLTPCN|FIFO|FCFO|EDTCDE|EDTWRD|DYNSLT|DIGIT|DESCEND|DATSEP|DATFMT|CONCAT|COMP|COLHDG|CMP|CHKMSGID|CHECK|CCSID|ALTSEQ|ALL|ALIAS|ABSVAL)+)"
                 }
 			]
 		},

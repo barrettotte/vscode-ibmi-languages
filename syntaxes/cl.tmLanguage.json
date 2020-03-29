@@ -43,12 +43,16 @@
                 },
                 {
                     "name": "constant.other.cl",
-                    "match": "(?i)[*][A-Za-z]+"
+                    "match": "[*][A-Za-z]+"
                 },
                 {
                     "name": "constant.other.cl",
                     "match": "(?i)(QABNORMSW|QACGLVL|QACTJOB|QADLACTJ|QADLSPLA|QADLTOTJ|QALWJOBITP|QALWOBJRST|QALWUSRDMN|QASTLVL|QATNPGM|QAUDCTL|QAUDENDACN|QAUDFRCLVL|QAUDLVL|QAUDLVL2|QAUTOCFG|QAUTORMT|QAUTOSPRPT|QAUTOVRT|QBASACTLVL|QBASPOOL|QBOOKPATH|QCCSID|QCENTURY|QCFGMSGQ|QCHRID|QCHRIDCTL|QCMNARB|QCMNRCYLMT|QCNTRYID|QCONSOLE|QCRTAUT|QCRTOBJAUD|QCTLSBSD|QCURSYM|QDATE|QDATETIME|QDATFMT|QDATSEP|QDAY|QDAYOFWEEK|QDBFSTCCOL|QDBRCVYWT|QDECFMT|QDEVNAMING|QDEVRCYACN|QDSCJOBITV|QDSPSGNINF|QDYNPTYADJ|QDYNPTYSCD|QENDJOBLMT|QFRCCVNRST|QHOUR|QHSTLOGSIZ|QIGC|QIGCCDEFNT|QIGCFNTSIZ|QINACTMSGQ|QINACTITV|QIPLDATTIM|QIPLSTS|QIPLTYPE|QJOBMSGQFL|QJOBMSGQMX|QJOBMSGQSZ|QJOBMSGQTL|QJOBSPLA|QKBDBUF|QKBDTYPE|QLANGID|QLEAPADJ|QLIBLCKLVL|QLMTDEVSSN|QLMTSECOFR|QLOCALE|QLOGOUTPUT|QMAXACTLVL|QMAXJOB|QMAXSGNACN|QMAXSIGN|QMAXSPLF|QMCHPOOL|QMINUTE|QMLTTHDACN|QMODEL|QMONTH|QPASTHRSVR|QPFRADJ|QPRBFTR|QPRBHLDITV|QPRCFEAT|QPRCMLTTSK|QPRTDEV|QPRTKEYFMT|QPRTTXT|QPWDCHGBLK|QPWDEXPITV|QPWDEXPWRN|QPWDLMTAJC|QPWDLMTCHR|QPWDLMTREP|QPWDLVL|QPWDMAXLEN|QPWDMINLEN|QPWDPOSDIF|QPWDRQDDGT|QPWDRQDDIF|QPWDRULES|QPWDVLDPGM|QPWRDWNLMT|QPWRRSTIPL|QQRYDEGREE|QQRYTIMLMT|QRCLSPLSTG|QRETSVRSEC|QRMTIPL|QRMTSIGN|QRMTSRVATR|QSAVACCPTH|QSCANFS|QSCANFSCTL|QSCPFCONS|QSECOND|QSECURITY|QSETJOBATR|QSFWERRLOG|QSHRMEMCTL|QSPCENV|QSPLFACN|QSRLNBR|QSRTSEQ|QSRVDMP|QSSLCSL|QSSLCSLCTL|QSSLPCL|QSTGLOWACN|QSTGLOWLMT|QSTRPRTWTR|QSTRUPPGM|QSTSMSG|QSVRAUTITV|QSYSLIBL|QTHDRSCADJ|QTHDRSCAFN|QTIMADJ|QTIME|QTIMSEP|QTIMZON|QTOTJOB|QTSEPOOL|QUPSDLYTIM|QUPSMSGQ|QUSEADPAUT|QUSRLIBL|QUTCOFFSET|QVFYOBJRST|QYEAR)"
-                }
+                },
+				{
+					"name": "constant.numeric.cl.hex",
+					"match": "(?i)x\\'[0-9A-F]{1,2}\\'"
+				}
             ]
         },
         "keywords": {
@@ -159,7 +163,7 @@
             "patterns": [
                 {
                     "name": "string.quoted.single.cl",
-                    "begin": "(x|X)?'",
+                    "begin": "'",
                     "end": "'",
                     "patterns": [
                         {
@@ -174,7 +178,7 @@
             "patterns": [
                 {
                     "name": "support.function.cl",
-                    "match": "(?i)[A-Za-z]+(?=\\()"
+                    "match": "[a-zA-Z_][a-zA-Z0-9_]*(?=\\()"
                 }
             ]
         },
@@ -182,7 +186,7 @@
             "patterns": [
                 {
                     "name": "variable.parameter.cl",
-                    "match": "[&][A-Za-z0-9_]+"
+                    "match": "[&][a-zA-Z_][a-zA-Z0-9_]*"
                 }
             ]
         }

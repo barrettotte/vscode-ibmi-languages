@@ -32,7 +32,7 @@
      I I            SOMETHING             P123456785MYFLD     
       *
      C* Calc spec (C prompt)
-     CLRNLR MRNL1VARA      ADD  VARB      RES   30 1HRTLRH2COMMENT! 
+     CLRNLR MRNL1VARA      ADD  VARB      RES   30 1HOV02H2COMMENT! 
       *
      C* Test embedded SQL
       *
@@ -50,3 +50,4 @@
      OMYFILE  TADD    NKA L4NRTWASD
      O* Output spec field description (P prompt)
      O                NKA L4NU2MYFLDMXBNNNNLMYCONST
+     O                N01 L2NKNSEATS#   200B 

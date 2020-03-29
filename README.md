@@ -17,13 +17,14 @@ Pretty much all I did was crawl through various IBM documentation on my lunch br
 The regex I made probably isn't too efficient and it does mess up sometimes, but I think it works for like 75% of cases.
 
 I wanted to add a lot of legacy syntax highlighting because I am always fascinated by old code.
-For fixed format RPG, I had SEU pulled up and wrote regex to match based on column positions and format specification.
-
-
-**WARNING**: The file extensions are probably pretty opinionated (read section below), I am fully open to pull requests.
+For fixed format RPG(LE), I had SEU pulled up and wrote regex to match based on column positions and format specification.
 
 By all means, I probably got a couple things wrong; submit a pull request if you see something please!
 (That goes for anything in here)
+
+Since I've made the basics for this extension I've used it every day at work and its probably one of the most useful things I've made for myself (not saying a lot).
+I hope to eventually use this as part of the "frontend" for my IBMi editor API I've been working on.
+
 
 
 ## Inspiration
@@ -108,6 +109,12 @@ See **screenshots/** for more examples of syntax highlighting.
 * Misc regular expression fixes for RPG/400 and CL
 * Display and ICF DDS file highlighting
 * Basic Machine Interface (MI) highlighting
+
+
+#### 0.4.0 - RPGLE Fixed and Free format
+* Added RPGLE Fixed/Free
+* RPG/400: Embedded SQL and various small fixes I missed
+* 
 
 
 ## Known Bugs

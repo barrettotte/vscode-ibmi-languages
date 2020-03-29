@@ -20,7 +20,7 @@
 			"patterns": [
 				{
 					"name": "comment.line.dds.icff",
-					"match": "(((?i)^[\\s]{0,5}[\\s\\S]))(\\*).*"
+					"match": "(((?i)^[\\s]{0,5}.))(\\*).*"
 				}
 			]
 		},
@@ -28,47 +28,47 @@
 			"patterns": [
 				{
 					"name": "constant.language.dds.icff.andor",
-					"match": "(?<=((?<=^[\\s]{5}[A|a|\\s])[\\s\\S]{0}))(?i)(A|O)"
+					"match": "(?i)(?<=((?<=^[\\s]{5}[A|\\s]).{0}))(A|O)"
                 },
                 {
                     "name": "constant.language.dds.icff.n01",
-                    "match": "(?<=((?<=^[\\s]{5}[A|a|\\s])[\\s\\S]{1}))(?i)(N|\\s)[0-9]{2}"
+                    "match": "(?i)(?<=((?<=^[\\s]{5}[A|\\s]).{1}))(N|\\s)[0-9]{2}"
                 },
                 {
                     "name": "constant.language.dds.icff.n02",
-                    "match": "(?<=((?<=^[\\s]{5}[A|a|\\s])[\\s\\S]{4}))(?i)(N|\\s)[0-9]{2}"
+                    "match": "(?i)(?<=((?<=^[\\s]{5}[A|\\s]).{4}))(N|\\s)[0-9]{2}"
                 },
                 {
                     "name": "constant.language.dds.icff.n03",
-                    "match": "(?<=((?<=^[\\s]{5}[A|a|\\s])[\\s\\S]{7}))(?i)(N|\\s)[0-9]{2}"
+                    "match": "(?i)(?<=((?<=^[\\s]{5}[A|\\s]).{7}))(N|\\s)[0-9]{2}"
                 }, 
                 {
                     "name": "constant.language.dds.icff.nameType",
-                    "match": "(?<=((?<=^[\\s]{5}[A|a|\\s])[\\s\\S]{10}))(?i)(R|H)"
+                    "match": "(?i)(?<=((?<=^[\\s]{5}[A|\\s]).{10}))(R|H)"
                 },
                 {
                     "name": "constant.language.dds.icff.ref",
-                    "match": "(?<=((?<=^[\\s]{5}[A|a|\\s])[\\s\\S]{22}))(?i)(R)"
+                    "match": "(?i)(?<=((?<=^[\\s]{5}[A|\\s]).{22}))R"
                 },
                 {
                     "name": "constant.language.dds.icff.len",
-                    "match": "(?<=((?<=^[\\s]{5}[A|a|\\s])[\\s\\S]{23}))[0-9|\\s]{5}"
+                    "match": "(?i)(?<=((?<=^[\\s]{5}[A|\\s]).{23}))[0-9|\\s]{5}"
                 },
                 {
                     "name": "constant.language.dds.icff.dataType",
-                    "match": "(?<=((?<=^[\\s]{5}[A|a|\\s])[\\s\\S]{28}))(?i)(P|S|B|F|A|O)"
+                    "match": "(?i)(?<=((?<=^[\\s]{5}[A|\\s]).{28}))(P|S|B|F|A|O)"
                 },
                 {
                     "name": "constant.language.dds.icff.decpos",
-                    "match": "(?<=((?<=^[\\s]{5}[A|a|\\s])[\\s\\S]{29}))[0-9|\\s]{2}"
+                    "match": "(?i)(?<=((?<=^[\\s]{5}[A|\\s]).{29}))[0-9|\\s]{2}"
                 },
                 {
                     "name": "constant.language.dds.icff.usage",
-                    "match": "(?<=((?<=^[\\s]{5}[A|a|\\s])[\\s\\S]{31}))(?i)(B|P)"
+                    "match": "(?i)(?<=((?<=^[\\s]{5}[A|\\s]).{31}))(B|P)"
                 },
                 {
                     "name": "constant.language.dds.icff.locline",
-                    "match": "(?<=((?<=^[\\s]{5}[A|a|\\s])[\\s\\S]{32}))([0-9]|\\s){3}"
+                    "match": "(?i)(?<=((?<=^[\\s]{5}[A|\\s]).{32}))([0-9]|\\s){3}"
                 },
                 {
                     "name": "constant.numeric.dds.icff",
@@ -103,7 +103,7 @@
 		"strings": {
 			"name": "string.quoted.single.dds.icff",
 			"begin": "'",
-			"end": "(')",
+			"end": "'",
 			"patterns": [
 				{
 					"name": "constant.character.escape.dds.icff",
