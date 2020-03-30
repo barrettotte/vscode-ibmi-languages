@@ -74,31 +74,31 @@ See **screenshots/** for more examples of syntax highlighting.
 
 
 #### RPG/400
-[![RPG/400](https://github.com/barrettotte/vscode-ibmi-languages/blob/master/screenshots/rpg400.png)](https://github.com/barrettotte/vscode-ibmi-languages/blob/master/screenshots/rpg400.png)
+![RPG/400](https://raw.githubusercontent.com/barrettotte/vscode-ibmi-languages/master/screenshots/rpg400.png)
 
 
 #### RPGLE Fixed Format
-[![MI](https://github.com/barrettotte/vscode-ibmi-languages/blob/master/screenshots/rpglefixed.PNG)](https://github.com/barrettotte/vscode-ibmi-languages/blob/master/screenshots/rpglefixed.PNG)
+![RPGLE Fixed](https://raw.githubusercontent.com/barrettotte/vscode-ibmi-languages/master/screenshots/rpglefixed.PNG)
 
 
 #### RPGLE Free Format
-[![MI](https://github.com/barrettotte/vscode-ibmi-languages/blob/master/screenshots/rpglefree.PNG)](https://github.com/barrettotte/vscode-ibmi-languages/blob/master/screenshots/rpglefree.PNG)
+![RPGLE Free](https://raw.githubusercontent.com/barrettotte/vscode-ibmi-languages/master/screenshots/rpglefree.PNG)
 
 
 #### RPGLE Free with Embedded SQL
-[![MI](https://github.com/barrettotte/vscode-ibmi-languages/blob/master/screenshots/sqlrpgle.PNG)](https://github.com/barrettotte/vscode-ibmi-languages/blob/master/screenshots/sqlrpgle.PNG)
+![SQLRPGLE](https://raw.githubusercontent.com/barrettotte/vscode-ibmi-languages/master/screenshots/sqlrpgle.PNG)
 
 
 #### Control Language (CL)
-[![CL](https://github.com/barrettotte/vscode-ibmi-languages/blob/master/screenshots/cl.png)](https://github.com/barrettotte/vscode-ibmi-languages/blob/master/screenshots/cl.png)
+![CL](https://raw.githubusercontent.com/barrettotte/vscode-ibmi-languages/master/screenshots/cl.png)
 
 
 #### Data Description Specification - Physical File (DDS)
-[![PF](https://github.com/barrettotte/vscode-ibmi-languages/blob/master/screenshots/pf.PNG)](https://github.com/barrettotte/vscode-ibmi-languages/blob/master/screenshots/pf.PNG)
+![PF](https://raw.githubusercontent.com/barrettotte/vscode-ibmi-languages/master/screenshots/pf.PNG)
 
 
 #### Machine Interface (MI)
-[![MI](https://github.com/barrettotte/vscode-ibmi-languages/blob/master/screenshots/mi.PNG)](https://github.com/barrettotte/vscode-ibmi-languages/blob/master/screenshots/mi.PNG)
+![MI](https://raw.githubusercontent.com/barrettotte/vscode-ibmi-languages/master/screenshots/mi.PNG)
 
 
 ## Publishing
