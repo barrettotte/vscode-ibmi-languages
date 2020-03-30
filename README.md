@@ -132,27 +132,8 @@ See **screenshots/** for more examples of syntax highlighting.
 * RPG/400: Fixed a handful of highlighting errors I missed
 
 
-## Known Bugs
-
-#### RPG/400:
-C Spec, EQ field extends to comment space if comment starts with numeric.
-
-Suggested: regex for numeric literal highlighting to not extend past column 60
-```     
-     C           PCVKEY    SETLLCP1107C                  8585=1 <==> FD
-```
-
-
-#### RPGLE
-Precompiler commands ```/IF, /ELSE, /ELSEIF, /ENDIF``` have not been fully explored. 
-I know there are going to be some bugs with this for sure, please report problem with a code snippet.
-
-
-## Future Improvements
-* CL:   Label definition
-* DSPF: CHECK parms as constants
-* DSPF: DPATR parms as constants
-* DSPF: COLOR parms as constants
+## Known Bugs / Future Improvements
+See [issues](https://github.com/barrettotte/vscode-ibmi-languages/issues)
 
 
 ## References
