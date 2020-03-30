@@ -17,7 +17,7 @@
 /* input dates are valid (that is, no 20031325).  The valid date   */  
 /* date range is Oct 14 1582 to Dec 31 9999                        */  
 /*                                                                 */  
-             PGM        PARM(&curdate &DAYSTOCHG)                     
+             PGM        PARM(&curdate &DAYSTOCHG)                  
              DCL        VAR(&CURDATE) TYPE(*CHAR) LEN(8)              
              DCL        VAR(&DAYSTOCHG) TYPE(*DEC) LEN(15 5)          
              DCL        VAR(&DATETIME) TYPE(*CHAR) LEN(17)            
@@ -26,7 +26,8 @@
              DCL        VAR(&LILDATEDEC) TYPE(*DEC) LEN(10 0)         
              DCL        VAR(&ERRCOD) TYPE(*CHAR) LEN(4) +             
                           VALUE(X'00000000')                          
-             DCL        VAR(&MSG) TYPE(*CHAR) LEN(50)                 
+             DCL        VAR(&MSG) TYPE(*CHAR) LEN(50)     
+LABEL1:            
              IF         COND(&CURDATE = '*CURRENT') THEN(DO)          
              CALL       PGM(QWCCVTDT) PARM('*CURRENT' ' ' '*YYMD' +   
                           &DATETIME &ERRCOD) /* Get current system +
@@ -50,5 +51,6 @@
                           &DATE *OMIT) /* Return calculated date in +  
                           YYYYMMDD format */                           
              CHGVAR     VAR(&MSG) VALUE('The new date is ' *CAT &DATE) 
-             SNDPGMMSG  MSG(&MSG) TOPGMQ(*EXT)                         
+             SNDPGMMSG  MSG(&MSG) TOPGMQ(*EXT)   
+END:                      
              ENDPGM  
