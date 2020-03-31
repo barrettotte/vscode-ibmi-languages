@@ -9,7 +9,7 @@ Somewhat decent syntax highlighting for IBMi languages such as RPG, CL, DDS, MI,
 ![GitHub](https://img.shields.io/github/license/barrettotte/vscode-ibmi-languages.svg)
 
 
-I made this extension because I do a lot more reading than writing with IBMi languages and I always have VS Code open.
+I made this extension because I do a lot more reading than writing with IBMi languages at work and I always have VS Code open.
 I also wanted to learn how to make a simple language extension for VS Code and get better with regular expressions.
 
 I respect the legacy of the green screen, but sometimes I need some syntax highlighting in my life; my brain is too small.
@@ -26,7 +26,6 @@ Since I've made the basics for this extension I've used it every day at work and
 I hope to eventually use this as part of the "frontend" for my IBMi editor API I've been working on.
 
 
-
 ## Inspiration
 This extension was inspired and derived from an existing RPG extension https://github.com/NielsLiisberg/RPG-for-VSCode .
 Without this brilliant guy, I wouldn't have thought to start working on this.
@@ -34,13 +33,13 @@ Also check out his repository https://github.com/NielsLiisberg/RPG-vsCode-Gettin
 
 
 ## Features
-
 - [x] Syntax highlighting for RPG III and RPG/400 - H,F,E,L,I,C,O specs
 - [x] Syntax highlighting for Control Language (CL)
 - [x] Syntax highlighting for DDS files - physical, logical, display, printer, and ICF
 - [x] Syntax highlighting for some Machine Interface (MI) - **see below**
 - [x] Syntax highlighting for RPGLE fixed - H,F,D,I,C,O,P specs
 - [x] Syntax highlighting for RPGLE free
+- [x] Syntax highlighting for embedded SQL in SQLRPG and SQLRPGLE
 - [x] Support for a mix of RPGLE free and fixed format
 
 
@@ -50,7 +49,7 @@ I really only made the bare basics for MI and I'd love to add to it
 
 ## Stretch Features
 Every side project starts out fun, but later becomes stale, we'll see if I get here.
-- [ ] Syntax highlighting for embedded SQL - using actual DB2 grammar
+- [ ] Syntax highlighting for embedded SQL using actual DB2 grammar
 
 
 ## File Types (case insensitive)
@@ -144,7 +143,8 @@ See **screenshots/** for more examples of syntax highlighting.
 
 
 ## Known Bugs / Future Improvements
-See [issues](https://github.com/barrettotte/vscode-ibmi-languages/issues)
+See [issues](https://github.com/barrettotte/vscode-ibmi-languages/issues).
+**Please add any features you would like to see and I'll see if I can get around to implementing them!**
 
 
 ## References
