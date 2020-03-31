@@ -132,6 +132,15 @@ See **screenshots/** for more examples of syntax highlighting.
 * RPG/400: Fixed a handful of highlighting errors I missed
 
 
+#### 0.5.0 - CL Label Highlighting, DSPF constants, and misc RPGLE fixes
+* Extension icon and README fixes
+* RPGLE: False definition keyword highlighting fixed -> more robust regex
+* RPGLE: Fixed up precompiler conditionals /IF,/ELSEIF,/ELSE,/ENDIF
+* CL: Label definition highlighting
+* DSPF: DSPF parms highlighted as constants for COMP, DSPATR, CHECK, and COLOR
+* DSPF: Tokens starting with '*' now highlighted as constants 
+
+
 ## Known Bugs / Future Improvements
 See [issues](https://github.com/barrettotte/vscode-ibmi-languages/issues)
 
