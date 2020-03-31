@@ -134,6 +134,8 @@ See **screenshots/** for more examples of syntax highlighting.
 
 #### 0.5.0 - CL Label Highlighting, DSPF constants, and misc RPGLE fixes
 * Extension icon and README fixes
+* RPG/400: Change precompiler commands to highlight as keywords
+* RPGLE: Change precompiler commands to highlight as keywords
 * RPGLE: False definition keyword highlighting fixed -> more robust regex
 * RPGLE: Fixed up precompiler conditionals /IF,/ELSEIF,/ELSE,/ENDIF
 * CL: Label definition highlighting

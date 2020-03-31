@@ -185,3 +185,6 @@ END-DS address;
      /ELSE
        CHAR(12);
      /ENDIF
+
+/COPY /something
+/INCLUDE /something/else
