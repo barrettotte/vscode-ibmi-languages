@@ -33,11 +33,6 @@
 				{
 					"name": "comment.line.rpg",
 					"match": "[*]{2}.*"
-				},
-				{
-					"name": "comment.line.rpg.precompiler",
-					"begin": "(?i)^[\\s]{0,5}.(/)(EJECT|COPY|TITLE|SPACE)",
-					"end": "\n"
 				}
 			]
 		},
@@ -379,6 +374,11 @@
 		},
 		"keywords": {
 			"patterns": [
+				{
+					"name": "keyword.other.rpg.precompiler",
+					"begin": "(?i)^[\\s]{0,5}.(/)(EJECT|COPY|TITLE|SPACE)",
+					"end": "\n"
+				},
 				{
 					"name": "keyword.other.rpg",
 					"match": "(?i)(^[\\s]{5}[H|F|E|L|I|C|O])"

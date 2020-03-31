@@ -27,6 +27,10 @@
 		"constants": {
 			"patterns": [
 				{
+                    "name": "constant.other.dds.dspf",
+                    "match": "[*][a-zA-Z][a-zA-Z0-9]*"
+                },
+				{
 					"name": "constant.language.dds.dspf.andor",
 					"match": "(?i)(?<=((?<=^[\\s]{5}[A|\\s]).{0}))(A|O)"
                 },
@@ -77,7 +81,51 @@
                 {
                     "name": "constant.numeric.dds.dspf",
                     "match": "\\b([0-9]+)\\b"
-                }
+				},
+				{
+					"name": "dds.dspf.check",
+					"begin": "(?i)(?<=(CHECK\\())",
+					"end": "(?=(\\)))",
+					"patterns": [
+						{
+							"name": "constant.other.dds.dspf.check.values",
+							"match": "(?i)(\\b(AB|ME|MF|M10F|M10|M11F|M11|VNE|VN|ER|FE|LC|RB|RZ|RLTB|RL)\\b)"
+						}
+					]
+				},
+				{
+					"name": "dds.dspf.dspatr",
+					"begin": "(?i)(?<=(DSPATR\\())",
+					"end": "(?=(\\)))",
+					"patterns": [
+						{
+							"name": "constant.other.dds.dspf.dspatr.values",
+							"match": "(?i)(\\b(SP|PR|OID|MDT|UL|RI|PC|ND|HI|CS|BL)\\b)"
+						}
+					]
+				},
+				{
+					"name": "dds.dspf.color",
+					"begin": "(?i)(?<=(COLOR\\())",
+					"end": "(?=(\\)))",
+					"patterns": [
+						{
+							"name": "constant.other.dds.dspf.color.values",
+							"match": "(?i)(\\b(BLU|PNK|YLW|TRQ|RED|WHT|GRN)\\b)"
+						}
+					]
+				},
+				{
+					"name": "dds.dspf.comp",
+					"begin": "(?i)(?<=(COMP\\())",
+					"end": "(?=(\\)))",
+					"patterns": [
+						{
+							"name": "keyword.operator.dds.dspf.comp.values",
+							"match": "(?i)(\\b(GE|LE|NG|GT|NL|LT|NE|EQ)\\b)"
+						}
+					]
+				}
 			]
 		},
 		"keywords": {

@@ -11,7 +11,8 @@
         "vscode": "^1.43.0"
     },
     "categories": [
-        "Programming Languages"
+        "Programming Languages",
+        "Themes"
     ],
     "contributes": {
         "languages": [
@@ -21,13 +22,10 @@
                     "CL",
                     "CLLE",
                     "CLP",
-                    "CLP38"
+                    "CLP38",
+                    "Control Language"
                 ],
                 "extensions": [
-                    ".CL",
-                    ".CLLE",
-                    ".CLP",
-                    ".CLP38",
                     ".cl",
                     ".clle",
                     ".clp",
@@ -41,8 +39,6 @@
                     "DSPF"
                 ],
                 "extensions": [
-                    ".DSPF",
-                    ".DSPF38",
                     ".dspf",
                     ".dspf38"
                 ],
@@ -54,7 +50,6 @@
                     "ICFF"
                 ],
                 "extensions": [
-                    ".ICFF",
                     ".icff"
                 ],
                 "configuration": "./configurations/dds.language-configuration.json"
@@ -65,8 +60,6 @@
                     "LF"
                 ],
                 "extensions": [
-                    ".LF",
-                    ".LF38",
                     ".lf",
                     ".lf38"
                 ],
@@ -79,9 +72,6 @@
                     "PF"
                 ],
                 "extensions": [
-                    ".DDS",
-                    ".PF",
-                    ".PF38",
                     ".dds",
                     ".pf",
                     ".pf38"
@@ -94,8 +84,6 @@
                     "PRTF"
                 ],
                 "extensions": [
-                    ".PRTF",
-                    ".PRTF38",
                     ".prtf",
                     ".prtf38"
                 ],
@@ -121,11 +109,8 @@
                     "RPG38"
                 ],
                 "extensions": [
-                    ".RPG",
                     ".rpg",
-                    ".RPG38",
                     ".rpg38",
-                    ".SQLRPG",
                     ".sqlrpg"
                 ],
                 "configuration": "./configurations/rpg.language-configuration.json"
@@ -137,8 +122,6 @@
                     "SQLRPGLE"
                 ],
                 "extensions": [
-                    ".RPGLE",
-                    ".SQLRPGLE",
                     ".rpgle",
                     ".sqlrpgle"
                 ],
@@ -193,6 +176,7 @@
             }
         ]
     },
+    "icon": "images/icon.png",
     "devDependencies": {
         "js-yaml": "^3.13.1"
     },
@@ -213,6 +197,7 @@
     ],
     "license": "MIT",
     "repository": {
+        "type": "git",
         "url": "https://github.com/barrettotte/vscode-ibmi-languages"
     }
 }

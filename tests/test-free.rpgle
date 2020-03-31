@@ -176,3 +176,15 @@ END-DS address;
          record_transaction();
       endsr;
 
+
+   DCL-S name
+     /IF DEFINED(TRUE)
+       CHAR(10);
+     /ELSEIF DEFINED(TRUE OR FALSE)
+       VARCHAR(10);
+     /ELSE
+       CHAR(12);
+     /ENDIF
+
+/COPY /something
+/INCLUDE /something/else

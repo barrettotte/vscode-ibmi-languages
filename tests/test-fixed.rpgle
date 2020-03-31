@@ -27,3 +27,4 @@
      PMYPROC           B                   EXPORT                               p spec - begin procedure
      PMYPROC           E                                                        p spec - end procedure
       *
+     /EJECT

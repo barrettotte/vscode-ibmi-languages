@@ -50,4 +50,7 @@
      OMYFILE  TADD    NKA L4NRTWASD
      O* Output spec field description (P prompt)
      O                NKA L4NU2MYFLDMXBNNNNLMYCONST
-     O                N01 L2NKNSEATS#   200B 
+     O                N01 L2NKNSEATS#   200B
+      *
+     /EJECT
+     /COPY 
