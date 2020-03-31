@@ -28,11 +28,6 @@
 					"end": "\n"
 				},
 				{
-					"name": "comment.line.rpg.fixed.precompiler",
-					"begin": "(?i)^[\\s]{5}.[/|\\+](EJECT|COPY|INCLUDE|ENDIF|ELSEIF|ELSE|IF|EOF|UNDEFINE|DEFINE|TITLE|SPACE|FREE|END-FREE)",
-					"end": "\n"
-				},
-				{
 					"name": "comment.line.rpgle.free.precompiler",
 					"match": "(?i)^[*]{2}.+"
 				},
@@ -525,6 +520,31 @@
 				{
 					"name": "keyword.other.rpgle.fixed.specs",
 					"match": "(?i)^[\\s]{5}(H|F|D|I|C|O|P)"
+				},
+				{
+					"name": "rpgle.precompiler.conditional",
+					"begin": "(?i)(?=(^[\\s]{0,5}\\/IF))",
+					"end": "(?i)(?=(^[\\s]{0,5}\\/ENDIF))",
+					"patterns": [
+						{
+							"name": "keyword.other.rpgle.precompiler.if",
+							"match": "(?i)^[\\s]{0,5}\\/(ELSEIF|IF)"
+						},
+						{
+							"include": "#rpglecommon"
+						},
+						{
+							"include": "#freedefkeywords"
+						},
+						{
+							"name": "keyword.other.rpgle.precompiler.defcheck",
+							"match": "(?i)\\s*\\b(UNDEFINED|DEFINED)\\b"
+						}
+					]
+				},
+				{
+					"name": "keyword.other.rpgle.precompiler",
+					"match": "(?i)^[\\s]{0,5}[\\/|\\+](EJECT|COPY|INCLUDE|ENDIF|ELSE|EOF|UNDEFINE|DEFINE|TITLE|SPACE|FREE|END-FREE)"
 				},
 				{
 					"name": "keyword.operator.rpgle",
