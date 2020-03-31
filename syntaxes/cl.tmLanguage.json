@@ -43,7 +43,7 @@
                 },
                 {
                     "name": "constant.other.cl",
-                    "match": "[*][A-Za-z]+"
+                    "match": "[*][a-zA-Z][a-zA-Z0-9]*"
                 },
                 {
                     "name": "constant.other.cl",

@@ -27,6 +27,10 @@
 		"constants": {
 			"patterns": [
 				{
+                    "name": "constant.other.dds.dspf",
+                    "match": "[*][a-zA-Z][a-zA-Z0-9]*"
+                },
+				{
 					"name": "constant.language.dds.dspf.andor",
 					"match": "(?i)(?<=((?<=^[\\s]{5}[A|\\s]).{0}))(A|O)"
                 },
