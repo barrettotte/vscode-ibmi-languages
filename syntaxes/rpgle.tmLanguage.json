@@ -550,7 +550,7 @@
 			"patterns": [
 				{
 					"name": "keyword.other.rpgle.fixed.precompiler.title",
-					"begin": "(?i)^[\\s]{5,6}[\\/](TITLE)",
+					"begin": "(?i)^[\\s]{5}(H)?[\\/](TITLE)",
 					"end": "\n",
 					"patterns": [
 						{

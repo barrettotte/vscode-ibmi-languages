@@ -1,4 +1,4 @@
-      * Testing RPGLE fixed format
+     H/TITLE Testing syntax highlighting
       *
      H* Test control spec
      H DATFMT(*YMD) DATEDIT(*YMD) DEBUG(*YES) OPTION(*NODEBUGIO)                h spec comment             
