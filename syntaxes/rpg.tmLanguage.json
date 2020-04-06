@@ -375,6 +375,17 @@
 		"keywords": {
 			"patterns": [
 				{
+					"name": "keyword.other.rpg.precompiler.copy",
+					"begin": "(?i)^[\\s]{5}(C|\\s)[\/](COPY)",
+					"end": "\n",
+					"patterns": [
+						{
+							"name": "string.other.rpg.precompiler.copy",
+							"match": ".*"
+						}
+					]
+				},
+				{
 					"name": "keyword.other.rpg.precompiler",
 					"begin": "(?i)^[\\s]{0,5}.(/)(EJECT|COPY|TITLE|SPACE)",
 					"end": "\n"

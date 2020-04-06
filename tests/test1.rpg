@@ -36,6 +36,10 @@
       *
      C* Test embedded SQL
       *
+      * -- ENTRY PARMS
+     C/COPY SRCLIB/QCPYSRC,ENC320C
+     C*
+      *
      C/Exec SQL
      C+ select count(*)
      C+   into :VAR123

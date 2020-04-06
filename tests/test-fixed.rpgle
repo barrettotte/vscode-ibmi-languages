@@ -20,6 +20,8 @@
       *
      CL4 KPMYFIELD       IF        ANOTHERFIELD = 'something'                   c spec comment
       *
+     C/COPY /something
+      *
      O* Test ouput spec
      OMYFILE    TF  N02 OGN1PSOMERECRDS123222100105                             o spec comment
       *

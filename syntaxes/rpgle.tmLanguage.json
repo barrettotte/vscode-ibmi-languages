@@ -560,6 +560,17 @@
 					]
 				},
 				{
+					"name": "keyword.other.rpgle.fixed.precompiler.include",
+					"begin": "(?i)^(\\s)*(C)?(\\s)*[\\/](INCLUDE|COPY)",
+					"end": "\n",
+					"patterns": [
+						{
+							"name": "string.other.rpgle.precompiler.include",
+							"match": ".*"
+						}
+					]
+				},
+				{
 					"name": "keyword.other.rpgle.fixed.specs",
 					"match": "(?i)^[\\s]{5}(H|F|D|I|C|O|P)"
 				},
