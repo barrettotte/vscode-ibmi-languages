@@ -518,17 +518,28 @@
 		"keywords": {
 			"patterns": [
 				{
+					"name": "keyword.other.rpgle.fixed.precompiler.title",
+					"begin": "(?i)^[\\s]{5,6}[\\/](TITLE)",
+					"end": "\n",
+					"patterns": [
+						{
+							"name": "comment.line.rpgle.fixed.precompiler.title",
+							"match": ".*"
+						}
+					]
+				},
+				{
 					"name": "keyword.other.rpgle.fixed.specs",
 					"match": "(?i)^[\\s]{5}(H|F|D|I|C|O|P)"
 				},
 				{
 					"name": "rpgle.precompiler.conditional",
-					"begin": "(?i)(?=(^[\\s]{0,5}\\/IF))",
-					"end": "(?i)(?=(^[\\s]{0,5}\\/ENDIF))",
+					"begin": "(?i)(?=(^[\\s]*\\/IF))",
+					"end": "(?i)(?=(^[\\s]*\\/ENDIF))",
 					"patterns": [
 						{
 							"name": "keyword.other.rpgle.precompiler.if",
-							"match": "(?i)^[\\s]{0,5}\\/(ELSEIF|IF)"
+							"match": "(?i)^[\\s]*\\/(ELSEIF|IF)"
 						},
 						{
 							"include": "#rpglecommon"
@@ -544,7 +555,7 @@
 				},
 				{
 					"name": "keyword.other.rpgle.precompiler",
-					"match": "(?i)^[\\s]{0,5}[\\/|\\+](EJECT|COPY|INCLUDE|ENDIF|ELSE|EOF|UNDEFINE|DEFINE|TITLE|SPACE|FREE|END-FREE)"
+					"match": "(?i)^[\\s]*[\\/|\\+](EJECT|COPY|INCLUDE|ENDIF|ELSE|EOF|UNDEFINE|DEFINE|TITLE|SPACE|FREE|END-FREE).*"
 				},
 				{
 					"name": "keyword.operator.rpgle",
