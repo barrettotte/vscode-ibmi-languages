@@ -19,8 +19,7 @@
 		"comments": {
 			"patterns": [
 				{
-					"name": "comment.line.rpgle.fixed",
-					"match": "(?i)(?<=((?<=^[\\s]{5}((H|F|D|I|C|O|P))).{74})).*"
+					"include": "#fixedcomment"
 				},
 				{
 					"name": "comment.line.rpgle.fixed",
@@ -191,13 +190,27 @@
 				}
 			]
 		},
+		"fixedcomment": {
+			"patterns": [
+				{
+					"name": "comment.block.line.rpgle.fixed",
+					"match": "(?i)(?<=((?<=^[\\s]{5}((H|F|D|I|C|O|P))).{74})).*"
+				}
+			]
+		},
 		"fixedformat": {
 			"patterns": [
+				{
+					"include": "#fixedcomment"
+				},
 				{
 					"name": "rpgle.fixed.h",
 					"begin": "(?i)(?<=^\\s{5}H)",
 					"end": "(?<=\\n)",
 					"patterns": [
+						{
+							"include": "#fixedcomment"
+						},
 						{
 							"name": "entity.name.function.rpgle.fixed.h.keywords",
 							"match": "\\b(?i)(VALIDATE|USRPRF|TIMFMT|THREAD|TEXT|SRTSEQ|PRFDTA|OPTION|OPTIMIZE|OPENOPT|NOMAIN|MAIN|LANGID|INTPREC|INDENT|GENLVL|FTRANS|FORMSALIGN|FLTDIV|FIXNBR|EXTBININT|EXPROPTS|ENBPFRCOL|DFTNAME|DFTACTGRP|DECEDIT|DEBUG|DATFMT|DATEDIT|CVTOPT|DCLOPT|CURSYM|COPYRIGHT|CCSIDCVT|CCSID|COPYNEST|BNDDIR|AUT|ALWNULL|ALTSEQ|ALLOC|ACTGRP)\\b"
@@ -212,6 +225,9 @@
 					"begin": "(?i)(?<=^\\s{5}F)",
 					"end": "(?<=\\n)",
 					"patterns": [
+						{
+							"include": "#fixedcomment"
+						},
 						{
 							"name": "constant.language.rpgle.fixed.f.type",
 							"match": "(?i)(?=(?<=((?<=^[\\s]{5}F).{10})))(I|O|U|C)"
@@ -275,6 +291,9 @@
 					"end": "(?<=\\n)",
 					"patterns": [
 						{
+							"include": "#fixedcomment"
+						},
+						{
 							"name": "constant.other.rpgle.fixed.d.external",
 							"match": "(?i)(?<=((?<=^[\\s]{5}D).{15}))E"
 						},
@@ -316,6 +335,9 @@
 					"begin": "(?i)(?<=^\\s{5}I)",
 					"end": "(?<=\\n)",
 					"patterns": [
+						{
+							"include": "#fixedcomment"
+						},
 						{
 							"name": "constant.other.rpgle.fixed.i.seq",
 							"match": "(?i)(?<=((?<=^[\\s]{5}I).{10}))[A-Za-z0-9]{2}"
@@ -391,6 +413,9 @@
 					"end": "(?<=\\n)",
 					"patterns": [
 						{
+							"include": "#fixedcomment"
+						},
+						{
 							"name": "constant.other.rpgle.fixed.c.ctrl",
 							"match": "(?i)(?<=((?<=^[\\s]{5}C).{0}))((L[0-9])|LR|SR)"
 						},
@@ -455,6 +480,9 @@
 					"end": "(?<=\\n)",
 					"patterns": [
 						{
+							"include": "#fixedcomment"
+						},
+						{
 							"name": "constant.other.rpgle.fixed.o.type",
 							"match": "(?i)(?<=((?<=^[\\s]{5}O).{10}))(H|D|T|E)"
 						},
@@ -500,6 +528,9 @@
 					"begin": "(?i)(?<=^\\s{5}P)",
 					"end": "(?<=\\n)",
 					"patterns": [
+						{
+							"include": "#fixedcomment"
+						},
 						{
 							"name": "constant.other.rpgle.fixed.p.beginend",
 							"match": "(?i)(?<=((?<=^[\\s]{5}P).{17}))(B|E)"
