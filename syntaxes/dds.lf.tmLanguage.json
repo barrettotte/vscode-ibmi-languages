@@ -73,7 +73,22 @@
 				{
 					"name": "keyword.other.dds.lf.funcs",
 					"match": "(?i)(?<=((?<=^[\\s]{5}[A|\\s]).{38}))((ZONE|VARLEN|VALUES|UNSIGNED|UNIQUE|TIMSEP|TIMFMT|TEXT|SST|RENAME|REFSHIFT|REFACCPTH|RANGE|PFILE|NOALTSEQ|LIFO|JREF|JOIN|JFLD|JFILE|JDUPSEQ|JDFTVAL|FORMAT|FLTPCN|FIFO|FCFO|EDTCDE|EDTWRD|DYNSLT|DIGIT|DESCEND|DATSEP|DATFMT|CONCAT|COMP|COLHDG|CMP|CHKMSGID|CHECK|CCSID|ALTSEQ|ALL|ALIAS|ABSVAL)+)"
-                }
+				},
+				{
+					"name": "dds.lf.comp",
+					"begin": "(?i)((?<=((COMP)\\())|(?<=((CMP)\\()))",
+					"end": "(?=(\\)))",
+					"patterns": [
+						{
+							"name": "keyword.operator.dds.lf.comp.values",
+							"match": "(?i)(\\b(GE|LE|NG|GT|NL|LT|NE|EQ)\\b)"
+						},
+						{
+							"name": "constant.numeric.dds.lf",
+							"match": "\\b([0-9]+)\\b"
+						}
+					]
+				}
 			]
 		},
 		"strings": {
