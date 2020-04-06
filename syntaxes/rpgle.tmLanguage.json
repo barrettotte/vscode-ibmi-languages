@@ -49,10 +49,6 @@
 				{
 					"name": "constant.numeric.rpgle",
 					"match": "\\b\\d+\\.?\\d*?\\b"
-				},
-				{
-					"name": "constant.numeric.rpgle.hex",
-					"match": "(?i)x\\'[0-9A-F]{1,2}\\'"
 				}
 			]
 		},
@@ -610,13 +606,21 @@
 			]
 		},
 		"strings": {
-			"name": "string.quoted.single.rpgle",
-			"begin": "'",
-			"end": "'",
 			"patterns": [
 				{
-					"name": "constant.character.escape.rpgle",
-					"match": "\\\\."
+					"name": "string.other.rpgle.hex",
+					"match": "(?i)x\\'.+\\'"
+				},
+				{
+					"name": "string.quoted.single.rpgle",
+					"begin": "'",
+					"end": "'",
+					"patterns": [
+						{
+							"name": "constant.character.escape.rpgle",
+							"match": "\\\\."
+						}
+					]
 				}
 			]
 		},

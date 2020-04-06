@@ -41,11 +41,7 @@
                 {
                     "name": "constant.other.mi",
                     "match": "[*][a-zA-Z][a-zA-Z0-9]*"
-                },
-				{
-					"name": "constant.numeric.cl.hex",
-					"match": "(?i)x\\'[0-9A-F]{1,2}\\'"
-				}
+                }
             ]
         },
         "keywords": {
@@ -70,6 +66,10 @@
         },
         "strings": {
             "patterns": [
+                {
+					"name": "string.other.mi.hex",
+					"match": "(?i)x\\'.+\\'"
+				},
                 {
                     "name": "string.quoted.single.mi",
                     "begin": "('|\")",
