@@ -1,6 +1,12 @@
 // Testing RPGLE free
 
 **free
+/copy mpkcorsrc,pr_f3gtrtd
+dcl-s RLBERRCNT packed(3);  // issue #19
+dcl-s i like(RLBERRCNT);
+
+
+**free
       /FREE
       /END-FREE
 
@@ -188,3 +194,11 @@ END-DS address;
 
 /COPY /something
 /INCLUDE /something/else
+
+
+**free
+/copy mpkcorsrc,pr_f3gtrtd
+dcl-s RLBERRCNT packed(3); // issue #19
+dcl-s i like(RLBERRCNT);
+
+
