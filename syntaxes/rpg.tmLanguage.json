@@ -365,15 +365,33 @@
 				{
 					"name": "constant.language.rpg",
 					"match": "(?i)(UDATE|UMONTH|UDAY|UYEAR)"
-				},
-				{
-					"name": "constant.numeric.rpg.hex",
-					"match": "(?i)x\\'[0-9A-F]{1,2}\\'"
 				}
 			]
 		},
 		"keywords": {
 			"patterns": [
+				{
+					"name": "keyword.other.rpg.precompiler.title",
+					"begin": "(?i)^[\\s]{5}(H)?[\\/](TITLE)",
+					"end": "\n",
+					"patterns": [
+						{
+							"name": "comment.line.rpg.precompiler.title",
+							"match": ".*"
+						}
+					]
+				},
+				{
+					"name": "keyword.other.rpg.precompiler.copy",
+					"begin": "(?i)^[\\s]{5}(C|\\s)[\/](COPY)",
+					"end": "\n",
+					"patterns": [
+						{
+							"name": "string.other.rpg.precompiler.copy",
+							"match": ".*"
+						}
+					]
+				},
 				{
 					"name": "keyword.other.rpg.precompiler",
 					"begin": "(?i)^[\\s]{0,5}.(/)(EJECT|COPY|TITLE|SPACE)",
@@ -402,13 +420,21 @@
 			]
 		},
 		"strings": {
-			"name": "string.quoted.single.rpg",
-			"begin": "'",
-			"end": "(\n|')",
 			"patterns": [
 				{
-					"name": "constant.character.escape.rpg",
-					"match": "\\\\."
+					"name": "string.other.rpg.hex",
+					"match": "(?i)x\\'.+\\'"
+				},
+				{
+					"name": "string.quoted.single.rpg",
+					"begin": "'",
+					"end": "(\n|')",
+					"patterns": [
+						{
+							"name": "constant.character.escape.rpg",
+							"match": "\\\\."
+						}
+					]
 				}
 			]
 		},

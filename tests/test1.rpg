@@ -1,4 +1,4 @@
-      *TESTING FOR SYNTAX HIGHLIGHTER
+     H/TITLE Testing syntax highlighting
       *
      H* Control spec (H prompt)    
      H        1   Y&J    D              1 F                               QWERTY
@@ -35,6 +35,10 @@
      CLRNLR MRNL1VARA      ADD  VARB      RES   30 1HOV02H2COMMENT! 
       *
      C* Test embedded SQL
+      *
+      * -- ENTRY PARMS
+     C/COPY SRCLIB/QCPYSRC,ENC320C
+     C*
       *
      C/Exec SQL
      C+ select count(*)

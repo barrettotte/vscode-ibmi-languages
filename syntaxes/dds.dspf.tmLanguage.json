@@ -117,12 +117,16 @@
 				},
 				{
 					"name": "dds.dspf.comp",
-					"begin": "(?i)(?<=(COMP\\())",
+					"begin": "(?i)((?<=((COMP)\\())|(?<=((CMP)\\()))",
 					"end": "(?=(\\)))",
 					"patterns": [
 						{
 							"name": "keyword.operator.dds.dspf.comp.values",
 							"match": "(?i)(\\b(GE|LE|NG|GT|NL|LT|NE|EQ)\\b)"
+						},
+						{
+							"name": "constant.numeric.dds.dspf",
+							"match": "\\b([0-9]+)\\b"
 						}
 					]
 				}
