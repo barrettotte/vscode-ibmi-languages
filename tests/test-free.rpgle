@@ -14,9 +14,9 @@ x=1 and y=1   x=1 or y=1   not x
 
 
 // Test control specifications
-ctl-opt;
+ctl-opt;  
 
-ctl-opt main(main);
+ctl-opt main(main);  //inline comment
 
      H* Test control spec
      H DATFMT(*YMD) DATEDIT(*YMD) DEBUG(*YES) OPTION(*NODEBUGIO)                h spec comment  
@@ -47,7 +47,7 @@ DCL-F file2 PRINTER;
      F* Test file spec (externally described)
      FANOTHRFILEUPEADE     L     G SPECIAL INDDS(SOMEDS)                        f spec comment
 
-DCL-F file3 SEQ;
+DCL-F file3 SEQ;  //inline comment
 DCL-F file4 WORKSTN;
 DCL-F file5 USAGE(*UPDATE) KEYED;
 
@@ -59,7 +59,7 @@ dcl-f CLS019B workstn indDs(dspf) usropn;
 
 
 // Test named constant definition
-  DCL-C CON_1 CONST(1);
+  DCL-C CON_1 CONST(1);    //inline comment
   DCL-C CON_2 2;
 
     DCL-C array_total_size
@@ -67,7 +67,7 @@ dcl-f CLS019B workstn indDs(dspf) usropn;
 
 
 // Test standalone field definition
-  DCL-S limit PACKED(5) INZ(100);
+  DCL-S limit PACKED(5) INZ(100);     //inline comment
 
      D* Test definition spec
      DMYFIELD        ESS *OPCODE-12345 *12 NOOPT                                d spec comment
@@ -125,7 +125,7 @@ END-DS address;
       price PACKED(7:2) CONST;
    END-PI;
 
-   DCL-PI *N CHAR(10) END-PI;
+   DCL-PI *N CHAR(10) END-PI; //inline comment
 
    DCL-PI *N;
       DCL-PARM select CHAR(10); 
@@ -133,7 +133,7 @@ END-DS address;
       DCL-PARM address CHAR(25);
    END-PI;
 
-   DCL-PR myPgm EXTPGM;
+   DCL-PR myPgm EXTPGM;     //inline comment
       name CHAR(10) CONST;
    END-PR;
 
@@ -148,7 +148,7 @@ END-DS address;
    DCL-PR myProc;
       DCL-PARM select CHAR(10);
       name CHAR(10);
-      DCL-PARM address CHAR(25); 
+      DCL-PARM address CHAR(25);  //inline comment
    END-PR;
 
 
