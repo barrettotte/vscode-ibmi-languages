@@ -568,7 +568,7 @@
 				},
 				{
 					"name": "keyword.other.rpgle.fixed.precompiler.title",
-					"begin": "(?i)^[\\s]{5}(H)?[\\/](TITLE)",
+					"begin": "(?i)^[\\s]{5}(H|\\s)[\\/](TITLE)",
 					"end": "\n",
 					"patterns": [
 						{
