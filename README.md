@@ -142,6 +142,17 @@ See **screenshots/** for more examples of syntax highlighting.
 * DSPF: Tokens starting with '*' now highlighted as constants 
 
 
+#### 0.5.1 - Bug fixes
+* Complete milestone at - https://github.com/barrettotte/vscode-ibmi-languages/milestone/2
+* RPGLE Free - Fixed inline comments on definition statements
+* RPGLE Free - Fixed precompiler breaking highlighting
+* RPGLE - Compile time arrays
+* MI: Label definition
+* DSPF: CMP/COMP parm highlighting
+* LF: CMP/COMP parm highlighting
+* RPGLE Fixed - Fixed H/Title
+
+
 ## Known Bugs / Future Improvements
 See [issues](https://github.com/barrettotte/vscode-ibmi-languages/issues).
 **Please add any features you would like to see and I'll see if I can get around to implementing them!**
