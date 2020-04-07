@@ -27,10 +27,6 @@
 					"end": "\n"
 				},
 				{
-					"name": "comment.line.rpgle.free.precompiler",
-					"match": "(?i)^[*]{2}.+"
-				},
-				{
 					"name": "comment.line.rpgle.free",
 					"match": "(\/\/).*"
 				}
@@ -548,6 +544,10 @@
 		},
 		"keywords": {
 			"patterns": [
+				{
+					"name": "keyword.other.rpgle.free.precompiler.allfree",
+					"match": "(?i)^[*]{2}(FREE)"
+				},
 				{
 					"name": "keyword.other.rpgle.fixed.precompiler.title",
 					"begin": "(?i)^[\\s]{5}(H)?[\\/](TITLE)",
