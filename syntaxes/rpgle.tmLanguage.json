@@ -51,6 +51,9 @@
 		"rpglecommon": {
 			"patterns": [
 				{
+					"include": "#ctarrays"
+				},
+				{
 					"include": "#comments"
 				},
 				{
@@ -61,6 +64,21 @@
 				},
 				{
 					"include": "#keywords"
+				}
+			]
+		},
+		"ctarrays": {
+			"patterns": [
+				{
+					"name": "variable.other.rpgle.ctarrays",
+					"begin": "(?=^(\\*{2})(?!free))",
+					"end": "(E-\\*-O-\\*-F)",
+					"patterns": [
+						{
+							"name": "string.other.rpgle.ctarray",
+							"match": "(\\*{2}).*"
+						}
+					]
 				}
 			]
 		},

@@ -202,3 +202,23 @@ dcl-s RLBERRCNT packed(3); // issue #19
 dcl-s i like(RLBERRCNT);
 
 
+
+
+// issue 16
+
+**free
+
+x = 4 ** 3; // ensure ct array doesnt break previous highlighting
+
+     D*  fixed format comment
+
+// test ct array
+** MYARR    
+elem 1
+elem 2
+elem 3
+elem 4
+elem 5
+elem 6
+elem 7
+
