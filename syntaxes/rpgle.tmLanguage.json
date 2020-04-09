@@ -80,10 +80,10 @@
 					"include": "#constants"
 				},
 				{
-					"include": "#strings"
+					"include": "#keywords"
 				},
 				{
-					"include": "#keywords"
+					"include": "#strings"
 				}
 			]
 		},
@@ -655,8 +655,8 @@
 					"end": "'",
 					"patterns": [
 						{
-							"name": "constant.character.escape.rpgle",
-							"match": "\\\\."
+							"name": "keyword.other.rpgle.fixed.specs",
+							"match": "(?i)^[\\s]{5}(H|F|D|I|C|O|P)"
 						}
 					]
 				}
