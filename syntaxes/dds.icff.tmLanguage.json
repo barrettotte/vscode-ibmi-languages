@@ -110,8 +110,8 @@
 			"end": "'",
 			"patterns": [
 				{
-					"name": "constant.character.escape.dds.icff",
-					"match": "\\\\."
+					"name": "keyword.other.dds.icff.spec",
+					"match": "(?i)^[\\s]{5}(A|\\s)"
 				}
 			]
 		}

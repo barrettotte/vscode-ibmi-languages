@@ -162,8 +162,8 @@
 			"end": "'",
 			"patterns": [
 				{
-					"name": "constant.character.escape.dds.dspf",
-					"match": "\\\\."
+					"name": "keyword.other.dds.dspf.spec",
+					"match": "(?i)^[\\s]{5}(A|\\s)"
 				}
 			]
 		}

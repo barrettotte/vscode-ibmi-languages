@@ -97,8 +97,8 @@
 			"end": "(\n|')",
 			"patterns": [
 				{
-					"name": "constant.character.escape.dds.lf",
-					"match": "\\\\."
+					"name": "keyword.other.dds.lf.spec",
+					"match": "(?i)^[\\s]{5}(A|\\s)"
 				}
 			]
 		}

@@ -82,8 +82,8 @@
 			"end": "(\n|')",
 			"patterns": [
 				{
-					"name": "constant.character.escape.dds.pf",
-					"match": "\\\\."
+					"name": "keyword.other.dds.pf.spec",
+					"match": "(?i)^[\\s]{5}(A|\\s)"
 				}
 			]
 		}

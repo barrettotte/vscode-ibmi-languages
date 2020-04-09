@@ -110,8 +110,8 @@
 			"end": "(')",
 			"patterns": [
 				{
-					"name": "constant.character.escape.dds.prtf",
-					"match": "\\\\."
+					"name": "keyword.other.dds.prtf.spec",
+					"match": "(?i)^[\\s]{5}(A|\\s)"
 				}
 			]
 		}
