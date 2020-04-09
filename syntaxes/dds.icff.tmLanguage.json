@@ -27,7 +27,7 @@
 		"constants": {
 			"patterns": [
 				{
-                    "name": "constant.other.dds.icff",
+                    "name": "constant.language.dds.icff",
                     "match": "[*][a-zA-Z][a-zA-Z0-9]*"
                 },
 				{
@@ -87,7 +87,7 @@
 					"match": "(^[\\s]{5}[A|a])"
 				},
 				{
-					"name": "keyword.operator.dds.icff",
+					"name": "keyword.other.dds.icff",
 					"match": "\\+"
 				},
                 {

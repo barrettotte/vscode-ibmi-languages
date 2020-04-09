@@ -1,12 +1,6 @@
 // Testing RPGLE free
 
-**free
-/copy mpkcorsrc,pr_f3gtrtd
-dcl-s RLBERRCNT packed(3);  // issue #19
-dcl-s i like(RLBERRCNT);
 
-
-**free
       /FREE
       /END-FREE
 
@@ -211,6 +205,8 @@ dcl-s i like(RLBERRCNT);
 x = 4 ** 3; // ensure ct array doesnt break previous highlighting
 
      D*  fixed format comment
+
+
 
 // test ct array
 ** MYARR    

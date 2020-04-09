@@ -402,11 +402,11 @@
 					"match": "(?i)(^[\\s]{5}[H|F|E|L|I|C|O])"
 				},
 				{
-					"name": "keyword.operator.rpg",
+					"name": "keyword.other.rpg",
 					"match": "(?i)(?<=((?<=^[\\s]{5}[C|c]).{21}))(IF|WH|DOW|DOU|DO|CAB|CAS|AND|OR)(GT|LT|EQ|NE|GE|LE)"
 				},
 				{
-					"name": "keyword.operator.rpg",
+					"name": "keyword.other.rpg",
 					"match": "(:|\\,|\\-|\\+|\\.)"
 				},
 				{
