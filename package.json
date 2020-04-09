@@ -11,8 +11,7 @@
         "vscode": "^1.38.0"
     },
     "categories": [
-        "Programming Languages",
-        "Themes"
+        "Programming Languages"
     ],
     "contributes": {
         "languages": [
