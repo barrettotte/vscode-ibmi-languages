@@ -2,17 +2,16 @@
     "name": "ibmi-languages",
     "displayName": "IBMi Languages",
     "description": "Provide syntax highlighting for IBMi languages such as RPG, CL, DDS, and MI.",
-    "version": "0.5.1",
+    "version": "0.5.2",
     "publisher": "barrettotte",
     "author": {
         "name": "Barrett Otte"
     },
     "engines": {
-        "vscode": "^1.43.0"
+        "vscode": "^1.38.0"
     },
     "categories": [
-        "Programming Languages",
-        "Themes"
+        "Programming Languages"
     ],
     "contributes": {
         "languages": [

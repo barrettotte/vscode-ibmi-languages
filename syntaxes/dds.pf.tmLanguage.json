@@ -27,7 +27,7 @@
 		"constants": {
 			"patterns": [
 				{
-                    "name": "constant.other.dds.pf",
+                    "name": "constant.language.dds.pf",
                     "match": "[*][a-zA-Z][a-zA-Z0-9]*"
                 },
 				{
@@ -67,7 +67,7 @@
 					"match": "(?i)(^[\\s]{5}A)"
 				},
 				{
-					"name": "keyword.operator.dds.pf",
+					"name": "keyword.other.dds.pf",
 					"match": "\\+"
 				},
 				{
@@ -82,8 +82,8 @@
 			"end": "(\n|')",
 			"patterns": [
 				{
-					"name": "constant.character.escape.dds.pf",
-					"match": "\\\\."
+					"name": "keyword.other.dds.pf.spec",
+					"match": "(?i)^[\\s]{5}(A|\\s)"
 				}
 			]
 		}

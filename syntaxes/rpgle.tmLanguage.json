@@ -3,6 +3,26 @@
 	"name": "RPGLE",
 	"patterns": [
 		{
+			"name": "rpgle.free.allfree",
+			"begin": "(?i)(?=(\\s*\\*\\*(FREE)))",
+			"end": "(E-\\*-O-\\*-F)",
+			"patterns": [
+				{
+					"name": "keyword.other.rpgle.free.precompiler.allfree",
+					"match": "(?i)^\\s*\\*\\*FREE"
+				},
+				{
+					"include": "#rpglecommon"
+				},
+				{
+					"include": "#freeformat"
+				},
+				{
+					"include": "#sql"
+				}
+			]
+		},
+		{
 			"include": "#rpglecommon"
 		},
 		{
@@ -39,7 +59,7 @@
 					"match": "(?i)[*]\\b(IN)([0-9]{0,2})\\b"
 				},
 				{
-                    "name": "constant.other.rpgle",
+                    "name": "constant.language.rpgle",
                     "match": "[*][a-zA-Z][a-zA-Z0-9]*"
 				},
 				{
@@ -60,10 +80,10 @@
 					"include": "#constants"
 				},
 				{
-					"include": "#strings"
+					"include": "#keywords"
 				},
 				{
-					"include": "#keywords"
+					"include": "#strings"
 				}
 			]
 		},
@@ -215,6 +235,10 @@
 		"fixedformat": {
 			"patterns": [
 				{
+					"name": "keyword.other.rpgle.fixed.specs",
+					"match": "(?i)^[\\s]{5}(H|F|D|I|C|O|P)"
+				},
+				{
 					"include": "#fixedcomment"
 				},
 				{
@@ -308,31 +332,31 @@
 							"include": "#fixedcomment"
 						},
 						{
-							"name": "constant.other.rpgle.fixed.d.external",
+							"name": "constant.language.rpgle.fixed.d.external",
 							"match": "(?i)(?<=((?<=^[\\s]{5}D).{15}))E"
 						},
 						{
-							"name": "constant.other.rpgle.fixed.d.dstype",
+							"name": "constant.language.rpgle.fixed.d.dstype",
 							"match": "(?i)(?<=((?<=^[\\s]{5}D).{16}))(S|U)"
 						},
 						{
-							"name": "constant.other.rpgle.fixed.d.dectype",
+							"name": "constant.language.rpgle.fixed.d.dectype",
 							"match": "(?i)(?<=((?<=^[\\s]{5}D).{17}))(DS|PI|PR|(S\\s)|(C\\s))"
 						},
 						{
-							"name": "constant.other.rpgle.fixed.d.from",
+							"name": "constant.language.rpgle.fixed.d.from",
 							"match": "(?i)(?<=((?<=^[\\s]{5}D).{21}))([0-9]|\\s){5}"
 						},
 						{
-							"name": "constant.other.rpgle.fixed.d.to",
+							"name": "constant.language.rpgle.fixed.d.to",
 							"match": "(?i)(?<=((?<=^[\\s]{5}D).{26}))((\\+|\\-|\\s)(([0-9]|\\s){6}))"
 						},
 						{
-							"name": "constant.other.rpgle.fixed.d.datatype",
+							"name": "constant.language.rpgle.fixed.d.datatype",
 							"match": "(?i)(?<=((?<=^[\\s]{5}D).{33}))(A|B|D|F|G|I|N|P|S|T|U|Z|\\*)"
 						},
 						{
-							"name": "constant.other.rpgle.fixed.d.decpos",
+							"name": "constant.language.rpgle.fixed.d.decpos",
 							"match": "(?i)(?<=((?<=^[\\s]{5}D).{34}))([0-9]|\\s){2}"
 						},
 						{
@@ -353,67 +377,67 @@
 							"include": "#fixedcomment"
 						},
 						{
-							"name": "constant.other.rpgle.fixed.i.seq",
+							"name": "constant.language.rpgle.fixed.i.seq",
 							"match": "(?i)(?<=((?<=^[\\s]{5}I).{10}))[A-Za-z0-9]{2}"
 						},
 						{
-							"name": "constant.other.rpgle.fixed.i.number",
+							"name": "constant.language.rpgle.fixed.i.number",
 							"match": "(?i)(?<=((?<=^[\\s]{5}I).{12}))N"
 						},
 						{
-							"name": "constant.other.rpgle.fixed.i.option",
+							"name": "constant.language.rpgle.fixed.i.option",
 							"match": "(?i)(?<=((?<=^[\\s]{5}I).{13}))O"
 						},
 						{
-							"name": "constant.other.rpgle.fixed.i.recordid",
+							"name": "constant.language.rpgle.fixed.i.recordid",
 							"match": "(?i)(?<=((?<=^[\\s]{5}I).{14}))(([0-9]{2})|((H|L)([1-9]))|(RT)|((U)([1-8]))|(\\*\\*))"
 						},
 						{
-							"name": "constant.other.rpgle.fixed.i.pos1",
+							"name": "constant.language.rpgle.fixed.i.pos1",
 							"match": "(?i)(?<=((?<=^[\\s]{5}I).{16}))([0-9]|\\s){5}"
 						},
 						{
-							"name": "constant.other.rpgle.fixed.i.not1",
+							"name": "constant.language.rpgle.fixed.i.not1",
 							"match": "(?i)(?<=((?<=^[\\s]{5}I).{21}))N"
 						},
 						{
-							"name": "constant.other.rpgle.fixed.i.czd1",
+							"name": "constant.language.rpgle.fixed.i.czd1",
 							"match": "(?i)(?<=((?<=^[\\s]{5}I).{22}))(C|Z|D)"
 						},
 						{
-							"name": "constant.other.rpgle.fixed.i.char1",
+							"name": "constant.language.rpgle.fixed.i.char1",
 							"match": "(?i)(?<=((?<=^[\\s]{5}I).{23}))([A-Z])"
 						},
 						{
-							"name": "constant.other.rpgle.fixed.i.pos2",
+							"name": "constant.language.rpgle.fixed.i.pos2",
 							"match": "(?i)(?<=((?<=^[\\s]{5}I).{24}))([0-9]|\\s){5}"
 						},
 						{
-							"name": "constant.other.rpgle.fixed.i.not2",
+							"name": "constant.language.rpgle.fixed.i.not2",
 							"match": "(?i)(?<=((?<=^[\\s]{5}I).{29}))N"
 						},
 						{
-							"name": "constant.other.rpgle.fixed.i.czd2",
+							"name": "constant.language.rpgle.fixed.i.czd2",
 							"match": "(?i)(?<=((?<=^[\\s]{5}I).{30}))(C|Z|D)"
 						},
 						{
-							"name": "constant.other.rpgle.fixed.i.char2",
+							"name": "constant.language.rpgle.fixed.i.char2",
 							"match": "(?i)(?<=((?<=^[\\s]{5}I).{31}))([A-Z])"
 						},
 						{
-							"name": "constant.other.rpgle.fixed.i.pos3",
+							"name": "constant.language.rpgle.fixed.i.pos3",
 							"match": "(?i)(?<=((?<=^[\\s]{5}I).{32}))([0-9]|\\s){5}"
 						},
 						{
-							"name": "constant.other.rpgle.fixed.i.not3",
+							"name": "constant.language.rpgle.fixed.i.not3",
 							"match": "(?i)(?<=((?<=^[\\s]{5}I).{37}))N"
 						},
 						{
-							"name": "constant.other.rpgle.fixed.i.czd3",
+							"name": "constant.language.rpgle.fixed.i.czd3",
 							"match": "(?i)(?<=((?<=^[\\s]{5}I).{38}))(C|Z|D)"
 						},
 						{
-							"name": "constant.other.rpgle.fixed.i.char3",
+							"name": "constant.language.rpgle.fixed.i.char3",
 							"match": "(?i)(?<=((?<=^[\\s]{5}I).{39}))([A-Z])"
 						},
 						{
@@ -430,15 +454,15 @@
 							"include": "#fixedcomment"
 						},
 						{
-							"name": "constant.other.rpgle.fixed.c.ctrl",
+							"name": "constant.language.rpgle.fixed.c.ctrl",
 							"match": "(?i)(?<=((?<=^[\\s]{5}C).{0}))((L[0-9])|LR|SR)"
 						},
 						{
-							"name": "constant.other.rpgle.fixed.c.n01",
+							"name": "constant.language.rpgle.fixed.c.n01",
 							"match": "(?i)(?<=((?<=^[\\s]{5}C).{2}))((N|\\s)(([0-9]{2})|(K[A-N])|(K[P-Y])|((H|L)[1-9])|LR|MR|RT|(U[1-8])|(O[A-G])|OV))"
 						},
 						{
-							"name": "keyword.operator.rpgle.fixed.c.extfactor2",
+							"name": "keyword.other.rpgle.fixed.c.extfactor2",
 							"begin": "(?i)(?<=((?<=^[\\s]{5}C).{19}))((\\s{10})|CALLP|WHEN\\s{2}|RETURN|ON-ERROR|IF\\s{2}|FOR|EVALR|EVAL|ELSEIF|DOW\\s{2}|DOU\\s{2})",
 							"end": "(?<=\\n)",
 							"patterns": [
@@ -446,7 +470,7 @@
 									"include": "#rpglecommon"
 								},
 								{
-									"name": "keyword.operator.rpgle",
+									"name": "keyword.other.rpgle",
 									"match": "((?i)(AND|COMP|CAB|CAS|DOU|DOW|IF|OR|WHEN)(GT|LT|EQ|NE|GE|LE|(\\s{2})))"
 								},
 								{
@@ -459,31 +483,31 @@
 							"include": "#rpglecommon"
 						},
 						{
-							"name": "keyword.operator.rpgle",
+							"name": "keyword.other.rpgle",
 							"match": "((?i)(AND|COMP|CAB|CAS|DOU|DOW|IF|OR|WHEN)(GT|LT|EQ|NE|GE|LE|(\\s{2})))"
 						},
 						{
-							"name": "keyword.operator.rpgle.fixed.c.operation",
+							"name": "keyword.other.rpgle.fixed.c.operation",
 							"match": "(?i)(?<=((?<=^[\\s]{5}C).{19}))(Z\\-SUB|Z\\-ADD|XML\\-SAX|XML\\-INTO|XLATE|XFOOT|WRITE|WHEN|UPDATE|UNLOCK|TIME|TESTZ|TESTN|TESTB|TEST|TAG|SUBST|SUBDIR|SUB|SQRT|SORTA|SHTDN|SETON|SETOFF|SETLL|SETGT|SELECT|SCAN|ROLBK|RETURN|RESET|REL|REALLOC|READPE|READP|READE|READC|READ|POST|PLIST|PARM|OUT|OTHER|OR|OPEN|ON\\-EXIT|ON\\-ERROR|OCCUR|NEXT|MVR|MULT|MOVEL|MOVEA|MOVE|MONITOR|MLLZO|MLHZO|MHLZO|MHHZO|LOOKUP|LEAVESR|LEAVE|KLIST|KFLD|ITER|IN|IF|GOTO|FORCE|FOR|FEOD|EXTRCT|EXSR|EXFMT|EXCEPT|EVAL-CORR|EVALR|EVAL|ENDSR|ENDIF|ENDDO|ENDCS|ENDWH|ENDSL|END|ELSEIF|ELSE|DUMP|DSPLY|DOW|DOU|DO|DIV|DELETE|DEFINE|DEALLOC|DATA-INTO|COMP|COMMIT|CLOSE|CLEAR|CHECKR|CHECK|CHAIN|CAT|CAS|CALLP|CALLB|CALL|CAB|BITON|BITOFF|BEGSR|AND|ALLOC|ADDUR|ADD|ACQ)"
 						},
 						{
-							"name": "constant.other.rpgle.fixed.c.len",
+							"name": "constant.language.rpgle.fixed.c.len",
 							"match": "(?i)(?<=((?<=^[\\s]{5}C).{57}))([0-9]|\\s){5}"
 						},
 						{
-							"name": "constant.other.rpgle.fixed.c.decpos",
+							"name": "constant.language.rpgle.fixed.c.decpos",
 							"match": "(?i)(?<=((?<=^[\\s]{5}C).{62}))([0-9]|\\s){2}"
 						},
 						{
-							"name": "constant.other.rpgle.fixed.c.hi",
+							"name": "constant.language.rpgle.fixed.c.hi",
 							"match": "(?i)(?<=((?<=^[\\s]{5}C).{64}))(([0-9]{2})|(K[A-N])|(K[P-Y])|((H|L)[1-9])|LR|MR|(U[1-8])|(O[A-G])|OV)"
 						},
 						{
-							"name": "constant.other.rpgle.fixed.c.lo",
+							"name": "constant.language.rpgle.fixed.c.lo",
 							"match": "(?i)(?<=((?<=^[\\s]{5}C).{66}))(([0-9]{2})|(K[A-N])|(K[P-Y])|((H|L)[1-9])|LR|MR|(U[1-8])|(O[A-G])|OV)"
 						},
 						{
-							"name": "constant.other.rpgle.fixed.c.eq",
+							"name": "constant.language.rpgle.fixed.c.eq",
 							"match": "(?i)(?<=((?<=^[\\s]{5}C).{68}))(([0-9]{2})|(K[A-N])|(K[P-Y])|((H|L)[1-9])|LR|MR|(U[1-8])|(O[A-G])|OV)"
 						}
 					]
@@ -497,39 +521,39 @@
 							"include": "#fixedcomment"
 						},
 						{
-							"name": "constant.other.rpgle.fixed.o.type",
+							"name": "constant.language.rpgle.fixed.o.type",
 							"match": "(?i)(?<=((?<=^[\\s]{5}O).{10}))(H|D|T|E)"
 						},
 						{
-							"name": "constant.other.rpgle.fixed.o.fetch",
+							"name": "constant.language.rpgle.fixed.o.fetch",
 							"match": "(?i)(?<=((?<=^[\\s]{5}O).{11}))(F|R)"
 						},
 						{
-							"name": "constant.other.rpgle.fixed.o.n01",
+							"name": "constant.language.rpgle.fixed.o.n01",
 							"match": "(?i)(?<=((?<=^[\\s]{5}O).{14}))((N|\\s)(([0-9]{2})|(K[A-N])|(K[P-Y])|((H|L)[1-9])|LR|MR|RT|1P|(U[1-8])|(O[A-G])|OV))"
 						},
 						{
-							"name": "constant.other.rpgle.fixed.o.n02",
+							"name": "constant.language.rpgle.fixed.o.n02",
 							"match": "(?i)(?<=((?<=^[\\s]{5}O).{17}))((N|\\s)(([0-9]{2})|(K[A-N])|(K[P-Y])|((H|L)[1-9])|LR|MR|RT|1P|(U[1-8])|(O[A-G])|OV))"
 						},
 						{
-							"name": "constant.other.rpgle.fixed.o.n03",
+							"name": "constant.language.rpgle.fixed.o.n03",
 							"match": "(?i)(?<=((?<=^[\\s]{5}O).{20}))((N|\\s)(([0-9]{2})|(K[A-N])|(K[P-Y])|((H|L)[1-9])|LR|MR|RT|1P|(U[1-8])|(O[A-G])|OV))"
 						},
 						{
-							"name": "constant.other.rpgle.fixed.o.spacebefore",
+							"name": "constant.language.rpgle.fixed.o.spacebefore",
 							"match": "(?i)(?<=((?<=^[\\s]{5}O).{33}))([0-9]|\\s){3}"
 						},
 						{
-							"name": "constant.other.rpgle.fixed.o.spaceafter",
+							"name": "constant.language.rpgle.fixed.o.spaceafter",
 							"match": "(?i)(?<=((?<=^[\\s]{5}O).{36}))([0-9]|\\s){3}"
 						},
 						{
-							"name": "constant.other.rpgle.fixed.o.skipbefore",
+							"name": "constant.language.rpgle.fixed.o.skipbefore",
 							"match": "(?i)(?<=((?<=^[\\s]{5}O).{39}))([0-9]|\\s){3}"
 						},
 						{
-							"name": "constant.other.rpgle.fixed.o.skipafter",
+							"name": "constant.language.rpgle.fixed.o.skipafter",
 							"match": "(?i)(?<=((?<=^[\\s]{5}O).{42}))([0-9]|\\s){3}"
 						},
 						{
@@ -546,7 +570,7 @@
 							"include": "#fixedcomment"
 						},
 						{
-							"name": "constant.other.rpgle.fixed.p.beginend",
+							"name": "constant.language.rpgle.fixed.p.beginend",
 							"match": "(?i)(?<=((?<=^[\\s]{5}P).{17}))(B|E)"
 						},
 						{
@@ -562,10 +586,6 @@
 		},
 		"keywords": {
 			"patterns": [
-				{
-					"name": "keyword.other.rpgle.free.precompiler.allfree",
-					"match": "(?i)^[*]{2}(FREE)"
-				},
 				{
 					"name": "keyword.other.rpgle.fixed.precompiler.title",
 					"begin": "(?i)^[\\s]{5}(H|\\s)[\\/](TITLE)",
@@ -587,10 +607,6 @@
 							"match": ".*"
 						}
 					]
-				},
-				{
-					"name": "keyword.other.rpgle.fixed.specs",
-					"match": "(?i)^[\\s]{5}(H|F|D|I|C|O|P)"
 				},
 				{
 					"name": "rpgle.precompiler.conditional",
@@ -618,11 +634,11 @@
 					"match": "(?i)^[\\s]*[\\/|\\+](EJECT|COPY|INCLUDE|ENDIF|ELSE|EOF|UNDEFINE|DEFINE|TITLE|SPACE|FREE|END-FREE).*"
 				},
 				{
-					"name": "keyword.operator.rpgle",
+					"name": "keyword.other.rpgle",
 					"match": ":|\\.|\\,|\\*{1,2}(=)?|=|<>|((<|>|\\+|\\-|\\/)(=)?)|((\\b(?i)(AND|OR|NOT)\\b))"
 				},
 				{
-					"name": "keyword.operator.rpgle.bif",
+					"name": "keyword.other.rpgle.bif",
 					"match": "[%](?i)(YEARS|XML|XLATE|XFOOT|UNSH|UNS|UCS2|TRIMR|TRIML|TRIM|TLOOKUP|TIMESTAMP|TIME|THIS|SUBST|SUBDT|SUBARR|STR|STATUS|SQRT|SIZE|SHTDN|SECONDS|SCANRPL|SCAN|REPLACE|REM|REALLOC|PROC|PARSER|PARMNUM|PARMS|PADDR|OPEN|OCCUR|NULLIND|MSECONDS|MONTHS|MINUTES|MIN|MAX|LOOKUP|LEN|KDS|INTH|INT|HOURS|HANDLER|GRAPH|FOUND|FLOAT|FIELDS|ERROR|EQUAL|EOF|ELEM|EDITW|EDITFLT|EDITC|DIV|DIFF|DECPOS|DECH|DEC|DAYS|DATE|DATA|CHECKR|CHECK|CHAR|BITXOR|BITOR|BITNOT|BITAND|ALLOC|ADDR|ABS)"
 				}
 			]
@@ -639,8 +655,8 @@
 					"end": "'",
 					"patterns": [
 						{
-							"name": "constant.character.escape.rpgle",
-							"match": "\\\\."
+							"name": "keyword.other.rpgle.fixed.specs",
+							"match": "(?i)^[\\s]{5}(H|F|D|I|C|O|P)"
 						}
 					]
 				}
@@ -659,7 +675,7 @@
 						},
 						{
 							"name": "variable.parameter.rpgle.sql",
-							"match": "[:][a-zA-Z_][a-zA-Z0-9_.]*"
+							"match": "[:][a-zA-Z_][a-zA-Z0-9_.#]*"
 						},
 						{
 							"include": "source.sql"

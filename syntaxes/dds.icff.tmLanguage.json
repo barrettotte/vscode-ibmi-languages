@@ -27,7 +27,7 @@
 		"constants": {
 			"patterns": [
 				{
-                    "name": "constant.other.dds.icff",
+                    "name": "constant.language.dds.icff",
                     "match": "[*][a-zA-Z][a-zA-Z0-9]*"
                 },
 				{
@@ -87,7 +87,7 @@
 					"match": "(^[\\s]{5}[A|a])"
 				},
 				{
-					"name": "keyword.operator.dds.icff",
+					"name": "keyword.other.dds.icff",
 					"match": "\\+"
 				},
                 {
@@ -110,8 +110,8 @@
 			"end": "'",
 			"patterns": [
 				{
-					"name": "constant.character.escape.dds.icff",
-					"match": "\\\\."
+					"name": "keyword.other.dds.icff.spec",
+					"match": "(?i)^[\\s]{5}(A|\\s)"
 				}
 			]
 		}

@@ -27,7 +27,7 @@
 		"constants": {
 			"patterns": [
 				{
-                    "name": "constant.other.dds.dspf",
+                    "name": "constant.language.dds.dspf",
                     "match": "[*][a-zA-Z][a-zA-Z0-9]*"
                 },
 				{
@@ -121,7 +121,7 @@
 					"end": "(?=(\\)))",
 					"patterns": [
 						{
-							"name": "keyword.operator.dds.dspf.comp.values",
+							"name": "keyword.other.dds.dspf.comp.values",
 							"match": "(?i)(\\b(GE|LE|NG|GT|NL|LT|NE|EQ)\\b)"
 						},
 						{
@@ -139,7 +139,7 @@
 					"match": "(^[\\s]{5}[A|a])"
 				},
 				{
-					"name": "keyword.operator.dds.dspf",
+					"name": "keyword.other.dds.dspf",
 					"match": "\\+"
 				},
                 {
@@ -162,8 +162,8 @@
 			"end": "'",
 			"patterns": [
 				{
-					"name": "constant.character.escape.dds.dspf",
-					"match": "\\\\."
+					"name": "keyword.other.dds.dspf.spec",
+					"match": "(?i)^[\\s]{5}(A|\\s)"
 				}
 			]
 		}
