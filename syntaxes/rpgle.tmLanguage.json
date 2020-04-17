@@ -599,11 +599,16 @@
 				},
 				{
 					"name": "keyword.other.rpgle.fixed.precompiler.include",
-					"begin": "(?i)^(\\s)*(C)?(\\s)*[\\/](INCLUDE|COPY)",
+					"begin": "(?i)^(\\s)*(C)?(\\s)*[\\/](INCLUDE|COPY)\\s",
 					"end": "\n",
 					"patterns": [
 						{
 							"name": "string.other.rpgle.precompiler.include",
+							"begin": "\\S",
+							"end": "\\s"
+						},
+						{
+							"name": "comment.other.rpgle.precompiler.include",
 							"match": ".*"
 						}
 					]

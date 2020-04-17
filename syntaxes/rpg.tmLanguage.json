@@ -383,11 +383,16 @@
 				},
 				{
 					"name": "keyword.other.rpg.precompiler.copy",
-					"begin": "(?i)^[\\s]{5}(C|\\s)[\/](COPY)",
+					"begin": "(?i)^[\\s]{5}(C|\\s)[\/](COPY)\\s",
 					"end": "\n",
 					"patterns": [
 						{
 							"name": "string.other.rpg.precompiler.copy",
+							"begin": "\\S",
+							"end": "\\s"
+						},
+						{
+							"name": "comment.other.rpg.precompiler.copy",
 							"match": ".*"
 						}
 					]
