@@ -90,7 +90,7 @@
 		"strings": {
 			"name": "string.quoted.single.dds.pf",
 			"begin": "'",
-			"end": "(\n|')",
+			"end": "'",
 			"patterns": [
 				{
 					"name": "keyword.other.dds.pf.spec",

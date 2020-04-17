@@ -118,7 +118,7 @@
 		"strings": {
 			"name": "string.quoted.single.dds.prtf",
 			"begin": "'",
-			"end": "(')",
+			"end": "'",
 			"patterns": [
 				{
 					"name": "keyword.other.dds.prtf.spec",

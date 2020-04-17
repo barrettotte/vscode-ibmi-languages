@@ -1,0 +1,7 @@
+     A* https://github.com/barrettotte/vscode-ibmi-languages/issues/35
+      *
+     A                                      DSPSIZ(24 80 *DS3)
+     A                                      REF(*LIBL/EQFREF)
+     A                                      INDARA
+      *
+     A* Resolved by strictly highlighting identifiers in all DDS regex
