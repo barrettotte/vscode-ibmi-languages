@@ -12,6 +12,9 @@
 			"include": "#keywords"
 		},
 		{
+			"include": "#identifiers"
+		},
+		{
 			"include": "#strings"
 		}
 	],
@@ -72,7 +75,15 @@
 				},
 				{
 					"name": "keyword.other.dds.pf.funcs",
-					"match": "(?i)(?<=((?<=^[\\s]{5}[A|\\s]).{38}))(ZONE|VARLEN|VALUES|UNSIGNED|UNIQUE|TIMSEP|TIMFMT|TEXT|REFSHIFT|REFFLD|REF|RANGE|NOALTSEQ|LIFO|FORMAT|FLTPCN|FIFO|FCFO|EDTCDE|EDTWRD|DIGIT|DFT|DESCEND|DATSEP|DATFMT|COMP|COLHDG|CMP|CHKMSGID|CHECK|CCSID|ALWNULL|ALTSEQ|ALIAS|ABSVAL)"
+					"match": "(?i)(?<=(.{44}))(?<=((?<=^[\\s]{5}[A|\\s]).{38}))(ZONE|VARLEN|VALUES|UNSIGNED|UNIQUE|TIMSEP|TIMFMT|TEXT|REFSHIFT|REFFLD|REF|RANGE|NOALTSEQ|LIFO|FORMAT|FLTPCN|FIFO|FCFO|EDTCDE|EDTWRD|DIGIT|DFT|DESCEND|DATSEP|DATFMT|COMP|COLHDG|CMP|CHKMSGID|CHECK|CCSID|ALWNULL|ALTSEQ|ALIAS|ABSVAL)\\b"
+				}
+			]
+		},
+		"identifiers": {
+			"patterns": [
+				{
+					"name": "identifier.other.dds.lf.identifiers",
+					"match": "[a-zA-Z_#$][a-zA-Z0-9_.#$]*"
 				}
 			]
 		},
