@@ -672,7 +672,7 @@
 				{
 					"name": "variable.other.rpgle.sql",
 					"begin": "(?i)(?=(^[(\\s)]*\\b(exec)\\s+(sql)\\b))",
-					"end": "\\;\\n",
+					"end": "\\;",
 					"patterns": [
 						{
 							"name": "keyword.other.rpgle.sql",
