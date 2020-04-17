@@ -26,6 +26,9 @@
 			"include": "#rpglecommon"
 		},
 		{
+			"include": "#fixedcomment"
+		},
+		{
 			"include": "#fixedformat"
 		},
 		{
@@ -38,14 +41,6 @@
 	"repository": {
 		"comments": {
 			"patterns": [
-				{
-					"include": "#fixedcomment"
-				},
-				{
-					"name": "comment.line.rpgle.fixed",
-					"begin": "(?i)^[\\s]{5}.[*]",
-					"end": "\n"
-				},
 				{
 					"name": "comment.line.rpgle.free",
 					"match": "(\/\/).*"
@@ -226,6 +221,11 @@
 		},
 		"fixedcomment": {
 			"patterns": [
+				{
+					"name": "comment.line.rpgle.fixed",
+					"begin": "(?i)^[\\s]{5}.[*]",
+					"end": "\n"
+				},
 				{
 					"name": "comment.block.line.rpgle.fixed",
 					"match": "(?i)(?<=((?<=^[\\s]{5}((H|F|D|I|C|O|P))).{74})).*"
@@ -466,6 +466,9 @@
 							"begin": "(?i)(?<=((?<=^[\\s]{5}C).{19}))((\\s{10})|CALLP|WHEN\\s{2}|RETURN|ON-ERROR|IF\\s{2}|FOR|EVALR|EVAL|ELSEIF|DOW\\s{2}|DOU\\s{2})",
 							"end": "(?<=\\n)",
 							"patterns": [
+								{
+									"include": "#fixedcomment"
+								},
 								{
 									"include": "#rpglecommon"
 								},

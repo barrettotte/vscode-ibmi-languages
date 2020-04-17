@@ -204,9 +204,6 @@ dcl-s i like(RLBERRCNT);
 
 x = 4 ** 3; // ensure ct array doesnt break previous highlighting
 
-     D*  fixed format comment
-
-
 
 // test ct array
 ** MYARR    
