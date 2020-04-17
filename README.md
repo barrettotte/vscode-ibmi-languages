@@ -16,14 +16,8 @@ I respect the legacy of the green screen, but sometimes I need some syntax highl
 Pretty much all I did was crawl through various IBM documentation on my lunch breaks and throw some regular expressions in here when I got the chance.
 The regex I made probably isn't too efficient and it does mess up sometimes, but I think it works for like 75% of cases.
 
-I wanted to add a lot of legacy syntax highlighting because I am always fascinated by old code.
-For fixed format RPG(LE), I had SEU pulled up and wrote regex to match based on column positions and format specification.
-
 By all means, I probably got a couple things wrong; submit a pull request if you see something please!
 (That goes for anything in here)
-
-Since I've made the basics for this extension I've used it every day at work and its probably one of the most useful things I've made for myself (not saying a lot).
-I hope to eventually use this as part of the "frontend" for my IBMi editor API I've been working on.
 
 
 ## Inspiration
@@ -140,17 +134,6 @@ See **screenshots/** for more examples of syntax highlighting.
 * CL: Label definition highlighting
 * DSPF: DSPF parms highlighted as constants for COMP, DSPATR, CHECK, and COLOR
 * DSPF: Tokens starting with '*' now highlighted as constants 
-
-
-#### 0.5.1 - Bug fixes
-* Complete milestone at - https://github.com/barrettotte/vscode-ibmi-languages/milestone/2
-* RPGLE Free - Fixed inline comments on definition statements
-* RPGLE Free - Fixed precompiler breaking highlighting
-* RPGLE - Compile time arrays
-* MI: Label definition
-* DSPF: CMP/COMP parm highlighting
-* LF: CMP/COMP parm highlighting
-* RPGLE Fixed - Fixed H/Title
 
 
 ## Known Bugs / Future Improvements
