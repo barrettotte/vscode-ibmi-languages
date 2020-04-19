@@ -1,0 +1,7 @@
+     A* https://github.com/barrettotte/vscode-ibmi-languages/issues/36
+      *
+     A            TLEXR2    R               COLHDG('Kypc конвертации' 'вапюты +
+     A                                      BIN-A' 'вапюту счета')
+      *
+      * Resolved, I forgot to move this regex to every DDS file.
+      * Previously, it was only in DSPF and RPGLE

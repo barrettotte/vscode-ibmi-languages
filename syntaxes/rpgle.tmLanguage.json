@@ -26,6 +26,9 @@
 			"include": "#rpglecommon"
 		},
 		{
+			"include": "#fixedcomment"
+		},
+		{
 			"include": "#fixedformat"
 		},
 		{
@@ -38,14 +41,6 @@
 	"repository": {
 		"comments": {
 			"patterns": [
-				{
-					"include": "#fixedcomment"
-				},
-				{
-					"name": "comment.line.rpgle.fixed",
-					"begin": "(?i)^[\\s]{5}.[*]",
-					"end": "\n"
-				},
 				{
 					"name": "comment.line.rpgle.free",
 					"match": "(\/\/).*"
@@ -214,7 +209,7 @@
 				},
 				{
 					"name": "keyword.other.rpgle.free",
-					"match": "(?i)\\b(Z\\-SUB|Z\\-ADD|XML\\-SAX|XML\\-INTO|XLATE|XFOOT|WRITE|WHEN|UPDATE|UNLOCK|TIME|TESTZ|TESTN|TESTB|TEST|TAG|SUBST|SUBDIR|SUB|SQRT|SQLSTATE|SQLCODE|SORTA|SHTDN|SETON|SETOFF|SETLL|SETGT|SELECT|SCAN|ROLBK|RETURN|RESET|REL|REALLOC|READPE|READP|READE|READC|READ|POST|PLIST|PARM|OUT|OTHER|OR|OPEN|ON\\-EXIT|ON\\-ERROR|OCCUR|NEXT|MVR|MULT|MOVEL|MOVEA|MOVE|MONITOR|MLLZO|MLHZO|MHLZO|MHHZO|LOOKUP|LEAVESR|LEAVE|KLIST|KFLD|ITER|IN|IF|GOTO|FORCE|FOR|FEOD|EXTRCT|EXSR|EXFMT|EXCEPT|EVAL-CORR|EVALR|EVAL|ENDSR|ENDMON|ENDIF|ENDDO|ENDCS|ENDWH|ENDSL|END|ELSEIF|ELSE|DUMP|DSPLY|DOW|DOU|DO|DIV|DELETE|DEFINE|DEALLOC|DATA-INTO|COMP|COMMIT|CLOSE|CLEAR|CHECKR|CHECK|CHAIN|CAT|CAS|CALLP|CALLB|CALL|CAB|BITON|BITOFF|BEGSR|AND|ALLOC|ADDUR|ADD|ACQ)\\b"
+					"match": "(?i)\\b(Z\\-SUB|Z\\-ADD|XML\\-SAX|XML\\-INTO|XLATE|XFOOT|WRITE|WHEN|UPDATE|UNLOCK|TIME|TESTZ|TESTN|TESTB|TEST|TAG|SUBST|SUBDIR|SUB|SQRT|SQLSTATE|SQLCODE|SORTA|SHTDN|SETON|SETOFF|SETLL|SETGT|SELECT|SCAN|ROLBK|RETURN|RESET|REL|REALLOC|READPE|READP|READE|READC|READ|POST|PLIST|PARM|OUT|OTHER|OR|OPEN|ON\\-EXIT|ON\\-ERROR|OCCUR|NEXT|MVR|MULT|MOVEL|MOVEA|MOVE|MONITOR|MLLZO|MLHZO|MHLZO|MHHZO|LOOKUP|LEAVESR|LEAVE|KLIST|KFLD|ITER|IN|IF|GOTO|FORCE|FOR|FEOD|EXTRCT|EXSR|EXFMT|EXCEPT|EVAL-CORR|EVALR|EVAL|ENDSR|ENDMON|ENDFOR|ENDIF|ENDDO|ENDCS|ENDWH|ENDSL|END|ELSEIF|ELSE|DUMP|DSPLY|DOW|DOU|DO|DIV|DELETE|DEFINE|DEALLOC|DATA-INTO|COMP|COMMIT|CLOSE|CLEAR|CHECKR|CHECK|CHAIN|CAT|CAS|CALLP|CALLB|CALL|CAB|BITON|BITOFF|BEGSR|AND|ALLOC|ADDUR|ADD|ACQ)\\b"
 				},
 				{
 					"include": "#freeidentifiers"
@@ -226,6 +221,11 @@
 		},
 		"fixedcomment": {
 			"patterns": [
+				{
+					"name": "comment.line.rpgle.fixed",
+					"begin": "(?i)^[\\s]{5}.[*]",
+					"end": "\n"
+				},
 				{
 					"name": "comment.block.line.rpgle.fixed",
 					"match": "(?i)(?<=((?<=^[\\s]{5}((H|F|D|I|C|O|P))).{74})).*"
@@ -467,6 +467,9 @@
 							"end": "(?<=\\n)",
 							"patterns": [
 								{
+									"include": "#fixedcomment"
+								},
+								{
 									"include": "#rpglecommon"
 								},
 								{
@@ -488,7 +491,7 @@
 						},
 						{
 							"name": "keyword.other.rpgle.fixed.c.operation",
-							"match": "(?i)(?<=((?<=^[\\s]{5}C).{19}))(Z\\-SUB|Z\\-ADD|XML\\-SAX|XML\\-INTO|XLATE|XFOOT|WRITE|WHEN|UPDATE|UNLOCK|TIME|TESTZ|TESTN|TESTB|TEST|TAG|SUBST|SUBDIR|SUB|SQRT|SORTA|SHTDN|SETON|SETOFF|SETLL|SETGT|SELECT|SCAN|ROLBK|RETURN|RESET|REL|REALLOC|READPE|READP|READE|READC|READ|POST|PLIST|PARM|OUT|OTHER|OR|OPEN|ON\\-EXIT|ON\\-ERROR|OCCUR|NEXT|MVR|MULT|MOVEL|MOVEA|MOVE|MONITOR|MLLZO|MLHZO|MHLZO|MHHZO|LOOKUP|LEAVESR|LEAVE|KLIST|KFLD|ITER|IN|IF|GOTO|FORCE|FOR|FEOD|EXTRCT|EXSR|EXFMT|EXCEPT|EVAL-CORR|EVALR|EVAL|ENDSR|ENDIF|ENDDO|ENDCS|ENDWH|ENDSL|END|ELSEIF|ELSE|DUMP|DSPLY|DOW|DOU|DO|DIV|DELETE|DEFINE|DEALLOC|DATA-INTO|COMP|COMMIT|CLOSE|CLEAR|CHECKR|CHECK|CHAIN|CAT|CAS|CALLP|CALLB|CALL|CAB|BITON|BITOFF|BEGSR|AND|ALLOC|ADDUR|ADD|ACQ)"
+							"match": "(?i)(?<=((?<=^[\\s]{5}C).{19}))(Z\\-SUB|Z\\-ADD|XML\\-SAX|XML\\-INTO|XLATE|XFOOT|WRITE|WHEN|UPDATE|UNLOCK|TIME|TESTZ|TESTN|TESTB|TEST|TAG|SUBST|SUBDIR|SUB|SQRT|SORTA|SHTDN|SETON|SETOFF|SETLL|SETGT|SELECT|SCAN|ROLBK|RETURN|RESET|REL|REALLOC|READPE|READP|READE|READC|READ|POST|PLIST|PARM|OUT|OTHER|OR|OPEN|ON\\-EXIT|ON\\-ERROR|OCCUR|NEXT|MVR|MULT|MOVEL|MOVEA|MOVE|MONITOR|MLLZO|MLHZO|MHLZO|MHHZO|LOOKUP|LEAVESR|LEAVE|KLIST|KFLD|ITER|IN|IF|GOTO|FORCE|FOR|FEOD|EXTRCT|EXSR|EXFMT|EXCEPT|EVAL-CORR|EVALR|EVAL|ENDFOR|ENDSR|ENDIF|ENDDO|ENDCS|ENDWH|ENDSL|END|ELSEIF|ELSE|DUMP|DSPLY|DOW|DOU|DO|DIV|DELETE|DEFINE|DEALLOC|DATA-INTO|COMP|COMMIT|CLOSE|CLEAR|CHECKR|CHECK|CHAIN|CAT|CAS|CALLP|CALLB|CALL|CAB|BITON|BITOFF|BEGSR|AND|ALLOC|ADDUR|ADD|ACQ)"
 						},
 						{
 							"name": "constant.language.rpgle.fixed.c.len",
@@ -599,11 +602,16 @@
 				},
 				{
 					"name": "keyword.other.rpgle.fixed.precompiler.include",
-					"begin": "(?i)^(\\s)*(C)?(\\s)*[\\/](INCLUDE|COPY)",
+					"begin": "(?i)^(\\s)*(C)?(\\s)*[\\/](INCLUDE|COPY)\\s",
 					"end": "\n",
 					"patterns": [
 						{
 							"name": "string.other.rpgle.precompiler.include",
+							"begin": "\\S",
+							"end": "\\s"
+						},
+						{
+							"name": "comment.other.rpgle.precompiler.include",
 							"match": ".*"
 						}
 					]
@@ -667,7 +675,7 @@
 				{
 					"name": "variable.other.rpgle.sql",
 					"begin": "(?i)(?=(^[(\\s)]*\\b(exec)\\s+(sql)\\b))",
-					"end": "\\;\\n",
+					"end": "\\;",
 					"patterns": [
 						{
 							"name": "keyword.other.rpgle.sql",

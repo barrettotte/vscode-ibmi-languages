@@ -12,6 +12,9 @@
 			"include": "#keywords"
 		},
 		{
+			"include": "#identifiers"
+		},
+		{
 			"include": "#strings"
 		}
 	],
@@ -96,11 +99,19 @@
                 },
 				{
 					"name": "keyword.other.dds.icff.funcs",
-					"match": "(?i)(VARLEN|VARBUFMGT|TNSSYNLVL|TIMER|TEXT|SYNLVL|SUBDEV|SECURITY|RSPCONFIRM|RQSWRT|REFFLD|REF|RECID|RCVTRNDRND|RCVTKCMT|RCVROLLB|RCVNEGRSP|RCVFMH|RCVFAIL|RCVENDGRP|RCVDETACH|RCVCTLDTA|RCVCONFIRM|RCVCANCEL|PRPCMT|NEGRSP|INVITE|INDTXT|INDARA|FRCDTA|FMTNAME|FMH|FLTPCN|FAIL|EVOKE|EOS|ENDGRP|DFREVOKE|DETACH|CTLDTA|CONFIRM|CNLINVITE|CANCEL|ALWWRT|ALIAS)"
+					"match": "(?i)(?<=(.{44}))(VARLEN|VARBUFMGT|TNSSYNLVL|TIMER|TEXT|SYNLVL|SUBDEV|SECURITY|RSPCONFIRM|RQSWRT|REFFLD|REF|RECID|RCVTRNDRND|RCVTKCMT|RCVROLLB|RCVNEGRSP|RCVFMH|RCVFAIL|RCVENDGRP|RCVDETACH|RCVCTLDTA|RCVCONFIRM|RCVCANCEL|PRPCMT|NEGRSP|INVITE|INDTXT|INDARA|FRCDTA|FMTNAME|FMH|FLTPCN|FAIL|EVOKE|EOS|ENDGRP|DFREVOKE|DETACH|CTLDTA|CONFIRM|CNLINVITE|CANCEL|ALWWRT|ALIAS)\\b"
                 },
                 {
                     "name": "keyword.other.dds.icff.funcs",
                     "match": "\\b(?i)(CMP|CLRL|SFL)\\b"
+				}
+			]
+		},
+		"identifiers": {
+			"patterns": [
+				{
+					"name": "identifier.other.dds.icff.identifiers",
+					"match": "[a-zA-Z_#$][a-zA-Z0-9_.#$]*"
 				}
 			]
 		},

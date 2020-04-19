@@ -12,6 +12,9 @@
 			"include": "#keywords"
 		},
 		{
+			"include": "#identifiers"
+		},
+		{
 			"include": "#strings"
 		}
 	],
@@ -72,11 +75,11 @@
 				},
 				{
 					"name": "keyword.other.dds.lf.funcs",
-					"match": "(?i)(?<=((?<=^[\\s]{5}[A|\\s]).{38}))((ZONE|VARLEN|VALUES|UNSIGNED|UNIQUE|TIMSEP|TIMFMT|TEXT|SST|RENAME|REFSHIFT|REFACCPTH|RANGE|PFILE|NOALTSEQ|LIFO|JREF|JOIN|JFLD|JFILE|JDUPSEQ|JDFTVAL|FORMAT|FLTPCN|FIFO|FCFO|EDTCDE|EDTWRD|DYNSLT|DIGIT|DESCEND|DATSEP|DATFMT|CONCAT|COMP|COLHDG|CMP|CHKMSGID|CHECK|CCSID|ALTSEQ|ALL|ALIAS|ABSVAL)+)"
+					"match": "(?i)(?<=(.{44}))(?<=((?<=^[\\s]{5}[A|\\s]).{38}))((ZONE|VARLEN|VALUES|UNSIGNED|UNIQUE|TIMSEP|TIMFMT|TEXT|SST|RENAME|REFSHIFT|REFACCPTH|RANGE|PFILE|NOALTSEQ|LIFO|JREF|JOIN|JFLD|JFILE|JDUPSEQ|JDFTVAL|FORMAT|FLTPCN|FIFO|FCFO|EDTCDE|EDTWRD|DYNSLT|DIGIT|DESCEND|DATSEP|DATFMT|CONCAT|COMP|COLHDG|CMP|CHKMSGID|CHECK|CCSID|ALTSEQ|ALL|ALIAS|ABSVAL)+)\\b"
 				},
 				{
 					"name": "dds.lf.comp",
-					"begin": "(?i)((?<=((COMP)\\())|(?<=((CMP)\\()))",
+					"begin": "(?i)(?<=(.{44}))((?<=((COMP)\\())|(?<=((CMP)\\()))",
 					"end": "(?=(\\)))",
 					"patterns": [
 						{
@@ -91,10 +94,18 @@
 				}
 			]
 		},
+		"identifiers": {
+			"patterns": [
+				{
+					"name": "identifier.other.dds.lf.identifiers",
+					"match": "[a-zA-Z_#$][a-zA-Z0-9_.#$]*"
+				}
+			]
+		},
 		"strings": {
 			"name": "string.quoted.single.dds.lf",
 			"begin": "'",
-			"end": "(\n|')",
+			"end": "'",
 			"patterns": [
 				{
 					"name": "keyword.other.dds.lf.spec",
