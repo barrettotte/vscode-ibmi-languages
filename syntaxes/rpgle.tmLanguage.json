@@ -228,18 +228,19 @@
 				},
 				{
 					"name": "comment.block.line.rpgle.fixed",
-					"match": "(?i)(?<=((?<=^[\\s]{5}((H|F|D|I|C|O|P))).{74})).*"
+                    "begin": "(?i)(?<=((?<=^[\\s]{5}((H|F|D|I|C|O|P))).{74}))",
+                    "end": "\n"
 				}
 			]
 		},
 		"fixedformat": {
 			"patterns": [
+                {
+					"include": "#fixedcomment"
+				},
 				{
 					"name": "keyword.other.rpgle.fixed.specs",
 					"match": "(?i)^[\\s]{5}(H|F|D|I|C|O|P)"
-				},
-				{
-					"include": "#fixedcomment"
 				},
 				{
 					"name": "rpgle.fixed.h",
