@@ -163,7 +163,8 @@
             "patterns": [
 				{
 					"name": "string.other.cl.hex",
-					"match": "(?i)x\\'.+\\'"
+                    "begin": "(?i)x'",
+                    "end": "'"
 				},
                 {
                     "name": "string.quoted.single.cl",

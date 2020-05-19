@@ -449,7 +449,8 @@
 			"patterns": [
 				{
 					"name": "string.other.rpg.hex",
-					"match": "(?i)x\\'.+\\'"
+                    "begin": "(?i)x'",
+                    "end": "'"
 				},
 				{
 					"name": "string.quoted.single.rpg",
