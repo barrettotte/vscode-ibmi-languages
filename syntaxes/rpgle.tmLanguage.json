@@ -91,7 +91,8 @@
 					"patterns": [
 						{
 							"name": "string.other.rpgle.ctarray",
-							"match": "(\\*{2}).*"
+                            "begin": "(\\*{2})",
+                            "end": ""
 						}
 					]
 				}
