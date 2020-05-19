@@ -626,17 +626,17 @@
 						{
 							"name": "keyword.other.rpgle.precompiler.if",
 							"match": "(?i)^[\\s]*\\/(ELSEIF|IF)"
-						},
-						{
-							"include": "#rpglecommon"
+                        },
+                        {
+							"name": "keyword.other.rpgle.precompiler.defcheck",
+							"match": "(?i)\\s*\\b(NOT|UNDEFINED|DEFINED)\\b"
 						},
 						{
 							"include": "#freedefkeywords"
-						},
-						{
-							"name": "keyword.other.rpgle.precompiler.defcheck",
-							"match": "(?i)\\s*\\b(UNDEFINED|DEFINED)\\b"
-						}
+                        },
+                        {
+                            "include": "#freeformat"
+                        }
 					]
 				},
 				{
