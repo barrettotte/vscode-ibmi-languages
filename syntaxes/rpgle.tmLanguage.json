@@ -678,11 +678,11 @@
 				{
 					"name": "variable.other.rpgle.sql",
 					"begin": "(?i)(?=(^[(\\s)]*\\b(exec)\\s+(sql)\\b))",
-					"end": "\\;",
+					"end": "\\;\n",
 					"patterns": [
 						{
 							"name": "keyword.other.rpgle.sql",
-							"match": "(?i)\\b(exec)\\s+(sql)\\b"
+							"match": "(?i)^\\b(exec)\\s+(sql)\\b"
 						},
 						{
 							"name": "variable.parameter.rpgle.sql",
