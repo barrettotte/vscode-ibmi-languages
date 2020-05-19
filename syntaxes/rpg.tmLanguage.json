@@ -2,6 +2,9 @@
 	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
 	"name": "RPG",
 	"patterns": [
+        {
+            "include": "#ctarrays"
+        },
 		{
 			"include": "#comments"
 		},
@@ -19,6 +22,22 @@
 		}
 	],
 	"repository": {
+        "ctarrays": {
+			"patterns": [
+				{
+					"name": "variable.other.rpg.ctarrays",
+					"begin": "(?=^(\\*{2})(?!free))",
+					"end": "(E-\\*-O-\\*-F)",
+					"patterns": [
+						{
+							"name": "string.other.rpg.ctarray",
+                            "begin": "(\\*{2})",
+                            "end": ""
+						}
+					]
+				}
+			]
+		},
 		"comments": {
 			"patterns": [
 				{
