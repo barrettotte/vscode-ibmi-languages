@@ -91,7 +91,8 @@
 					"patterns": [
 						{
 							"name": "string.other.rpgle.ctarray",
-							"match": "(\\*{2}).*"
+                            "begin": "(\\*{2})",
+                            "end": ""
 						}
 					]
 				}
@@ -228,18 +229,19 @@
 				},
 				{
 					"name": "comment.block.line.rpgle.fixed",
-					"match": "(?i)(?<=((?<=^[\\s]{5}((H|F|D|I|C|O|P))).{74})).*"
+                    "begin": "(?i)(?<=((?<=^[\\s]{5}((H|F|D|I|C|O|P))).{74}))",
+                    "end": "\n"
 				}
 			]
 		},
 		"fixedformat": {
 			"patterns": [
+                {
+					"include": "#fixedcomment"
+				},
 				{
 					"name": "keyword.other.rpgle.fixed.specs",
 					"match": "(?i)^[\\s]{5}(H|F|D|I|C|O|P)"
-				},
-				{
-					"include": "#fixedcomment"
 				},
 				{
 					"name": "rpgle.fixed.h",
@@ -624,17 +626,17 @@
 						{
 							"name": "keyword.other.rpgle.precompiler.if",
 							"match": "(?i)^[\\s]*\\/(ELSEIF|IF)"
-						},
-						{
-							"include": "#rpglecommon"
+                        },
+                        {
+							"name": "keyword.other.rpgle.precompiler.defcheck",
+							"match": "(?i)\\s*\\b(NOT|UNDEFINED|DEFINED)\\b"
 						},
 						{
 							"include": "#freedefkeywords"
-						},
-						{
-							"name": "keyword.other.rpgle.precompiler.defcheck",
-							"match": "(?i)\\s*\\b(UNDEFINED|DEFINED)\\b"
-						}
+                        },
+                        {
+                            "include": "#freeformat"
+                        }
 					]
 				},
 				{
@@ -655,7 +657,8 @@
 			"patterns": [
 				{
 					"name": "string.other.rpgle.hex",
-					"match": "(?i)x\\'.+\\'"
+                    "begin": "(?i)x'",
+                    "end": "'"
 				},
 				{
 					"name": "string.quoted.single.rpgle",
@@ -675,11 +678,11 @@
 				{
 					"name": "variable.other.rpgle.sql",
 					"begin": "(?i)(?=(^[(\\s)]*\\b(exec)\\s+(sql)\\b))",
-					"end": "\\;",
+					"end": "\\;\n",
 					"patterns": [
 						{
 							"name": "keyword.other.rpgle.sql",
-							"match": "(?i)\\b(exec)\\s+(sql)\\b"
+							"match": "(?i)^\\b(exec)\\s+(sql)\\b"
 						},
 						{
 							"name": "variable.parameter.rpgle.sql",

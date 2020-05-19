@@ -7,37 +7,37 @@
      FSOMEFILEIFEAE        L  K        DISK         K            A    UC  comment
       *
      F* Program described file (F prompt)
-     FSOMEFIL2OPEDF           ATOV    LPRINTER      K            A    U6
+     FSOMEFIL2OPEDF           ATOV    LPRINTER      K            A    U6  comment
       *
      E* Extension spec (E prompt)
      E    FFILE   TFILE   ATBL  1239999128L6AALTNAM64 P8DTHIS IS A COMMENT
       *
      L* Line Counter spec (L prompt)
-     LSOMEFILE101FL300OL
+     LSOMEFILE101FL300OL                                                  comment
       *
      I* Input spec record identification (I prompt)
-     ISOMEFILE3ANOL41   NZX2    CA3   ND4
+     ISOMEFILE3ANOL41   NZX2    CA3   ND4                                 comment
      I*
      I* Input spec record identification external (IX prompt)
-     IMYRECORD    H4
+     IMYRECORD    H4                                                      comment
      I* Input spec field description (J prompt)
-     I                                    P123499997MYFLD L4M2RTH4U7H6
+     I                                    P123499997MYFLD L4M2RTH4U7H6    comment
      I* Input spec field description external (JX prompt)
-     I              EXTFILENAM                      MYFLD L4M5  U3RTH7
+     I              EXTFILENAM                      MYFLD L4M5  U3RTH7    comment
      I* Data structure input specification (DS prompt)
-     IMYDS      EUDSEXTFILENAM             12345555
+     IMYDS      EUDSEXTFILENAM             12345555                       comment
      I* Data structure subfield input spec (SS prompt)
-     I              EXTFLDNAME            P123488885MYFLD
+     I              EXTFLDNAME            P123488885MYFLD                 comment
      I* Data structure subfield init spec (SV prompt)
-     I I            SOMETHING             P123456785MYFLD     
+     I I            SOMETHING             P123456785MYFLD                 comment
       *
      C* Calc spec (C prompt)
-     CLRNLR MRNL1VARA      ADD  VARB      RES   30 1HOV02H2COMMENT! 
+     CLRNLR MRNL1VARA      ADD  VARB      RES   30 1HOV02H2COMMENT!
       *
      C* Test embedded SQL
       *
       * -- ENTRY PARMS
-     C/COPY SRCLIB/QCPYSRC,ENC320C
+     C/COPY SRCLIB/QCPYSRC,ENC320C                         comment
      C*
       *
      C/Exec SQL
@@ -49,12 +49,21 @@
      C/End-Exec
       *
      O* Output spec (O prompt)
-     O                NKA 01 L2FIELDXJB+NNNPWASD
+     O                NKA 01 L2FIELDXJB+NNNPWASD                          comment
      O* Output spec disk (OD prompt)
-     OMYFILE  TADD    NKA L4NRTWASD
+     OMYFILE  TADD    NKA L4NRTWASD                                       comment
      O* Output spec field description (P prompt)
-     O                NKA L4NU2MYFLDMXBNNNNLMYCONST
-     O                N01 L2NKNSEATS#   200B
+     O                NKA L4NU2MYFLDMXBNNNNLMYCONST                       comment
+     O                N01 L2NKNSEATS#   200B                              comment
       *
      /EJECT
      /COPY 
+**     TABER# / TABERD
+1Text Text Text Text.
+2Text Text Text Text Text Text Text Text Text Text.
+3Text Text Text Text Text Text Text Text.
+4
+5
+6
+7
+8

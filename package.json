@@ -2,7 +2,7 @@
     "name": "ibmi-languages",
     "displayName": "IBMi Languages",
     "description": "Provide syntax highlighting for IBMi languages such as RPG, CL, DDS, and MI.",
-    "version": "0.5.3",
+    "version": "0.5.4",
     "publisher": "barrettotte",
     "author": {
         "name": "Barrett Otte"
@@ -15,6 +15,17 @@
     ],
     "contributes": {
         "languages": [
+            {
+                "id": "bnd",
+                "aliases": [
+                    "BND",
+                    "Binder Language"
+                ],
+                "extensions": [
+                    ".bnd"
+                ],
+                "configuration": "./configurations/bnd.language-configuration.json"
+            },
             {
                 "id": "cl",
                 "aliases": [
@@ -129,6 +140,11 @@
         ],
         "grammars": [
             {
+                "language": "bnd",
+                "scopeName": "source.bnd",
+                "path": "./syntaxes/bnd.tmLanguage.json"
+            },
+            {
                 "language": "cl",
                 "scopeName": "source.cl",
                 "path": "./syntaxes/cl.tmLanguage.json"
@@ -192,7 +208,8 @@
         "DSPF",
         "MI",
         "MACHINE INTERFACE",
-        "ISERIES"
+        "ISERIES",
+        "BINDER LANGUAGE"
     ],
     "license": "MIT",
     "repository": {

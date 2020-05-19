@@ -70,9 +70,10 @@
         },
         "strings": {
             "patterns": [
-                {
+				{
 					"name": "string.other.mi.hex",
-					"match": "(?i)x\\'.+\\'"
+                    "begin": "(?i)x'",
+                    "end": "'"
 				},
                 {
                     "name": "string.quoted.single.mi",
