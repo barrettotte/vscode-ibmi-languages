@@ -411,7 +411,7 @@
 						},
 						{
 							"name": "constant.language.rpgle.fixed.i.char1",
-							"match": "(?i)(?<=((?<=^[\\s]{5}I).{23}))([A-Z])"
+							"match": "(?i)(?<=((?<=^[\\s]{5}I).{23}))([A-Z0-9])"
 						},
 						{
 							"name": "constant.language.rpgle.fixed.i.pos2",
@@ -427,7 +427,7 @@
 						},
 						{
 							"name": "constant.language.rpgle.fixed.i.char2",
-							"match": "(?i)(?<=((?<=^[\\s]{5}I).{31}))([A-Z])"
+							"match": "(?i)(?<=((?<=^[\\s]{5}I).{31}))([A-Z0-9])"
 						},
 						{
 							"name": "constant.language.rpgle.fixed.i.pos3",
@@ -443,7 +443,7 @@
 						},
 						{
 							"name": "constant.language.rpgle.fixed.i.char3",
-							"match": "(?i)(?<=((?<=^[\\s]{5}I).{39}))([A-Z])"
+							"match": "(?i)(?<=((?<=^[\\s]{5}I).{39}))([A-Z0-9])"
 						},
 						{
 							"include": "#rpglecommon"
