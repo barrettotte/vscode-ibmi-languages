@@ -70,7 +70,10 @@
 				},
 				{
 					"include": "#comments"
-				},
+                },
+                {
+                    "include": "#freedefkeywords"
+                },
 				{
 					"include": "#constants"
 				},
