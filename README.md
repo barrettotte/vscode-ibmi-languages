@@ -35,7 +35,7 @@ Also check out https://github.com/NielsLiisberg/RPG-vsCode-Getting-Started for a
 - [x] Syntax highlighting for embedded SQL in SQLRPG and SQLRPGLE
 - [x] Support for a mix of RPGLE free and fixed format
 - [x] Support for binder language
-- [ ] Support for actual DB2 SQL in embedded SQL (currently using generic SQL grammar)
+- [x] Support for DB2 SQL keywords in embedded SQL
 
 
 **If anyone stumbles across this and has any awesome material for machine interface, please send me an email.**

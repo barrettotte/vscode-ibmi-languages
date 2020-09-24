@@ -2,7 +2,11 @@
 
 ---
 ### 0.5.5
-- 
+- Fix bug with ```*n``` in RPGLE prototypes [41](https://github.com/barrettotte/vscode-ibmi-languages/issues/41)
+- Fix bug with RPGLE I spec highlighting [48](https://github.com/barrettotte/vscode-ibmi-languages/issues/48)
+- Add missing ```to``` keyword in RPGLE [49](https://github.com/barrettotte/vscode-ibmi-languages/issues/49)
+- Add DB2 SQL grammar for embedded SQL [54](https://github.com/barrettotte/vscode-ibmi-languages/issues/54)
+- Fix bug with RPGLE style comment in embedded SQL [55](https://github.com/barrettotte/vscode-ibmi-languages/issues/55)
 
 
 ---
