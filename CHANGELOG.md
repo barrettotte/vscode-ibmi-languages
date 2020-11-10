@@ -1,5 +1,10 @@
 # Changelog
 
+
+---
+### 0.5.6
+- Fix some syntax highlighting issues for MI [58](https://github.com/barrettotte/vscode-ibmi-languages/issues/58)
+
 ---
 ### 0.5.5
 - Fix bug with ```*n``` in RPGLE prototypes [41](https://github.com/barrettotte/vscode-ibmi-languages/issues/41)
