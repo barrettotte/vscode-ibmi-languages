@@ -8,10 +8,10 @@
      A N25                                  OVRATR
       *
      A*  Test identifier with a keyword in it
-     A             #1LOCK                   8  4'Lock Status:'
+WASD A             #1LOCK                   8  4'Lock Status:'
       *
-     A*  Numeric constant at end of identifier
-     A             #CBX#3
+XXXXXA*  Numeric constant at end of identifier
+AHHHHA             #CBX#3
       *
-     A*  Identifier with max width
+TEST  A*  Identifier with max width
      A          R ABCDEFGHIJ                CF03(03 'EXIT')
