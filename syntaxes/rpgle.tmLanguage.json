@@ -29,6 +29,9 @@
 			"include": "#fixedSQL"
 		},
 		{
+			"include": "#freeSQL"
+		},
+		{
 			"include": "#rpglecommon"
 		},
 		{
@@ -42,9 +45,6 @@
 		},
 		{
 			"include": "#freeformat"
-		},
-		{
-			"include": "#freeSQL"
 		}
 	],
 	"repository": {
