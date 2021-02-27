@@ -2,15 +2,7 @@
 
 Somewhat decent syntax highlighting for IBMi languages such as RPG, CL, DDS, MI, and RPGLE fixed/free.
 
-
-![Visual Studio Marketplace Version](https://img.shields.io/visual-studio-marketplace/v/barrettotte.ibmi-languages.svg)
-![Visual Studio Marketplace Downloads](https://img.shields.io/visual-studio-marketplace/d/barrettotte.ibmi-languages.svg)
-![Visual Studio Marketplace Rating](https://img.shields.io/visual-studio-marketplace/r/barrettotte.ibmi-languages.svg)
-![GitHub](https://img.shields.io/github/license/barrettotte/vscode-ibmi-languages.svg)
-
-
-I made this extension because I do a lot more reading than writing with IBMi languages at work and I always have VS Code open.
-I also wanted to learn how to make a simple language extension for VS Code and get better with regular expressions.
+**Please consider downloading [code-for-ibmi](https://github.com/halcyon-tech/code-for-ibmi) to edit RPG, RPGLE, and CL directly in VS Code!**
 
 Pretty much all I did was crawl through various IBM documentation on my lunch breaks and throw some regular expressions in here when I got the chance.
 The regex I made probably isn't too efficient and it does mess up sometimes, but I think it works for like 90% of cases I've come across.
@@ -19,13 +11,15 @@ By all means, I probably got a couple things wrong; submit a pull request or iss
 (That goes for anything in here)
 
 
-## Development in VS Code
-This extension is really only useful for reading code, not writing. See [Issue 50](https://github.com/barrettotte/vscode-ibmi-languages/issues/50) for more details.
+## Contributors
 
-Also check out https://github.com/NielsLiisberg/RPG-vsCode-Getting-Started for an introduction to an RPG + VS Code workflow.
+* [@barrettotte](https://github.com/barrettotte)
+* [@worksofliam](https://github.com/worksofliam)
 
 
 ## Features
+Last updated for Fall 2020: PTF enhancements for 7.3 and 7.4
+
 - [x] Syntax highlighting for RPG III and RPG/400 - H,F,E,L,I,C,O specs
 - [x] Syntax highlighting for Control Language (CL)
 - [x] Syntax highlighting for DDS files - physical, logical, display, printer, and ICF
@@ -37,10 +31,8 @@ Also check out https://github.com/NielsLiisberg/RPG-vsCode-Getting-Started for a
 - [x] Support for binder language
 - [x] Support for DB2 SQL keywords in embedded SQL
 
-
 **If anyone stumbles across this and has any awesome material for machine interface, please send me an email.**
 I really only made the bare basics for MI and I'd love to add to it
-
 
 
 ## File Types (case insensitive)
@@ -48,7 +40,7 @@ For each source type, I lumped legacy(system/38) source types together with the 
 
 | Extension(s)                  | Description        |
 | ----------------------------- | ------------------ |
-| .cl, .clp, .clp38 .clle       | Control Language   |
+| .cl, .clp, .clp38 .clle       | Control Language (CL) |
 | .dspf, .dspf38                | DDS Display file   |
 | .icff                         | DDS ICF file       |
 | .lf, .lf38                    | DDS Logical file   |
@@ -57,6 +49,7 @@ For each source type, I lumped legacy(system/38) source types together with the 
 | .rpg, .rpg38, .sqlrpg         | RPG/400            |
 | .rpgle, .sqlrpgle             | RPGLE and SQLRPGLE |
 | .bnd                          | Binder Language    |
+| .mi                           | Machine Interface (MI) |
 
 
 ## Screenshots
@@ -105,16 +98,16 @@ See [CHANGELOG.md](https://github.com/barrettotte/vscode-ibmi-languages/blob/mas
 See [issues](https://github.com/barrettotte/vscode-ibmi-languages/issues).
 
 
+## Featured In
+- https://www.itjungle.com/2020/12/09/vs-code-provides-another-coding-option-for-ibm-i/
+- https://www.anandk.dev/2020/11/VSCode-IBMi-AS400.html
+- https://github.com/halcyon-tech/code-for-ibmi
+
+
 ## References
-- Derived from an existing RPG extension https://github.com/NielsLiisberg/RPG-for-VSCode
-- Liam's Flight400 project (great for testing) - https://github.com/worksofliam/flight400
-- RPG/400 - https://www.ibm.com/support/knowledgecenter/SSAE4W_9.6.0/com.ibm.etools.iseries.langref.doc/evferlsh02.htm#ToC
-- RPG for VS Code - https://github.com/NielsLiisberg/RPG-for-VSCode
-- RPG II, RPG III, and RPG/400 - https://isbnsearch.org/isbn/0878352465
-- Textmate
-  - Dart syntax example - https://github.com/Dart-Code/Dart-Code/blob/master/syntaxes/dart.json
-  - Naming Conventions - https://macromates.com/manual/en/language_grammars#naming_conventions
-  - TextMate Grammar - https://www.apeth.com/nonblog/stories/textmatebundle.html
-  - https://stackoverflow.com/questions/23463803/are-there-any-standards-for-tmlanguage-keyword-types
-- Regex tool - https://regexr.com/
-- VS Code Language extensions - https://code.visualstudio.com/api/language-extensions/overview
+- Derived from an [existing RPG extension](https://github.com/NielsLiisberg/RPG-for-VSCode)
+- [Repo used to test older RPG](https://github.com/worksofliam/flight400)
+- [RPG/400](https://www.ibm.com/support/knowledgecenter/SSAE4W_9.6.0/com.ibm.etools.iseries.langref.doc/evferlsh02.htm#ToC)
+- [RPG II, RPG III, and RPG/400](https://isbnsearch.org/isbn/0878352465)
+- [Regex tool](https://regexr.com/)
+- [VS Code Language extensions](https://code.visualstudio.com/api/language-extensions/overview)

@@ -3,7 +3,69 @@
     "brackets": [
         ["{", "}"],
         ["[", "]"],
-        ["(", ")"]
+        ["(", ")"],
+
+        ["IF", "ENDIF"],
+        ["IF", "END"],
+        ["IFEQ", "ENDIF"],
+        ["IFEQ", "END"],
+        ["IFGE", "ENDIF"],
+        ["IFGE", "END"],
+        ["IFGT", "ENDIF"],
+        ["IFGT", "END"],
+        ["IFLE", "ENDIF"],
+        ["IFLE", "END"],
+        ["IFLT", "ENDIF"],
+        ["IFLT", "END"],
+        ["IFNE", "ENDIF"],
+        ["IFNE", "END"],
+        
+        ["DOW", "ENDDO"],
+        ["DOW", "END"],
+        ["DOWEQ", "ENDDO"],
+        ["DOWEQ", "END"],
+        ["DOWGE", "ENDDO"],
+        ["DOWGE", "END"],
+        ["DOWGT", "ENDDO"],
+        ["DOWGT", "END"],
+        ["DOWLE", "ENDDO"],
+        ["DOWLE", "END"],
+        ["DOWLT", "ENDDO"],
+        ["DOWLT", "END"],
+        ["DOWNE", "ENDDO"],
+        ["DOWNE", "END"],
+
+        ["DOU", "ENDDO"],
+        ["DOU", "END"],
+        ["DOUEQ", "ENDDO"],
+        ["DOUQ", "END"],
+        ["DOUGE", "ENDDO"],
+        ["DOUGE", "END"],
+        ["DOUGT", "ENDDO"],
+        ["DOUGT", "END"],
+        ["DOULE", "ENDDO"],
+        ["DOULE", "END"],
+        ["DOULT", "ENDDO"],
+        ["DOULT", "END"],
+        ["DOUNE", "ENDDO"],
+        ["DOUNE", "END"],
+
+        ["DO", "ENDDO"],
+        ["DO", "END"],
+        ["SELECT", "ENDSL"],
+        ["SELECT", "END"],
+        
+        ["FOR-EACH", "ENDFOR"],
+        ["FOR-EACH", "END"],
+        ["FOR", "ENDFOR"],
+        ["FOR", "END"],
+
+        ["BEGSR", "ENDSR"],
+        ["MONITOR", "ENDMON"],
+        ["DCL-DS", "END-DS"],
+        ["DCL-PROC", "END-PROC"],
+        ["DCL-PR", "END-PR"],
+        ["DCL-PI", "END-PI"],
     ],
     // symbols that are auto closed when typing
     "autoClosingPairs": [
@@ -20,5 +82,8 @@
         ["(", ")"],
         ["\"", "\""],
         ["'", "'"]
-    ]
+    ],
+    "comments": {
+        "lineComment": "//"
+    }
 }

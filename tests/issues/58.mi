@@ -1,0 +1,12 @@
+/* https://github.com/barrettotte/vscode-ibmi-languages/issues/58 */
+
+TEST-1:
+  CPYBLA IO-SRCLIB,OIR-SRCLIB
+
+TEST-2:
+  CMPBLA(B) LIBNAM,'QTEMP '/EQ(TEMPLIB)
+
+/* Other random things that came up when messing around */
+MISC:
+  DCL SYSPTR CL06 INIT("CL06", TYPE(PGM)); /* comment after statement */
+  DCL OL CL06OL (USRSPC, OFFSET@) ARG; /* identifer ending in keyword */

@@ -1,0 +1,64 @@
+     H* https://github.com/barrettotte/vscode-ibmi-languages/issues/61
+     H* 
+     H* https://raw.githubusercontent.com/worksofliam/flight400/master/qrpgsrc/frs409.rpg
+     H*
+     FFRS409DFCF  E                    WORKSTN      KINFDS WSDS
+     I*
+     I              X'31'                 C         @F01
+     I              X'33'                 C         @F03
+     I              X'3C'                 C         @F12
+     I              X'F1'                 C         @ENTER
+     I              X'F3'                 C         @HELP
+     I              X'F6'                 C         @PRINT
+     I*
+     I              '0'                   C         @FALSE
+     I              '1'                   C         @TRUE
+     I*
+     IWSDS        DS
+     I                                      369 369 KEY
+     C*
+     C           *ENTRY    PLIST
+     C                     PARM           ORDER#  90        * RETURN START TIME
+     C                     PARM           ENDYN   1         * RETURN START TIME
+     C*
+     C                     EXSR INZSR                       * RESET EXIT FLAG
+     C*
+     C           @EXIT     DOUEQ@TRUE                       * DO UNTIL F3/F12
+     C*
+     C                     WRITEFRSWIN                      * WRITE MSGCTL
+     C                     EXFMTFKEYS                       * WRITE SFL CMDL
+     C*
+     C           KEY       CASEQ@F03      @F03SR            F03 EXIT
+     C           KEY       CASEQ@F12      @F12SR            F12 CANCEL
+     C                     CAS            @ENTKY            Enter
+     C                     ENDCS
+     C*
+     C           NEXT      TAG
+     C                     ENDDO
+     C*
+     C                     MOVE *ON       *INLR
+     C*
+     C*
+     C*
+     C           INZSR     BEGSR                            * INIT SUBROUTN
+     C                     MOVE ORDER#    ORDER             * RETURN START TIME
+     C                     MOVE 'N'       ENDYN             * RETURN START TIME
+     C                     MOVE @FALSE    @EXIT   1         * PGM EXIT = OFF
+     C                     ENDSR
+     C*
+     C*
+     C           @ENTKY    BEGSR
+     C                     MOVE @TRUE     @EXIT             * SET EXIT FLAG ON
+     C                     ENDSR
+     C*
+     C*
+     C           @F03SR    BEGSR                            * F3 SUBROUTINE
+     C                     MOVE 'Y'       ENDYN             * RETURN START TIME
+     C                     MOVE @TRUE     @EXIT             * SET EXIT FLAG ON
+     C                     ENDSR
+     C*
+     C*
+     C           @F12SR    BEGSR
+     C                     MOVE 'Y'       ENDYN             * RETURN START TIME
+     C                     MOVE @TRUE     @EXIT
+     C                     ENDSR

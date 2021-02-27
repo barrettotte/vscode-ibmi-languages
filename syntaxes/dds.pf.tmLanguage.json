@@ -12,6 +12,9 @@
 			"include": "#keywords"
 		},
 		{
+			"include": "#gutter"
+		},
+		{
 			"include": "#identifiers"
 		},
 		{
@@ -23,7 +26,15 @@
 			"patterns": [
 				{
 					"name": "comment.line.dds.pf",
-					"match": "(((?i)^[\\s]{0,5}.))(\\*).*"
+					"match": "^.{5}(.)(\\*).*"
+				}
+			]
+		},
+		"gutter": {
+			"patterns": [
+				{
+					"name": "comment.gutter",
+					"match": "^.{5}"
 				}
 			]
 		},
@@ -35,27 +46,27 @@
                 },
 				{
 					"name": "constant.language.dds.pf.nametype",
-					"match": "(?i)(?<=((?<=^[\\s]{5}[A|\\s]).{10}))(R|K)"
+					"match": "(?i)(?<=((?<=^.{5}[A|\\s]).{10}))(R|K)"
 				},
 				{
 					"name": "constant.language.dds.pf.ref",
-					"match": "(?i)(?<=((?<=^[\\s]{5}[A|\\s]).{22}))(R)"
+					"match": "(?i)(?<=((?<=^.{5}[A|\\s]).{22}))(R)"
 				},
 				{
 					"name": "constant.language.dds.pf.len",
-					"match": "(?i)(?<=((?<=^[\\s]{5}[A|\\s]).{23}))[0-9|\\s]{5}"
+					"match": "(?i)(?<=((?<=^.{5}[A|\\s]).{23}))[0-9|\\s]{5}"
 				},
 				{
 					"name": "constant.language.dds.pf.datatype",
-					"match": "(?i)(?<=((?<=^[\\s]{5}[A|\\s]).{28}))(P|S|B|F|A|L|T|Z|H|J|E|O|G|5)"
+					"match": "(?i)(?<=((?<=^.{5}[A|\\s]).{28}))(P|S|B|F|A|L|T|Z|H|J|E|O|G|5)"
 				},
 				{
 					"name": "constant.language.dds.pf.decpos",
-					"match": "(?i)(?<=((?<=^[\\s]{5}[A|\\s]).{29}))[0-9|\\s]{2}"
+					"match": "(?i)(?<=((?<=^.{5}[A|\\s]).{29}))[0-9|\\s]{2}"
 				},
 				{
 					"name": "constant.language.dds.pf.use",
-					"match": "(?i)(?<=((?<=^[\\s]{5}[A|\\s]).{31}))B"
+					"match": "(?i)(?<=((?<=^.{5}[A|\\s]).{31}))B"
 				},
                 {
                     "name": "constant.numeric.dds.pf",
@@ -67,7 +78,7 @@
 			"patterns": [
 				{
 					"name": "keyword.other.dds.pf.spec",
-					"match": "(?i)(^[\\s]{5}A)"
+					"match": "(?i)(?<=^.{5})[A]"
 				},
 				{
 					"name": "keyword.other.dds.pf",
@@ -75,7 +86,7 @@
 				},
 				{
 					"name": "keyword.other.dds.pf.funcs",
-					"match": "(?i)(?<=(.{44}))(?<=((?<=^[\\s]{5}[A|\\s]).{38}))(ZONE|VARLEN|VALUES|UNSIGNED|UNIQUE|TIMSEP|TIMFMT|TEXT|REFSHIFT|REFFLD|REF|RANGE|NOALTSEQ|LIFO|FORMAT|FLTPCN|FIFO|FCFO|EDTCDE|EDTWRD|DIGIT|DFT|DESCEND|DATSEP|DATFMT|COMP|COLHDG|CMP|CHKMSGID|CHECK|CCSID|ALWNULL|ALTSEQ|ALIAS|ABSVAL)\\b"
+					"match": "(?i)(?<=(.{44}))(?<=((?<=^.{5}[A|\\s]).{38}))(ZONE|VARLEN|VALUES|UNSIGNED|UNIQUE|TIMSEP|TIMFMT|TEXT|REFSHIFT|REFFLD|REF|RANGE|NOALTSEQ|LIFO|FORMAT|FLTPCN|FIFO|FCFO|EDTCDE|EDTWRD|DIGIT|DFT|DESCEND|DATSEP|DATFMT|COMP|COLHDG|CMP|CHKMSGID|CHECK|CCSID|ALWNULL|ALTSEQ|ALIAS|ABSVAL)\\b"
 				}
 			]
 		},
@@ -94,7 +105,7 @@
 			"patterns": [
 				{
 					"name": "keyword.other.dds.pf.spec",
-					"match": "(?i)^[\\s]{5}(A|\\s)"
+					"match": "(?i)(?<=^.{5})[A]"
 				}
 			]
 		}
