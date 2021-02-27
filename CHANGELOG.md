@@ -3,7 +3,14 @@
 
 ---
 ### 0.5.6
+- Add new RPGLE keywords for Fall 2020 7.3/7.4 PTFS [57](https://github.com/barrettotte/vscode-ibmi-languages/issues/57)
+- Add "bracket-matching" to RPG and RPGLE [61](https://github.com/barrettotte/vscode-ibmi-languages/issues/61)
+- Add quick comment toggling to RPGLE, CL, and MI [67](https://github.com/barrettotte/vscode-ibmi-languages/issues/67)
+- Fix RPG, RPGLE, and DDS "gutters" [52](https://github.com/barrettotte/vscode-ibmi-languages/issues/52), [60](https://github.com/barrettotte/vscode-ibmi-languages/issues/60)
 - Fix some syntax highlighting issues for MI [58](https://github.com/barrettotte/vscode-ibmi-languages/issues/58)
+- Fix embedded SQL highlighting in fixed-format RPGLE [59](https://github.com/barrettotte/vscode-ibmi-languages/issues/59)
+- Fix RPGLE for loop syntax highlighting [63](https://github.com/barrettotte/vscode-ibmi-languages/issues/63)
+- Fix embedded SQL highlighting in mixed-format RPGLE [66](https://github.com/barrettotte/vscode-ibmi-languages/issues/66)
 
 ---
 ### 0.5.5
