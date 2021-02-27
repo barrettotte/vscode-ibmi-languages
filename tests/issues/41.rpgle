@@ -1,5 +1,7 @@
 // https://github.com/barrettotte/vscode-ibmi-languages/issues/41
 
+**free 
+
 dcl-pr openFile pointer extproc('_C_IFS_fopen');
   *n pointer value; // file name
   *n pointer value; // file mode

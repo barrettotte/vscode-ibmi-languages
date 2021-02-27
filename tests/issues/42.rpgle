@@ -1,3 +1,5 @@
+**free
+
     fptr = fopen(fpath: fmode);
     line = fgets(%addr(buffer): %size(buffer): fptr);
 
