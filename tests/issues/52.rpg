@@ -1,0 +1,7 @@
+     H* https://github.com/barrettotte/vscode-ibmi-languages/issues/52
+     C*
+WASD C*
+OHMANC                     MOVEL'HELLO'   HELLO  11      
+     C                     MOVE 'WORLD'   HELLO          
+TEST C           HELLO     DSPLY          WAIT    1      
+     C                     SETON                     LR 
