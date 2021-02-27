@@ -11,6 +11,6 @@ jobs:
       - run: npm install
       - uses: lannonbr/vsce-action@master
         with:
-          args: "publish -p $PUBLISHER_TOKEN"
+          args: "publish -p $VSCE_TOKEN"
         env:
-          PUBLISHER_TOKEN: ${{ secrets.PUBLISHER_TOKEN }}
+          PUBLISHER_TOKEN: ${{ secrets.VSCE_TOKEN }}
