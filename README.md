@@ -11,6 +11,12 @@ By all means, I probably got a couple things wrong; submit a pull request or iss
 (That goes for anything in here)
 
 
+## Contributors
+
+* [@barrettotte](https://github.com/barrettotte)
+* [@worksofliam](https://github.com/worksofliam)
+
+
 ## Features
 Last updated for Fall 2020: PTF enhancements for 7.3 and 7.4
 
