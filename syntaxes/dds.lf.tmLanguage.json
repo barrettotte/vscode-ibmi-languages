@@ -12,6 +12,9 @@
 			"include": "#keywords"
 		},
 		{
+			"include": "#gutter"
+		},
+		{
 			"include": "#identifiers"
 		},
 		{
@@ -23,7 +26,15 @@
 			"patterns": [
 				{
 					"name": "comment.line.dds.lf",
-					"match": "(((?i)^[\\s]{0,5}.))(\\*).*"
+					"match": "(.)(\\*).*"
+				}
+			]
+		},
+		"gutter": {
+			"patterns": [
+				{
+					"name": "comment.gutter",
+					"match": "^.{5}"
 				}
 			]
 		},
@@ -35,27 +46,27 @@
                 },
 				{
 					"name": "constant.language.dds.lf.nametype",
-					"match": "(?i)(?<=((?<=^[\\s]{5}[A|\\s]).{10}))(R|K|J|S|O)"
+					"match": "(?i)(?<=((?<=^.{5}[A|\\s]).{10}))(R|K|J|S|O)"
 				},
 				{
 					"name": "constant.language.dds.lf.ref",
-					"match": "(?i)(?<=((?<=^[\\s]{5}[A|\\s]).{22}))R"
+					"match": "(?i)(?<=((?<=^.{5}[A|\\s]).{22}))R"
 				},
 				{
 					"name": "constant.language.dds.lf.len",
-					"match": "(?i)(?<=((?<=^[\\s]{5}[A|\\s]).{23}))[0-9|\\s]{5}"
+					"match": "(?i)(?<=((?<=^.{5}[A|\\s]).{23}))[0-9|\\s]{5}"
 				},
 				{
 					"name": "constant.language.dds.lf.datatype",
-					"match": "(?i)(?<=((?<=^[\\s]{5}[A|\\s]).{28}))(P|S|B|F|A|L|T|Z|H|J|E|O|G|5)"
+					"match": "(?i)(?<=((?<=^.{5}[A|\\s]).{28}))(P|S|B|F|A|L|T|Z|H|J|E|O|G|5)"
 				},
 				{
 					"name": "constant.language.dds.lf.decpos",
-					"match": "(?i)(?<=((?<=^[\\s]{5}[A|\\s]).{29}))[0-9|\\s]{2}"
+					"match": "(?i)(?<=((?<=^.{5}[A|\\s]).{29}))[0-9|\\s]{2}"
 				},
 				{
 					"name": "constant.language.dds.lf.use",
-					"match": "(?i)(?<=((?<=^[\\s]{5}[A|\\s]).{31}))(B|I|N)"
+					"match": "(?i)(?<=((?<=^.{5}[A|\\s]).{31}))(B|I|N)"
 				},
                 {
                     "name": "constant.numeric.dds.lf",
@@ -67,7 +78,7 @@
 			"patterns": [
 				{
 					"name": "keyword.other.dds.lf.spec",
-					"match": "(?i)(^[\\s]{5}A)"
+					"match": "(?i)(?<=^.{5})[A]"
 				},
 				{
 					"name": "keyword.other.dds.lf",
@@ -109,7 +120,7 @@
 			"patterns": [
 				{
 					"name": "keyword.other.dds.lf.spec",
-					"match": "(?i)^[\\s]{5}(A|\\s)"
+					"match": "(?i)(?<=^.{5})[A]"
 				}
 			]
 		}

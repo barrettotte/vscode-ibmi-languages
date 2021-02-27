@@ -34,7 +34,7 @@
 			"patterns": [
 				{
 					"name": "comment.gutter",
-					"match": "^[\\s\\S]{5}"
+					"match": "^.{5}"
 				}
 			]
 		},

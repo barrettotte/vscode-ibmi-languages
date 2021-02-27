@@ -1,0 +1,10 @@
+     A* Logical file test
+      *
+     A          R PERSFMT4                  PFILE(PERSON)
+     A            PERSONID
+WASD A            FIRSTNAME
+     A            LASTNAME
+ADDDDA            AGE
+     A          K PERSONID
+     A          O AGE                       COMP(GT 30)
+TEST A*
