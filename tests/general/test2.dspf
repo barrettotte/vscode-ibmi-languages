@@ -1,7 +1,7 @@
      A* Test display file
       *
      AAN01n02n03R RECORD1   R12345J99B123654CF03(03 'EXIT')
-     A          R #SFLRCD                   TEXT('Subfile record.')
+     A          R #SFLRCD                   TEXT('* TESTING...')
 
      A N79N31                               DSPATR(UL)
      A N31                                  DSPATR(HI)
@@ -13,5 +13,5 @@ WASD A             #1LOCK                   8  4'Lock Status:'
 XXXXXA*  Numeric constant at end of identifier
 AHHHHA             #CBX#3
       *
-TEST  A*  Identifier with max width
+TEST A*  Identifier with max width
      A          R ABCDEFGHIJ                CF03(03 'EXIT')

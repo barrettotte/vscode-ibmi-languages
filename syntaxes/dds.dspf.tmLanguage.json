@@ -26,7 +26,7 @@
 			"patterns": [
 				{
 					"name": "comment.line.dds.dspf",
-					"match": "(.)(\\*).*"
+					"match": "^.{5}(.)(\\*).*"
 				}
 			]
 		},
