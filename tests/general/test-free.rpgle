@@ -1,83 +1,83 @@
 // Testing RPGLE free
 
 
-      /FREE
-      /END-FREE
-
+/FREE
 // Test operators, literals, and constants
 x = 2    1 + 2    1 - 2    1 * 2     1 / 2     1 ** 2
 x += 1   x -= 1   x *= 1   x /= 1    x **= 2
 x > 1    x < 1    x = 1    x <> 1    x <= 1    x >= 1
 x=1 and y=1   x=1 or y=1   not x
 . , :   2.5    x'AF'    'a string'    *ON    *OFF    *INLR=*ON;
+/END-FREE
 
 
-
+/FREE
 // Test control specifications
 ctl-opt;  
 
 ctl-opt main(main);  //inline comment
+/END-FREE
 
      H* Test control spec
      H DATFMT(*YMD) DATEDIT(*YMD) DEBUG(*YES) OPTION(*NODEBUGIO)                h spec comment  
 
-ctl-opt option(*srcstmt:*noDebugIO:*nounref) dftActGrp(*no);
+      ctl-opt option(*srcstmt:*noDebugIO:*nounref) dftActGrp(*no);
 
-ctl-opt datfmt(*iso) timfmt(*iso)
+      ctl-opt datfmt(*iso) timfmt(*iso)
         alwnull(*usrctl);
 
-ctl-opt option(*srcstmt)ccsid(*char:*jobrun);
+      ctl-opt option(*srcstmt)ccsid(*char:*jobrun);
 
      H OPTION(*SRCSTMT :              
      H        *NODEBUGIO)             
      H ACTGRP(*NEW)                   
- CTL-OPT ALWNULL(*USRCTL)       
+      CTL-OPT ALWNULL(*USRCTL)       
            CCSID(*UCS2
                       :1200)      
            CCSID(*CHAR:*JOBRUN);  
      H DATFMT(*YMD) TIMFMT(*USA) 
 
 
-
+/FREE
 // Test file specifications
 DCL-F file1a;
 DCL-F file1b DISK(*EXT) USAGE(*INPUT);
 DCL-F file2 PRINTER;
+/END-FREE
 
      F* Test file spec (externally described)
      FANOTHRFILEUPEADE     L     G SPECIAL INDDS(SOMEDS)                        f spec comment
 
-DCL-F file3 SEQ;  //inline comment
-DCL-F file4 WORKSTN;
-DCL-F file5 USAGE(*UPDATE) KEYED;
+      DCL-F file3 SEQ;  //inline comment
+      DCL-F file4 WORKSTN;
+      DCL-F file5 USAGE(*UPDATE) KEYED;
 
      F* Test file spec (externally described)
      FANOTHRFILEUPEADE     L     G SPECIAL INDDS(SOMEDS)                        f spec comment
 
-dcl-f CLS019B workstn indDs(dspf) usropn;
+      dcl-f CLS019B workstn indDs(dspf) usropn;
 
 
 
 // Test named constant definition
-  DCL-C CON_1 CONST(1);    //inline comment
-  DCL-C CON_2 2;
+      DCL-C CON_1 CONST(1);    //inline comment
+      DCL-C CON_2 2;
 
-    DCL-C array_total_size
+      DCL-C array_total_size
            %SIZE(array:*ALL);
 
 
 // Test standalone field definition
-  DCL-S limit PACKED(5) INZ(100);     //inline comment
+      DCL-S limit PACKED(5) INZ(100);     //inline comment
 
      D* Test definition spec
-     DMYFIELD        ESS *OPCODE-12345 *12 NOOPT                                d spec comment
+      DMYFIELD        ESS *OPCODE-12345 *12 NOOPT                                d spec comment
 
-  DCL-S num INZ(0)
-            LIKE(limit);
+      DCL-S num INZ(0) LIKE(limit);
 
 
 // Test data structure definition
-
+/FREE
 dcl-ds resp      likeds(geoResponse);
 
 DCL-DS address;
@@ -87,33 +87,35 @@ DCL-DS address;
    province VARCHAR(25);
    postcode VARCHAR(6);
 END-DS address;
+/END-FREE
 
-   DCL-DS person QUALIFIED;
-      name VARCHAR(25);
-      DCL-DS address;
-         num int(5);
-         street VARCHAR(25);
-         city VARCHAR(25);
-         province VARCHAR(25);
-         postcode VARCHAR(6);
-      END-DS address;
-      age int(5);
-   END-DS person;
-
-   DCL-DS family QUALIFIED;
-      num int(5);
-      DCL-DS person DIM(10);
+      DCL-DS person QUALIFIED;
          name VARCHAR(25);
+         DCL-DS address;
+            num int(5);
+            street VARCHAR(25);
+            city VARCHAR(25);
+            province VARCHAR(25);
+            postcode VARCHAR(6);
+         END-DS address;
          age int(5);
-         numPets int(5);
-         DCL-DS pets DIM(5);
-            name VARCHAR(25);
-            type VARCHAR(25);
-         END-DS pets;
       END-DS person;
-   END-DS;
+
+      DCL-DS family QUALIFIED;
+         num int(5);
+         DCL-DS person DIM(10);
+            name VARCHAR(25);
+            age int(5);
+            numPets int(5);
+            DCL-DS pets DIM(5);
+               name VARCHAR(25);
+               type VARCHAR(25);
+            END-DS pets;
+         END-DS person;
+      END-DS;
 
 
+/FREE
 // Test prototypes and procedure interfaces
    DCL-PI *N EXTPGM;
       name CHAR(10) CONST;
@@ -150,6 +152,7 @@ END-DS address;
       name CHAR(10);
       DCL-PARM address CHAR(25);  //inline comment
    END-PR;
+/END-FREE
 
 
 // Testing general
@@ -177,14 +180,14 @@ END-DS address;
       endsr;
 
 
-   DCL-S name
-     /IF DEFINED(TRUE)
-       CHAR(10);
-     /ELSEIF DEFINED(TRUE OR FALSE)
-       VARCHAR(10);
-     /ELSE
-       CHAR(12);
-     /ENDIF
+      DCL-S name
+       /IF DEFINED(TRUE)
+         CHAR(10);
+       /ELSEIF DEFINED(TRUE OR FALSE)
+         VARCHAR(10);
+       /ELSE
+         CHAR(12);
+       /ENDIF
 
 /COPY /something
 /INCLUDE /something/else
