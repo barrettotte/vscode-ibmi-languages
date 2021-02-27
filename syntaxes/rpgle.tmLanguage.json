@@ -648,7 +648,7 @@
 				},
 				{
 					"name": "keyword.other.rpgle",
-					"match": ":|\\.|\\,|\\*{1,2}(=)?|=|<>|((<|>|\\+|\\-|\\/)(=)?)|((\\b(?i)(TO|AND|OR|NOT)\\b))"
+					"match": ":|\\.|\\,|\\*{1,2}(=)?|=|<>|((<|>|\\+|\\-|\\/)(=)?)|((\\b(?i)(TO|DOWNTO|AND|OR|NOT)\\b))"
 				},
 				{
 					"name": "keyword.other.rpgle.bif",
