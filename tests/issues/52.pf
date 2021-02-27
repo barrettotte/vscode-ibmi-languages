@@ -5,7 +5,8 @@ TEST A                                      UNIQUE
      A          R ACCOUNT                   TEXT('Record format text')
      A            ACCOUNTNUM    12P 0       TEXT('text')
      A            ACCURRENCY     3A         TEXT('text')
-WASD A            ACNAME        20A         TEXT('text')
+WASD A            ACNAME        20A         TEXT('* TESTING...')
+     A
 AHHHHA                                      COLHDG('Column' +
      A                                             'Heading' )
      A* Keys
