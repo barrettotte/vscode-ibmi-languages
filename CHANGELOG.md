@@ -1,5 +1,8 @@
 # Changelog
 
+---
+### 0.5.7
+- Fix ```in``` keyword in RPGLE [69](https://github.com/barrettotte/vscode-ibmi-languages/issues/69)
 
 ---
 ### 0.5.6
@@ -85,7 +88,7 @@
 - RPG/400: Fixed a handful of highlighting errors I missed
 
 
---
+---
 ## 0.3.0 - DSPF, ICFF, basic MI, and more fixes
 - Misc regular expression fixes for RPG/400 and CL
 - Display and ICF DDS file highlighting
