@@ -76,6 +76,10 @@ See **screenshots/** for more examples of syntax highlighting.
 
 ![CL](https://raw.githubusercontent.com/barrettotte/vscode-ibmi-languages/master/screenshots/cl.png)
 
+### Command (CMD)
+
+![CL](https://raw.githubusercontent.com/barrettotte/vscode-ibmi-languages/master/screenshots/cmd.png)
+
 ### Data Description Specification - Physical File (DDS)
 
 ![PF](https://raw.githubusercontent.com/barrettotte/vscode-ibmi-languages/master/screenshots/pf.PNG)
