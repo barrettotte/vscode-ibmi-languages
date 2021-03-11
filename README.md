@@ -15,6 +15,7 @@ By all means, I probably got a couple things wrong; submit a pull request or iss
 
 * [@barrettotte](https://github.com/barrettotte)
 * [@worksofliam](https://github.com/worksofliam)
+* [@chrjorgensen](https://github.com/chrjorgensen)
 
 
 ## Features
@@ -22,6 +23,7 @@ Last updated for Fall 2020: PTF enhancements for 7.3 and 7.4
 
 - [x] Syntax highlighting for RPG III and RPG/400 - H,F,E,L,I,C,O specs
 - [x] Syntax highlighting for Control Language (CL)
+- [x] Syntax highlighting for Command Definition (CMD)
 - [x] Syntax highlighting for DDS files - physical, logical, display, printer, and ICF
 - [x] Syntax highlighting for some Machine Interface (MI) - **see below**
 - [x] Syntax highlighting for RPGLE fixed - H,F,D,I,C,O,P specs
