@@ -31,14 +31,14 @@
 		{
 			"include": "#freeSQL"
 		},
-		{
-			"include": "#rpglecommon"
-		},
-		{
+        {
+            "include": "#precompiler"
+        },
+        {
 			"include": "#fixedcomment"
 		},
 		{
-			"include": "#gutter"
+			"include": "#rpglecommon"
 		},
 		{
 			"include": "#fixedformat"
@@ -86,6 +86,9 @@
 				{
 					"include": "#constants"
 				},
+                {
+                    "include": "#precompiler"
+                },
 				{
 					"include": "#keywords"
 				},
@@ -291,23 +294,19 @@
 		},
 		"fixedcomment": {
 			"patterns": [
-				{
+                {
 					"name": "comment.line.rpgle.fixed",
 					"begin": "(?i)^.{5}.[*]",
 					"end": "\n"
 				},
+                {
+                    "name": "comment.gutter",
+					"match": "^.{5}"
+                },
 				{
 					"name": "comment.block.line.rpgle.fixed",
                     "begin": "(?i)(?<=((?<=^.{5}((H|F|D|I|C|O|P))).{74}))",
                     "end": "\n"
-				}
-			]
-		},
-		"gutter": {
-			"patterns": [
-				{
-					"name": "comment.gutter",
-					"match": "^.{5}"
 				}
 			]
 		},
@@ -674,14 +673,14 @@
 					"patterns": [
 						{
 							"name": "keyword.other.rpgle.sql",
-							"match": "(?i)^.{5}(C)(\\/EXEC)\\s+(sql)\\b"
+							"match": "(?i)(C)(\\/EXEC)\\s+(sql)\\b"
 						},
 						{
 							"include": "#fixedcomment"
 						},
 						{
 							"name": "keyword.other.rpgle.fixed.specs",
-							"match": "(?i)^.{5}(C[\\+|\\/])"
+							"match": "(?i)(C[\\+|\\/])"
 						},
 						{
 							"include": "#sqlcommon"
@@ -694,9 +693,9 @@
 				}
 			]
 		},
-		"keywords": {
-			"patterns": [
-				{
+        "precompiler": {
+            "patterns": [
+                {
 					"name": "keyword.other.rpgle.fixed.precompiler.title",
 					"begin": "(?i)(?<=^.{5})(H|\\s)[\\/](TITLE)",
 					"end": "\n",
@@ -744,10 +743,21 @@
                         }
 					]
 				},
-				{
-					"name": "keyword.other.rpgle.precompiler",
-					"match": "(?i)^[\\s]*[\\/|\\+](EJECT|COPY|INCLUDE|ENDIF|ELSE|EOF|UNDEFINE|DEFINE|TITLE|SPACE|FREE|END-FREE).*"
-				},
+                {
+					"name": "keyword.other.rpgle.fixed.precompiler.misc",
+					"begin": "(?i)^[\\s]*[\\/](EJECT|COPY|INCLUDE|ENDIF|ELSE|EOF|UNDEFINE|DEFINE|TITLE|SPACE|FREE|END-FREE)",
+					"end": "\n",
+					"patterns": [
+						{
+							"name": "comment.other.rpgle.precompiler",
+							"match": ".*"
+						}
+					]
+				}
+            ]
+        },
+		"keywords": {
+			"patterns": [
 				{
 					"name": "keyword.other.rpgle",
 					"match": ":|\\.|\\,|\\*{1,2}(=)?|=|<>|((<|>|\\+|\\-|\\/)(=)?)|((\\b(?i)(TO|BY|DOWNTO|AND|IN|OR|NOT)\\b))"

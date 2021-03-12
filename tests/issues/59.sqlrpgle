@@ -10,14 +10,14 @@
      C+                 )
      C+       ORDER BY  COLUMNA ASC,
      C+                 COLUMNB ASC
-     C+       -- SQL comment
+xxxx C+       -- SQL comment
      C/END-EXEC
      C*
-     C/EXEC SQL
+XXXXXC/EXEC SQL
      C+   OPEN MYCSR
-     C/END-EXEC
+xx   C/END-EXEC
      C*
-     C                   IF        SQLCOD = -502
+xxxxxC                   IF        SQLCOD = -502
      C/EXEC SQL
      C+   CLOSE MYCSR
      C/END-EXEC

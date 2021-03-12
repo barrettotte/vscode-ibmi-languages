@@ -1,4 +1,4 @@
-// Testing RPGLE free
+      // Testing RPGLE free and mixed free/fixed
 
 
 /FREE
@@ -59,7 +59,7 @@ DCL-F file2 PRINTER;
 
 
 
-// Test named constant definition
+      // Test named constant definition
       DCL-C CON_1 CONST(1);    //inline comment
       DCL-C CON_2 2;
 
@@ -67,16 +67,16 @@ DCL-F file2 PRINTER;
            %SIZE(array:*ALL);
 
 
-// Test standalone field definition
+      // Test standalone field definition
       DCL-S limit PACKED(5) INZ(100);     //inline comment
 
      D* Test definition spec
-      DMYFIELD        ESS *OPCODE-12345 *12 NOOPT                                d spec comment
+     DMYFIELD        ESS *OPCODE-12345 *12 NOOPT                                d spec comment
 
       DCL-S num INZ(0) LIKE(limit);
 
 
-// Test data structure definition
+      // Test data structure definition
 /FREE
 dcl-ds resp      likeds(geoResponse);
 
@@ -155,7 +155,7 @@ END-DS address;
 /END-FREE
 
 
-// Testing general
+     // Testing general
          read  file;              // Get next record
          dow not %eof(file);      // Keep looping while we have
                                   // a record
@@ -189,8 +189,8 @@ END-DS address;
          CHAR(12);
        /ENDIF
 
-/COPY /something
-/INCLUDE /something/else
+      /COPY /something
+      /INCLUDE /something/else
 
 
 **free
