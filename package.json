@@ -122,6 +122,17 @@
                 "configuration": "./configurations/mi.language-configuration.json"
             },
             {
+                "id": "pnlgrp",
+                "aliases": [
+                    "PNLGRP",
+                    "IBM UIM Panel Group Definition Language"
+                ],
+                "extensions": [
+                    ".pnlgrp"
+                ],
+                "configuration": "./configurations/pnlgrp.language-configuration.json"
+            },
+            {
                 "id": "rpg",
                 "aliases": [
                     "RPG",
@@ -194,6 +205,11 @@
                 "language": "mi",
                 "scopeName": "source.mi",
                 "path": "./syntaxes/mi.tmLanguage.json"
+            },
+            {
+                "language": "pnlgrp",
+                "scopeName": "source.pnlgrp",
+                "path": "./syntaxes/pnlgrp.tmLanguage.json"
             },
             {
                 "language": "rpg",

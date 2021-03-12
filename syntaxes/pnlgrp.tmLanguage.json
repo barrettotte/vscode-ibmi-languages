@@ -1,0 +1,228 @@
+{
+   "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+   "name": "PNLGRP",
+   "patterns": [
+      {
+         "include": "#comments"
+      },
+      {
+         "include": "#symbols"
+      },
+      {
+         "include": "#tags"
+      }
+   ],
+   "repository": {
+      "comments": {
+         "patterns": [
+            {
+               "name": "comment.line.pnlgrp",
+               "begin": "^(\\.\\*).*",
+               "end": "\n"
+            }
+         ]
+      },
+      "symbols": {
+         "patterns": [
+            {
+               "name": "support.function.pnlgrp",
+               "match": "(?i)(&(AMP|COLON|CONT|MSG\\(.*\\)|PERIOD|SLR)\\.?)",
+               "comment": "Symbols in panel group source"
+            }
+         ]
+      },
+      "tags": {
+         "patterns": [
+            {
+               "name": "keyword.other.pnlgrp.help",
+               "begin": "(?i)(?<=(:(HELP)[ ]))",
+               "end": "\\.",
+               "patterns": [
+                  {
+                     "name": "support.function.pnlgrp.help",
+                     "match": "(?i)\\b(:(HELP)[ ])"
+                  },
+                  {
+                     "name": "support.function.pnlgrp.help.attribute.name",
+                     "match": "(?i)\\b(NAME|WIDTH|DEPTH)[=]"
+                  },
+                  {
+                     "name": "support.variable.pnlgrp.help.attribute.value",
+                     "match": "(?i)([A-Z0-9]{1,32}|[']([A-Z0-9_\\/]{1,32}|\\*)['])"
+                  }
+               ]
+            },
+            {
+               "name": "keyword.other.pnlgrp.import",
+               "begin": "(?i)(?<=(:(IMPORT)[ ]))",
+               "end": "\\.",
+               "patterns": [
+                  {
+                     "name": "support.function.pnlgrp.import",
+                     "match": "(?i)\\b(:(IMPORT)[ ])"
+                  },
+                  {
+                     "name": "support.function.pnlgrp.import.attribute.name",
+                     "match": "(?i)\\b(NEWNAME|NAME|PNLGRP|PRDLIB)[=]"
+                  },
+                  {
+                     "name": "support.variable.pnlgrp.import.attribute.value",
+                     "match": "(?i)([A-Z0-9]{1,32}|[']([A-Z0-9_\\/]{1,32}|\\*)['])"
+                  }
+               ]
+            },
+            {
+               "name": "keyword.other.pnlgrp.isch",
+               "begin": "(?i)(?<=(:(ISCH)[ ]))",
+               "end": "\\.",
+               "patterns": [
+                  {
+                     "name": "support.function.pnlgrp.isch",
+                     "match": "(?i)\\b(:(ISCH)[ ])"
+                  },
+                  {
+                     "name": "support.function.pnlgrp.isch.attribute.name",
+                     "match": "(?i)\\b(ROOTS)[=]"
+                  },
+                  {
+                     "name": "support.variable.pnlgrp.isch.attribute.value",
+                     "match": "(?i)(['](([A-Z0-9]{1,20}[ ]*){1,50})['])"
+                  }
+               ]
+            },
+            {
+               "name": "keyword.other.pnlgrp.ischsubt",
+               "begin": "(?i)(?<=(:(ISCHSUBT)[ ]))",
+               "end": "\\.",
+               "patterns": [
+                  {
+                     "name": "support.function.pnlgrp.ischsubt",
+                     "match": "(?i)\\b(:(ISCHSUBT)[ ])"
+                  },
+                  {
+                     "name": "support.function.pnlgrp.ischsubt.attribute.name",
+                     "match": "(?i)\\b(TOPICS)[=]"
+                  },
+                  {
+                     "name": "support.variable.pnlgrp.ischsubt.attribute.value",
+                     "match": "(?i)(['](([A-Z0-9_\\/]{1,32}[ ]*){1,16})['])"
+                  }
+               ]
+            },
+            {
+               "name": "keyword.other.pnlgrp.ischsyn",
+               "begin": "(?i)(?<=(:(ISCHSYN)[ ]))",
+               "end": "\\.",
+               "patterns": [
+                  {
+                     "name": "support.function.pnlgrp.ischsyn",
+                     "match": "(?i)\\b(:(ISCHSYN)[ ])"
+                  },
+                  {
+                     "name": "support.function.pnlgrp.ischsyn.attribute.name",
+                     "match": "(?i)\\b(ROOT)[=]"
+                  },
+                  {
+                     "name": "support.variable.pnlgrp.ischsyn.attribute.value",
+                     "match": "(?i)(['](([A-Z0-9]{1,20}){1})['])"
+                  }
+               ]
+            },
+            {
+               "name": "keyword.other.pnlgrp.link",
+               "begin": "(?i)(?<=(:(LINK)[ ]))",
+               "end": "\\.",
+               "comment": "TODO: Regex for attribute value is not complete - missing logical operators.",
+               "patterns": [
+                  {
+                     "name": "support.function.pnlgrp.link",
+                     "match": "(?i)\\b(:(LINK)[ ])"
+                  },
+                  {
+                     "name": "support.function.pnlgrp.link.attribute.name",
+                     "match": "(?i)\\b(PERFORM|UNLESS[1-4]|THENDO[1-4]|LINKWHEN)[=]"
+                  },
+                  {
+                     "name": "support.variable.pnlgrp.link.attribute.value",
+                     "match": "(?i)'((DSPHELP ([A-Z0-9_/]{1,32})([ ]+[A-Z][A-Z0-9@#$]{0,9}/[A-Z][A-Z0-9@#$]{0,9}([ ]+[A-Z][A-Z0-9@#$]{0,9})?)?)|(CHKOBJ\\(\"[A-Z][A-Z0-9@#$]{0,9}\",\"\\*[A-Z]{0,9}\"(,\"(\\*(CHANGE|ALL|USE|EXCLUDE|AUTLMGT)|(\\*(OBJEXIST|OBJMGT|OBJOPR|OBJALTER|OBJREF|ADD|DLT|READ|UPD|EXECUTE)[ ]*){1,7})?\")\\))|(CHKPGM\\(\"(\\*LIBL/|[A-Z][A-Z0-9@#$]{0,9}/)?[A-Z][A-Z0-9@#$]{0,9}\"\\))|(CHKUSRCLS\\(\\*(SECOFR|SECADM|PGMR|SYSOPR|USER)\\)))'"
+                  }
+               ]
+            },
+            {
+               "name": "keyword.other.pnlgrp.list",
+               "begin": "(?i)(?<=(:(DL|OL|SL|UL)[ ]))",
+               "end": "\\.",
+               "patterns": [
+                  {
+                     "name": "support.function.pnlgrp.list",
+                     "match": "(?i)\\b(:(DL|OL|SL|UL)[ ])"
+                  },
+                  {
+                     "name": "support.function.pnlgrp.list.attribute.name",
+                     "match": "(?i)\\b(COMPACT)"
+                  }
+               ]
+            },
+            {
+               "name": "keyword.other.pnlgrp.pk",
+               "begin": "(?i)(?<=(:(PK)[ ]))",
+               "end": "\\.",
+               "patterns": [
+                  {
+                     "name": "support.function.pnlgrp.pk.attribute.name",
+                     "match": "(?i)\\b(DEF)"
+                  }
+               ]
+            },
+            {
+               "name": "keyword.other.pnlgrp.pnlgrp",
+               "begin": "(?i)(?<=(:(PNLGRP)[ ]))",
+               "end": "\\.",
+               "patterns": [
+                  {
+                     "name": "support.function.pnlgrp.pnlgrp",
+                     "match": "(?i)\\b(:(PNLGRP)[ ])"
+                  },
+                  {
+                     "name": "support.function.pnlgrp.pnlgrp.attribute.name",
+                     "match": "(?i)\\b(SCHIDX|ENBGUI|TXTMODE|TXTCHRID|BIDI|NBRSHAPE|DFTMSGF|SUBMSGF)[=]"
+                  },
+                  {
+                     "name": "support.variable.pnlgrp.pnlgrp.attribute.value",
+                     "match": "(?i)(([A-Z][A-Z0-9#@$]{1,9}/[A-Z][A-Z0-9#@$]{1,9})|NONE|NO|YES|SBCS|DBCS|LTR|RTL|ARABIC|HINDI|('[0-9]{2,5}'))"
+                  }
+               ]
+            },
+            {
+               "name": "keyword.other.pnlgrp",
+               "match": "(?i)(:(XMP|XH[1-4]|VARRCD|VAR|UL|TTROW|TT|TOPINST|TL|TI|TEXT|SL|RT|PV|PT|PT|PRTTRAIL|PRTPNL|PRTHEAD|PNLGRP).?)"
+            },
+            {
+               "name": "keyword.other.pnlgrp",
+               "match": "(?i)(:(PK|PDFLDC|PDFLD|PDACCEL|PD|PC|PARML|PANEL|P|OPTLINE|OL|NT|NOTE|MENUI|MENUGRP|MENU|MBARC|MBAR|LP).?)"
+            },
+            {
+               "name": "keyword.other.pnlgrp",
+               "match": "(?i)(:(LISTVIEW|LISTGRP|LISTDEF|LISTCOL|LISTACT|LIST|LINK|LINES|LI|KEYL|KEYI|ISCHSYN|ISCHSUBT|ISCH|INFO).?)"
+            },
+            {
+               "name": "keyword.other.pnlgrp",
+               "match": "(?i)(:(IMPORT|IMHELP|HP[0-9]|HELP|H[1-4]|FIG|EXMP|EUL|ETT|ETL|ESL|ERT|EPV|EPT|EPRTPNL|EPRTHEAD|EPNLGRP|EPK).?)"
+            },
+            {
+               "name": "keyword.other.pnlgrp",
+               "match": "(?i)(:(EPDFLD|EPARML|EPANEL|EOL|ENT|ENOTE|EMENUGRP|EMENU|EMBARC|EMBAR|ELISTGRP|ELIST|ELINK|ELINES|EKEYL|EINFO).?)"
+            },
+            {
+               "name": "keyword.other.pnlgrp",
+               "match": "(?i)(:(EHP[0-9]|EHELP|EFIG|EDL|EDATAGRP|EDATA|ECLASS|ECIT|DTHD|DT|DL|DDHD|DD|DATASLTC|DATASLT|DATAIX|DATAI).?)"
+            },
+            {
+               "name": "keyword.other.pnlgrp",
+               "match": "(?i)(:(DATAGRP|DATACOL|DATAC|DATA|COPYR|COND|CMDLINE|CLASS|CIT|CHECK|BOTINST|APPFMT).?)"
+            }
+         ]
+      }
+   },
+   "scopeName": "source.pnlgrp"
+}
