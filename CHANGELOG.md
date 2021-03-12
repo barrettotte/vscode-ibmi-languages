@@ -1,10 +1,15 @@
 # Changelog
 
-### 0.5.7
+
+### 0.5.8
 
 - Add CMD syntax highlighting, thanks [@chrjorgensen](https://github.com/chrjorgensen)
 - Fix RPGLE fixed format gutter breaking syntax highlighting [60](https://github.com/barrettotte/vscode-ibmi-languages/issues/60)
 - Fix RPGLE fixed format ```/EJECT``` precompiler comment highlighting [72](https://github.com/barrettotte/vscode-ibmi-languages/issues/72)
+
+### 0.5.7
+
+- Fix ```in``` keyword in RPGLE [69](https://github.com/barrettotte/vscode-ibmi-languages/issues/69)
 
 ### 0.5.6
 

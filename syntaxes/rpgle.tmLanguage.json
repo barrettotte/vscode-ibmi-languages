@@ -760,7 +760,7 @@
 			"patterns": [
 				{
 					"name": "keyword.other.rpgle",
-					"match": ":|\\.|\\,|\\*{1,2}(=)?|=|<>|((<|>|\\+|\\-|\\/)(=)?)|((\\b(?i)(TO|BY|DOWNTO|AND|OR|NOT)\\b))"
+					"match": ":|\\.|\\,|\\*{1,2}(=)?|=|<>|((<|>|\\+|\\-|\\/)(=)?)|((\\b(?i)(TO|BY|DOWNTO|AND|IN|OR|NOT)\\b))"
 				},
 				{
 					"name": "keyword.other.rpgle.bif",

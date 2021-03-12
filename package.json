@@ -44,6 +44,17 @@
                 "configuration": "./configurations/cl.language-configuration.json"
             },
             {
+                "id": "cmd",
+                "aliases": [
+                    "CMD",
+                    "Command Definition"
+                ],
+                "extensions": [
+                    ".cmd"
+                ],
+                "configuration": "./configurations/cmd.language-configuration.json"
+            },
+            {
                 "id": "dds.dspf",
                 "aliases": [
                     "DSPF"
@@ -148,6 +159,11 @@
                 "language": "cl",
                 "scopeName": "source.cl",
                 "path": "./syntaxes/cl.tmLanguage.json"
+            },
+            {
+                "language": "cmd",
+                "scopeName": "source.cmd",
+                "path": "./syntaxes/cmd.tmLanguage.json"
             },
             {
                 "language": "dds.dspf",
