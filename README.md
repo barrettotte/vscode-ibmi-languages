@@ -42,6 +42,7 @@ For each source type, I lumped legacy(system/38) source types together with the 
 | Extension(s)                  | Description        |
 | ----------------------------- | ------------------ |
 | .cl, .clp, .clp38 .clle       | Control Language (CL) |
+| .cmd                          | Command Definition (CMD) |
 | .dspf, .dspf38                | DDS Display file   |
 | .icff                         | DDS ICF file       |
 | .lf, .lf38                    | DDS Logical file   |
