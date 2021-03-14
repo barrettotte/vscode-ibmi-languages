@@ -23,6 +23,7 @@ Last updated for Fall 2020: PTF enhancements for 7.3 and 7.4
 * [x] Syntax highlighting for RPG III and RPG/400 - H,F,E,L,I,C,O specs
 * [x] Syntax highlighting for Control Language (CL)
 * [x] Syntax highlighting for Command Definition (CMD)
+* [x] Syntax highlighting for Online Help Panel Group (PNLGRP)
 * [x] Syntax highlighting for DDS files - physical, logical, display, printer, and ICF
 * [x] Syntax highlighting for some Machine Interface (MI) - **see below**
 * [x] Syntax highlighting for RPGLE fixed - H,F,D,I,C,O,P specs
@@ -80,6 +81,10 @@ See **screenshots/** for more examples of syntax highlighting.
 ### Command (CMD)
 
 ![CL](https://raw.githubusercontent.com/barrettotte/vscode-ibmi-languages/master/screenshots/cmd.png)
+
+### Online Help Panel Group (PNLGRP)
+
+![CL](https://raw.githubusercontent.com/barrettotte/vscode-ibmi-languages/master/screenshots/pnlgrp.png)
 
 ### Data Description Specification - Physical File (DDS)
 
