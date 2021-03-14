@@ -44,6 +44,7 @@ For each source type, I lumped legacy(system/38) source types together with the 
 | ----------------------------- | ------------------ |
 | .cl, .clp, .clp38 .clle       | Control Language (CL) |
 | .cmd                          | Command Definition (CMD) |
+| .pnlgrp                       | Online Help Panel Group (PNLGRP) |
 | .dspf, .dspf38                | DDS Display file   |
 | .icff                         | DDS ICF file       |
 | .lf, .lf38                    | DDS Logical file   |
