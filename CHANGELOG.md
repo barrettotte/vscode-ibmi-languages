@@ -1,6 +1,11 @@
 # Changelog
 
 
+### 0.5.9
+
+- Add Online Help Panel Group (PNLGRP) syntax highlighting, thanks [@chrjorgensen](https://github.com/chrjorgensen)
+
+
 ### 0.5.8
 
 - Add CMD syntax highlighting, thanks [@chrjorgensen](https://github.com/chrjorgensen)
