@@ -1,10 +1,12 @@
 # Changelog
 
+### 0.6.0
+
+- Added new RPGLE enhancements for Fall 2021 (up to 7.3 TR11 and 7.4 TR5). Big thanks to [@chrjorgensen](https://github.com/chrjorgensen)!
 
 ### 0.5.9
 
 - Add Online Help Panel Group (PNLGRP) syntax highlighting, thanks [@chrjorgensen](https://github.com/chrjorgensen)
-
 
 ### 0.5.8
 

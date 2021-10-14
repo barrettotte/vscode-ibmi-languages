@@ -18,8 +18,6 @@ By all means, I probably got a couple things wrong; submit a pull request or iss
 
 ## Features
 
-Last updated for Fall 2020: PTF enhancements for 7.3 and 7.4
-
 * [x] Syntax highlighting for RPG III and RPG/400 - H,F,E,L,I,C,O specs
 * [x] Syntax highlighting for Control Language (CL)
 * [x] Syntax highlighting for Command Definition (CMD)
@@ -32,6 +30,8 @@ Last updated for Fall 2020: PTF enhancements for 7.3 and 7.4
 * [x] Support for a mix of RPGLE free and fixed format
 * [x] Support for binder language
 * [x] Support for DB2 SQL keywords in embedded SQL
+
+RPGLE syntax updated to **Fall 2021**: PTF enhancements for 7.3 TR11 and 7.4 TR5
 
 **If anyone stumbles across this and has any awesome material for machine interface, please send me an email.**
 I really only made the bare basics for MI and I'd love to add to it
