@@ -8,7 +8,6 @@
 - Fix RPGLE `/FREE` preprocessor scope issue [83](https://github.com/barrettotte/vscode-ibmi-languages/issues/83)
 - Fix RPGLE fixed: C-spec missing constant [84](https://github.com/barrettotte/vscode-ibmi-languages/issues/84)
 - Fix SQLRPGLE free: exec SQL highlighting broken on col 1 [85](https://github.com/barrettotte/vscode-ibmi-languages/issues/85)
-- 
 
 ### 0.6.0
 
