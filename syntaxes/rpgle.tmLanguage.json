@@ -533,7 +533,7 @@
 						},
 						{
 							"name": "constant.language.rpgle.fixed.c.ctrl",
-							"match": "(?i)(?<=((?<=^.{5}C).{0}))((L[0-9])|LR|SR)"
+							"match": "(?i)(?<=((?<=^.{5}C).{0}))((L[0-9])|LR|SR|AN)"
 						},
 						{
 							"name": "constant.language.rpgle.fixed.c.n01",
