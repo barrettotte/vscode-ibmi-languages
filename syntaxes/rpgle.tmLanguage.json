@@ -268,8 +268,8 @@
 		"tempfreeformat": {
 			"patterns": [
 				{
-					"begin": "(?i)(?=(^.*(\\/FREE\\b)))",
-					"end": "(?i)(?=(^.*(\\/END-FREE\\b)))",
+					"begin": "(?i)(?=((\\/FREE\\b)))",
+					"end": "(?i)(?=((\\/END-FREE\\b)))",
 					"patterns": [
 						{
 							"name": "keyword.other.rpgle.precompiler",
@@ -745,11 +745,10 @@
 				},
                 {
 					"name": "keyword.other.rpgle.fixed.precompiler.misc",
-					"begin": "(?i)^[\\s]*[\\/](EJECT|COPY|INCLUDE|ENDIF|ELSE|EOF|UNDEFINE|DEFINE|TITLE|SPACE|FREE|END-FREE)",
-					"end": "\n",
+					"match": "(?i)^[\\s]*[\\/](EJECT|COPY|INCLUDE|ENDIF|ELSE|EOF|UNDEFINE|DEFINE|TITLE|SPACE|FREE|END-FREE)\\b",
 					"patterns": [
 						{
-							"name": "comment.other.rpgle.precompiler",
+							"name": "keyword.other.rpgle.precompiler",
 							"match": ".*"
 						}
 					]
