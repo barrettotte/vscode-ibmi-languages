@@ -12,13 +12,13 @@
 					"match": "(?i)^\\s*\\*\\*FREE"
 				},
 				{
+					"include": "#freeSQL"
+				},
+				{
 					"include": "#rpglecommon"
 				},
 				{
 					"include": "#freeformat"
-				},
-				{
-					"include": "#freeSQL"
 				}
 			]
 		},
@@ -791,11 +791,11 @@
 			"patterns": [
 				{
 					"begin": "(?i)(?=(^.*(EXEC)\\s+(SQL)\\b))",
-					"end": "\\;\n",
+					"end": "\\;",
 					"patterns": [
 						{
 							"name": "keyword.other.rpgle.sql",
-							"match": "(?i)^\\b(EXEC)\\s+(SQL)\\b"
+							"match": "(?i)(EXEC)\\s+(SQL)\\b"
                         },
 						{
 							"include": "#sqlcommon"
