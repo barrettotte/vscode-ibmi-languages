@@ -1,5 +1,15 @@
 # Changelog
 
+### 0.6.2
+
+- Add missing RPGLE Fixed "DX" spec [78](https://github.com/barrettotte/vscode-ibmi-languages/issues/78)
+- Fix RPGLE fixed compile time array highlighting [80](https://github.com/barrettotte/vscode-ibmi-languages/issues/80)
+- Fix RPGLE preprocessor comment highlighting [82](https://github.com/barrettotte/vscode-ibmi-languages/issues/82)
+- Fix RPGLE `/FREE` preprocessor scope issue [83](https://github.com/barrettotte/vscode-ibmi-languages/issues/83)
+- Fix RPGLE fixed: C-spec missing constant [84](https://github.com/barrettotte/vscode-ibmi-languages/issues/84)
+- Fix SQLRPGLE free: exec SQL highlighting broken on col 1 [85](https://github.com/barrettotte/vscode-ibmi-languages/issues/85)
+- 
+
 ### 0.6.0
 
 - Added new RPGLE enhancements for Fall 2021 (up to 7.3 TR11 and 7.4 TR5). Big thanks to [@chrjorgensen](https://github.com/chrjorgensen)!
