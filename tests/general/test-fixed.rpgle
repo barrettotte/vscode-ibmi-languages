@@ -15,6 +15,9 @@
      D* Test definition spec
      DMYFIELD        ESS *OPCODE-12345 *12 NOOPT                                d spec comment
       *
+     D* Test definition extended (DX) spec 
+     D STREAM_NEW_LINE...                                                       dx spec comment
+      *
      C* Test calculation spec
      CSRNH4FACTOR1       ADD       FACTOR2       RESULT        1234533KCU7OV    c spec comment
       *

@@ -410,6 +410,10 @@
 							"include": "#fixedcomment"
 						},
 						{
+							"name": "variable.other.rpgle.fixed.d.extended.name",
+							"match": "(?i)(?<=^.{5}D).{1,71}\\.{3}"
+						},
+						{
 							"name": "constant.language.rpgle.fixed.d.external",
 							"match": "(?i)(?<=((?<=^.{5}D).{15}))E"
 						},
