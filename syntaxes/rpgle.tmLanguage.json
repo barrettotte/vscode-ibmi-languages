@@ -34,6 +34,9 @@
         {
             "include": "#precompiler"
         },
+		{
+			"include": "#ctarrays"
+		},
         {
 			"include": "#fixedcomment"
 		},
@@ -74,9 +77,6 @@
 		},
 		"rpglecommon": {
 			"patterns": [
-				{
-					"include": "#ctarrays"
-				},
 				{
 					"include": "#comments"
                 },
