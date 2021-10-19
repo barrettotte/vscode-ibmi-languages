@@ -116,8 +116,7 @@
                     "MI"
                 ],
                 "extensions": [
-                    ".MI",
-                    ".mi"
+                    ".MI"
                 ],
                 "configuration": "./configurations/mi.language-configuration.json"
             },
