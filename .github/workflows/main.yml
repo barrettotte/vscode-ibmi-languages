@@ -23,8 +23,8 @@ jobs:
       - name: Install vsce and Open VSX
         run: npm i -g vsce ovsx
       
+      - name: Publish to VS Code Marketplace
+        run: vsce publish -p ${{ secrets.VSCE_TOKEN }}
+        
       - name: Publish to Open VSX
         run: npx ovsx publish -p ${{ secrets.OPEN_VSX }}
-
-      #- name: Publish to VS Code Marketplace
-      #  run: vsce publish -p ${{ secrets.VSCE_TOKEN }}
