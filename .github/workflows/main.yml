@@ -20,10 +20,6 @@ jobs:
       - name: Install the dependencies
         run: npm i
 
-      - name: temp deploy fix got ovsx
-        run: npm i semver
-        # this will be fixed by next release...just don't want to re-tag and re-publish
-
       - name: Install vsce and Open VSX
         run: npm i -g vsce ovsx
 
@@ -31,12 +27,8 @@ jobs:
         id: pub_vsce
         run: |
           vsce publish -p ${{ secrets.VSCE_TOKEN }}
-        continue-on-error: true
-        # TODO: remove this ^
 
       - name: Publish to Open VSX
         id: pub_ovsx
         run: |
           npx ovsx publish -p ${{ secrets.OPEN_VSX }}
-        continue-on-error: true
-        # TODO: remove this ^
