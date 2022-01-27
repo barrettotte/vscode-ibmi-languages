@@ -2,7 +2,7 @@ on:
   release:
     types: [created]
   workflow_dispatch:
-    
+
 jobs:
   release:
     name: Release and publish
@@ -11,7 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: npm install
-      
+
       - uses: actions/setup-node@v2
         with:
           node-version: 16
@@ -19,18 +19,18 @@ jobs:
 
       - name: Install the dependencies
         run: npm i
-        
-      - name: Fix missing dep for ovsx...idk man
-        run: npm i semver
-        
-      - name: Sanity check
-        run: npm ls
 
       - name: Install vsce and Open VSX
         run: npm i -g vsce ovsx
-      
+
       - name: Publish to VS Code Marketplace
-        run: vsce publish -p ${{ secrets.VSCE_TOKEN }}
-        
+        id: pub_vsce
+        run: |
+          vsce publish -p ${{ secrets.VSCE_TOKEN }}
+        continue-on-error: true
+
       - name: Publish to Open VSX
-        run: npx ovsx publish -p ${{ secrets.OPEN_VSX }}
+        id: pub_ovsx
+        run: |
+          npx ovsx publish -p ${{ secrets.OPEN_VSX }}
+        continue-on-error: true
