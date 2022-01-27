@@ -101,6 +101,10 @@ See **screenshots/** for more examples of syntax highlighting.
 * ```vsce package```
 * ```vsce publish```
 
+### OpenVSX
+
+Also deployed to [Open VSX](https://open-vsx.org/extension/barrettotte/ibmi-languages)
+
 ## Changelog
 
 See [CHANGELOG.md](https://github.com/barrettotte/vscode-ibmi-languages/blob/master/CHANGELOG.md)
