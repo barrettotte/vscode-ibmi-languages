@@ -12,13 +12,19 @@ jobs:
       - uses: actions/checkout@v2
       - run: npm install
       
-      - uses: actions/setup-node@v1
+      - uses: actions/setup-node@v2
         with:
-          node-version: 14
+          node-version: 16
           registry-url: https://registry.npmjs.org/
 
       - name: Install the dependencies
         run: npm i
+        
+      - name: Fix missing dep for ovsx...idk man
+        run: npm i semver
+        
+      - name: Sanity check
+        run: npm ls
 
       - name: Install vsce and Open VSX
         run: npm i -g vsce ovsx
