@@ -1,5 +1,9 @@
 # Changelog
 
+### 0.6.3
+
+- Fix `QDATETIME` highlighting in CL, thanks to [@chrjorgensen](https://github.com/chrjorgensen)
+
 ### 0.6.2
 
 - Add missing RPGLE Fixed "DX" spec [78](https://github.com/barrettotte/vscode-ibmi-languages/issues/78)
