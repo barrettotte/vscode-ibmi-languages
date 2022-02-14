@@ -711,6 +711,17 @@
 					]
 				},
 				{
+					"name": "keyword.other.rpgle.fixed.precompiler.title",
+					"begin": "(?i)^(\\s)*(C)?(\\s)*[\\/](TITLE)",
+					"end": "\n",
+					"patterns": [
+						{
+							"name": "comment.line.rpgle.free.precompiler.title",
+							"match": ".*"
+						}
+					]
+				},
+				{
 					"name": "keyword.other.rpgle.fixed.precompiler.include",
 					"begin": "(?i)^(\\s)*(C)?(\\s)*[\\/](INCLUDE|COPY)\\s",
 					"end": "\n",
