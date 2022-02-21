@@ -1,0 +1,7 @@
+/* https://github.com/barrettotte/vscode-ibmi-languages/issues/98 */
+
+/*  SOMELIB */
+             DSPFD      FILE(SOMELIB/*ALL) TYPE(*MBR) +
+                          OUTPUT(*OUTFILE) FILEATR(*PF) OUTFILE(MY_OUT)
+             CPYF       FROMFILE(MY_PF) TOFILE(QTEMP/WORK) +
+                          MBROPT(*ADD)
