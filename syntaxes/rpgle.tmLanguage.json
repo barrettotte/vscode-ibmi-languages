@@ -805,8 +805,8 @@
 		"freeSQL": {
 			"patterns": [
 				{
-					"begin": "(?i)(?=(^.*(EXEC)\\s+(SQL)\\b))",
-					"end": "\\;",
+					"begin": "(?i)(?=(^\\s*(EXEC)\\s+(SQL)\\b))",
+					"end": "(?=(;))",
 					"patterns": [
 						{
 							"name": "keyword.other.rpgle.sql",
@@ -816,7 +816,15 @@
 							"include": "#sqlcommon"
 						}
 					]
-			  	}
+			  	},
+				{
+					"name": "comment.line.rpgle.sql",
+					"match": "(?<=(;))\\s*.*"
+				},
+				{
+					"name": "rpgle.free.sql.end",
+					"match": ";"
+				}
 			]
 		}
 	},
