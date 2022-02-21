@@ -410,6 +410,17 @@
 							"include": "#fixedcomment"
 						},
 						{
+							"name": "string.quoted.single.rpgle.fixed",
+							"begin": "'",
+							"end": "'",
+							"patterns": [
+								{
+									"name": "keyword.other.rpgle.fixed.specs",
+									"match": "(?i)(?<=^.{5})[H|F|D|I|C|O|P]"
+								}
+							]
+						},
+						{
 							"name": "variable.other.rpgle.fixed.d.extended.name",
 							"match": "(?i)(?<=^.{5}D).{1,71}\\.{3}"
 						},
@@ -792,13 +803,7 @@
 				{
 					"name": "string.quoted.single.rpgle",
 					"begin": "'",
-					"end": "'",
-					"patterns": [
-						{
-							"name": "keyword.other.rpgle.fixed.specs",
-							"match": "(?i)(?<=^.{5})[H|F|D|I|C|O|P]"
-						}
-					]
+					"end": "'"
 				}
 			]
 		},
