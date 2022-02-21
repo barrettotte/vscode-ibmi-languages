@@ -569,7 +569,7 @@
 						},
 						{
 							"name": "keyword.other.rpgle",
-							"match": "((?i)(AND|COMP|CAB|CAS|DOU|DOW|IF|OR|WHEN)(GT|LT|EQ|NE|GE|LE|(\\s{2})))"
+							"match": "((?i)\\b(AND|COMP|CAB|CAS|DOU|DOW|IF|OR|WHEN)(GT|LT|EQ|NE|GE|LE|(\\s{2})))"
 						},
 						{
 							"name": "keyword.other.rpgle.fixed.c.operation",
