@@ -1,0 +1,8 @@
+/* https://github.com/barrettotte/vscode-ibmi-languages/issues/97 */
+
+        CHGVAR     VAR(&WRK_CYY#) VALUE(&CYY# + 1900) /* change +
+                                                          to ccyy */
+        CHGVAR     VAR(&YEAR4) VALUE(&WRK_CYY#)
+#ERROR:
+        RTVDTAARA  DTAARA(PPA703/SOMELIB (1 2)) RTNVAR(&MO)
+        RTVDTAARA  DTAARA(PPA703/SOMELIB (15 4)) RTNVAR(&YR4)
