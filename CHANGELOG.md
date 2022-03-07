@@ -1,5 +1,17 @@
 # Changelog
 
+### 0.6.4
+
+- Fix RPGLE `/TITLE` preprocessor highlighting [90](https://github.com/barrettotte/vscode-ibmi-languages/issues/90)
+- Fix SQLRPGLE host variable identifier regex [91](https://github.com/barrettotte/vscode-ibmi-languages/issues/91)
+- Fix RPGLE fixed format identifier highlighting [93](https://github.com/barrettotte/vscode-ibmi-languages/issues/93)
+- Fix SQLRPGLE qualified objects highlighting [94](https://github.com/barrettotte/vscode-ibmi-languages/issues/94)
+- Fix Commented out `EXEC SQL` causing highlighting problems [96](https://github.com/barrettotte/vscode-ibmi-languages/issues/96)
+- Fix CL identifier/label regex [97](https://github.com/barrettotte/vscode-ibmi-languages/issues/97)
+- Fix CL `/*ALL` causing multiline comment highlighting [98](https://github.com/barrettotte/vscode-ibmi-languages/issues/98)
+- Fix RPGLE free multiline string highlighting issue [101](https://github.com/barrettotte/vscode-ibmi-languages/issues/101)
+- Fix `SELECT` control block matching in RPGLE [102](https://github.com/barrettotte/vscode-ibmi-languages/issues/102)
+
 ### 0.6.3
 
 - Fix `QDATETIME` highlighting in CL, thanks to [@chrjorgensen](https://github.com/chrjorgensen)
