@@ -52,9 +52,12 @@
 
         ["DO", "ENDDO"],
         ["DO", "END"],
-        ["SELECT", "ENDSL"],
-        ["SELECT", "END"],
         
+        // not ideal, but commented out because SQLRPGPLE selects are probably more common 
+        // than select cases...I think to properly fix this, it would have to be solved via language server
+        //["SELECT", "ENDSL"],
+        //["SELECT", "END"],
+
         ["FOR-EACH", "ENDFOR"],
         ["FOR-EACH", "END"],
         ["FOR", "ENDFOR"],
@@ -66,6 +69,8 @@
         ["DCL-PROC", "END-PROC"],
         ["DCL-PR", "END-PR"],
         ["DCL-PI", "END-PI"],
+
+        ["EXEC SQL", ";"],
     ],
     // symbols that are auto closed when typing
     "autoClosingPairs": [
