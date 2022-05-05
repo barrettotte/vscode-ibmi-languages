@@ -31,7 +31,7 @@ By all means, I probably got a couple things wrong; submit a pull request or iss
 * [x] Support for binder language
 * [x] Support for DB2 SQL keywords in embedded SQL
 
-RPGLE syntax updated to **Fall 2021**: PTF enhancements for 7.3 TR11 and 7.4 TR5
+RPG syntax last updated to [Spring 2022: RPG Enhancements for 7.3, 7.4, and 7.5](https://www.ibm.com/support/pages/node/6568841)
 
 **If anyone stumbles across this and has any awesome material for machine interface, please send me an email.**
 I really only made the bare basics for MI and I'd love to add to it
@@ -97,13 +97,17 @@ See **screenshots/** for more examples of syntax highlighting.
 
 ## Publishing
 
-* ```npm install -g vsce```
-* ```vsce package```
-* ```vsce publish```
+### VS Code Marketplace
+
+* `npm install -g vsce`
+* `vsce package`
+* `vsce publish -p VSCE_SECRET`
 
 ### OpenVSX
 
-Also deployed to [Open VSX](https://open-vsx.org/extension/barrettotte/ibmi-languages)
+This extension is also deployed to [Open VSX](https://open-vsx.org/extension/barrettotte/ibmi-languages)
+
+* `npx ovsx publish -p OPEN_VSX_SECRET`
 
 ## Changelog
 

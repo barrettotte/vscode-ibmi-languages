@@ -1,5 +1,9 @@
 # Changelog
 
+### 0.6.6
+
+- Add Spring 2022 RPG enhancements for 7.3, 7.4, and 7.5, thanks to [@chrjorgensen](https://github.com/chrjorgensen)
+
 ### 0.6.5
 
 - Add missing RPGLE keywords `SAMEPOS`, `OVERLOAD` and `NULLIND` [104](https://github.com/barrettotte/vscode-ibmi-languages/issues/104), thanks to [@chrjorgensen](https://github.com/chrjorgensen)
