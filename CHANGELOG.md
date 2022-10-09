@@ -1,5 +1,13 @@
 # Changelog
 
+### 0.6.7
+
+- Fix CL highlighting error with escaped characters [108](https://github.com/barrettotte/vscode-ibmi-languages/issues/108)
+- Fix RPGLE fixed format issue with extended identifiers [110](https://github.com/barrettotte/vscode-ibmi-languages/issues/110)
+- Fix `SUBDUR` missing from RPGLE keywords [113](https://github.com/barrettotte/vscode-ibmi-languages/issues/113)
+- Fix RPGLE fixed format `INCLUDE` and `COPY` broken highlighting [114](https://github.com/barrettotte/vscode-ibmi-languages/issues/114)
+- Adds missing `DCL-SUBF` keyword to RPGLE free format [115](https://github.com/barrettotte/vscode-ibmi-languages/issues/115)
+
 ### 0.6.6
 
 - Add Spring 2022 RPG enhancements for 7.3, 7.4, and 7.5, thanks to [@chrjorgensen](https://github.com/chrjorgensen)

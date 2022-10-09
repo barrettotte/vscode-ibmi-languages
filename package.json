@@ -1,8 +1,8 @@
 {
     "name": "ibmi-languages",
     "displayName": "IBMi Languages",
-    "description": "Provide syntax highlighting for IBMi languages such as RPG, CL, DDS, and MI.",
-    "version": "0.6.6",
+    "description": "Syntax highlighting for IBM i languages such as RPG, CL, DDS, MI, and RPGLE fixed/free.",
+    "version": "0.6.7",
     "publisher": "barrettotte",
     "author": {
         "name": "Barrett Otte"
