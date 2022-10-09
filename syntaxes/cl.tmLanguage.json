@@ -169,13 +169,7 @@
                 {
                     "name": "string.quoted.single.cl",
                     "begin": "'",
-                    "end": "'",
-                    "patterns": [
-                        {
-                            "name": "constant.character.escape.cl",
-                            "match": "\\\\."
-                        }
-                    ]
+                    "end": "'"
                 }
             ]
         },
