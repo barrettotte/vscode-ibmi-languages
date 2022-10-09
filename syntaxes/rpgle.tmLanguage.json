@@ -734,7 +734,7 @@
 				},
 				{
 					"name": "keyword.other.rpgle.fixed.precompiler.include",
-					"begin": "(?i)^(\\s)*(C)?(\\s)*[\\/](INCLUDE|COPY)\\s",
+					"begin": "(?i)^(\\s)*([C|D])?(\\s)*[\\/](INCLUDE|COPY|EJECT)\\s",
 					"end": "\n",
 					"patterns": [
 						{
