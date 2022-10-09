@@ -27,7 +27,8 @@
   // reserved schema names - https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_72/db2/rbafzresschem.htm
   // went with generic schema => identifier + (.|/) (object)?
   exec SQL
-    QSYS2.  SYSCAT.  SYSFUN/  SYSIBM/  SYSIBMADM.  SYSPROC.  SYSPUBLIC/  SYSSTAT/  SYSTEM.
+    QSYS2.TEST  SYSCAT.TEST  SYSFUN/TEST  SYSIBM/TEST  SYSIBMADM.TEST  SYSPROC.TEST  
+    SYSPUBLIC/TEST  SYSSTAT/TEST  SYSTEM.TEST
   ;
   exec sql
     select * from QSYS2.SYSPARTITIONSTAT where SYSTEM_TABLE_SCHEMA='BOLIB';
