@@ -212,12 +212,12 @@
 				},
 				{
 					"name": "rpgle.free.definition.simple",
-					"begin": "(?i)(?=(\\b(DCL\\-)(S|C|PARM)\\b))",
+					"begin": "(?i)(?=(\\b(DCL\\-)(S|C|PARM|SUBF)\\b))",
 					"end": "\n",
 					"patterns": [
 						{
 							"name": "storage.type.rpgle.free.definition.simple",
-							"match": "(?i)\\b(DCL\\-)(S|C|PARM)\\b"
+							"match": "(?i)\\b(DCL\\-)(S|C|PARM|SUBF)\\b"
 						},
 						{
 							"include": "#freeidentifiers"
