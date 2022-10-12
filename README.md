@@ -18,23 +18,20 @@ By all means, I probably got a couple things wrong; submit a pull request or iss
 
 ## Features
 
-* [x] Syntax highlighting for RPG III and RPG/400 - H,F,E,L,I,C,O specs
-* [x] Syntax highlighting for Control Language (CL)
-* [x] Syntax highlighting for Command Definition (CMD)
-* [x] Syntax highlighting for Online Help Panel Group (PNLGRP)
-* [x] Syntax highlighting for DDS files - physical, logical, display, printer, and ICF
-* [x] Syntax highlighting for some Machine Interface (MI) - **see below**
-* [x] Syntax highlighting for RPGLE fixed - H,F,D,I,C,O,P specs
-* [x] Syntax highlighting for RPGLE free
-* [x] Syntax highlighting for embedded SQL in SQLRPG and SQLRPGLE
-* [x] Support for a mix of RPGLE free and fixed format
-* [x] Support for binder language
-* [x] Support for DB2 SQL keywords in embedded SQL
+- Syntax highlighting for RPG III and RPG/400 - H,F,E,L,I,C,O specs
+- Syntax highlighting for Control Language (CL)
+- Syntax highlighting for Command Definition (CMD)
+- Syntax highlighting for Online Help Panel Group (PNLGRP)
+- Syntax highlighting for DDS files - physical, logical, display, printer, and ICF
+- Syntax highlighting for some Machine Interface (MI) - **see below**
+- Syntax highlighting for RPGLE fixed - H,F,D,I,C,O,P specs
+- Syntax highlighting for RPGLE free
+- Syntax highlighting for embedded SQL in SQLRPG and SQLRPGLE
+- Support for a mix of RPGLE free and fixed format
+- Support for binder language
+- Support for DB2 SQL keywords in embedded SQL
 
-RPG syntax last updated to [Spring 2022: RPG Enhancements for 7.3, 7.4, and 7.5](https://www.ibm.com/support/pages/node/6568841)
-
-**If anyone stumbles across this and has any awesome material for machine interface, please send me an email.**
-I really only made the bare basics for MI and I'd love to add to it
+RPGLE syntax last updated to **Fall 2022**
 
 ## File Types (case insensitive)
 
