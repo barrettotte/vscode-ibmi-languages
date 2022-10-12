@@ -1,5 +1,9 @@
 # Changelog
 
+### 0.6.8
+
+- Adds Fall 2022 RPGLE Enhancements, thanks to [@chrjorgensen](https://github.com/chrjorgensen). [116](https://github.com/barrettotte/vscode-ibmi-languages/issues/116)
+
 ### 0.6.7
 
 - Fix CL highlighting error with escaped characters [108](https://github.com/barrettotte/vscode-ibmi-languages/issues/108)
