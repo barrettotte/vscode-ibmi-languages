@@ -164,6 +164,25 @@
                ]
             },
             {
+               "name": "keyword.other.pnlgrp.panel",
+               "begin": "(?i)(?<=(:(PANEL)[ ]))",
+               "end": "\\.",
+               "patterns": [
+                  {
+                     "name": "support.function.pnlgrp.panel",
+                     "match": "(?i)\\b(:(PANEL)[ ])"
+                  },
+                  {
+                     "name": "support.function.pnlgrp.panel.attribute.name",
+                     "match": "(?i)\\b(NAME|HELP|KEYL|PANELID|TITLE|WIDTH|DEPTH|MBAR|MSGL|TOPSEP|DATE|TIME|ENBGUI|ENTER|SELECT|USREXIT|TT|CSRVAR|CSRPOS|CSRLST|CSREID|CSRNAME)[=]"
+                  },
+                  {
+                     "name": "support.variable.pnlgrp.panel.attribute.value",
+                     "match": "(?i)([A-Z0-9]{1,32})"
+                  }
+               ]
+            },
+            {
                "name": "keyword.other.pnlgrp.pk",
                "begin": "(?i)(?<=(:(PK)[ ]))",
                "end": "\\.",
