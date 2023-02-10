@@ -183,6 +183,25 @@
                ]
             },
             {
+              "name": "keyword.other.pnlgrp.menu",
+              "begin": "(?i)(?<=(:(MENU)[ ]))",
+              "end": "\\.",
+              "patterns": [
+                {
+                    "name": "support.function.pnlgrp.menu",
+                    "match": "(?i)\\b(:(MENU)[ ])"
+                },
+                {
+                    "name": "support.function.pnlgrp.menu.attribute.name",
+                    "match": "(?i)\\b(DEPTH|BOTSEP|SCROLL)[=]"
+                },
+                {
+                    "name": "support.variable.pnlgrp.menu.attribute.value",
+                    "match": "(?i)(([0-9]{1,2}|'\\*')|(SPACE|NONE|RULE)|(NO|YES))"
+                }
+              ]
+            },
+            {
                "name": "keyword.other.pnlgrp.panel",
                "begin": "(?i)(?<=(:(PANEL)[ ]))",
                "end": "\\.",
