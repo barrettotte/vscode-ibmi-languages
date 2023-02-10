@@ -167,6 +167,25 @@
               ]
             },
             {
+              "name": "keyword.other.pnlgrp.dataix",
+              "begin": "(?i)(?<=(:(DATAIX)[ ]))",
+              "end": "\\.",
+              "patterns": [
+                {
+                    "name": "support.function.pnlgrp.dataix",
+                    "match": "(?i)\\b(:(DATAIX)[ ])"
+                },
+                {
+                    "name": "support.function.pnlgrp.dataix.attribute.name",
+                    "match": "(?i)\\b(VAR|USAGE|NEWLINE|ITEMSEP|ALIGN|JUSTIFY|REQUIRED|DISPLAY|PROMPT|DSPVALUE|AUTOENTR)[=]"
+                },
+                {
+                    "name": "support.variable.pnlgrp.dataix.attribute.value",
+                    "match": "(?i)(([A-Z0-9]{1,32})|OUT|INOUT|CALC|NO|YES|[0-9]+|LEFT|RIGHT|START|END|['].*['])"
+                }
+              ]
+            },
+            {
                "name": "keyword.other.pnlgrp.help",
                "begin": "(?i)(?<=(:(HELP)[ ]))",
                "end": "\\.",
