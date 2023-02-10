@@ -72,6 +72,25 @@
               ]
             },
             {
+              "name": "keyword.other.pnlgrp.cond",
+              "begin": "(?i)(?<=(:(COND)[ ]))",
+              "end": "\\.",
+              "patterns": [
+                {
+                    "name": "support.function.pnlgrp.cond",
+                    "match": "(?i)\\b(:(COND)[ ])"
+                },
+                {
+                    "name": "support.function.pnlgrp.cond.attribute.name",
+                    "match": "(?i)\\b(NAME|EXPR|EVAL)[=]"
+                },
+                {
+                    "name": "support.variable.pnlgrp.cond.attribute.value",
+                    "match": "(?i)([A-Z0-9]{1,32}|['](.*)[']|ALWAYS|ONCE)"
+                }
+              ]
+            },
+            {
                "name": "keyword.other.pnlgrp.help",
                "begin": "(?i)(?<=(:(HELP)[ ]))",
                "end": "\\.",
