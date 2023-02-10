@@ -221,6 +221,25 @@
               ]
             },
             {
+              "name": "keyword.other.pnlgrp.menui",
+              "begin": "(?i)(?<=(:(MENUI|MI)[ ]))",
+              "end": "\\.",
+              "patterns": [
+                {
+                    "name": "support.function.pnlgrp.menui",
+                    "match": "(?i)\\b(:(MENUI|MI)[ ])"
+                },
+                {
+                    "name": "support.function.pnlgrp.menui.attribute.name",
+                    "match": "(?i)\\b(HELP|OPTION|ACTION|NAME|COND|AVAIL|AVLMSGID|AVLMSGF|MARKER|ITEM)[=]"
+                },
+                {
+                    "name": "support.variable.pnlgrp.menui.attribute.value",
+                    "match": "(?i)([A-Z0-9]{1,32}|[0-9]{1,3}|[']((CALL .*)|CANCEL|(CMD .*)|EXIT|(MENU .* (NO)?RTNPNT)|RETURN)['])"
+                }
+              ]
+            },
+            {
                "name": "keyword.other.pnlgrp.panel",
                "begin": "(?i)(?<=(:(PANEL)[ ]))",
                "end": "\\.",
@@ -275,7 +294,7 @@
             },
             {
                "name": "keyword.other.pnlgrp",
-               "match": "(?i)(:(PK|PDFLDC|PDFLD|PDACCEL|PD|PC|PARML|PANEL|P|OPTLINE|OL|NT|NOTE|MENUI|MENUGRP|MENU|MBARC|MBAR|LP).?)"
+               "match": "(?i)(:(PK|PDFLDC|PDFLD|PDACCEL|PD|PC|PARML|PANEL|P|OPTLINE|OL|NT|NOTE|MI|MENUI|MENUGRP|MENU|MBARC|MBAR|LP).?)"
             },
             {
                "name": "keyword.other.pnlgrp",
