@@ -110,6 +110,25 @@
               ]
             },
             {
+              "name": "keyword.other.pnlgrp.datacol",
+              "begin": "(?i)(?<=(:(DATACOL)[ ]))",
+              "end": "\\.",
+              "patterns": [
+                {
+                    "name": "support.function.pnlgrp.datacol",
+                    "match": "(?i)\\b(:(DATACOL)[ ])"
+                },
+                {
+                    "name": "support.function.pnlgrp.datacol.attribute.name",
+                    "match": "(?i)\\b(WIDTH)[=]"
+                },
+                {
+                    "name": "support.variable.pnlgrp.datacol.attribute.value",
+                    "match": "(?i)([0-9]{1,3}|'\\*')"
+                }
+              ]
+            },
+            {
               "name": "keyword.other.pnlgrp.datai",
               "begin": "(?i)(?<=(:(DATAI)[ ]))",
               "end": "\\.",
