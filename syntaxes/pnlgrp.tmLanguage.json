@@ -346,6 +346,25 @@
                ]
             },
             {
+              "name": "keyword.other.pnlgrp.ti",
+              "begin": "(?i)(?<=(:(TI)[ ]))",
+              "end": "\\.",
+              "patterns": [
+                {
+                    "name": "support.function.pnlgrp.ti",
+                    "match": "(?i)\\b(:(TI)[ ])"
+                },
+                {
+                    "name": "support.function.pnlgrp.ti.attribute.name",
+                    "match": "(?i)\\b(VALUE)[=]"
+                },
+                {
+                    "name": "support.variable.pnlgrp.ti.attribute.value",
+                    "match": "(?i)(['](.+)['])"
+                }
+              ]
+            },
+            {
                "name": "keyword.other.pnlgrp",
                "match": "(?i)(:(XMP|XH[1-4]|VARRCD|VAR|UL|TTROW|TT|TOPINST|TL|TI|TEXT|SL|RT|PV|PT|PT|PRTTRAIL|PRTPNL|PRTHEAD|PNLGRP).?)"
             },
