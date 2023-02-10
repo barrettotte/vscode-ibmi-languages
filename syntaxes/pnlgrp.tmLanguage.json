@@ -555,6 +555,25 @@
                ]
             },
             {
+              "name": "keyword.other.pnlgrp.prtpnl",
+              "begin": "(?i)(?<=(:(PRTPNL)[ ]))",
+              "end": "\\.",
+              "patterns": [
+                {
+                    "name": "support.function.pnlgrp.prtpnl",
+                    "match": "(?i)\\b(:(PRTPNL)[ ])"
+                },
+                {
+                    "name": "support.function.pnlgrp.prtpnl.attribute.name",
+                    "match": "(?i)\\b(NAME|TITLE|TT|WIDTH)[=]"
+                },
+                {
+                    "name": "support.variable.pnlgrp.prtpnl.attribute.value",
+                    "match": "(?i)([A-Z0-9]{1,32}|80|132)"
+                }
+              ]
+            },
+            {
               "name": "keyword.other.pnlgrp.ti",
               "begin": "(?i)(?<=(:(TI)[ ]))",
               "end": "\\.",
