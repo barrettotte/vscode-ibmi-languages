@@ -411,6 +411,25 @@
               ]
             },
             {
+              "name": "keyword.other.pnlgrp.listgrp",
+              "begin": "(?i)(?<=(:(LISTGRP)[ ]))",
+              "end": "\\.",
+              "patterns": [
+                {
+                    "name": "support.function.pnlgrp.listgrp",
+                    "match": "(?i)\\b(:(LISTGRP)[ ])"
+                },
+                {
+                    "name": "support.function.pnlgrp.listgrp.attribute.name",
+                    "match": "(?i)\\b(COL|HELP|NAME|COLSEP)[=]"
+                },
+                {
+                    "name": "support.variable.pnlgrp.listgrp.attribute.value",
+                    "match": "(?i)([A-Z0-9]{1,32}|[']([A-Z0-9_\\/]{1,32}|\\*)[']|\\*)"
+                }
+              ]
+            },
+            {
               "name": "keyword.other.pnlgrp.listview",
               "begin": "(?i)(?<=(:(LISTVIEW)[ ]))",
               "end": "\\.",
