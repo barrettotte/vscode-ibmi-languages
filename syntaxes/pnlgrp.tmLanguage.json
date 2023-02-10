@@ -101,11 +101,11 @@
                  },
                  {
                     "name": "support.function.pnlgrp.data.attribute.name",
-                    "match": "(?i)\\b((DEPTH|HELP|BOTSEP|SCROLL|LAYOUT|MAXHEAD|BODYSEP)[=]|COMPACT)"
+                    "match": "(?i)\\b((DEPTH|HELP|BOTSEP|SCROLL|LAYOUT|MAXHEAD|BODYSEP|TYPE)[=]|COMPACT)"
                  },
                  {
                     "name": "support.variable.pnlgrp.data.attribute.value",
-                    "match": "(?i)(([A-Z][A-Z0-9#@$]{1,9}/[A-Z][A-Z0-9#@$]{1,9})|SPACE|NONE|NO|YES|HORIZ|SPACE|INDENT|BOTH|NONE|([0-4]{1})|'\\*')"
+                    "match": "(?i)(([A-Z][A-Z0-9#@$]{1,9}/[A-Z][A-Z0-9#@$]{1,9})|SPACE|NONE|NO|YES|HORIZ|SPACE|INDENT|BOTH|NONE|PROLOG|([0-4]{1})|'\\*')"
                  }
               ]
             },
