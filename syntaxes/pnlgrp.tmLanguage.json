@@ -384,6 +384,25 @@
               ]
             },
             {
+              "name": "keyword.other.pnlgrp.varrcd",
+              "begin": "(?i)(?<=(:(VARRCD)[ ]))",
+              "end": "\\.",
+              "patterns": [
+                {
+                    "name": "support.function.pnlgrp.varrcd",
+                    "match": "(?i)\\b(:(VARRCD)[ ])"
+                },
+                {
+                    "name": "support.function.pnlgrp.varrcd.attribute.name",
+                    "match": "(?i)\\b(NAME|VARS|NOPUT|NOGET)[=]"
+                },
+                {
+                    "name": "support.variable.pnlgrp.varrcd.attribute.value",
+                    "match": "(?i)([']?)([A-Z0-9]{1,32}(['])?)"
+                }
+              ]
+            },
+            {
                "name": "keyword.other.pnlgrp",
                "match": "(?i)(:(XMP|XH[1-4]|VARRCD|VAR|UL|TTROW|TT|TOPINST|TL|TI|TEXT|SL|RT|PV|PT|PT|PRTTRAIL|PRTPNL|PRTHEAD|PNLGRP).?)"
             },
