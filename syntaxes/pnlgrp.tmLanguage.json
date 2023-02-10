@@ -34,6 +34,25 @@
       "tags": {
          "patterns": [
             {
+              "name": "keyword.other.pnlgrp.cmdline",
+              "begin": "(?i)(?<=(:(CMDLINE)[ ]))",
+              "end": "\\.",
+              "patterns": [
+                {
+                    "name": "support.function.pnlgrp.cmdline",
+                    "match": "(?i)\\b(:(CMDLINE)[ ])"
+                },
+                {
+                    "name": "support.function.pnlgrp.cmdline.attribute.name",
+                    "match": "(?i)\\b(SIZE|NAME)[=]"
+                },
+                {
+                    "name": "support.variable.pnlgrp.cmdline.attribute.value",
+                    "match": "(?i)(SHORT|LONG|[A-Z0-9]{1,32})"
+                }
+              ]
+            },
+            {
                "name": "keyword.other.pnlgrp.help",
                "begin": "(?i)(?<=(:(HELP)[ ]))",
                "end": "\\.",
