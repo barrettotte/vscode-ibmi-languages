@@ -422,6 +422,25 @@
               ]
             },
             {
+              "name": "keyword.other.pnlgrp.ttrow",
+              "begin": "(?i)(?<=(:(TTROW)[ ]))",
+              "end": "\\.",
+              "patterns": [
+                {
+                    "name": "support.function.pnlgrp.ttrow",
+                    "match": "(?i)\\b(:(TTROW)[ ])"
+                },
+                {
+                    "name": "support.function.pnlgrp.ttrow.attribute.name",
+                    "match": "(?i)\\b(VALUES)[=]"
+                },
+                {
+                    "name": "support.variable.pnlgrp.ttrow.attribute.value",
+                    "match": "(?i)(['](.*)['])"
+                }
+              ]
+            },
+            {
               "name": "keyword.other.pnlgrp.var",
               "begin": "(?i)(?<=(:(VAR)[ ]))",
               "end": "\\.",
