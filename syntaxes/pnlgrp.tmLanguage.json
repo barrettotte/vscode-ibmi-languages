@@ -108,8 +108,27 @@
                     "match": "(?i)(([A-Z][A-Z0-9#@$]{1,9}/[A-Z][A-Z0-9#@$]{1,9})|SPACE|NONE|NO|YES|HORIZ|SPACE|INDENT|BOTH|NONE|([0-4]{1})|'\\*')"
                  }
               ]
-           },
-           {
+            },
+            {
+              "name": "keyword.other.pnlgrp.datai",
+              "begin": "(?i)(?<=(:(DATAI)[ ]))",
+              "end": "\\.",
+              "patterns": [
+                {
+                    "name": "support.function.pnlgrp.datai",
+                    "match": "(?i)\\b(:(DATAI)[ ])"
+                },
+                {
+                    "name": "support.function.pnlgrp.datai.attribute.name",
+                    "match": "(?i)\\b(VAR|USAGE|HELP|NAME|PMTLOC|CHCLOC|ALIGN|JUSTIFY|REQUIRED|CSRLOC|DISPLAY|AUTOENTR|COND|PROMPT|DSPVALUE)[=]"
+                },
+                {
+                    "name": "support.variable.pnlgrp.datai.attribute.value",
+                    "match": "(?i)(([A-Z0-9]{1,32})|(['][A-Z][A-Z0-9#@$]{1,9}/[A-Z][A-Z0-9#@$]{1,9}['])|OUT|INOUT|BEFORE|ABOVE|AFTER|LEFT|RIGHT|START|END|NO|YES|'\\*')"
+                }
+              ]
+            },
+            {
                "name": "keyword.other.pnlgrp.help",
                "begin": "(?i)(?<=(:(HELP)[ ]))",
                "end": "\\.",
