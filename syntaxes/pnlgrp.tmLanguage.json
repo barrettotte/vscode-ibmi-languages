@@ -650,6 +650,25 @@
               ]
             },
             {
+              "name": "keyword.other.pnlgrp.topinst",
+              "begin": "(?i)(?<=(:(TOPINST)[ ]))",
+              "end": "\\.",
+              "patterns": [
+                {
+                    "name": "support.function.pnlgrp.topinst",
+                    "match": "(?i)\\b(:(TOPINST)[ ])"
+                },
+                {
+                    "name": "support.function.pnlgrp.topinst.attribute.name",
+                    "match": "(?i)\\b(INST)[=]"
+                },
+                {
+                    "name": "support.variable.pnlgrp.topinst.attribute.value",
+                    "match": "(?i)([A-Z0-9]{1,32})"
+                }
+              ]
+            },
+            {
               "name": "keyword.other.pnlgrp.tt",
               "begin": "(?i)(?<=(:(TT)[ ]))",
               "end": "\\.",
