@@ -365,6 +365,25 @@
               ]
             },
             {
+              "name": "keyword.other.pnlgrp.var",
+              "begin": "(?i)(?<=(:(VAR)[ ]))",
+              "end": "\\.",
+              "patterns": [
+                {
+                    "name": "support.function.pnlgrp.var",
+                    "match": "(?i)\\b(:(VAR)[ ])"
+                },
+                {
+                    "name": "support.function.pnlgrp.var.attribute.name",
+                    "match": "(?i)\\b(NAME|CLASS|ERRVAR)[=]"
+                },
+                {
+                    "name": "support.variable.pnlgrp.var.attribute.value",
+                    "match": "(?i)([A-Z0-9]{1,32})"
+                }
+              ]
+            },
+            {
                "name": "keyword.other.pnlgrp",
                "match": "(?i)(:(XMP|XH[1-4]|VARRCD|VAR|UL|TTROW|TT|TOPINST|TL|TI|TEXT|SL|RT|PV|PT|PT|PRTTRAIL|PRTPNL|PRTHEAD|PNLGRP).?)"
             },
