@@ -555,6 +555,25 @@
                ]
             },
             {
+              "name": "keyword.other.pnlgrp.prthead",
+              "begin": "(?i)(?<=(:(PRTHEAD)[ ]))",
+              "end": "\\.",
+              "patterns": [
+                {
+                    "name": "support.function.pnlgrp.prthead",
+                    "match": "(?i)\\b(:(PRTHEAD)[ ])"
+                },
+                {
+                    "name": "support.function.pnlgrp.prthead.attribute.name",
+                    "match": "(?i)\\b(NAME|PRODINFO|PRTDATE|PRTTIME|TITLE|TT|WIDTH|OBJ|OBJLIB)[=]"
+                },
+                {
+                    "name": "support.variable.pnlgrp.prthead.attribute.value",
+                    "match": "(?i)([A-Z0-9]{1,32}|80|132)"
+                }
+              ]
+            },
+            {
               "name": "keyword.other.pnlgrp.prtpnl",
               "begin": "(?i)(?<=(:(PRTPNL)[ ]))",
               "end": "\\.",
