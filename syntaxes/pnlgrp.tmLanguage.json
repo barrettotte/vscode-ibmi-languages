@@ -411,6 +411,25 @@
               ]
             },
             {
+              "name": "keyword.other.pnlgrp.listview",
+              "begin": "(?i)(?<=(:(LISTVIEW)[ ]))",
+              "end": "\\.",
+              "patterns": [
+                {
+                    "name": "support.function.pnlgrp.listview",
+                    "match": "(?i)\\b(:(LISTVIEW)[ ])"
+                },
+                {
+                    "name": "support.function.pnlgrp.listview.attribute.name",
+                    "match": "(?i)\\b(COLS|LAYOUT)[=]"
+                },
+                {
+                    "name": "support.variable.pnlgrp.listview.attribute.value",
+                    "match": "(?i)([']([A-Z0-9]{1,32}|\\s)+[']|[0-9]{1,2})"
+                }
+              ]
+            },
+            {
               "name": "keyword.other.pnlgrp.menu",
               "begin": "(?i)(?<=(:(MENU)[ ]))",
               "end": "\\.",
