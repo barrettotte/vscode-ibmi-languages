@@ -129,6 +129,25 @@
               ]
             },
             {
+              "name": "keyword.other.pnlgrp.datagrp",
+              "begin": "(?i)(?<=(:(DATAGRP)[ ]))",
+              "end": "\\.",
+              "patterns": [
+                 {
+                    "name": "support.function.pnlgrp.datagrp",
+                    "match": "(?i)\\b(:(DATAGRP)[ ])"
+                 },
+                 {
+                    "name": "support.function.pnlgrp.datagrp.attribute.name",
+                    "match": "(?i)\\b((HELP|NAME|GRPSEP|COND)[=]|COMPACT)"
+                 },
+                 {
+                    "name": "support.variable.pnlgrp.datagrp.attribute.value",
+                    "match": "(?i)(([A-Z][A-Z0-9#@$]{1,9}/[A-Z][A-Z0-9#@$]{1,9})|([A-Z0-9]{1,32})|INDENT|QINDENT|NONE)"
+                 }
+              ]
+            },
+            {
               "name": "keyword.other.pnlgrp.datai",
               "begin": "(?i)(?<=(:(DATAI)[ ]))",
               "end": "\\.",
