@@ -403,6 +403,25 @@
               ]
             },
             {
+              "name": "keyword.other.pnlgrp.tt",
+              "begin": "(?i)(?<=(:(TT)[ ]))",
+              "end": "\\.",
+              "patterns": [
+                {
+                    "name": "support.function.pnlgrp.tt",
+                    "match": "(?i)\\b(:(TT)[ ])"
+                },
+                {
+                    "name": "support.function.pnlgrp.tt.attribute.name",
+                    "match": "(?i)\\b(NAME|CONDS)[=]"
+                },
+                {
+                    "name": "support.variable.pnlgrp.tt.attribute.value",
+                    "match": "(?i)([A-Z0-9]{1,32}|[']([A-Z0-9_\\/]{1,32}|\\*)['])"
+                }
+              ]
+            },
+            {
               "name": "keyword.other.pnlgrp.var",
               "begin": "(?i)(?<=(:(VAR)[ ]))",
               "end": "\\.",
