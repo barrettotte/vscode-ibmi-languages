@@ -339,19 +339,38 @@
                ]
             },
             {
-               "name": "keyword.other.pnlgrp.list",
+               "name": "keyword.other.pnlgrp.list_tags",
                "begin": "(?i)(?<=(:(DL|OL|SL|UL)[ ]))",
                "end": "\\.",
                "patterns": [
                   {
-                     "name": "support.function.pnlgrp.list",
+                     "name": "support.function.pnlgrp.list_tags",
                      "match": "(?i)\\b(:(DL|OL|SL|UL)[ ])"
                   },
                   {
-                     "name": "support.function.pnlgrp.list.attribute.name",
+                     "name": "support.function.pnlgrp.list_tags.attribute.name",
                      "match": "(?i)\\b(COMPACT)"
                   }
                ]
+            },
+            {
+              "name": "keyword.other.pnlgrp.list",
+              "begin": "(?i)(?<=(:(LIST)[ ]))",
+              "end": "\\.",
+              "patterns": [
+                {
+                    "name": "support.function.pnlgrp.list",
+                    "match": "(?i)\\b(:(LIST)[ ])"
+                },
+                {
+                    "name": "support.function.pnlgrp.list.attribute.name",
+                    "match": "(?i)\\b(DEPTH|LISTDEF|BOTSEP|SCROLL|MAXHEAD|BODYSEP|VIEW|ACTOR|EXTACT|SELECT|MAXACTL|PARMS|HEADSIZE)[=]"
+                },
+                {
+                    "name": "support.variable.pnlgrp.list.attribute.value",
+                    "match": "(?i)([A-Z0-9]{1,32}|[']\\*[']|SPACE|NONE|RULE|YES|NO|[0-4]{1}|INDENT|BOTH|UIM|CALLER|SINGLE|MULTI)"
+                }
+              ]
             },
             {
               "name": "keyword.other.pnlgrp.listdef",
