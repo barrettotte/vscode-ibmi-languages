@@ -1,5 +1,10 @@
 # Changelog
 
+### 0.6.9
+
+- Adds support for additional panel group tags, thanks to [@chrjorgensen](https://github.com/chrjorgensen). [121](https://github.com/barrettotte/vscode-ibmi-languages/issues/121)
+- Fixes bug with `**` causing following text to highlight as compile time array in RPGLE free [120](https://github.com/barrettotte/vscode-ibmi-languages/issues/120)
+
 ### 0.6.8
 
 - Adds Fall 2022 RPGLE Enhancements, thanks to [@chrjorgensen](https://github.com/chrjorgensen). [116](https://github.com/barrettotte/vscode-ibmi-languages/issues/116)
