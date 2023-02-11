@@ -23,6 +23,11 @@
 			]
 		},
 		{
+			"name": "comment.line.rpgle.fixed",
+			"begin": "(?i)^.{5}.[*]",
+			"end": "\n"
+		},
+		{
 			"include": "#tempfreeformat"
 		},
 		{
