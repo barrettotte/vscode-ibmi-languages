@@ -21,7 +21,7 @@ By all means, I probably got a couple things wrong; submit a pull request or iss
 - Syntax highlighting for RPG III and RPG/400 - H,F,E,L,I,C,O specs
 - Syntax highlighting for Control Language (CL)
 - Syntax highlighting for Command Definition (CMD)
-- Syntax highlighting for Online Help Panel Group (PNLGRP)
+- Syntax highlighting for UIM Panel Group (PNLGRP)
 - Syntax highlighting for DDS files - physical, logical, display, printer, and ICF
 - Syntax highlighting for some Machine Interface (MI) - **see below**
 - Syntax highlighting for RPGLE fixed - H,F,D,I,C,O,P specs
@@ -41,7 +41,7 @@ For each source type, I lumped legacy(system/38) source types together with the 
 | ----------------------------- | ------------------ |
 | .cl, .clp, .clp38 .clle       | Control Language (CL) |
 | .cmd                          | Command Definition (CMD) |
-| .pnlgrp                       | Online Help Panel Group (PNLGRP) |
+| .pnlgrp                       | UIM Panel Group (PNLGRP) |
 | .dspf, .dspf38                | DDS Display file   |
 | .icff                         | DDS ICF file       |
 | .lf, .lf38                    | DDS Logical file   |
@@ -80,7 +80,7 @@ See **screenshots/** for more examples of syntax highlighting.
 
 ![CL](https://raw.githubusercontent.com/barrettotte/vscode-ibmi-languages/master/screenshots/cmd.png)
 
-### Online Help Panel Group (PNLGRP)
+### UIM Panel Group (PNLGRP)
 
 ![CL](https://raw.githubusercontent.com/barrettotte/vscode-ibmi-languages/master/screenshots/pnlgrp.png)
 
