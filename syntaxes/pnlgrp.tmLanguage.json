@@ -90,6 +90,26 @@
             ]
           },
           {
+            "name": "keyword.other.pnlgrp.check",
+            "begin": "(?i)(?<=(:(CHECK)[ ]))",
+            "end": "\\.",
+            "patterns": [
+              {
+                  "name": "support.function.pnlgrp.check",
+                  "match": "(?i)\\b(:(CHECK)[ ])"
+              },
+              {
+                  "name": "support.function.pnlgrp.check.attribute.name",
+                  "match": "(?i)\\b(MSGID|MSGF|RANGE|REL|VALUES)[=]"
+              },
+              {
+                  "name": "support.variable.pnlgrp.check.attribute.value",
+                  "match": "(?i)([A-F]{3}[0-9A-F]{4}|['][A-Z][A-Z0-9#@$]{0,9}/[A-Z][A-Z0-9#@$]{0,9}['])",
+                  "comment": "TODO: Regexp does not yet support values for RANGE, REL and VALUES"
+              }
+            ]
+          },
+          {
             "name": "keyword.other.pnlgrp.class",
             "begin": "(?i)(?<=(:(CLASS)[ ]))",
             "end": "\\.",
