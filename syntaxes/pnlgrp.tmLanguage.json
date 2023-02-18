@@ -52,6 +52,25 @@
       "tags": {
          "patterns": [
           {
+            "name": "keyword.other.pnlgrp.appfmt",
+            "begin": "(?i)(?<=(:(APPFMT)[ ]))",
+            "end": "\\.",
+            "patterns": [
+              {
+                  "name": "support.function.pnlgrp.appfmt",
+                  "match": "(?i)\\b(:(APPFMT)[ ])"
+              },
+              {
+                  "name": "support.function.pnlgrp.appfmt.attribute.name",
+                  "match": "(?i)\\b(VAR|WIDTH|DEPTH|USREXIT)[=]"
+              },
+              {
+                  "name": "support.variable.pnlgrp.appfmt.attribute.value",
+                  "match": "(?i)([A-Z0-9]{1,32}|[']([A-Z0-9_\\/]{1,32})[']|[0-9]{1,2])"
+              }
+            ]
+          },
+          {
             "name": "keyword.other.pnlgrp.class",
             "begin": "(?i)(?<=(:(CLASS)[ ]))",
             "end": "\\.",
