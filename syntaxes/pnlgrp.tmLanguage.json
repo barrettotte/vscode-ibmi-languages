@@ -71,6 +71,25 @@
             ]
           },
           {
+            "name": "keyword.other.pnlgrp.botinst",
+            "begin": "(?i)(?<=(:(BOTINST)[ ]))",
+            "end": "\\.",
+            "patterns": [
+              {
+                  "name": "support.function.pnlgrp.botinst",
+                  "match": "(?i)\\b(:(BOTINST)[ ])"
+              },
+              {
+                  "name": "support.function.pnlgrp.botinst.attribute.name",
+                  "match": "(?i)\\b(INST)[=]"
+              },
+              {
+                  "name": "support.variable.pnlgrp.botinst.attribute.value",
+                  "match": "(?i)([A-Z0-9]{1,32}|[']([A-Z0-9_\\/]{1,32})['])"
+              }
+            ]
+          },
+          {
             "name": "keyword.other.pnlgrp.class",
             "begin": "(?i)(?<=(:(CLASS)[ ]))",
             "end": "\\.",
