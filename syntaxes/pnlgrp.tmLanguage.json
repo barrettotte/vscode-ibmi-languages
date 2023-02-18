@@ -9,6 +9,9 @@
          "include": "#symbols"
       },
       {
+        "include": "#directives"
+      },
+      {
          "include": "#tags"
       }
    ],
@@ -28,6 +31,21 @@
                "name": "support.function.pnlgrp",
                "match": "(?i)(&(AMP|COLON|CONT|MSG\\(.*\\)|PERIOD|SLR)\\.?)",
                "comment": "Symbols in panel group source"
+            }
+         ]
+      },
+      "directives": {
+         "patterns": [
+            {
+               "name": "keyword.other.pnlgrp.directives.imbed",
+               "begin": "(?i)(?<=\\.)(IM)[ ]",
+               "end": "\n",
+               "patterns": [
+                  {
+                    "name": "string.other.pnlgrp.directives.imbed.member",
+                    "match": "(?i)([A-Z][A-Z0-9#@$]{1,9}[ ]*$)"
+                  }
+               ]
             }
          ]
       },
