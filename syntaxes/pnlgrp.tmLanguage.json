@@ -672,7 +672,7 @@
                 },
                 {
                     "name": "support.variable.pnlgrp.mbar.attribute.value",
-                    "match": "(?i)([A-Z]{1}[A-Z0-9]{1,9}|[A-Z/_]{1}[A-Z0-9/_]{1,31}|[123])"
+                    "match": "(?i)([A-Z]{1}[A-Z0-9]{0,9}|[A-Z/_]{1}[A-Z0-9/_]{1,31}|[123])"
                 }
               ]
             },
@@ -805,7 +805,7 @@
                 },
                 {
                     "name": "support.variable.pnlgrp.pdfld.attribute.value",
-                    "match": "(?i)([A-Z]{1}[A-Z0-9]{1,9})"
+                    "match": "(?i)([A-Z]{1}[A-Z0-9]{0,9})"
                 }
               ]
             },
@@ -824,7 +824,7 @@
                 },
                 {
                   "name": "support.variable.pnlgrp.pdfldc.attribute.value",
-                  "match": "(?i)([0-9]{1,2}|[A-Z]{1}[A-Z0-9]{1,9}|PANEL|LIST|['](CALL .*)[']|[A-Z/_]{1}[A-Z0-9/_]{1,31}|[A-F]{3}[0-9A-F]{4}|['][A-Z][A-Z0-9#@$]{0,9}/[A-Z][A-Z0-9#@$]{0,9}['])"
+                  "match": "(?i)([0-9]{1,2}|[A-Z]{1}[A-Z0-9]{0,9}|PANEL|LIST|['](CALL .*)[']|[A-Z/_]{1}[A-Z0-9/_]{1,31}|[A-F]{3}[0-9A-F]{4}|['][A-Z][A-Z0-9#@$]{0,9}/[A-Z][A-Z0-9#@$]{0,9}['])"
                 }
               ]
             },
