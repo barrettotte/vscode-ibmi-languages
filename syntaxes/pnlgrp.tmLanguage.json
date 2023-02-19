@@ -897,6 +897,25 @@
               ]
             },
             {
+              "name": "keyword.other.pnlgrp.text",
+              "begin": "(?i)(?<=(:(TEXT)[ ]))",
+              "end": "\\.",
+              "patterns": [
+                {
+                    "name": "support.function.pnlgrp.text",
+                    "match": "(?i)\\b(:(TEXT)[ ])"
+                },
+                {
+                  "name": "support.function.pnlgrp.text.attribute.name",
+                  "match": "(?i)\\b(VAR|USREXIT|ROW|COL)[=]"
+                },
+                {
+                  "name": "support.variable.pnlgrp.text.attribute.value",
+                  "match": "(?i)([A-Z]{1}[A-Z0-9]{0,9}|['](CALL .*)['])"
+                }
+              ]
+            },
+            {
               "name": "keyword.other.pnlgrp.ti",
               "begin": "(?i)(?<=(:(TI)[ ]))",
               "end": "\\.",
