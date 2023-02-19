@@ -357,6 +357,25 @@
                ]
             },
             {
+              "name": "keyword.other.pnlgrp.imhelp",
+              "begin": "(?i)(?<=(:(IMHELP)[ ]))",
+              "end": "\\.",
+              "patterns": [
+                {
+                    "name": "support.function.pnlgrp.imhelp",
+                    "match": "(?i)\\b(:(IMHELP)[ ])"
+                },
+                {
+                    "name": "support.function.pnlgrp.imhelp.attribute.name",
+                    "match": "(?i)\\b(NAME)[=]"
+                },
+                {
+                    "name": "support.variable.pnlgrp.imhelp.attribute.value",
+                    "match": "(?i)([A-Z0-9]{1,32})"
+                }
+              ]
+            },
+            {
                "name": "keyword.other.pnlgrp.import",
                "begin": "(?i)(?<=(:(IMPORT)[ ]))",
                "end": "\\.",
