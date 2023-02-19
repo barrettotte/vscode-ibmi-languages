@@ -281,6 +281,25 @@
               ]
             },
             {
+              "name": "keyword.other.pnlgrp.dataslt",
+              "begin": "(?i)(?<=(:(DATASLT)[ ]))",
+              "end": "\\.",
+              "patterns": [
+                {
+                    "name": "support.function.pnlgrp.dataslt",
+                    "match": "(?i)\\b(:(DATASLT)[ ])"
+                },
+                {
+                    "name": "support.function.pnlgrp.dataslt.attribute.name",
+                    "match": "(?i)\\b(TYPE|VAR|HELP|NAME|PMTLOC|REQUIRED|AUTOENTR|COND)[=]"
+                },
+                {
+                    "name": "support.variable.pnlgrp.dataslt.attribute.value",
+                    "match": "(?i)(([A-Z0-9]{1,32})|SINGLE|MULTI|BEFORE|ABOVE|NO|YES)"
+                }
+              ]
+            },
+            {
                "name": "keyword.other.pnlgrp.help",
                "begin": "(?i)(?<=(:(HELP)[ ]))",
                "end": "\\.",
