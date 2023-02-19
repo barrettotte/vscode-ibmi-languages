@@ -9,6 +9,9 @@
          "include": "#symbols"
       },
       {
+        "include": "#directives"
+      },
+      {
          "include": "#tags"
       }
    ],
@@ -31,8 +34,81 @@
             }
          ]
       },
+      "directives": {
+         "patterns": [
+            {
+               "name": "keyword.other.pnlgrp.directives.imbed",
+               "begin": "(?i)(?<=\\.)(IM)[ ]",
+               "end": "\n",
+               "patterns": [
+                  {
+                    "name": "string.other.pnlgrp.directives.imbed.member",
+                    "match": "(?i)([A-Z][A-Z0-9#@$]{1,9}[ ]*$)"
+                  }
+               ]
+            }
+         ]
+      },
       "tags": {
          "patterns": [
+          {
+            "name": "keyword.other.pnlgrp.appfmt",
+            "begin": "(?i)(?<=(:(APPFMT)[ ]))",
+            "end": "\\.",
+            "patterns": [
+              {
+                  "name": "support.function.pnlgrp.appfmt",
+                  "match": "(?i)\\b(:(APPFMT)[ ])"
+              },
+              {
+                  "name": "support.function.pnlgrp.appfmt.attribute.name",
+                  "match": "(?i)\\b(VAR|WIDTH|DEPTH|USREXIT)[=]"
+              },
+              {
+                  "name": "support.variable.pnlgrp.appfmt.attribute.value",
+                  "match": "(?i)([A-Z0-9]{1,32}|[']([A-Z0-9_\\/]{1,32})[']|[0-9]{1,2])"
+              }
+            ]
+          },
+          {
+            "name": "keyword.other.pnlgrp.botinst",
+            "begin": "(?i)(?<=(:(BOTINST)[ ]))",
+            "end": "\\.",
+            "patterns": [
+              {
+                  "name": "support.function.pnlgrp.botinst",
+                  "match": "(?i)\\b(:(BOTINST)[ ])"
+              },
+              {
+                  "name": "support.function.pnlgrp.botinst.attribute.name",
+                  "match": "(?i)\\b(INST)[=]"
+              },
+              {
+                  "name": "support.variable.pnlgrp.botinst.attribute.value",
+                  "match": "(?i)([A-Z0-9]{1,32}|[']([A-Z0-9_\\/]{1,32})['])"
+              }
+            ]
+          },
+          {
+            "name": "keyword.other.pnlgrp.check",
+            "begin": "(?i)(?<=(:(CHECK)[ ]))",
+            "end": "\\.",
+            "patterns": [
+              {
+                  "name": "support.function.pnlgrp.check",
+                  "match": "(?i)\\b(:(CHECK)[ ])"
+              },
+              {
+                  "name": "support.function.pnlgrp.check.attribute.name",
+                  "match": "(?i)\\b(MSGID|MSGF|RANGE|REL|VALUES)[=]"
+              },
+              {
+                  "name": "support.variable.pnlgrp.check.attribute.value",
+                  "match": "(?i)([A-F]{3}[0-9A-F]{4}|['][A-Z][A-Z0-9#@$]{0,9}/[A-Z][A-Z0-9#@$]{0,9}['])",
+                  "comment": "TODO: Regexp does not yet support values for RANGE, REL and VALUES"
+              }
+            ]
+          },
           {
             "name": "keyword.other.pnlgrp.class",
             "begin": "(?i)(?<=(:(CLASS)[ ]))",
@@ -107,6 +183,25 @@
                     "name": "support.variable.pnlgrp.data.attribute.value",
                     "match": "(?i)(([A-Z][A-Z0-9#@$]{1,9}/[A-Z][A-Z0-9#@$]{1,9})|SPACE|NONE|NO|YES|HORIZ|SPACE|INDENT|BOTH|NONE|PROLOG|([0-4]{1})|'\\*')"
                  }
+              ]
+            },
+            {
+              "name": "keyword.other.pnlgrp.datac",
+              "begin": "(?i)(?<=(:(DATAC)[ ]))",
+              "end": "\\.",
+              "patterns": [
+                {
+                    "name": "support.function.pnlgrp.datac",
+                    "match": "(?i)\\b(:(DATAC)[ ])"
+                },
+                {
+                    "name": "support.function.pnlgrp.datac.attribute.name",
+                    "match": "(?i)\\b(CHOICE)[=]"
+                },
+                {
+                    "name": "support.variable.pnlgrp.datac.attribute.value",
+                    "match": "(?i)([A-Z0-9]{1,32})"
+                }
               ]
             },
             {
@@ -186,6 +281,63 @@
               ]
             },
             {
+              "name": "keyword.other.pnlgrp.dataslt",
+              "begin": "(?i)(?<=(:(DATASLT)[ ]))",
+              "end": "\\.",
+              "patterns": [
+                {
+                    "name": "support.function.pnlgrp.dataslt",
+                    "match": "(?i)\\b(:(DATASLT)[ ])"
+                },
+                {
+                    "name": "support.function.pnlgrp.dataslt.attribute.name",
+                    "match": "(?i)\\b(TYPE|VAR|HELP|NAME|PMTLOC|REQUIRED|AUTOENTR|COND)[=]"
+                },
+                {
+                    "name": "support.variable.pnlgrp.dataslt.attribute.value",
+                    "match": "(?i)(([A-Z0-9]{1,32})|SINGLE|MULTI|BEFORE|ABOVE|NO|YES)"
+                }
+              ]
+            },
+            {
+              "name": "keyword.other.pnlgrp.datasltc",
+              "begin": "(?i)(?<=(:(DATASLTC)[ ]))",
+              "end": "\\.",
+              "patterns": [
+                {
+                    "name": "support.function.pnlgrp.datasltc",
+                    "match": "(?i)\\b(:(DATASLTC)[ ])"
+                },
+                {
+                    "name": "support.function.pnlgrp.datasltc.attribute.name",
+                    "match": "(?i)\\b(CHOICE|OPTION|VAR|HELP|COND|AVAIL|AVLMSGID|AVLMSGF)[=]"
+                },
+                {
+                    "name": "support.variable.pnlgrp.datasltc.attribute.value",
+                    "match": "(?i)(([A-Z0-9]{1,32})|([0-9]{1,2})|([A-F]{3}[0-9A-F]{4})|(['][A-Z][A-Z0-9#@$]{0,9}/[A-Z][A-Z0-9#@$]{0,9}[']))"
+                }
+              ]
+            },
+            {
+              "name": "keyword.other.pnlgrp.fig",
+              "begin": "(?i)(?<=(:(FIG)[ ]))",
+              "end": "\\.",
+              "patterns": [
+                {
+                    "name": "support.function.pnlgrp.fig",
+                    "match": "(?i)\\b(:(FIG)[ ])"
+                },
+                {
+                    "name": "support.function.pnlgrp.fig.attribute.name",
+                    "match": "(?i)\\b(FRAME)[=]"
+                },
+                {
+                    "name": "support.variable.pnlgrp.fig.attribute.value",
+                    "match": "(?i)(RULE|NONE)"
+                }
+              ]
+            },
+            {
                "name": "keyword.other.pnlgrp.help",
                "begin": "(?i)(?<=(:(HELP)[ ]))",
                "end": "\\.",
@@ -205,6 +357,25 @@
                ]
             },
             {
+              "name": "keyword.other.pnlgrp.imhelp",
+              "begin": "(?i)(?<=(:(IMHELP)[ ]))",
+              "end": "\\.",
+              "patterns": [
+                {
+                    "name": "support.function.pnlgrp.imhelp",
+                    "match": "(?i)\\b(:(IMHELP)[ ])"
+                },
+                {
+                    "name": "support.function.pnlgrp.imhelp.attribute.name",
+                    "match": "(?i)\\b(NAME)[=]"
+                },
+                {
+                    "name": "support.variable.pnlgrp.imhelp.attribute.value",
+                    "match": "(?i)([A-Z0-9]{1,32})"
+                }
+              ]
+            },
+            {
                "name": "keyword.other.pnlgrp.import",
                "begin": "(?i)(?<=(:(IMPORT)[ ]))",
                "end": "\\.",
@@ -222,6 +393,25 @@
                      "match": "(?i)([A-Z0-9]{1,32}|[']([A-Z0-9_\\/]{1,32}|\\*)['])"
                   }
                ]
+            },
+            {
+              "name": "keyword.other.pnlgrp.info",
+              "begin": "(?i)(?<=(:(INFO)[ ]))",
+              "end": "\\.",
+              "patterns": [
+                {
+                    "name": "support.function.pnlgrp.info",
+                    "match": "(?i)\\b(:(INFO)[ ])"
+                },
+                {
+                    "name": "support.function.pnlgrp.info.attribute.name",
+                    "match": "(?i)\\b(DEPTH|BOTSEP|SCROLL|TYPE)[=]"
+                },
+                {
+                    "name": "support.variable.pnlgrp.info.attribute.value",
+                    "match": "(?i)([0-9]{2,2}|[']\\*[']|SPACE|NONE|RULE|YES|NO|NORMAL|PROLOG)"
+                }
+              ]
             },
             {
                "name": "keyword.other.pnlgrp.isch",
@@ -468,6 +658,44 @@
               ]
             },
             {
+              "name": "keyword.other.pnlgrp.mbar",
+              "begin": "(?i)(?<=(:(MBAR)[ ]))",
+              "end": "\\.",
+              "patterns": [
+                {
+                    "name": "support.function.pnlgrp.mbar",
+                    "match": "(?i)\\b(:(MBAR)[ ])"
+                },
+                {
+                    "name": "support.function.pnlgrp.mbar.attribute.name",
+                    "match": "(?i)\\b(NAME|HELP|MAXBARL)[=]"
+                },
+                {
+                    "name": "support.variable.pnlgrp.mbar.attribute.value",
+                    "match": "(?i)([A-Z]{1}[A-Z0-9]{0,9}|[A-Z/_]{1}[A-Z0-9/_]{1,31}|[123])"
+                }
+              ]
+            },
+            {
+              "name": "keyword.other.pnlgrp.mbarc",
+              "begin": "(?i)(?<=(:(MBARC)[ ]))",
+              "end": "\\.",
+              "patterns": [
+                {
+                    "name": "support.function.pnlgrp.mbarc",
+                    "match": "(?i)\\b(:(MBARC)[ ])"
+                },
+                {
+                    "name": "support.function.pnlgrp.mbarc.attribute.name",
+                    "match": "(?i)\\b(HELP)[=]"
+                },
+                {
+                    "name": "support.variable.pnlgrp.mbarc.attribute.value",
+                    "match": "(?i)([A-Z/_]{1}[A-Z0-9/_]{1,31})"
+                }
+              ]
+            },
+            {
               "name": "keyword.other.pnlgrp.menu",
               "begin": "(?i)(?<=(:(MENU)[ ]))",
               "end": "\\.",
@@ -563,6 +791,44 @@
                ]
             },
             {
+              "name": "keyword.other.pnlgrp.pdfld",
+              "begin": "(?i)(?<=(:(PDFLD)[ ]))",
+              "end": "\\.",
+              "patterns": [
+                {
+                    "name": "support.function.pnlgrp.pdfld",
+                    "match": "(?i)\\b(:(PDFLD)[ ])"
+                },
+                {
+                    "name": "support.function.pnlgrp.pdfld.attribute.name",
+                    "match": "(?i)\\b(NAME)[=]"
+                },
+                {
+                    "name": "support.variable.pnlgrp.pdfld.attribute.value",
+                    "match": "(?i)([A-Z]{1}[A-Z0-9]{0,9})"
+                }
+              ]
+            },
+            {
+              "name": "keyword.other.pnlgrp.pdfldc",
+              "begin": "(?i)(?<=(:(PDFLDC)[ ]))",
+              "end": "\\.",
+              "patterns": [
+                {
+                    "name": "support.function.pnlgrp.pdfldc",
+                    "match": "(?i)\\b(:(PDFLDC)[ ])"
+                },
+                {
+                  "name": "support.function.pnlgrp.pdfldc.attribute.name",
+                  "match": "(?i)\\b(OPTION|HELP|ACTION|ACTFOR|CONFIRM|USREXIT|VARUPD|COND|AVAIL|AVLMSGID|AVLMSGF|CHOICE)[=]"
+                },
+                {
+                  "name": "support.variable.pnlgrp.pdfldc.attribute.value",
+                  "match": "(?i)([0-9]{1,2}|[A-Z]{1}[A-Z0-9]{0,9}|PANEL|LIST|['](CALL .*)[']|[A-Z/_]{1}[A-Z0-9/_]{1,31}|[A-F]{3}[0-9A-F]{4}|['][A-Z][A-Z0-9#@$]{0,9}/[A-Z][A-Z0-9#@$]{0,9}['])"
+                }
+              ]
+            },
+            {
                "name": "keyword.other.pnlgrp.pk",
                "begin": "(?i)(?<=(:(PK)[ ]))",
                "end": "\\.",
@@ -631,6 +897,25 @@
               ]
             },
             {
+              "name": "keyword.other.pnlgrp.text",
+              "begin": "(?i)(?<=(:(TEXT)[ ]))",
+              "end": "\\.",
+              "patterns": [
+                {
+                    "name": "support.function.pnlgrp.text",
+                    "match": "(?i)\\b(:(TEXT)[ ])"
+                },
+                {
+                  "name": "support.function.pnlgrp.text.attribute.name",
+                  "match": "(?i)\\b(VAR|USREXIT|ROW|COL)[=]"
+                },
+                {
+                  "name": "support.variable.pnlgrp.text.attribute.value",
+                  "match": "(?i)([A-Z]{1}[A-Z0-9]{0,9}|['](CALL .*)['])"
+                }
+              ]
+            },
+            {
               "name": "keyword.other.pnlgrp.ti",
               "begin": "(?i)(?<=(:(TI)[ ]))",
               "end": "\\.",
@@ -646,6 +931,25 @@
                 {
                     "name": "support.variable.pnlgrp.ti.attribute.value",
                     "match": "(?i)(['](.+)['])"
+                }
+              ]
+            },
+            {
+              "name": "keyword.other.pnlgrp.tl",
+              "begin": "(?i)(?<=(:(TL)[ ]))",
+              "end": "\\.",
+              "patterns": [
+                {
+                    "name": "support.function.pnlgrp.tl",
+                    "match": "(?i)\\b(:(TL)[ ])"
+                },
+                {
+                  "name": "support.function.pnlgrp.tl.attribute.name",
+                  "match": "(?i)\\b(CASE|MSGID|MSGF)[=]"
+                },
+                {
+                  "name": "support.variable.pnlgrp.tl.attribute.value",
+                  "match": "(?i)(UPPER|MIXED|[A-F]{3}[0-9A-F]{4}|['][A-Z][A-Z0-9#@$]{0,9}/[A-Z][A-Z0-9#@$]{0,9}['])"
                 }
               ]
             },

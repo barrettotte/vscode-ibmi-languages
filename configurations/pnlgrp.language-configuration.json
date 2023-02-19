@@ -23,6 +23,6 @@
         ["'", "'"]
     ],
     "comments": {
-        "blockComment": ["/*", "*/"]
+        "lineComment": ".*"
     }
 }
