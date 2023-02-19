@@ -300,6 +300,25 @@
               ]
             },
             {
+              "name": "keyword.other.pnlgrp.datasltc",
+              "begin": "(?i)(?<=(:(DATASLTC)[ ]))",
+              "end": "\\.",
+              "patterns": [
+                {
+                    "name": "support.function.pnlgrp.datasltc",
+                    "match": "(?i)\\b(:(DATASLTC)[ ])"
+                },
+                {
+                    "name": "support.function.pnlgrp.datasltc.attribute.name",
+                    "match": "(?i)\\b(CHOICE|OPTION|VAR|HELP|COND|AVAIL|AVLMSGID|AVLMSGF)[=]"
+                },
+                {
+                    "name": "support.variable.pnlgrp.datasltc.attribute.value",
+                    "match": "(?i)(([A-Z0-9]{1,32})|([0-9]{1,2})|([A-F]{3}[0-9A-F]{4})|(['][A-Z][A-Z0-9#@$]{0,9}/[A-Z][A-Z0-9#@$]{0,9}[']))"
+                }
+              ]
+            },
+            {
                "name": "keyword.other.pnlgrp.help",
                "begin": "(?i)(?<=(:(HELP)[ ]))",
                "end": "\\.",
