@@ -791,6 +791,25 @@
                ]
             },
             {
+              "name": "keyword.other.pnlgrp.pdfld",
+              "begin": "(?i)(?<=(:(PDFLD)[ ]))",
+              "end": "\\.",
+              "patterns": [
+                {
+                    "name": "support.function.pnlgrp.pdfld",
+                    "match": "(?i)\\b(:(PDFLD)[ ])"
+                },
+                {
+                    "name": "support.function.pnlgrp.pdfld.attribute.name",
+                    "match": "(?i)\\b(NAME)[=]"
+                },
+                {
+                    "name": "support.variable.pnlgrp.pdfld.attribute.value",
+                    "match": "(?i)([A-Z]{1}[A-Z0-9]{1,9})"
+                }
+              ]
+            },
+            {
                "name": "keyword.other.pnlgrp.pk",
                "begin": "(?i)(?<=(:(PK)[ ]))",
                "end": "\\.",
