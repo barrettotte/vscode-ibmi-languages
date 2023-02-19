@@ -319,6 +319,25 @@
               ]
             },
             {
+              "name": "keyword.other.pnlgrp.fig",
+              "begin": "(?i)(?<=(:(FIG)[ ]))",
+              "end": "\\.",
+              "patterns": [
+                {
+                    "name": "support.function.pnlgrp.fig",
+                    "match": "(?i)\\b(:(FIG)[ ])"
+                },
+                {
+                    "name": "support.function.pnlgrp.fig.attribute.name",
+                    "match": "(?i)\\b(FRAME)[=]"
+                },
+                {
+                    "name": "support.variable.pnlgrp.fig.attribute.value",
+                    "match": "(?i)(RULE|NONE)"
+                }
+              ]
+            },
+            {
                "name": "keyword.other.pnlgrp.help",
                "begin": "(?i)(?<=(:(HELP)[ ]))",
                "end": "\\.",
