@@ -810,6 +810,25 @@
               ]
             },
             {
+              "name": "keyword.other.pnlgrp.pdfldc",
+              "begin": "(?i)(?<=(:(PDFLDC)[ ]))",
+              "end": "\\.",
+              "patterns": [
+                {
+                    "name": "support.function.pnlgrp.pdfldc",
+                    "match": "(?i)\\b(:(PDFLDC)[ ])"
+                },
+                {
+                  "name": "support.function.pnlgrp.pdfldc.attribute.name",
+                  "match": "(?i)\\b(OPTION|HELP|ACTION|ACTFOR|CONFIRM|USREXIT|VARUPD|COND|AVAIL|AVLMSGID|AVLMSGF|CHOICE)[=]"
+                },
+                {
+                  "name": "support.variable.pnlgrp.pdfldc.attribute.value",
+                  "match": "(?i)([0-9]{1,2}|[A-Z]{1}[A-Z0-9]{1,9}|PANEL|LIST|['](CALL .*)[']|[A-Z/_]{1}[A-Z0-9/_]{1,31}|[A-F]{3}[0-9A-F]{4}|['][A-Z][A-Z0-9#@$]{0,9}/[A-Z][A-Z0-9#@$]{0,9}['])"
+                }
+              ]
+            },
+            {
                "name": "keyword.other.pnlgrp.pk",
                "begin": "(?i)(?<=(:(PK)[ ]))",
                "end": "\\.",
