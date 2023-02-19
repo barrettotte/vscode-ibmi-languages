@@ -186,6 +186,25 @@
               ]
             },
             {
+              "name": "keyword.other.pnlgrp.datac",
+              "begin": "(?i)(?<=(:(DATAC)[ ]))",
+              "end": "\\.",
+              "patterns": [
+                {
+                    "name": "support.function.pnlgrp.datac",
+                    "match": "(?i)\\b(:(DATAC)[ ])"
+                },
+                {
+                    "name": "support.function.pnlgrp.datac.attribute.name",
+                    "match": "(?i)\\b(CHOICE)[=]"
+                },
+                {
+                    "name": "support.variable.pnlgrp.datac.attribute.value",
+                    "match": "(?i)([A-Z0-9]{1,32})"
+                }
+              ]
+            },
+            {
               "name": "keyword.other.pnlgrp.datacol",
               "begin": "(?i)(?<=(:(DATACOL)[ ]))",
               "end": "\\.",
