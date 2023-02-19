@@ -1,5 +1,9 @@
 # Changelog
 
+### 0.6.10
+
+- Adds additional support for PNGLGRP, thanks to [@chrjorgensen](https://github.com/chrjorgensen). [123](https://github.com/barrettotte/vscode-ibmi-languages/issues/123)
+
 ### 0.6.9
 
 - Adds support for additional panel group tags, thanks to [@chrjorgensen](https://github.com/chrjorgensen). [121](https://github.com/barrettotte/vscode-ibmi-languages/issues/121)
