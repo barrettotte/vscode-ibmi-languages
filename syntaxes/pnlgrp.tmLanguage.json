@@ -395,6 +395,25 @@
                ]
             },
             {
+              "name": "keyword.other.pnlgrp.info",
+              "begin": "(?i)(?<=(:(INFO)[ ]))",
+              "end": "\\.",
+              "patterns": [
+                {
+                    "name": "support.function.pnlgrp.info",
+                    "match": "(?i)\\b(:(INFO)[ ])"
+                },
+                {
+                    "name": "support.function.pnlgrp.info.attribute.name",
+                    "match": "(?i)\\b(DEPTH|BOTSEP|SCROLL|TYPE)[=]"
+                },
+                {
+                    "name": "support.variable.pnlgrp.info.attribute.value",
+                    "match": "(?i)([0-9]{2,2}|[']\\*[']|SPACE|NONE|RULE|YES|NO|NORMAL|PROLOG)"
+                }
+              ]
+            },
+            {
                "name": "keyword.other.pnlgrp.isch",
                "begin": "(?i)(?<=(:(ISCH)[ ]))",
                "end": "\\.",
