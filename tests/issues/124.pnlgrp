@@ -1,0 +1,23 @@
+:panel name=main
+help='menu/main'
+keyl=small
+panelid=zmenu
+topsep=space
+.My Main Menu
+:menu depth='*'.
+:topinst.Select one of the following:
+:menui help=MNUSER
+option=1
+action='MENU X'
+.Display menu X
+:menui help=MNSYS
+option=2
+action='MENU SYSOPR'
+.System operations
+:mi help=MNOFF
+option=90
+action='CMD SIGNOFF'
+.Sign off
+:emenu.
+:cmdline size=long.Selection or command
+:epanel.

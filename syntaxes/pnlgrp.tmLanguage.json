@@ -735,12 +735,12 @@
             },
             {
               "name": "keyword.other.pnlgrp.menui",
-              "begin": "(?i)(?<=(:(MENUI|MI)[ ]))",
+              "begin": "(?i)(?<=(:(MENUI)[ ]))",
               "end": "\\.",
               "patterns": [
                 {
                     "name": "support.function.pnlgrp.menui",
-                    "match": "(?i)\\b(:(MENUI|MI)[ ])"
+                    "match": "(?i)\\b(:(MENUI)[ ])"
                 },
                 {
                     "name": "support.function.pnlgrp.menui.attribute.name",
@@ -748,6 +748,25 @@
                 },
                 {
                     "name": "support.variable.pnlgrp.menui.attribute.value",
+                    "match": "(?i)([A-Z0-9]{1,32}|[0-9]{1,3}|[']((CALL .*)|CANCEL|(CMD .*)|EXIT|(MENU .* (NO)?RTNPNT)|RETURN)['])"
+                }
+              ]
+            },
+            {
+              "name": "keyword.other.pnlgrp.mi",
+              "begin": "(?i)(?<=(:(MI)[ ]))",
+              "end": "\\.",
+              "patterns": [
+                {
+                    "name": "support.function.pnlgrp.mi",
+                    "match": "(?i)\\b(:(MI)[ ])"
+                },
+                {
+                    "name": "support.function.pnlgrp.mi.attribute.name",
+                    "match": "(?i)\\b(HELP|OPTION|ACTION|NAME|COND|AVAIL|AVLMSGID|AVLMSGF|MARKER|ITEM)[=]"
+                },
+                {
+                    "name": "support.variable.pnlgrp.mi.attribute.value",
                     "match": "(?i)([A-Z0-9]{1,32}|[0-9]{1,3}|[']((CALL .*)|CANCEL|(CMD .*)|EXIT|(MENU .* (NO)?RTNPNT)|RETURN)['])"
                 }
               ]
