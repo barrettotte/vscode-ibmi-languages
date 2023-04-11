@@ -1,14 +1,10 @@
 # vscode-ibmi-languages
 
-Somewhat decent syntax highlighting for IBMi languages such as RPG, CL, DDS, MI, and RPGLE fixed/free.
+Syntax highlighting for IBMi languages such as RPG, CL, DDS, MI, and RPGLE fixed/free.
 
 **Please consider downloading [code-for-ibmi](https://github.com/halcyon-tech/code-for-ibmi) to edit RPG, RPGLE, and CL directly in VS Code!**
 
-Pretty much all I did was crawl through various IBM documentation on my lunch breaks and throw some regular expressions in here when I got the chance.
-The regex I made probably isn't too efficient and it does mess up sometimes, but I think it works for like 90% of cases I've come across.
-
-By all means, I probably got a couple things wrong; submit a pull request or issue if you see something please!
-(That goes for anything in here)
+There's probably a few syntax bugs. Please submit a pull request or issue if you see something amiss.
 
 ## Contributors
 
@@ -18,24 +14,24 @@ By all means, I probably got a couple things wrong; submit a pull request or iss
 
 ## Features
 
-- Syntax highlighting for RPG III and RPG/400 - H,F,E,L,I,C,O specs
-- Syntax highlighting for Control Language (CL)
-- Syntax highlighting for Command Definition (CMD)
-- Syntax highlighting for UIM Panel Group (PNLGRP)
-- Syntax highlighting for DDS files - physical, logical, display, printer, and ICF
-- Syntax highlighting for some Machine Interface (MI) - **see below**
-- Syntax highlighting for RPGLE fixed - H,F,D,I,C,O,P specs
-- Syntax highlighting for RPGLE free
-- Syntax highlighting for embedded SQL in SQLRPG and SQLRPGLE
-- Support for a mix of RPGLE free and fixed format
-- Support for binder language
-- Support for DB2 SQL keywords in embedded SQL
+* Syntax highlighting for RPG III and RPG/400 - H,F,E,L,I,C,O specs
+* Syntax highlighting for Control Language (CL)
+* Syntax highlighting for Command Definition (CMD)
+* Syntax highlighting for UIM Panel Group (PNLGRP)
+* Syntax highlighting for DDS files - physical, logical, display, printer, and ICF
+* Syntax highlighting for Machine Interface (MI)
+* Syntax highlighting for RPGLE fixed - H,F,D,I,C,O,P specs
+* Syntax highlighting for RPGLE free
+* Syntax highlighting for embedded SQL in SQLRPG and SQLRPGLE
+* Support for a mix of RPGLE free and fixed format
+* Support for binder language
+* Support for DB2 SQL keywords in embedded SQL
 
-RPGLE syntax last updated to **Fall 2022**
+Last updated to **Spring 2023: PTF Enhancements for 7.4 and 7.5**
 
 ## File Types (case insensitive)
 
-For each source type, I lumped legacy(system/38) source types together with the regular source types.
+For each source type, I lumped legacy (system/38) source types together with the regular source types.
 
 | Extension(s)                  | Description        |
 | ----------------------------- | ------------------ |
