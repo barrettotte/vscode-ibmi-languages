@@ -1,5 +1,10 @@
 # Changelog
 
+### 0.6.11
+
+- Adds Spring 2023 PTF enhancements for 7.4 and 7.5, thanks to [@chrjorgensen](https://github.com/chrjorgensen). [125](https://github.com/barrettotte/vscode-ibmi-languages/issues/125)
+- Fixes PNLGRP regex as requested by Github linguist project. [124](https://github.com/barrettotte/vscode-ibmi-languages/issues/124)
+
 ### 0.6.10
 
 - Adds additional support for PNGLGRP, thanks to [@chrjorgensen](https://github.com/chrjorgensen). [123](https://github.com/barrettotte/vscode-ibmi-languages/issues/123)
