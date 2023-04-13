@@ -277,7 +277,7 @@
 					"end": "(?i)(?=((\\/END-FREE\\b)))",
 					"patterns": [
 						{
-							"name": "keyword.other.rpgle.precompiler",
+							"name": "keyword.control.rpgle.precompiler",
 							"match": "(?i)^.*(\\/FREE\\b)"
                         },
 						{
@@ -292,7 +292,7 @@
 					]
 				},
 				{
-					"name": "keyword.other.rpgle.precompiler",
+					"name": "keyword.control.rpgle.precompiler",
 					"match": "^.*(\\/END-FREE\\b)"
 				}
 			]
@@ -716,8 +716,12 @@
         "precompiler": {
             "patterns": [
                 {
-					"name": "keyword.other.rpgle.fixed.precompiler.title",
-					"begin": "(?i)(?<=^.{5})(H|\\s)[\\/](TITLE)",
+					"name": "rpgle.fixed.precompiler.title",
+					"begin": "(?i)(?<=^.{5})(H|F|D|I|C|O|P|\\s)(\\/TITLE)",
+					"beginCaptures": {
+						"1": { "name": "keyword.other.rpgle.fixed.precompiler.title" },
+						"2": { "name": "keyword.control.rpgle.fixed.precompiler.title" }
+					},
 					"end": "\n",
 					"patterns": [
 						{
@@ -726,9 +730,12 @@
 						}
 					]
 				},
-				{
-					"name": "keyword.other.rpgle.fixed.precompiler.title",
-					"begin": "(?i)^(\\s)*(C)?(\\s)*[\\/](TITLE)",
+                {
+					"name": "rpgle.free.precompiler.title",
+					"begin": "(?i)^\\s*(\\/TITLE)",
+					"beginCaptures": {
+						"1": { "name": "keyword.control.rpgle.free.precompiler.title" }
+					},
 					"end": "\n",
 					"patterns": [
 						{
@@ -738,9 +745,13 @@
 					]
 				},
 				{
-					"name": "keyword.other.rpgle.fixed.precompiler.include",
-					"begin": "(?i)^(\\s)*([C|D])?(\\s)*[\\/](INCLUDE|COPY|EJECT)\\s",
+					"name": "rpgle.fixed.precompiler.include",
+					"begin": "(?i)(?<=^.{5})(H|F|D|I|C|O|P|\\s)(\\/(INCLUDE|COPY))\\s",
 					"end": "\n",
+					"beginCaptures": {
+						"1": { "name": "keyword.other.rpgle.fixed.precompiler.include" },
+						"2": { "name": "keyword.control.rpgle.fixed.precompiler.include" }
+					},
 					"patterns": [
 						{
 							"name": "string.other.rpgle.precompiler.include",
@@ -754,12 +765,50 @@
 					]
 				},
 				{
-					"name": "rpgle.precompiler.conditional",
+					"name": "rpgle.free.precompiler.include",
+					"begin": "(?i)^\\s*(\\/(INCLUDE|COPY))\\s",
+					"end": "\n",
+					"beginCaptures": {
+						"1": { "name": "keyword.control.rpgle.free.precompiler.include" }
+					},
+					"patterns": [
+						{
+							"name": "string.other.rpgle.precompiler.include",
+							"begin": "\\S",
+							"end": "\\s"
+						},
+						{
+							"name": "comment.other.rpgle.precompiler.include",
+							"match": ".*"
+						}
+					]
+				},
+				{
+					"name": "rpgle.fixed.precompiler.conditional",
+					"begin": "(?i)(?<=^.{5})(H|F|D|I|C|O|P|\\s)(\\/(ELSEIF|IF))\\b(NOT|UNDEFINED|DEFINED)\\b(.*)",
+					"beginCaptures": {
+						"1": { "name": "keyword.other.rpgle.fixed.precompiler.conditional" },
+						"2": { "name": "keyword.control.rpgle.fixed.precompiler.conditional" },
+						"3": { "name": "keyword.other.rpgle.fixed.precompiler.defcheck" }
+					},
+					"end": "(?i)(?=^.{5})(H|F|D|I|C|O|P|\\s)(\\/ENDIF))",
+					"endCaptures": {
+						"1": { "name": "keyword.other.rpgle.fixed.precompiler.conditional" },
+						"2": { "name": "keyword.control.rpgle.fixed.precompiler.conditional" }
+					},
+					"patterns": [
+                        {
+                            "include": "#fixedformat"
+                        }
+					]
+				},
+				{
+					"name": "rpgle.free.precompiler.conditional",
 					"begin": "(?i)(?=(^[\\s]*\\/IF))",
 					"end": "(?i)(?=(^[\\s]*\\/ENDIF))",
 					"patterns": [
 						{
-							"name": "keyword.other.rpgle.precompiler.if",
+							"name": "keyword.control.rpgle.precompiler.if",
 							"match": "(?i)^[\\s]*\\/(ELSEIF|IF)"
                         },
                         {
@@ -780,7 +829,7 @@
 					"end": "\n",
 					"patterns": [
 						{
-							"name": "keyword.other.rpgle.precompiler.charcount",
+							"name": "keyword.control.rpgle.precompiler.charcount",
 							"match": "(?i)^[\\s]*\\/CHARCOUNT"
                         },
                         {
@@ -790,11 +839,30 @@
 					]
 				},
                 {
-					"name": "keyword.other.rpgle.fixed.precompiler.misc",
-					"match": "(?i)^[\\s]*[\\/](UNDEFINE|TITLE|SPACE|INCLUDE|FREE|EOF|ENDIF|END-FREE|ELSE|EJECT|DEFINE|COPY|CHARCOUNT)\\b",
+					"name": "rpgle.fixed.precompiler.misc",
+					"begin": "(?i)(?<=^.{5})(H|F|D|I|C|O|P|\\s)(\\/(UNDEFINE|SPACE|FREE|EOF|END-FREE|ELSE|EJECT|DEFINE|CHARCOUNT))\\b",
+					"beginCaptures": {
+						"1": { "name": "keyword.other.rpgle.fixed.precompiler.misc" },
+						"2": { "name": "keyword.control.rpgle.fixed.precompiler.misc" }
+					},
+					"end": "\n",
 					"patterns": [
 						{
-							"name": "keyword.other.rpgle.precompiler",
+							"name": "keyword.control.rpgle.precompiler",
+							"match": ".*"
+						}
+					]
+				},
+                {
+					"name": "rpgle.free.precompiler.misc",
+					"begin": "(?i)^[\\s]*(\\/(UNDEFINE|TITLE|SPACE|INCLUDE|FREE|EOF|ENDIF|END-FREE|ELSE|EJECT|DEFINE|COPY|CHARCOUNT))\\b",
+					"beginCaptures": {
+						"1": { "name": "keyword.control.rpgle.free.precompiler.misc" }
+					},
+					"end": "\n",
+					"patterns": [
+						{
+							"name": "keyword.control.rpgle.precompiler",
 							"match": ".*"
 						}
 					]

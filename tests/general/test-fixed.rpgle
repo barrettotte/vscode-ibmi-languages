@@ -33,3 +33,37 @@
      PMYPROC           E                                                        p spec - end procedure
       *
       /EJECT
+
+      * Test /TITLE for all line line types
+
+     H/title title text
+     F/title title text
+     I/title title text
+     D/title title text
+     C/title title text
+     O/title title text
+     P/title title text
+      /title title text
+
+      * Test /EJECT for all line line types
+
+     H/eject
+     F/eject
+     I/eject
+     D/eject
+     C/eject
+     O/eject
+     P/eject
+      /eject
+
+      * Test /IF and /ENDIF
+
+     H/if defined something
+     H/endif
+
+      * Test /COPY and /INCLUDE
+
+     H/copy lib/file.member
+     H/include lib/file.member
+
+
