@@ -59,6 +59,7 @@
       * Test /IF and /ENDIF
 
      H/if defined something
+     H DECFMT('J')
      H/endif
 
       * Test /COPY and /INCLUDE

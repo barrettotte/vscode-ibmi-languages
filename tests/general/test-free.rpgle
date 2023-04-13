@@ -194,6 +194,17 @@ END-DS address;
 
 
 **free
-/copy mpkcorsrc,pr_f3gtrtd
+/copy mpkcorsrc,pr_f3gtrtd // comment
 dcl-s RLBERRCNT packed(3); // issue #19
 dcl-s i like(RLBERRCNT);
+
+/charcount STDCHARSIZE
+
+for x = 1 to 10 by 5;
+endfor;
+
+for y in %list( 'a' : 'b' : 'c');
+endfor;
+
+if (a < b) and (c > d);
+endif;
