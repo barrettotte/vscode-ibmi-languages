@@ -766,22 +766,13 @@
 				},
 				{
 					"name": "rpgle.free.precompiler.include",
-					"begin": "(?i)^\\s*(\\/(INCLUDE|COPY))\\s",
+					"begin": "(?i)^\\s*(\\/(INCLUDE|COPY))\\s+(\\S+)(.*)",
 					"end": "\n",
 					"beginCaptures": {
-						"1": { "name": "keyword.control.rpgle.free.precompiler.include" }
-					},
-					"patterns": [
-						{
-							"name": "string.other.rpgle.precompiler.include",
-							"begin": "\\S",
-							"end": "\\s"
-						},
-						{
-							"name": "comment.other.rpgle.precompiler.include",
-							"match": ".*"
-						}
-					]
+						"1": { "name": "keyword.control.rpgle.free.precompiler.include" },
+						"3": { "name": "string.other.rpgle.precompiler.include" },
+						"4": { "name": "comment.other.rpgle.precompiler.include" }
+					}
 				},
 				{
 					"name": "rpgle.fixed.precompiler.conditional",
