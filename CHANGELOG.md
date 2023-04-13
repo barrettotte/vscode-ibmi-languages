@@ -1,5 +1,9 @@
 # Changelog
 
+### 0.6.12
+
+- Enhance RPGLE syntax coloring, thanks to [@chrjorgensen](https://github.com/chrjorgensen). [127](https://github.com/barrettotte/vscode-ibmi-languages/issues/127)
+
 ### 0.6.11
 
 - Adds Spring 2023 PTF enhancements for 7.4 and 7.5, thanks to [@chrjorgensen](https://github.com/chrjorgensen). [125](https://github.com/barrettotte/vscode-ibmi-languages/issues/125)
