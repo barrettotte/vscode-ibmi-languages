@@ -1,5 +1,9 @@
 # Changelog
 
+### 0.6.13
+
+- Adds `.rpgleinc` to RPGLE file extensions, thanks to [@GajenderI](https://github.com/GajenderI). [128](https://github.com/barrettotte/vscode-ibmi-languages/issues/128)
+
 ### 0.6.12
 
 - Enhance RPGLE syntax coloring, thanks to [@chrjorgensen](https://github.com/chrjorgensen). [127](https://github.com/barrettotte/vscode-ibmi-languages/issues/127)
