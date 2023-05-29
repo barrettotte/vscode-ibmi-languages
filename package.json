@@ -155,7 +155,7 @@
                 ],
                 "extensions": [
                     ".rpgle",
-                    ".sqlrpgle".
+                    ".sqlrpgle",
                     ".rpgleinc"
                 ],
                 "configuration": "./configurations/rpgle.language-configuration.json"
