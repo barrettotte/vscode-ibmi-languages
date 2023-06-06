@@ -53,9 +53,7 @@
 					".cbl38",
 					".cblle",
 					".sqlcbl",
-					".sqlcblle",
-					".pgm.sqlcblle",
-					".srvpgm.sqlcblle"
+					".sqlcblle"
 				],
 				"configuration": "./configurations/cobol.language-configuration.json"
 			},
