@@ -1,5 +1,9 @@
 # Changelog
 
+### 0.6.14
+
+- Fix invalid regex in RPGLE grammar, thanks to [@lildude](https://github.com/lildude). [130](https://github.com/barrettotte/vscode-ibmi-languages/pull/130)
+
 ### 0.6.13
 
 - Adds `.rpgleinc` to RPGLE file extensions, thanks to [@GajenderI](https://github.com/GajenderI). [128](https://github.com/barrettotte/vscode-ibmi-languages/issues/128)
