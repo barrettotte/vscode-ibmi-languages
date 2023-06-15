@@ -785,7 +785,7 @@
 						"2": { "name": "keyword.control.rpgle.fixed.precompiler.conditional" },
 						"3": { "name": "keyword.other.rpgle.fixed.precompiler.defcheck" }
 					},
-					"end": "(?i)(?=^.{5})(H|F|D|I|C|O|P|\\s)(\\/ENDIF))",
+					"end": "(?i)(?=^.{5})(H|F|D|I|C|O|P|\\s)(\\/ENDIF)",
 					"endCaptures": {
 						"1": { "name": "keyword.other.rpgle.fixed.precompiler.conditional" },
 						"2": { "name": "keyword.control.rpgle.fixed.precompiler.conditional" }
