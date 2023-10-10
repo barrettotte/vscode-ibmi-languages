@@ -11,6 +11,8 @@ There's probably a few syntax bugs. Please submit a pull request or issue if you
 * [@barrettotte](https://github.com/barrettotte)
 * [@worksofliam](https://github.com/worksofliam)
 * [@chrjorgensen](https://github.com/chrjorgensen)
+* [@GajenderI](https://github.com/GajenderI)
+* [@lildude](https://github.com/lildude)
 
 ## Features
 
@@ -27,7 +29,7 @@ There's probably a few syntax bugs. Please submit a pull request or issue if you
 * Support for binder language
 * Support for DB2 SQL keywords in embedded SQL
 
-Last updated to **Spring 2023: PTF Enhancements for 7.4 and 7.5**
+Last updated to **Fall 2023 PTF enhancements for 7.5 and 7.4**
 
 ## File Types (case insensitive)
 
