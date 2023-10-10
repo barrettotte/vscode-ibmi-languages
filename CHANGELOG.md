@@ -1,5 +1,9 @@
 # Changelog
 
+### 0.6.15
+
+- Adds Fall 2023 PTF enhancements for 7.5 and 7.4, thanks to [@chrjorgensen](https://github.com/chrjorgensen). [132](https://github.com/barrettotte/vscode-ibmi-languages/issues/132)
+
 ### 0.6.14
 
 - Fix invalid regex in RPGLE grammar, thanks to [@lildude](https://github.com/lildude). [130](https://github.com/barrettotte/vscode-ibmi-languages/pull/130)
