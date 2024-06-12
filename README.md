@@ -127,3 +127,4 @@ See [issues](https://github.com/barrettotte/vscode-ibmi-languages/issues).
 * [RPG II, RPG III, and RPG/400](https://isbnsearch.org/isbn/0878352465)
 * [Regex tool](https://regexr.com/)
 * [VS Code Language extensions](https://code.visualstudio.com/api/language-extensions/overview)
+* [IBM List of CL Commands](https://www.ibm.com/docs/en/i/7.5?topic=language-alphabetic-list-cl-commands-by-command-name)

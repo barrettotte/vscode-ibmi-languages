@@ -1,5 +1,12 @@
 # Changelog
 
+### 0.6.16
+
+- Adds `DATA-GEN` and `%GEN` to RPGLE grammar, thanks to [@richardm90](https://github.com/richardm90). [138](https://github.com/barrettotte/vscode-ibmi-languages/pull/138)
+- Fixes `/*FIRST` highlighting in CL commands. [135](https://github.com/barrettotte/vscode-ibmi-languages/issues/135)
+- Adds `$`,`@`,`#` to identifier regex and word match for RPGLE. [136](https://github.com/barrettotte/vscode-ibmi-languages/issues/136)
+- Fixes single line `DS` and `PR` highlighting in RPGLE. [137](https://github.com/barrettotte/vscode-ibmi-languages/issues/137)
+
 ### 0.6.15
 
 - Adds Fall 2023 PTF enhancements for 7.5 and 7.4, thanks to [@chrjorgensen](https://github.com/chrjorgensen). [132](https://github.com/barrettotte/vscode-ibmi-languages/issues/132)
