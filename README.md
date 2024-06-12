@@ -13,6 +13,7 @@ There's probably a few syntax bugs. Please submit a pull request or issue if you
 * [@chrjorgensen](https://github.com/chrjorgensen)
 * [@GajenderI](https://github.com/GajenderI)
 * [@lildude](https://github.com/lildude)
+* [@richardm90](https://github.com/richardm90)
 
 ## Features
 
