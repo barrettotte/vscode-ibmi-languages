@@ -26,7 +26,7 @@
             "patterns": [
                 {
                     "name": "comment.line.cl",
-                    "begin": "(\\/\\*)(?!ALL)",
+                    "begin": "(\\/\\*)(?!(ALL|FIRST))",
                     "end": "(\\*\\/)"
                 }
             ]
