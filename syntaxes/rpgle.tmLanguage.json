@@ -234,6 +234,27 @@
 					]
 				},
 				{
+					"name": "rpgle.free.definition.complex-single",
+					"begin": "(?i)(?=(\\b(DCL\\-)(PR|DS)\\b))",
+					"end": "\n",
+					"patterns": [
+						{
+							"name": "storage.type.rpgle.free.definition.complex-single.dcl",
+							"match": "(?i)\\b(DCL\\-)(PR|DS)\\b"
+						},
+						{
+							"name": "storage.type.rpgle.free.definition.complex-single.end",
+							"match": "(?i)\\b(END\\-)(PR|DS)\\b"
+						},
+						{
+							"include": "#freedefkeywords"
+						},
+						{
+							"include": "#rpglecommon"
+						}
+					]
+				},
+				{
 					"name": "rpgle.free.definition.complex",
 					"begin": "(?i)(?=(\\b(DCL\\-)(DS|ENUM|PROC|PR|PI)\\b))",
 					"end": "\n",
@@ -249,9 +270,9 @@
 						{
 							"include": "#freedefkeywords"
 						},
-            {
-              "include": "#freeidentifiers"
-            },
+						{
+							"include": "#freeidentifiers"
+						},
 						{
 							"include": "#rpglecommon"
 						}
