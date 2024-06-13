@@ -51,7 +51,7 @@
             "patterns": [
                 {
                     "name": "keyword.control.cmd.label",
-                    "match": "^\\s*[a-zA-Z_][a-zA-Z0-9_]*:"
+                    "match": "^\\s*[a-zA-Z_@#$§ÆØÅÄÖ£Ñ¥àÐŞİ][a-zA-Z0-9_@#$§ÆØÅÄÖ£Ñ¥àÐŞİ]*:"
                 },
                 {
                     "name": "keyword.other.cmd",
@@ -99,7 +99,7 @@
             "patterns": [
                 {
                     "name": "variable.parameter.cmd",
-                    "match": "[&][a-zA-Z_][a-zA-Z0-9_]*"
+                    "match": "[&][a-zA-Z_@#$§ÆØÅÄÖ£Ñ¥àÐŞİ][a-zA-Z0-9_@#$§ÆØÅÄÖ£Ñ¥àÐŞİ]*"
                 }
             ]
         }
