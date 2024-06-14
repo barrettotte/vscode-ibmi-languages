@@ -1,5 +1,9 @@
 # Changelog
 
+### 0.6.17
+
+- Adds identifier regex fix for troublesome CCSIDs in RPGLE, CMD, and CLLE. Thanks to [@chrjorgensen](https://github.com/chrjorgensen). [139](https://github.com/barrettotte/vscode-ibmi-languages/pull/139)
+
 ### 0.6.16
 
 - Adds `DATA-GEN` and `%GEN` to RPGLE grammar, thanks to [@richardm90](https://github.com/richardm90). [138](https://github.com/barrettotte/vscode-ibmi-languages/pull/138)
