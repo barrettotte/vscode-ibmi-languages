@@ -1,0 +1,68 @@
+pgm
+
+dcl &@te@st@ *char 1
+dcl &#te#st# *char 1
+dcl &$te$st$ *char 1
+
+/* note: double click doesn't select full identifier */
+/*   but, single clicking highlights full identifier */
+/* I guess that's the correct behavior?              */
+
+/* Additional variants: https://docs.google.com/spreadsheets/d/1J4yEGkfhtmACfdDVyD2XNJe0jjrIK77Um6-wsvW0etM/edit?usp=sharing */
+
+/* CCSID 273 (Austria and Germany) */
+dcl &@te@st@ *char 1
+dcl &§te§st§ *char 1
+dcl &$te$st$ *char 1
+
+/* CCSID 277 (Denmark and Norway) */
+dcl &ØteØstØ *char 1
+dcl &ÆteÆstÆ *char 1
+dcl &ÅteÅstÅ *char 1
+
+/* CCSID 278 (Finland and Sweden) */
+dcl &ÖteÖstÖ *char 1
+dcl &ÄteÄstÄ *char 1
+dcl &ÅteÅstÅ *char 1
+
+/* CCSID 280 (Italy) */
+dcl &§te§st§ *char 1
+dcl &£te£st£ *char 1
+dcl &$te$st$ *char 1
+
+/* CCSID 284 (Spain and Latin America) */
+dcl &@te@st@ *char 1
+dcl &ÑteÑstÑ *char 1
+dcl &$te$st$ *char 1
+
+/* CCSID 285 (Ireland and the United Kingdom) */
+dcl &@te@st@ *char 1
+dcl &#te#st# *char 1
+dcl &£te£st£ *char 1
+
+/* CCSID 290 (Japan (katakana)) */
+dcl &@te@st@ *char 1
+dcl &#te#st# *char 1
+dcl &¥te¥st¥ *char 1
+
+/* CCSID 297 (France) */
+dcl &àteàstà *char 1
+dcl &£te£st£ *char 1
+dcl &$te$st$ *char 1
+
+/* CCSID 423 (Greece) */
+dcl &§te§st§ *char 1
+dcl &£te£st£ *char 1
+dcl &$te$st$ *char 1
+
+/* CCSID 871 (Iceland) */
+dcl &ÐteÐstÐ *char 1
+dcl &#te#st# *char 1
+dcl &$te$st$ *char 1
+
+/* CCSID 905 (Turkey - Latin-3) */
+dcl &ŞteŞstŞ *char 1
+dcl &ÖteÖstÖ *char 1
+dcl &İteİstİ *char 1
+
+endpgm
