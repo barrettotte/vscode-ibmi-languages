@@ -1,5 +1,10 @@
 # Changelog
 
+### 0.6.18
+
+- Fixes case sensitivity problem with CLLE `*ALL` constant. [143](https://github.com/barrettotte/vscode-ibmi-languages/issues/143)
+- Fixes identifier regex issues with DDS files. [141](https://github.com/barrettotte/vscode-ibmi-languages/issues/141)
+
 ### 0.6.17
 
 - Adds identifier regex fix for troublesome CCSIDs in RPGLE, CMD, and CLLE. Thanks to [@chrjorgensen](https://github.com/chrjorgensen). [139](https://github.com/barrettotte/vscode-ibmi-languages/pull/139)
