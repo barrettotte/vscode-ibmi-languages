@@ -25,10 +25,12 @@ jobs:
 
       - name: Publish to VS Code Marketplace
         id: pub_vsce
+        continue-on-error: true
         run: |
           vsce publish -p ${{ secrets.VSCE_TOKEN }}
 
       - name: Publish to Open VSX
+        continue-on-error: true
         id: pub_ovsx
         run: |
           npx ovsx publish -p ${{ secrets.OPEN_VSX }}
