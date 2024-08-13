@@ -26,7 +26,7 @@
             "patterns": [
                 {
                     "name": "comment.line.cl",
-                    "begin": "(\\/\\*)(?!(ALL|FIRST))",
+                    "begin": "(?i)(\\/\\*)(?!(ALL|FIRST))",
                     "end": "(\\*\\/)"
                 }
             ]
@@ -35,7 +35,7 @@
             "patterns": [
                 {
                     "name": "constant.language.cl",
-                    "match": "(?i)[*]\\b(IN)([0-9]{0,2})\\b"
+                    "match": "(?i)(\\*)\\b(IN)([0-9]{0,2})\\b"
                 },
                 {
                     "name": "constant.numeric.cl",
@@ -43,7 +43,7 @@
                 },
                 {
                     "name": "constant.language.cl",
-                    "match": "[*][a-zA-Z][a-zA-Z0-9]*"
+                    "match": "(\\*)[a-zA-Z][a-zA-Z0-9]*"
                 },
                 {
                     "name": "constant.language.cl",

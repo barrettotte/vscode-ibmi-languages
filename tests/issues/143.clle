@@ -1,0 +1,2 @@
+dspobjd obj(&lib/*all) objtype(*file) output(*outfile) outfile(qtemp/objects) /* vscode comment fix */
+rtvmbrd qtemp/objects nbrcurrcd(&nbrcurrcd)
