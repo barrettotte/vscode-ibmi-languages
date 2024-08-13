@@ -1,0 +1,10 @@
+     A            ACNAME        20A         TEXT('text')
+     A                                      COLHDG('Column' +
+     A                                             'Heading' )
+     A            LONGFIELD R               REF(ABC)
+     A            LONGFIELD2RXXXXXXXXXXXXXXXREF(ABC2)
+     A            LONGFIELD3R               REF(ABC3)
+XXXXXA            LONGFIELD4R               REF(ABC4)
+XXXXXAXXXXXXXXXXXXLONGFIELD5R               REF(ABC5)
+     A* Keyfield level
+     A          K ACLEVELID
