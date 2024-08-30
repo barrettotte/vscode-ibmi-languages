@@ -137,12 +137,14 @@
                     "RPG",
                     "SQLRPG",
                     "RPG/400",
-                    "RPG38"
+                    "RPG38",
+                    "RPT"
                 ],
                 "extensions": [
                     ".rpg",
                     ".rpg38",
-                    ".sqlrpg"
+                    ".sqlrpg",
+                    ".rpt"
                 ],
                 "configuration": "./configurations/rpg.language-configuration.json"
             },
