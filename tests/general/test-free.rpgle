@@ -208,3 +208,7 @@ endfor;
 
 if (a < b) and (c > d);
 endif;
+
+// Fall 2024 RPGLE enhancements
+max = %hival( i );
+min = %loval( i );
