@@ -209,6 +209,11 @@ endfor;
 if (a < b) and (c > d);
 endif;
 
-// Fall 2024 RPGLE enhancements
+// Fall 2024 RPGLE enhancements:
+
+// New BIF's
 max = %hival( i );
 min = %loval( i );
+
+// New CTL-OPT keyword DATEYY
+ctl-opt dateyy(*warn);
