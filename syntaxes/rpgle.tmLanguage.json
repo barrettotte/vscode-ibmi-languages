@@ -4,12 +4,12 @@
 	"patterns": [
 		{
 			"name": "rpgle.free.allfree",
-			"begin": "(?i)(?=(\\s*\\*\\*(FREE)))",
+			"begin": "(?i)(?=(\\*\\*(FREE)))",
 			"end": "(E-\\*-O-\\*-F)",
 			"patterns": [
 				{
 					"name": "keyword.other.rpgle.free.precompiler.allfree",
-					"match": "(?i)^\\s*\\*\\*FREE"
+					"match": "(?i)^\\*\\*FREE"
 				},
 				{
 					"include": "#freeSQL"
