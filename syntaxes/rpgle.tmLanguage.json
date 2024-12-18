@@ -11,6 +11,9 @@
 					"name": "keyword.other.rpgle.free.precompiler.allfree",
 					"match": "(?i)^\\*\\*FREE"
 				},
+        {
+          "include": "#ctarrays"
+        },
 				{
 					"include": "#freeSQL"
 				},
@@ -20,7 +23,7 @@
 				{
 					"include": "#freeformat"
 				}
-			]
+      ]
 		},
 		{
 			"name": "comment.line.rpgle.fixed",
@@ -141,7 +144,7 @@
 					"patterns": [
 						{
 							"name": "string.other.rpgle.ctarray",
-                            "begin": "(\\*{2})",
+                            "begin": "^(\\*{2}(\\ |CTDATA))",
                             "end": ""
 						}
 					]
