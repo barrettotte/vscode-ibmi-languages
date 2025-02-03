@@ -1,0 +1,29 @@
+                                            DSPSIZ(24 80 *DS3)
+                                            CF12(12 'Cancel')
+                R ASSUME
+                                            ASSUME
+                                        1  2' '
+                R SF                        SFL
+                  SCRSHT         8A  O  2  1
+                                            COLOR(PNK)
+                  SCRLNG        30A  O  2 12
+                                            COLOR(PNK)
+                R SFCTL                     SFLCTL(SF)
+                                            SFLCSRRRN(&REC)
+        30                                  SFLDSP
+                                            SFLDSPCTL
+        32                                  SFLEND(*MORE)
+                                            SFLSIZ(12)
+                                            SFLPAG(11)
+                                            WINDOW(WINDOW)
+                                            OVERLAY
+                                        1  1'Short      Long'
+                  REC            5S 0H
+                R WINDOW
+                                            WINDOW(&SL &SP 15 41)
+                                            WDWTITLE((*TEXT ' Select one ')    -
+                                             (*DSPATR RI))
+                  SL             3S 0P
+                  SP             3S 0P
+                                       14  1'F12=Cancel'
+                                            COLOR(BLU)
