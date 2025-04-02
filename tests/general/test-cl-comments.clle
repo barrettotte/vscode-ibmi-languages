@@ -1,0 +1,28 @@
+pgm
+
+dcl &test *char 10
+/*Is this a comment? Yes*/dcl &varA *char 1
+ /*Is this a comment? Yes*/dcl &varB *char 1
+ /* Is this a comment? Yes*/dcl &varC *char 1
+ /**Is this a comment? Yes*/dcl &varD *char 1
+LABEL1:/*Is this a comment? NO, compile will fail!*/
+LABEL2: /*Is this a comment? Yes*/
+LABEL3:/**Is this a comment? Yes*/
+
+chgvar &test ( '/* Is this a comment? No, it is a string */' )
+
+chgvar &test/* Is this a comment? Yes */( 'text' )
+
+/*Is this a comment?*/chgvar &test 'a'
+ /*Is this a comment?*/chgvar &test 'a'
+chgvar/*Is this a comment? NO, compile will fail!*/&test 'a'
+chgvar /*Is this a comment? Yes*/&test 'a'
+chgvar /**Is this a comment? Yes*/&test 'a'
+chgvar /*Is this a comment? &test 'a' +
+Yes*/&test 'a'
+
+/* Is *ALL identified as special value and not start of comment? Yes*/
+dspobjd obj(&test/*ALL) objtype(*file) output(*outfile) outfile(qtemp/objects) +
+/* vscode comment fix */
+
+endpgm
