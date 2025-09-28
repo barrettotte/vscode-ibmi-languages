@@ -833,6 +833,7 @@
 							"name": "keyword.other.rpgle.precompiler.defcheck",
 							"match": "(?i)\\s*\\b(NOT|UNDEFINED|DEFINED)\\b"
 						},
+						{ "include": "#fixedcomment" },
 						{
 							"include": "#freedefkeywords"
                         },
