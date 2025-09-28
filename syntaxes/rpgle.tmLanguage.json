@@ -11,9 +11,9 @@
 					"name": "keyword.other.rpgle.free.precompiler.allfree",
 					"match": "(?i)^\\*\\*FREE"
 				},
-        {
-          "include": "#ctarrays"
-        },
+				{
+					"include": "#ctarrays"
+				},
 				{
 					"include": "#freeSQL"
 				},
@@ -23,7 +23,7 @@
 				{
 					"include": "#freeformat"
 				}
-      ]
+			]
 		},
 		{
 			"name": "comment.line.rpgle.fixed",
@@ -39,13 +39,13 @@
 		{
 			"include": "#freeSQL"
 		},
-        {
-            "include": "#precompiler"
-        },
+		{
+			"include": "#precompiler"
+		},
 		{
 			"include": "#ctarrays"
 		},
-        {
+		{
 			"include": "#fixedcomment"
 		},
 		{
@@ -74,8 +74,8 @@
 					"match": "(?i)[*]\\b(IN)([0-9]{0,2})\\b"
 				},
 				{
-                    "name": "constant.language.rpgle",
-                    "match": "[*][a-zA-Z][a-zA-Z0-9]*"
+					"name": "constant.language.rpgle",
+					"match": "[*][a-zA-Z][a-zA-Z0-9]*"
 				},
 				{
 					"name": "constant.numeric.rpgle",
@@ -87,16 +87,16 @@
 			"patterns": [
 				{
 					"include": "#comments"
-                },
-                {
-                    "include": "#freedefkeywords"
-                },
+				},
+				{
+					"include": "#freedefkeywords"
+				},
 				{
 					"include": "#constants"
 				},
-                {
-                    "include": "#precompiler"
-                },
+				{
+					"include": "#precompiler"
+				},
 				{
 					"include": "#keywords"
 				},
@@ -144,8 +144,8 @@
 					"patterns": [
 						{
 							"name": "string.other.rpgle.ctarray",
-                            "begin": "^(\\*{2}(\\ |CTDATA))",
-                            "end": ""
+							"begin": "^(\\*{2}(\\ |CTDATA))",
+							"end": ""
 						}
 					]
 				}
@@ -306,7 +306,7 @@
 						{
 							"name": "keyword.control.rpgle.precompiler",
 							"match": "(?i)^.*(\\/FREE\\b)"
-                        },
+						},
 						{
 							"include": "#rpglecommon"
 						},
@@ -326,25 +326,25 @@
 		},
 		"fixedcomment": {
 			"patterns": [
-                {
+				{
 					"name": "comment.line.rpgle.fixed",
 					"begin": "(?i)^.{5}.[*]",
 					"end": "\n"
 				},
-                {
-                    "name": "comment.gutter",
+				{
+					"name": "comment.gutter",
 					"match": "^.{5}"
-                },
+				},
 				{
 					"name": "comment.block.line.rpgle.fixed",
-                    "begin": "(?i)(?<=((?<=^.{5}((H|F|D|I|C|O|P))).{74}))",
-                    "end": "\n"
+					"begin": "(?i)(?<=((?<=^.{5}((H|F|D|I|C|O|P))).{74}))",
+					"end": "\n"
 				}
 			]
 		},
 		"fixedformat": {
 			"patterns": [
-                {
+				{
 					"include": "#fixedcomment"
 				},
 				{
@@ -740,14 +740,18 @@
 				}
 			]
 		},
-        "precompiler": {
-            "patterns": [
-                {
+		"precompiler": {
+			"patterns": [
+				{
 					"name": "rpgle.fixed.precompiler.title",
 					"begin": "(?i)(?<=^.{5})(H|F|D|I|C|O|P|\\s)(\\/TITLE)",
 					"beginCaptures": {
-						"1": { "name": "keyword.other.rpgle.fixed.precompiler.title" },
-						"2": { "name": "keyword.control.rpgle.fixed.precompiler.title" }
+						"1": {
+							"name": "keyword.other.rpgle.fixed.precompiler.title"
+						},
+						"2": {
+							"name": "keyword.control.rpgle.fixed.precompiler.title"
+						}
 					},
 					"end": "\n",
 					"patterns": [
@@ -757,11 +761,13 @@
 						}
 					]
 				},
-                {
+				{
 					"name": "rpgle.free.precompiler.title",
 					"begin": "(?i)^\\s*(\\/TITLE)",
 					"beginCaptures": {
-						"1": { "name": "keyword.control.rpgle.free.precompiler.title" }
+						"1": {
+							"name": "keyword.control.rpgle.free.precompiler.title"
+						}
 					},
 					"end": "\n",
 					"patterns": [
@@ -776,8 +782,12 @@
 					"begin": "(?i)(?<=^.{5})(H|F|D|I|C|O|P|\\s)(\\/(INCLUDE|COPY))\\s",
 					"end": "\n",
 					"beginCaptures": {
-						"1": { "name": "keyword.other.rpgle.fixed.precompiler.include" },
-						"2": { "name": "keyword.control.rpgle.fixed.precompiler.include" }
+						"1": {
+							"name": "keyword.other.rpgle.fixed.precompiler.include"
+						},
+						"2": {
+							"name": "keyword.control.rpgle.fixed.precompiler.include"
+						}
 					},
 					"patterns": [
 						{
@@ -796,28 +806,44 @@
 					"begin": "(?i)^\\s*(\\/(INCLUDE|COPY))\\s+(\\S+)(.*)",
 					"end": "\n",
 					"beginCaptures": {
-						"1": { "name": "keyword.control.rpgle.free.precompiler.include" },
-						"3": { "name": "string.other.rpgle.precompiler.include" },
-						"4": { "name": "comment.other.rpgle.precompiler.include" }
+						"1": {
+							"name": "keyword.control.rpgle.free.precompiler.include"
+						},
+						"3": {
+							"name": "string.other.rpgle.precompiler.include"
+						},
+						"4": {
+							"name": "comment.other.rpgle.precompiler.include"
+						}
 					}
 				},
 				{
 					"name": "rpgle.fixed.precompiler.conditional",
 					"begin": "(?i)(?<=^.{5})(H|F|D|I|C|O|P|\\s)(\\/(ELSEIF|IF))\\b(NOT|UNDEFINED|DEFINED)\\b(.*)",
 					"beginCaptures": {
-						"1": { "name": "keyword.other.rpgle.fixed.precompiler.conditional" },
-						"2": { "name": "keyword.control.rpgle.fixed.precompiler.conditional" },
-						"3": { "name": "keyword.other.rpgle.fixed.precompiler.defcheck" }
+						"1": {
+							"name": "keyword.other.rpgle.fixed.precompiler.conditional"
+						},
+						"2": {
+							"name": "keyword.control.rpgle.fixed.precompiler.conditional"
+						},
+						"3": {
+							"name": "keyword.other.rpgle.fixed.precompiler.defcheck"
+						}
 					},
 					"end": "(?i)(?=^.{5})(H|F|D|I|C|O|P|\\s)(\\/ENDIF)",
 					"endCaptures": {
-						"1": { "name": "keyword.other.rpgle.fixed.precompiler.conditional" },
-						"2": { "name": "keyword.control.rpgle.fixed.precompiler.conditional" }
+						"1": {
+							"name": "keyword.other.rpgle.fixed.precompiler.conditional"
+						},
+						"2": {
+							"name": "keyword.control.rpgle.fixed.precompiler.conditional"
+						}
 					},
 					"patterns": [
-                        {
-                            "include": "#fixedformat"
-                        }
+						{
+							"include": "#fixedformat"
+						}
 					]
 				},
 				{
@@ -828,18 +854,20 @@
 						{
 							"name": "keyword.control.rpgle.precompiler.if",
 							"match": "(?i)^[\\s]*\\/(ELSEIF|IF)"
-                        },
-                        {
+						},
+						{
 							"name": "keyword.other.rpgle.precompiler.defcheck",
 							"match": "(?i)\\s*\\b(NOT|UNDEFINED|DEFINED)\\b"
 						},
-						{ "include": "#fixedcomment" },
+						{
+							"include": "#fixedcomment"
+						},
 						{
 							"include": "#freedefkeywords"
-                        },
-                        {
-                            "include": "#freeformat"
-                        }
+						},
+						{
+							"include": "#freeformat"
+						}
 					]
 				},
 				{
@@ -850,19 +878,23 @@
 						{
 							"name": "keyword.control.rpgle.precompiler.charcount",
 							"match": "(?i)^[\\s]*\\/CHARCOUNT"
-                        },
-                        {
+						},
+						{
 							"name": "keyword.other.rpgle.precompiler.charcount.mode",
 							"match": "(?i)\\s*\\b(NATURAL|STDCHARSIZE)\\b"
 						}
 					]
 				},
-                {
+				{
 					"name": "rpgle.fixed.precompiler.misc",
 					"begin": "(?i)(?<=^.{5})(H|F|D|I|C|O|P|\\s)(\\/(UNDEFINE|SPACE|FREE|EOF|END-FREE|ELSE|EJECT|DEFINE|CHARCOUNT))\\b",
 					"beginCaptures": {
-						"1": { "name": "keyword.other.rpgle.fixed.precompiler.misc" },
-						"2": { "name": "keyword.control.rpgle.fixed.precompiler.misc" }
+						"1": {
+							"name": "keyword.other.rpgle.fixed.precompiler.misc"
+						},
+						"2": {
+							"name": "keyword.control.rpgle.fixed.precompiler.misc"
+						}
 					},
 					"end": "\n",
 					"patterns": [
@@ -872,11 +904,13 @@
 						}
 					]
 				},
-                {
+				{
 					"name": "rpgle.free.precompiler.misc",
 					"begin": "(?i)^[\\s]*(\\/(UNDEFINE|TITLE|SPACE|INCLUDE|FREE|EOF|ENDIF|END-FREE|ELSE|EJECT|DEFINE|COPY|CHARCOUNT))\\b",
 					"beginCaptures": {
-						"1": { "name": "keyword.control.rpgle.free.precompiler.misc" }
+						"1": {
+							"name": "keyword.control.rpgle.free.precompiler.misc"
+						}
 					},
 					"end": "\n",
 					"patterns": [
@@ -886,8 +920,8 @@
 						}
 					]
 				}
-            ]
-        },
+			]
+		},
 		"keywords": {
 			"patterns": [
 				{
@@ -908,8 +942,8 @@
 			"patterns": [
 				{
 					"name": "string.other.rpgle.hex",
-                    "begin": "(?i)x'",
-                    "end": "'"
+					"begin": "(?i)x'",
+					"end": "'"
 				},
 				{
 					"name": "string.quoted.single.rpgle",
@@ -927,12 +961,12 @@
 						{
 							"name": "keyword.other.rpgle.sql",
 							"match": "(?i)(EXEC)\\s+(SQL)\\b"
-                        },
+						},
 						{
 							"include": "#sqlcommon"
 						}
 					]
-			  	},
+				},
 				{
 					"name": "comment.line.rpgle.sql",
 					"match": "(?<=(;))\\s*.*"
