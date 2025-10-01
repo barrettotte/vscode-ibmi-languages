@@ -8,12 +8,20 @@
       *
      F* Test file spec (externally described)
      FANOTHRFILEUPEADE     L     G SPECIAL INDDS(SOMEDS)                        f spec comment
+
+      * Test USROPN keyword
+     FBADFILE   IF   F  100        DISK    USROPN
+
       *
      I* Test input spec
      IMYFILE    A1NO**11111NCX22222NZY33333NDZ                                  i spec comment
       *
      D* Test definition spec
      DMYFIELD        ESS *OPCODE-12345 *12 NOOPT                                d spec comment
+     D MSG             S             52A
+     D FieldA          S             10A   INZ('Value of A')
+     D FieldB          S             10A   INZ('Value of B')
+     D FieldC          S             10A   INZ('Value of C')
       *
      D* Test definition extended (DX) spec
      D STREAM_NEW_LINE...                                                       dx spec comment
@@ -67,9 +75,18 @@
      H/copy lib/file.member
      H/include lib/file.member
 
+      * Test CASxx group
+     C     FieldA        CASGE     FieldB        Subr01
+     C     FieldA        CASEQ     FieldC        Subr02
+     C                   CAS                     Subr03
+     C                   ENDCS
 
       * Issue #76
       * - handle hyphenated opcodes and fields containing opcode words
+      * Test DO group
+     C                   DO        10            X                 3 0
+     C                   SND-MSG   'X='+%CHAR(X)
+     C                   ENDDO
 
      D end1            S             10i 0
      D endif_b         S             10i 0
@@ -119,3 +136,63 @@
      C     CUSCOD        Chain(N)  CUSTOMERS                          21
      C     CUSCOD        Chain(EN) CUSTOMERS                          21
 
+
+      * Test IF group
+     C                   IF        X = 10
+     C                   SND-MSG   'X is now equal to 10'
+     C                   ELSE
+     C                   IF        X < 10
+     C                   SND-MSG   'X is now less than 10'
+     C                   ELSEIF    X > 10
+     C                   SND-MSG   'X is now greater than 10'
+     C                   ELSE
+     C                   SND-MSG   'X is now equal to '+%CHAR(X)
+     C                   END
+     C                   ENDIF
+
+      * Test FOR group
+     C                   FOR       X = 1 TO 10
+     C                   EVAL      X = X + X
+     C                   ENDFOR
+
+      * Test MONITOR GROUP plus SND-MSG and ON-EXCP opcodes
+
+     C                   MONITOR
+     C                   OPEN      BADFILE
+     C                   EVAL      MSG = 'BADFILE opened'
+     C                   ON-EXCP   'CPF4101'
+     C                   EVAL      MSG = 'Message CPF4101: ' + %CHAR(%STATUS())
+     C                   ON-EXCP   'RNX1217'
+     C                   EVAL      MSG = 'Message RNX1217'
+     C                   ON-ERROR  1217
+     C                   EVAL      MSG = 'Status 1217'
+     C                   ENDMON
+     C                   SND-MSG   MSG
+
+      * Test SELECT group
+     C                   SELECT
+     C                   WHEN      X = 1
+     C                   Eval      FieldA = 'aaa'
+     C                   WHEN      X = 2
+     C                   Eval      FieldB = 'bbb'
+     C                   WHEN      X = 3
+     C                   Eval      FieldC = 'ccc'
+     C                   OTHER
+     C                   Eval      FieldA = 'xxx'
+     C                   Eval      FieldB = 'xxx'
+     C                   Eval      FieldC = 'xxx'
+     C                   ENDSL
+
+     C                   SETON                                        LR
+
+     C     Subr01        BEGSR
+     C                   SND-MSG   FieldA+'>='+FieldB
+     C                   ENDSR
+
+     C     Subr02        BEGSR
+     C                   SND-MSG   FieldA+'>='+FieldC
+     C                   ENDSR
+
+     C     Subr03        BEGSR
+     C                   SND-MSG   FieldA+'<'+FieldB+' and <'+FieldC
+     C                   ENDSR
