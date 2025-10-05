@@ -212,6 +212,28 @@ min = %loval( i );
 // New CTL-OPT keyword DATEYY
 ctl-opt dateyy(*warn);
 
+
+// Issue #76
+// - handle hyphenated opcodes
+
+monitor;       // Valid
+endmon;        // Valid
+end-mon;       // Invalid
+end-monitor;   // Invalid
+abc-monitor;   // Invalid
+
+end1 = 1;
+endif_2 = 2;
+
+endif;         // Valid
+endif-test;    // Invalid
+endif-abc;     // Invalid
+
+acq;           // valid
+acq-test;      // Invalid
+acquire;       // Invalid
+
+
 **CTDATA
 Line 1 of program data
 Line 2 of program data

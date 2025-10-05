@@ -68,3 +68,22 @@
      H/include lib/file.member
 
 
+      * Issue #76
+      * - handle hyphenated opcodes
+
+     C                   monitor                                                Valid
+     C                   endmon                                                 Valid
+     C                   end-mon                                                Invalid
+     C                   end-monitor                                            Invalid
+     C                   abc-monitor                                            Invalid
+
+     C                   Eval      end1 = 1
+     C                   Eval      endif_2 = 2
+
+     C                   endif                                                  Valid
+     C                   endif-test                                             Invalid
+     C                   endif-abc                                              Invalid
+
+     C                   acq                                                    valid
+     C                   acq-test                                               Invalid
+     C                   acquire                                                Invalid
