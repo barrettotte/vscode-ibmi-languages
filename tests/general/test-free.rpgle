@@ -226,7 +226,6 @@ ctl-opt dateyy(*warn);
 
 // Valid free format opcodes
 ACQ;
-ADD;
 ALLOC;
 BEGSR;
 CALLP;
@@ -300,6 +299,7 @@ XML-INTO;
 XML-SAX;
 
 // Opcodes not valid in free format
+ADD;
 ADDDUR;
 ACQUIRE;
 ANDEQ;
