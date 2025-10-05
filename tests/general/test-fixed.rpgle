@@ -1,7 +1,7 @@
      H/TITLE Testing syntax highlighting
       *
      H* Test control spec
-     H DATFMT(*YMD) DATEDIT(*YMD) DEBUG(*YES) OPTION(*NODEBUGIO)                h spec comment             
+     H DATFMT(*YMD) DATEDIT(*YMD) DEBUG(*YES) OPTION(*NODEBUGIO)                h spec comment
       *
      F* Test file spec (program described)
      FSOMEFILE  OTEAAF12345L12345ZIWORKSTN EXTDESC(FILE123)                     f spec comment
@@ -15,7 +15,7 @@
      D* Test definition spec
      DMYFIELD        ESS *OPCODE-12345 *12 NOOPT                                d spec comment
       *
-     D* Test definition extended (DX) spec 
+     D* Test definition extended (DX) spec
      D STREAM_NEW_LINE...                                                       dx spec comment
       *
      C* Test calculation spec
@@ -69,16 +69,28 @@
 
 
       * Issue #76
-      * - handle hyphenated opcodes
+      * - handle hyphenated opcodes and fields containing opcode words
+
+     D end1            S             10i 0
+     D endif_b         S             10i 0
+     D c_endif         S             10i 0
+     d endx            S             10i 0
+     d end#1           S             10i 0
+     d end@1           S             10i 0
 
      C                   monitor                                                Valid
+     C                   on-error                                               Valid
      C                   endmon                                                 Valid
      C                   end-mon                                                Invalid
      C                   end-monitor                                            Invalid
      C                   abc-monitor                                            Invalid
 
      C                   Eval      end1 = 1
-     C                   Eval      endif_2 = 2
+     C                   Eval      endif_b = 2
+     C                   Eval      c_endif = 3
+     C                   Eval      endx = 4
+     C                   Eval      end#1 = 5
+     C                   Eval      end@1 = 6
 
      C                   endif                                                  Valid
      C                   endif-test                                             Invalid
