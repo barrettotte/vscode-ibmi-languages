@@ -13,13 +13,13 @@ x=1 and y=1   x=1 or y=1   not x
 
 /FREE
 // Test control specifications
-ctl-opt;  
+ctl-opt;
 
 ctl-opt main(main);  //inline comment
 /END-FREE
 
      H* Test control spec
-     H DATFMT(*YMD) DATEDIT(*YMD) DEBUG(*YES) OPTION(*NODEBUGIO)                h spec comment  
+     H DATFMT(*YMD) DATEDIT(*YMD) DEBUG(*YES) OPTION(*NODEBUGIO)                h spec comment
 
       ctl-opt option(*srcstmt:*noDebugIO:*nounref) dftActGrp(*no);
 
@@ -28,14 +28,14 @@ ctl-opt main(main);  //inline comment
 
       ctl-opt option(*srcstmt)ccsid(*char:*jobrun);
 
-     H OPTION(*SRCSTMT :              
-     H        *NODEBUGIO)             
-     H ACTGRP(*NEW)                   
-      CTL-OPT ALWNULL(*USRCTL)       
+     H OPTION(*SRCSTMT :
+     H        *NODEBUGIO)
+     H ACTGRP(*NEW)
+      CTL-OPT ALWNULL(*USRCTL)
            CCSID(*UCS2
-                      :1200)      
-           CCSID(*CHAR:*JOBRUN);  
-     H DATFMT(*YMD) TIMFMT(*USA) 
+                      :1200)
+           CCSID(*CHAR:*JOBRUN);
+     H DATFMT(*YMD) TIMFMT(*USA)
 
 
 /FREE
@@ -130,7 +130,7 @@ END-DS address;
    DCL-PI *N CHAR(10) END-PI; //inline comment
 
    DCL-PI *N;
-      DCL-PARM select CHAR(10); 
+      DCL-PARM select CHAR(10);
       name CHAR(10);
       DCL-PARM address CHAR(25);
    END-PI;
@@ -220,16 +220,28 @@ ctl-opt dateyy(*warn);
 
 
 // Issue #76
-// - handle hyphenated opcodes
+// - handle hyphenated opcodes and fields containing opcode words
+
+dcl-s end1 int(10);
+dcl-s endif_b int(10);
+dcl-s c_endif int(10);
+dcl-s endx int(10);
+dcl-s end#1 int(10);
+dcl-s end@1 int(10);
 
 monitor;       // Valid
+on-error;      // Valid
 endmon;        // Valid
 end-mon;       // Invalid
 end-monitor;   // Invalid
 abc-monitor;   // Invalid
 
-end1 = 1;
-endif_2 = 2;
+end1 = 1;      // Valid
+endif_b = 2;   // Valid
+c_endif = 3;   // Valid
+endx = 4;      // Valid
+end#1 = 5;     // Valid
+end@1 = 6;     // Valid
 
 endif;         // Valid
 endif-test;    // Invalid
