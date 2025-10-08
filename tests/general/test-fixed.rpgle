@@ -74,9 +74,12 @@
      D end1            S             10i 0
      D endif_b         S             10i 0
      D c_endif         S             10i 0
-     d endx            S             10i 0
-     d end#1           S             10i 0
-     d end@1           S             10i 0
+     D endx            S             10i 0
+     D end#1           S             10i 0
+     D end@1           S             10i 0
+     D end$1           S             10i 0
+     D end£1           S             10i 0
+     D end§1           S             10i 0
 
      C                   monitor                                                Valid
      C                   on-error                                               Valid
@@ -91,10 +94,13 @@
      C                   Eval      endx = 4
      C                   Eval      end#1 = 5
      C                   Eval      end@1 = 6
+     C                   Eval      end$1 = 7
+     C                   Eval      end£1 = 8
+     C                   Eval      end§1 = 9
 
      C                   endif                                                  Valid
-     C                   endif-test                                             Invalid
      C                   endif-abc                                              Invalid
+     C                   endif-test                                             Invalid
 
      C                   acq                                                    valid
      C                   acq-test                                               Invalid

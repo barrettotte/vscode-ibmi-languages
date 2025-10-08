@@ -222,12 +222,15 @@ ctl-opt dateyy(*warn);
 // Issue #76
 // - handle hyphenated opcodes and fields containing opcode words
 
-dcl-s end1 int(10);
-dcl-s endif_b int(10);
-dcl-s c_endif int(10);
-dcl-s endx int(10);
-dcl-s end#1 int(10);
-dcl-s end@1 int(10);
+dcl-s end1     int(10);
+dcl-s endif_b  int(10);
+dcl-s c_endif  int(10);
+dcl-s endx     int(10);
+dcl-s end#1    int(10);
+dcl-s end@1    int(10);
+dcl-s end$1    int(10);
+dcl-s end£1    int(10);
+dcl-s end§1    int(10);
 
 monitor;       // Valid
 on-error;      // Valid
@@ -236,17 +239,20 @@ end-mon;       // Invalid
 end-monitor;   // Invalid
 abc-monitor;   // Invalid
 
-end1 = 1;      // Valid
-endif_b = 2;   // Valid
-c_endif = 3;   // Valid
-endx = 4;      // Valid
-end#1 = 5;     // Valid
-end@1 = 6;     // Valid
+end1 = 1;
+endif_b = 2;
+c_endif = 3;
+endx = 4;
+end#1 = 5;
+end@1 = 6;
+end$1 = 7;
+end£1 = 8;
+end§1 = 9;
 
 endif;         // Valid
-endif-test;    // Invalid
 endif-abc;     // Invalid
+endif-test;    // Invalid
 
-acq;           // valid
+acq;           // Valid
 acq-test;      // Invalid
 acquire;       // Invalid
