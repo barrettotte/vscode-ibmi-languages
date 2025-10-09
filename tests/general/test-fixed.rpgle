@@ -75,12 +75,6 @@
      H/copy lib/file.member
      H/include lib/file.member
 
-      * Test CASxx group
-     C     FieldA        CASGE     FieldB        Subr01
-     C     FieldA        CASEQ     FieldC        Subr02
-     C                   CAS                     Subr03
-     C                   ENDCS
-
       * Issue #76
       * - handle hyphenated opcodes and fields containing opcode words
       * Test DO group
@@ -136,6 +130,12 @@
      C     CUSCOD        Chain(N)  CUSTOMERS                          21
      C     CUSCOD        Chain(EN) CUSTOMERS                          21
 
+
+      * Test CASxx group
+     C     FieldA        CASGE     FieldB        Subr01
+     C     FieldA        CASEQ     FieldC        Subr02
+     C                   CAS                     Subr03
+     C                   ENDCS
 
       * Test IF group
      C                   IF        X = 10
