@@ -77,10 +77,6 @@
 
       * Issue #76
       * - handle hyphenated opcodes and fields containing opcode words
-      * Test DO group
-     C                   DO        10            X                 3 0
-     C                   SND-MSG   'X='+%CHAR(X)
-     C                   ENDDO
 
      D end1            S             10i 0
      D endif_b         S             10i 0
@@ -130,6 +126,11 @@
      C     CUSCOD        Chain(N)  CUSTOMERS                          21
      C     CUSCOD        Chain(EN) CUSTOMERS                          21
 
+
+      * Test DO group
+     C                   DO        10            X                 3 0
+     C                   SND-MSG   'X='+%CHAR(X)
+     C                   ENDDO
 
       * Test CASxx group
      C     FieldA        CASGE     FieldB        Subr01
