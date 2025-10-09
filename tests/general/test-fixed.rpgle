@@ -80,6 +80,11 @@
      D end$1           S             10i 0
      D end£1           S             10i 0
      D end§1           S             10i 0
+     D #end1           S             10i 0
+     D @end1           S             10i 0
+     D $end1           S             10i 0
+     D £end1           S             10i 0
+     D §end1           S             10i 0
 
      C                   monitor                                                Valid
      C                   on-error                                               Valid
@@ -97,6 +102,11 @@
      C                   Eval      end$1 = 7
      C                   Eval      end£1 = 8
      C                   Eval      end§1 = 9
+     C                   Eval      #end1 = 5
+     C                   Eval      @end1 = 6
+     C                   Eval      $end1 = 7
+     C                   Eval      £end1 = 8
+     C                   Eval      §end1 = 9
 
      C                   endif                                                  Valid
      C                   endif-abc                                              Invalid
