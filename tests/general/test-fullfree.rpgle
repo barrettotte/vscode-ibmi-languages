@@ -225,6 +225,11 @@ dcl-s end@1    int(10);
 dcl-s end$1    int(10);
 dcl-s end£1    int(10);
 dcl-s end§1    int(10);
+dcl-s #end1    int(10);
+dcl-s @end1    int(10);
+dcl-s $end1    int(10);
+dcl-s £end1    int(10);
+dcl-s §end1    int(10);
 
 monitor;       // Valid
 on-error;      // Valid
@@ -242,6 +247,11 @@ end@1 = 6;
 end$1 = 7;
 end£1 = 8;
 end§1 = 9;
+#end1 = 5;
+@end1 = 6;
+$end1 = 7;
+£end1 = 8;
+§end1 = 9;
 
 endif;         // Valid
 endif-abc;     // Invalid
