@@ -105,3 +105,7 @@
      C                   acq                                                    valid
      C                   acq-test                                               Invalid
      C                   acquire                                                Invalid
+
+     C     CUSCOD        Chain(N)  CUSTOMERS                          21
+     C     CUSCOD        Chain(EN) CUSTOMERS                          21
+

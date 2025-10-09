@@ -256,3 +256,6 @@ endif-test;    // Invalid
 acq;           // Valid
 acq-test;      // Invalid
 acquire;       // Invalid
+
+Chain(N) CUSCOD CUSTOMERS;
+Chain(EN) CUSCOD CUSTOMERS;

@@ -251,6 +251,9 @@ acq;           // Valid
 acq-test;      // Invalid
 acquire;       // Invalid
 
+Chain(N) CUSCOD CUSTOMERS;
+Chain(EN) CUSCOD CUSTOMERS;
+
 
 **CTDATA
 Line 1 of program data
