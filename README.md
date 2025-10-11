@@ -128,3 +128,21 @@ See [issues](https://github.com/barrettotte/vscode-ibmi-languages/issues).
 * [Regex tool](https://regexr.com/)
 * [VS Code Language extensions](https://code.visualstudio.com/api/language-extensions/overview)
 * [IBM List of CL Commands](https://www.ibm.com/docs/en/i/7.5?topic=language-alphabetic-list-cl-commands-by-command-name)
+
+
+
+## Hints & Tips
+
+
+### tmLanguage Scope Names
+
+The colours used in VS Code are determined by the scope names assigned in the
+relevant tmLanguage file, which are then mapped to colors by the active colours
+theme.
+
+To see the actual scope at a cursor position:
+
+1. Place your cursor on the word (e.g. TIME)
+1. Press Ctrl+Shift+P (or Cmd+Shift+P on Mac)
+1. Type and select: Developer: Inspect Editor Tokens and Scopes
+1. This shows you the exact scope name and the colours applied by your theme

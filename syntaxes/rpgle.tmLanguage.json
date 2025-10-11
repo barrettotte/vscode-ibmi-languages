@@ -83,6 +83,14 @@
         }
       ]
     },
+    "sqlvariables": {
+      "patterns": [
+        {
+          "name": "variable.language.rpgle.sql",
+          "match": "(?i)\\b(SQLWRN|SQLWNA|SQLWN9|SQLWN8|SQLWN7|SQLWN6|SQLWN5|SQLWN4|SQLWN3|SQLWN2|SQLWN1|SQLWN0|SQLWARN|SQLSTT|SQLSTATE|SQLCODE|SQLCOD|SQLERRP|SQLERRML|SQLERRMC|SQLERRD|SQLERR|SQLERP|SQLERM|SQLERL|SQLER6|SQLER5|SQLER4|SQLER3|SQLER2|SQLER1)\\b"
+        }
+      ]
+    },
     "rpglecommon": {
       "patterns": [
         {
@@ -90,6 +98,9 @@
         },
         {
           "include": "#freedefkeywords"
+        },
+        {
+          "include": "#sqlvariables"
         },
         {
           "include": "#constants"
