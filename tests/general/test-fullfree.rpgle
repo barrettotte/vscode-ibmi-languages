@@ -265,7 +265,8 @@ Chain(N) CUSCOD CUSTOMERS;
 Chain(EN) CUSCOD CUSTOMERS;
 
 
-// Valid free format opcodes
+// PR #162
+// - all valid free format opcodes
 ACQ;
 ALLOC;
 BEGSR;
@@ -339,7 +340,7 @@ WRITE;
 XML-INTO;
 XML-SAX;
 
-// Opcodes not valid in free format
+// - all fixed format opcodes that are not valid in free format
 ADD;
 ADDDUR;
 ACQUIRE;
@@ -439,15 +440,6 @@ XFOOT;
 XLATE;
 Z-ADD;
 Z-SUB;
-
-// TODO: what about the following?
-
-sqlstate;
-sqlcode;
-TIME;
-
-%biton();
-%bitoff();
 
 
 **CTDATA
