@@ -871,12 +871,6 @@
               "match": "(?i)\\s*\\b(NOT|UNDEFINED|DEFINED)\\b"
             },
             {
-              "include": "#fixedcomment"
-            },
-            {
-              "include": "#freedefkeywords"
-            },
-            {
               "include": "#freeformat"
             }
           ]
