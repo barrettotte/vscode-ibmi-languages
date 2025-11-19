@@ -44,6 +44,20 @@
                 "configuration": "./configurations/cl.language-configuration.json"
             },
             {
+				"id": "cobol",
+				"aliases": [
+					"cobol"
+				],
+				"extensions": [
+					".cbl",
+					".cbl38",
+					".cblle",
+					".sqlcbl",
+					".sqlcblle"
+				],
+				"configuration": "./configurations/cobol.language-configuration.json"
+			},
+            {
                 "id": "cmd",
                 "aliases": [
                     "CMD",
@@ -172,6 +186,11 @@
                 "scopeName": "source.cl",
                 "path": "./syntaxes/cl.tmLanguage.json"
             },
+            {
+				"language": "cobol",
+				"scopeName": "source.cobol",
+				"path": "./syntaxes/cobol.tmLanguage.json"
+			},
             {
                 "language": "cmd",
                 "scopeName": "source.cmd",
