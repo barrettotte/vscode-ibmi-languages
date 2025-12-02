@@ -248,27 +248,6 @@
           ]
         },
         {
-          "name": "rpgle.free.definition.complex-single",
-          "begin": "(?i)(?=(\\b(DCL\\-)(PR|DS)\\b))",
-          "end": "\n",
-          "patterns": [
-            {
-              "name": "storage.type.rpgle.free.definition.complex-single.dcl",
-              "match": "(?i)\\b(DCL\\-)(PR|DS)\\b"
-            },
-            {
-              "name": "storage.type.rpgle.free.definition.complex-single.end",
-              "match": "(?i)\\b(END\\-)(PR|DS)\\b"
-            },
-            {
-              "include": "#freedefkeywords"
-            },
-            {
-              "include": "#rpglecommon"
-            }
-          ]
-        },
-        {
           "name": "rpgle.free.definition.complex",
           "begin": "(?i)(?=(\\b(DCL\\-)(DS|ENUM|PROC|PR|PI)\\b))",
           "end": "\n",
@@ -278,22 +257,23 @@
               "match": "(?i)\\b(DCL\\-)(DS|ENUM|PROC|PR|PI)\\b"
             },
             {
-              "name": "storage.type.rpgle.free.definition.complex.end",
+              "name": "storage.type.rpgle.free.definition.complex.dcl",
               "match": "(?i)\\b(END\\-)(DS|ENUM|PROC|PR|PI)\\b"
             },
             {
               "include": "#freedefkeywords"
             },
             {
-              "include": "#freeidentifiers"
+              "include": "#rpglecommon"
             },
             {
-              "include": "#rpglecommon"
+              "name": "variable.other.rpgle.free.definition.identifier",
+              "match": "\\b[a-zA-Z_#@$§ÆØÅÄÖ£Ñ¥àÐŞİ][a-zA-Z0-9_#@$§ÆØÅÄÖ£Ñ¥àÐŞİ]*\\b"
             }
           ]
         },
         {
-          "name": "storage.type.rpgle.free.definition.complex.end",
+          "name": "storage.type.rpgle.free.definition.complex.dcl",
           "match": "(?i)\\b(END\\-)(DS|ENUM|PROC|PR|PI)\\b"
         },
         {
