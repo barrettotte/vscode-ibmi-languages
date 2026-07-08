@@ -18,7 +18,7 @@
           "include": "#freeSQL"
         },
         {
-          "include": "#rpglecommon"
+          "include": "#freerpglecommon"
         },
         {
           "include": "#freeformat"
@@ -37,7 +37,7 @@
       "include": "#fixedSQL"
     },
     {
-      "include": "#freeSQL"
+      "include": "#fixedfreeSQL"
     },
     {
       "include": "#precompiler"
@@ -55,7 +55,7 @@
       "include": "#fixedformat"
     },
     {
-      "include": "#freeformat"
+      "include": "#fixedfreeformat"
     }
   ],
   "repository": {
@@ -92,7 +92,14 @@
       ]
     },
     "rpglecommon": {
+      "comment": "Used in fixed-format and /FREE-within-fixed contexts. Includes gutter-aware fixedcomment and fixedstrings.",
       "patterns": [
+        {
+          "include": "#fixedcomment"
+        },
+        {
+          "include": "#fixedstrings"
+        },
         {
           "include": "#comments"
         },
@@ -110,9 +117,32 @@
         },
         {
           "include": "#keywords"
-        },
+        }
+      ]
+    },
+    "freerpglecommon": {
+      "comment": "Used in **FREE (fully free-format) contexts where no sequence-number gutter is present.",
+      "patterns": [
         {
           "include": "#strings"
+        },
+        {
+          "include": "#comments"
+        },
+        {
+          "include": "#freedefkeywords"
+        },
+        {
+          "include": "#sqlvariables"
+        },
+        {
+          "include": "#constants"
+        },
+        {
+          "include": "#precompiler"
+        },
+        {
+          "include": "#keywords"
         }
       ]
     },
@@ -171,6 +201,25 @@
       ]
     },
     "freeidentifiers": {
+      "comment": "Used in **FREE contexts. Delegates to freerpglecommon.",
+      "patterns": [
+        {
+          "name": "variable.other.rpgle.free.definition.identifier",
+          "begin": "[a-zA-Z_#@$§ÆØÅÄÖ£Ñ¥àÐŞİ][a-zA-Z0-9_#@$§ÆØÅÄÖ£Ñ¥àÐŞİ]*",
+          "end": "(?=\n)",
+          "patterns": [
+            {
+              "include": "#freedefkeywords"
+            },
+            {
+              "include": "#freerpglecommon"
+            }
+          ]
+        }
+      ]
+    },
+    "fixedfreeidentifiers": {
+      "comment": "Used in fixed-format and /FREE-within-fixed contexts. Delegates to rpglecommon.",
       "patterns": [
         {
           "name": "variable.other.rpgle.free.definition.identifier",
@@ -188,6 +237,109 @@
       ]
     },
     "freeformat": {
+      "comment": "Free-format statements for **FREE (fully free-format) source. Uses freerpglecommon throughout.",
+      "patterns": [
+        {
+          "name": "rpgle.free.control",
+          "begin": "(?i)\\b(?=CTL\\-OPT)\\b",
+          "end": ";",
+          "patterns": [
+            {
+              "include": "#freerpglecommon"
+            },
+            {
+              "name": "storage.type.rpgle.free.control",
+              "match": "(?i)\\b(CTL\\-OPT)\\b"
+            },
+            {
+              "name": "entity.name.function.rpgle.free.control.keywords",
+              "match": "(?i)\\b(VALIDATE|USRPRF|TRUNCNBR|TIMFMT|THREAD|TEXT|STGMDL|SRTSEQ|REQPREXP|PRFDTA|PGMINFO|OPTION|OPTIMIZE|OPENOPT|NOMAIN|MAIN|LANGID|INTPREC|INDENT|GENLVL|FTRANS|FORMSALIGN|FLTDIV|FIXNBR|EXTBININT|EXPROPTS|ENBPFRCOL|DFTNAME|DFTACTGRP|DECPREC|DECEDIT|DEBUG|DATFMT|DATEYY|DATEDIT|DCLOPT|CVTOPT|CURSYM|COPYRIGHT|COPYNEST|CHARCOUNTTYPES|CHARCOUNT|CCSIDCVT|CCSID|BNDDIR|AUT|ALWNULL|ALTSEQ|ACTGRP|ALLOC)\\b"
+            }
+          ]
+        },
+        {
+          "name": "rpgle.free.file",
+          "begin": "(?i)\\b(?=DCL\\-F)\\b",
+          "end": ";",
+          "patterns": [
+            {
+              "include": "#freerpglecommon"
+            },
+            {
+              "name": "storage.type.rpgle.free.file",
+              "match": "(?i)\\b(DCL\\-F)\\b"
+            },
+            {
+              "name": "entity.name.function.rpgle.free.file.keywords",
+              "match": "(?i)\\b(WORKSTN|USROPN|USAGE|TIMFMT|TEMPLATE|STATIC|SPECIAL|SLN|SFILE|SEQ|SAVEIND|SAVEDS|RENAME|RECNO|RAFDATA|QUALIFIED|PRTCTL|PRINTER|PREFIX|PLIST|PGMNAME|PASS|OFLIND|MAXDEV|LIKEFILE|KEYLOC|KEYED|INFSR|INFDS|INDDS|INCLUDE|IGNORE|HANDLER|FORMOFL|FORMLEN|EXTMBR|EXTIND|EXTFILE|EXTDESC|DISK|DEVID|DATFMT|DATA|COMMIT|CHARCOUNT|BLOCK|ALIAS)\\b"
+            }
+          ]
+        },
+        {
+          "name": "storage.type.rpgle.free.definition.subr",
+          "match": "(?i)\\b(BEG|END)SR\\b"
+        },
+        {
+          "name": "rpgle.free.definition.simple",
+          "begin": "(?i)(?=(\\b(DCL\\-)(S|C|PARM|SUBF)\\b))",
+          "end": "\n",
+          "patterns": [
+            {
+              "name": "storage.type.rpgle.free.definition.simple",
+              "match": "(?i)\\b(DCL\\-)(S|C|PARM|SUBF)\\b"
+            },
+            {
+              "include": "#freeidentifiers"
+            },
+            {
+              "name": "comment.line.rpgle.free",
+              "match": "(\/\/).*"
+            }
+          ]
+        },
+        {
+          "name": "rpgle.free.definition.complex",
+          "begin": "(?i)(?=(\\b(DCL\\-)(DS|ENUM|PROC|PR|PI)\\b))",
+          "end": "\n",
+          "patterns": [
+            {
+              "name": "storage.type.rpgle.free.definition.complex.dcl",
+              "match": "(?i)\\b(DCL\\-)(DS|ENUM|PROC|PR|PI)\\b"
+            },
+            {
+              "name": "storage.type.rpgle.free.definition.complex.dcl",
+              "match": "(?i)\\b(END\\-)(DS|ENUM|PROC|PR|PI)\\b"
+            },
+            {
+              "include": "#freedefkeywords"
+            },
+            {
+              "include": "#freerpglecommon"
+            },
+            {
+              "name": "variable.other.rpgle.free.definition.identifier",
+              "match": "\\b[a-zA-Z_#@$§ÆØÅÄÖ£Ñ¥àÐŞİ][a-zA-Z0-9_#@$§ÆØÅÄÖ£Ñ¥àÐŞİ]*\\b"
+            }
+          ]
+        },
+        {
+          "name": "storage.type.rpgle.free.definition.complex.dcl",
+          "match": "(?i)\\b(END\\-)(DS|ENUM|PROC|PR|PI)\\b"
+        },
+        {
+          "name": "keyword.other.rpgle.free",
+          "match": "(?i)(?<![A-Z0-9_#@$§ÆØÅÄÖ£Ñ¥àÐŞİ])(ACQ|ADDUR|ALLOC|AND|BEGSR|CALLP|CHAIN|CLEAR|CLOSE|COMMIT|DATA\\-GEN|DATA\\-INTO|DEALLOC|DELETE|DOU|DOW|DSPLY|DUMP|ELSEIF|ELSE|ENDDO|ENDFOR|ENDIF|ENDMON|ENDSL|ENDSR|EVAL\\-CORR|EVALR|EVAL|EXCEPT|EXFMT|EXSR|FEOD|FOR\\-EACH|FOR|FORCE|IF|IN|ITER|LEAVESR|LEAVE|MONITOR|NEXT|ON\\-ERROR|ON\\-EXCP|ON\\-EXIT|OPEN|OR|OTHER|OUT|POST|READC|READE|READP|READPE|READ|REL|RESET|RETURN|ROLBK|SELECT|SETGT|SETLL|SHTDN|SND\\-MSG|SORTA|TEST|UNLOCK|UPDATE|WHEN\\-IN|WHEN\\-IS|WHEN|WRITE|XML\\-INTO|XML\\-SAX)(?![-A-Z0-9_#@$§ÆØÅÄÖ£Ñ¥àÐŞİ])"
+        },
+        {
+          "include": "#freeidentifiers"
+        },
+        {
+          "include": "#freerpglecommon"
+        }
+      ]
+    },
+    "fixedfreeformat": {
+      "comment": "Free-format statements for fixed-format source (including mixed-mode files). Uses rpglecommon throughout for gutter awareness.",
       "patterns": [
         {
           "name": "rpgle.free.control",
@@ -239,7 +391,7 @@
               "match": "(?i)\\b(DCL\\-)(S|C|PARM|SUBF)\\b"
             },
             {
-              "include": "#freeidentifiers"
+              "include": "#fixedfreeidentifiers"
             },
             {
               "name": "comment.line.rpgle.free",
@@ -281,7 +433,7 @@
           "match": "(?i)(?<![A-Z0-9_#@$§ÆØÅÄÖ£Ñ¥àÐŞİ])(ACQ|ADDUR|ALLOC|AND|BEGSR|CALLP|CHAIN|CLEAR|CLOSE|COMMIT|DATA\\-GEN|DATA\\-INTO|DEALLOC|DELETE|DOU|DOW|DSPLY|DUMP|ELSEIF|ELSE|ENDDO|ENDFOR|ENDIF|ENDMON|ENDSL|ENDSR|EVAL\\-CORR|EVALR|EVAL|EXCEPT|EXFMT|EXSR|FEOD|FOR\\-EACH|FOR|FORCE|IF|IN|ITER|LEAVESR|LEAVE|MONITOR|NEXT|ON\\-ERROR|ON\\-EXCP|ON\\-EXIT|OPEN|OR|OTHER|OUT|POST|READC|READE|READP|READPE|READ|REL|RESET|RETURN|ROLBK|SELECT|SETGT|SETLL|SHTDN|SND\\-MSG|SORTA|TEST|UNLOCK|UPDATE|WHEN\\-IN|WHEN\\-IS|WHEN|WRITE|XML\\-INTO|XML\\-SAX)(?![-A-Z0-9_#@$§ÆØÅÄÖ£Ñ¥àÐŞİ])"
         },
         {
-          "include": "#freeidentifiers"
+          "include": "#fixedfreeidentifiers"
         },
         {
           "include": "#rpglecommon"
@@ -289,6 +441,7 @@
       ]
     },
     "tempfreeformat": {
+      "comment": "Handles /FREE.../END-FREE blocks within fixed-format source. Uses fixedfreeformat and fixedfreeSQL for gutter awareness.",
       "patterns": [
         {
           "begin": "(?i)(?=((\\/FREE\\b)))",
@@ -302,10 +455,10 @@
               "include": "#rpglecommon"
             },
             {
-              "include": "#freeformat"
+              "include": "#fixedfreeformat"
             },
             {
-              "include": "#freeSQL"
+              "include": "#fixedfreeSQL"
             }
           ]
         },
@@ -924,6 +1077,7 @@
       ]
     },
     "strings": {
+      "comment": "String literals for **FREE (fully free-format) source. No gutter awareness needed.",
       "patterns": [
         {
           "name": "string.other.rpgle.hex",
@@ -937,12 +1091,67 @@
         }
       ]
     },
+    "fixedstrings": {
+      "comment": "String literals for fixed-format source. Nests fixedcomment so the sequence-number gutter on continuation lines is not consumed as string content.",
+      "patterns": [
+        {
+          "name": "string.other.rpgle.hex",
+          "begin": "(?i)x'",
+          "end": "'",
+          "patterns": [
+            {
+              "include": "#fixedcomment"
+            }
+          ]
+        },
+        {
+          "name": "string.quoted.single.rpgle",
+          "begin": "'",
+          "end": "'",
+          "patterns": [
+            {
+              "include": "#fixedcomment"
+            }
+          ]
+        }
+      ]
+    },
     "freeSQL": {
+      "comment": "EXEC SQL...;  blocks in **FREE (fully free-format) source.",
       "patterns": [
         {
           "begin": "(?i)(?=(^\\s*(EXEC)\\s+(SQL)\\b))",
           "end": "(?=(;))",
           "patterns": [
+            {
+              "name": "keyword.other.rpgle.sql",
+              "match": "(?i)(EXEC)\\s+(SQL)\\b"
+            },
+            {
+              "include": "#sqlcommon"
+            }
+          ]
+        },
+        {
+          "name": "comment.line.rpgle.sql",
+          "match": "(?<=(;))\\s*.*"
+        },
+        {
+          "name": "rpgle.free.sql.end",
+          "match": ";"
+        }
+      ]
+    },
+    "fixedfreeSQL": {
+      "comment": "EXEC SQL...;  blocks in fixed-format source (including /FREE blocks). Nests fixedcomment so the sequence-number gutter on continuation lines is not consumed as SQL content.",
+      "patterns": [
+        {
+          "begin": "(?i)(?=(^\\s*(EXEC)\\s+(SQL)\\b))",
+          "end": "(?=(;))",
+          "patterns": [
+            {
+              "include": "#fixedcomment"
+            },
             {
               "name": "keyword.other.rpgle.sql",
               "match": "(?i)(EXEC)\\s+(SQL)\\b"
