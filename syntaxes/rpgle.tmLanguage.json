@@ -477,7 +477,7 @@
         },
         {
           "name": "comment.gutter",
-          "match": "^.{5}"
+          "match": "^.{1,5}"
         },
         {
           "name": "comment.block.line.rpgle.fixed",
