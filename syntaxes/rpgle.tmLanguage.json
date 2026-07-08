@@ -1146,7 +1146,7 @@
       "comment": "EXEC SQL...;  blocks in fixed-format source (including /FREE blocks). Nests fixedcomment so the sequence-number gutter on continuation lines is not consumed as SQL content.",
       "patterns": [
         {
-          "begin": "(?i)(?=(^\\s*(EXEC)\\s+(SQL)\\b))",
+          "begin": "(?i)(?=(^.{5}\\s*(EXEC)\\s+(SQL)\\b))",
           "end": "(?=(;))",
           "patterns": [
             {
