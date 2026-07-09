@@ -481,7 +481,7 @@
         },
         {
           "name": "comment.block.line.rpgle.fixed",
-          "begin": "(?i)(?<=((?<=^.{5}((H|F|D|I|C|O|P))).{74}))",
+          "begin": "(?<=^.{80})",
           "end": "\n"
         }
       ]
