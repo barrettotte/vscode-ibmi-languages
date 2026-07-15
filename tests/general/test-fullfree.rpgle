@@ -212,6 +212,13 @@ min = %loval( i );
 // New CTL-OPT keyword DATEYY
 ctl-opt dateyy(*warn);
 
+// July 2026 RPGLE enhancements:
+
+ctl-opt assert(*call : assertFn);
+
+pEnvvar = getenv ('SOME_ENVVAR');
+assert-f pEnvvar = *NULL %msg('SOME_ENVVAR should be set');
+assert-t name <> *blanks %msg('Name cannot be blank');
 
 // Issue #76
 // - handle hyphenated opcodes and fields containing opcode words
