@@ -197,3 +197,14 @@
      C     Subr03        BEGSR
      C                   SND-MSG   FieldA+'<'+FieldB+' and <'+FieldC
      C                   ENDSR
+
+      * July 2026 RPGLE enhancements:
+
+     H ASSERT(*CALL : assertFn);
+     H ASSERT(*EXCP);
+     H ASSERT(*WARN);
+     H ASSERT(*NONE);
+
+     C                   eval       pEnvvar = getenv ('SOME_ENVVAR');
+     C                   assert-f   pEnvvar = *NULL %msg('SOME_ENVVAR should be set');
+     C                   assert-t   name <> *blanks %msg('Name cannot be blank');
