@@ -1,5 +1,38 @@
 # Changelog
 
+### 0.6.25
+
+- Fix inconsistent RPGLE declaration identifier and END keyword highlighting by [@richardm90](https://github.com/richardm90) in [166](https://github.com/barrettotte/vscode-ibmi-languages/pull/166)
+
+### 0.6.24
+
+- Fix issue 163 - highlighting of code inside precompile IF block by [@chrjorgensen](https://github.com/chrjorgensen) in [164](https://github.com/barrettotte/vscode-ibmi-languages/pull/164)
+
+### 0.6.23
+
+- Fix typo in keyword MLTCHCFLD by [@chrjorgensen](https://github.com/chrjorgensen) in [153](https://github.com/barrettotte/vscode-ibmi-languages/pull/153)
+- Add SND-MSG and ON-EXCP as fixed format opcodes by [@richardm90](https://github.com/richardm90) in [157](https://github.com/barrettotte/vscode-ibmi-languages/pull/157)
+- Make JSON formatting consistent in the project by [@chrjorgensen](https://github.com/chrjorgensen) in [158](https://github.com/barrettotte/vscode-ibmi-languages/pull/158)
+- Hyphenated opcodes by [@richardm90](https://github.com/richardm90) in [160](https://github.com/barrettotte/vscode-ibmi-languages/pull/160)
+- Add ENDMON to the rpgle syntax and include END* test examples by [@richardm90](https://github.com/richardm90) in [159](https://github.com/barrettotte/vscode-ibmi-languages/pull/159)
+- Free format opcode list by [@richardm90](https://github.com/richardm90) in [162](https://github.com/barrettotte/vscode-ibmi-languages/pull/162)
+
+### 0.6.22
+
+- Fix CL comment rules by [@chrjorgensen](https://github.com/chrjorgensen) in [151](https://github.com/barrettotte/vscode-ibmi-languages/pull/151)
+
+### 0.6.21
+
+- Fix type on SFLCSRRRN keyword by [@richardm90](https://github.com/richardm90) in [150](https://github.com/barrettotte/vscode-ibmi-languages/pull/150)
+
+### 0.6.20
+
+- Fix issues with **FREE and **CTDATA by [@chrjorgensen](https://github.com/chrjorgensen) in [148](https://github.com/barrettotte/vscode-ibmi-languages/pull/148)
+
+### 0.6.19
+
+- Add support for RPG Fall 2024 enhancements by [@chrjorgensen](https://github.com/chrjorgensen) in [145](https://github.com/barrettotte/vscode-ibmi-languages/pull/145)
+
 ### 0.6.18
 
 - Fixes case sensitivity problem with CLLE `*ALL` constant. [143](https://github.com/barrettotte/vscode-ibmi-languages/issues/143)
