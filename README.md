@@ -30,7 +30,7 @@ There's probably a few syntax bugs. Please submit a pull request or issue if you
 * Support for binder language
 * Support for DB2 SQL keywords in embedded SQL
 
-Last updated to **Fall 2023 PTF enhancements for 7.5 and 7.4**
+Last updated to **July 2026 PTF enhancements for 7.6 and 7.5**
 
 ## File Types (case insensitive)
 
