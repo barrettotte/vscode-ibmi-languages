@@ -1,5 +1,11 @@
 # Changelog
 
+### 0.6.26
+
+- Add support for RPG July 2026 enhancements by [@chrjorgensen](https://github.com/chrjorgensen) in [171](https://github.com/barrettotte/vscode-ibmi-languages/pull/171)
+- Update README and CHANGELOG with latest enhancements and fixes by [@chrjorgensen](https://github.com/chrjorgensen) in [172](https://github.com/barrettotte/vscode-ibmi-languages/pull/172)
+
+
 ### 0.6.25
 
 - Fix inconsistent RPGLE declaration identifier and END keyword highlighting by [@richardm90](https://github.com/richardm90) in [166](https://github.com/barrettotte/vscode-ibmi-languages/pull/166)
