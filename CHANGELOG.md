@@ -1,5 +1,9 @@
 # Changelog
 
+### 0.6.27
+
+- Update action to run when release is published by [@chrjorgensen](https://github.com/chrjorgensen) in [174](https://github.com/barrettotte/vscode-ibmi-languages/pull/174)
+
 ### 0.6.26
 
 - Add support for RPG July 2026 enhancements by [@chrjorgensen](https://github.com/chrjorgensen) in [171](https://github.com/barrettotte/vscode-ibmi-languages/pull/171)
