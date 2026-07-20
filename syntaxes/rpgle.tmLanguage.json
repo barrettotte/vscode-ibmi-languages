@@ -18,6 +18,25 @@
           "include": "#freeSQL"
         },
         {
+          "name": "rpgle.fixed.embedded",
+          "begin": "(?=^\\s{5}[HFDICOPhfdicop](?![a-z]))",
+          "end": "(?<=\\n)",
+          "patterns": [
+            {
+              "include": "#fixedcomment"
+            },
+            {
+              "include": "#fixedSQL"
+            },
+            {
+              "include": "#fixedformat"
+            },
+            {
+              "include": "#rpglecommon"
+            }
+          ]
+        },
+        {
           "include": "#rpglecommon"
         },
         {
