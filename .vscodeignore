@@ -1,8 +1,27 @@
+# editor / workspace
 .vscode/**
 .vscode-test/**
+.editorconfig
+.nvmrc
 .gitignore
-vsc-extension-quickstart.md
+.gitattributes
+.git-blame-ignore-revs
 
-# test files #
+# repo tooling and CI
+.github/**
+package-lock.json
+node_modules/**
+
+tmp/**
+*.vsix
+
+# test files
 tests/**
 dev/**
+
+# docs and media
+screenshots/**
+CONTRIBUTING.md
+RELEASING.md
+SECURITY.md
+vsc-extension-quickstart.md

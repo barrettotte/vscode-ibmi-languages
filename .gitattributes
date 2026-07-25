@@ -1,6 +1,11 @@
-*.json linguist-detectable=true
-*.py linguist-detectable=false
+# Normalize line endings
+* text=auto eol=lf
 
-# linguist mismatch
+*.json linguist-detectable=true
+
+tests/** linguist-vendored=true
+dev/** linguist-vendored=true
+
 *.clp linguist-detectable=false
 *.cmd linguist-detectable=false
+*.py linguist-detectable=false
