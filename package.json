@@ -9,7 +9,7 @@
   },
   "engines": {
     "vscode": "^1.75.0",
-    "node": ">=20"
+    "node": ">=22"
   },
   "categories": [
     "Programming Languages"
