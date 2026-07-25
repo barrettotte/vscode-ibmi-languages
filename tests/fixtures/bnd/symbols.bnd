@@ -1,0 +1,24 @@
+/* EXPORT SYMBOL name forms: quoted vs unquoted.                          */
+/* Member: BNDSYM     Compilable: yes                                     */
+/* Source: IBM i 7.5 ILE Concepts - Export Symbol Command                 */
+/*   https://www.ibm.com/docs/en/i/7.5?topic=language-export-symbol-command */
+/* Retrieved: 2026-07-25                                                  */
+
+STRPGMEXP PGMLVL(*CURRENT)
+
+/* Unquoted names are folded to uppercase. The binder searches for P1,    */
+/* not p1.                                                                */
+  EXPORT SYMBOL(p1)
+  EXPORT SYMBOL(UPPERNAME)
+
+/* Names containing lowercase letters must be enclosed in apostrophes to  */
+/* preserve their case.                                                   */
+  EXPORT SYMBOL('p2')
+  EXPORT SYMBOL('P3')
+  EXPORT SYMBOL('mixedCaseProcedure')
+  EXPORT SYMBOL('name_with_underscore')
+
+/* A space is permitted between the keyword and its parenthesis.          */
+  EXPORT SYMBOL ('spacedKeyword')
+
+ENDPGMEXP

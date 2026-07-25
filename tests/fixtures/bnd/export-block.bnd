@@ -1,0 +1,24 @@
+/* Export block structure: STRPGMEXP / EXPORT / ENDPGMEXP.               */
+/* Member: BNDBLOCK   Compilable: yes (CRTSRVPGM SRCMBR)                  */
+/* Source: IBM i 7.5 ILE Concepts - Binder Language                       */
+/*   https://www.ibm.com/docs/en/i/7.5?topic=concepts-binder-language     */
+/* Retrieved: 2026-07-25                                                  */
+
+STRPGMEXP PGMLVL(*CURRENT)
+  EXPORT SYMBOL('calcTax')
+  EXPORT SYMBOL('calcRate')
+  EXPORT SYMBOL('calcPayment')
+ENDPGMEXP
+
+/* Only one block may specify PGMLVL(*CURRENT). Every other block in the  */
+/* member must specify PGMLVL(*PRV), which keeps previously generated     */
+/* signatures valid so existing callers do not need rebinding.            */
+
+STRPGMEXP PGMLVL(*PRV)
+  EXPORT SYMBOL('calcTax')
+  EXPORT SYMBOL('calcRate')
+ENDPGMEXP
+
+STRPGMEXP PGMLVL(*PRV)
+  EXPORT SYMBOL('calcTax')
+ENDPGMEXP

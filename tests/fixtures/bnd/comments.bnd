@@ -1,0 +1,22 @@
+-- Double-dash comments work in practice but are not documented in the
+-- ILE Concepts manual. SEU flags both comment styles as errors even though
+-- the binder accepts them.
+-- Member: BNDCMT    Compilable: yes
+-- Source: IT Jungle, "Comment Your Binder Language", 2007-07-11
+--   https://www.itjungle.com/2007/07/11/fhg071107-story01/
+-- Retrieved: 2026-07-25
+
+/* A block comment on its own line. This is the form documented in the
+   ILE Concepts manual, and it may span multiple lines. */
+
+STRPGMEXP PGMLVL(*CURRENT)
+  EXPORT SYMBOL('term')          /* trailing comment after a statement */
+  EXPORT SYMBOL('oldRate')       /* original rate procedure, 4 parms   */
+  EXPORT SYMBOL('amount')
+  EXPORT SYMBOL('payment')       -- trailing double-dash comment
+  EXPORT SYMBOL('rate')          /* new rate procedure that supports
+                                    a fifth parameter, creditHistory  */
+ENDPGMEXP
+
+/* An empty comment: */
+/**/
