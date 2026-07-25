@@ -1,0 +1,21 @@
+R11  A* 07/16/11 Dev1     - Update language
+R10  A* 06/04/09 Dev1     - Removed hard coding
+     A*
+     A                                      DSPSIZ(24 80 *DS3)
+     A                                      PRINT
+     A                                      CA03(03 'F3=Exit')
+     A                                      CF12(12 'F12=Previous')
+     A          R FIRST
+     A                                      TEXT('Test inquiry subfile option d-
+R10  A                                      isplay')
+R10  A                                  2  5'Test to see if data Libraries that-
+R11  A*R10                                   were sent in are good'
+R11  A                                       we received in are good'
+     A                                  5  5'Prv. dat Library'
+     A            OLDDAT        10A  B  5 32
+     A                                  6  5'Next dat Library'
+     A            DATLIB        10A  B  6 32
+     A                                 23  7'F3 = Exit'
+     A                                      COLOR(BLU)
+     A                                 23 61'Enter to Continue'
+     A                                      COLOR(BLU)
