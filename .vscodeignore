@@ -1,27 +1,12 @@
-# editor / workspace
-.vscode/**
-.vscode-test/**
-.editorconfig
-.nvmrc
-.gitignore
-.gitattributes
-.git-blame-ignore-revs
+# Allowlist. vsce packages the working directory and reads only this file --
+# Ignore everything, then re-include exactly what the extension needs.
 
-# repo tooling and CI
-.github/**
-package-lock.json
-node_modules/**
+**
 
-tmp/**
-*.vsix
-
-# test files
-tests/**
-dev/**
-
-# docs and media
-screenshots/**
-CONTRIBUTING.md
-RELEASING.md
-SECURITY.md
-vsc-extension-quickstart.md
+!package.json
+!README.md
+!CHANGELOG.md
+!LICENSE
+!images/icon.png
+!syntaxes/*.tmLanguage.json
+!configurations/*.language-configuration.json

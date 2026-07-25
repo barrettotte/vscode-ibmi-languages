@@ -1,90 +1,100 @@
 {
-    "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
-    "name": "BND",
-    "patterns": [
-        {
-            "include": "#comments"
-        },
-        {
-            "include": "#constants"
-        },
-        {
-            "include": "#keywords"
-        },
-        {
-            "include": "#strings"
-        },
-        {
-            "include": "#support"
-        }
-    ],
-    "repository": {
-        "comments": {
-            "patterns": [
-                {
-                    "name": "comment.line.bnd",
-                    "begin": "(\\/\\*)",
-                    "end": "(\\*\\/)"
-                },
-                {
-                    "name": "comment.line.bnd",
-                    "begin": "\\-\\-",
-                    "end": "\n"
-                }
-            ]
-        },
-        "constants": {
-            "patterns": [
-                {
-                    "name": "constant.numeric.bnd",
-                    "match": "(\\b[0-9]+)|([0-9]*[.][0-9]*)"
-                },
-                {
-                    "name": "constant.language.bnd",
-                    "match": "[*][a-zA-Z][a-zA-Z0-9]*"
-                }
-            ]
-        },
-        "keywords": {
-            "patterns": [
-                {
-                    "name": "keyword.other.bnd",
-                    "match": "(?i)(STRPGMEXP|ENDPGMEXP|EXPORT)"
-                },
-                {
-                    "name": "keyword.other.bnd",
-                    "match": "<"
-                }
-            ]
-        },
-        "strings": {
-            "patterns": [
-				{
-					"name": "string.other.bnd.hex",
-                    "begin": "(?i)x'",
-                    "end": "'"
-				},
-                {
-                    "name": "string.quoted.single.bnd",
-                    "begin": "('|\")",
-                    "end": "'|\"",
-                    "patterns": [
-                        {
-                            "name": "constant.character.escape.bnd",
-                            "match": "\\\\."
-                        }
-                    ]
-                }
-            ]
-        },
-        "support": {
-            "patterns": [
-                {
-                    "name": "support.function.bnd",
-                    "match": "(?i)[A-Za-z]+(?=\\()"
-                }
-            ]
-        }
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "BND",
+  "patterns": [
+    {
+      "include": "#comments"
     },
-    "scopeName": "source.bnd"
+    {
+      "include": "#constants"
+    },
+    {
+      "include": "#keywords"
+    },
+    {
+      "include": "#strings"
+    },
+    {
+      "include": "#support"
+    }
+  ],
+  "repository": {
+    "comments": {
+      "patterns": [
+        {
+          "comment": "Block comment. The form documented in the ILE Concepts manual; may span lines. Scoped comment.line to match the CL grammar's convention.",
+          "name": "comment.line.bnd",
+          "begin": "(\\/\\*)",
+          "end": "(\\*\\/)"
+        },
+        {
+          "comment": "Double-dash line comment. Accepted by the binder but absent from the ILE Concepts manual. SEU flags both comment styles as errors even though the binder accepts them.",
+          "name": "comment.line.bnd",
+          "begin": "\\-\\-",
+          "end": "\n"
+        }
+      ]
+    },
+    "constants": {
+      "patterns": [
+        {
+          "comment": "Numeric literals, such as the version digits inside a signature string.",
+          "name": "constant.numeric.bnd",
+          "match": "(\\b[0-9]+)|([0-9]*[.][0-9]*)"
+        },
+        {
+          "comment": "Special values: *CURRENT and *PRV for PGMLVL, *YES and *NO for LVLCHK, *GEN for SIGNATURE.",
+          "name": "constant.language.bnd",
+          "match": "[*][a-zA-Z][a-zA-Z0-9]*"
+        }
+      ]
+    },
+    "keywords": {
+      "patterns": [
+        {
+          "comment": "The three binder language commands. A member may contain several STRPGMEXP/ENDPGMEXP blocks, one per signature level.",
+          "name": "keyword.other.bnd",
+          "match": "(?i)(STRPGMEXP|ENDPGMEXP|EXPORT)"
+        },
+        {
+          "comment": "Wildcard characters in EXPORT SYMBOL, e.g. SYMBOL(interest>>>)",
+          "name": "keyword.other.bnd",
+          "match": "(<<<|>>>)"
+        }
+      ]
+    },
+    "strings": {
+      "patterns": [
+        {
+          "comment": "Hexadecimal signature, e.g. SIGNATURE(X'0000...FFFF'). A signature is at most 16 bytes.",
+          "name": "string.other.bnd.hex",
+          "begin": "(?i)x'",
+          "end": "'"
+        },
+        {
+          "comment": "Quoted symbol name or character signature. Quoting preserves case; an unquoted symbol name is folded to uppercase by the binder.",
+          "name": "string.quoted.single.bnd",
+          "begin": "('|\")",
+          "end": "'|\"",
+          "patterns": [
+            {
+              "comment": "Backslash escapes are not part of binder language. This rule appears to be vestigial and is a candidate for removal.",
+              "name": "constant.character.escape.bnd",
+              "match": "\\\\."
+            }
+          ]
+        }
+      ]
+    },
+    "support": {
+      "patterns": [
+        {
+          "comment": "Parameter keywords. A space may precede the parenthesis, as in EXPORT SYMBOL (name)",
+          "name": "support.function.bnd",
+          "match": "(?i)[A-Za-z]+(?=[ \\t]*\\()"
+        }
+      ]
+    }
+  },
+  "scopeName": "source.bnd"
 }

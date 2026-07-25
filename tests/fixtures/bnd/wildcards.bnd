@@ -1,0 +1,34 @@
+/* Wildcard export specifications using <<< and >>>.                      */
+/* Member: BNDWILD                                                        */
+/* Compilable: only against a module exporting matching symbols; several  */
+/*   cases below deliberately illustrate multiple-match and no-match      */
+/*   errors, and SEU syntax check type BND rejects wildcarding outright.  */
+/* Source: IBM i 7.3 ILE Concepts - Wildcard Export Symbol Examples       */
+/*   https://www.ibm.com/docs/ssw_ibm_i_73/ilec/sc41560620.htm            */
+/* Retrieved: 2026-07-25                                                  */
+/*                                                                        */
+/* The examples assume a symbol list of:                                  */
+/*   interest_rate, international, prime_rate                             */
+
+STRPGMEXP PGMLVL(*CURRENT)
+
+/* Trailing wildcard. Exports interest_rate: the only symbol beginning    */
+/* with "interest".                                                       */
+  EXPORT SYMBOL (interest>>>)
+
+/* Two wildcards. Exports interest_rate: begins with "i" and subsequently */
+/* contains "rate".                                                       */
+  EXPORT SYMBOL (i>>>rate>>>)
+
+/* Leading wildcard. Multiple matches error: both prime_rate and          */
+/* interest_rate contain "i" and end in "rate".                           */
+  EXPORT SYMBOL (<<<i>>>rate)
+
+/* No matches error: nothing begins with "inter" and ends in "prime".     */
+  EXPORT SYMBOL (inter>>>prime)
+
+/* Bare wildcard. Multiple matches error: an export statement may resolve */
+/* to only one symbol.                                                    */
+  EXPORT SYMBOL (<<<)
+
+ENDPGMEXP

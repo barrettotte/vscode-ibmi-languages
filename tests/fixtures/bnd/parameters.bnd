@@ -1,0 +1,28 @@
+/* STRPGMEXP parameters: PGMLVL, SIGNATURE, LVLCHK.                       */
+/* Member: BNDPARM    Compilable: yes                                     */
+/* Source: IBM i 7.5 ILE Concepts - Start Program Export Command          */
+/*   https://www.ibm.com/docs/en/i/7.5?topic=language-binder-language     */
+/* Retrieved: 2026-07-25                                                  */
+
+/* SIGNATURE(*GEN) is the default: the binder derives the signature from  */
+/* the exported symbols and their order.                                  */
+STRPGMEXP PGMLVL(*CURRENT) SIGNATURE(*GEN) LVLCHK(*YES)
+  EXPORT SYMBOL('openAccount')
+ENDPGMEXP
+
+/* An explicit character-string signature, up to 16 bytes.                */
+STRPGMEXP PGMLVL(*PRV) SIGNATURE('PAYROLL 1.0') LVLCHK(*NO)
+  EXPORT SYMBOL('openAccount')
+ENDPGMEXP
+
+/* An explicit hexadecimal signature.                                     */
+STRPGMEXP PGMLVL(*PRV) SIGNATURE(X'0000000000000000000000000000FFFF')
+  EXPORT SYMBOL('openAccount')
+ENDPGMEXP
+
+/* Parameters may appear in any order and span continuation lines.        */
+STRPGMEXP LVLCHK(*YES) +
+          PGMLVL(*PRV) +
+          SIGNATURE('PAYROLL 0.9')
+  EXPORT SYMBOL('openAccount')
+ENDPGMEXP

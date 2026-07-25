@@ -9,7 +9,7 @@
   },
   "engines": {
     "vscode": "^1.75.0",
-    "node": ">=20"
+    "node": ">=22"
   },
   "categories": [
     "Programming Languages"
@@ -121,7 +121,7 @@
           "MI"
         ],
         "extensions": [
-          ".MI"
+          ".mi"
         ],
         "configuration": "./configurations/mi.language-configuration.json"
       },
@@ -231,10 +231,17 @@
   },
   "icon": "images/icon.png",
   "scripts": {
+    "test": "npm run test:snap",
+    "test:snap": "textmate-grammar-snap \"tests/fixtures/**/*.{bnd,cl,clle,clp,clp38,cmd,dds,dspf,dspf38,icff,lf,lf38,mi,pf,pf38,pnlgrp,prtf,prtf38,rpg,rpg38,rpgle,rpgleinc,sqlrpg,sqlrpgle}\"",
+    "test:snap:update": "npm run test:snap -- --updateSnapshot",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
     "package": "vsce package"
   },
   "devDependencies": {
-    "@vscode/vsce": "^3.2.0"
+    "@vscode/vsce": "^3.2.0",
+    "prettier": "^3.9.6",
+    "textmate-grammar-test": "^0.7.0"
   },
   "keywords": [
     "RPG",
