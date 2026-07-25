@@ -8,11 +8,16 @@
     "name": "Barrett Otte"
   },
   "engines": {
-    "vscode": "^1.38.0"
+    "vscode": "^1.75.0",
+    "node": ">=20"
   },
   "categories": [
     "Programming Languages"
   ],
+  "galleryBanner": {
+    "color": "#1F2328",
+    "theme": "dark"
+  },
   "contributes": {
     "languages": [
       {
@@ -225,9 +230,11 @@
     ]
   },
   "icon": "images/icon.png",
+  "scripts": {
+    "package": "vsce package"
+  },
   "devDependencies": {
-    "js-yaml": "^3.13.1",
-    "semver": "^7.3.5"
+    "@vscode/vsce": "^3.2.0"
   },
   "keywords": [
     "RPG",
@@ -248,6 +255,11 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/barrettotte/vscode-ibmi-languages"
-  }
+    "url": "git+https://github.com/barrettotte/vscode-ibmi-languages.git"
+  },
+  "bugs": {
+    "url": "https://github.com/barrettotte/vscode-ibmi-languages/issues"
+  },
+  "homepage": "https://github.com/barrettotte/vscode-ibmi-languages#readme",
+  "qna": "https://github.com/barrettotte/vscode-ibmi-languages/issues"
 }
