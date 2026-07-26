@@ -1,0 +1,74 @@
+     E*
+     E* RPG/400 extension and line counter specifications, and the
+     E* compile-time records that follow the last specification.
+     E*
+     E* Member: RPGEXT   Compilable: no (declarations only, no cycle)
+     E* Source: RPG/400 Reference SC09-1817, chapters 6, 7, 13 and 15
+     E*         (Tables 19 and 20).
+     E* Retrieved: 2026-07-26
+     E*
+     E* 11-18 from file  19-26 to file  27-32 array or table name
+     E* 33-35 entries per record  36-39 entries per array or table
+     E* 40-42 length of entry  43 format  44 decimals  45 sequence
+     E* 46-51 alternating name  52-54 length  55 format  56 decimals
+     E* 57 sequence  58-74 and 75-80 comments
+     E*  1         2         3         4         5         6         7         8
+     E*8901234567890123456789012345678901234567890123456789012345678901234567890
+     E*
+     E* Compile-time array: no from file, entries per record given.
+     E                    ARC    12  12  3               Part codes
+     E                    MTH     1  12 10               Month names
+     E*
+     E* Prerun-time array: the from file loads it before the first cycle.
+     E    TAXFILE         TAXRAT     50  5P4
+     E    RATEFILERATEOUT RATE      100  7 2
+     E*
+     E* Run-time array: neither file named, loaded by calculations.
+     E                    TOTALS     24  9 2
+     E                    FLAGS      99  1
+     E*
+     E* Binary, packed and signed entries, ascending and descending.
+     E                    BINARR     10  4B0A
+     E                    PCKARR     10  8P2D
+     E                    LFTARR     10  6L0A
+     E                    RGTARR     10  6R0D
+     E*
+     E* Alternating format: two tables share one set of records.
+     E                    TABPRT  1 250  5  ATABDSC 30  APart and description
+     E    CODEFILE        TABCDE    100  3  ATABAMT  9P2
+     E*
+     E* A page and line number in 1-5 does not disturb the columns,
+     E* including the comment area, which starts at 58 on an E spec.
+03010E                    SEQARR     10  3               numbered E spec
+     L*
+     L* Line counter: 15-17 lines per page, 18-19 FL,
+     L* 20-22 overflow line, 23-24 OL.
+     LQSYSPRT  66FL 60OL                                                  66/60
+     LRPTFILE 112FL106OL
+     LLABELS    6FL  5OL
+03020LSEQPRT   66FL 60OL                                                  seq
+      *
+      * Records after the last specification are loaded at compile
+      * time. Each group is introduced by ** in positions 1-3.
+      * File translation records come first, then the alternate
+      * collating sequence, then array and table data.
+**    File translation table
+*FILES  C1F1C2F2
+ORDHDR  4A5B4B5C
+**    Alternate collating sequence
+ALTSEQ  C1C2C2C3
+**    Compile-time array ARC, twelve entries per record
+48K16343J640 44H12648A47349K3465 0B125
+**    Compile-time array MTH, one entry per record
+JANUARY
+FEBRUARY
+MARCH
+APRIL
+MAY
+JUNE
+JULY
+AUGUST
+SEPTEMBER
+OCTOBER
+NOVEMBER
+DECEMBER

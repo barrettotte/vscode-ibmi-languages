@@ -1,0 +1,115 @@
+     C*
+     C* RPG/400 reserved words, figurative constants, indicators used
+     C* as data, and the literal forms.
+     C*
+     C* Member: RPGRSV   Compilable: no (calculations only, no files)
+     C* Source: RPG/400 Reference SC09-1817, chapter 12 (words with
+     C*         special functions) and chapter 1 (literals).
+     C* Retrieved: 2026-07-26
+     C*
+     C*
+     C* System date. UDATE and *DATE hold the whole date; the
+     C* others hold one part of it.
+     C                     Z-ADDUDATE     WRKDAT
+     C                     Z-ADDUMONTH    WRKMON
+     C                     Z-ADDUDAY      WRKDAY
+     C                     Z-ADDUYEAR     WRKYR
+     C           *DATE     MOVE           WRKDAT
+     C           *MONTH    MOVE           WRKMON
+     C           *DAY      MOVE           WRKDAY
+     C           *YEAR     MOVE           WRKYR
+     C*
+     C* Page numbering: PAGE and PAGE1 through PAGE7.
+     C                     Z-ADD*ZERO     PAGE
+     C                     Z-ADD*ZERO     PAGE1
+     C                     Z-ADD*ZERO     PAGE2
+     C                     Z-ADD*ZERO     PAGE3
+     C                     Z-ADD*ZERO     PAGE4
+     C                     Z-ADD*ZERO     PAGE5
+     C                     Z-ADD*ZERO     PAGE6
+     C                     Z-ADD*ZERO     PAGE7
+     C*
+     C* Figurative constants are implied literals: no length needed.
+     C           *BLANK    MOVE           CHRFLD
+     C           *BLANKS   MOVE           CHRFLD
+     C                     Z-ADD*ZERO     NUMFLD
+     C                     Z-ADD*ZEROS    NUMFLD
+     C           *HIVAL    MOVE           KEYFLD
+     C           *LOVAL    MOVE           KEYFLD
+     C           *ON       MOVE           SWITCH
+     C           *OFF      MOVE           SWITCH
+     C           *ALL'-'   MOVE           RULE
+     C           *ALL'ABC' MOVE           RULE
+     C           *ALLX'FF' MOVE           MASK
+     C*
+     C* Indicators referred to as data. *IN is the array, *IN,xx an
+     C* element, and *INxx the one-position field.
+     C           *IN       MOVEA          SAVIND
+     C           *IN,01    MOVE           SWITCH
+     C           *IN01     MOVE           SWITCH
+     C           *IN99     MOVE           SWITCH
+     C           *INLR     MOVE           SWITCH
+     C           *INL1     MOVE           SWITCH
+     C           *INH1     MOVE           SWITCH
+     C           *INMR     MOVE           SWITCH
+     C           *INRT     MOVE           SWITCH
+     C           *INU1     MOVE           SWITCH
+     C           *INOA     MOVE           SWITCH
+     C           *INOV     MOVE           SWITCH
+     C           *INKA     MOVE           SWITCH
+     C           *IN1P     MOVE           SWITCH
+     C*
+     C* Symbolic locations in the file information and program
+     C* status data structures.
+     C           *FILE     MOVE           WRKFIL
+     C           *OPCODE   MOVE           WRKOPC
+     C                     Z-ADD*PARMS    WRKCNT
+     C           *PROGRAM  MOVE           WRKPGM
+     C           *RECORD   MOVE           WRKREC
+     C           *ROUTINE  MOVE           WRKRTN
+     C                     Z-ADD*STATUS   WRKSTS
+     C*
+     C* Symbolic return points for ENDSR.
+     CSR         *PSSR     BEGSR
+     C           *CANCL    MOVE           RETPT
+     C           *DETC     MOVE           RETPT
+     C           *DETL     MOVE           RETPT
+     C           *GETIN    MOVE           RETPT
+     C           *INIT     MOVE           RETPT
+     C           *OFL      MOVE           RETPT
+     C           *TERM     MOVE           RETPT
+     C           *TOTC     MOVE           RETPT
+     C           *TOTL     MOVE           RETPT
+     CSR         RETPT     ENDSR
+     C*
+     C* Special words used with operation codes.
+     C           *LIKE     DEFN ORDAMT    WRKAMT
+     C           *NAMVAR   DEFN *LDA      LDADS
+     C           *NAMVAR   DEFN *PDA      PDADS
+     C           *LOCK     IN   LDADS
+     C           *ENTRY    PLIST
+     CSR         *INZSR    BEGSR
+     CSR                   ENDSR
+     C           *NOKEY    CLEARCUSTFMT
+     C           'GO?'     DSPLY*EXT      ANSWER
+     C*
+     C* Character, numeric and hexadecimal literals.
+     C           'A'       MOVE           CHRFLD
+     C           'HELLO'   MOVE           CHRFLD
+     C           'IT''S'   MOVE           CHRFLD           Doubled quote
+     C           ' '       MOVEL          CHRFLD
+     C                     Z-ADD0         NUMFLD
+     C                     Z-ADD1234567890NUMFLD
+     C                     Z-ADD-42       NUMFLD
+     C                     Z-ADD+42       NUMFLD
+     C           -99       COMP NUMFLD               30
+     C                     Z-ADD3.14159   NUMFLD
+     C                     Z-ADD-0.5      NUMFLD
+     C           X'FF'     MOVE           MASK
+     C           X'0D25'   MOVE           CRLF
+     C           x'40'     MOVE           MASK             Lowercase x
+     C*
+     C* Reserved words are not recognised inside a literal or a
+     C* comment: *BLANKS and UDATE below are plain text.
+     C           '*BLANKS' MOVE           CHRFLD
+     C           'UDATE'   MOVE           CHRFLD           UDATE in a note

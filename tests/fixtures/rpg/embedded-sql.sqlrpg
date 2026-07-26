@@ -1,0 +1,131 @@
+     C*
+     C* Embedded SQL in RPG/400. EXEC SQL occupies positions 8-16 with
+     C* a slash in 7; the statement runs from 17 to 74. Continuation
+     C* lines carry + in position 7 and text from position 9.
+     C*
+     C* Member: RPGSQL   Compilable: no (calculations only, no files)
+     C* Source: IBM i 7.5 Embedded SQL programming, coding SQL
+     C*         statements in RPG/400 applications.
+     C* Retrieved: 2026-07-26
+     C*
+     C*
+     C* The precompiler inserts the SQLCA into the input
+     C* specifications itself, so INCLUDE SQLCA is accepted but
+     C* redundant. Its fields, SQLCOD and the rest, are ordinary
+     C* program fields rather than reserved words.
+     C/EXEC SQL INCLUDE SQLCA
+     C/END-EXEC
+     C*
+     C* Host variables carry a leading colon.
+     C/EXEC SQL SELECT CUSNAM, CUSBAL
+     C+ INTO :CUSTNM, :CUSTBL
+     C+ FROM CUSTMAST
+     C+ WHERE CUSNBR = :CUSNBR
+     C/END-EXEC
+     C*
+     C* Update, insert and delete.
+     C/EXEC SQL UPDATE CUSTMAST
+     C+ SET CUSBAL = CUSBAL + :ORDAMT
+     C+ WHERE CUSNBR = :CUSNBR
+     C/END-EXEC
+     C/EXEC SQL INSERT INTO ORDHDR
+     C+ (ORDNBR, CUSNBR, ORDAMT)
+     C+ VALUES (:ORDNBR, :CUSNBR, :ORDAMT)
+     C/END-EXEC
+     C/EXEC SQL DELETE FROM ORDDTL
+     C+ WHERE ORDNBR = :ORDNBR
+     C/END-EXEC
+     C*
+     C* A cursor, with SQL comments inside the statement.
+     C/EXEC SQL DECLARE ORDCSR CURSOR FOR
+     C+ SELECT ORDNBR, ORDAMT      -- header only
+     C+ FROM ORDHDR
+     C+ WHERE ORDDAT >= :FROMDT
+     C+ ORDER BY ORDNBR
+     C/END-EXEC
+     C/EXEC SQL OPEN ORDCSR
+     C/END-EXEC
+     C           FETCHL    TAG
+     C/EXEC SQL FETCH ORDCSR INTO :ORDNBR, :ORDAMT
+     C/END-EXEC
+     C           SQLCOD    COMP 100                      90
+     C                     Z-ADDSQLCOD    WRKCOD  50
+     C           SQLSTT    MOVE           WRKSTT
+     C*
+     C* The SQLCA fields in every position they can occupy. A six
+     C* character name fills factor 1, factor 2 or the result field
+     C* exactly, so it butts against whatever follows.
+     C                     Z-ADD*ZERO     SQLCOD           result field
+     C           *BLANKS   MOVE           SQLSTT
+     C           SQLERR,3  COMP *ZERO                    91
+     C           SQLWN0    MOVE           WRKWRN
+     C           SQLERM    MOVEL          WRKMSG
+     C                     Z-ADDSQLERL    WRKLEN
+     C           SQLWNA    MOVE           WRKFLG
+     C*
+     C* The line below cannot compile: SQLCOD is already defined by
+     C* the SQLCA, so giving it a length is a duplicate definition.
+     C* It is here because a three digit length fills positions
+     C* 49-51 and leaves no separator after the name, which is the
+     C* case that a trailing word boundary used to miss.
+     C                     Z-ADD*ZERO     SQLCOD256
+     C           SQLCOD    CABEQ100       FETCHE
+     C                     GOTO FETCHL
+     C           FETCHE    TAG
+     C/EXEC SQL CLOSE ORDCSR
+     C/END-EXEC
+     C*
+     C* WHENEVER branches to an RPG TAG label.
+     C/EXEC SQL WHENEVER SQLERROR GOTO ERRTAG
+     C/END-EXEC
+     C/EXEC SQL WHENEVER NOT FOUND CONTINUE
+     C/END-EXEC
+     C*
+     C* Operators. The -- that opens a comment must not read as two
+     C* minus signs, and the slash of a qualified name is not
+     C* division.
+     C/EXEC SQL SELECT * FROM PAYLIB/CUSTMAST
+     C+ WHERE CUSBAL >= :LOWBAL
+     C+ AND CUSBAL <= :HIGHBAL
+     C+ AND CUSTYP <> 'X'
+     C+ AND CUSNBR = :CUSNBR
+     C+ AND CUSDUE > CUSPAY
+     C+ AND CUSAGE < 90
+     C+ AND CUSBAL * 2 + CUSFEE - CUSCR > 0
+     C+ AND CUSRTE / 12 <= 100
+     C+ AND FIRSTN || LASTN <> ''      -- concatenation
+     C+ AND CUSNAM <> 'O''BRIEN'       -- doubled quote
+     C+ AND CUSFLG = X'F1'
+     C+ AND CUSNOT <> 'a -- b is not a comment'
+     C+ AND CUSRTE = 12.75
+     C+ AND CUSADJ = -3.5
+     C+ AND CUST1 > 0             -- digits in a name
+     C+ FETCH FIRST 10 ROWS ONLY
+     C/END-EXEC
+     C*
+     C* A function call, and one of the SQL global variables.
+     C/EXEC SQL SELECT SUM(CUSBAL), MAX(CUSDUE)
+     C+ INTO :TOTBAL, :MAXDUE
+     C+ FROM CUSTMAST
+     C+ WHERE UPPER(CUSNAM) = :CUSNAM
+     C/END-EXEC
+     C/EXEC SQL SET :JOBNAM = JOB_NAME
+     C/END-EXEC
+     C/EXEC SQL VALUES CLIENT_IPADDR INTO :CLIENT
+     C/END-EXEC
+     C/EXEC SQL COMMIT
+     C/END-EXEC
+     C/EXEC SQL ROLLBACK
+     C/END-EXEC
+     C           ERRTAG    TAG
+     C           'SQL BAD' DSPLY*EXT
+     C                     SETON                         LR
+     C*
+     C* A page and line number in 1-5 does not disturb an embedded
+     C* SQL statement, its continuation lines, or its terminator.
+08010C/EXEC SQL SELECT CUSNAM
+08020C+ INTO :CUSTNM
+08030C+ FROM CUSTMAST
+08040C+ WHERE CUSNBR = :CUSNBR AND CUSBAL > 0
+08050C/END-EXEC
+08060C           SQLCOD    COMP 0                        92

@@ -12,13 +12,16 @@
       "include": "#sql"
     },
     {
+      "include": "#gutter"
+    },
+    {
+      "include": "#sqlvariables"
+    },
+    {
       "include": "#constants"
     },
     {
       "include": "#keywords"
-    },
-    {
-      "include": "#gutter"
     },
     {
       "include": "#strings"
@@ -28,11 +31,13 @@
     "ctarrays": {
       "patterns": [
         {
+          "comment": "Compile-time data. A record with ** in positions 1-3 introduces the file translation table, the alternate collating sequence, or an array or table loaded at compile time. Everything after it is data, so the end pattern is a sentinel that never matches and the block runs to the end of the source. The (?!free) guard keeps the RPG IV **FREE line out of this rule.",
           "name": "variable.other.rpg.ctarrays",
           "begin": "(?=^(\\*{2})(?!free))",
-          "end": "(E-\\*-O-\\*-F)",
+          "end": "(?!x)x",
           "patterns": [
             {
+              "comment": "The ** marker itself, so the introducer reads differently from the data that follows it.",
               "name": "string.other.rpg.ctarray",
               "begin": "(\\*{2})",
               "end": ""
@@ -44,18 +49,15 @@
     "comments": {
       "patterns": [
         {
+          "comment": "Trailing comment area. F, L, I and O specifications reserve positions 75-80, E reserves 58-80, and C reserves 60-80. Positions 1-5 are matched with . rather than \\s so that a line carrying a page and line number keeps its comment.",
           "name": "comment.line.rpg",
-          "begin": "(?i)((?<=((?<=^\\s{5}(F|L|I|O)).{68})))|(?<=((?<=^\\s{5}E).{51}))|(?<=((?<=^\\s{5}C).{53}))",
+          "begin": "(?i)(?<=(?<=^.{5}(F|L|I|O)).{68})|(?<=(?<=^.{5}E).{51})|(?<=(?<=^.{5}C).{53})",
           "end": "\n"
         },
         {
+          "comment": "Comment statement: an asterisk in position 7. Position 6 may hold the specification letter, so I* and C* are comments too.",
           "name": "comment.line.rpg",
           "begin": "(?i)^.{5}.\\*",
-          "end": "\n"
-        },
-        {
-          "name": "comment.line.rpg",
-          "begin": "[*]{2}.",
           "end": "\n"
         }
       ]
@@ -63,6 +65,7 @@
     "gutter": {
       "patterns": [
         {
+          "comment": "Positions 1-2 page number and 3-5 line number. The compiler ignores both, so they are dimmed rather than highlighted. This runs before the constant and keyword rules so that a numeric sequence number is claimed here rather than being scoped as a numeric literal, and after the comment and compile-time data rules, which own the whole line including these positions.",
           "name": "comment.gutter",
           "match": "^.{5}"
         }
@@ -71,442 +74,651 @@
     "constants": {
       "patterns": [
         {
+          "comment": "Control specification position 19, date format: M month/day/year, D day/month/year, Y year/month/day.",
           "name": "constant.language.rpg.h.datefmt",
-          "match": "(?i)(?<=((?<=^.{5}H).{12}))(M|D|Y)"
+          "match": "(?i)(?<=(?<=^.{5}H).{12})(M|D|Y)"
         },
         {
+          "comment": "Control specification position 20, date edit. Any character may be the date separator, and & means a blank separator.",
           "name": "constant.language.rpg.h.datedit",
-          "match": "(?i)(?<=((?<=^.{5}H).{13}))(&)"
+          "match": "(?i)(?<=(?<=^.{5}H).{13})[^ ]"
         },
         {
+          "comment": "Control specification position 18, currency symbol. Any character except 0 * , . & - C or R.",
+          "name": "constant.language.rpg.h.currency",
+          "match": "(?i)(?<=(?<=^.{5}H).{11})[^ 0*,.&\\-CR]"
+        },
+        {
+          "comment": "Control specification position 21, decimal notation: I or J for comma notation, D for period notation. RPG II called this entry inverted print, which is where the scope name comes from.",
           "name": "constant.language.rpg.h.invprint",
-          "match": "(?i)(?<=((?<=^.{5}H).{14}))(I|J|D)"
+          "match": "(?i)(?<=(?<=^.{5}H).{14})(I|J|D)"
         },
         {
+          "comment": "Control specification position 26, alternate collating sequence. S is the only entry; blank means the normal sequence.",
           "name": "constant.language.rpg.h.altseq",
-          "match": "(?i)(?<=((?<=^.{5}H).{19}))(S|D)"
+          "match": "(?i)(?<=(?<=^.{5}H).{19})S"
         },
         {
+          "comment": "Control specification position 43, file translation. F means a file translation table follows the source.",
           "name": "constant.language.rpg.h.filetrans",
-          "match": "(?i)(?<=((?<=^.{5}H).{36}))(F)"
+          "match": "(?i)(?<=(?<=^.{5}H).{36})F"
         },
         {
+          "comment": "File description position 15, file type: I input, O output, U update, C combined.",
           "name": "constant.language.rpg.f.type",
-          "match": "(?i)(?=(?<=((?<=^.{5}F).{8})))(I|O|U|C)"
+          "match": "(?i)(?=(?<=(?<=^.{5}F).{8}))(I|O|U|C)"
         },
         {
+          "comment": "File description position 16, file designation: P primary, S secondary, R record address, T array or table, F full procedural.",
           "name": "constant.language.rpg.f.designation",
-          "match": "(?i)(?=(?<=((?<=^.{5}F).{9})).{3})(P|S|R|T|F)"
+          "match": "(?i)(?=(?<=(?<=^.{5}F).{9}).{3})(P|S|R|T|F)"
         },
         {
+          "comment": "File description position 17, end of file. E means all records must be processed before the program ends.",
           "name": "constant.language.rpg.f.eof",
-          "match": "(?i)(?=(?<=((?<=^.{5}F).{10})).{2})(E)"
+          "match": "(?i)(?=(?<=(?<=^.{5}F).{10}).{2})E"
         },
         {
+          "comment": "File description position 18, sequence of match fields: A ascending, D descending.",
           "name": "constant.language.rpg.f.sequence",
-          "match": "(?i)(?=(?<=((?<=^.{5}F).{11})).{1})(A|D)"
+          "match": "(?i)(?=(?<=(?<=^.{5}F).{11}).{1})(A|D)"
         },
         {
+          "comment": "File description position 19, file format: F program described, E externally described. The rules below key off this position to tell the two layouts apart.",
           "name": "constant.language.rpg.f.format",
-          "match": "(?i)(?=(?<=((?<=^.{5}F).{12})))(F|E)"
+          "match": "(?i)(?=(?<=(?<=^.{5}F).{12}))(F|E)"
         },
         {
+          "comment": "File description positions 24-27, record length of a program described file, right adjusted. The lookahead keeps the rule off an entry that is entirely blank.",
           "name": "constant.language.rpg.f.recordlen",
-          "match": "(?i)(?<=(?<=(?<=^.{5}F).{8}).{4}(F|f|E|e).{9})([0-9]|\\s){4}"
+          "match": "(?i)(?<=(?<=(?<=^.{5}F).{8}).{4}(F|f|E|e).{4})(?=[0-9 ]{0,3}[0-9])[0-9 ]{4}"
         },
         {
+          "comment": "File description position 28, limits processing. L means sequential within limits by a record address file.",
           "name": "constant.language.rpg.f.mode",
-          "match": "(?i)(?<=(?<=(?<=^.{5}F).{8}).{4}(F|f|E|e).{8})(L)"
+          "match": "(?i)(?<=(?<=(?<=^.{5}F).{8}).{4}(F|f|E|e).{8})L"
         },
         {
+          "comment": "File description positions 29-30, length of the key field or record address, right adjusted.",
           "name": "constant.language.rpg.f.keyfieldlen",
-          "match": "(?i)(?<=(?<=(?<=^.{5}F).{8}).{4}(F|f|E|e).{9})([0-9]|\\s){2}"
+          "match": "(?i)(?<=(?<=(?<=^.{5}F).{8}).{4}(F|f|E|e).{9})(?=[0-9 ]{0,1}[0-9])[0-9 ]{2}"
         },
         {
+          "comment": "File description position 31, record address type of a program described file: A character keys, P packed keys.",
           "name": "constant.language.rpg.f.addrtype",
           "match": "(?i)(?<=(?<=(?<=^.{5}F).{8}).{4}(F|f).{11})(A|P)"
         },
         {
+          "comment": "File description position 32, file organization: I indexed, T record address file holding record numbers.",
           "name": "constant.language.rpg.f.organization",
           "match": "(?i)(?<=(?<=(?<=^.{5}F).{8}).{4}(F|f).{12})(I|T)"
         },
         {
+          "comment": "File description positions 33-34, overflow indicator. OA through OG and OV.",
           "name": "constant.language.rpg.f.ovind",
           "match": "(?i)(?<=(?<=(?<=^.{5}F).{8}).{4}(F|f).{13})(O([A-G]|V))"
         },
         {
+          "comment": "File description position 39, extension code: E an extension specification follows, L a line counter specification follows.",
           "name": "constant.language.rpg.f.extncode",
           "match": "(?i)(?<=(?<=(?<=^.{5}F).{8}).{4}(F|f).{19})(E|L)"
         },
         {
+          "comment": "File description positions 40-46, device name.",
           "name": "constant.language.rpg.f.device",
-          "match": "(?i)(?<=(?<=(?<=^.{5}F).{8}).{4}(F|E).{20})(WORKSTN|DISK|PRINTER|SPECIAL|SEQ)"
+          "match": "(?i)(?<=(?<=(?<=^.{5}F).{8}).{4}(F|E).{20})(WORKSTN|PRINTER|SPECIAL|DISK|SEQ)"
         },
         {
+          "comment": "File description position 53, continuation line. K means positions 54-67 carry a continuation option. Unlike the entries above, this is not anchored to the file format letter in position 19, because a separate continuation line leaves positions 7-18 blank and may carry an external record format name in 19-28. A K here marks a continuation line whether it sits on the main line or on one of its own.",
           "name": "constant.language.rpg.f.continuation",
-          "match": "(?i)(?<=(?<=(?<=^.{5}F).{8}).{4}(F|E).{33})(K)"
+          "match": "(?i)(?<=^.{5}F.{46})K"
         },
         {
+          "comment": "File description position 66, file addition. A allows records to be added to the file.",
           "name": "constant.language.rpg.f.addition",
-          "match": "(?i)(?<=(?<=(?<=^.{5}F).{8}).{4}(F|E).{46})(A)"
+          "match": "(?i)(?<=(?<=(?<=^.{5}F).{8}).{4}(F|E).{46})A"
         },
         {
+          "comment": "File description positions 71-72, file condition. U1 through U8 name an external indicator, UC conditions the file on any of them.",
           "name": "constant.language.rpg.f.condition",
-          "match": "(?i)(?<=(?<=(?<=^.{5}F).{8}).{4}(F|E).{51})([U]([1-8]|C))"
+          "match": "(?i)(?<=(?<=(?<=^.{5}F).{8}).{4}(F|E).{51})(U([1-8]|C))"
         },
         {
+          "comment": "File description position 31 of an externally described file, record address type. K means the file is processed by key.",
           "name": "constant.language.rpg.fx.addrtype",
-          "match": "(?i)(?<=(?<=(?<=^.{5}F).{8}).{4}(E|e).{11})(K)"
+          "match": "(?i)(?<=(?<=(?<=^.{5}F).{8}).{4}(E|e).{11})K"
         },
         {
+          "comment": "File description positions 54-59 of a continuation line, the option name, anchored to the K in position 53. There is no word boundary after the name: the field is six wide, so RENAME and PRTCTL fill it exactly and the argument in position 60 begins immediately. Shorter names are padded with blanks, so no boundary is needed. IND is listed before ID so the longer name is tried first.",
+          "name": "support.function.rpg.f.option",
+          "match": "(?i)(?<=(?<=^.{5}F).{46}K)(COMIT|IGNORE|INFDS|INFSR|PRTCTL|RENAME|RECNO|SAVDS|SFILE|PLIST|PASS|NUM|IND|ID|SLN)"
+        },
+        {
+          "comment": "Extension positions 33-35, entries per record of a compile-time or prerun-time array, right adjusted.",
           "name": "constant.language.rpg.e.entriesrecord",
-          "match": "(?i)(?<=((?<=^.{5}E).{26}))[\\s|0-9]{3}"
+          "match": "(?i)(?<=(?<=^.{5}E).{26})(?=[0-9 ]{0,2}[0-9])[0-9 ]{3}"
         },
         {
+          "comment": "Extension positions 36-39, number of entries in the array or table, right adjusted.",
           "name": "constant.language.rpg.e.entriestable",
-          "match": "(?i)(?<=((?<=^.{5}E).{29}))[\\s|0-9]{4}"
+          "match": "(?i)(?<=(?<=^.{5}E).{29})(?=[0-9 ]{0,3}[0-9])[0-9 ]{4}"
         },
         {
+          "comment": "Extension positions 40-42, length of each entry, right adjusted.",
           "name": "constant.language.rpg.e.entrylen",
-          "match": "(?i)(?<=((?<=^.{5}E).{33}))[\\s|0-9]{3}"
+          "match": "(?i)(?<=(?<=^.{5}E).{33})(?=[0-9 ]{0,2}[0-9])[0-9 ]{3}"
         },
         {
+          "comment": "Extension position 43, data format of the array or table: P packed, B binary, L or R signed.",
           "name": "constant.language.rpg.e.pblr",
-          "match": "(?i)(?<=((?<=^.{5}E).{36}))(P|B|L|R)"
+          "match": "(?i)(?<=(?<=^.{5}E).{36})(P|B|L|R)"
         },
         {
+          "comment": "Extension position 44, decimal positions.",
           "name": "constant.language.rpg.e.dec",
-          "match": "(?i)(?<=((?<=^.{5}E).{37}))[0-9]"
+          "match": "(?i)(?<=(?<=^.{5}E).{37})[0-9]"
         },
         {
+          "comment": "Extension position 45, sequence: A ascending, D descending.",
           "name": "constant.language.rpg.e.seq",
-          "match": "(?i)(?<=((?<=^.{5}E).{38}))(A|D)"
+          "match": "(?i)(?<=(?<=^.{5}E).{38})(A|D)"
         },
         {
+          "comment": "Extension positions 52-54, entry length of the alternating array or table, right adjusted.",
           "name": "constant.language.rpg.e.len",
-          "match": "(?i)(?<=((?<=^.{5}E).{45}))[\\s|0-9]{3}"
+          "match": "(?i)(?<=(?<=^.{5}E).{45})(?=[0-9 ]{0,2}[0-9])[0-9 ]{3}"
         },
         {
-          "name": "constant.language.rpg.e.pblr",
-          "match": "(?i)(?<=((?<=^.{5}E).{48}))(P|B|L|R)"
+          "comment": "Extension position 55, data format of the alternating array or table.",
+          "name": "constant.language.rpg.e.altpblr",
+          "match": "(?i)(?<=(?<=^.{5}E).{48})(P|B|L|R)"
         },
         {
-          "name": "constant.language.rpg.e.dec",
-          "match": "(?i)(?<=((?<=^.{5}E).{49}))[0-9]"
+          "comment": "Extension position 56, decimal positions of the alternating array or table.",
+          "name": "constant.language.rpg.e.altdec",
+          "match": "(?i)(?<=(?<=^.{5}E).{49})[0-9]"
         },
         {
-          "name": "constant.language.rpg.e.seq",
-          "match": "(?i)(?<=((?<=^.{5}E).{50}))(A|D)"
+          "comment": "Extension position 57, sequence of the alternating array or table.",
+          "name": "constant.language.rpg.e.altseq",
+          "match": "(?i)(?<=(?<=^.{5}E).{50})(A|D)"
         },
         {
+          "comment": "Line counter positions 15-17, lines per page, 2 through 112. The entry ends in position 17 and leading zeros may be omitted, so a two digit value is right adjusted.",
           "name": "constant.language.rpg.l.lineno",
-          "match": "(?i)(?<=((?<=^.{5}L).{8}))[0-9]{3}"
+          "match": "(?i)(?<=(?<=^.{5}L).{8})(?=[0-9 ]{0,2}[0-9])[0-9 ]{3}"
         },
         {
+          "comment": "Line counter positions 18-19, FL, marking the preceding entry as the form length.",
           "name": "constant.language.rpg.l.formlen",
-          "match": "(?i)(?<=((?<=^.{5}L).{11}))(FL)"
+          "match": "(?i)(?<=(?<=^.{5}L).{11})FL"
         },
         {
+          "comment": "Line counter positions 20-22, overflow line number, right adjusted.",
           "name": "constant.language.rpg.l.ovlineno",
-          "match": "(?i)(?<=((?<=^.{5}L).{13}))[0-9]{3}"
+          "match": "(?i)(?<=(?<=^.{5}L).{13})(?=[0-9 ]{0,2}[0-9])[0-9 ]{3}"
         },
         {
+          "comment": "Line counter positions 23-24, OL, marking the preceding entry as the overflow line.",
           "name": "constant.language.rpg.l.ovline",
-          "match": "(?i)(?<=((?<=^.{5}L).{16}))(OL)"
+          "match": "(?i)(?<=(?<=^.{5}L).{16})OL"
         },
         {
+          "comment": "Input positions 19-20 of a data structure statement, DS.",
           "name": "constant.language.rpg.i.ds",
-          "match": "(?i)(?=(?<=((?<=^.{5}I).{12}))(DS))(DS)"
+          "match": "(?i)(?=(?<=(?<=^.{5}I).{12})(DS))(DS)"
         },
         {
+          "comment": "Input position 17 of a data structure statement. E means the subfields are described externally.",
           "name": "constant.language.rpg.i.ds.number",
-          "match": "(?i)(?=(?<=((?<=^.{5}I).{9})).{3}(DS)).{1}(E)"
+          "match": "(?i)(?=(?<=(?<=^.{5}I).{9}).{3}(DS)).{1}E"
         },
         {
+          "comment": "Input position 18 of a data structure statement: I initialize the whole structure, S program status data structure, U data area data structure.",
           "name": "constant.language.rpg.i.ds.option",
-          "match": "(?i)(?=(?<=((?<=^.{5}I).{11})).{1}(DS))(S|U|I)"
+          "match": "(?i)(?=(?<=(?<=^.{5}I).{11}).{1}(DS))(S|U|I)"
         },
         {
+          "comment": "Input position 43 of a named constant statement, C, marking positions 21-42 as the constant and 53-58 as its name.",
           "name": "constant.language.rpg.i.constant",
-          "match": "(?i)(?<=((?<=^.{5}I).{36}))C"
+          "match": "(?i)(?<=(?<=^.{5}I).{36})C"
         },
         {
+          "comment": "Input position 8 of a data structure subfield. I initializes the subfield to the value in positions 21-42.",
           "name": "constant.language.rpg.i.subfinit",
-          "match": "(?i)(?<=((?<=^.{5}I).{0}))\\sI"
+          "match": "(?i)(?<=^.{5}I)\\sI"
         },
         {
+          "comment": "Input positions 14-16, logical relationship. AND continues the record identification codes of the line above, OR starts an alternative record type. Positions 7-13 must be blank on such a line, which is what this anchors to. Listed before the sequence entry because AND occupies positions 15 and 16 as well, and those would otherwise be read as a sequence.",
+          "name": "constant.language.rpg.i.logical",
+          "match": "(?i)(?<=^.{5}I\\s{7})(AND|OR)"
+        },
+        {
+          "comment": "Input positions 15-16, sequence. Two alphabetic characters mean no sequence checking; two digits request it.",
           "name": "constant.language.rpg.i.seq",
-          "match": "(?i)(?<=((?<=^.{5}I).{8}))[A-Za-z0-9]{2}"
+          "match": "(?i)(?<=(?<=^.{5}I).{8})[A-Za-z0-9]{2}"
         },
         {
+          "comment": "Input position 17, number: 1 if only one record of this type may appear, N if more than one may.",
           "name": "constant.language.rpg.i.num",
-          "match": "(?i)(?<=((?<=^.{5}I).{10}))(1|N)"
+          "match": "(?i)(?<=(?<=^.{5}I).{10})(1|N)"
         },
         {
+          "comment": "Input position 18, option. O means the record type is optional.",
           "name": "constant.language.rpg.i.option",
-          "match": "(?i)(?<=((?<=^.{5}I).{11}))O"
+          "match": "(?i)(?<=(?<=^.{5}I).{11})O"
         },
         {
+          "comment": "Input positions 19-20, record identifying indicator: 01-99, H1-H9, L1-L9, LR, U1-U8 or RT. ** marks a look-ahead record.",
           "name": "constant.language.rpg.i.recordid",
-          "match": "(?i)(?<=((?<=^.{5}I).{12}))(([0-9]{2})|((L|H)[1-9])|(RT|\\*\\*)|(U[1-8]))"
+          "match": "(?i)(?<=(?<=^.{5}I).{12})(([0-9]{2})|((L|H)[1-9])|LR|(U[1-8])|RT|(\\*\\*))"
         },
         {
+          "comment": "Input positions 21-27, first record identification code: position, optional N, C character or Z zone or D digit, and the character to compare. The identifying character may itself be a blank, which is stripped when source is stored as a text file, so the last position matches either a character or the end of the line.",
           "name": "constant.language.rpg.i.id1",
-          "match": "(?i)(?<=((?<=^.{5}I).{14}))([\\s|0-9]{4})(\\s|1|N)(C|Z|D)(.)"
+          "match": "(?i)(?<=(?<=^.{5}I).{14})([0-9 ]{4})(\\s|1|N)(C|Z|D)(.|$)"
         },
         {
+          "comment": "Input positions 28-34, second record identification code. The identifying character may itself be a blank, which is stripped when source is stored as a text file, so the last position matches either a character or the end of the line.",
           "name": "constant.language.rpg.i.id2",
-          "match": "(?i)(?<=((?<=^.{5}I).{21}))([\\s|0-9]{4})(\\s|1|N)(C|Z|D)(.)"
+          "match": "(?i)(?<=(?<=^.{5}I).{21})([0-9 ]{4})(\\s|1|N)(C|Z|D)(.|$)"
         },
         {
+          "comment": "Input positions 35-41, third record identification code. The identifying character may itself be a blank, which is stripped when source is stored as a text file, so the last position matches either a character or the end of the line.",
           "name": "constant.language.rpg.i.id3",
-          "match": "(?i)(?<=((?<=^.{5}I).{28}))([\\s|0-9]{4})(\\s|1|N)(C|Z|D)(.)"
+          "match": "(?i)(?<=(?<=^.{5}I).{28})([0-9 ]{4})(\\s|1|N)(C|Z|D)(.|$)"
         },
         {
+          "comment": "Input position 43, internal data format of the field: P packed, B binary, L or R signed.",
           "name": "constant.language.rpg.i.pblr",
-          "match": "(?i)(?<=((?<=^.{5}I).{36}))(P|B|L|R)"
+          "match": "(?i)(?<=(?<=^.{5}I).{36})(P|B|L|R)"
         },
         {
+          "comment": "Input positions 44-47, starting position of the field in the record, right adjusted.",
           "name": "constant.language.rpg.i.from",
-          "match": "(?i)(?<=((?<=^.{5}I).{37}))(([0-9]|\\s){4})"
+          "match": "(?i)(?<=(?<=^.{5}I).{37})(?=[0-9 ]{0,3}[0-9])[0-9 ]{4}"
         },
         {
+          "comment": "Input positions 48-51, end position of the field in the record, right adjusted.",
           "name": "constant.language.rpg.i.to",
-          "match": "(?i)(?<=((?<=^.{5}I).{41}))(([0-9]|\\s){4})"
+          "match": "(?i)(?<=(?<=^.{5}I).{41})(?=[0-9 ]{0,3}[0-9])[0-9 ]{4}"
         },
         {
+          "comment": "Input position 52, decimal positions of a numeric field.",
           "name": "constant.language.rpg.i.decpos",
-          "match": "(?i)(?<=((?<=^.{5}I).{45}))([0-9])"
+          "match": "(?i)(?<=(?<=^.{5}I).{45})[0-9]"
         },
         {
+          "comment": "Input positions 59-60, control level: L1 through L9.",
           "name": "constant.language.rpg.i.ctrl",
-          "match": "(?i)(?<=((?<=^.{5}I).{52}))(L[1-9]|\\s)"
+          "match": "(?i)(?<=(?<=^.{5}I).{52})L[1-9]"
         },
         {
+          "comment": "Input positions 61-62, matching fields: M1 through M9.",
           "name": "constant.language.rpg.i.matching",
-          "match": "(?i)(?<=((?<=^.{5}I).{54}))(M[1-9]|\\s)"
+          "match": "(?i)(?<=(?<=^.{5}I).{54})M[1-9]"
         },
         {
+          "comment": "Input positions 63-64, field record relation: 01-99, H1-H9, L1-L9, MR, RT or U1-U8.",
           "name": "constant.language.rpg.i.fldrcdrel",
-          "match": "(?i)(?<=((?<=^.{5}I).{56}))((([0-9]|\\s){2})|((L|H)[1-9])|(MR|RT)|(U[1-8]))"
+          "match": "(?i)(?<=(?<=^.{5}I).{56})(([0-9]{2})|((L|H)[1-9])|MR|RT|(U[1-8]))"
         },
         {
+          "comment": "Input positions 65-66, field indicator set on when the numeric field is greater than zero: 01-99, H1-H9, U1-U8 or RT.",
           "name": "constant.language.rpg.i.posfld",
-          "match": "(?i)(?<=((?<=^.{5}I).{58}))((([0-9]|\\s){2})|(H[1-9])|(RT)|(U[1-8]))"
+          "match": "(?i)(?<=(?<=^.{5}I).{58})(([0-9]{2})|(H[1-9])|(U[1-8])|RT)"
         },
         {
+          "comment": "Input positions 67-68, field indicator set on when the numeric field is less than zero.",
           "name": "constant.language.rpg.i.negfield",
-          "match": "(?i)(?<=((?<=^.{5}I).{60}))((([0-9]|\\s){2})|(H[1-9])|(RT)|(U[1-8]))"
+          "match": "(?i)(?<=(?<=^.{5}I).{60})(([0-9]{2})|(H[1-9])|(U[1-8])|RT)"
         },
         {
+          "comment": "Input positions 69-70, field indicator set on when the field is zero or blank.",
           "name": "constant.language.rpg.i.zeroblank",
-          "match": "(?i)(?<=((?<=^.{5}I).{62}))((([0-9]|\\s){2})|(H[1-9])|(RT)|(U[1-8]))"
+          "match": "(?i)(?<=(?<=^.{5}I).{62})(([0-9]{2})|(H[1-9])|(U[1-8])|RT)"
         },
         {
+          "comment": "Calculation positions 7-8, control level: L0 total time, L1-L9 control break, LR last record, SR subroutine, AN and OR continuation of the conditioning indicators. L0 uses a zero.",
           "name": "constant.language.rpg.c.level",
-          "match": "(?i)(?<=((?<=^.{5}C).{0}))((L([1-9]|O|R))|SR|AN|OR)"
+          "match": "(?i)(?<=^.{5}C)((L([0-9]|R))|SR|AN|OR)"
         },
         {
+          "comment": "Calculation positions 9-11, first conditioning indicator. A blank in position 9 tests for on, N tests for off.",
           "name": "constant.language.rpg.c.n01",
-          "match": "(?i)(?<=((?<=^.{5}C).{2}))((N|\\s)(([0-9]{2})|(L([1-9]|O|R))|(K[A-NP-Y])|MR|RT|(H[1-9])|(O([A-G]|V))|(U[1-8])))"
+          "match": "(?i)(?<=(?<=^.{5}C).{2})((N|\\s)(([0-9]{2})|(L[1-9])|LR|(K[A-NP-Y])|MR|RT|(H[1-9])|(O([A-G]|V))|(U[1-8])))"
         },
         {
+          "comment": "Calculation positions 12-14, second conditioning indicator.",
           "name": "constant.language.rpg.c.n02",
-          "match": "(?i)(?<=((?<=^.{5}C).{5}))((N|\\s)(([0-9]{2})|(L([1-9]|O|R))|(K[A-NP-Y])|MR|RT|(H[1-9])|(O([A-G]|V))|(U[1-8])))"
+          "match": "(?i)(?<=(?<=^.{5}C).{5})((N|\\s)(([0-9]{2})|(L[1-9])|LR|(K[A-NP-Y])|MR|RT|(H[1-9])|(O([A-G]|V))|(U[1-8])))"
         },
         {
+          "comment": "Calculation positions 15-17, third conditioning indicator.",
           "name": "constant.language.rpg.c.n03",
-          "match": "(?i)(?<=((?<=^.{5}C).{8}))((N|\\s)(([0-9]{2})|(L([1-9]|O|R))|(K[A-NP-Y])|MR|RT|(H[1-9])|(O([A-G]|V))|(U[1-8])))"
+          "match": "(?i)(?<=(?<=^.{5}C).{8})((N|\\s)(([0-9]{2})|(L[1-9])|LR|(K[A-NP-Y])|MR|RT|(H[1-9])|(O([A-G]|V))|(U[1-8])))"
         },
         {
+          "comment": "Calculation positions 49-51, result field length, right adjusted.",
           "name": "constant.language.rpg.c.len",
-          "match": "(?i)(?<=((?<=^.{5}C).{42}))(([0-9]|\\s){3})"
+          "match": "(?i)(?<=(?<=^.{5}C).{42})(?=[0-9 ]{0,2}[0-9])[0-9 ]{3}"
         },
         {
+          "comment": "Calculation position 52, decimal positions of the result field.",
           "name": "constant.language.rpg.c.decpos",
-          "match": "(?i)(?<=((?<=^.{5}C).{45}))(([0-9]|\\s){1})"
+          "match": "(?i)(?<=(?<=^.{5}C).{45})[0-9]"
         },
         {
+          "comment": "Calculation position 53, operation extender: H half adjust, N read without lock, P pad the result with blanks.",
           "name": "constant.language.rpg.c.opext",
-          "match": "(?i)(?<=((?<=^.{5}C).{46}))(H|N|P)"
+          "match": "(?i)(?<=(?<=^.{5}C).{46})(H|N|P)"
         },
         {
+          "comment": "Calculation positions 54-55, high resulting indicator: 01-99, KA-KN, KP-KY, H1-H9, L1-L9, LR, OA-OG, OV, U1-U8 or RT.",
           "name": "constant.language.rpg.c.hi",
-          "match": "(?i)(?<=((?<=^.{5}C).{47}))((i?)((([0-9]{2})|(L([1-9]|O|R)))|(K([A-MP-Y]))|RT|(H[1-9])|(O([A-G]|V))|(U[1-8])))"
+          "match": "(?i)(?<=(?<=^.{5}C).{47})(([0-9]{2})|(L[1-9])|LR|(K[A-NP-Y])|RT|(H[1-9])|(O([A-G]|V))|(U[1-8]))"
         },
         {
+          "comment": "Calculation positions 56-57, low resulting indicator.",
           "name": "constant.language.rpg.c.lo",
-          "match": "(?i)(?<=((?<=^.{5}C).{49}))((i?)((([0-9]{2})|(L([1-9]|O|R)))|(K([A-MP-Y]))|RT|(H[1-9])|(O([A-G]|V))|(U[1-8])))"
+          "match": "(?i)(?<=(?<=^.{5}C).{49})(([0-9]{2})|(L[1-9])|LR|(K[A-NP-Y])|RT|(H[1-9])|(O([A-G]|V))|(U[1-8]))"
         },
         {
+          "comment": "Calculation positions 58-59, equal resulting indicator.",
           "name": "constant.language.rpg.c.eq",
-          "match": "(?i)(?<=((?<=^.{5}C).{51}))((i?)((([0-9]{2})|(L([1-9]|O|R)))|(K([A-MP-Y]))|RT|(H[1-9])|(O([A-G]|V))|(U[1-8])))"
+          "match": "(?i)(?<=(?<=^.{5}C).{51})(([0-9]{2})|(L[1-9])|LR|(K[A-NP-Y])|RT|(H[1-9])|(O([A-G]|V))|(U[1-8]))"
         },
         {
+          "comment": "Output positions 14-16, logical relationship, relating the conditioning indicators of this line to the line above. Positions 7-13 must be blank on such a line.",
+          "name": "constant.language.rpg.o.logical",
+          "match": "(?i)(?<=^.{5}O\\s{7})(AND|OR)"
+        },
+        {
+          "comment": "Output position 15, record type: H heading, D detail, T total, E exception.",
           "name": "constant.language.rpg.o.type",
-          "match": "(?i)(?<=((?<=^.{5}O).{8}))(H|D|T|E)"
+          "match": "(?i)(?<=(?<=^.{5}O).{8})(H|D|T|E)"
         },
         {
+          "comment": "Output positions 16-18, record addition: ADD writes a new record, DEL deletes one.",
           "name": "constant.language.rpg.o.adddel",
-          "match": "(?i)(?<=((?<=^.{5}O).{9}))(ADD|DEL)"
+          "match": "(?i)(?<=(?<=^.{5}O).{9})(ADD|DEL)"
         },
         {
+          "comment": "Output position 16, fetch overflow or release. F fetches overflow on a printer file, R releases a workstation device after output. Neither collides with the ADD and DEL of the entry above, which occupy the same position.",
+          "name": "constant.language.rpg.o.fetch",
+          "match": "(?i)(?<=(?<=^.{5}O).{9})(F|R)"
+        },
+        {
+          "comment": "Output positions 23-25, first output indicator. N in position 23 tests for off. 1P conditions a line on the first page.",
           "name": "constant.language.rpg.o.n01",
-          "match": "(?i)(?<=((?<=^.{5}O).{16}))((\\s|N)?(([0-9]{2})|(K[A-GN-Y])|((H|L)([1-9]|R))|(MR|RT|1P)|(U[1-8])|(O([A-G]|V))))"
+          "match": "(?i)(?<=(?<=^.{5}O).{16})((\\s|N)?(([0-9]{2})|(K[A-NP-Y])|((H|L)[1-9])|LR|MR|RT|1P|(U[1-8])|(O([A-G]|V))))"
         },
         {
+          "comment": "Output positions 26-28, second output indicator.",
           "name": "constant.language.rpg.o.n02",
-          "match": "(?i)(?<=((?<=^.{5}O).{19}))((\\s|N)?(([0-9]{2})|(K[A-GN-Y])|((H|L)([1-9]|R))|(MR|RT|1P)|(U[1-8])|(O([A-G]|V))))"
+          "match": "(?i)(?<=(?<=^.{5}O).{19})((\\s|N)?(([0-9]{2})|(K[A-NP-Y])|((H|L)[1-9])|LR|MR|RT|1P|(U[1-8])|(O([A-G]|V))))"
         },
         {
+          "comment": "Output positions 29-31, third output indicator.",
           "name": "constant.language.rpg.o.n03",
-          "match": "(?i)(?<=((?<=^.{5}O).{22}))((\\s|N)?(([0-9]{2})|(K[A-GN-Y])|((H|L)([1-9]|R))|(MR|RT|1P)|(U[1-8])|(O([A-G]|V))))"
+          "match": "(?i)(?<=(?<=^.{5}O).{22})((\\s|N)?(([0-9]{2})|(K[A-NP-Y])|((H|L)[1-9])|LR|MR|RT|1P|(U[1-8])|(O([A-G]|V))))"
         },
         {
+          "comment": "Output position 38, edit code: 1-4 and A-D, J-Q are the combination codes, 5-9 are user defined, X, Y and Z are the simple codes. Zero is not an edit code.",
           "name": "constant.language.rpg.o.editcode",
-          "match": "(?i)(?<=((?<=^.{5}O).{31}))((([0-9])|A|B|C|D|J|K|L|M|N|O|P|Q|X|Y|Z))"
+          "match": "(?i)(?<=(?<=^.{5}O).{31})([1-9]|A|B|C|D|J|K|L|M|N|O|P|Q|X|Y|Z)"
         },
         {
+          "comment": "Output position 39, blank after. B resets the field once it has been written.",
           "name": "constant.language.rpg.o.blankafter",
-          "match": "(?i)(?<=((?<=^.{5}O).{32}))B"
+          "match": "(?i)(?<=(?<=^.{5}O).{32})B"
         },
         {
+          "comment": "Output positions 40-43, end position. The entry ends in position 43 and is one of nnnn, +nnn or -nnn for a displacement from the previous field, or K1-K8 for the length of a program described WORKSTN format name.",
           "name": "constant.language.rpg.o.endpos",
-          "match": "(?i)(?<=((?<=^.{5}O).{33}))(((\\+|N)NNN)|\\s*(K([1-8]))|\\s*([0-9]){3})"
+          "match": "(?i)(?<=(?<=^.{5}O).{33})(([+\\-][0-9 ]{3})|([ ]{0,2}K[1-8])|((?=[0-9 ]{0,3}[0-9])[0-9 ]{4}))"
         },
         {
+          "comment": "Output position 44, data format: P packed, B binary, L or R signed. Blank writes the field zoned or as character data.",
           "name": "constant.language.rpg.o.pblr",
-          "match": "(?i)(?<=((?<=^.{5}O).{37}))(P|B|L|R)"
+          "match": "(?i)(?<=(?<=^.{5}O).{37})(P|B|L|R)"
         },
         {
+          "comment": "Indicators referred to as data: *IN the array, *IN,xx an element of it, and *INxx the one-position field for indicator xx.",
           "name": "constant.language.rpg.indicator",
-          "match": "(?i)[*]\\b(IN)([0-9]{0,2})\\b"
+          "match": "(?i)\\*IN(,?)(([0-9]{2})|((H|L)[1-9])|LR|MR|RT|1P|(U[1-8])|(K[A-NP-Y])|(O([A-G]|V)))?\\b"
         },
         {
+          "comment": "Numeric constant in positions 21-42 of an input specification, with an optional leading sign, an optional decimal point, and the optional trailing hyphen of a continued constant.",
           "name": "constant.numeric.rpg",
-          "match": "\\b(([0-9]+)|([0-9]*[.][0-9]))\\b"
+          "match": "(?i)(?<=^.{5}I\\s{14})[+\\-]?[0-9]+(\\.[0-9]+)?-?"
         },
         {
+          "comment": "Numeric literal: digits with an optional decimal point.",
           "name": "constant.numeric.rpg",
-          "match": "(?i)(?<=((?<=^.{5}[C]).{26}))([0-9]+)"
+          "match": "\\b[0-9]+(\\.[0-9]+)?\\b"
         },
         {
-          "name": "constant.language.rpg",
-          "match": "(?i)[*]\\b(INLR|BLANK|BLANKS|ZERO|ZEROS|HIVAL|LOVAL|ALL|ON|OFF|DATE|MONTH|DAY|YEAR|CANCL|DETC|DETL|GETIN|INIT|OFL|TERM|TOTC|TOTL|DEFN|ENTRY|INZSR|LDA|LIKE|LOCK|NAMVAR|OFF|ON|PDA|PSSR|FILE|EQUATE|PLACE)\\b"
+          "comment": "Numeric literal in calculation factor 1, position 18. A sign, if present, is the leftmost character of the literal rather than an operator. Factor 1 follows the conditioning indicators, so a literal there can begin immediately after a word character and the general rule cannot see a word boundary.",
+          "name": "constant.numeric.rpg",
+          "match": "(?i)(?<=(?<=^.{5}C).{11})[+\\-]?[0-9]+(\\.[0-9]+)?"
         },
         {
+          "comment": "Numeric literal in calculation factor 2, position 33. A sign, if present, is the leftmost character of the literal rather than an operator. Factor 2 begins in the character after the operation field, so Z-ADD1000 offers no word boundary for the general rule to match on.",
+          "name": "constant.numeric.rpg",
+          "match": "(?i)(?<=(?<=^.{5}C).{26})[+\\-]?[0-9]+(\\.[0-9]+)?"
+        },
+        {
+          "comment": "Reserved words with special functions. The list is chapter 12 of the reference plus *EXT and *NOKEY, which are special values of the DSPLY and CLEAR operations.",
           "name": "constant.language.rpg",
-          "match": "(?i)(UDATE|UMONTH|UDAY|UYEAR)"
+          "match": "(?i)\\*(BLANKS|BLANK|ZEROS|ZERO|HIVAL|LOVAL|ALLX|ALL|ON|OFF|DATE|MONTH|DAY|YEAR|CANCL|DETC|DETL|GETIN|INIT|OFL|TERM|TOTC|TOTL|DEFN|ENTRY|INZSR|LDA|LIKE|LOCK|NAMVAR|PDA|PSSR|FILE|OPCODE|PARMS|PROGRAM|RECORD|ROUTINE|STATUS|EQUATE|PLACE|NOKEY|EXT)\\b"
+        },
+        {
+          "comment": "Reserved words written without a leading asterisk: the user date fields and the page number fields PAGE and PAGE1 through PAGE7. There is no word boundary before the name because the fields of a specification butt against each other, so factor 2 of Z-ADDUDATE begins in the middle of a word.",
+          "name": "constant.language.rpg",
+          "match": "(?i)(UDATE|UMONTH|UDAY|UYEAR|PAGE[1-7]|PAGE)\\b"
         }
       ]
     },
     "keywords": {
       "patterns": [
         {
+          "comment": "The /TITLE compiler directive in positions 7-12. The heading text in 14-74 is prose, so it reads as a comment. Anchored with a lookbehind rather than ^ so that the rule still matches once the gutter rule has consumed positions 1-5.",
           "name": "keyword.other.rpg.precompiler.title",
-          "begin": "(?i)^.{5}(H)?[\\/](TITLE)",
+          "begin": "(?i)(?<=^.{5}.)[\\/](TITLE)",
           "end": "\n",
           "patterns": [
             {
+              "comment": "The heading text that /TITLE prints on the compiler listing.",
               "name": "comment.line.rpg.precompiler.title",
               "match": ".*"
             }
           ]
         },
         {
+          "comment": "The /COPY compiler directive in positions 7-11, followed in 13-44 by the member to merge in, written library/file,member or file.library,member in the System/38 environment.",
           "name": "keyword.other.rpg.precompiler.copy",
-          "begin": "(?i)^.{5}(C|\\s)[\/](COPY)\\s",
+          "begin": "(?i)(?<=^.{5}.)[\\/](COPY)\\s",
           "end": "\n",
           "patterns": [
             {
+              "comment": "The name of the member being copied.",
               "name": "string.other.rpg.precompiler.copy",
               "begin": "\\S",
               "end": "\\s"
             },
             {
+              "comment": "Anything after the member name is ignored by the compiler.",
               "name": "comment.other.rpg.precompiler.copy",
               "match": ".*"
             }
           ]
         },
         {
+          "comment": "The /SPACE compiler directive in positions 7-12, with the number of lines to space in 14-16, left adjusted. Its operand is scoped separately, the way /TITLE scopes its heading text and /COPY its member name.",
           "name": "keyword.other.rpg.precompiler",
-          "begin": "(?i)^.{0,5}.(/)(EJECT|COPY|TITLE|SPACE)",
+          "begin": "(?i)(?<=^.{5}.)(/)(SPACE)",
+          "end": "\n",
+          "patterns": [
+            {
+              "comment": "The number of lines to space on the compiler listing, 1 through 112.",
+              "name": "constant.numeric.rpg",
+              "match": "[0-9]+"
+            }
+          ]
+        },
+        {
+          "comment": "The remaining compiler directives, /EJECT and /SPACE, in positions 7-12. TITLE and COPY are listed too because this rule also catches them when the rules above do not. Position 6 is blank or repeats the preceding specification letter.",
+          "name": "keyword.other.rpg.precompiler",
+          "begin": "(?i)(?<=^.{5}.)(/)(EJECT|COPY|TITLE|SPACE)",
           "end": "\n"
         },
         {
+          "comment": "Position 6, the specification letter that says which form the line is: H control, F file description, E extension, L line counter, I input, C calculation, O output.",
           "name": "keyword.other.rpg",
-          "match": "(?i)(?<=^.{5})[H|F|E|L|I|C|O]"
+          "match": "(?i)(?<=^.{5})[HFELICO]"
         },
         {
+          "comment": "Calculation positions 28-32, the structured and compare operations that take a comparison suffix. The suffix is GT, LT, EQ, NE, GE or LE. Listed before the plain operation codes so that IFEQ is one token rather than IF followed by EQ.",
           "name": "keyword.other.rpg",
-          "match": "(?i)(?<=((?<=^.{5}[C|c]).{21}))(IF|WH|DOW|DOU|DO|CAB|CAS|AND|OR)(GT|LT|EQ|NE|GE|LE)"
+          "match": "(?i)(?<=(?<=^.{5}C).{21})(IF|WH|DOW|DOU|CAB|CAS|AND|OR)(GT|LT|EQ|NE|GE|LE)"
         },
         {
+          "comment": "Separators and arithmetic signs: the colon between the parts of a compound factor, the comma, and the plus, minus and period of a numeric literal or edit word.",
           "name": "keyword.other.rpg",
           "match": "(:|\\,|\\-|\\+|\\.)"
         },
         {
+          "comment": "Calculation positions 28-32, the operation code. Anchored to the operation field so that a field or file name spelled like an operation is left alone.",
           "name": "keyword.other.rpg",
-          "match": "(?i)(ENDDO|ENDIF|ENDCS|ENDSL)"
-        },
-        {
-          "name": "keyword.other.rpg",
-          "match": "(?i)(?<=((?<=^.{5}[C|c]).{21}))(Z-SUB|Z-ADD|XLATE|XFOOT|WRITE|WH|UPDAT|UNLCK|TIME|TESTZ|TESTN|TESTB|TAG|SUBST|SUB|SQRT|SORTA|SHTDN|SETON|SETOF|SETLL|SETGT|SELEC|SCAN|ROLBK|RETRN|RESET|REL|REDPE|READP|READE|READC|READ|POST|PLIST|PARM|OUT|OTHER|OR|OPEN|OCUR|NEXT|MVR|MULT|MOVEL|MOVEA|MOVE|MLLZO|MLHZO|MHLZO|MHHZO|LOKUP|LEAVE|KLIST|KFLD|ITER|IN|IF|GOTO|FREE|FORCE|FEOD|EXSR|EXFMT|EXCPT|ENDSR|END|ELSE|DUMP|DSPLY|DOW|DOU|DO|DIV|DELET|DEFN|DEBUG|COMP|COMIT|CLOSE|CLEAR|CHEKR|CHECK|CHAIN|CAT|CAS|CALL|CAB|BITON|BITOF|BEGSR|AND|ADD|ACQ)"
+          "match": "(?i)(?<=(?<=^.{5}C).{21})(Z-SUB|Z-ADD|XLATE|XFOOT|WRITE|WH|UPDAT|UNLCK|TIME|TESTZ|TESTN|TESTB|TAG|SUBST|SUB|SQRT|SORTA|SHTDN|SETON|SETOF|SETLL|SETGT|SELEC|SCAN|ROLBK|RETRN|RESET|REL|REDPE|READP|READE|READC|READ|POST|PLIST|PARM|OUT|OTHER|OR|OPEN|OCUR|NEXT|MVR|MULT|MOVEL|MOVEA|MOVE|MLLZO|MLHZO|MHLZO|MHHZO|LOKUP|LEAVE|KLIST|KFLD|ITER|IN|IF|GOTO|FREE|FORCE|FEOD|EXSR|EXFMT|EXCPT|ENDSR|ENDSL|ENDIF|ENDDO|ENDCS|END|ELSE|DUMP|DSPLY|DOW|DOU|DO|DIV|DELET|DEFN|DEBUG|COMP|COMIT|CLOSE|CLEAR|CHEKR|CHECK|CHAIN|CAT|CAS|CALL|CAB|BITON|BITOF|BEGSR|AND|ADD|ACQ)"
         }
       ]
     },
     "strings": {
       "patterns": [
         {
+          "comment": "Hexadecimal constant in positions 21-42 of an input specification. Ends at the closing quote or at position 43, whichever comes first, so a continued constant does not swallow the C in position 43 and the name in 53-58.",
           "name": "string.other.rpg.hex",
-          "begin": "(?i)x'",
-          "end": "'"
+          "begin": "(?i)(?<=^.{5}I\\s{14})x'",
+          "end": "'|(?<=^.{5}I.{36})"
         },
         {
+          "comment": "Character constant in positions 21-42 of an input specification. Ends at the closing quote or at position 43, whichever comes first, for the same reason as the rule above.",
+          "name": "string.quoted.single.rpg",
+          "begin": "(?<=^.{5}I\\s{14})'",
+          "end": "'|(?<=^.{5}I.{36})"
+        },
+        {
+          "comment": "Hexadecimal literal, X'xx'. Written before the quoted literal rule so the leading X is part of the literal. The end pattern includes a newline so that an unterminated literal, such as the first line of a continued named constant, stops at the end of its line instead of running on into the next one.",
+          "name": "string.other.rpg.hex",
+          "begin": "(?i)x'",
+          "end": "(\\n|')"
+        },
+        {
+          "comment": "Character literal. RPG has no escape character; a quote inside a literal is written twice, which ends this match and starts another.",
           "name": "string.quoted.single.rpg",
           "begin": "'",
-          "end": "(\n|')",
-          "patterns": [
-            {
-              "name": "constant.character.escape.rpg",
-              "match": "\\\\."
-            }
-          ]
+          "end": "(\n|')"
         }
       ]
     },
     "sql": {
       "patterns": [
         {
+          "comment": "An embedded SQL statement. EXEC SQL occupies positions 8-16 with a slash in position 7 and a C in position 6; the statement runs from 17 to 74 and continues on lines carrying a plus in position 7.",
           "name": "variable.other.rpg.sql",
-          "begin": "(?i)(?=((?<=^.{5}[C]))(\\/EXEC\\sSQL))",
-          "end": "(?i)(?=((?<=^.{5}[C]))(\\/END\\-EXEC))",
+          "begin": "(?i)(?=(?<=^.{5}C)(\\/EXEC\\sSQL))",
+          "end": "(?i)(?=(?<=^.{5}C)(\\/END\\-EXEC))",
           "patterns": [
             {
+              "comment": "The /EXEC SQL that opens the statement.",
               "name": "keyword.other.rpg.sql.precompiler",
-              "match": "(?i)((\/)(EXEC\\s+SQL))"
+              "match": "(?i)(\\/)(EXEC\\s+SQL)"
             },
             {
+              "include": "#gutter"
+            },
+            {
+              "comment": "The C in position 6 that every line of the statement carries, together with the plus in position 7 that marks a continuation line.",
               "name": "keyword.other.rpg.sql.c",
-              "match": "(?i)^.{5}[C]"
+              "match": "(?i)(?<=^.{5})C[+]?"
             },
             {
-              "name": "variable.parameter.rpg.sql",
-              "match": "[:][a-zA-Z_][a-zA-Z0-9_]*"
-            },
-            {
-              "include": "source.sql"
-            },
-            {
-              "name": "variable.other.rpg.sql.identifier",
-              "match": "[a-zA-Z_][a-zA-Z0-9_]*"
+              "include": "#sqlcommon"
             }
           ]
         },
         {
+          "comment": "The /END-EXEC that closes an embedded SQL statement, in positions 7-16.",
           "name": "keyword.other.rpg.sql.precompiler",
-          "match": "(?i)(\/END\\-EXEC)"
+          "match": "(?i)(\\/END\\-EXEC)"
+        }
+      ]
+    },
+    "sqlvariables": {
+      "patterns": [
+        {
+          "comment": "Fields of the SQL communication area, recognised anywhere in the program because they are tested in ordinary calculations after each statement. The precompiler inserts the SQLCA into the input specifications itself, so these are program fields rather than reserved words, but the language defines them rather than the programmer. RPG/400 names are limited to six characters, which is why IBM truncates the standard SQLCA names. Neither end carries a word boundary: factor 2 begins in the character after the operation field, and a six character name fills the result field exactly, so a length in positions 49-51 would butt against it. The longer RPG IV spellings are listed before the truncated ones so SQLCODE is not matched as SQLCOD followed by E.",
+          "name": "variable.language.rpg.sql",
+          "match": "(?i)(SQLWRN|SQLWNA|SQLWN9|SQLWN8|SQLWN7|SQLWN6|SQLWN5|SQLWN4|SQLWN3|SQLWN2|SQLWN1|SQLWN0|SQLWARN|SQLSTT|SQLSTATE|SQLCODE|SQLCOD|SQLERRP|SQLERRML|SQLERRMC|SQLERRD|SQLERR|SQLERP|SQLERM|SQLERL|SQLER6|SQLER5|SQLER4|SQLER3|SQLER2|SQLER1)"
+        }
+      ]
+    },
+    "sqlcommon": {
+      "patterns": [
+        {
+          "comment": "SQL line comment. RPG/400 allows one wherever a blank is allowed, except between the keywords EXEC and SQL.",
+          "name": "comment.line.rpg.sql",
+          "match": "--.*"
+        },
+        {
+          "comment": "SQL global variables.",
+          "name": "constant.language.rpg.sql.globals",
+          "match": "(?i)\\b(CLIENT_HOST|CLIENT_IPADDR|CLIENT_PORT|JOB_NAME|PACKAGE_NAME|PACKAGE_SCHEMA|PACKAGE_VERSION|PROCESS_ID|ROUTINE_SCHEMA|ROUTINE_SPECIFIC_NAME|ROUTINE_TYPE|SERVER_MODE_JOB_NAME|THREAD_ID)\\b"
+        },
+        {
+          "comment": "A name followed by an opening parenthesis, which is how a function call is written.",
+          "name": "support.function.rpg.sql",
+          "match": "[a-zA-Z_#@$§ÆØÅÄÖ£Ñ¥àÐŞİ][a-zA-Z0-9_#@$§ÆØÅÄÖ£Ñ¥àÐŞİ]*(?=\\()"
+        },
+        {
+          "comment": "A qualified name, written schema.object or schema/object.",
+          "name": "constant.language.rpg.sql.schema",
+          "match": "[a-zA-Z_#@$§ÆØÅÄÖ£Ñ¥àÐŞİ][a-zA-Z0-9_#@$§ÆØÅÄÖ£Ñ¥àÐŞİ]*(\\.|\\/)[a-zA-Z_#@$§ÆØÅÄÖ£Ñ¥àÐŞİ][a-zA-Z0-9_#@$§ÆØÅÄÖ£Ñ¥àÐŞİ]*"
+        },
+        {
+          "comment": "A host variable, written with a leading colon.",
+          "name": "variable.parameter.rpg.sql",
+          "match": "[:][a-zA-Z_#@$§ÆØÅÄÖ£Ñ¥àÐŞİ][a-zA-Z0-9_#@$§ÆØÅÄÖ£Ñ¥àÐŞİ]*"
+        },
+        {
+          "comment": "Hexadecimal literal in an SQL statement, X'xx'.",
+          "name": "string.other.rpg.sql.hex",
+          "match": "(?i)x'[^']*'"
+        },
+        {
+          "comment": "Character literal in an SQL statement. A quote inside a literal is written twice, which closes this match and opens another, the same way the RPG character literal behaves.",
+          "name": "string.quoted.single.rpg.sql",
+          "match": "'[^']*'"
+        },
+        {
+          "comment": "DB2 for i reserved words. This is the same list the RPGLE grammar carries, kept identical so the two do not drift, plus the WHENEVER conditions SQLERROR, SQLWARNING and FOUND, which only ever appear in embedded SQL. The list is sorted in reverse so that a longer word is tried before a shorter one it begins with.",
+          "name": "keyword.operator.rpg.sql.reserved",
+          "match": "(?i)\\b(ZONE|YES|YEARS|YEAR|XSROBJECT|XSLTRANSFORM|XMLVALIDATE|XMLTEXT|XMLTABLE|XMLSERIALIZE|XMLROW|XMLPI|XMLPARSE|XMLNAMESPACES|XMLGROUP|XMLFOREST|XMLELEMENT|XMLDOCUMENT|XMLCONCAT|XMLCOMMENT|XMLCAST|XMLATTRIBUTES|XMLAGG|WRKSTNNAME|WRITE|WRAPPER|WRAPPED|WITHOUT|WITHIN|WITH|WHILE|WHERE|WHENEVER|WHEN|WAIT|VOLATILE|VIEW|VERSION|VCAT|VARIANT|VARIABLE|VALUES|VALUE|USING|USERID|USER|USE|USAGE|URI|UPDATING|UPDATE|UNTIL|UNNEST|UNIT|UNIQUE|UNION|UNDO|TYPE|TRUNCATE|TRIM_ARRAY|TRIM|TRIGGER|TRANSFER|TRANSACTION|TO|TIMESTAMP|TIME|THREADSAFE|THEN|TABLESPACES|TABLESPACE|TABLE|SYSTEM_USER|SYNONYM|SUMMARY|SUBSTRING|STOGROUP|STATIC|STATEMENT|STARTING|START|STACKED|SQLWARNING|SQLID|SQLERROR|SQL|SPECIFIC|SOURCE|SOME|SNAN|SKIP|SIMPLE|SIGNAL|SET|SESSION_USER|SESSION|SEQUENCE|SENSITIVE|SELECT|SECURED|SECQTY|SECONDS|SECOND|SEARCH|SCROLL|SCRATCHPAD|SCHEMA|SBCS|SAVEPOINT|RUN|RRN|ROW_NUMBER|ROWS|ROWNUMBER|ROW|ROUTINE|ROLLUP|ROLLBACK|RIGHT|RID|REVOKE|RETURNS|RETURNING|RETURN|RESULT_SET_LOCATOR|RESULT|RESTART|RESIGNAL|RESET|REPEAT|RENAME|RELEASE|REGEXP_LIKE|REFRESH|REFERENCING|REFERENCES|RECOVERY|READS|READ|RCDFMT|RANK|RANGE|QUERY|PROGRAMID|PROGRAM|PROCEDURE|PRIVILEGES|PRIQTY|PRIOR|PRIMARY|PREVVAL|PREPARE|POSITION|PLAN|PIPE|PIECESIZE|PERMISSION|PCTFREE|PATH|PASSWORD|PASSING|PARTITIONS|PARTITIONING|PARTITIONED|PARTITION|PART|PARAMETER|PAGESIZE|PAGE|PADDED|PACKAGE|OVERRIDING|OVERLAY|OVER|OUTER|OUT|ORGANIZE|ORDINALITY|ORDER|OR|OPTION|OPTIMIZE|OPEN|ONLY|ON|OMIT|OLD_TABLE|OLD|OFFSET|OF|OBID|NVARCHAR|NULLS|NULL|NOT|NORMALIZED|NOORDER|NONE|NOMINVALUE|NOMAXVALUE|NODENUMBER|NODENAME|NOCYCLE|NOCACHE|NO|NEXTVAL|NEW_TABLE|NEW|NESTED|NCLOB|NCHAR|NATIONAL|NAN|NAMESPACE|MONTHS|MONTH|MODIFIES|MODE|MIXED|MINVALUE|MINUTES|MINUTE|MINPCTUSED|MICROSECONDS|MICROSECOND|MERGE|MAXVALUE|MATERIALIZED|MATCHED|MASK|MAINTAINED|LOOP|LONG|LOGGED|LOG|LOCKSIZE|LOCK|LOCATOR|LOCATION|LOCALTIMESTAMP|LOCALTIME|LOCALDATE|LOCAL|LISTAGG|LINKTYPE|LIMIT|LIKE|LEVEL2|LEFT|LEAVE|LATERAL|LANGUAGE|LABEL|KEY|KEEP|JSON_VALUE|JSON_TABLE|JSON_QUERY|JSON_OBJECTAGG|JSON_OBJECT|JSON_EXISTS|JSON_ARRAYAGG|JSON_ARRAY|JOIN|JAVA|ITERATE|ISOLATION|IS|INTO|INTERSECT|INTEGRITY|INSERTING|INSERT|INSENSITIVE|INOUT|INNER|INLINE|INHERIT|INFINITY|INF|INDICATOR|INDEXBP|INDEX|INCREMENT|INCLUSIVE|INCLUDING|INCLUDE|IMPLICITLY|IMMEDIATE|IGNORE|IF|IDENTITY|ID|HOURS|HOUR|HOLD|HINT|HAVING|HASHED_VALUE|HASH|HANDLER|GROUP|GRAPHIC|GRANT|GOTO|GO|GLOBAL|GET|GENERATED|GENERAL|GBPCACHE|FUNCTION|FULL|FROM|FREEPAGE|FREE|FOUND|FORMAT|FOREIGN|FOR|FINAL|FILE|FIELDPROC|FETCH|FENCED|EXTRACT|EXTERNAL|EXTEND|EXIT|EXISTS|EXECUTE|EXCLUSIVE|EXCLUDING|EXCEPTION|EXCEPT|EVERY|ESCAPE|ERROR|ENFORCED|ENDING|END|ENCRYPTION|ENCODING|ENABLE|EMPTY|ELSEIF|ELSE|EACH|DYNAMIC|DROP|DOUBLE|DOCUMENT|DO|DISTINCT|DISCONNECT|DISALLOW|DISABLE|DIAGNOSTICS|DETERMINISTIC|DESCRIPTOR|DESCRIBE|DESC|DENSE_RANK|DENSERANK|DELETING|DELETE|DEFINITION|DEFINE|DEFER|DEFAULTS|DEFAULT|DECLARE|DEALLOCATE|DEACTIVATE|DBPARTITIONNUM|DBPARTITIONNAME|DBINFO|DB2SQL|DB2GENRL|DB2GENERAL|DAYS|DAY|DATE|DATAPARTITIONNUM|DATAPARTITIONNAME|DATABASE|DATA|CYCLE|CURSOR|CURRENT_USER|CURRENT_TIMEZONE|CURRENT_TIMESTAMP|CURRENT_TIME|CURRENT_SERVER|CURRENT_SCHEMA|CURRENT_PATH|CURRENT_DATE|CURRENT|CUBE|CROSS|CREATEIN|CREATE|COUNT_BIG|COUNT|COPY|CONTINUE|CONTENT|CONTAINS|CONSTRAINT|CONSTANT|CONNECT_BY_ROOT|CONNECTION|CONNECT|CONDITION|CONCURRENT|CONCAT|COMPRESS|COMPACT|COMMIT|COMMENT|COLUMN|COLLECTION|COLLECT|CLUSTER|CLOSE|CL|CHECK|CHARACTER|CHAR|CCSID|CAST|CASE|CARDINALITY|CALLED|CALL|CACHE|BY|BUFFERPOOL|BIT|BIND|BINARY|BETWEEN|BEGIN|BEFORE|AUTONOMOUS|AUTHORIZATION|ATTRIBUTES|ATOMIC|AT|ASSOCIATE|ASENSITIVE|ASC|AS|ARRAY_AGG|ARRAY|APPLNAME|APPEND|ANY|AND|ALTER|ALLOW|ALLOCATE|ALL|ALIAS|ADD|ACTIVATE|ACTION|ACCTNG|ACCORDING|ABSENT)\\b"
+        },
+        {
+          "include": "#sqlvariables"
+        },
+        {
+          "comment": "Numeric literal in an SQL statement. The leading word boundary keeps the rule off the digits of an identifier such as CUST1. A sign in front of a literal is scoped by the operator rule below, as it is elsewhere in the grammar. This sits after the comment and literal rules so digits inside those are not picked out.",
+          "name": "constant.numeric.rpg.sql",
+          "match": "\\b[0-9]+(\\.[0-9]+)?\\b"
+        },
+        {
+          "comment": "SQL operators: comparison, arithmetic and concatenation. Longer operators are listed first so that >= is one token rather than > followed by =. The comment rule above runs first, so the -- that opens a comment is never seen as two minus signs, and the qualified name rule runs first, so the slash in schema/object is not division. The RPGLE grammar shares this file's reserved word list but has no operator rule yet.",
+          "name": "keyword.operator.rpg.sql",
+          "match": "(\\|\\||\\*\\*|<>|<=|>=|[¬!][=<>]|[=<>+\\-*/])"
         }
       ]
     }

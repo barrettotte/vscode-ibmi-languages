@@ -1,0 +1,114 @@
+      *
+      * A complete RPG/400 cycle program: every specification type in the
+      * order the compiler requires, embedded SQL, and a compile-time
+      * alternating table with the records that load it.
+      *
+      * Prints an invoice register grouped by store, taking the tax rate
+      * from a compile-time table and the customer name from SQL.
+      *
+      * Member: INVREG   Compilable: complete program, but not built;
+      *         its files are not defined here (CRTSQLRPG)
+      * Source: RPG/400 Reference SC09-1817, and IBM i 7.5 Embedded SQL
+      *         programming for the EXEC SQL layout.
+      * Retrieved: 2026-07-26
+      *
+      *
+      * Control specification.
+     H        1   M D                                                     INVREG
+     F*
+     F* The invoice header drives the cycle as the primary file. The
+     F* printer file has an overflow indicator and an L in position 39,
+     F* which says a line counter specification follows.
+     FINVHDR  IP  E           K        DISK                               input
+     FQSYSPRT O   F     132     OV    LPRINTER                            report
+     E*
+     E* An alternating compile-time table: a tax code and the rate that
+     E* goes with it, loaded from the records at the end of the source.
+     E                    TAXCDE  1   5  3  ATAXRAT  5 4 Tax codes and rates
+     L*
+     L* 66 lines to a page, overflow on line 60.
+     LQSYSPRT  66FL 60OL
+     I*
+     I* The record format of the externally described file, with five
+     I* fields renamed and a control level break on the store number.
+     IINVREC      01                                                      detail
+     I              INVSTORE                        STORE L1
+     I              INVNUMBER                       INVNO
+     I              INVCUSTNBR                      CUSNO
+     I              INVAMOUNT                       INVAMT
+     I              INVTAXCODE                      TAXCD
+     I*
+     I* The program status data structure.
+     IPSDS       SDS                                                      status
+     I                                        1  10 PSPGM
+     I                                      254 263 PSSTAT
+     I*
+     I* Named constants used by the report.
+     I              'INVOICE REGISTER'    C         HDRTXT
+     I              'STORE TOTAL'         C         STRTXT
+     C*
+     C* Detail calculations, run once for each invoice record.
+     C   01                EXSR GETCUS                     customer name
+     C   01      TAXCD     LOKUPTAXCDE                   30
+     C   30      INVAMT    MULT TAXRAT    TAX     92H
+     C  N30                Z-ADD*ZERO     TAX
+     C   01      INVAMT    ADD  TAX       LINTOT  92
+     C   01      LINTOT    ADD  STRTOT    STRTOT 112
+     C*
+     C* Total calculations. STRTOT rolls into GRDTOT at each store
+     C* break, then resets ready for the next store.
+     CL1         STRTOT    ADD  GRDTOT    GRDTOT 132
+     CL1                   Z-ADD*ZERO     STRTOT           reset for next store
+     C*
+     C* Subroutines. The SQL statement reads the customer name for the
+     C* invoice being printed; SQLCOD is a field of the SQLCA, which
+     C* the precompiler inserts into the input specifications.
+     CSR         GETCUS    BEGSR
+     C/EXEC SQL SELECT CUSNAM
+     C+ INTO :CUSTNM
+     C+ FROM CUSTMAST
+     C+ WHERE CUSNBR = :CUSNO
+     C/END-EXEC
+     C           SQLCOD    COMP 0                        40
+     C  N40      '*UNKNOWN'MOVE           CUSTNM
+     CSR                   ENDSR
+     CSR         *INZSR    BEGSR
+     C                     Z-ADD*ZERO     STRTOT
+     C                     Z-ADD*ZERO     GRDTOT
+     C           *BLANKS   MOVE           CUSTNM 30
+     CSR                   ENDSR
+     O*
+     O* Headings print on the first page and after each overflow.
+     OQSYSPRT H  201   1P
+     O                         HDRTXT    40
+     O                         UDATE Y   60
+     O                                   70 'PAGE'
+     O                         PAGE  Z   76
+     OQSYSPRT H  2     OV
+     O                         HDRTXT    40
+     O*
+     O* One line for each invoice.
+     OQSYSPRT D  1     01
+     O                         STORE      5
+     O                         INVNO     16
+     O                         CUSTNM    48
+     O                         INVAMT1   62
+     O                         TAX   1   76
+     O                         LINTOT1   92
+     O*
+     O* A total at each store break, and a grand total at the end.
+     OQSYSPRT T 12     L1
+     O                         STRTXT    40
+     O                         STRTOTJB  92
+     OQSYSPRT T 2      LR
+     O                                   40 'GRAND TOTAL'
+     O                         GRDTOTJ   92
+      *
+      * The alternating table, one pair to a record: a three character
+      * tax code followed by a five digit rate with four decimals.
+**    TAXCDE and TAXRAT
+A1000625
+B2000750
+C3000825
+D4000900
+E5001000

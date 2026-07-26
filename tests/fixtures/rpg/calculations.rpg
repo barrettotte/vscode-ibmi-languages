@@ -1,0 +1,194 @@
+     C*
+     C* RPG/400 calculation specifications. Every operation code in
+     C* Table 35 of the reference appears at least once.
+     C*
+     C* Member: RPGCAL   Compilable: no (calculations only, no files)
+     C* Source: RPG/400 Reference SC09-1817, chapters 9 and 11
+     C*         (Tables 26 and 35).
+     C* Retrieved: 2026-07-26
+     C*
+     C* 7-8 control level  9-17 conditioning indicators
+     C* 18-27 factor 1  28-32 operation  33-42 factor 2
+     C* 43-48 result  49-51 length  52 decimals  53 extender
+     C* 54-59 resulting indicators  60-80 comments
+     C*  1         2         3         4         5         6         7         8
+     C*8901234567890123456789012345678901234567890123456789012345678901234567890
+     C*
+     C* A /COPY among the calculations carries C in position 6.
+     C/COPY QRPGSRC,PAYSUBR
+     C*
+     C* Control level: blank detail, L0 total, L1-L9 control break,
+     C* LR last record, SR subroutine, AN and OR continuation.
+     CL0         GRAND     ADD  PAGE      GRAND
+     CL1         LVLTOT    ADD  AMOUNT    LVLTOT
+     CL9                   Z-ADD*ZERO     LVLTOT
+     CLR                   EXSR FINAL
+     CSR         *BLANKS   MOVE           MSG
+     C*
+     C* Conditioning indicators, three per line, N to test for off.
+     C   01      'Y'       MOVE           FOUND
+     C  N01 H1NMR'N'       MOVE           FOUND
+     C   KA KN KY          SETON                         RT
+     C   U1 OA OV          EXCPT
+     C   LRNL1 RT          SETOF                     20
+     CAN 02      'X'       MOVE           FLAG
+     COR 03      'Z'       MOVE           FLAG
+     C*
+     C* Arithmetic operations.
+     C           QTYORD    ADD  QTYSHP    QTYTOT  70 202122
+     C           QTYORD    SUB  QTYSHP    QTYBAK  70
+     C           QTYTOT    MULT PRICE     AMOUNT  92H
+     C           AMOUNT    DIV  QTYTOT    UNIT    94H
+     C                     MVR            REMAIN  94
+     C                     Z-ADD*ZERO     AMOUNT
+     C                     Z-SUBAMOUNT    CREDIT  92
+     C                     SQRT AREA      SIDE    73
+     C                     XFOOTTOTALS    GRAND  112
+     C*
+     C* Move and move zone operations.
+     C           *BLANKS   MOVE           CUSTNM
+     C           'PENDING' MOVEL          STATUS 10
+     C           FLAGS     MOVEA          HOLD   99
+     C           ZONEA     MHHZO          ZONEB
+     C           ZONEA     MHLZO          ZONEB
+     C           ZONEA     MLHZO          ZONEB
+     C           ZONEA     MLLZO          ZONEB
+     C*
+     C* String operations.
+     C           FIRST     CAT  LAST:1    FULLNM 30
+     C           6         SUBSTFULLNM:1  PREFIX  6 P
+     C           ','       SCAN FULLNM    POSN    30     30
+     C           '01234'   CHECKDIGITS    POSN           31
+     C           ' '       CHEKRFULLNM    POSN           32
+     C           LOW:UPP   XLATEFULLNM    FULLNM    P
+     C*
+     C* Bit and test operations.
+     C                     BITON'01234567'MASK
+     C                     BITOF'07'      MASK
+     C                     TESTB'0'       MASK       404142
+     C                     TESTN          NUMFLD     434445
+     C                     TESTZ          ALPFLD     464748
+     C*
+     C* Compare and branching operations.
+     C           QTYORD    COMP QTYSHP               505152
+     C           QTYORD    CABGTQTYSHP    OVER       50
+     C           QTYORD    CABEQQTYSHP    SAME
+     C           QTYORD    CAB  QTYSHP    ALWAYS
+     C                     GOTO ENDTAG
+     C           OVER      TAG
+     C           SAME      TAG
+     C           ALWAYS    TAG
+     C           ENDTAG    TAG
+     C*
+     C* Structured groups. The xx suffix is GT LT EQ NE GE or LE.
+     C           QTYORD    IFGT *ZERO
+     C           QTYORD    ANDLEMAXQTY
+     C           STATUS    ORNE 'C'
+     C           'Y'       MOVE           VALID
+     C                     ELSE
+     C           'N'       MOVE           VALID
+     C                     ENDIF
+     C           1         DO   10        IDX     30
+     C                     ITER
+     C                     LEAVE
+     C                     ENDDO
+     C           IDX       DOWLTMAXIDX
+     C           1         ADD  IDX
+     C                     ENDDO
+     C           IDX       DOUGEMAXIDX
+     C           1         SUB  IDX
+     C                     END                             END closes a group
+     C                     SELEC
+     C           STATUS    WHEQ 'A'
+     C           'ACTIVE'  MOVE           STSDSC
+     C           STATUS    WHNE 'A'
+     C           'CLOSED'  MOVE           STSDSC
+     C                     OTHER
+     C           *BLANKS   MOVE           STSDSC
+     C                     ENDSL
+     C*
+     C* Subroutines and the CAS group.
+     C           STATUS    CASEQ'A'       ACTSR
+     C           STATUS    CASNE'A'       CLSSR
+     C                     CAS            DFTSR
+     C                     ENDCS
+     C                     EXSR ACTSR
+     CSR         ACTSR     BEGSR
+     C           'A'       MOVE           STATUS
+     CSR                   ENDSR
+     CSR         CLSSR     BEGSR
+     CSR         RETPT     ENDSR*GETIN
+     CSR         *PSSR     BEGSR
+     CSR                   ENDSR*CANCL
+     CSR         *INZSR    BEGSR
+     CSR                   ENDSR
+     C*
+     C* File operations.
+     C           ORDKEY    CHAINORDHDR               60
+     C                     READ ORDHDR                 6162
+     C           ORDKEY    READEORDDTL                   63
+     C                     READPORDHDR                   64
+     C           ORDKEY    REDPEORDDTL                   65
+     C                     READCSFLREC                   66
+     C           ORDKEY    SETLLORDHDR               676869
+     C           ORDKEY    SETGTORDHDR               70
+     C                     WRITEORDDTL                 71
+     C                     UPDATORDHDR                 72
+     C           ORDKEY    DELETORDHDR               7374
+     C                     EXCPTHEADNG
+     C                     EXFMTCUSTFMT                75
+     C                     OPEN ORDHDR                 76
+     C                     CLOSEORDHDR                 77
+     C                     FEOD ORDHDR                 78
+     C                     FORCEORDSEC
+     C           DEVICE    NEXT CUSTDSP                79
+     C           DEVICE    POST CUSTDSP                80
+     C           DEVICE    ACQ  CUSTDSP                81
+     C           DEVICE    REL  CUSTDSP                82
+     C                     UNLCKORDHDR                 83
+     C           BOUNDRY   COMIT                       84
+     C                     ROLBK                       85
+     C*
+     C* Key lists and parameter lists.
+     C           ORDKEY    KLIST
+     C                     KFLD           ORDCO
+     C                     KFLD           ORDNBR
+     C           SPCPLS    PLIST
+     C                     PARM           PARM1
+     C           FROMFL    PARM TOFLD     PARM2
+     C           *ENTRY    PLIST
+     C                     PARM           INCUST  6
+     C                     CALL 'PAYCALC'              86
+     C                     CALL PGMNAM    SPCPLS       87
+     C                     FREE 'PAYCALC'              88
+     C*
+     C* Data area, occurrence and definition operations.
+     C           *LIKE     DEFN ORDAMT    WRKAMT
+     C           *NAMVAR   DEFN *LDA      LDADS
+     C           *LOCK     IN   LDADS                  89
+     C                     OUT  LDADS                  90
+     C                     UNLCKLDADS                  91
+     C           IDX       OCUR MULTDS    CUROCC     9293
+     C                     CLEARORDDS
+     C                     RESETORDDS
+     C           *NOKEY    CLEARCUSTFMT
+     C*
+     C* Indicator, information and array operations.
+     C                     SETON                     2021LR
+     C                     SETOF                     202122
+     C                     SETON                     KAKNKY
+     C                     SETON                     L1OAU1
+     C                     TIME           NOWTIM  60
+     C                     TIME           NOWTS  120
+     C           'GO?'     DSPLY*EXT      ANSWER
+     C           'DBG1'    DEBUGQSYSPRT   DBGFLD
+     C           'DMP1'    DUMP
+     C                     SHTDN                     94
+     C           SRCHKY    LOKUPTABPRT               95  96
+     C                     SORTATOTALS
+     C*
+     C* Comments run from position 60. A page and line number in
+     C* positions 1-5 does not disturb the columns.
+     C                     RETRN                           Return to the caller
+     C                     SETON                         LREnd of program
+06010C           *BLANKS   MOVE           MSG              Clear message
