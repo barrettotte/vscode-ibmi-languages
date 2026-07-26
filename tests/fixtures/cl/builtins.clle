@@ -1,0 +1,63 @@
+/* Built-in functions and symbolic operators.                         */
+/* Member: CLBIF                                                      */
+/* Compilable: no - an exhaustive list, not a working program.        */
+/* Source: IBM i 7.5 CL overview and concepts, expressions.           */
+/* Retrieved: 2026-07-26                                              */
+
+             PGM
+
+             DCL        VAR(&C)   TYPE(*CHAR) LEN(50)
+             DCL        VAR(&N)   TYPE(*DEC)  LEN(15 5)
+             DCL        VAR(&P)   TYPE(*PTR)
+             DCL        VAR(&I)   TYPE(*INT)  LEN(4)
+             DCL        VAR(&U)   TYPE(*UINT) LEN(4)
+
+/* Every built-in function documented for CL expressions. */
+             CHGVAR     VAR(&N) VALUE(%BINARY(&C 1 4))
+             CHGVAR     VAR(&N) VALUE(%BIN(&C 1 4))
+             CHGVAR     VAR(&C) VALUE(%CHAR(&N))
+             CHGVAR     VAR(&N) VALUE(%CHECK('01' &C))
+             CHGVAR     VAR(&N) VALUE(%CHECKR('01' &C))
+             CHGVAR     VAR(&N) VALUE(%DEC(&C 15 5))
+             CHGVAR     VAR(&I) VALUE(%INT(&C))
+             CHGVAR     VAR(&N) VALUE(%LEN(&C))
+             CHGVAR     VAR(&C) VALUE(%LOWER(&C))
+             CHGVAR     VAR(&N) VALUE(%PARMS)
+             CHGVAR     VAR(&N) VALUE(%SCAN('AB' &C))
+             CHGVAR     VAR(&N) VALUE(%SIZE(&C))
+             CHGVAR     VAR(&C) VALUE(%SUBSTRING(&C 1 10))
+             CHGVAR     VAR(&C) VALUE(%SST(&C 1 10))
+             CHGVAR     VAR(&C) VALUE(%SWITCH(1XXXXXXX))
+             CHGVAR     VAR(&C) VALUE(%TRIM(&C))
+             CHGVAR     VAR(&C) VALUE(%TRIML(&C))
+             CHGVAR     VAR(&C) VALUE(%TRIMR(&C))
+             CHGVAR     VAR(&U) VALUE(%UINT(&C))
+             CHGVAR     VAR(&U) VALUE(%UNS(&C))
+             CHGVAR     VAR(&C) VALUE(%UPPER(&C))
+             CHGVAR     VAR(&P) VALUE(%ADDRESS(&C))
+             CHGVAR     VAR(&P) VALUE(%ADDR(&C))
+             CHGVAR     VAR(&N) VALUE(%OFFSET(&P))
+             CHGVAR     VAR(&N) VALUE(%OFS(&P))
+
+/* Symbolic operators. */
+             IF         COND(&N *EQ 1) THEN(RETURN)
+             IF         COND(&N *NE 1) THEN(RETURN)
+             IF         COND(&N *GT 1) THEN(RETURN)
+             IF         COND(&N *LT 1) THEN(RETURN)
+             IF         COND(&N *GE 1) THEN(RETURN)
+             IF         COND(&N *LE 1) THEN(RETURN)
+             IF         COND(&N *NG 1) THEN(RETURN)
+             IF         COND(&N *NL 1) THEN(RETURN)
+             IF         COND(&N *EQ 1 *AND &C *EQ 'x') THEN(RETURN)
+             IF         COND(&N *EQ 1 *OR &C *EQ 'x') THEN(RETURN)
+             IF         COND(*NOT &N *EQ 1) THEN(RETURN)
+             CHGVAR     VAR(&C) VALUE('a' *CAT 'b')
+             CHGVAR     VAR(&C) VALUE('a' *TCAT 'b')
+             CHGVAR     VAR(&C) VALUE('a' *BCAT 'b')
+
+/* Arithmetic and comparison operators. */
+             CHGVAR     VAR(&N) VALUE(&N + 1 - 2 * 3 / 4)
+             IF         COND(&N >= 1 *AND &N <= 9) THEN(RETURN)
+             IF         COND(&N = 1 *OR &N > 2 *OR &N < 3) THEN(RETURN)
+
+             ENDPGM

@@ -1,0 +1,70 @@
+/********************************************************************/
+/* A representative selection of MI instructions.                   */
+/* Member: MIINST                                                   */
+/* Compilable: no - an instruction sampler, not a working program.  */
+/* Source: IBM i 7.5 Machine Interface functional reference.        */
+/* Retrieved: 2026-07-26                                            */
+/********************************************************************/
+DCL     DD         A            PKD(15,5)  AUTO;
+DCL     DD         B            PKD(15,5)  AUTO;
+DCL     DD         C            PKD(15,5)  AUTO;
+DCL     SPCPTR     P@           AUTO;
+
+/* Computation.                                                     */
+        ADDN(S)    C, A, B;
+        SUBN(S)    C, A, B;
+        MULT(S)    C, A, B;
+        DIV(S)     C, A, B;
+        NEG        C, A;
+        CPYNV      C, A;
+
+/* Comparison and branching.                                        */
+        CMPNV(B)   A, B / EQ(EQUAL), LO(LOWER), HI(HIGHER);
+        CMPBLA(B)  A, B / EQ(SAME);
+        B          DONE;
+
+/* Character string handling.                                       */
+        CPYBLA     C, A;
+        CPYBLAP    C, A;
+        CATB       C, A, B;
+        SCANB      C, A, B;
+        XLATEB     C, A, B;
+
+/* Pointer handling.                                                */
+        SETSPP     P@, A;
+        SETSPPO    P@, P@, 16;
+        CMPPTRA(B) P@, P@ / EQ(SAME);
+
+/* Program control.                                                 */
+        CALLX      OBJ@, PARM_LIST, *NULL;
+        RTX        *NULL;
+
+EQUAL:  NOP;
+LOWER:  NOP;
+HIGHER: NOP;
+SAME:   NOP;
+DONE:   RTX        *NULL;
+
+/* Atomic instructions, added in IBM i 7.5.                         */
+        SYNCADDF   C, A, B;
+        SYNCSUBF   C, A, B;
+        SYNCANDF   C, A, B;
+        SYNCORF    C, A, B;
+        SYNCXORF   C, A, B;
+        SYNCNANDF  C, A, B;
+        SYNCFADD   C, A, B;
+        SYNCFAND   C, A, B;
+        SYNCFNAND  C, A, B;
+        SYNCFOR    C, A, B;
+        SYNCFSUB   C, A, B;
+        SYNCFXOR   C, A, B;
+        SYNCCMPSW  C, A, B;
+        SYNCBCMPSW C, A, B;
+        SYNCSTO    C, A;
+        SYNCCLR    C;
+
+/* Materialize instructions.                                        */
+        MATOBJLK   C, OBJ@;
+        MATQMSG    C, OBJ@;
+
+PEND;
