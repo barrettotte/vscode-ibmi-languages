@@ -1,0 +1,118 @@
+     O*
+     O* RPG/400 output specifications: record and field lines, every
+     O* edit code, all four end position forms, constants and edit words.
+     O*
+     O* Member: RPGOUT   Compilable: no (output only, no files)
+     O* Source: RPG/400 Reference SC09-1817, chapters 10 and 14
+     O*         (Tables 31-34, 38).
+     O* Retrieved: 2026-07-26
+     O*
+     O* Record line: 7-14 file  14-16 AND/OR  15 type  16-18 ADD/DEL
+     O* 16 fetch overflow  17 space before  18 space after
+     O* 19-20 skip before  21-22 skip after  23-31 indicators
+     O* 32-37 EXCPT name
+     O* Field line: 32-37 field  38 edit code  39 blank after
+     O* 40-43 end position  44 format  45-70 constant or edit word
+     O* 75-80 comments, shown here in lower case
+     O*  1         2         3         4         5         6         7         8
+     O*8901234567890123456789012345678901234567890123456789012345678901234567890
+     O*
+     O* Record types: H heading, D detail, T total, E exception.
+     OQSYSPRT H   01   1P                                                 head
+     O                                   35 'CUSTOMER REPORT'
+     O                         PAGE  Z   60
+     O                         UDATE Y   75
+     OQSYSPRT D  1     01
+     O                         CUSTNM    20
+     O                         ORDAMT1   35
+     OQSYSPRT T 12     L1
+     O                                   20 'LEVEL 1 TOTAL'
+     O                         LVLTOTJB  35
+     OQSYSPRT E  1             HEADNG
+     O                                   20 'EXCEPTION LINE'
+     O*
+     O* AND and OR relate conditioning indicators across lines.
+     OQSYSPRT D        20
+     O       AND       21N22
+     O       OR        23 MR LR
+     O                         STATUS    10
+     O*
+     O* Position 16 is F to fetch overflow on a printer file, or R
+     O* to release a workstation device after output. An overflow
+     O* indicator cannot appear on the same line as fetch overflow.
+     OQSYSPRT DF 1
+     O                         DETAIL    30
+     OCUSTDSP DR
+     O                         DETAIL    30
+     O*
+     O* Disk output: ADD writes a new record, DEL deletes one.
+     OORDHDR  DADD     30
+     O                         ORDNBR     6
+     O                         ORDAMT    11P
+     OORDHDR  DDEL     31
+     O*
+     O* Spacing and skipping: 17 before, 18 after, 19-20 skip
+     O* before, 21-22 skip after.
+     OQSYSPRT D 03
+     OQSYSPRT D 211260
+     O*
+     O* Every edit code. 1-4 and A-D, J-Q are combination codes,
+     O* 5-9 are user defined, X, Y and Z are the simple codes.
+     OQSYSPRT D  1
+     O                         AMOUNT1   30 'edit 1'
+     O                         AMOUNT2   30 'edit 2'
+     O                         AMOUNT3   30 'edit 3'
+     O                         AMOUNT4   30 'edit 4'
+     O                         AMOUNTA   30 'edit A'
+     O                         AMOUNTB   30 'edit B'
+     O                         AMOUNTC   30 'edit C'
+     O                         AMOUNTD   30 'edit D'
+     O                         AMOUNTJ   30 'edit J'
+     O                         AMOUNTK   30 'edit K'
+     O                         AMOUNTL   30 'edit L'
+     O                         AMOUNTM   30 'edit M'
+     O                         AMOUNTN   30 'edit N'
+     O                         AMOUNTO   30 'edit O'
+     O                         AMOUNTP   30 'edit P'
+     O                         AMOUNTQ   30 'edit Q'
+     O                         AMOUNT5   30 'user 5'
+     O                         AMOUNT6   30 'user 6'
+     O                         AMOUNT7   30 'user 7'
+     O                         AMOUNT8   30 'user 8'
+     O                         AMOUNT9   30 'user 9'
+     O                         AMOUNTX   30 'simple X'
+     O                         AMOUNTY   30 'simple Y'
+     O                         AMOUNTZ   30 'simple Z'
+     O*
+     O* End position: nnnn, +nnn and -nnn displacements, and K1-K8
+     O* for the format name length of a program described WORKSTN.
+     O                         FIELDA     8
+     O                         FIELDB  +002
+     O                         FIELDC  -003
+     O                         FIELDD  1024
+     OCUSTDSP D
+     O                                   K6 'CUSPMT'
+     O                                   K1 'ORDFMT'
+     O                                   K8 'DTLFMT'
+     O*
+     O* Data format in position 44: blank zoned, P packed,
+     O* B binary, L and R signed left or right.
+     OTAPEOUT D
+     O                         ZONFLD    10
+     O                         PCKFLD    15P
+     O                         BINFLD    19B
+     O                         LFTFLD    27L
+     O                         RGTFLD    35R
+     O*
+     O* Edit words are quoted in 45-70. *PLACE repeats the fields
+     O* already written, and *ALL writes every field of a record.
+     OQSYSPRT D  1
+     O                         ORDAMT    30 '    0.  &CR'
+     O                         ORDQTY    45 '0    - '
+     O                         PHONE     60 '0(   )    -    '
+     O                         *PLACE    80
+     OORDHDR  DADD
+     O                         *ALL
+     O*
+     O* A page and line number in 1-5 does not disturb the columns.
+07010O                         SEQFLDZ   20                               seq

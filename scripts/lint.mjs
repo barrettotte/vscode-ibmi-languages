@@ -413,7 +413,7 @@ for (const entry of grammars) {
 // Remove a language from this list when its fixtures land. Doing so turns both
 // checks on for it, which is the point: the list only ever shrinks, and a
 // language cannot be called done while either check would fail.
-const PENDING_LANGUAGES = new Set(["pnlgrp", "rpg", "rpgle"]);
+const PENDING_LANGUAGES = new Set(["pnlgrp", "rpgle"]);
 
 // =================================== DOCUMENTATION ==================================
 //

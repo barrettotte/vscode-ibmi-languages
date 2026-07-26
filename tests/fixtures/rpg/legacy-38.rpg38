@@ -1,0 +1,54 @@
+00010 *
+00020 * RPG III in the System/38 environment. The specifications are
+00030 * the same; the /COPY member is named filename.library,member
+00040 * instead of library/filename,member.
+00050 *
+00060 * Member: RPG38   Compilable: complete program, but not built;
+00070 *         its files and /COPY member are not defined here
+00080 * Source: RPG/400 Reference SC09-1817, chapter 1 (/COPY) and the
+00090 *         System/38 environment notes in chapters 4 and 5.
+00100 * Retrieved: 2026-07-26
+00110 *
+00120 /TITLE System/38 environment sample
+00130 /COPY QRPGSRC.PAYLIB,PAYFLDS
+00140H        1   M D                                                     PAY38
+00150F*
+00160F* Files.
+00170FPAYMAST IP  F     128  6AI     1 DISK
+00180FPAYRPT  O   F     132     OV     PRINTER
+00190E*
+00200E* A compile-time table.
+00210E                    TAXCDE  1   5  3  A            Tax codes
+00220I*
+00230I* Input.
+00240IPAYMAST AA1 01   1 CP
+00250I                                        1   6 EMPNBRL1
+00260I                                        7  26 EMPNAM
+00270I                                    P  27  312GROSS       20  22
+00280C*
+00290C* Calculations.
+00300C                     Z-ADD*ZERO     NET     92
+00310C           EMPNBR    LOKUPTAXCDE               30  31
+00320C           *IN31     IFEQ *ON
+00330C           GROSS     MULT TAXRAT    TAX     92
+00340C           TAX       SUB  GROSS     NET
+00350C                     ELSE
+00360C                     Z-ADDGROSS     NET
+00370C                     ENDIF
+00380CLR                   SETON                         LRLast record
+00390O*
+00400O* Output.
+00410OPAYRPT  H   01  1P
+00420O                                   40 'PAYROLL REGISTER'
+00430OPAYRPT  D  1     01
+00440O                         EMPNBR     6
+00450O                         EMPNAM    30
+00460O                         NET   J   45
+00470OPAYRPT  T 1      LR
+00480O                                   40 'END OF REPORT'
+**    Tax codes, one entry per record
+010
+025
+030
+045
+060

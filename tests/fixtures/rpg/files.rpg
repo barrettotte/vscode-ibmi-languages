@@ -1,0 +1,80 @@
+     F*
+     F* RPG/400 file description specifications: program described and
+     F* externally described files, every device, and continuation lines.
+     F*
+     F* Member: RPGFIL   Compilable: no (declarations only, no cycle)
+     F* Source: RPG/400 Reference SC09-1817, chapter 5 (Tables 12, 16, 17).
+     F* Retrieved: 2026-07-26
+     F*
+     F* 15 type  16 designation  17 end of file  18 sequence
+     F* 19 format  24-27 record length  28 limits  29-30 key length
+     F* 31 address type  32 organization  33-34 overflow indicator
+     F* 35-38 key start  39 extension code  40-46 device
+     F* 53 continuation  66 file addition  71-72 file condition
+     F* 75-80 comments, shown here in lower case
+     F*  1         2         3         4         5         6         7         8
+     F*8901234567890123456789012345678901234567890123456789012345678901234567890
+     F*
+     F* Position 6 of a compiler directive repeats the specification
+     F* letter it sits among, which keeps the listing from spacing.
+     F/SPACE 1
+     F/EJECT
+     F*
+     F* Externally described files (E in position 19).
+     FCUSTMASTIF  E           K        DISK
+     FORDDTL  UF  E           K        DISK                      A
+     FCUSTDSP CF  E                    WORKSTN
+     FINVRPT  O   E                    PRINTER
+     F*
+     F* Program described files (F in position 19).
+     FORDHDR  IPEAF     256  8AI     1 DISK
+     FORDSEC  IS  F     128  5PI    17 DISK
+     FQSYSPRT O   F     132     OV     PRINTER
+     FOVFRPT  O   F     132     OA     PRINTER
+     FTAPEOUT O   F      80            SEQ
+     F*
+     F* Limits processing by a record address file, and the record
+     F* address file itself (R in position 16).
+     FPARTMASTIF  F     200L10AI     1 DISK
+     FPARTRAF IR  F      10   A        DISK
+     F*
+     F* Extension code E names an array or table file, L names a
+     F* line counter specification.
+     FTAXTBL  IT  F      10           EDISK
+     FRPTFILE O   F     132           LPRINTER
+     F*
+     F* A SPECIAL device names its own routine in positions 54-59.
+     FSPCLIN  IF  F      80            SPECIAL       SPCRTN
+     F*
+     F* File addition (66), file condition (71-72), comment (75-80).
+     FAUDITLOGOF  E                    DISK                      A    U1  audit
+     FARCHIVE IF  E           K        DISK                           UC
+     FTESTFILEIF  E           K        DISK                           U8
+     F*
+     F* Continuation lines carry K in position 53. The option goes in
+     F* 54-59 and its argument in 60-67.
+     FCUSTDSP CF  E                    WORKSTN
+     F                                              KINFDS DSPFDS
+     F                                              KINFSR *PSSR
+     F                                              KNUM          4
+     F                                              KID    DEVICE
+     F                                              KIND         99
+     F                                              KSAVDS SAVEDS
+     F                                              KPASS  *NOIND
+     F                                              KSLN   STRLIN
+     F                                        SFLRRNKSFILE SFLREC
+     F            ORDERHDR                          KRENAMEORDHDRR
+     F            ORDERTRL                          KIGNORE
+     F                                              KPLIST SPCPLST
+     FINVMAST UF  E           K        DISK
+     F                                              KCOMIT                commit
+     F                                              KRECNO RRN
+     FRPTPRT  O   F     132            PRINTER
+     F                                              KPRTCTLPRTDS
+     F*
+     F* An option using only 54-65 may sit on the main line itself.
+     FJRNFILE UF  E           K        DISK         KCOMIT
+     F*
+     F* A page and line number in 1-5 does not disturb the columns.
+02010FSEQFILE IF  E           K        DISK                               seq
+02020F                                              KINFDS SEQFDS         seq

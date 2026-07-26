@@ -1,0 +1,104 @@
+     I*
+     I* RPG/400 input specifications: record identification codes, field
+     I* descriptions, data structures, subfields and named constants.
+     I*
+     I* Member: RPGINP   Compilable: no (declarations only, no cycle)
+     I* Source: RPG/400 Reference SC09-1817, chapter 8 (Tables 21-29)
+     I*         and chapter 3 (indicator rules).
+     I* Retrieved: 2026-07-26
+     I*
+     I* Record identification: 7-14 file  14-16 AND/OR  15-16 sequence
+     I* 17 number  18 option  19-20 record identifying indicator
+     I* 21-27, 28-34, 35-41 record identification codes
+     I* Field description: 43 format  44-47 from  48-51 to  52 decimals
+     I* 53-58 name  59-60 control  61-62 match  63-64 relation
+     I* 65-70 field indicators (plus, minus, zero or blank)
+     I* 75-80 comments, shown here in lower case
+     I*  1         2         3         4         5         6         7         8
+     I*8901234567890123456789012345678901234567890123456789012345678901234567890
+     I*
+     I* Program described file. A record identification code is a
+     I* position, an optional N, C/Z/D, and the character to match.
+     IORDHDR  AA1 01   1 CH
+     I       OR   02   1 CD
+     I       AND       2NCX
+     I            03   1 CT   2 Z9  80ND*                                 trlr
+     I*
+     I* Sequence checking uses two digits in 15-16 and 1 or N in 17.
+     IPAYTRN  011O10   1 CA
+     I        02NO11   1 CB
+     I*
+     I* Record identifying indicators may be 01-99, H1-H9, L1-L9,
+     I* LR, U1-U8 or RT. Look-ahead uses ** in 19-20.
+     ICTLFILE     L1   1 C1
+     I            H1   1 C2
+     I            LR   1 C9
+     I            U1   1 CU
+     I            RT   1 CR
+     I            **   1 CL                                               lookah
+     I*
+     I* The identifying character in 27 may be a blank, as in
+     I* position 1 is not blank. Storing source as a text file
+     I* strips it, so the entry ends at position 26.
+     IINVHDR  NS  01   1NC
+     I        NS  02   1 C
+     I*
+     I* Field descriptions. Position 43 gives the internal format:
+     I* blank zoned, P packed, B binary, L and R signed left or right.
+     I                                        1   6 ORDNBRL1              key
+     I                                        7  26 CUSTNM
+     I                                    P  27  312ORDAMT      202122
+     I                                    B  32  350ORDQTY    01
+     I                                    L  36  422DISCNT        30
+     I                                    R  43  492FRIGHT
+     I                                       50  55 ORDDAT  M1
+     I                                       56  61 SHPDAT  M2MR
+     I                                       62  62 STATUS    RT    99
+     I*
+     I* Externally described file: only the record format name in
+     I* 7-14, and renamed fields in 21-30 with the program name in
+     I* 53-58.
+     ICUSTREC     20
+     I              CUSTOMERNAME                    CUSTNM
+     I              CUSTOMERBAL                     CUSTBLL2    404142
+     I*
+     I* Data structures. Position 17 E means externally described,
+     I* 18 is I initialize, S program status, or U data area.
+     IORDDS       DS                             64                       order
+     I                                        1   6 DSORD
+     I                                        7  26 DSCUST
+     I                                    P  27  312DSAMT
+     IINITDS     IDS                             20
+     I I            'PENDING'                 1  10 DSSTAT
+     I I            0                        11  200DSCNT
+     IMULTDS      DS                         12  30                       occurs
+     I                                        1  10 MDNAME
+     I                                    P  11  152MDAMT
+     IEXTDS     E DSCUSTMAST                                              extds
+     I              CUSTOMERNAME                    EXNAME
+     IPSDS       SDS                                                      status
+     I                                        1  10 PSPGM
+     I                                      254 263 PSSTAT
+     ILDADS      UDS                            256                       lda
+     I                                        1  10 LDACO
+     I*
+     I* Named constants: the literal in 21-42, C in 43, name in
+     I* 53-58. A constant continues on the next line when a hyphen
+     I* is coded in place of the closing quote. On such a line the
+     I* literal has no closing quote, so it runs to the end of the
+     I* line and takes the C in 43 and the name in 53-58 with it.
+     I              'PAYROLL SYSTEM'      C         TITLE
+     I              12                    C         MAXTRY
+     I              3.14159               C         PI
+     I              X'FF'                 C         HIBYTE
+     I              *BLANKS               C         EMPTY
+     I              'ABCDEF-              C         CHARCN
+     I              'GHIJK'
+     I              -4096                 C         NEGCN
+     I              123456-               C         NUMCN
+     I              789
+     I              X'0102-               C         HEXCN
+     I              '0304'
+     I*
+     I* A page and line number in 1-5 does not disturb the columns.
+05010I                                        1  10 SEQFLD                seq

@@ -1,0 +1,58 @@
+      *
+      * RPG/400 control specification, comment lines, and the four
+      * compiler directives.
+      *
+      * Member: RPGCTL   Compilable: no (control specification and
+      *         compiler directives only)
+      * Source: RPG/400 Reference SC09-1817, chapter 4 (Table 11) and
+      *         chapter 1 (compiler directive statements).
+      * Retrieved: 2026-07-26
+      *
+      * Compiler directives occupy positions 7-12 (/COPY is 7-11).
+      * Position 6 may repeat the preceding specification letter.
+      /TITLE Payroll register - security class 2
+     H/TITLE Title after an H in position 6
+      /EJECT
+      /SPACE 3
+      /SPACE 112
+      /COPY QRPGSRC,PAYCONST
+      /COPY PAYLIB/QRPGSRC,PAYFLDS
+      /COPY QRPGSRC,PAYRTN                  ignored text
+      *
+      * Comment lines carry an asterisk in position 7.
+      * A comment may also follow the specification letter.
+     H* Positions 1-5 hold the page and line number.
+     H*  1         2         3         4         5         6         7         8
+     H*8901234567890123456789012345678901234567890123456789012345678901234567890
+     H*
+     H* A control specification with every entry left to default.
+     H
+     H*
+     H* 15  debug        1 generates DEBUG and DUMP object code
+     H* 18  currency     any char but 0 * , . & - C R
+     H* 19  date format  M month/day/year  D day/month/year
+     H*                  Y year/month/day
+     H* 20  date edit    separator character, & means blank
+     H* 21  decimal      I or J comma notation, D period notation
+     H        1  #M/D
+     H            D-I
+     H            Y&J
+     H*
+     H* 26  alternate collating sequence   S
+     H* 41  forms alignment                1
+     H* 43  file translation               F
+     H* 57  transparency check             1
+     H* 75-80 program identification
+     H                   S              1 F             1                 PAYROL
+     H*
+     H* Every entry at once, as SEU prompts them.
+     H        1  $M/D    S              1 F             1                 PAYROL
+      *
+      * A page and line number in positions 1-5 is ignored by the
+      * compiler and is greyed out as gutter text.
+01010H        1   M                                                       PAYROL
+01020 /EJECT
+01030 /SPACE 2
+01040 /TITLE Numbered title line
+01050 /COPY QRPGSRC,PAYCONST
+01060H* A numbered comment line.
