@@ -1,0 +1,37 @@
+     A* Subfile record formats and their keywords.
+     A* Member: DSPSFL   Compilable: yes
+     A* Source: IBM i 7.5 DDS for display files, subfile keywords.
+     A* Retrieved: 2026-07-25
+     A*
+     A* The subfile record holds one row of the list.
+00010A          R CUSTSFL                   SFL
+00020A            SELECT         1A  B 10  2
+00030A            CUSTNO         6S 0O    +2
+00040A            CUSTNAME      30A  O    +2
+     A*
+     A* The subfile control record governs how the list is displayed.
+00050A          R CUSTCTL                   SFLCTL(CUSTSFL)
+00060A                                      SFLSIZ(0010)
+00070A                                      SFLPAG(0009)
+00080A  31                                  SFLDSP
+00090A  32                                  SFLDSPCTL
+00100A  33                                  SFLCLR
+00110A  34                                  SFLEND(*MORE)
+00120A                                      SFLRCDNBR(CURSOR)
+00130A                                      OVERLAY
+     A*
+     A* Other subfile keywords.
+00140A                                      SFLDROP(CF05)
+00150A                                      SFLFOLD(CF05)
+00160A                                      SFLLIN(0002)
+00170A                                      SFLMSG('No records found' 40)
+00180A                                      SFLMSGID(USR0001 QGPL/MYMSGF 41)
+00190A                                      SFLMSGKEY
+00200A                                      SFLMSGRCD(24)
+00210A                                      SFLNXTCHG
+00220A                                      SFLINZ
+00230A                                      SFLRNA
+00240A                                      SFLCSRRRN(&RRNFLD)
+00250A                                      SFLSCROLL(&SCRFLD)
+00260A                                      SFLMODE(&MODEFLD)
+00270A                                      SFLENTER(CF06)

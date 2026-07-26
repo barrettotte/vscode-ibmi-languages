@@ -1,0 +1,132 @@
+     A* Enumerated keyword values: DSPATR, COLOR, CHECK, COMP.
+     A* Every value in each closed set appears, so a gap in one of the
+     A* grammar's lists shows up as an unscoped value in the snapshot.
+     A* Member: DSPATTR   Compilable: yes
+     A* Source: IBM i 7.5 DDS for display files. Retrieved: 2026-07-25
+     A*
+     A* DSPATR display attributes.
+00010A          R ATTRS
+00020A            ATBL           5A  B     2DSPATR(BL)
+00030A            ATCS           5A  B     2DSPATR(CS)
+00040A            ATHI           5A  B     2DSPATR(HI)
+00050A            ATND           5A  B     2DSPATR(ND)
+00060A            ATPC           5A  B     2DSPATR(PC)
+00070A            ATRI           5A  B     2DSPATR(RI)
+00080A            ATUL           5A  B     2DSPATR(UL)
+00090A            ATMDT          5A  B     2DSPATR(MDT)
+00100A            ATOID          5A  B     2DSPATR(OID)
+00110A            ATPR           5A  B     2DSPATR(PR)
+00120A            ATSP           5A  B     2DSPATR(SP)
+     A* more than one attribute may be given
+00130A            ATMULTI        5A  B     2DSPATR(HI UL RI)
+     A*
+     A* COLOR. The display file set has WHT and, unlike printer files,
+     A* neither BLK nor BRN.
+00140A          R COLORS
+00150A                                     2'BLU' COLOR(BLU)
+00160A                                     2'GRN' COLOR(GRN)
+00170A                                     2'PNK' COLOR(PNK)
+00180A                                     2'RED' COLOR(RED)
+00190A                                     2'TRQ' COLOR(TRQ)
+00200A                                     2'WHT' COLOR(WHT)
+00210A                                     2'YLW' COLOR(YLW)
+     A*
+     A* CHECK validity-checking codes.
+00220A          R CHECKS
+00230A            CKAB           8A  B     2CHECK(AB)
+00240A            CKER           8A  B     2CHECK(ER)
+00250A            CKFE           8A  B     2CHECK(FE)
+00260A            CKLC           8A  B     2CHECK(LC)
+00270A            CKM10          8A  B     2CHECK(M10)
+00280A            CKM10F         8A  B     2CHECK(M10F)
+00290A            CKM11          8A  B     2CHECK(M11)
+00300A            CKM11F         8A  B     2CHECK(M11F)
+00310A            CKME           8A  B     2CHECK(ME)
+00320A            CKMF           8A  B     2CHECK(MF)
+00330A            CKRB           8A  B     2CHECK(RB)
+00340A            CKRL           8A  B     2CHECK(RL)
+00350A            CKRLTB         8A  B     2CHECK(RLTB)
+00360A            CKRZ           8A  B     2CHECK(RZ)
+00370A            CKVN           8A  B     2CHECK(VN)
+00380A            CKVNE          8A  B     2CHECK(VNE)
+00390A            CKMULTI        8A  B     2CHECK(ME RZ)
+     A*
+     A* COMP and CMP relational operators.
+00400A          R COMPARES
+00410A            CPEQ           5S 0B     2COMP(EQ 100)
+00420A            CPNE           5S 0B     2COMP(NE 100)
+00430A            CPLT           5S 0B     2COMP(LT 100)
+00440A            CPNL           5S 0B     2COMP(NL 100)
+00450A            CPGT           5S 0B     2COMP(GT 100)
+00460A            CPNG           5S 0B     2COMP(NG 100)
+00470A            CPLE           5S 0B     2COMP(LE 100)
+00480A            CPGE           5S 0B     2COMP(GE 100)
+00490A            CPSYN          5S 0B     2CMP(GT 0)
+     A*
+     A* EDTCDE: 1-4, A-D, J-Q, W-Z, plus 5-9 user-defined. Valid only
+     A* for fields with S or blank in position 35.
+09000A          R EDITS
+09010A            EDT1           9S 2O     2EDTCDE(1)
+09020A            EDT2           9S 2O     2EDTCDE(2)
+09030A            EDT3           9S 2O     2EDTCDE(3)
+09040A            EDT4           9S 2O     2EDTCDE(4)
+09050A            EDT5           9S 2O     2EDTCDE(5)
+09060A            EDT6           9S 2O     2EDTCDE(6)
+09070A            EDT7           9S 2O     2EDTCDE(7)
+09080A            EDT8           9S 2O     2EDTCDE(8)
+09090A            EDT9           9S 2O     2EDTCDE(9)
+09100A            EDTA           9S 2O     2EDTCDE(A)
+09110A            EDTB           9S 2O     2EDTCDE(B)
+09120A            EDTC           9S 2O     2EDTCDE(C)
+09130A            EDTD           9S 2O     2EDTCDE(D)
+09140A            EDTJ           9S 2O     2EDTCDE(J)
+09150A            EDTK           9S 2O     2EDTCDE(K)
+09160A            EDTL           9S 2O     2EDTCDE(L)
+09170A            EDTM           9S 2O     2EDTCDE(M)
+09180A            EDTN           9S 2O     2EDTCDE(N)
+09190A            EDTO           9S 2O     2EDTCDE(O)
+09200A            EDTP           9S 2O     2EDTCDE(P)
+09210A            EDTQ           9S 2O     2EDTCDE(Q)
+09220A            EDTW           9S 2O     2EDTCDE(W)
+09230A            EDTX           9S 2O     2EDTCDE(X)
+09240A            EDTY           9S 2O     2EDTCDE(Y)
+09250A            EDTZ           9S 2O     2EDTCDE(Z)
+     A* The optional second parameter is * for asterisk fill or a
+     A* floating currency symbol; neither is an enumerated value.
+09260A            EDTSTAR        9S 2O     2EDTCDE(J *)
+09270A            EDTCUR         9S 2O     2EDTCDE(1 $)
+     A*
+     A* CHGINPDFT input defaults. Accepts a list, so every value in
+     A* the list must be matched, not only the first.
+09280A          R INPDFTS
+09290A                                      CHGINPDFT(BL)
+09300A                                      CHGINPDFT(CS)
+09310A                                      CHGINPDFT(HI)
+09320A                                      CHGINPDFT(LC)
+09330A                                      CHGINPDFT(RI)
+09340A                                      CHGINPDFT(UL)
+09350A                                      CHGINPDFT(HI UL)
+09360A                                      CHGINPDFT(CS HI RI UL)
+     A* With no parameters it removes the underline.
+09370A                                      CHGINPDFT
+     A*
+     A* AUTO record advance. RAB and RAZ must match before RA.
+09380A          R AUTOADV
+09390A            AUTRA          5S 0B     2AUTO(RA)
+09400A            AUTRAB         5S 0B     2AUTO(RAB)
+09410A            AUTRAZ         5S 0B     2AUTO(RAZ)
+     A* A position entry in columns 42-44 may abut the keyword at 45.
+09300A            ABUT           9S 2O  2  2EDTCDE(Y)
+09310A            SPACED         9S 2O  3  2 EDTCDE(Y)
+     A* Six keywords take a colour or display attribute as the
+     A* sub-expression (*COLOR value) or (*DSPATR value) rather than
+     A* as COLOR(value) or DSPATR(value).
+09500A                                      CHCAVAIL((*COLOR RED))
+09510A                                      CHCSLT((*COLOR PNK) (*DSPATR RI))
+09520A                                      CHCUNAVAIL((*COLOR TRQ))
+09530A                                      MNUBARSEP((*COLOR BLU) +
+     A                                                (*DSPATR UL) (*CHAR '.'))
+09540A                                      WDWBORDER((*COLOR GRN) +
+     A                                                (*DSPATR RI))
+09550A                                      WDWTITLE((*TEXT 'Title') +
+     A                                               (*COLOR YLW) (*DSPATR HI))

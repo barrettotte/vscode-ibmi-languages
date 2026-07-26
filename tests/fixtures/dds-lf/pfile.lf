@@ -1,0 +1,42 @@
+     A* Simple (non-join) logical file: PFILE, field selection, keys.
+     A* Member: LFPFILE   Compilable: yes (given PERSON and PERSON2)
+     A* Source: IBM i 7.5 DDS for physical and logical files
+     A* Retrieved: 2026-07-25
+     A*
+     A* PFILE names the physical file this format is based on.
+00010A          R PERSFMT                   PFILE(PERSON)
+00020A            PERSONID
+00030A            LASTNAME
+00040A            AGE
+00050A          K LASTNAME
+     A*
+     A* PFILE may name several physical files sharing the format.
+00060A          R MULTIFMT                  PFILE(PERSON PERSON2)
+00070A            PERSONID
+00080A          K PERSONID
+     A*
+     A* Key ordering keywords apply to the preceding key field.
+00090A          R KEYFMT                    PFILE(PERSON)
+00100A            PERSONID
+00110A            LASTNAME
+00120A            AGE
+00130A          K LASTNAME
+00140A          K AGE                       DESCEND
+00150A          K PERSONID                  ABSVAL
+     A*
+     A* File-level keywords controlling the access path.
+00160A                                      UNIQUE
+00170A                                      FIFO
+00180A                                      DYNSLT
+00190A                                      REFACCPTH(PERSONLIB/PERSON)
+     A*
+     A* Field-level keywords.
+00200A          R FLDKWD                    PFILE(PERSON)
+00210A            NEWNAME                   RENAME(LASTNAME)
+00220A            FULLNAME                  CONCAT(FIRSTNAME LASTNAME)
+00230A            INITIAL                   SST(FIRSTNAME 1 1)
+00240A            AGE                       COLHDG('Age' 'Years')
+00250A            SALARY                    EDTCDE(J)
+00260A            BONUS                     EDTWRD('  $0.  ')
+00270A            NOTES                     TEXT('Free form notes')
+00280A            CODE                      ALIAS(CUSTOMER_CODE)

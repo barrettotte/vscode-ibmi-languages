@@ -1,0 +1,26 @@
+     A* Positional column boundaries for a DDS ICF file.
+     A* Member: ICFCOL   Compilable: yes (CRTICFF)
+     A* Source: IBM i 7.5 DDS for ICF files
+     A*   ibm.com/docs/en/i/7.5?topic=files-dds-icf
+     A* Retrieved: 2026-07-25
+     A*
+     A* cols 1-5 sequence, 6 form type, 7 comment marker
+00010A* a comment line uses * in column 7
+00020A*
+00030A* cols 7-16 conditioning indicators, 17 name type, 19-28 name
+00040A          R CATCHALL
+00050A            FLD1         132A
+     A* cols 30-34 length, 35 data type, 36-37 decimals, 38 usage
+00060A          R NUMERICS
+00070A            UNTCST         6S 2
+00080A            QTYONORDR      9B 0
+00090A            TOTAL          9B 0
+00100A            PGMNME        10A  P
+     A* col 7 A/O for AND/OR, col 8/11/14 N to negate an indicator
+00110A          R CONDS
+00120A  01                                  CONFIRM
+00130A N02                                  DETACH
+00140AA 03 04N05                            ALWWRT
+00150AO 06                                  RQSWRT
+     A* cols 45-80 functions, past col 80 is ignored by the compiler
+00160A          R LONGFUNC                  RECID(1 'H') CONFIRM

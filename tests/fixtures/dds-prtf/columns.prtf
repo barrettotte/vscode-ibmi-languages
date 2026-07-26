@@ -1,0 +1,28 @@
+     A* Positional column boundaries for a DDS printer file.
+     A* Member: PRTCOL   Compilable: yes (CRTPRTF)
+     A* Source: IBM i 7.5 DDS for printer files
+     A*   ibm.com/docs/en/i/7.5?topic=files-dds-printer
+     A* Retrieved: 2026-07-25
+     A*
+     A* col 17 name type R, cols 19-28 record or field name
+00010A          R HEADER                    TEXT('Two-line heading')
+     A* cols 30-34 length, 35 data type, 36-37 decimals, 38 usage O
+00020A            ACCOUNT        6S 0O  4  2
+00030A            CUSTNAME      30A  O    +2
+00040A            AMOUNT         9S 2O    +2
+00050A            ZONED          7Z  O    +2
+00060A            FLOATNUM       8F  O    +2
+     A* col 29 R draws the field definition from the referenced file
+00070A                                      REF(MLGREFP)
+00080A          R DETAIL
+00090A            ACTNUM    R           1  2
+     A* cols 39-41 line number, cols 42-44 position number
+00100A          R ABSPOS
+00110A                                  1 29'CUSTOMER MASTER FILE'
+00120A                                  2122'Page'
+     A* cols 7-16 conditioning indicators, col 7 A/O to AND/OR them
+00130A          R CONDS
+00140A  01                                 2'Conditioned constant'
+00150A N02                                  UNDERLINE
+00160AA 03 04N05                            HIGHLIGHT
+00170AO 06                                  SPACEA(2)

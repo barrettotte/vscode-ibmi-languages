@@ -1,0 +1,78 @@
+     A* Literals, hexadecimal constants, continuation, and enumerated
+     A* keyword values.
+     A* Member: LFCONST   Compilable: yes (given PERSON)
+     A* Source: IBM i 7.5 DDS for physical and logical files,
+     A*   keyword entries. Retrieved: 2026-07-25
+     A*
+00010A          R PERSFMT                   PFILE(PERSON)
+     A*
+     A* Quoted literals. A doubled apostrophe represents a single one.
+00020A            NOTES                     TEXT('Free form notes')
+00030A            OWNER                     TEXT('Customer''s own reference')
+00040A            AGE                       COLHDG('Age' 'Years')
+     A*
+     A* + continues a literal, discarding leading blanks.
+00050A            LONGTEXT                  TEXT('A description that runs +
+00060A                                      across two source lines')
+     A* - continues a literal, preserving leading blanks.
+00070A            KEEPSPACE                 TEXT('PRESERVED    -
+00080A                                           SPACING')
+     A*
+     A* Hexadecimal constants.
+00090A            HEXCMP                    COMP(EQ X'F1F2F3')
+00100A          S STATE                     VALUES(X'C1C2' X'C3C4')
+     A*
+     A* EDTCDE: 1-4, A-D, J-Q, W-Z, plus 5-9 user-defined.
+00110A          R EDITS                     PFILE(PERSON)
+00120A            EDT1                      EDTCDE(1)
+00130A            EDT2                      EDTCDE(2)
+00140A            EDT3                      EDTCDE(3)
+00150A            EDT4                      EDTCDE(4)
+00160A            EDT5                      EDTCDE(5)
+00170A            EDT6                      EDTCDE(6)
+00180A            EDT7                      EDTCDE(7)
+00190A            EDT8                      EDTCDE(8)
+00200A            EDT9                      EDTCDE(9)
+00210A            EDTA                      EDTCDE(A)
+00220A            EDTB                      EDTCDE(B)
+00230A            EDTC                      EDTCDE(C)
+00240A            EDTD                      EDTCDE(D)
+00250A            EDTJ                      EDTCDE(J)
+00260A            EDTK                      EDTCDE(K)
+00270A            EDTL                      EDTCDE(L)
+00280A            EDTM                      EDTCDE(M)
+00290A            EDTN                      EDTCDE(N)
+00300A            EDTO                      EDTCDE(O)
+00310A            EDTP                      EDTCDE(P)
+00320A            EDTQ                      EDTCDE(Q)
+00330A            EDTW                      EDTCDE(W)
+00340A            EDTX                      EDTCDE(X)
+00350A            EDTY                      EDTCDE(Y)
+00360A            EDTZ                      EDTCDE(Z)
+     A*
+     A* REFSHIFT: A, X, W, N, I, D, M for character fields;
+     A* S, Y, N, I, D for numeric fields.
+00370A          R SHIFTS                    PFILE(PERSON)
+00380A            SHIFTA                    REFSHIFT(A)
+00390A            SHIFTD                    REFSHIFT(D)
+00400A            SHIFTI                    REFSHIFT(I)
+00410A            SHIFTM                    REFSHIFT(M)
+00420A            SHIFTN                    REFSHIFT(N)
+00430A            SHIFTS                    REFSHIFT(S)
+00440A            SHIFTW                    REFSHIFT(W)
+00450A            SHIFTX                    REFSHIFT(X)
+00460A            SHIFTY                    REFSHIFT(Y)
+     A*
+     A* CHECK edit-check codes. More than one may be given.
+00470A          R CHECKS                    PFILE(PERSON)
+00480A            CHKAB                     CHECK(AB)
+00490A            CHKME                     CHECK(ME)
+00500A            CHKMF                     CHECK(MF)
+00510A            CHKM10                    CHECK(M10)
+00520A            CHKM11                    CHECK(M11)
+00530A            CHKVN                     CHECK(VN)
+00540A            CHKVNE                    CHECK(VNE)
+00550A            CHKMULTI                  CHECK(M10 VN)
+     A* CHECK accepts a list, so every code in it must be matched.
+09000A            CHK3                      CHECK(AB M10 VN)
+09010A            CHK4                      CHECK(ME MF VNE M11)

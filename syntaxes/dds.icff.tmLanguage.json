@@ -22,6 +22,7 @@
     "comments": {
       "patterns": [
         {
+          "comment": "Comment line: * in column 7. Columns 1-5 are the sequence number and column 6 the form type.",
           "name": "comment.line.dds.icff",
           "match": "^.{5}(.)(\\*).*"
         }
@@ -30,10 +31,12 @@
     "gutter": {
       "patterns": [
         {
+          "comment": "Sequence number area, columns 1-5. Not source; scoped as a comment so it recedes visually.",
           "name": "comment.gutter",
           "match": "^.{1,5}"
         },
         {
+          "comment": "Anything past column 80 is ignored by the DDS compiler.",
           "name": "comment.block.line.dds",
           "begin": "(?<=^.{80})",
           "end": "\n"
@@ -43,99 +46,143 @@
     "constants": {
       "patterns": [
         {
+          "comment": "Special values such as *ISO or *BLANK. Anchored to the functions area (column 45 onward); a special value cannot appear in the name or attribute columns.",
           "name": "constant.language.dds.icff",
-          "match": "(\\*)[a-zA-Z][a-zA-Z0-9]*"
+          "match": "(?<=(.{44}))(\\*)[a-zA-Z][a-zA-Z0-9]*"
         },
         {
+          "comment": "Column 7: A or O, joining this line's conditioning indicators to the previous line's with AND or OR.",
           "name": "constant.language.dds.icff.andor",
           "match": "(?i)(?<=^.{5}(A|\\s).{0})(A|O)"
         },
         {
+          "comment": "Conditioning indicator 1, columns 8-10. Column 8 is N to negate.",
           "name": "constant.language.dds.icff.n01",
           "match": "(?i)(?<=^.{5}(A|\\s).{1})(N|\\s)[0-9]{2}"
         },
         {
+          "comment": "Conditioning indicator 2, columns 11-13.",
           "name": "constant.language.dds.icff.n02",
           "match": "(?i)(?<=^.{5}(A|\\s).{4})(N|\\s)[0-9]{2}"
         },
         {
+          "comment": "Conditioning indicator 3, columns 14-16.",
           "name": "constant.language.dds.icff.n03",
           "match": "(?i)(?<=^.{5}(A|\\s).{7})(N|\\s)[0-9]{2}"
         },
         {
+          "comment": "Column 17, the name type. R marks a record format, H a file-level help specification.",
           "name": "constant.language.dds.icff.nameType",
           "match": "(?i)(?<=^.{5}(A|\\s).{10})(R|H)"
         },
         {
+          "comment": "Column 29: R means this field's attributes are referenced from another file via REF or REFFLD.",
           "name": "constant.language.dds.icff.ref",
           "match": "(?i)(?<=^.{5}(A|\\s).{22})(R)"
         },
         {
+          "comment": "Field length, columns 30-34.",
           "name": "constant.language.dds.icff.len",
           "match": "(?i)(?<=^.{5}(A|\\s).{23})[0-9|\\s]{5}"
         },
         {
+          "comment": "Column 35, the data type: P packed, S zoned, B binary, F floating point, A character, O DBCS-open.",
           "name": "constant.language.dds.icff.dataType",
           "match": "(?i)(?<=^.{5}(A|\\s).{28})(P|S|B|F|A|O)"
         },
         {
+          "comment": "Decimal positions, columns 36-37.",
           "name": "constant.language.dds.icff.decpos",
           "match": "(?i)(?<=^.{5}(A|\\s).{29})[0-9|\\s]{2}"
         },
         {
+          "comment": "Column 38, field usage. P marks a program-to-system field, which supplies a value to a keyword such as EVOKE.",
           "name": "constant.language.dds.icff.usage",
           "match": "(?i)(?<=^.{5}(A|\\s).{31})(B|P)"
         },
         {
-          "name": "constant.language.dds.icff.locline",
-          "match": "(?i)(?<=^.{5}(A|\\s).{32})([0-9]|\\s){3}"
-        },
-        {
+          "comment": "Numeric literals in keyword parameters. Anchored to the functions area (column 45 onward), otherwise a digit inside a field name such as #CBX#3 is highlighted as a constant. The length, decimal, indicator and location columns have their own rules.",
           "name": "constant.numeric.dds.icff",
-          "match": "\\b([0-9]+)\\b"
+          "match": "(?<=(.{44}))\\b([0-9]+)\\b"
         }
       ]
     },
     "keywords": {
       "patterns": [
         {
+          "comment": "Column 6, the form type. Always A for DDS.",
           "name": "keyword.other.dds.icff.spec",
           "match": "(?i)(?<=^.{5})[A]"
         },
         {
+          "comment": "Continuation character joining this line to the next. Both + and - are valid; + discards the leading blanks of the continuation line and - preserves them. Anchored to end of line so a hyphen or plus inside a keyword parameter is unaffected.",
           "name": "keyword.other.dds.icff",
-          "match": "\\+"
+          "match": "[+-](?=\\s*$)"
         },
         {
-          "name": "keyword.other.dds.icff.func",
-          "match": "((?i)(C(A|F)))[0-9]{2}"
-        },
-        {
+          "comment": "Keyword set for the functions area. The first lookbehind requires at least 44 characters before the match, so a keyword is found anywhere from column 45 onward and one line may carry several. The second requires the match to begin exactly at column 45 or to follow a non-word character: a plain \\b is wrong here, because a keyword starting at column 45 is valid even when column 44 holds a digit, as it does when a position entry abuts the keyword. The trailing boundary stops a keyword matching inside a longer name such as MYGDF.",
           "name": "keyword.other.dds.icff.funcs",
-          "match": "(?i)(?<=(.{44}))(VARLEN|VARBUFMGT|TNSSYNLVL|TIMER|TEXT|SYNLVL|SUBDEV|SECURITY|RSPCONFIRM|RQSWRT|REFFLD|REF|RECID|RCVTRNDRND|RCVTKCMT|RCVROLLB|RCVNEGRSP|RCVFMH|RCVFAIL|RCVENDGRP|RCVDETACH|RCVCTLDTA|RCVCONFIRM|RCVCANCEL|PRPCMT|NEGRSP|INVITE|INDTXT|INDARA|FRCDTA|FMTNAME|FMH|FLTPCN|FAIL|EVOKE|EOS|ENDGRP|DFREVOKE|DETACH|CTLDTA|CONFIRM|CNLINVITE|CANCEL|ALWWRT|ALIAS)\\b"
-        },
-        {
-          "name": "keyword.other.dds.icff.funcs",
-          "match": "\\b(?i)(CMP|CLRL|SFL)\\b"
+          "match": "(?i)(?<=(.{44}))(?<=^.{44}|[^A-Za-z0-9])(VARLEN|VARBUFMGT|TNSSYNLVL|TIMER|TEXT|SYNLVL|SUBDEV|SECURITY|RSPCONFIRM|RQSWRT|REFFLD|REF|RECID|RCVTRNRND|RCVTKCMT|RCVROLLB|RCVNEGRSP|RCVFMH|RCVFAIL|RCVENDGRP|RCVDETACH|RCVCTLDTA|RCVCONFIRM|RCVCANCEL|PRPCMT|NEGRSP|INVITE|INDTXT|INDARA|FRCDTA|FMTNAME|FMH|FLTPCN|FAIL|EVOKE|EOS|ENDGRP|DFREVOKE|DETACH|CTLDTA|CONFIRM|CNLINVITE|CANCEL|ALWWRT|ALIAS)\\b\\b"
         }
       ]
     },
     "strings": {
-      "name": "string.quoted.single.dds.icff",
-      "begin": "'",
-      "end": "'",
       "patterns": [
         {
-          "name": "comment.line.dds.icff",
-          "match": "^.{5}(.)(\\*).*"
+          "comment": "Hexadecimal constant, X'hhhh'. Must be tried before the plain quoted literal so the X prefix is included in the token rather than left unscoped.",
+          "name": "string.other.dds.icff.hex",
+          "begin": "(?i)x'",
+          "end": "'",
+          "patterns": [
+            {
+              "comment": "Continuation character ending an unterminated literal. DDS discards it and joins the lines, so it is not part of the literal's value. Anchored to end of line, so a hyphen or plus inside the text is unaffected.",
+              "name": "keyword.other.dds.icff",
+              "match": "[+-](?=\\s*$)"
+            },
+            {
+              "comment": "Comment line: * in column 7. Columns 1-5 are the sequence number and column 6 the form type.",
+              "name": "comment.line.dds.icff",
+              "match": "^.{5}(.)(\\*).*"
+            },
+            {
+              "comment": "Sequence number area, columns 1-5. Not source; scoped as a comment so it recedes visually.",
+              "name": "comment.gutter",
+              "match": "^.{1,5}"
+            },
+            {
+              "comment": "Column 6, the form type. Always A for DDS.",
+              "name": "keyword.other.dds.icff.spec",
+              "match": "(?i)(?<=^.{5})[A]"
+            }
+          ]
         },
         {
-          "name": "comment.gutter",
-          "match": "^.{1,5}"
-        },
-        {
-          "name": "keyword.other.dds.icff.spec",
-          "match": "(?i)(?<=^.{5})[A]"
+          "comment": "Quoted keyword parameter, such as the text of a response indicator. May continue across lines, so the nested rules re-apply the gutter and form type on each continuation line.",
+          "name": "string.quoted.single.dds.icff",
+          "begin": "'",
+          "end": "'",
+          "patterns": [
+            {
+              "comment": "Continuation character ending an unterminated literal. DDS discards it and joins the lines, so it is not part of the literal's value. Anchored to end of line, so a hyphen or plus inside the text is unaffected.",
+              "name": "keyword.other.dds.icff",
+              "match": "[+-](?=\\s*$)"
+            },
+            {
+              "comment": "Comment line: * in column 7. Columns 1-5 are the sequence number and column 6 the form type.",
+              "name": "comment.line.dds.icff",
+              "match": "^.{5}(.)(\\*).*"
+            },
+            {
+              "comment": "Sequence number area, columns 1-5. Not source; scoped as a comment so it recedes visually.",
+              "name": "comment.gutter",
+              "match": "^.{1,5}"
+            },
+            {
+              "comment": "Column 6, the form type. Always A for DDS.",
+              "name": "keyword.other.dds.icff.spec",
+              "match": "(?i)(?<=^.{5})[A]"
+            }
+          ]
         }
       ]
     }

@@ -1,0 +1,49 @@
+     A* Physical file keyword coverage. Every keyword the grammar
+     A* recognizes appears at least once in the functions area.
+     A* Member: PFKWD
+     A* Compilable: no - an exhaustive keyword list, not a working file.
+     A* Source: IBM i 7.5 DDS for physical and logical files.
+     A* Retrieved: 2026-07-25
+     A*
+00010A          R ALLKWDS
+00020A                                      ABSVAL
+00030A                                      ALIAS(CUSTOMER_NUMBER)
+00040A                                      ALTSEQ(QSYS/QCASE256)
+00050A                                      ALWNULL
+00060A                                      CCSID(37)
+00070A                                      CHECK(AB)
+00080A                                      CHKMSGID(MSG0001 QGPL/MYMSGF)
+00090A                                      CMP(GT 0)
+00100A                                      COLHDG('Account' 'Number')
+00110A                                      COMP(GE 0)
+00120A                                      DATFMT(*ISO)
+00130A                                      DATSEP('/')
+00140A                                      DESCEND
+00150A                                      DFT('none')
+00160A                                      DIGIT
+00170A                                      EDTCDE(J)
+00180A                                      EDTWRD('  $0.  ')
+00190A                                      FCFO
+00200A                                      FIFO
+00210A                                      FLTPCN(*SINGLE)
+00220A                                      FORMAT(REFLIB/REFFILE)
+00230A                                      LIFO
+00240A                                      NOALTSEQ
+00250A                                      RANGE(0 999999)
+00260A                                      REF(REFLIB/REFFILE)
+00270A                                      REFFLD(CUSTNO REFLIB/REFFILE)
+00280A                                      REFSHIFT(A)
+00290A                                      TEXT('Description')
+00300A                                      TIMFMT(*HMS)
+00310A                                      TIMSEP(':')
+00320A                                      UNIQUE
+00330A                                      UNSIGNED
+00340A                                      VALUES('A' 'B' 'C')
+00350A                                      VARLEN(50)
+00360A                                      ZONE
+     A* A keyword beginning exactly at column 45 must match even when
+     A* column 44 holds a word character rather than a space.
+09200A            LONGFIELD1R                   REF(ABC1)
+09210A            LONGFIELD2RXXXXXXXXXXXXXXXREF(ABC2)
+     A* ...but it must still not match inside a longer name.
+09220A                                      REF(*LIBL/EQFREF)

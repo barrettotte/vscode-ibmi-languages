@@ -1,0 +1,28 @@
+     A* Key fields and access path keywords.
+     A* Member: PFKEYS   Compilable: yes
+     A* Source: IBM i 7.5 DDS for physical and logical files,
+     A*   key field level keyword entries. Retrieved: 2026-07-25
+     A*
+     A* File-level keywords controlling the access path.
+00010A                                      UNIQUE
+00020A                                      FIFO
+00030A                                      ALTSEQ(QSYS/QCASE256)
+     A*
+00040A          R ACCOUNT
+00050A            ACLEVELID      2P 0
+00060A            ACNAME        20A
+00070A            BALANCE       11P 2
+     A*
+     A* Key-level keywords apply to the key field above them.
+00080A          K ACNAME
+00090A          K BALANCE                   DESCEND
+00100A          K ACLEVELID                 ABSVAL
+00110A          K ACLEVELID                 SIGNED
+00120A          K ACLEVELID                 UNSIGNED
+00130A          K ACNAME                    ZONE
+00140A          K ACNAME                    DIGIT
+00150A          K ACNAME                    NOALTSEQ
+     A*
+     A* The alternatives to FIFO for duplicate key sequencing.
+00160A                                      LIFO
+00170A                                      FCFO

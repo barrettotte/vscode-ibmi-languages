@@ -1,0 +1,82 @@
+     A* Printer file keyword coverage. Every keyword the grammar
+     A* recognizes appears at least once in the functions area.
+     A* Member: PRTKWD
+     A* Compilable: no - an exhaustive keyword list, not a working file.
+     A* Source: IBM i 7.5 DDS for printer files, keyword entries.
+     A* Retrieved: 2026-07-25
+     A*
+     A* File-level keywords
+00010A                                      INDARA
+00020A                                      REF(REFLIB/MLGREFP)
+00030A                                      ALIAS
+00040A                                      CHRID(*JOBCCSID)
+00050A                                      CPI(15)
+00060A                                      LPI(8)
+00070A                                      DRAWER(2)
+00080A                                      DUPLEX(*YES)
+00090A                                      OUTBIN(2)
+00100A                                      PAGRTT(90)
+00110A                                      PRTQLTY(*DRAFT)
+00120A                                      FONT(011)
+00130A                                      FONTNAME('Courier')
+00140A                                      CDEFNT(QFNTCPL/C0S0CR10)
+00150A                                      FNTCHRSET(QFNTCPL/C0S0CR10 +
+     A                                        QFNTCPL/T1V10037)
+00160A                                      DFNCHR(X'0E0E0E0E0E0E0E0E0E0E0E0E')
+00170A                                      FLTPCN(*SINGLE)
+00180A                                      FLTFIXDEC
+00190A                                      CVTDTA
+00200A                                      BLKFOLD
+00210A                                      ZFOLD
+00220A                                      TRNSPY
+00230A                                      UNISCRIPT(*YES)
+00240A                                      DOCIDXTAG('Chapter' &FLD)
+00250A                                      DTASTMCMD('cmd')
+     A*
+     A* Record-level keywords
+00260A          R RECKWDS                   TEXT('Record level')
+00270A                                      SKIPA(1) SKIPB(2)
+00280A                                      SPACEA(1) SPACEB(2)
+00290A                                      ENDPAGE
+00300A                                      STRPAGGRP('Group1')
+00310A                                      ENDPAGGRP
+00320A                                      OVERLAY(QGPL/MYOVL 1.0 2.0)
+00330A                                      PAGSEG(QGPL/MYSEG 1.0 2.0)
+00340A                                      AFPRSC(QGPL/MYRSC *PAGSEG)
+00350A                                      INVMMAP('MAP1')
+00360A                                      INVDTAMAP('DMAP1')
+00370A                                      STAPLE(*TOPLEFT)
+00380A                                      INDTXT(01 'Detail line printed')
+     A*
+     A* Field-level keywords
+00390A          R FLDKWDS
+00400A            AMOUNT         9S 2O     2EDTCDE(Y)
+00410A            TOTAL          9S 2O    +2EDTWRD('  $0.  ')
+00420A            NETPAY         9S 2O    +2DLTEDT(3)
+00430A            REFFLDX   R             +2REFFLD(CUSTNO REFLIB/MLGREFP)
+00440A            STATE          2A  O    +2BARCODE(CODE3OF9 4 *NOHRI *AST)
+00450A            BIGTEXT       10A  O    +2CHRSIZ(2 2)
+00460A            BLUENAME      10A  O    +2COLOR(BLU)
+00470A            DFTFLD        10A  O    +2DFT('default')
+00480A            MSGFLD        20A  O    +2MSGCON(20 MSG0001 QGPL/MYMSGF)
+00490A            POSFLD         5A  O      POSITION(3 10)
+00500A            RELFLD         5A  O      RELPOS(2 4)
+00510A            LINEFLD        5A  O    +2LINE(1 1 2 2)
+00520A            BOXFLD         5A  O    +2BOX(1 1 5 20)
+00530A            GDFFLD         5A  O    +2GDF(QGPL/MYGDF 1.0 2.0)
+00540A            ROTATED        5A  O    +2TXTRTT(90)
+00550A                                    +2UNDERLINE HIGHLIGHT
+00560A                                    +2FORCE
+     A*
+     A* Date and time keywords with their formatting options
+00570A          R DATETIME
+00580A                                     2DATE(*JOB) DATFMT(*ISO) DATSEP('/')
+00590A                                    +2TIME TIMFMT(*HMS) TIMSEP(':')
+00600A                                    +2PAGNBR EDTCDE(Z)
+     A* A keyword must not match inside a longer name: MYGDF holds GDF,
+     A* EQFREF holds REF, and MYLINE holds LINE.
+09000A                                      GDF(QGPL/MYGDF 1.0 2.0)
+09010A                                      REF(*LIBL/EQFREF)
+09020A                                      OVERLAY(QGPL/MYLINE 1.0 2.0)
+     A* Several keywords may appear on one line.
+09030A                                      SKIPB(2) SPACEA(1) FORCE

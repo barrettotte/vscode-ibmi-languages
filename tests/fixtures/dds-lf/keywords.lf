@@ -1,0 +1,60 @@
+     A* Logical file keyword coverage. Every keyword the grammar
+     A* recognizes appears at least once in the functions area.
+     A* Member: LFKWD
+     A* Compilable: no - an exhaustive keyword list, not a working file.
+     A* Source: IBM i 7.5 DDS for physical and logical files.
+     A* Retrieved: 2026-07-25
+     A*
+00010A          R ALLKWDS                   PFILE(PERSON)
+00020A                                      ABSVAL
+00030A                                      ALIAS(CUSTOMER_NUMBER)
+00040A                                      ALL
+00050A                                      ALTSEQ(QSYS/QCASE256)
+00060A                                      CCSID(37)
+00070A                                      CHECK(AB)
+00080A                                      CHKMSGID(MSG0001 QGPL/MYMSGF)
+00090A                                      CMP(GT 30)
+00100A                                      COLHDG('Customer' 'Number')
+00110A                                      COMP(EQ 100)
+00120A                                      CONCAT(FIRSTNAME LASTNAME)
+00130A                                      DATFMT(*ISO)
+00140A                                      DATSEP('/')
+00150A                                      DESCEND
+00160A                                      DIGIT
+00170A                                      DYNSLT
+00180A                                      EDTCDE(J)
+00190A                                      EDTWRD('  $0.  ')
+00200A                                      FCFO
+00210A                                      FIFO
+00220A                                      FLTPCN(*SINGLE)
+00230A                                      FORMAT(PERSONLIB/PERSON)
+00240A                                      JDFTVAL
+00250A                                      JDUPSEQ(SEQFLD)
+00260A                                      JFILE(PF1 PF2)
+00270A                                      JFLD(NAME NAME)
+00280A                                      JOIN(PF1 PF2)
+00290A                                      JREF(1)
+00300A                                      LIFO
+00310A                                      NOALTSEQ
+00320A                                      PFILE(PERSON)
+00330A                                      RANGE(21 65)
+00340A                                      REFACCPTH(PERSONLIB/PERSON)
+00350A                                      REFSHIFT(O)
+00360A                                      RENAME(LASTNAME)
+00370A                                      SST(FIRSTNAME 1 1)
+00380A                                      TEXT('Description')
+00390A                                      TIMFMT(*HMS)
+00400A                                      TIMSEP(':')
+00410A                                      UNIQUE
+00420A                                      UNSIGNED
+00430A                                      VALUES('MN' 'WI')
+00440A                                      VARLEN(50)
+00450A                                      ZONE
+     A* Keywords added after auditing against the IBM reference.
+09000A                                      SIGNED
+09010A                                      TRNTBL(QSYS/QTRNTBL)
+     A* A keyword must not match inside a longer name.
+09100A                                      PFILE(MYPFILE)
+09110A                                      REFACCPTH(LIB/MYREF)
+     A* Several keywords may appear on one line.
+09120A            CUSTNO                    TEXT('a') COLHDG('b')

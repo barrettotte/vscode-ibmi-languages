@@ -1,0 +1,30 @@
+     A* Line and page positioning: skip, space, and relative position.
+     A* Member: PRTPOS   Compilable: yes
+     A* Source: IBM i 7.5 DDS for printer files, Example: A printer
+     A*   file using DDS. Retrieved: 2026-07-25
+     A*
+     A* SKIPB advances to a line before printing, SKIPA after.
+     A* A record using skip or space keywords may not also use
+     A* line numbers in columns 39-41.
+00010A          R HEADER                    SKIPB(2)
+00020A                                    29'CUSTOMER MASTER FILE'
+00030A                                    75DATE EDTCDE(Y)
+00040A                                    +1TIME
+00050A                                   122'Page'
+00060A                                    +1PAGNBR  EDTCDE(Z)  SPACEA(2)
+     A*
+     A* SPACEB spaces before printing, SPACEA after.
+00070A          R SPACING
+00080A                                     2'ACCOUNT  CUSTOMER'
+00090A                                      SPACEA(1)
+00100A                                      SPACEB(1)
+00110A                                      SKIPA(3)
+     A*
+     A* A relative position, +n, places the field n columns after
+     A* the end of the previous one.
+00120A          R DETAIL                    SPACEA(5)
+00130A            ACTNUM    R              2
+00140A            NAME      R             +4
+00150A            ADDR      R             +3
+00160A            CITY      R             +3
+00170A            ZIP       R             +5

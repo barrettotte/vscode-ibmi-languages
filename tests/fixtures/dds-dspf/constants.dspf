@@ -1,0 +1,32 @@
+     A* Literals, hexadecimal constants, continuation, and command keys.
+     A* Member: DSPCONST   Compilable: yes
+     A* Source: IBM i 7.5 DDS for display files. Retrieved: 2026-07-25
+     A*
+00010A          R SCREEN1
+     A* A constant is a quoted literal with a position but no name.
+00020A                                  1 25'CUSTOMER MAINTENANCE'
+00030A                                  3  2'Customer''s name:'
+     A*
+     A* + continues a literal, discarding leading blanks.
+00040A                                  5  2'A heading that runs +
+00050A                                      across two source lines'
+     A* - continues a literal, preserving leading blanks.
+00060A                                  6  2'PRESERVED    -
+00070A                                           SPACING'
+     A*
+     A* Hexadecimal constants.
+00080A                                  7  2X'40404040'
+00090A            HEXDFT         2A  B  8  2DFT(X'C1C2')
+     A*
+     A* Command attention and command function keys.
+00100A                                      CA01(01 'Help')
+00110A                                      CA03(03 'Exit')
+00120A                                      CF04(04 'Prompt')
+00130A                                      CF12(12 'Cancel')
+00140A                                      CA24(24 'More keys')
+     A*
+     A* A field named CA01 must NOT be mistaken for a command key,
+     A* and a record named SFL must not be mistaken for a keyword.
+00150A            CA01           5A  B 10  2
+00160A          R SFL
+00170A            CMP            5A  B 11  2

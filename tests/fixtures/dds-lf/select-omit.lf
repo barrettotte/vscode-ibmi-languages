@@ -1,0 +1,37 @@
+     A* Select and omit specifications: S and O in column 17.
+     A* Member: LFSELOM   Compilable: yes (given PERSON)
+     A* Source: IBM i 7.5 DDS for physical and logical files,
+     A*   select/omit keyword entries. Retrieved: 2026-07-25
+     A*
+00010A          R PERSFMT                   PFILE(PERSON)
+00020A            PERSONID
+00030A            AGE
+00040A            STATE
+00050A            SALARY
+00060A          K PERSONID
+     A*
+     A* COMP compares a field to a value. Every valid relational
+     A* operator appears below.
+00070A          S AGE                       COMP(EQ 30)
+00080A          S AGE                       COMP(NE 30)
+00090A          S AGE                       COMP(LT 30)
+00100A          S AGE                       COMP(NL 30)
+00110A          S AGE                       COMP(GT 30)
+00120A          S AGE                       COMP(NG 30)
+00130A          S AGE                       COMP(LE 30)
+00140A          S AGE                       COMP(GE 30)
+     A* CMP is an accepted synonym for COMP.
+00150A          S AGE                       CMP(GT 21)
+     A*
+     A* RANGE selects values between two limits, inclusive.
+00160A          S AGE                       RANGE(21 65)
+     A* VALUES selects a list of discrete values.
+00170A          S STATE                     VALUES('MN' 'WI' 'IA')
+     A* ALL selects or omits every remaining record.
+00180A          O SALARY                    COMP(GT 200000)
+00190A          S                           ALL
+     A*
+     A* Comparison against a character literal, and against another
+     A* field rather than a constant.
+00200A          S STATE                     COMP(EQ 'MN')
+00210A          O AGE                       COMP(LT 18)
