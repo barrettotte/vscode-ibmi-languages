@@ -1,76 +1,76 @@
 {
-    // symbols used as brackets
-    "brackets": [
-        ["{", "}"],
-        ["[", "]"],
-        ["(", ")"],
+  // symbols used as brackets
+  "brackets": [
+    ["{", "}"],
+    ["[", "]"],
+    ["(", ")"],
 
-        ["IF", "ENDIF"],
-        ["IF", "END"],
-        ["IFEQ", "ENDIF"],
-        ["IFEQ", "END"],
-        ["IFGE", "ENDIF"],
-        ["IFGE", "END"],
-        ["IFGT", "ENDIF"],
-        ["IFGT", "END"],
-        ["IFLE", "ENDIF"],
-        ["IFLE", "END"],
-        ["IFLT", "ENDIF"],
-        ["IFLT", "END"],
-        ["IFNE", "ENDIF"],
-        ["IFNE", "END"],
-        
-        ["DOW", "ENDDO"],
-        ["DOW", "END"],
-        ["DOWEQ", "ENDDO"],
-        ["DOWEQ", "END"],
-        ["DOWGE", "ENDDO"],
-        ["DOWGE", "END"],
-        ["DOWGT", "ENDDO"],
-        ["DOWGT", "END"],
-        ["DOWLE", "ENDDO"],
-        ["DOWLE", "END"],
-        ["DOWLT", "ENDDO"],
-        ["DOWLT", "END"],
-        ["DOWNE", "ENDDO"],
-        ["DOWNE", "END"],
+    ["IF", "ENDIF"],
+    ["IF", "END"],
+    ["IFEQ", "ENDIF"],
+    ["IFEQ", "END"],
+    ["IFGE", "ENDIF"],
+    ["IFGE", "END"],
+    ["IFGT", "ENDIF"],
+    ["IFGT", "END"],
+    ["IFLE", "ENDIF"],
+    ["IFLE", "END"],
+    ["IFLT", "ENDIF"],
+    ["IFLT", "END"],
+    ["IFNE", "ENDIF"],
+    ["IFNE", "END"],
 
-        ["DOU", "ENDDO"],
-        ["DOU", "END"],
-        ["DOUEQ", "ENDDO"],
-        ["DOUQ", "END"],
-        ["DOUGE", "ENDDO"],
-        ["DOUGE", "END"],
-        ["DOUGT", "ENDDO"],
-        ["DOUGT", "END"],
-        ["DOULE", "ENDDO"],
-        ["DOULE", "END"],
-        ["DOULT", "ENDDO"],
-        ["DOULT", "END"],
-        ["DOUNE", "ENDDO"],
-        ["DOUNE", "END"],
+    ["DOW", "ENDDO"],
+    ["DOW", "END"],
+    ["DOWEQ", "ENDDO"],
+    ["DOWEQ", "END"],
+    ["DOWGE", "ENDDO"],
+    ["DOWGE", "END"],
+    ["DOWGT", "ENDDO"],
+    ["DOWGT", "END"],
+    ["DOWLE", "ENDDO"],
+    ["DOWLE", "END"],
+    ["DOWLT", "ENDDO"],
+    ["DOWLT", "END"],
+    ["DOWNE", "ENDDO"],
+    ["DOWNE", "END"],
 
-        ["DO", "ENDDO"],
-        ["DO", "END"],
-        ["SELECT", "ENDSL"],
-        ["SELECT", "END"],
+    ["DOU", "ENDDO"],
+    ["DOU", "END"],
+    ["DOUEQ", "ENDDO"],
+    ["DOUQ", "END"],
+    ["DOUGE", "ENDDO"],
+    ["DOUGE", "END"],
+    ["DOUGT", "ENDDO"],
+    ["DOUGT", "END"],
+    ["DOULE", "ENDDO"],
+    ["DOULE", "END"],
+    ["DOULT", "ENDDO"],
+    ["DOULT", "END"],
+    ["DOUNE", "ENDDO"],
+    ["DOUNE", "END"],
 
-        ["BEGSR", "ENDSR"]
-    ],
-    // symbols that are auto closed when typing
-    "autoClosingPairs": [
-        //["{", "}"],
-        ["[", "]"],
-        ["(", ")"],
-        ["\"", "\""],
-        ["'", "'"]
-    ],
-    // symbols that that can be used to surround a selection
-    "surroundingPairs": [
-        ["{", "}"],
-        ["[", "]"],
-        ["(", ")"],
-        ["\"", "\""],
-        ["'", "'"]
-    ]
+    ["DO", "ENDDO"],
+    ["DO", "END"],
+    ["SELECT", "ENDSL"],
+    ["SELECT", "END"],
+
+    ["BEGSR", "ENDSR"]
+  ],
+  // symbols that are auto closed when typing
+  "autoClosingPairs": [
+    //["{", "}"],
+    ["[", "]"],
+    ["(", ")"],
+    ["\"", "\""],
+    ["'", "'"]
+  ],
+  // symbols that that can be used to surround a selection
+  "surroundingPairs": [
+    ["{", "}"],
+    ["[", "]"],
+    ["(", ")"],
+    ["\"", "\""],
+    ["'", "'"]
+  ]
 }
