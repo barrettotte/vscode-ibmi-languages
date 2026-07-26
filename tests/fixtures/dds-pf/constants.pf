@@ -1,0 +1,88 @@
+     A* Literals, hexadecimal constants, continuation, and enumerated
+     A* keyword values.
+     A* Member: PFCONST   Compilable: yes
+     A* Source: IBM i 7.5 DDS for physical and logical files,
+     A*   keyword entries. Retrieved: 2026-07-25
+     A*
+00010A          R ACCOUNT
+     A* Quoted literals; a doubled apostrophe is a single one.
+00020A            ACNAME        20A         TEXT('Account name')
+00030A            OWNER         20A         TEXT('Customer''s name')
+     A* + continues a literal, discarding leading blanks.
+00040A            ACNOTES       50A         COLHDG('Column' +
+00050A                                      'Heading')
+     A* - continues a literal, preserving leading blanks.
+00060A            ACDESC        50A         TEXT('PRESERVED    -
+00070A                                           SPACING')
+     A* Hexadecimal constants.
+00080A            ACFLAG         1A         DFT(X'40')
+00090A            ACCODE         2A         VALUES(X'C1C1' X'C2C2')
+00100A            ACRANGE        3A         COMP(EQ X'F1F2F3')
+     A*
+     A* EDTCDE: 1-4, A-D, J-Q, W-Z, plus 5-9 user-defined.
+00110A          R EDITS
+00120A            EDT1           9P 2       EDTCDE(1)
+00130A            EDT2           9P 2       EDTCDE(2)
+00140A            EDT3           9P 2       EDTCDE(3)
+00150A            EDT4           9P 2       EDTCDE(4)
+00160A            EDT5           9P 2       EDTCDE(5)
+00170A            EDT6           9P 2       EDTCDE(6)
+00180A            EDT7           9P 2       EDTCDE(7)
+00190A            EDT8           9P 2       EDTCDE(8)
+00200A            EDT9           9P 2       EDTCDE(9)
+00210A            EDTA           9P 2       EDTCDE(A)
+00220A            EDTB           9P 2       EDTCDE(B)
+00230A            EDTC           9P 2       EDTCDE(C)
+00240A            EDTD           9P 2       EDTCDE(D)
+00250A            EDTJ           9P 2       EDTCDE(J)
+00260A            EDTK           9P 2       EDTCDE(K)
+00270A            EDTL           9P 2       EDTCDE(L)
+00280A            EDTM           9P 2       EDTCDE(M)
+00290A            EDTN           9P 2       EDTCDE(N)
+00300A            EDTO           9P 2       EDTCDE(O)
+00310A            EDTP           9P 2       EDTCDE(P)
+00320A            EDTQ           9P 2       EDTCDE(Q)
+00330A            EDTW           9P 2       EDTCDE(W)
+00340A            EDTX           9P 2       EDTCDE(X)
+00350A            EDTY           9P 2       EDTCDE(Y)
+00360A            EDTZ           9P 2       EDTCDE(Z)
+     A*
+     A* REFSHIFT keyboard shift values.
+00370A          R SHIFTS
+00380A            SHIFTA        10A         REFSHIFT(A)
+00390A            SHIFTD        10A         REFSHIFT(D)
+00400A            SHIFTI        10A         REFSHIFT(I)
+00410A            SHIFTM        10A         REFSHIFT(M)
+00420A            SHIFTN        10A         REFSHIFT(N)
+00430A            SHIFTS        10A         REFSHIFT(S)
+00440A            SHIFTW        10A         REFSHIFT(W)
+00450A            SHIFTX        10A         REFSHIFT(X)
+00460A            SHIFTY        10A         REFSHIFT(Y)
+     A*
+     A* CHECK edit-check codes; more than one may be given.
+00470A          R CHECKS
+00480A            CHKAB         10A         CHECK(AB)
+00490A            CHKME         10A         CHECK(ME)
+00500A            CHKMF         10A         CHECK(MF)
+00510A            CHKM10        10A         CHECK(M10)
+00520A            CHKM11        10A         CHECK(M11)
+00530A            CHKVN         10A         CHECK(VN)
+00540A            CHKVNE        10A         CHECK(VNE)
+00550A            CHKMULTI      10A         CHECK(M10 VN)
+     A*
+     A* COMP and CMP relational operators. CHECK, COMP, RANGE and
+     A* VALUES are the validity-checking keywords for a physical file.
+00450A          R COMPARES
+00460A            CMPEQ          5P 0       COMP(EQ 100)
+00470A            CMPNE          5P 0       COMP(NE 100)
+00480A            CMPLT          5P 0       COMP(LT 100)
+00490A            CMPNL          5P 0       COMP(NL 100)
+00500A            CMPGT          5P 0       COMP(GT 100)
+00510A            CMPNG          5P 0       COMP(NG 100)
+00520A            CMPLE          5P 0       COMP(LE 100)
+00530A            CMPGE          5P 0       COMP(GE 100)
+00540A            CMPSYN         5P 0       CMP(GT 0)
+00550A            CMPCHAR        2A         COMP(EQ 'MN')
+     A* CHECK accepts a list, so every code in it must be matched.
+09000A            CHK3          10A         CHECK(AB M10 VN)
+09010A            CHK4          10A         CHECK(ME MF VNE M11)

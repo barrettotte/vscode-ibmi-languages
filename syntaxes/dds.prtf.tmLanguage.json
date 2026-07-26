@@ -22,6 +22,7 @@
     "comments": {
       "patterns": [
         {
+          "comment": "Comment line: * in column 7. Columns 1-5 are the sequence number and column 6 the form type.",
           "name": "comment.line.dds.prtf",
           "match": "^.{5}(.)(\\*).*"
         }
@@ -30,10 +31,12 @@
     "gutter": {
       "patterns": [
         {
+          "comment": "Sequence number area, columns 1-5. Not source; scoped as a comment so it recedes visually.",
           "name": "comment.gutter",
           "match": "^.{1,5}"
         },
         {
+          "comment": "Anything past column 80 is ignored by the DDS compiler.",
           "name": "comment.block.line.dds",
           "begin": "(?<=^.{80})",
           "end": "\n"
@@ -43,99 +46,168 @@
     "constants": {
       "patterns": [
         {
+          "comment": "Special values such as *ISO or *BLANK. Anchored to the functions area (column 45 onward); a special value cannot appear in the name or attribute columns.",
           "name": "constant.language.dds.prtf",
-          "match": "(\\*)[a-zA-Z][a-zA-Z0-9]*"
+          "match": "(?<=(.{44}))(\\*)[a-zA-Z][a-zA-Z0-9]*"
         },
         {
+          "comment": "Column 7: A or O, joining this line's conditioning indicators to the previous line's with AND or OR.",
           "name": "constant.language.dds.prtf.andor",
           "match": "(?i)(?<=^.{5}(A|\\s).{0})(A|O)"
         },
         {
+          "comment": "Conditioning indicator 1, columns 8-10. Column 8 is N to negate.",
           "name": "constant.language.dds.prtf.n01",
           "match": "(?i)(?<=^.{5}(A|\\s).{1})(N|\\s)[0-9]{2}"
         },
         {
+          "comment": "Conditioning indicator 2, columns 11-13.",
           "name": "constant.language.dds.prtf.n02",
           "match": "(?i)(?<=^.{5}(A|\\s).{4})(N|\\s)[0-9]{2}"
         },
         {
+          "comment": "Conditioning indicator 3, columns 14-16.",
           "name": "constant.language.dds.prtf.n03",
           "match": "(?i)(?<=^.{5}(A|\\s).{7})(N|\\s)[0-9]{2}"
         },
         {
+          "comment": "Column 17: R marks the start of a record format.",
           "name": "constant.language.dds.prtf.nameType",
           "match": "(?i)(?<=^.{5}(A|\\s).{10})R"
         },
         {
+          "comment": "Column 29: R means the field's attributes come from the file named by REF or REFFLD.",
           "name": "constant.language.dds.prtf.ref",
           "match": "(?i)(?<=^.{5}(A|\\s).{22})R"
         },
         {
+          "comment": "Field length, columns 30-34.",
           "name": "constant.language.dds.prtf.len",
           "match": "(?i)(?<=^.{5}(A|\\s).{23})[0-9|\\s]{5}"
         },
         {
+          "comment": "Column 35, the data type: A character, F floating point, G graphic, L date, O DBCS-open, S zoned, T time, Z timestamp.",
           "name": "constant.language.dds.prtf.dataType",
           "match": "(?i)(?<=^.{5}(A|\\s).{28})(A|F|G|L|O|S|T|Z)"
         },
         {
+          "comment": "Decimal positions, columns 36-37.",
           "name": "constant.language.dds.prtf.decpos",
           "match": "(?i)(?<=^.{5}(A|\\s).{29})[0-9|\\s]{2}"
         },
         {
+          "comment": "Column 38. Printer file fields are output only, so the only valid usage is O.",
           "name": "constant.language.dds.prtf.usage",
           "match": "(?i)(?<=^.{5}(A|\\s).{31})O"
         },
         {
+          "comment": "Line number, columns 39-41. A record using SKIPA, SKIPB, SPACEA or SPACEB may not also give a line number. Relative addressing with +n applies to the position entry, not the line entry.",
           "name": "constant.language.dds.prtf.locline",
-          "match": "(?i)(?<=^.{5}(A|\\s).{32})([0-9]|\\s|\\+){3}"
+          "match": "(?i)(?<=^.{5}(A|\\s).{32})([0-9]|\\s){3}"
         },
         {
+          "comment": "Position number, columns 42-44. A leading + makes it relative to the end of the previous field, as in +1.",
           "name": "constant.language.dds.prtf.locpos",
           "match": "(?i)(?<=^.{5}(A|\\s).{35})([0-9]|\\s|\\+){3}"
         },
         {
+          "comment": "EDTCDE edit code. Valid codes are 1-4, A-D, J-Q and W-Z, plus 5-9 for user-defined edit codes. The optional second parameter is * for asterisk fill or an arbitrary floating currency symbol, so it is not enumerated.",
+          "name": "constant.language.dds.prtf.edtcde",
+          "match": "(?i)(?<=EDTCDE\\()[1-9A-DJ-QW-Z](?=[\\s)])"
+        },
+        {
+          "comment": "COLOR name. The printer file set differs from the display file set: it adds BLK and BRN and has no WHT.",
+          "name": "constant.language.dds.prtf.color",
+          "match": "(?i)(?<=COLOR\\()(BLK|BLU|BRN|GRN|PNK|RED|TRQ|YLW)(?=[\\s)])"
+        },
+        {
+          "comment": "BARCODE symbology identifier. A numeric bar-code-ID may be given instead, in which case a modifier parameter is also required.",
+          "name": "constant.language.dds.prtf.barcode",
+          "match": "(?i)(?<=BARCODE\\()(MSI|UPCA|UPCE|UPC2|UPC5|EAN8|EAN13|EAN2|EAN5|CODEABAR|CODE128|CODE3OF9|CODE93|INTERL2OF5|INDUST2OF5|MATRIX2OF5|POSTNET|RM4SCC|AP4SCC|DUTCHKIX|JPBC|PDF417|MAXICODE|DATAMATRIX|QRCODE)(?=[\\s)])"
+        },
+        {
+          "comment": "Numeric literals in keyword parameters. Anchored to the functions area (column 45 onward), otherwise a digit inside a field name such as #CBX#3 is highlighted as a constant. The length, decimal, indicator and location columns have their own rules.",
           "name": "constant.numeric.dds.prtf",
-          "match": "\\b([0-9]+)\\b"
+          "match": "(?<=(.{44}))\\b([0-9]+)\\b"
         }
       ]
     },
     "keywords": {
       "patterns": [
         {
+          "comment": "Column 6, the form type. Always A for DDS.",
           "name": "keyword.other.dds.prtf.spec",
           "match": "(?i)(?<=^.{5})[A]"
         },
         {
+          "comment": "Continuation character joining this line to the next. Both + and - are valid; + discards the leading blanks of the continuation line and - preserves them. Anchored to end of line so a hyphen or plus inside a keyword parameter is unaffected.",
           "name": "keyword.other.dds.prtf",
-          "match": "\\+"
+          "match": "[+-](?=\\s*$)"
         },
         {
-          "name": "keyword.other.dds.prtf.func",
-          "match": "((?i)(C(A|F)))[0-9]{2}"
-        },
-        {
+          "comment": "Keyword set for the functions area. The first lookbehind requires at least 44 characters before the match, so a keyword is found anywhere from column 45 onward and one line may carry several. The second requires the match to begin exactly at column 45 or to follow a non-word character: a plain \\b is wrong here, because a keyword starting at column 45 is valid even when column 44 holds a digit, as it does when a position entry abuts the keyword. The trailing boundary stops a keyword matching inside a longer name such as MYGDF.",
           "name": "keyword.other.dds.prtf.funcs",
-          "match": "(?i)(?<=(.{44}))(ZFOLD|UNISCRIPT|UNDERLINE|TXTRTT|TRNSPY|TIMSEP|TIMFMT|TIME|TEXT|STRPAGGRP|STAPLE|SPACEB|SPACEA|SKIPB|SKIPA|RELPOS|REFFLD|REF|PRTQLTY|POSITION|PAGSEG|PAGRTT|PAGNBR|OVERLAY|OUTBIN|MSGCON|LPI|LINE|INVMMAP|INVDTAMAP|INDTXT|INDARA|HIGHLIGHT|GDF|FORCE|FONTNAME|FONT|FNTCHRSET|FLTPCN|FLTFIXDEC|ENDPAGGRP|ENDPAGE|EDTWRD|EDTCDE|DUPLEX|DTASTMCMD|DRAWER|DOCIDXTAG|DLTEDT|DFT|DFNCHR|DATSEP|DATFMT|DATE|CVTDTA|CPI|COLOR|CHRSIZ|CHRID|CDEFNT|BOX|BLKFOLD|BARCODE|ALIAS|AFPRSC)\\b"
+          "match": "(?i)(?<=(.{44}))(?<=^.{44}|[^A-Za-z0-9])(ZFOLD|UNISCRIPT|UNDERLINE|TXTRTT|TRNSPY|TIMSEP|TIMFMT|TIME|TEXT|STRPAGGRP|STAPLE|SPACEB|SPACEA|SKIPB|SKIPA|RELPOS|REFFLD|REF|PRTQLTY|POSITION|PAGSEG|PAGRTT|PAGNBR|OVERLAY|OUTBIN|MSGCON|LPI|LINE|INVMMAP|INVDTAMAP|INDTXT|INDARA|HIGHLIGHT|GDF|FORCE|FONTNAME|FONT|FNTCHRSET|FLTPCN|FLTFIXDEC|ENDPAGGRP|ENDPAGE|EDTWRD|EDTCDE|DUPLEX|DTASTMCMD|DRAWER|DOCIDXTAG|DLTEDT|DFT|DFNCHR|DATSEP|DATFMT|DATE|CVTDTA|CPI|COLOR|CHRSIZ|CHRID|CDEFNT|BOX|BLKFOLD|BARCODE|ALIAS|AFPRSC)\\b\\b"
         }
       ]
     },
     "strings": {
-      "name": "string.quoted.single.dds.prtf",
-      "begin": "'",
-      "end": "'",
       "patterns": [
         {
-          "name": "comment.line.dds.prtf",
-          "match": "^.{5}(.)(\\*).*"
+          "comment": "Hexadecimal constant, X'hhhh'. Must be tried before the plain quoted literal so the X prefix is included in the token rather than left unscoped.",
+          "name": "string.other.dds.prtf.hex",
+          "begin": "(?i)x'",
+          "end": "'",
+          "patterns": [
+            {
+              "comment": "Continuation character ending an unterminated literal. DDS discards it and joins the lines, so it is not part of the literal's value. Anchored to end of line, so a hyphen or plus inside the text is unaffected.",
+              "name": "keyword.other.dds.prtf",
+              "match": "[+-](?=\\s*$)"
+            },
+            {
+              "comment": "Comment line: * in column 7. Columns 1-5 are the sequence number and column 6 the form type.",
+              "name": "comment.line.dds.prtf",
+              "match": "^.{5}(.)(\\*).*"
+            },
+            {
+              "comment": "Sequence number area, columns 1-5. Not source; scoped as a comment so it recedes visually.",
+              "name": "comment.gutter",
+              "match": "^.{1,5}"
+            },
+            {
+              "comment": "Column 6, the form type. Always A for DDS.",
+              "name": "keyword.other.dds.prtf.spec",
+              "match": "(?i)(?<=^.{5})[A]"
+            }
+          ]
         },
         {
-          "name": "comment.gutter",
-          "match": "^.{1,5}"
-        },
-        {
-          "name": "keyword.other.dds.prtf.spec",
-          "match": "(?i)(?<=^.{5})[A]"
+          "comment": "Quoted literal constant or keyword parameter. A literal may continue across lines, so the nested rules re-apply the gutter and form type on each continuation line. A doubled apostrophe inside a literal represents a single one.",
+          "name": "string.quoted.single.dds.prtf",
+          "begin": "'",
+          "end": "'",
+          "patterns": [
+            {
+              "comment": "Continuation character ending an unterminated literal. DDS discards it and joins the lines, so it is not part of the literal's value. Anchored to end of line, so a hyphen or plus inside the text is unaffected.",
+              "name": "keyword.other.dds.prtf",
+              "match": "[+-](?=\\s*$)"
+            },
+            {
+              "comment": "Comment line: * in column 7. Columns 1-5 are the sequence number and column 6 the form type.",
+              "name": "comment.line.dds.prtf",
+              "match": "^.{5}(.)(\\*).*"
+            },
+            {
+              "comment": "Sequence number area, columns 1-5. Not source; scoped as a comment so it recedes visually.",
+              "name": "comment.gutter",
+              "match": "^.{1,5}"
+            },
+            {
+              "comment": "Column 6, the form type. Always A for DDS.",
+              "name": "keyword.other.dds.prtf.spec",
+              "match": "(?i)(?<=^.{5})[A]"
+            }
+          ]
         }
       ]
     }

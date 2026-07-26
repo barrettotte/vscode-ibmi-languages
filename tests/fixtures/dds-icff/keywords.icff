@@ -1,0 +1,64 @@
+     A* ICF keyword coverage. Every keyword the grammar recognizes
+     A* appears at least once, in the functions area (column 45+).
+     A* Member: ICFKWD
+     A* Compilable: no - an exhaustive keyword list, not a working file.
+     A* Source: IBM i 7.5 DDS for ICF files, keyword entries
+     A* Retrieved: 2026-07-25
+     A*
+     A* File-level and record-level send keywords
+00010A          R SENDKWDS
+     A                                      ALWWRT
+     A                                      CANCEL
+     A                                      CNLINVITE
+     A                                      CONFIRM
+     A                                      DETACH
+     A                                      ENDGRP
+     A                                      FAIL
+     A                                      FMH
+     A                                      FRCDTA
+     A                                      INVITE
+     A                                      NEGRSP
+     A                                      PRPCMT
+     A                                      RQSWRT
+     A                                      SUBDEV
+     A*
+     A* Receive-notification keywords, each taking a response indicator
+00020A          R RCVKWDS
+     A                                      RCVCANCEL(10 'RCVCANCEL RECEIVED')
+     A                                      RCVCONFIRM(11 'RCVCONFIRM RECEIVED')
+     A                                      RCVCTLDTA(12 'RCVCTLDTA RECEIVED')
+     A                                      RCVDETACH(13 'RCVDETACH RECEIVED')
+     A                                      RCVENDGRP(14 'RCVENDGRP RECEIVED')
+     A                                      RCVFAIL(15 'RCVFAIL RECEIVED')
+     A                                      RCVFMH(16 'RCVFMH RECEIVED')
+     A                                      RCVNEGRSP(17 'RCVNEGRSP RECEIVED')
+     A                                      RCVROLLB(18 'RCVROLLB RECEIVED')
+     A                                      RCVTKCMT(19 'RCVTKCMT RECEIVED')
+     A                                      RCVTRNRND(20 'RCVTRNRND RECEIVED')
+     A*
+     A* Keywords taking parameters
+00030A          R PARMKWDS                  EVOKE(MYLIB/SOMEPGM)
+     A                                      SECURITY(2 'PASSWRD' 3 'USRID')
+     A                                      SYNLVL(*CONFIRM)
+     A                                      TIMER(001500)
+     A                                      RECID(1 'H')
+     A                                      TEXT('Record with parameters')
+     A                                      INDTXT(01 'Transaction ended')
+     A*
+     A* File-level attribute keywords
+00040A                                      INDARA
+00050A                                      ALIAS
+00060A                                      DFREVOKE
+00070A                                      EOS
+00080A                                      RSPCONFIRM
+00090A                                      TNSSYNLVL(*TRANSACTION)
+00100A                                      VARBUFMGT
+00110A                                      VARLEN(&LENFLD)
+00120A                                      FLTPCN(*SINGLE)
+00130A                                      FMTNAME(&FMTFLD)
+00140A                                      CTLDTA
+     A*
+     A* REF and REFFLD draw field attributes from another file
+00150A                                      REF(REFLIB/REFFILE)
+00160A          R REFREC
+00170A            CUSTNO                    REFFLD(CUSTNO REFLIB/REFFILE)

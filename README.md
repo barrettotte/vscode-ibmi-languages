@@ -121,13 +121,30 @@ See [issues](https://github.com/barrettotte/vscode-ibmi-languages/issues).
 
 ## References
 
+### IBM language references
+
+The grammars are built from these. Each is the authoritative keyword and
+positional reference for one of the languages this extension highlights. The PDF
+editions are linked because they are complete in one file and can be searched
+offline, which is how the keyword lists are checked for omissions.
+
+| Language | IBM reference (7.5) |
+| -------- | ------------------- |
+| DDS physical and logical files (`.pf`, `.lf`) | [DDS for physical and logical files](https://www.ibm.com/docs/en/i/7.5?topic=files-dds-physical-logical) &middot; [PDF](https://www.ibm.com/docs/en/ssw_ibm_i_75/rzakb/rzakbpdf.pdf) |
+| DDS display files (`.dspf`) | [DDS for display files](https://www.ibm.com/docs/en/i/7.5?topic=files-dds-display) &middot; [PDF](https://www.ibm.com/docs/en/ssw_ibm_i_75/rzakc/rzakcpdf.pdf) |
+| DDS printer files (`.prtf`) | [DDS for printer files](https://www.ibm.com/docs/en/i/7.5?topic=files-dds-printer) &middot; [PDF](https://www.ibm.com/docs/en/ssw_ibm_i_75/rzakd/rzakdpdf.pdf) |
+| DDS ICF files (`.icff`) | [DDS for ICF files](https://www.ibm.com/docs/en/i/7.5?topic=files-dds-icf) &middot; [PDF](https://www.ibm.com/docs/en/ssw_ibm_i_75/rzake/rzakepdf.pdf) |
+| DDS concepts (all DDS types) | [DDS concepts](https://www.ibm.com/docs/en/i/7.5?topic=programming-dds-concepts) |
+| Binder language (`.bnd`) | [Binder language](https://www.ibm.com/docs/en/i/7.5?topic=concepts-binder-language) &middot; [ILE Concepts PDF](https://www.ibm.com/docs/en/ssw_ibm_i_75/ilec/sc415606.pdf) |
+| Control Language (`.cl`, `.clle`, `.clp`) | [Alphabetic list of CL commands](https://www.ibm.com/docs/en/i/7.5?topic=language-alphabetic-list-cl-commands-by-command-name) |
+| RPG/400 | [RPG II, RPG III, and RPG/400](https://isbnsearch.org/isbn/0878352465) |
+
+### Other
+
 * Derived from an [existing RPG extension](https://github.com/NielsLiisberg/RPG-for-VSCode)
 * [Repo used to test older RPG](https://github.com/worksofliam/flight400)
-* [RPG/400](https://www.ibm.com/support/knowledgecenter/SSAE4W_9.6.0/com.ibm.etools.iseries.langref.doc/evferlsh02.htm#ToC)
-* [RPG II, RPG III, and RPG/400](https://isbnsearch.org/isbn/0878352465)
 * [Regex tool](https://regexr.com/)
 * [VS Code Language extensions](https://code.visualstudio.com/api/language-extensions/overview)
-* [IBM List of CL Commands](https://www.ibm.com/docs/en/i/7.5?topic=language-alphabetic-list-cl-commands-by-command-name)
 
 
 

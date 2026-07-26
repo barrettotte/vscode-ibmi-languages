@@ -1,0 +1,25 @@
+     A* Positional column boundaries for a DDS logical file.
+     A* Member: LFCOL   Compilable: yes (CRTLF, given PERSON)
+     A* Source: IBM i 7.5 DDS for physical and logical files
+     A*   ibm.com/docs/en/i/7.5?topic=files-dds-physical-logical
+     A* Retrieved: 2026-07-25
+     A*
+     A* col 17 name type. R record, K key, J join, S select, O omit.
+00010A          R PERSFMT                   PFILE(PERSON)
+     A* a field with no attributes inherits them from the based-on file
+00020A            PERSONID
+00030A            FIRSTNAME
+     A* cols 30-34 length, 35 data type, 36-37 decimals, 38 usage
+00040A            AGE            3S 0
+00050A            SALARY         9P 2
+00060A            HIREDATE      10L
+00070A            STARTTIME      8T
+00080A            CREATED       26Z
+00090A            NOTES        100A  B
+00100A            BINFLD         9B 0
+00110A            FLOATFLD       8F
+     A* col 29 R takes the field definition from the referenced file
+00120A            REFFIELD  R
+     A* K marks a key field
+00130A          K PERSONID
+00140A          K LASTNAME

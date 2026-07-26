@@ -1,0 +1,45 @@
+     A* Positional column boundaries for a DDS display file.
+     A* Member: DSPCOL   Compilable: yes (CRTDSPF)
+     A* Source: IBM i 7.5 DDS for display files
+     A*   ibm.com/docs/en/i/7.5?topic=files-dds-display
+     A* Retrieved: 2026-07-25
+     A*
+     A* col 17 name type. R record format, H help specification.
+00010A          R CUSTMAINT                 TEXT('Customer maintenance')
+     A* cols 30-34 length, 35 data type, 36-37 decimals, 38 usage,
+     A* 39-41 line, 42-44 position.
+00020A            CUSTNO         6S 0I  3 10
+00030A            CUSTNAME      30A  B  4 10
+00040A            BALANCE        9S 2O  5 10
+00050A            HIDDENFLD     10A  H
+00060A            MSGFLD        70A  M 24  2
+00070A            PGMTOSYS      10A  P
+     A* data types valid in column 35 for a display file
+00080A            CHARFLD       10A  B  7  2
+00090A            DATEFLD       10L  B  8  2
+00100A            TIMEFLD        8T  B  9  2
+00110A            TSFLD         26Z  O 10  2
+00120A            FLOATFLD       8F  O 11  2
+00130A            SIGNEDFLD      7S 2B 12  2
+00140A            NUMONLY        5Y 0B 13  2
+00150A            INHIBITED      5I  O 14  2
+00160A            DIGITSONLY     5D  B 15  2
+00170A            NUMCHAR        5M  B 16  2
+00180A            NUMSHIFT       5N  B 17  2
+00190A            ALPHAONLY      5X  B 18  2
+00200A            KATAKANA       5W  B 19  2
+     A* col 29 R draws the field from the referenced file
+00210A                                      REF(REFLIB/REFFILE)
+00220A            REFCUST   R        B 20  2
+     A* cols 7-16 conditioning indicators, col 7 A/O to AND/OR them
+00230A  01                             21  2'Conditioned constant'
+00240A N02                                  DSPATR(HI)
+00250AA 03 04N05                            DSPATR(RI)
+00260AO 06                                  DSPATR(BL)
+     A* IBM i names may contain #, $, @ and digits. A digit inside a
+     A* name is not a numeric constant, and a name is not a keyword.
+09400A            #CBX#3         5A  B 22  2
+09410A            FLD2024        5A  B 22 10
+09420A            ABCDEFGHIJ     5A  B 22 20
+     A* Numeric literals in the functions area still scope.
+09430A                                      CF03(03 'EXIT')

@@ -22,6 +22,7 @@
     "comments": {
       "patterns": [
         {
+          "comment": "Comment line: * in column 7. Columns 1-5 are the sequence number and column 6 the form type.",
           "name": "comment.line.dds.dspf",
           "match": "^.{5}(.)(\\*).*"
         }
@@ -30,10 +31,12 @@
     "gutter": {
       "patterns": [
         {
+          "comment": "Sequence number area, columns 1-5. Not source; scoped as a comment so it recedes visually.",
           "name": "comment.gutter",
           "match": "^.{1,5}"
         },
         {
+          "comment": "Anything past column 80 is ignored by the DDS compiler.",
           "name": "comment.block.line.dds",
           "begin": "(?<=^.{80})",
           "end": "\n"
@@ -43,104 +46,176 @@
     "constants": {
       "patterns": [
         {
+          "comment": "Special values such as *ISO or *BLANK. Anchored to the functions area (column 45 onward); a special value cannot appear in the name or attribute columns.",
           "name": "constant.language.dds.dspf",
-          "match": "(\\*)[a-zA-Z][a-zA-Z0-9]*"
+          "match": "(?<=(.{44}))(\\*)[a-zA-Z][a-zA-Z0-9]*"
         },
         {
+          "comment": "Column 7: A or O, joining this line's conditioning indicators to the previous line's with AND or OR.",
           "name": "constant.language.dds.dspf.andor",
           "match": "(?i)(?<=^.{5}(A|\\s).{0})(A|O)"
         },
         {
+          "comment": "Conditioning indicator 1, columns 8-10. Column 8 is N to negate.",
           "name": "constant.language.dds.dspf.n01",
           "match": "(?i)(?<=^.{5}(A|\\s).{1})(N|\\s)[0-9]{2}"
         },
         {
+          "comment": "Conditioning indicator 2, columns 11-13.",
           "name": "constant.language.dds.dspf.n02",
           "match": "(?i)(?<=^.{5}(A|\\s).{4})(N|\\s)[0-9]{2}"
         },
         {
+          "comment": "Conditioning indicator 3, columns 14-16.",
           "name": "constant.language.dds.dspf.n03",
           "match": "(?i)(?<=^.{5}(A|\\s).{7})(N|\\s)[0-9]{2}"
         },
         {
+          "comment": "Column 17, the name type. R marks a record format, H a help specification.",
           "name": "constant.language.dds.dspf.nameType",
           "match": "(?i)(?<=^.{5}(A|\\s).{10})(R|H)"
         },
         {
+          "comment": "Column 29: R means the field's attributes come from the file named by REF or REFFLD.",
           "name": "constant.language.dds.dspf.ref",
           "match": "(?i)(?<=^.{5}(A|\\s).{22})(R)"
         },
         {
+          "comment": "Field length, columns 30-34.",
           "name": "constant.language.dds.dspf.len",
           "match": "(?i)(?<=^.{5}(A|\\s).{23})[0-9|\\s]{5}"
         },
         {
+          "comment": "Column 35, the data type and keyboard shift: A alphameric, D digits only, E DBCS-either, F floating point, G graphic, I inhibit, J DBCS-only, L date, M numeric-only character, N numeric shift, O DBCS-open, S signed numeric, T time, W katakana, X alphabetic only, Y numeric only, Z timestamp.",
           "name": "constant.language.dds.dspf.dataType",
           "match": "(?i)(?<=^.{5}(A|\\s).{28})(A|D|E|F|G|I|J|L|M|N|O|S|T|W|X|Y|Z)"
         },
         {
+          "comment": "Decimal positions, columns 36-37.",
           "name": "constant.language.dds.dspf.decpos",
           "match": "(?i)(?<=^.{5}(A|\\s).{29})[0-9|\\s]{2}"
         },
         {
+          "comment": "Column 38, field usage. O output, I input, B both, H hidden, M message, P program-to-system.",
           "name": "constant.language.dds.dspf.usage",
           "match": "(?i)(?<=^.{5}(A|\\s).{31})(O|I|B|H|M|P)"
         },
         {
+          "comment": "Display line number, columns 39-41.",
           "name": "constant.language.dds.dspf.locline",
           "match": "(?i)(?<=^.{5}(A|\\s).{32})([0-9]|\\s){3}"
         },
         {
+          "comment": "Display position within the line, columns 42-44. For any field after the first in a record, a plus value +n may be given instead, leaving n spaces between the end of the previous field and this one. Valid range 1 to 99.",
           "name": "constant.language.dds.dspf.locpos",
-          "match": "(?i)(?<=^.{5}(A|\\s).{35})([0-9]|\\s){3}"
+          "match": "(?i)(?<=^.{5}(A|\\s).{35})([0-9]|\\s|\\+){3}"
         },
         {
+          "comment": "Argument block of the EDTCDE keyword.",
+          "name": "dds.dspf.edtcde",
+          "begin": "(?i)(?<=EDTCDE\\()",
+          "end": "(?=\\))",
+          "patterns": [
+            {
+              "comment": "EDTCDE edit code: 1-4, A-D, J-Q and W-Z, plus 5-9 for user-defined edit codes. The optional second parameter is * for asterisk fill or an arbitrary floating currency symbol, so it is not enumerated.",
+              "name": "constant.other.dds.dspf.edtcde.values",
+              "match": "(?i)\\b([1-9A-DJ-QW-Z])\\b"
+            }
+          ]
+        },
+        {
+          "comment": "Argument block of the CHGINPDFT keyword, which accepts a list of input defaults.",
+          "name": "dds.dspf.chginpdft",
+          "begin": "(?i)(?<=CHGINPDFT\\()",
+          "end": "(?=\\))",
+          "patterns": [
+            {
+              "comment": "CHGINPDFT input defaults: BL blink, CS column separator, HI high intensity, LC lowercase, RI reverse image, UL underline.",
+              "name": "constant.other.dds.dspf.chginpdft.values",
+              "match": "(?i)\\b(BL|CS|HI|LC|RI|UL)\\b"
+            }
+          ]
+        },
+        {
+          "comment": "Argument block of the AUTO keyword.",
+          "name": "dds.dspf.auto",
+          "begin": "(?i)(?<=AUTO\\()",
+          "end": "(?=\\))",
+          "patterns": [
+            {
+              "comment": "AUTO record advance: RA, RAB or RAZ. Listed longest-first so RAB matches before RA.",
+              "name": "constant.other.dds.dspf.auto.values",
+              "match": "(?i)\\b(RAB|RAZ|RA)\\b"
+            }
+          ]
+        },
+        {
+          "comment": "Colour given as the sub-expression (*COLOR value). Used by CHCAVAIL, CHCSLT, CHCUNAVAIL, MNUBARSEP, WDWBORDER and WDWTITLE, which take their colour this way rather than as COLOR(value).",
+          "name": "constant.other.dds.dspf.color.values",
+          "match": "(?i)(?<=\\*COLOR\\s)(BLU|GRN|PNK|RED|TRQ|WHT|YLW)\\b"
+        },
+        {
+          "comment": "Display attribute given as the sub-expression (*DSPATR value), used by the same keywords as (*COLOR value).",
+          "name": "constant.other.dds.dspf.dspatr.values",
+          "match": "(?i)(?<=\\*DSPATR\\s)(BL|CS|HI|ND|PC|RI|UL|MDT|OID|PR|SP)\\b"
+        },
+        {
+          "comment": "Numeric literals in keyword parameters. Anchored to the functions area (column 45 onward), otherwise a digit inside a field name such as #CBX#3 is highlighted as a constant. The length, decimal, indicator and location columns have their own rules.",
           "name": "constant.numeric.dds.dspf",
-          "match": "\\b([0-9]+)\\b"
+          "match": "(?<=(.{44}))\\b([0-9]+)\\b"
         },
         {
+          "comment": "Argument block of the CHECK keyword. CHECK accepts a list of codes, so a lookbehind anchored to CHECK( would only match the first. A container rule carries no theme colour of its own.",
           "name": "dds.dspf.check",
           "begin": "(?i)(?<=(CHECK\\())",
           "end": "(?=(\\)))",
           "patterns": [
             {
+              "comment": "CHECK validity-checking codes: AB, ER, FE, LC, M10, M10F, M11, M11F, ME, MF, RB, RL, RLTB, RZ, VN and VNE. Longer codes are listed first so M10F matches before M10.",
               "name": "constant.other.dds.dspf.check.values",
               "match": "(?i)(\\b(AB|ME|MF|M10F|M10|M11F|M11|VNE|VN|ER|FE|LC|RB|RZ|RLTB|RL)\\b)"
             }
           ]
         },
         {
+          "comment": "Argument block of the DSPATR keyword, which accepts a list of display attributes.",
           "name": "dds.dspf.dspatr",
           "begin": "(?i)(?<=(DSPATR\\())",
           "end": "(?=(\\)))",
           "patterns": [
             {
+              "comment": "DSPATR display attributes: BL blink, CS column separator, HI high intensity, ND nondisplay, PC position cursor, RI reverse image, UL underline, MDT set changed data tag, OID operator identification, PR protect, SP select by light pen.",
               "name": "constant.other.dds.dspf.dspatr.values",
               "match": "(?i)(\\b(SP|PR|OID|MDT|UL|RI|PC|ND|HI|CS|BL)\\b)"
             }
           ]
         },
         {
+          "comment": "Argument block of the COLOR keyword.",
           "name": "dds.dspf.color",
           "begin": "(?i)(?<=(COLOR\\())",
           "end": "(?=(\\)))",
           "patterns": [
             {
+              "comment": "COLOR names for display files: BLU, GRN, PNK, RED, TRQ, WHT and YLW. The printer file set differs; it adds BLK and BRN and has no WHT.",
               "name": "constant.other.dds.dspf.color.values",
               "match": "(?i)(\\b(BLU|PNK|YLW|TRQ|RED|WHT|GRN)\\b)"
             }
           ]
         },
         {
+          "comment": "Argument block of a COMP or CMP comparison.",
           "name": "dds.dspf.comp",
           "begin": "(?i)((?<=((COMP)\\())|(?<=((CMP)\\()))",
           "end": "(?=(\\)))",
           "patterns": [
             {
+              "comment": "Relational operators for COMP and CMP: EQ, NE, LT, NL, GT, NG, LE, GE.",
               "name": "keyword.other.dds.dspf.comp.values",
               "match": "(?i)(\\b(GE|LE|NG|GT|NL|LT|NE|EQ)\\b)"
             },
             {
+              "comment": "Numeric literals in keyword parameters, such as SFLPAG(0009).",
               "name": "constant.numeric.dds.dspf",
               "match": "\\b([0-9]+)\\b"
             }
@@ -151,43 +226,89 @@
     "keywords": {
       "patterns": [
         {
+          "comment": "Column 6, the form type. Always A for DDS.",
           "name": "keyword.other.dds.dspf.spec",
           "match": "(?i)(?<=^.{5})[A]"
         },
         {
           "name": "keyword.other.dds.dspf",
-          "match": "\\+"
+          "match": "[+-](?=\\s*$)",
+          "comment": "Continuation character joining this line to the next. Both + and - are valid; + discards the leading blanks of the continuation line and - preserves them. Anchored to end of line so a hyphen or plus inside a keyword parameter is unaffected."
         },
         {
           "name": "keyword.other.dds.dspf.func",
-          "match": "((?i)(C(A|F)))[0-9]{2}"
+          "match": "(?i)(?<=^.{5}[A\\s].{38})(C[AF])[0-9]{2}",
+          "comment": "Command attention and command function keys, CA01-CA24 and CF01-CF24. Anchored to the functions area so a field named CA01 is not mistaken for a command key."
+        },
+        {
+          "comment": "Keyword set for the functions area. The first lookbehind requires at least 44 characters before the match, so a keyword is found anywhere from column 45 onward and one line may carry several. The second requires the match to begin exactly at column 45 or to follow a non-word character: a plain \\b is wrong here, because a keyword starting at column 45 is valid even when column 44 holds a digit, as it does when a position entry abuts the keyword. The trailing boundary stops a keyword matching inside a longer name such as MYGDF.",
+          "name": "keyword.other.dds.dspf.funcs",
+          "match": "(?i)(?<=(.{44}))(?<=^.{44}|[^A-Za-z0-9])(WRDWRAP|WINDOW|WDWTITLE|WDWBORDER|VLDCMDKEY|VALUES|VALNUM|USRRSTDSP|USRDSPMGT|USRDFN|USER|UNLOCK|TIMSEP|TIMFMT|TIME|TEXT|SYSNAME|SNGCHCFLD|SLNO|SFLSNGCHC|SFLSIZ|SFLSCROLL|SFLRTNSEL|SFLROLVAL|SFLRNA|SFLRCDNBR|SFLPGMQ|SFLPAG|SFLNXTCHG|SFLMSGRCD|SFLMSGKEY|SFLMSGID|SFLMSG|SFLMODE|SFLMLTCHC|SFLLIN|SFLINZ|SFLFOLD|SFLENTER|SFLEND|SFLDSPCTL|SFLDSP|SFLDROP|SFLDLT|SFLCTL|SFLCSRRRN|SFLCSRPRG|SFLCLR|SFLCHCCTL|SETOFF|SETOF|RTNDTA|RTNCSRLOC|ROLLUP|ROLLDOWN|RMVWDW|RETLCKSTS|RETCMDKEY|RETKEY|REFFLD|REF|RANGE|PUTRETAIN|PUTOVR|PULLDOWN|PSHBTNFLD|PSHBTNCHC|PROTECT|PRINT|PASSRCD|PAGEDOWN|PAGEUP|OVRDTA|OVRATR|OVERLAY|OPENPRT|NOCCSID|MSGLOC|MSGID|MSGCON|MSGALARM|MOUBTN|MNUCNL|MNUBARSW|MNUBARSEP|MNUBARDSP|MNUBARCHC|MNUBAR|MLTCHCFLD|MDTOFF|MAPVAL|LOWER|LOGOUT|LOGINP|LOCK|KEEP|INZRCD|INZINP|INVITE|INDTXT|INDARA|HTML|HOME|HLPTITLE|HLPSEQ|HLPSCHIDX|HLPRTN|HLPRCD|HLPPNLGRP|HLPID|HLPFULL|HLPEXCLD|HLPDOC|HLPCMDKEY|HLPCLR|HLPBDY|HLPARA|HELP|GETRETAIN|FRCDTA|FLTPCN|FLTFIXDEC|FLDCSRPRG|ERRSFL|ERRMSG|ERRMSGID|ERASEINP|ERASE|ENTFLDATR|EDTWRD|EDTMSK|EDTCDE|DUP|DSPSIZ|DSPRL|DSPMOD|DSPATR|DLTEDT|DLTCHK|DFTVAL|DFT|DATSEP|DATFMT|DATE|CSRLOC|CSRINPONLY|COMP|COLOR|CNTFLD|CLEAR|CHRID|CHOICE|CHKMSGID|CHGINPDFT|CHECK|CHCUNAVAIL|CHCSLT|CHCCTL|CHCAVAIL|CHCACCEL|CHANGE|BLKFOLD|BLINK|BLANKS|AUTO|ASSUME|ALWROL|ALWGPH|ALTPAGEDWN|ALTPAGEUP|ALTNAME|ALTHELP|ALIAS|ALARM)\\b\\b"
         },
         {
           "name": "keyword.other.dds.dspf.funcs",
-          "match": "(?i)(?<=(.{44}))(WRDWRAP|WINDOW|WDWTITLE|WDWBORDER|VLDCMDKEY|VALUES|VALNUM|USRRSTDSP|USRDSPMGT|USRDFN|USER|UNLOCK|TIMSEP|TIMFMT|TIME|TEXT|SYSNAME|SNGCHCFLD|SLNO|SFLSNGCHC|SFLSIZ|SFLSCROLL|SFLRTNSEL|SFLROLVAL|SFLRNA|SFLRCDNBR|SFLPGMQ|SFLPAG|SFLNXTCHG|SFLMSGRCD|SFLMSGKEY|SFLMSG|SFLMODE|SFLMLTCHC|SFLLIN|SFLINZ|SFLFOLD|SFLENTER|SFLEND|SFLDSPCTL|SFLDSP|SFLDROP|SFLDLT|SFLCTL|SFLCSRRRN|SFLCSRPRG|SFLCLR|SFLCHCCTL|SETOFF|SETOF|RTNDTA|RTNCSRLOC|ROLLUP|ROLLDOWN|RMVWDW|RETLCKSTS|RETKEY|REFFLD|REF|RANGE|PUTRETAIN|PUTOVR|PULLDOWN|PSHBTNFLD|PSHBTNCHC|PROTECT|PRINT|PASSRCD|PAGEDOWN|PAGEUP|OVRDTA|OVRATR|OVERLAY|OPENPRT|NOCCSID|MSGLOC|MSGID|MSGCON|MSGALARM|MOUBTN|MNUCNL|MNUBARSW|MNUBARSEP|MNUBARDSP|MNUBARCHC|MNUBAR|MLTCHCFLD|MDTOFF|MAPVAL|LOWER|LOGOUT|LOGINP|LOCK|KEEP|INZRCD|INZINP|INVITE|INDTXT|INDARA|HTML|HOME|HLPTITLE|HLPSEQ|HLPSCHIDX|HLPRTN|HLPRCD|HLPPNLGRP|HLPID|HLPFULL|HLPEXCLD|HLPDOC|HLPCMDKEY|HLPCLR|HLPBDY|HLPARA|HELP|GETRETAIN|FRCDTA|FLTPCN|FLTFIXDEC|FLDCSRPRG|ERRSFL|ERRMSG|ERRMSGID|ERASEINP|ERASE|ENTFLDATR|EDTWRD|EDTMSK|EDTCDE|DUP|DSPSIZ|DSPRL|DSPMOD|DSPATR|DLTEDT|DLTCHK|DFTVAL|DFT|DATSEP|DATFMT|DATE|CSRLOC|CSRINPONLY|COMP|COLOR|CNTFLD|CLEAR|CHRID|CHOICE|CHKMSGID|CHGINPDFT|CHECK|CHCUNAVAIL|CHCSLT|CHCCTL|CHCAVAIL|CHCACCEL|CHANGE|BLKFOLD|BLINK|BLANKS|AUTO|ASSUME|ALWROL|ALWGPH|ALTPAGEDWN|ALTPAGEUP|ALTNAME|ALTHELP|ALIAS|ALARM)\\b"
-        },
-        {
-          "name": "keyword.other.dds.dspf.funcs",
-          "match": "\\b(?i)(CMP|CLRL|SFL)\\b"
+          "match": "(?i)(?<=^.{5}[A\\s].{38})(CMP|CLRL|SFL)\\b",
+          "comment": "CMP, CLRL and SFL. Held in a separate rule from the main keyword list. Anchored to the functions area so a record or field named SFL is not mistaken for a keyword."
         }
       ]
     },
     "strings": {
-      "name": "string.quoted.single.dds.dspf",
-      "begin": "'",
-      "end": "'",
       "patterns": [
         {
-          "name": "comment.line.dds.dspf",
-          "match": "^.{5}(.)(\\*).*"
+          "comment": "Hexadecimal constant, X'hhhh'. Must be tried before the plain quoted literal so the X prefix is included in the token rather than left unscoped.",
+          "name": "string.other.dds.dspf.hex",
+          "begin": "(?i)x'",
+          "end": "'",
+          "patterns": [
+            {
+              "comment": "Continuation character ending an unterminated literal. DDS discards it and joins the lines, so it is not part of the literal's value.",
+              "name": "keyword.other.dds.dspf",
+              "match": "[+-](?=\\s*$)"
+            },
+            {
+              "comment": "Comment line: * in column 7. Columns 1-5 are the sequence number and column 6 the form type.",
+              "name": "comment.line.dds.dspf",
+              "match": "^.{5}(.)(\\*).*"
+            },
+            {
+              "comment": "Sequence number area, columns 1-5. Not source; scoped as a comment so it recedes visually.",
+              "name": "comment.gutter",
+              "match": "^.{1,5}"
+            },
+            {
+              "comment": "Column 6, the form type. Always A for DDS.",
+              "name": "keyword.other.dds.dspf.spec",
+              "match": "(?i)(?<=^.{5})[A]"
+            }
+          ]
         },
         {
-          "name": "comment.gutter",
-          "match": "^.{1,5}"
-        },
-        {
-          "name": "keyword.other.dds.dspf.spec",
-          "match": "(?i)(?<=^.{5})[A]"
+          "comment": "Quoted literal constant or keyword parameter. A literal may continue across lines, so the nested rules re-apply the gutter and form type on each continuation line.",
+          "name": "string.quoted.single.dds.dspf",
+          "begin": "'",
+          "end": "'",
+          "patterns": [
+            {
+              "comment": "Continuation character ending an unterminated literal. DDS discards it and joins the lines, so it is not part of the literal's value.",
+              "name": "keyword.other.dds.dspf",
+              "match": "[+-](?=\\s*$)"
+            },
+            {
+              "comment": "Comment line: * in column 7. Columns 1-5 are the sequence number and column 6 the form type.",
+              "name": "comment.line.dds.dspf",
+              "match": "^.{5}(.)(\\*).*"
+            },
+            {
+              "comment": "Sequence number area, columns 1-5. Not source; scoped as a comment so it recedes visually.",
+              "name": "comment.gutter",
+              "match": "^.{1,5}"
+            },
+            {
+              "comment": "Column 6, the form type. Always A for DDS.",
+              "name": "keyword.other.dds.dspf.spec",
+              "match": "(?i)(?<=^.{5})[A]"
+            }
+          ]
         }
       ]
     }

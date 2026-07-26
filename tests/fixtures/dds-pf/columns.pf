@@ -1,0 +1,36 @@
+     A* Positional column boundaries for a DDS physical file.
+     A* Member: PFCOL   Compilable: yes (CRTPF)
+     A* Source: IBM i 7.5 DDS for physical and logical files
+     A*   ibm.com/docs/en/i/7.5?topic=files-dds-physical-logical
+     A* Retrieved: 2026-07-25
+     A*
+     A* col 17 name type. R marks a record format, K a key field.
+00010A          R ACCOUNT                   TEXT('Account master')
+     A* cols 19-28 name, 30-34 length, 35 data type, 36-37 decimals
+00020A            ACLEVELID      2P 0
+00030A            ACORGCOD       3P 0
+00040A            ACCOUNTNUM    12P 0
+00050A            ACCURRENCY     3A
+00060A            ACNAME        20A
+     A* every data type valid in column 35
+00070A            PACKEDFLD      7P 2
+00080A            ZONEDFLD       7S 2
+00090A            BINFLD         9B 0
+00100A            FLOATFLD       8F
+00110A            CHARFLD       10A
+00120A            DATEFLD       10L
+00130A            TIMEFLD        8T
+00140A            TSFLD         26Z
+00150A            HEXFLD         8H
+00160A            DBCSONLY      10J
+00170A            DBCSEITH      10E
+00180A            DBCSOPEN      10O
+00190A            GRAPHFLD      10G
+     A* col 29 R takes the definition from the field reference file
+00200A                                      REF(REFLIB/REFFILE)
+00210A            CUSTNO    R
+00220A            CUSTNAME  R               REFFLD(NAME REFLIB/REFFILE)
+     A* K marks key fields, in major-to-minor order
+00230A          K ACLEVELID
+00240A          K ACORGCOD
+00250A          K ACCOUNTNUM

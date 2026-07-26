@@ -1,0 +1,104 @@
+     A* Literal constants, continuation, and enumerated keyword values.
+     A* Member: PRTCONST   Compilable: yes
+     A* Source: IBM i 7.5 DDS for printer files, Example: A printer
+     A*   file using DDS. Retrieved: 2026-07-25
+     A*
+00010A          R HEADING
+     A* A constant is a quoted literal in the functions area with a
+     A* position but no field name.
+00020A                                     2'ACCOUNT  CUSTOMER'
+     A*
+     A* + continues a literal onto the next line, discarding the
+     A* leading blanks of the continuation.
+00030A                                     2'NUMBER   NAME        +
+00040A                                        ADDRESS              +
+00050A                                        CITY                 +
+00060A                                        STATE   ZIP  '
+     A*
+     A* - continues a literal while preserving leading blanks.
+00070A                                     2'PRESERVED    -
+00080A                                           SPACING'
+     A*
+     A* An apostrophe inside a literal is doubled.
+00090A                                     2'CUSTOMER''S NAME'
+     A*
+     A* Hexadecimal literals.
+00100A                                     2X'40404040'
+     A*
+     A* Enumerated keyword values. Each of these keywords takes an
+     A* argument from a closed set defined by IBM, so every valid value
+     A* appears below. A gap in one of the grammar's ranges shows up as
+     A* an unscoped value in the snapshot.
+     A*
+     A* EDTCDE: 1-4, A-D, J-Q, W-Z, plus 5-9 user-defined.
+     A* Valid only for fields with S or blank in position 35.
+00110A          R EDITCODES
+00120A            EDT1           9S 2O    +2EDTCDE(1)
+00130A            EDT2           9S 2O    +2EDTCDE(2)
+00140A            EDT3           9S 2O    +2EDTCDE(3)
+00150A            EDT4           9S 2O    +2EDTCDE(4)
+00160A            EDT5           9S 2O    +2EDTCDE(5)
+00170A            EDT6           9S 2O    +2EDTCDE(6)
+00180A            EDT7           9S 2O    +2EDTCDE(7)
+00190A            EDT8           9S 2O    +2EDTCDE(8)
+00200A            EDT9           9S 2O    +2EDTCDE(9)
+00210A            EDTA           9S 2O    +2EDTCDE(A)
+00220A            EDTB           9S 2O    +2EDTCDE(B)
+00230A            EDTC           9S 2O    +2EDTCDE(C)
+00240A            EDTD           9S 2O    +2EDTCDE(D)
+00250A            EDTJ           9S 2O    +2EDTCDE(J)
+00260A            EDTK           9S 2O    +2EDTCDE(K)
+00270A            EDTL           9S 2O    +2EDTCDE(L)
+00280A            EDTM           9S 2O    +2EDTCDE(M)
+00290A            EDTN           9S 2O    +2EDTCDE(N)
+00300A            EDTO           9S 2O    +2EDTCDE(O)
+00310A            EDTP           9S 2O    +2EDTCDE(P)
+00320A            EDTQ           9S 2O    +2EDTCDE(Q)
+00330A            EDTW           9S 2O    +2EDTCDE(W)
+00340A            EDTX           9S 2O    +2EDTCDE(X)
+00350A            EDTY           9S 2O    +2EDTCDE(Y)
+00360A            EDTZ           9S 2O    +2EDTCDE(Z)
+     A* The optional second parameter is * for asterisk fill or a
+     A* floating currency symbol. Neither is an enumerated value.
+00370A            EDTSTAR        9S 2O    +2EDTCDE(J *)
+00380A            EDTCUR         9S 2O    +2EDTCDE(1 $)
+     A*
+     A* COLOR: the printer file set. Display files differ - they have
+     A* WHT but not BLK or BRN.
+00390A          R COLORS
+00400A                                     2'BLK' COLOR(BLK)
+00410A                                     2'BLU' COLOR(BLU)
+00420A                                     2'BRN' COLOR(BRN)
+00430A                                     2'GRN' COLOR(GRN)
+00440A                                     2'PNK' COLOR(PNK)
+00450A                                     2'RED' COLOR(RED)
+00460A                                     2'TRQ' COLOR(TRQ)
+00470A                                     2'YLW' COLOR(YLW)
+     A*
+     A* BARCODE symbology identifiers.
+00480A          R BARCODES
+00490A            BC00          20A  O    +2BARCODE(MSI 4)
+00500A            BC01          20A  O    +2BARCODE(UPCA 4)
+00510A            BC02          20A  O    +2BARCODE(UPCE 4)
+00520A            BC03          20A  O    +2BARCODE(UPC2 4)
+00530A            BC04          20A  O    +2BARCODE(UPC5 4)
+00540A            BC05          20A  O    +2BARCODE(EAN8 4)
+00550A            BC06          20A  O    +2BARCODE(EAN13 4)
+00560A            BC07          20A  O    +2BARCODE(EAN2 4)
+00570A            BC08          20A  O    +2BARCODE(EAN5 4)
+00580A            BC09          20A  O    +2BARCODE(CODEABAR 4)
+00590A            BC10          20A  O    +2BARCODE(CODE128 4)
+00600A            BC11          20A  O    +2BARCODE(CODE3OF9 4)
+00610A            BC12          20A  O    +2BARCODE(CODE93 4)
+00620A            BC13          20A  O    +2BARCODE(INTERL2OF5 4)
+00630A            BC14          20A  O    +2BARCODE(INDUST2OF5 4)
+00640A            BC15          20A  O    +2BARCODE(MATRIX2OF5 4)
+00650A            BC16          20A  O    +2BARCODE(POSTNET 4)
+00660A            BC17          20A  O    +2BARCODE(RM4SCC 4)
+00670A            BC18          20A  O    +2BARCODE(AP4SCC 4)
+00680A            BC19          20A  O    +2BARCODE(DUTCHKIX 4)
+00690A            BC20          20A  O    +2BARCODE(JPBC 4)
+00700A            BC21          20A  O    +2BARCODE(PDF417 4)
+00710A            BC22          20A  O    +2BARCODE(MAXICODE 4)
+00720A            BC23          20A  O    +2BARCODE(DATAMATRIX 4)
+00730A            BC24          20A  O    +2BARCODE(QRCODE 4)

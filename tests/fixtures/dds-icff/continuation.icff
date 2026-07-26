@@ -1,0 +1,16 @@
+     A* Continuation with + and -, and strings spanning lines.
+     A* Member: ICFCONT   Compilable: yes
+     A* Source: IBM i 7.5 DDS concepts, continuation rules
+     A* Retrieved: 2026-07-25
+     A*
+00010A          R CONTREC
+     A* + continues, discarding leading blanks on the next line
+00020A                                      SECURITY(2 'PASSWRD' +
+     A                                               3 'USRID')
+     A* - continues, preserving leading blanks on the next line
+00030A                                      TEXT('A description that runs -
+     A                                      across two source lines')
+     A* a comment may interrupt a continued keyword
+00040A                                      EVOKE(MYLIB/ -
+     A* this comment sits between the two halves
+     A                                      SOMEPGM)
