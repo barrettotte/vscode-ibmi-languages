@@ -1,0 +1,9 @@
+     A* System/38 printer file. Same grammar as .prtf.
+     A* Member: PRTF38   Compilable: yes
+00010A                                      REF(MLGREFP)
+00020A          R HEADER                    SKIPB(2)
+00030A                                    25'ACCOUNT LISTING'
+00040A                                    75DATE EDTCDE(Y)
+00050A          R DETAIL                    SPACEA(1)
+00060A            ACCTNO         6S 0O     2
+00070A            BALANCE        9S 2O    +2EDTCDE(J)

@@ -1,0 +1,6 @@
+     A* A physical file may also carry the .dds extension.
+     A* Member: PFDDS   Compilable: yes
+00010A          R ITEM                      TEXT('Item master')
+00020A            ITEMNO         8P 0
+00030A            ITEMDESC      30A
+00040A          K ITEMNO

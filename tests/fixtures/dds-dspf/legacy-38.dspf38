@@ -1,0 +1,8 @@
+     A* System/38 display file. Same grammar as .dspf.
+     A* Member: DSPF38   Compilable: yes
+00010A                                      INDARA
+00020A          R SCREEN1                   TEXT('Entry screen')
+00030A                                  1 25'ACCOUNT ENQUIRY'
+00040A            ACCTNO         6S 0I  3 10
+00050A            ACCTNAME      20A  O  4 10DSPATR(HI)
+00060A                                      CF03(03 'Exit')

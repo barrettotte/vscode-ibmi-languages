@@ -24,6 +24,9 @@ jobs:
       - name: Check formatting
         run: npm run format:check
 
+      - name: Run repository checks
+        run: npm run lint
+
       - name: Run grammar tests
         run: npm test
 
