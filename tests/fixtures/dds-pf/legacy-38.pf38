@@ -1,0 +1,8 @@
+     A* System/38 physical file. Same grammar as .pf; this fixture
+     A* exists so the declared extension is exercised.
+     A* Member: PF38   Compilable: yes
+00010A                                      UNIQUE
+00020A          R ACCOUNT                   TEXT('Account master')
+00030A            ACCTNO         6P 0
+00040A            ACCTNAME      20A
+00050A          K ACCTNO

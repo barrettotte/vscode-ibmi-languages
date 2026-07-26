@@ -1,0 +1,7 @@
+     A* System/38 logical file. Same grammar as .lf.
+     A* Member: LF38   Compilable: yes (given ACCOUNT)
+00010A          R ACCTFMT                   PFILE(ACCOUNT)
+00020A            ACCTNO
+00030A            ACCTNAME
+00040A          K ACCTNAME                  DESCEND
+00050A          S ACCTNO                    COMP(GT 0)
