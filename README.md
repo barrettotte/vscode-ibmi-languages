@@ -136,7 +136,9 @@ offline, which is how the keyword lists are checked for omissions.
 | DDS ICF files (`.icff`) | [DDS for ICF files](https://www.ibm.com/docs/en/i/7.5?topic=files-dds-icf) &middot; [PDF](https://www.ibm.com/docs/en/ssw_ibm_i_75/rzake/rzakepdf.pdf) |
 | DDS concepts (all DDS types) | [DDS concepts](https://www.ibm.com/docs/en/i/7.5?topic=programming-dds-concepts) |
 | Binder language (`.bnd`) | [Binder language](https://www.ibm.com/docs/en/i/7.5?topic=concepts-binder-language) &middot; [ILE Concepts PDF](https://www.ibm.com/docs/en/ssw_ibm_i_75/ilec/sc415606.pdf) |
-| Control Language (`.cl`, `.clle`, `.clp`) | [Alphabetic list of CL commands](https://www.ibm.com/docs/en/i/7.5?topic=language-alphabetic-list-cl-commands-by-command-name) |
+| Control Language (`.cl`, `.clle`, `.clp`, `.clp38`) | [CL overview and concepts](https://www.ibm.com/docs/en/i/7.5?topic=programming-control-language) &middot; [PDF](https://www.ibm.com/docs/en/ssw_ibm_i_75/rbam6/rbam6pdf.pdf) &middot; [Alphabetic list of CL commands](https://www.ibm.com/docs/en/i/7.5?topic=language-alphabetic-list-cl-commands-by-command-name) |
+| Command definition (`.cmd`) | [Command definition statements](https://www.ibm.com/docs/en/i/7.5?topic=programming-control-language) &middot; [PDF](https://www.ibm.com/docs/en/ssw_ibm_i_75/rbam6/rbam6pdf.pdf) |
+| Machine Interface (`.mi`) | [Machine interface instructions](https://www.ibm.com/docs/en/i/7.5?topic=programming-machine-interface-instructions) &middot; [Machine Interface introduction](https://www.ibm.com/docs/en/i/7.5?topic=interface-machine-introduction) |
 | RPG/400 | [RPG II, RPG III, and RPG/400](https://isbnsearch.org/isbn/0878352465) |
 
 ### Other

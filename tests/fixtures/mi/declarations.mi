@@ -1,0 +1,31 @@
+/********************************************************************/
+/* MI declarations: entry point, pointers, operand lists.           */
+/* Member: MIDCL   Compilable: yes (CRTMIPGM)                       */
+/* Source: IBM i 7.5 Machine Interface, writing an MI program.      */
+/* Retrieved: 2026-07-26                                            */
+/********************************************************************/
+ENTRY   *          (PARM_LIST)  EXT;
+
+/* Space pointers address bytes within a space.                     */
+DCL     SPCPTR     ARG1@        PARM;
+DCL     SPCPTR     ARG2@        PARM;
+DCL     SPCPTR     RESULT@      PARM;
+
+/* System pointers address objects.                                 */
+DCL     SYSPTR     OBJ@         AUTO;
+
+/* An operand list names the parameters passed to the program.      */
+DCL     OL         PARM_LIST
+                   (ARG1@,
+                    ARG2@,
+                    RESULT@)
+                    PARM        EXT;
+
+/* Data definitions.                                                */
+DCL     DD         ARG1         PKD(15,5)  BAS(ARG1@);
+DCL     DD         ARG2         PKD(15,5)  BAS(ARG2@);
+DCL     DD         RESULT       PKD(15,5)  BAS(RESULT@);
+DCL     DD         COUNTER      BIN(4)     AUTO   INIT(0);
+DCL     DD         NAME         CHAR(10)   AUTO   INIT(' ');
+
+PEND;

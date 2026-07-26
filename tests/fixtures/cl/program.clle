@@ -1,0 +1,46 @@
+/* A complete CL program: declarations, control flow, error handling. */
+/* Member: CLPGM   Compilable: yes (CRTBNDCL)                         */
+/* Source: IBM i 7.5 CL overview and concepts.                        */
+/*   ibm.com/docs/en/i/7.5?topic=programming-control-language         */
+/* Retrieved: 2026-07-26                                              */
+
+             PGM        PARM(&LIB &COUNT)
+
+             DCL        VAR(&LIB)    TYPE(*CHAR) LEN(10)
+             DCL        VAR(&COUNT)  TYPE(*DEC)  LEN(5 0) VALUE(0)
+             DCL        VAR(&MSG)    TYPE(*CHAR) LEN(80)
+             DCL        VAR(&FLAG)   TYPE(*LGL)  VALUE('0')
+             DCLF       FILE(QGPL/MYFILE)
+
+             MONMSG     MSGID(CPF0000) EXEC(GOTO CMDLBL(ERROR))
+
+/* Conditional logic. */
+             IF         COND(&LIB *EQ '*LIBL') THEN(DO)
+               CHGVAR   VAR(&LIB) VALUE('QGPL')
+             ENDDO
+             ELSE       CMD(CHGVAR VAR(&FLAG) VALUE('1'))
+
+             IF         COND(&COUNT *GT 0 *AND &FLAG *EQ '1') THEN(DO)
+               SNDPGMMSG  MSG('Processing') MSGTYPE(*INFO)
+             ENDDO
+
+/* Loop using a label and GOTO. */
+LOOP:        IF         COND(&COUNT *LT 10) THEN(DO)
+               CHGVAR   VAR(&COUNT) VALUE(&COUNT + 1)
+               GOTO     CMDLBL(LOOP)
+             ENDDO
+
+/* Select groups. */
+             SELECT
+               WHEN     COND(&COUNT *EQ 0) THEN(CHGVAR VAR(&MSG) +
+                          VALUE('none'))
+               WHEN     COND(&COUNT *LE 5) THEN(CHGVAR VAR(&MSG) +
+                          VALUE('few'))
+               OTHERWISE  CMD(CHGVAR VAR(&MSG) VALUE('many'))
+             ENDSELECT
+
+             RETURN
+
+ERROR:       SNDPGMMSG  MSGID(CPF9898) MSGF(QCPFMSG) +
+                          MSGDTA('Unexpected error') MSGTYPE(*ESCAPE)
+             ENDPGM

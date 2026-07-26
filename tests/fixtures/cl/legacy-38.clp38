@@ -1,0 +1,8 @@
+/* A System/38 CL member. Same grammar as .cl.                        */
+/* Member: CLP38   Compilable: yes                                    */
+
+             PGM
+             DCL        VAR(&LIB) TYPE(*CHAR) LEN(10) VALUE('QGPL')
+             CHKOBJ     OBJ(&LIB/MYFILE) OBJTYPE(*FILE)
+             MONMSG     MSGID(CPF9801) EXEC(RETURN)
+             ENDPGM
