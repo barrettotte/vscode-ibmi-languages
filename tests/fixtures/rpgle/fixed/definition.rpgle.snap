@@ -281,7 +281,8 @@
 #                                           ^^^^^ source.rpgle rpgle.fixed.d entity.name.function.rpgle.fixed.d.keywords
 #                                                ^ source.rpgle rpgle.fixed.d
 #                                                 ^ source.rpgle rpgle.fixed.d string.quoted.single.rpgle.fixed
-#                                                  ^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.d string.quoted.single.rpgle.fixed
+#                                                  ^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.d string.quoted.single.rpgle.fixed
+#                                                                  ^ source.rpgle rpgle.fixed.d string.quoted.single.rpgle.fixed keyword.other.rpgle.continuation
 >     D                                     QRSTUVWXYZ')
 #^^^^^ source.rpgle rpgle.fixed.d string.quoted.single.rpgle.fixed comment.gutter
 #     ^ source.rpgle rpgle.fixed.d string.quoted.single.rpgle.fixed keyword.other.rpgle.fixed.specs
@@ -299,7 +300,8 @@
 #                                           ^^^^^ source.rpgle rpgle.fixed.d entity.name.function.rpgle.fixed.d.keywords
 #                                                ^ source.rpgle rpgle.fixed.d
 #                                                 ^ source.rpgle rpgle.fixed.d string.quoted.single.rpgle.fixed
-#                                                  ^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.d string.quoted.single.rpgle.fixed
+#                                                  ^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.d string.quoted.single.rpgle.fixed
+#                                                                  ^ source.rpgle rpgle.fixed.d string.quoted.single.rpgle.fixed keyword.other.rpgle.continuation
 >     D                                     fox jumps over the lazy dog')
 #^^^^^ source.rpgle rpgle.fixed.d string.quoted.single.rpgle.fixed comment.gutter
 #     ^ source.rpgle rpgle.fixed.d string.quoted.single.rpgle.fixed keyword.other.rpgle.fixed.specs
@@ -317,7 +319,8 @@
 #                                           ^^^^^ source.rpgle rpgle.fixed.d entity.name.function.rpgle.fixed.d.keywords
 #                                                ^ source.rpgle rpgle.fixed.d
 #                                                 ^^ source.rpgle rpgle.fixed.d string.other.rpgle.hex
-#                                                   ^^^^^^^^ source.rpgle rpgle.fixed.d string.other.rpgle.hex
+#                                                   ^^^^^^ source.rpgle rpgle.fixed.d string.other.rpgle.hex
+#                                                         ^ source.rpgle rpgle.fixed.d string.other.rpgle.hex keyword.other.rpgle.continuation
 >     D                                     C4C5C6')
 #^^^^^ source.rpgle rpgle.fixed.d string.other.rpgle.hex comment.gutter
 #     ^ source.rpgle rpgle.fixed.d string.other.rpgle.hex keyword.other.rpgle.fixed.specs
@@ -346,7 +349,8 @@
 #                                           ^^^^^ source.rpgle rpgle.fixed.d entity.name.function.rpgle.fixed.d.keywords
 #                                                ^ source.rpgle rpgle.fixed.d
 #                                                 ^ source.rpgle rpgle.fixed.d string.quoted.single.rpgle.fixed
-#                                                  ^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.d string.quoted.single.rpgle.fixed
+#                                                  ^^^^^^^^^^^^^ source.rpgle rpgle.fixed.d string.quoted.single.rpgle.fixed
+#                                                               ^ source.rpgle rpgle.fixed.d string.quoted.single.rpgle.fixed keyword.other.rpgle.continuation
 >     D* a comment between the two halves
 #^^^^^^^ source.rpgle rpgle.fixed.d string.quoted.single.rpgle.fixed comment.line.rpgle.fixed
 #       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.d string.quoted.single.rpgle.fixed comment.line.rpgle.fixed
@@ -378,7 +382,9 @@
 #                                           ^^^^^ source.rpgle rpgle.fixed.d entity.name.function.rpgle.fixed.d.keywords
 #                                                ^ source.rpgle rpgle.fixed.d
 #                                                 ^ source.rpgle rpgle.fixed.d string.quoted.single.rpgle.fixed
-#                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.d string.quoted.single.rpgle.fixed
+#                                                  ^^^^^^^^^^ source.rpgle rpgle.fixed.d string.quoted.single.rpgle.fixed
+#                                                            ^ source.rpgle rpgle.fixed.d string.quoted.single.rpgle.fixed keyword.other.rpgle.continuation
+#                                                             ^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.d string.quoted.single.rpgle.fixed
 #                                                                                ^^^^^^^^^^^^^ source.rpgle rpgle.fixed.d string.quoted.single.rpgle.fixed comment.block.line.rpgle.fixed
 >     D                                     to the next line')
 #^^^^^ source.rpgle rpgle.fixed.d string.quoted.single.rpgle.fixed comment.gutter

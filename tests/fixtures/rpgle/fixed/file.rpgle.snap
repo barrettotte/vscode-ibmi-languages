@@ -529,7 +529,7 @@
 #                                          ^ source.rpgle rpgle.fixed.f
 #                                           ^^^^^^ source.rpgle rpgle.fixed.f entity.name.function.rpgle.fixed.f
 #                                                 ^ source.rpgle rpgle.fixed.f
-#                                                  ^^^^^ source.rpgle rpgle.fixed.f constant.language.rpgle
+#                                                  ^^^^^ source.rpgle rpgle.fixed.f constant.language.rpgle.indicator
 #                                                       ^^ source.rpgle rpgle.fixed.f
 >     FORDHDR    UF   E           K DISK    INFSR(*PSSR) INFDS(ORDFDS)
 #^^^^^ source.rpgle comment.gutter
@@ -705,7 +705,7 @@
 #                                       ^^^^ source.rpgle rpgle.fixed.f
 #                                           ^^^^^^ source.rpgle rpgle.fixed.f entity.name.function.rpgle.fixed.f
 #                                                 ^ source.rpgle rpgle.fixed.f
-#                                                  ^^^^^ source.rpgle rpgle.fixed.f constant.language.rpgle
+#                                                  ^^^^^ source.rpgle rpgle.fixed.f constant.language.rpgle.indicator
 #                                                       ^^ source.rpgle rpgle.fixed.f
 >     FCUSTMAST  IF   E           K DISK    HANDLER('MYLIB/MYHDLR' : COMMAREA)
 #^^^^^ source.rpgle comment.gutter

@@ -1698,7 +1698,8 @@
 #                                       ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 keyword.operator.rpgle
 #                                        ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
 #                                         ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 string.quoted.single.rpgle
-#                                          ^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 string.quoted.single.rpgle
+#                                          ^^^^^^^^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 string.quoted.single.rpgle
+#                                                       ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 string.quoted.single.rpgle keyword.other.rpgle.continuation
 >     C* a comment between the two halves
 #^^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 string.quoted.single.rpgle comment.line.rpgle.fixed
 #       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 string.quoted.single.rpgle comment.line.rpgle.fixed

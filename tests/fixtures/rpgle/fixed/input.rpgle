@@ -24,7 +24,7 @@
      I* in 23-27, an optional N, C/Z/D, and the character to match.
      IORDHDR    AA1 01    1 CH
      I         OR   02    1 CD
-     I         OR   03    1 CT    2 Z9   80ND*
+     I         OR   03    1 CT    2NZ9   80ND*
      I*
      I* AND and OR relate identification codes across lines, in
      I* positions 16-18.

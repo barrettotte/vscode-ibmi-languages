@@ -88,7 +88,7 @@
 #                           ^ source.rpgle rpgle.fixed.i
 #                            ^ source.rpgle rpgle.fixed.i constant.language.rpgle.fixed.i.czd1
 #                             ^ source.rpgle rpgle.fixed.i constant.language.rpgle.fixed.i.char1
->     I         OR   03    1 CT    2 Z9   80ND*
+>     I         OR   03    1 CT    2NZ9   80ND*
 #^^^^^ source.rpgle comment.gutter
 #     ^ source.rpgle keyword.other.rpgle.fixed.specs
 #      ^^^^^^^^^ source.rpgle rpgle.fixed.i
@@ -100,7 +100,7 @@
 #                            ^ source.rpgle rpgle.fixed.i constant.language.rpgle.fixed.i.czd1
 #                             ^ source.rpgle rpgle.fixed.i constant.language.rpgle.fixed.i.char1
 #                              ^^^^^ source.rpgle rpgle.fixed.i constant.language.rpgle.fixed.i.pos2
-#                                   ^ source.rpgle rpgle.fixed.i
+#                                   ^ source.rpgle rpgle.fixed.i constant.language.rpgle.fixed.i.not2
 #                                    ^ source.rpgle rpgle.fixed.i constant.language.rpgle.fixed.i.czd2
 #                                     ^ source.rpgle rpgle.fixed.i constant.language.rpgle.fixed.i.char2
 #                                      ^^^^^ source.rpgle rpgle.fixed.i constant.language.rpgle.fixed.i.pos3
