@@ -117,6 +117,9 @@
           "end": "(?=\\))",
           "patterns": [
             {
+              "include": "#contline"
+            },
+            {
               "comment": "EDTCDE edit code: 1-4, A-D, J-Q and W-Z, plus 5-9 for user-defined edit codes. The optional second parameter is * for asterisk fill or an arbitrary floating currency symbol, so it is not enumerated.",
               "name": "constant.other.dds.dspf.edtcde.values",
               "match": "(?i)\\b([1-9A-DJ-QW-Z])\\b"
@@ -130,6 +133,9 @@
           "end": "(?=\\))",
           "patterns": [
             {
+              "include": "#contline"
+            },
+            {
               "comment": "CHGINPDFT input defaults: BL blink, CS column separator, HI high intensity, LC lowercase, RI reverse image, UL underline.",
               "name": "constant.other.dds.dspf.chginpdft.values",
               "match": "(?i)\\b(BL|CS|HI|LC|RI|UL)\\b"
@@ -142,6 +148,9 @@
           "begin": "(?i)(?<=AUTO\\()",
           "end": "(?=\\))",
           "patterns": [
+            {
+              "include": "#contline"
+            },
             {
               "comment": "AUTO record advance: RA, RAB or RAZ. Listed longest-first so RAB matches before RA.",
               "name": "constant.other.dds.dspf.auto.values",
@@ -171,6 +180,9 @@
           "end": "(?=(\\)))",
           "patterns": [
             {
+              "include": "#contline"
+            },
+            {
               "comment": "CHECK validity-checking codes: AB, ER, FE, LC, M10, M10F, M11, M11F, ME, MF, RB, RL, RLTB, RZ, VN and VNE. Longer codes are listed first so M10F matches before M10.",
               "name": "constant.other.dds.dspf.check.values",
               "match": "(?i)(\\b(AB|ME|MF|M10F|M10|M11F|M11|VNE|VN|ER|FE|LC|RB|RZ|RLTB|RL)\\b)"
@@ -183,6 +195,9 @@
           "begin": "(?i)(?<=(DSPATR\\())",
           "end": "(?=(\\)))",
           "patterns": [
+            {
+              "include": "#contline"
+            },
             {
               "comment": "DSPATR display attributes: BL blink, CS column separator, HI high intensity, ND nondisplay, PC position cursor, RI reverse image, UL underline, MDT set changed data tag, OID operator identification, PR protect, SP select by light pen.",
               "name": "constant.other.dds.dspf.dspatr.values",
@@ -197,6 +212,9 @@
           "end": "(?=(\\)))",
           "patterns": [
             {
+              "include": "#contline"
+            },
+            {
               "comment": "COLOR names for display files: BLU, GRN, PNK, RED, TRQ, WHT and YLW. The printer file set differs; it adds BLK and BRN and has no WHT.",
               "name": "constant.other.dds.dspf.color.values",
               "match": "(?i)(\\b(BLU|PNK|YLW|TRQ|RED|WHT|GRN)\\b)"
@@ -209,6 +227,9 @@
           "begin": "(?i)((?<=((COMP)\\())|(?<=((CMP)\\()))",
           "end": "(?=(\\)))",
           "patterns": [
+            {
+              "include": "#contline"
+            },
             {
               "comment": "Relational operators for COMP and CMP: EQ, NE, LT, NL, GT, NG, LE, GE.",
               "name": "keyword.other.dds.dspf.comp.values",
@@ -231,14 +252,14 @@
           "match": "(?i)(?<=^.{5})[A]"
         },
         {
+          "comment": "Continuation character joining this line to the next. Both + and - are valid; + discards the leading blanks of the continuation line and - preserves them. Anchored to end of line so a hyphen or plus inside a keyword parameter is unaffected.",
           "name": "keyword.other.dds.dspf",
-          "match": "[+-](?=\\s*$)",
-          "comment": "Continuation character joining this line to the next. Both + and - are valid; + discards the leading blanks of the continuation line and - preserves them. Anchored to end of line so a hyphen or plus inside a keyword parameter is unaffected."
+          "match": "[+-](?=\\s*$)"
         },
         {
+          "comment": "Command attention and command function keys, CA01-CA24 and CF01-CF24. Anchored to the functions area so a field named CA01 is not mistaken for a command key.",
           "name": "keyword.other.dds.dspf.func",
-          "match": "(?i)(?<=^.{5}[A\\s].{38})(C[AF])[0-9]{2}",
-          "comment": "Command attention and command function keys, CA01-CA24 and CF01-CF24. Anchored to the functions area so a field named CA01 is not mistaken for a command key."
+          "match": "(?i)(?<=^.{5}[A\\s].{38})(C[AF])[0-9]{2}"
         },
         {
           "comment": "Keyword set for the functions area. The first lookbehind requires at least 44 characters before the match, so a keyword is found anywhere from column 45 onward and one line may carry several. The second requires the match to begin exactly at column 45 or to follow a non-word character: a plain \\b is wrong here, because a keyword starting at column 45 is valid even when column 44 holds a digit, as it does when a position entry abuts the keyword. The trailing boundary stops a keyword matching inside a longer name such as MYGDF.",
@@ -246,19 +267,19 @@
           "match": "(?i)(?<=(.{44}))(?<=^.{44}|[^A-Za-z0-9])(WRDWRAP|WINDOW|WDWTITLE|WDWBORDER|VLDCMDKEY|VALUES|VALNUM|USRRSTDSP|USRDSPMGT|USRDFN|USER|UNLOCK|TIMSEP|TIMFMT|TIME|TEXT|SYSNAME|SNGCHCFLD|SLNO|SFLSNGCHC|SFLSIZ|SFLSCROLL|SFLRTNSEL|SFLROLVAL|SFLRNA|SFLRCDNBR|SFLPGMQ|SFLPAG|SFLNXTCHG|SFLMSGRCD|SFLMSGKEY|SFLMSGID|SFLMSG|SFLMODE|SFLMLTCHC|SFLLIN|SFLINZ|SFLFOLD|SFLENTER|SFLEND|SFLDSPCTL|SFLDSP|SFLDROP|SFLDLT|SFLCTL|SFLCSRRRN|SFLCSRPRG|SFLCLR|SFLCHCCTL|SETOFF|SETOF|RTNDTA|RTNCSRLOC|ROLLUP|ROLLDOWN|RMVWDW|RETLCKSTS|RETCMDKEY|RETKEY|REFFLD|REF|RANGE|PUTRETAIN|PUTOVR|PULLDOWN|PSHBTNFLD|PSHBTNCHC|PROTECT|PRINT|PASSRCD|PAGEDOWN|PAGEUP|OVRDTA|OVRATR|OVERLAY|OPENPRT|NOCCSID|MSGLOC|MSGID|MSGCON|MSGALARM|MOUBTN|MNUCNL|MNUBARSW|MNUBARSEP|MNUBARDSP|MNUBARCHC|MNUBAR|MLTCHCFLD|MDTOFF|MAPVAL|LOWER|LOGOUT|LOGINP|LOCK|KEEP|INZRCD|INZINP|INVITE|INDTXT|INDARA|HTML|HOME|HLPTITLE|HLPSEQ|HLPSCHIDX|HLPRTN|HLPRCD|HLPPNLGRP|HLPID|HLPFULL|HLPEXCLD|HLPDOC|HLPCMDKEY|HLPCLR|HLPBDY|HLPARA|HELP|GETRETAIN|FRCDTA|FLTPCN|FLTFIXDEC|FLDCSRPRG|ERRSFL|ERRMSG|ERRMSGID|ERASEINP|ERASE|ENTFLDATR|EDTWRD|EDTMSK|EDTCDE|DUP|DSPSIZ|DSPRL|DSPMOD|DSPATR|DLTEDT|DLTCHK|DFTVAL|DFT|DATSEP|DATFMT|DATE|CSRLOC|CSRINPONLY|COMP|COLOR|CNTFLD|CLEAR|CHRID|CHOICE|CHKMSGID|CHGINPDFT|CHECK|CHCUNAVAIL|CHCSLT|CHCCTL|CHCAVAIL|CHCACCEL|CHANGE|BLKFOLD|BLINK|BLANKS|AUTO|ASSUME|ALWROL|ALWGPH|ALTPAGEDWN|ALTPAGEUP|ALTNAME|ALTHELP|ALIAS|ALARM)\\b\\b"
         },
         {
+          "comment": "CMP, CLRL and SFL. Held in a separate rule from the main keyword list. Anchored to the functions area so a record or field named SFL is not mistaken for a keyword.",
           "name": "keyword.other.dds.dspf.funcs",
-          "match": "(?i)(?<=^.{5}[A\\s].{38})(CMP|CLRL|SFL)\\b",
-          "comment": "CMP, CLRL and SFL. Held in a separate rule from the main keyword list. Anchored to the functions area so a record or field named SFL is not mistaken for a keyword."
+          "match": "(?i)(?<=^.{5}[A\\s].{38})(CMP|CLRL|SFL)\\b"
         }
       ]
     },
     "strings": {
       "patterns": [
         {
-          "comment": "Hexadecimal constant, X'hhhh'. Must be tried before the plain quoted literal so the X prefix is included in the token rather than left unscoped.",
+          "comment": "A literal closes on its quote, or at the end of the line, so one missing quote cannot run on through the rest of the file. It does not close where the line ends in a minus or a plus, which the DDS reference defines as continuing the keyword and its parameter values on the next line; a minus resumes at position 45 and a plus at the first non-blank of the functions field. Blanks are excluded from the class because the sign must be the last non-blank character in the field. A comment line is consumed whole by the rule below, which leaves nothing for the end pattern to match, so a comment sitting between two halves of a literal does not close it.",
           "name": "string.other.dds.dspf.hex",
           "begin": "(?i)x'",
-          "end": "'",
+          "end": "'|[^-+\\s]\\s*$",
           "patterns": [
             {
               "comment": "Continuation character ending an unterminated literal. DDS discards it and joins the lines, so it is not part of the literal's value.",
@@ -283,10 +304,10 @@
           ]
         },
         {
-          "comment": "Quoted literal constant or keyword parameter. A literal may continue across lines, so the nested rules re-apply the gutter and form type on each continuation line.",
+          "comment": "A literal closes on its quote, or at the end of the line, so one missing quote cannot run on through the rest of the file. It does not close where the line ends in a minus or a plus, which the DDS reference defines as continuing the keyword and its parameter values on the next line; a minus resumes at position 45 and a plus at the first non-blank of the functions field. Blanks are excluded from the class because the sign must be the last non-blank character in the field. A comment line is consumed whole by the rule below, which leaves nothing for the end pattern to match, so a comment sitting between two halves of a literal does not close it.",
           "name": "string.quoted.single.dds.dspf",
           "begin": "'",
-          "end": "'",
+          "end": "'|[^-+\\s]\\s*$",
           "patterns": [
             {
               "comment": "Continuation character ending an unterminated literal. DDS discards it and joins the lines, so it is not part of the literal's value.",
@@ -309,6 +330,21 @@
               "match": "(?i)(?<=^.{5})[A]"
             }
           ]
+        }
+      ]
+    },
+    "contline": {
+      "patterns": [
+        {
+          "include": "#comments"
+        },
+        {
+          "include": "#gutter"
+        },
+        {
+          "comment": "The form type in position 6, repeated here because a keyword whose values are continued carries one on every line it spans.",
+          "name": "keyword.other.dds.dspf.spec",
+          "match": "(?i)(?<=^.{5})(A)"
         }
       ]
     }

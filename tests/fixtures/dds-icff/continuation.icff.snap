@@ -69,6 +69,50 @@
 #      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.dds.icff string.quoted.single.dds.icff
 #                                                                   ^ source.dds.icff string.quoted.single.dds.icff
 #                                                                    ^^ source.dds.icff
+>     A* + continues a literal, discarding leading blanks
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.dds.icff comment.line.dds.icff
+>00035A                                      TEXT('A description that +
+#^^^^^ source.dds.icff comment.gutter
+#     ^ source.dds.icff keyword.other.dds.icff.spec
+#      ^^^^^^^^^^^^^^^^^^^^^^^ source.dds.icff
+#                             ^^^^^ source.dds.icff constant.language.dds.icff.len
+#                                  ^ source.dds.icff
+#                                   ^^ source.dds.icff constant.language.dds.icff.decpos
+#                                     ^^^^^^^ source.dds.icff
+#                                            ^^^^ source.dds.icff keyword.other.dds.icff.funcs
+#                                                ^ source.dds.icff
+#                                                 ^ source.dds.icff string.quoted.single.dds.icff
+#                                                  ^^^^^^^^^^^^^^^^^^^ source.dds.icff string.quoted.single.dds.icff
+#                                                                     ^ source.dds.icff string.quoted.single.dds.icff keyword.other.dds.icff
+>     A                                      continues on the next line')
+#^^^^^ source.dds.icff string.quoted.single.dds.icff comment.gutter
+#     ^ source.dds.icff string.quoted.single.dds.icff keyword.other.dds.icff.spec
+#      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.dds.icff string.quoted.single.dds.icff
+#                                                                      ^ source.dds.icff string.quoted.single.dds.icff
+#                                                                       ^^ source.dds.icff
+>     A* a comment may also sit inside the literal itself
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.dds.icff comment.line.dds.icff
+>00037A                                      TEXT('first half of-
+#^^^^^ source.dds.icff comment.gutter
+#     ^ source.dds.icff keyword.other.dds.icff.spec
+#      ^^^^^^^^^^^^^^^^^^^^^^^ source.dds.icff
+#                             ^^^^^ source.dds.icff constant.language.dds.icff.len
+#                                  ^ source.dds.icff
+#                                   ^^ source.dds.icff constant.language.dds.icff.decpos
+#                                     ^^^^^^^ source.dds.icff
+#                                            ^^^^ source.dds.icff keyword.other.dds.icff.funcs
+#                                                ^ source.dds.icff
+#                                                 ^ source.dds.icff string.quoted.single.dds.icff
+#                                                  ^^^^^^^^^^^^^ source.dds.icff string.quoted.single.dds.icff
+#                                                               ^ source.dds.icff string.quoted.single.dds.icff keyword.other.dds.icff
+>     A* a comment between the two halves
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.dds.icff string.quoted.single.dds.icff comment.line.dds.icff
+>     A                                      the literal')
+#^^^^^ source.dds.icff string.quoted.single.dds.icff comment.gutter
+#     ^ source.dds.icff string.quoted.single.dds.icff keyword.other.dds.icff.spec
+#      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.dds.icff string.quoted.single.dds.icff
+#                                                       ^ source.dds.icff string.quoted.single.dds.icff
+#                                                        ^^ source.dds.icff
 >     A* a comment may interrupt a continued keyword
 #^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.dds.icff comment.line.dds.icff
 >00040A                                      EVOKE(MYLIB/ -

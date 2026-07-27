@@ -120,6 +120,82 @@
 #      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.dds.lf string.quoted.single.dds.lf
 #                                                        ^ source.dds.lf string.quoted.single.dds.lf
 #                                                         ^^ source.dds.lf
+>     A* A comment line may also sit inside the literal itself.
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.dds.lf comment.line.dds.lf
+>00082A            SPLITTXT                  TEXT('first half of-
+#^^^^^ source.dds.lf comment.gutter
+#     ^ source.dds.lf keyword.other.dds.lf.spec
+#      ^^^^^^^^^^^^^^^^^^^^^^^ source.dds.lf
+#                             ^^^^^ source.dds.lf constant.language.dds.lf.len
+#                                  ^ source.dds.lf
+#                                   ^^ source.dds.lf constant.language.dds.lf.decpos
+#                                     ^^^^^^^ source.dds.lf
+#                                            ^^^^ source.dds.lf keyword.other.dds.lf.funcs
+#                                                ^ source.dds.lf
+#                                                 ^ source.dds.lf string.quoted.single.dds.lf
+#                                                  ^^^^^^^^^^^^^ source.dds.lf string.quoted.single.dds.lf
+#                                                               ^ source.dds.lf string.quoted.single.dds.lf keyword.other.dds.lf
+>     A* a comment between the two halves
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.dds.lf string.quoted.single.dds.lf comment.line.dds.lf
+>     A                                      the literal')
+#^^^^^ source.dds.lf string.quoted.single.dds.lf comment.gutter
+#     ^ source.dds.lf string.quoted.single.dds.lf keyword.other.dds.lf.spec
+#      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.dds.lf string.quoted.single.dds.lf
+#                                                       ^ source.dds.lf string.quoted.single.dds.lf
+#                                                        ^^ source.dds.lf
+>     A* A sign may also continue between parameter values rather than
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.dds.lf comment.line.dds.lf
+>     A* inside a literal, and a comment line may interrupt the two halves.
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.dds.lf comment.line.dds.lf
+>00085A            AGE2                      COLHDG('Age' +
+#^^^^^ source.dds.lf comment.gutter
+#     ^ source.dds.lf keyword.other.dds.lf.spec
+#      ^^^^^^^^^^^^^^^^^^^^^^^ source.dds.lf
+#                             ^^^^^ source.dds.lf constant.language.dds.lf.len
+#                                  ^ source.dds.lf
+#                                   ^^ source.dds.lf constant.language.dds.lf.decpos
+#                                     ^^^^^^^ source.dds.lf
+#                                            ^^^^^^ source.dds.lf keyword.other.dds.lf.funcs
+#                                                  ^ source.dds.lf
+#                                                   ^ source.dds.lf string.quoted.single.dds.lf
+#                                                    ^^^ source.dds.lf string.quoted.single.dds.lf
+#                                                       ^ source.dds.lf string.quoted.single.dds.lf
+#                                                        ^ source.dds.lf
+#                                                         ^ source.dds.lf keyword.other.dds.lf
+>00086A                                             'Years')
+#^^^^^ source.dds.lf comment.gutter
+#     ^ source.dds.lf keyword.other.dds.lf.spec
+#      ^^^^^^^^^^^^^^^^^^^^^^^ source.dds.lf
+#                             ^^^^^ source.dds.lf constant.language.dds.lf.len
+#                                  ^ source.dds.lf
+#                                   ^^ source.dds.lf constant.language.dds.lf.decpos
+#                                     ^^^^^^^^^^^^^^ source.dds.lf
+#                                                   ^ source.dds.lf string.quoted.single.dds.lf
+#                                                    ^^^^^ source.dds.lf string.quoted.single.dds.lf
+#                                                         ^ source.dds.lf string.quoted.single.dds.lf
+#                                                          ^^ source.dds.lf
+>00087A            HEXCMP2                   COMP(EQ -
+#^^^^^ source.dds.lf comment.gutter
+#     ^ source.dds.lf keyword.other.dds.lf.spec
+#      ^^^^^^^^^^^^^^^^^^^^^^^ source.dds.lf
+#                             ^^^^^ source.dds.lf constant.language.dds.lf.len
+#                                  ^ source.dds.lf
+#                                   ^^ source.dds.lf constant.language.dds.lf.decpos
+#                                     ^^^^^^^ source.dds.lf
+#                                            ^^^^ source.dds.lf keyword.other.dds.lf.funcs
+#                                                ^ source.dds.lf
+#                                                 ^^ source.dds.lf dds.lf.comp keyword.other.dds.lf.comp.values
+#                                                   ^^^ source.dds.lf dds.lf.comp
+>     A* this comment sits between the two halves
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.dds.lf dds.lf.comp comment.line.dds.lf
+>     A                                      X'F1F2F3')
+#^^^^^ source.dds.lf dds.lf.comp comment.gutter
+#     ^ source.dds.lf dds.lf.comp keyword.other.dds.lf.spec
+#      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.dds.lf dds.lf.comp
+#                                            ^^ source.dds.lf dds.lf.comp string.other.dds.lf.hex
+#                                              ^^^^^^ source.dds.lf dds.lf.comp string.other.dds.lf.hex
+#                                                    ^ source.dds.lf dds.lf.comp string.other.dds.lf.hex
+#                                                     ^^ source.dds.lf
 >     A*
 #^^^^^^^ source.dds.lf comment.line.dds.lf
 >     A* Hexadecimal constants.

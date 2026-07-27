@@ -17,6 +17,17 @@
      A* - continues a literal, preserving leading blanks.
 00070A            KEEPSPACE                 TEXT('PRESERVED    -
 00080A                                           SPACING')
+     A* A comment line may also sit inside the literal itself.
+00082A            SPLITTXT                  TEXT('first half of-
+     A* a comment between the two halves
+     A                                      the literal')
+     A* A sign may also continue between parameter values rather than
+     A* inside a literal, and a comment line may interrupt the two halves.
+00085A            AGE2                      COLHDG('Age' +
+00086A                                             'Years')
+00087A            HEXCMP2                   COMP(EQ -
+     A* this comment sits between the two halves
+     A                                      X'F1F2F3')
      A*
      A* Hexadecimal constants.
 00090A            HEXCMP                    COMP(EQ X'F1F2F3')

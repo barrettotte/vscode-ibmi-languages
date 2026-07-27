@@ -13,6 +13,15 @@
      A* - continues a literal, preserving leading blanks.
 00060A                                  6  2'PRESERVED    -
 00070A                                           SPACING'
+     A* A comment line may also sit inside the literal itself.
+00072A                                  7  2'first half of-
+     A* a comment between the two halves
+     A                                      the literal'
+     A* A sign may also continue between parameter values rather than
+     A* inside a literal, and a comment line may interrupt the two halves.
+00075A            PICKONE        2A  B  9  2VALUES('AA' -
+     A* this comment sits between the two halves
+     A                                      'BB')
      A*
      A* Hexadecimal constants.
 00080A                                  7  2X'40404040'
