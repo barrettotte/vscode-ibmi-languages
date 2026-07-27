@@ -455,6 +455,20 @@ for (const entry of grammars) {
       fail("documentation", `${file}: rule at ${path}${scope} has no comment`);
     }
 
+    // The comment goes first so a rule reads as prose before regex. Editing a
+    // grammar with a script appends new keys to the end, which is how rules
+    // drift into carrying their explanation underneath the pattern it explains.
+    if (
+      typeof node.comment === "string" &&
+      Object.keys(node)[0] !== "comment"
+    ) {
+      const scope = typeof node.name === "string" ? ` ("${node.name}")` : "";
+      fail(
+        "documentation",
+        `${file}: rule at ${path}${scope} has "comment" after "${Object.keys(node)[0]}"; it must be the first key`,
+      );
+    }
+
     for (const [key, value] of Object.entries(node)) {
       walk(value, path === "" ? key : `${path}.${key}`);
     }

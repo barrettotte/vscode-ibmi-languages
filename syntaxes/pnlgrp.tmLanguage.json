@@ -28,9 +28,9 @@
     "symbols": {
       "patterns": [
         {
+          "comment": "Symbols in panel group source",
           "name": "support.function.pnlgrp",
-          "match": "(?i)(&(AMP|COLON|CONT|MSG\\(.*\\)|PERIOD|SLR)\\.?)",
-          "comment": "Symbols in panel group source"
+          "match": "(?i)(&(AMP|COLON|CONT|MSG\\(.*\\)|PERIOD|SLR)\\.?)"
         }
       ]
     },
@@ -103,9 +103,9 @@
               "match": "(?i)\\b(MSGID|MSGF|RANGE|REL|VALUES)[=]"
             },
             {
+              "comment": "TODO: Regexp does not yet support values for RANGE, REL and VALUES",
               "name": "support.variable.pnlgrp.check.attribute.value",
-              "match": "(?i)([A-F]{3}[0-9A-F]{4}|['][A-Z][A-Z0-9#@$]{0,9}/[A-Z][A-Z0-9#@$]{0,9}['])",
-              "comment": "TODO: Regexp does not yet support values for RANGE, REL and VALUES"
+              "match": "(?i)([A-F]{3}[0-9A-F]{4}|['][A-Z][A-Z0-9#@$]{0,9}/[A-Z][A-Z0-9#@$]{0,9}['])"
             }
           ]
         },
@@ -509,10 +509,10 @@
           ]
         },
         {
+          "comment": "TODO: Regex for attribute value is not complete - missing logical operators.",
           "name": "keyword.other.pnlgrp.link",
           "begin": "(?i)(?<=(:(LINK)[ ]))",
           "end": "\\.",
-          "comment": "TODO: Regex for attribute value is not complete - missing logical operators.",
           "patterns": [
             {
               "name": "support.function.pnlgrp.link",
