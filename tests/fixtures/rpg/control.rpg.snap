@@ -127,26 +127,26 @@
 #^^^^^ source.rpg comment.gutter
 #     ^ source.rpg keyword.other.rpg
 #      ^^^^^^^^ source.rpg
-#              ^ source.rpg constant.numeric.rpg
+#              ^ source.rpg constant.language.rpg.h.debug
 #               ^^ source.rpg
 #                 ^ source.rpg constant.language.rpg.h.currency
 #                  ^ source.rpg constant.language.rpg.h.datefmt
 #                   ^ source.rpg constant.language.rpg.h.datedit
-#                    ^ source.rpg constant.language.rpg.h.invprint
+#                    ^ source.rpg constant.language.rpg.h.decnotation
 >     H            D-I
 #^^^^^ source.rpg comment.gutter
 #     ^ source.rpg keyword.other.rpg
 #      ^^^^^^^^^^^^ source.rpg
 #                  ^ source.rpg constant.language.rpg.h.datefmt
 #                   ^ source.rpg constant.language.rpg.h.datedit
-#                    ^ source.rpg constant.language.rpg.h.invprint
+#                    ^ source.rpg constant.language.rpg.h.decnotation
 >     H            Y&J
 #^^^^^ source.rpg comment.gutter
 #     ^ source.rpg keyword.other.rpg
 #      ^^^^^^^^^^^^ source.rpg
 #                  ^ source.rpg constant.language.rpg.h.datefmt
 #                   ^ source.rpg constant.language.rpg.h.datedit
-#                    ^ source.rpg constant.language.rpg.h.invprint
+#                    ^ source.rpg constant.language.rpg.h.decnotation
 >     H*
 #^^^^^^^ source.rpg comment.line.rpg
 >     H* 26  alternate collating sequence   S
@@ -170,11 +170,11 @@
 #      ^^^^^^^^^^^^^^^^^^^ source.rpg
 #                         ^ source.rpg constant.language.rpg.h.altseq
 #                          ^^^^^^^^^^^^^^ source.rpg
-#                                        ^ source.rpg constant.numeric.rpg
+#                                        ^ source.rpg constant.language.rpg.h.formsalign
 #                                         ^ source.rpg
 #                                          ^ source.rpg constant.language.rpg.h.filetrans
 #                                           ^^^^^^^^^^^^^ source.rpg
-#                                                        ^ source.rpg constant.numeric.rpg
+#                                                        ^ source.rpg constant.language.rpg.h.transparency
 #                                                         ^^^^^^^^^^^^^^^^^^^^^^^^ source.rpg
 >     H*
 #^^^^^^^ source.rpg comment.line.rpg
@@ -185,20 +185,20 @@
 #^^^^^ source.rpg comment.gutter
 #     ^ source.rpg keyword.other.rpg
 #      ^^^^^^^^ source.rpg
-#              ^ source.rpg constant.numeric.rpg
+#              ^ source.rpg constant.language.rpg.h.debug
 #               ^^ source.rpg
 #                 ^ source.rpg constant.language.rpg.h.currency
 #                  ^ source.rpg constant.language.rpg.h.datefmt
 #                   ^ source.rpg constant.language.rpg.h.datedit
-#                    ^ source.rpg constant.language.rpg.h.invprint
+#                    ^ source.rpg constant.language.rpg.h.decnotation
 #                     ^^^^ source.rpg
 #                         ^ source.rpg constant.language.rpg.h.altseq
 #                          ^^^^^^^^^^^^^^ source.rpg
-#                                        ^ source.rpg constant.numeric.rpg
+#                                        ^ source.rpg constant.language.rpg.h.formsalign
 #                                         ^ source.rpg
 #                                          ^ source.rpg constant.language.rpg.h.filetrans
 #                                           ^^^^^^^^^^^^^ source.rpg
-#                                                        ^ source.rpg constant.numeric.rpg
+#                                                        ^ source.rpg constant.language.rpg.h.transparency
 #                                                         ^^^^^^^^^^^^^^^^^^^^^^^^ source.rpg
 >      *
 #^^^^^^^ source.rpg comment.line.rpg
@@ -212,7 +212,7 @@
 #^^^^^ source.rpg comment.gutter
 #     ^ source.rpg keyword.other.rpg
 #      ^^^^^^^^ source.rpg
-#              ^ source.rpg constant.numeric.rpg
+#              ^ source.rpg constant.language.rpg.h.debug
 #               ^^^ source.rpg
 #                  ^ source.rpg constant.language.rpg.h.datefmt
 #                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpg

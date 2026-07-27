@@ -89,8 +89,8 @@
           "match": "(?i)(?<=(?<=^.{5}H).{11})[^ 0*,.&\\-CR]"
         },
         {
-          "comment": "Control specification position 21, decimal notation: I or J for comma notation, D for period notation. RPG II called this entry inverted print, which is where the scope name comes from.",
-          "name": "constant.language.rpg.h.invprint",
+          "comment": "Position 21, decimal notation. The entry sets the character that separates whole numbers from decimal fractions and the one that groups thousands, and it also sets the notation for the user date. Blank takes a period for the decimal and a comma for the separator; I and J swap them; D keeps the period with a day/month/year user date. Edit words are unaffected. RPG II called this entry inverted print, which is worth knowing when reading older listings.",
+          "name": "constant.language.rpg.h.decnotation",
           "match": "(?i)(?<=(?<=^.{5}H).{14})(I|J|D)"
         },
         {
@@ -102,6 +102,21 @@
           "comment": "Control specification position 43, file translation. F means a file translation table follows the source.",
           "name": "constant.language.rpg.h.filetrans",
           "match": "(?i)(?<=(?<=^.{5}H).{36})F"
+        },
+        {
+          "comment": "Position 15, debug. A 1 makes the DEBUG and DUMP operations active and places the compiler-generated symbols in the symbol table. Blank is the alternative, so the entry is a closed set of one.",
+          "name": "constant.language.rpg.h.debug",
+          "match": "(?i)(?<=(?<=^.{5}H).{8})1"
+        },
+        {
+          "comment": "Position 41, forms alignment. A 1 lets the first line print repeatedly so the operator can line up the printer forms. Blank is the alternative, so the entry is a closed set of one.",
+          "name": "constant.language.rpg.h.formsalign",
+          "match": "(?i)(?<=(?<=^.{5}H).{34})1"
+        },
+        {
+          "comment": "Position 57, transparency check. A 1 makes the compiler scan literals and constants for DBCS characters. Hexadecimal literals are not checked. Blank is the alternative, so the entry is a closed set of one.",
+          "name": "constant.language.rpg.h.transparency",
+          "match": "(?i)(?<=(?<=^.{5}H).{50})1"
         },
         {
           "comment": "File description position 15, file type: I input, O output, U update, C combined.",
@@ -514,9 +529,9 @@
           "match": "(?i)\\*(BLANKS|BLANK|ZEROS|ZERO|HIVAL|LOVAL|ALLX|ALL|ON|OFF|DATE|MONTH|DAY|YEAR|CANCL|DETC|DETL|GETIN|INIT|OFL|TERM|TOTC|TOTL|DEFN|ENTRY|INZSR|LDA|LIKE|LOCK|NAMVAR|PDA|PSSR|FILE|OPCODE|PARMS|PROGRAM|RECORD|ROUTINE|STATUS|EQUATE|PLACE|NOKEY|EXT)\\b"
         },
         {
-          "comment": "Reserved words written without a leading asterisk: the user date fields and the page number fields PAGE and PAGE1 through PAGE7. There is no word boundary before the name because the fields of a specification butt against each other, so factor 2 of Z-ADDUDATE begins in the middle of a word.",
+          "comment": "Reserved words written without a leading asterisk: the user date fields and the page number fields PAGE and PAGE1 through PAGE7. The fields of a specification butt against each other, so factor 2 of Z-ADDUDATE begins in the middle of a word and a plain word boundary would miss it. Rather than drop the boundary altogether, which let a name such as NUPAGE match, the word is accepted either where a non-name character precedes it or where it begins one of the fields that can be butted against: factor 1 in 18, the output field name in 32, factor 2 in 33 and the result field in 43.",
           "name": "constant.language.rpg",
-          "match": "(?i)(UDATE|UMONTH|UDAY|UYEAR|PAGE[1-7]|PAGE)\\b"
+          "match": "(?i)(?:(?<![A-Za-z0-9#@$])|(?<=^.{17})|(?<=^.{31})|(?<=^.{32})|(?<=^.{42}))(UDATE|UMONTH|UDAY|UYEAR|PAGE[1-7]|PAGE)(?![A-Za-z0-9#@$])"
         }
       ]
     },
