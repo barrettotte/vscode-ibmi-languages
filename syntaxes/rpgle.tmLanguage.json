@@ -49,10 +49,10 @@
       "include": "#fixedcomment"
     },
     {
-      "include": "#rpglecommon"
+      "include": "#fixedformat"
     },
     {
-      "include": "#fixedformat"
+      "include": "#rpglecommon"
     },
     {
       "include": "#fixedfreeformat"
@@ -79,7 +79,13 @@
         },
         {
           "name": "constant.numeric.rpgle",
-          "match": "\\b\\d+\\.?\\d*?\\b"
+          "match": "(?<![a-zA-Z0-9_#@$§ÆØÅÄÖ£Ñ¥àÐŞİ])\\d+\\.?\\d*?(?![a-zA-Z0-9_#@$§ÆØÅÄÖ£Ñ¥àÐŞİ])",
+          "comment": "A numeric literal. RPG names may contain $ # @ and, in some code pages, £ and §, none of which are word characters, so a plain word boundary treats the 1 of a field named end#1 as a number. The guards name every character a name may contain instead."
+        },
+        {
+          "comment": "The reserved words that are not written with a leading asterisk: the user date words UDATE, UDAY, UMONTH and UYEAR, and the page numbering fields PAGE and PAGE1 through PAGE7. The asterisk spellings *DATE, *DAY, *MONTH and *YEAR are covered by the rule for asterisk constants. The surrounding look-arounds keep a name such as MYPAGE or PAGE8 from matching.",
+          "name": "constant.language.rpgle",
+          "match": "(?i)(?<![a-zA-Z0-9_#@$§ÆØÅÄÖ£Ñ¥àÐŞİ])(UDATE|UMONTH|UDAY|UYEAR|PAGE[1-7]|PAGE)(?![a-zA-Z0-9_#@$§ÆØÅÄÖ£Ñ¥àÐŞİ])"
         }
       ]
     },
@@ -102,9 +108,6 @@
         },
         {
           "include": "#comments"
-        },
-        {
-          "include": "#freedefkeywords"
         },
         {
           "include": "#sqlvariables"
@@ -253,7 +256,7 @@
             },
             {
               "name": "entity.name.function.rpgle.free.control.keywords",
-              "match": "(?i)\\b(VALIDATE|USRPRF|TRUNCNBR|TIMFMT|THREAD|TEXT|STGMDL|SRTSEQ|REQPREXP|PRFDTA|PGMINFO|OPTION|OPTIMIZE|OPENOPT|NOMAIN|MAIN|LANGID|INTPREC|INDENT|GENLVL|FTRANS|FORMSALIGN|FLTDIV|FIXNBR|EXTBININT|EXPROPTS|ENBPFRCOL|DFTNAME|DFTACTGRP|DECPREC|DECEDIT|DEBUG|DATFMT|DATEYY|DATEDIT|DCLOPT|CVTOPT|CURSYM|COPYRIGHT|COPYNEST|CHARCOUNTTYPES|CHARCOUNT|CCSIDCVT|CCSID|BNDDIR|AUT|ALWNULL|ALTSEQ|ACTGRP|ALLOC)\\b"
+              "match": "(?i)\\b(VALIDATE|USRPRF|TRUNCNBR|TIMFMT|THREAD|TEXT|STGMDL|SRTSEQ|REQPREXP|PRFDTA|PGMINFO|OPTION|OPTIMIZE|OPENOPT|NOMAIN|MAIN|LANGID|INTPREC|INDENT|GENLVL|FTRANS|FORMSALIGN|FLTDIV|FIXNBR|EXTBININT|EXPROPTS|ENBPFRCOL|DFTNAME|DFTACTGRP|DECPREC|DECEDIT|DEBUG|DATFMT|DATEYY|DATEDIT|DCLOPT|CVTOPT|CURSYM|COPYRIGHT|COPYNEST|CHARCOUNTTYPES|CHARCOUNT|CCSIDCVT|CCSID|BNDDIR|ASSERT|AUT|ALWNULL|ALTSEQ|ACTGRP|ALLOC)\\b"
             }
           ]
         },
@@ -328,7 +331,7 @@
         },
         {
           "name": "keyword.other.rpgle.free",
-          "match": "(?i)(?<![A-Z0-9_#@$§ÆØÅÄÖ£Ñ¥àÐŞİ])(ACQ|ADDUR|ALLOC|AND|BEGSR|CALLP|CHAIN|CLEAR|CLOSE|COMMIT|DATA\\-GEN|DATA\\-INTO|DEALLOC|DELETE|DOU|DOW|DSPLY|DUMP|ELSEIF|ELSE|ENDDO|ENDFOR|ENDIF|ENDMON|ENDSL|ENDSR|EVAL\\-CORR|EVALR|EVAL|EXCEPT|EXFMT|EXSR|FEOD|FOR\\-EACH|FOR|FORCE|IF|IN|ITER|LEAVESR|LEAVE|MONITOR|NEXT|ON\\-ERROR|ON\\-EXCP|ON\\-EXIT|OPEN|OR|OTHER|OUT|POST|READC|READE|READP|READPE|READ|REL|RESET|RETURN|ROLBK|SELECT|SETGT|SETLL|SHTDN|SND\\-MSG|SORTA|TEST|UNLOCK|UPDATE|WHEN\\-IN|WHEN\\-IS|WHEN|WRITE|XML\\-INTO|XML\\-SAX)(?![-A-Z0-9_#@$§ÆØÅÄÖ£Ñ¥àÐŞİ])"
+          "match": "(?i)(?<![A-Z0-9_#@$§ÆØÅÄÖ£Ñ¥àÐŞİ])(ACQ|ADDUR|ALLOC|AND|ASSERT\\-(F|T)|BEGSR|CALLP|CHAIN|CLEAR|CLOSE|COMMIT|DATA\\-GEN|DATA\\-INTO|DEALLOC|DELETE|DOU|DOW|DSPLY|DUMP|ELSEIF|ELSE|ENDDO|ENDFOR|ENDIF|ENDMON|ENDSL|ENDSR|EVAL\\-CORR|EVALR|EVAL|EXCEPT|EXFMT|EXSR|FEOD|FOR\\-EACH|FOR|FORCE|IF|IN|ITER|LEAVESR|LEAVE|MONITOR|NEXT|ON\\-ERROR|ON\\-EXCP|ON\\-EXIT|OPEN|OR|OTHER|OUT|POST|READC|READE|READP|READPE|READ|REL|RESET|RETURN|ROLBK|SELECT|SETGT|SETLL|SHTDN|SND\\-MSG|SORTA|TEST|UNLOCK|UPDATE|WHEN\\-IN|WHEN\\-IS|WHEN|WRITE|XML\\-INTO|XML\\-SAX)(?![-A-Z0-9_#@$§ÆØÅÄÖ£Ñ¥àÐŞİ])"
         },
         {
           "include": "#freeidentifiers"
@@ -480,9 +483,15 @@
           "match": "^.{1,5}"
         },
         {
+          "comment": "The form type in position 6. It travels with the gutter and the comment rules because a literal continued onto another line carries one on every line it spans.",
+          "name": "keyword.other.rpgle.fixed.specs",
+          "match": "(?i)(?<=^.{5})[HFDICOP]"
+        },
+        {
+          "comment": "Positions 81-100, the comment area of a fixed-format specification. The look-ahead requires something to actually be there, because a line of exactly 80 characters would otherwise open the block at the line break with nothing to close it, swallowing the line below. The end is a zero-width look-ahead so the block does not consume the line ending out from under an enclosing literal.",
           "name": "comment.block.line.rpgle.fixed",
-          "begin": "(?<=^.{80})",
-          "end": "\n"
+          "begin": "(?<=^.{80})(?=.)",
+          "end": "(?=\\n)"
         }
       ]
     },
@@ -504,8 +513,9 @@
               "include": "#fixedcomment"
             },
             {
+              "comment": "Control specification keywords, positions 7-80. A keyword may begin in column 7, immediately after the H in column 6, where there is no word boundary, so the leading anchor accepts either that position or an ordinary boundary. Sorted in reverse so a longer keyword is tried before a shorter one it begins with.",
               "name": "entity.name.function.rpgle.fixed.h.keywords",
-              "match": "\\b(?i)(VALIDATE|USRPRF|TIMFMT|THREAD|TEXT|SRTSEQ|PRFDTA|OPTION|OPTIMIZE|OPENOPT|NOMAIN|MAIN|LANGID|INTPREC|INDENT|GENLVL|FTRANS|FORMSALIGN|FLTDIV|FIXNBR|EXTBININT|EXPROPTS|ENBPFRCOL|DFTNAME|DFTACTGRP|DECEDIT|DEBUG|DATFMT|DATEDIT|CVTOPT|DCLOPT|CURSYM|COPYRIGHT|CCSIDCVT|CCSID|COPYNEST|BNDDIR|AUT|ASSERT|ALWNULL|ALTSEQ|ALLOC|ACTGRP)\\b"
+              "match": "(?i)(?:(?<=^.{5}H)|\\b)(VALIDATE|USRPRF|TRUNCNBR|TIMFMT|THREAD|TEXT|STGMDL|SRTSEQ|REQPREXP|PRFDTA|PGMINFO|OPTION|OPTIMIZE|OPENOPT|NOMAIN|MAIN|LANGID|INTPREC|INDENT|GENLVL|FTRANS|FORMSALIGN|FLTDIV|FIXNBR|EXTBININT|EXPROPTS|ENBPFRCOL|DFTNAME|DFTACTGRP|DECPREC|DECEDIT|DEBUG|DCLOPT|DATFMT|DATEYY|DATEDIT|CVTOPT|CURSYM|COPYRIGHT|COPYNEST|CHARCOUNT|CCSIDCVT|CCSID|BNDDIR|AUT|ASSERT|ALWNULL|ALTSEQ|ALLOC|ACTGRP)\\b"
             },
             {
               "include": "#rpglecommon"
@@ -583,18 +593,27 @@
           "end": "(?<=\\n)",
           "patterns": [
             {
+              "comment": "The argument of EXTFMT, which is a closed set: B binary, C UCS-2, I integer, L leading sign, R trailing sign, P packed, S zoned, U unsigned, F float. Every other keyword whose values are a closed set spells them with a leading asterisk or as digits, so the figurative constant and numeric rules already reach those; EXTFMT is the only one written as a bare letter.",
+              "name": "constant.language.rpgle.fixed.d.extfmt",
+              "match": "(?i)(?<=EXTFMT\\()[BCILRPSUF](?=\\))"
+            },
+            {
               "include": "#fixedcomment"
             },
             {
               "name": "string.quoted.single.rpgle.fixed",
               "begin": "'",
-              "end": "'",
+              "end": "'|[^-+\\s]\\s*$|[^-+\\s]\\s*(?<=^.{80})",
               "patterns": [
                 {
                   "name": "keyword.other.rpgle.fixed.specs",
                   "match": "(?i)(?<=^.{5})[H|F|D|I|C|O|P]"
+                },
+                {
+                  "include": "#fixedcomment"
                 }
-              ]
+              ],
+              "comment": "A literal closes on its quote, or at the end of the line, but not where the line ends in a hyphen or a plus, which the reference defines as continuing it on the next line. The third alternative handles a line that carries a comment in 81-100: the literal ends at the last non-blank of the specification area rather than of the line, so a continuation character followed by padding out to column 80 still continues even with a comment to its right."
             },
             {
               "name": "variable.other.rpgle.fixed.d.extended.name",
@@ -613,24 +632,28 @@
               "match": "(?i)(?<=((?<=^.{5}D).{17}))(DS|PI|PR|(S\\s)|(C\\s))"
             },
             {
+              "comment": "Definition specification positions 26-32, from position. The reference allows 1 to 9999999 right adjusted, so the entry is seven wide. The lookahead keeps the rule off an entry that is entirely blank, which is the common case for a subfield defined by length alone.",
               "name": "constant.language.rpgle.fixed.d.from",
-              "match": "(?i)(?<=((?<=^.{5}D).{21}))([0-9]|\\s){5}"
+              "match": "(?i)(?<=(?<=^.{5}D).{19})(?=[0-9 ]{0,6}[0-9])[0-9 ]{7}"
             },
             {
+              "comment": "Definition specification positions 33-39, to position or length. The reference allows 1 to 9999999 right adjusted, so the entry is seven wide and a full seven digit value must match. A signed value is the older fixed-format spelling of a LIKE length adjustment; current releases write that as the second parameter of the LIKE keyword instead. The lookahead keeps the rule off an entry that is entirely blank.",
               "name": "constant.language.rpgle.fixed.d.to",
-              "match": "(?i)(?<=((?<=^.{5}D).{26}))((\\+|\\-|\\s)(([0-9]|\\s){6}))"
+              "match": "(?i)(?<=(?<=^.{5}D).{26})([+\\-][0-9 ]{6}|(?=[0-9 ]{0,6}[0-9])[0-9 ]{7})"
             },
             {
+              "comment": "Definition specification position 40, internal data type. A character, B binary, C UCS-2, D date, F float, G graphic, I integer, N indicator, O object, P packed, S zoned, T time, U unsigned, Z timestamp, * pointer.",
               "name": "constant.language.rpgle.fixed.d.datatype",
-              "match": "(?i)(?<=((?<=^.{5}D).{33}))(A|B|D|F|G|I|N|P|S|T|U|Z|\\*)"
+              "match": "(?i)(?<=((?<=^.{5}D).{33}))(A|B|C|D|F|G|I|N|O|P|S|T|U|Z|\\*)"
             },
             {
               "name": "constant.language.rpgle.fixed.d.decpos",
               "match": "(?i)(?<=((?<=^.{5}D).{34}))([0-9]|\\s){2}"
             },
             {
+              "comment": "Definition specification keywords, positions 44-80. Sorted in reverse so a longer keyword is tried before a shorter one it begins with, as with LIKEDS before LIKE.",
               "name": "entity.name.function.rpgle.fixed.d.keywords",
-              "match": "\\b(?i)(ZONED|VARYING|VARUCS2|VARGRAPH|VARCHAR|VALUE|UNS|UCS2|TOFILE|TIMFMT|TIMESTAMP|TIME|TEMPLATE|STATIC|RTNPARM|QUALIFIED|PSDS|PROCPTR|PREFIX|POS|POINTER|PERRCD|PACKEVEN|PACKED|OVERLAY|OPTIONS|OPDESC|OCCURS|OBJECT|NOOPT|LIKEREC|LIKEFILE|LIKEDS|LIKE|LEN|INZ|IND|INT|IMPORT|GRAPH|FROMFILE|FLOAT|EXTPROC|EXTPGM|EXTNAME|EXTFMT|EXTFLD|EXT|EXPORT|DTAARA|DIM|DESCEND|DATFMT|DATE|CTDATA|CONST|CLASS|CHAR|CCSID|BINDEC|BASED|ASCEND|ALTSEQ|ALT|ALIGN|ALIAS)\\b"
+              "match": "\\b(?i)(ZONED|VARYING|VARUCS2|VARGRAPH|VARCHAR|VALUE|UNS|UCS2|TOFILE|TIMFMT|TIMESTAMP|TIME|TEMPLATE|STATIC|SAMEPOS|RTNPARM|REQPROTO|QUALIFIED|PSDS|PROCPTR|PREFIX|POS|POINTER|PERRCD|PACKEVEN|PACKED|OVERLOAD|OVERLAY|OPTIONS|OPDESC|OCCURS|OBJECT|NULLIND|NOOPT|LIKEREC|LIKEFILE|LIKEDS|LIKE|LEN|INZ|INT|IND|IMPORT|GRAPH|FROMFILE|FLOAT|EXTPROC|EXTPGM|EXTNAME|EXTFMT|EXTFLD|EXT|EXPORT|DTAARA|DIM|DFT|DESCEND|DATFMT|DATE|CTDATA|CONST|CLASS|CHAR|CCSID|BINDEC|BASED|ASCEND|ALTSEQ|ALT|ALIGN|ALIAS)\\b"
             },
             {
               "include": "#rpglecommon"
@@ -643,6 +666,66 @@
           "end": "(?<=\\n)",
           "patterns": [
             {
+              "comment": "Input specification positions 31-34, data attributes: the external date or time format of a date, time or timestamp field, or *VAR for a variable-length character, graphic or UCS-2 field. Anchored on columns 7-20 being blank, which is what distinguishes a field description line from a record identification line.",
+              "name": "constant.language.rpgle.fixed.i.attrs",
+              "match": "(?i)(?<=^.{5}I\\s{14}.{10})(\\*[A-Z0-9]{3,4})"
+            },
+            {
+              "comment": "Input specification position 35, the separator character of a date or time field. Anchored on columns 7-20 being blank, which is what distinguishes a field description line from a record identification line.",
+              "name": "constant.language.rpgle.fixed.i.sep",
+              "match": "(?i)(?<=^.{5}I\\s{14}.{14})[^ ]"
+            },
+            {
+              "comment": "Input specification position 36, data format. A character, C UCS-2, G graphic, B binary, F float, I integer, L or R zoned with a leading or trailing sign, N indicator, P packed, S zoned, U unsigned, D date, T time, Z timestamp. Anchored on columns 7-20 being blank, which is what distinguishes a field description line from a record identification line.",
+              "name": "constant.language.rpgle.fixed.i.fmt",
+              "match": "(?i)(?<=^.{5}I\\s{14}.{15})(A|C|G|B|F|I|L|N|P|R|S|U|D|T|Z)"
+            },
+            {
+              "comment": "Input specification positions 37-41, the starting position of the field in the record, right adjusted. Anchored on columns 7-20 being blank, which is what distinguishes a field description line from a record identification line.",
+              "name": "constant.language.rpgle.fixed.i.from",
+              "match": "(?i)(?<=^.{5}I\\s{14}.{16})(?=[0-9 ]{0,4}[0-9])[0-9 ]{5}"
+            },
+            {
+              "comment": "Input specification positions 42-46, the end position of the field in the record, right adjusted. Anchored on columns 7-20 being blank, which is what distinguishes a field description line from a record identification line.",
+              "name": "constant.language.rpgle.fixed.i.to",
+              "match": "(?i)(?<=^.{5}I\\s{14}.{21})(?=[0-9 ]{0,4}[0-9])[0-9 ]{5}"
+            },
+            {
+              "comment": "Input specification positions 47-48, decimal positions of a numeric field. Anchored on columns 7-20 being blank, which is what distinguishes a field description line from a record identification line.",
+              "name": "constant.language.rpgle.fixed.i.decpos",
+              "match": "(?i)(?<=^.{5}I\\s{14}.{26})(?=[0-9 ]?[0-9])[0-9 ]{2}"
+            },
+            {
+              "comment": "Input specification positions 63-64, control level: L1 through L9. Anchored on columns 7-20 being blank, which is what distinguishes a field description line from a record identification line.",
+              "name": "constant.language.rpgle.fixed.i.ctrl",
+              "match": "(?i)(?<=^.{5}I\\s{14}.{42})L[1-9]"
+            },
+            {
+              "comment": "Input specification positions 65-66, matching fields: M1 through M9. Anchored on columns 7-20 being blank, which is what distinguishes a field description line from a record identification line.",
+              "name": "constant.language.rpgle.fixed.i.matching",
+              "match": "(?i)(?<=^.{5}I\\s{14}.{44})M[1-9]"
+            },
+            {
+              "comment": "Input specification positions 67-68, field record relation. Anchored on columns 7-20 being blank, which is what distinguishes a field description line from a record identification line.",
+              "name": "constant.language.rpgle.fixed.i.fldrcdrel",
+              "match": "(?i)(?<=^.{5}I\\s{14}.{46})(([0-9]{2})|((H|L)[1-9])|MR|RT|(U[1-8]))"
+            },
+            {
+              "comment": "Input specification positions 69-70, the field indicator set on when a numeric field is greater than zero. Anchored on columns 7-20 being blank, which is what distinguishes a field description line from a record identification line.",
+              "name": "constant.language.rpgle.fixed.i.posfld",
+              "match": "(?i)(?<=^.{5}I\\s{14}.{48})(([0-9]{2})|(H[1-9])|(U[1-8])|RT)"
+            },
+            {
+              "comment": "Input specification positions 71-72, the field indicator set on when a numeric field is less than zero. Anchored on columns 7-20 being blank, which is what distinguishes a field description line from a record identification line.",
+              "name": "constant.language.rpgle.fixed.i.negfld",
+              "match": "(?i)(?<=^.{5}I\\s{14}.{50})(([0-9]{2})|(H[1-9])|(U[1-8])|RT)"
+            },
+            {
+              "comment": "Input specification positions 73-74, the field indicator set on when the field is zero or blank. Anchored on columns 7-20 being blank, which is what distinguishes a field description line from a record identification line.",
+              "name": "constant.language.rpgle.fixed.i.zerofld",
+              "match": "(?i)(?<=^.{5}I\\s{14}.{52})(([0-9]{2})|(H[1-9])|(U[1-8])|RT)"
+            },
+            {
               "include": "#fixedcomment"
             },
             {
@@ -651,7 +734,8 @@
             },
             {
               "name": "constant.language.rpgle.fixed.i.number",
-              "match": "(?i)(?<=((?<=^.{5}I).{12}))N"
+              "match": "(?i)(?<=(?<=^.{5}I).{12})(1|N)",
+              "comment": "Input specification position 19, number. 1 means only one record of this type may appear in the sequenced group, N means one or more."
             },
             {
               "name": "constant.language.rpgle.fixed.i.option",
@@ -659,55 +743,68 @@
             },
             {
               "name": "constant.language.rpgle.fixed.i.recordid",
-              "match": "(?i)(?<=((?<=^.{5}I).{14}))(([0-9]{2})|((H|L)([1-9]))|(RT)|((U)([1-8]))|(\\*\\*))"
+              "match": "(?i)(?<=(?<=^.{5}I)(?:[^ ].{13}|\\s{1}[^ ].{12}|\\s{2}[^ ].{11}|\\s{3}[^ ].{10}|\\s{4}[^ ].{9}|\\s{5}[^ ].{8}|\\s{6}[^ ].{7}|\\s{7}[^ ].{6}|\\s{8}[^ ].{5}|\\s{9}[^ ].{4}|\\s{10}[^ ].{3}|\\s{11}[^ ].{2}|\\s{12}[^ ].{1}|\\s{13}[^ ]))(([0-9]{2})|((H|L)[1-9])|LR|(RT)|((U)([1-8]))|(\\*\\*))",
+              "comment": "Input specification positions 21-22, record identifying indicator: 01-99, L1-L9 or LR, H1-H9, U1-U8, RT, or ** for a look-ahead line. Guarded on columns 7-20 not being all blank, the same way the identification codes are, so an external field name in 21-30 of a field description line cannot be read as an indicator."
             },
             {
               "name": "constant.language.rpgle.fixed.i.pos1",
-              "match": "(?i)(?<=((?<=^.{5}I).{16}))([0-9]|\\s){5}"
+              "match": "(?i)(?<=(?<=^.{5}I)(?:[^ ].{13}|\\s{1}[^ ].{12}|\\s{2}[^ ].{11}|\\s{3}[^ ].{10}|\\s{4}[^ ].{9}|\\s{5}[^ ].{8}|\\s{6}[^ ].{7}|\\s{7}[^ ].{6}|\\s{8}[^ ].{5}|\\s{9}[^ ].{4}|\\s{10}[^ ].{3}|\\s{11}[^ ].{2}|\\s{12}[^ ].{1}|\\s{13}[^ ]).{2})([0-9]|\\s){5}",
+              "comment": "Input specification record identification code. Columns 23-46 carry three codes of eight characters on an identification line, but the same columns carry the data attributes, format and field location of a field description line. The two are told apart by columns 7-20, which hold the file name or AND/OR on an identification line and are always blank on a field description line. The alternation asserts that those columns are not all blank; it is written out because Oniguruma requires a lookbehind to be of fixed length and rejects a lookahead inside one."
             },
             {
               "name": "constant.language.rpgle.fixed.i.not1",
-              "match": "(?i)(?<=((?<=^.{5}I).{21}))N"
+              "match": "(?i)(?<=(?<=^.{5}I)(?:[^ ].{13}|\\s{1}[^ ].{12}|\\s{2}[^ ].{11}|\\s{3}[^ ].{10}|\\s{4}[^ ].{9}|\\s{5}[^ ].{8}|\\s{6}[^ ].{7}|\\s{7}[^ ].{6}|\\s{8}[^ ].{5}|\\s{9}[^ ].{4}|\\s{10}[^ ].{3}|\\s{11}[^ ].{2}|\\s{12}[^ ].{1}|\\s{13}[^ ]).{7})N",
+              "comment": "Input specification record identification code. Columns 23-46 carry three codes of eight characters on an identification line, but the same columns carry the data attributes, format and field location of a field description line. The two are told apart by columns 7-20, which hold the file name or AND/OR on an identification line and are always blank on a field description line. The alternation asserts that those columns are not all blank; it is written out because Oniguruma requires a lookbehind to be of fixed length and rejects a lookahead inside one."
             },
             {
               "name": "constant.language.rpgle.fixed.i.czd1",
-              "match": "(?i)(?<=((?<=^.{5}I).{22}))(C|Z|D)"
+              "match": "(?i)(?<=(?<=^.{5}I)(?:[^ ].{13}|\\s{1}[^ ].{12}|\\s{2}[^ ].{11}|\\s{3}[^ ].{10}|\\s{4}[^ ].{9}|\\s{5}[^ ].{8}|\\s{6}[^ ].{7}|\\s{7}[^ ].{6}|\\s{8}[^ ].{5}|\\s{9}[^ ].{4}|\\s{10}[^ ].{3}|\\s{11}[^ ].{2}|\\s{12}[^ ].{1}|\\s{13}[^ ]).{8})(C|Z|D)",
+              "comment": "Input specification record identification code. Columns 23-46 carry three codes of eight characters on an identification line, but the same columns carry the data attributes, format and field location of a field description line. The two are told apart by columns 7-20, which hold the file name or AND/OR on an identification line and are always blank on a field description line. The alternation asserts that those columns are not all blank; it is written out because Oniguruma requires a lookbehind to be of fixed length and rejects a lookahead inside one."
             },
             {
               "name": "constant.language.rpgle.fixed.i.char1",
-              "match": "(?i)(?<=((?<=^.{5}I).{23}))([A-Z0-9])"
+              "match": "(?i)(?<=(?<=^.{5}I)(?:[^ ].{13}|\\s{1}[^ ].{12}|\\s{2}[^ ].{11}|\\s{3}[^ ].{10}|\\s{4}[^ ].{9}|\\s{5}[^ ].{8}|\\s{6}[^ ].{7}|\\s{7}[^ ].{6}|\\s{8}[^ ].{5}|\\s{9}[^ ].{4}|\\s{10}[^ ].{3}|\\s{11}[^ ].{2}|\\s{12}[^ ].{1}|\\s{13}[^ ]).{9})(.|$)",
+              "comment": "Input specification record identification code. The identifying character may be any character, including * and a blank; a trailing blank is lost when source is stored as a text file, so the last position matches either a character or the end of the line. Columns 23-46 carry three codes of eight characters on an identification line, but the same columns carry the data attributes, format and field location of a field description line. The two are told apart by columns 7-20, which hold the file name or AND/OR on an identification line and are always blank on a field description line. The alternation asserts that those columns are not all blank; it is written out because Oniguruma requires a lookbehind to be of fixed length and rejects a lookahead inside one."
             },
             {
               "name": "constant.language.rpgle.fixed.i.pos2",
-              "match": "(?i)(?<=((?<=^.{5}I).{24}))([0-9]|\\s){5}"
+              "match": "(?i)(?<=(?<=^.{5}I)(?:[^ ].{13}|\\s{1}[^ ].{12}|\\s{2}[^ ].{11}|\\s{3}[^ ].{10}|\\s{4}[^ ].{9}|\\s{5}[^ ].{8}|\\s{6}[^ ].{7}|\\s{7}[^ ].{6}|\\s{8}[^ ].{5}|\\s{9}[^ ].{4}|\\s{10}[^ ].{3}|\\s{11}[^ ].{2}|\\s{12}[^ ].{1}|\\s{13}[^ ]).{10})([0-9]|\\s){5}",
+              "comment": "Input specification record identification code. Columns 23-46 carry three codes of eight characters on an identification line, but the same columns carry the data attributes, format and field location of a field description line. The two are told apart by columns 7-20, which hold the file name or AND/OR on an identification line and are always blank on a field description line. The alternation asserts that those columns are not all blank; it is written out because Oniguruma requires a lookbehind to be of fixed length and rejects a lookahead inside one."
             },
             {
               "name": "constant.language.rpgle.fixed.i.not2",
-              "match": "(?i)(?<=((?<=^.{5}I).{29}))N"
+              "match": "(?i)(?<=(?<=^.{5}I)(?:[^ ].{13}|\\s{1}[^ ].{12}|\\s{2}[^ ].{11}|\\s{3}[^ ].{10}|\\s{4}[^ ].{9}|\\s{5}[^ ].{8}|\\s{6}[^ ].{7}|\\s{7}[^ ].{6}|\\s{8}[^ ].{5}|\\s{9}[^ ].{4}|\\s{10}[^ ].{3}|\\s{11}[^ ].{2}|\\s{12}[^ ].{1}|\\s{13}[^ ]).{15})N",
+              "comment": "Input specification record identification code. Columns 23-46 carry three codes of eight characters on an identification line, but the same columns carry the data attributes, format and field location of a field description line. The two are told apart by columns 7-20, which hold the file name or AND/OR on an identification line and are always blank on a field description line. The alternation asserts that those columns are not all blank; it is written out because Oniguruma requires a lookbehind to be of fixed length and rejects a lookahead inside one."
             },
             {
               "name": "constant.language.rpgle.fixed.i.czd2",
-              "match": "(?i)(?<=((?<=^.{5}I).{30}))(C|Z|D)"
+              "match": "(?i)(?<=(?<=^.{5}I)(?:[^ ].{13}|\\s{1}[^ ].{12}|\\s{2}[^ ].{11}|\\s{3}[^ ].{10}|\\s{4}[^ ].{9}|\\s{5}[^ ].{8}|\\s{6}[^ ].{7}|\\s{7}[^ ].{6}|\\s{8}[^ ].{5}|\\s{9}[^ ].{4}|\\s{10}[^ ].{3}|\\s{11}[^ ].{2}|\\s{12}[^ ].{1}|\\s{13}[^ ]).{16})(C|Z|D)",
+              "comment": "Input specification record identification code. Columns 23-46 carry three codes of eight characters on an identification line, but the same columns carry the data attributes, format and field location of a field description line. The two are told apart by columns 7-20, which hold the file name or AND/OR on an identification line and are always blank on a field description line. The alternation asserts that those columns are not all blank; it is written out because Oniguruma requires a lookbehind to be of fixed length and rejects a lookahead inside one."
             },
             {
               "name": "constant.language.rpgle.fixed.i.char2",
-              "match": "(?i)(?<=((?<=^.{5}I).{31}))([A-Z0-9])"
+              "match": "(?i)(?<=(?<=^.{5}I)(?:[^ ].{13}|\\s{1}[^ ].{12}|\\s{2}[^ ].{11}|\\s{3}[^ ].{10}|\\s{4}[^ ].{9}|\\s{5}[^ ].{8}|\\s{6}[^ ].{7}|\\s{7}[^ ].{6}|\\s{8}[^ ].{5}|\\s{9}[^ ].{4}|\\s{10}[^ ].{3}|\\s{11}[^ ].{2}|\\s{12}[^ ].{1}|\\s{13}[^ ]).{17})(.|$)",
+              "comment": "Input specification record identification code. The identifying character may be any character, including * and a blank; a trailing blank is lost when source is stored as a text file, so the last position matches either a character or the end of the line. Columns 23-46 carry three codes of eight characters on an identification line, but the same columns carry the data attributes, format and field location of a field description line. The two are told apart by columns 7-20, which hold the file name or AND/OR on an identification line and are always blank on a field description line. The alternation asserts that those columns are not all blank; it is written out because Oniguruma requires a lookbehind to be of fixed length and rejects a lookahead inside one."
             },
             {
               "name": "constant.language.rpgle.fixed.i.pos3",
-              "match": "(?i)(?<=((?<=^.{5}I).{32}))([0-9]|\\s){5}"
+              "match": "(?i)(?<=(?<=^.{5}I)(?:[^ ].{13}|\\s{1}[^ ].{12}|\\s{2}[^ ].{11}|\\s{3}[^ ].{10}|\\s{4}[^ ].{9}|\\s{5}[^ ].{8}|\\s{6}[^ ].{7}|\\s{7}[^ ].{6}|\\s{8}[^ ].{5}|\\s{9}[^ ].{4}|\\s{10}[^ ].{3}|\\s{11}[^ ].{2}|\\s{12}[^ ].{1}|\\s{13}[^ ]).{18})([0-9]|\\s){5}",
+              "comment": "Input specification record identification code. Columns 23-46 carry three codes of eight characters on an identification line, but the same columns carry the data attributes, format and field location of a field description line. The two are told apart by columns 7-20, which hold the file name or AND/OR on an identification line and are always blank on a field description line. The alternation asserts that those columns are not all blank; it is written out because Oniguruma requires a lookbehind to be of fixed length and rejects a lookahead inside one."
             },
             {
               "name": "constant.language.rpgle.fixed.i.not3",
-              "match": "(?i)(?<=((?<=^.{5}I).{37}))N"
+              "match": "(?i)(?<=(?<=^.{5}I)(?:[^ ].{13}|\\s{1}[^ ].{12}|\\s{2}[^ ].{11}|\\s{3}[^ ].{10}|\\s{4}[^ ].{9}|\\s{5}[^ ].{8}|\\s{6}[^ ].{7}|\\s{7}[^ ].{6}|\\s{8}[^ ].{5}|\\s{9}[^ ].{4}|\\s{10}[^ ].{3}|\\s{11}[^ ].{2}|\\s{12}[^ ].{1}|\\s{13}[^ ]).{23})N",
+              "comment": "Input specification record identification code. Columns 23-46 carry three codes of eight characters on an identification line, but the same columns carry the data attributes, format and field location of a field description line. The two are told apart by columns 7-20, which hold the file name or AND/OR on an identification line and are always blank on a field description line. The alternation asserts that those columns are not all blank; it is written out because Oniguruma requires a lookbehind to be of fixed length and rejects a lookahead inside one."
             },
             {
               "name": "constant.language.rpgle.fixed.i.czd3",
-              "match": "(?i)(?<=((?<=^.{5}I).{38}))(C|Z|D)"
+              "match": "(?i)(?<=(?<=^.{5}I)(?:[^ ].{13}|\\s{1}[^ ].{12}|\\s{2}[^ ].{11}|\\s{3}[^ ].{10}|\\s{4}[^ ].{9}|\\s{5}[^ ].{8}|\\s{6}[^ ].{7}|\\s{7}[^ ].{6}|\\s{8}[^ ].{5}|\\s{9}[^ ].{4}|\\s{10}[^ ].{3}|\\s{11}[^ ].{2}|\\s{12}[^ ].{1}|\\s{13}[^ ]).{24})(C|Z|D)",
+              "comment": "Input specification record identification code. Columns 23-46 carry three codes of eight characters on an identification line, but the same columns carry the data attributes, format and field location of a field description line. The two are told apart by columns 7-20, which hold the file name or AND/OR on an identification line and are always blank on a field description line. The alternation asserts that those columns are not all blank; it is written out because Oniguruma requires a lookbehind to be of fixed length and rejects a lookahead inside one."
             },
             {
               "name": "constant.language.rpgle.fixed.i.char3",
-              "match": "(?i)(?<=((?<=^.{5}I).{39}))([A-Z0-9])"
+              "match": "(?i)(?<=(?<=^.{5}I)(?:[^ ].{13}|\\s{1}[^ ].{12}|\\s{2}[^ ].{11}|\\s{3}[^ ].{10}|\\s{4}[^ ].{9}|\\s{5}[^ ].{8}|\\s{6}[^ ].{7}|\\s{7}[^ ].{6}|\\s{8}[^ ].{5}|\\s{9}[^ ].{4}|\\s{10}[^ ].{3}|\\s{11}[^ ].{2}|\\s{12}[^ ].{1}|\\s{13}[^ ]).{25})(.|$)",
+              "comment": "Input specification record identification code. The identifying character may be any character, including * and a blank; a trailing blank is lost when source is stored as a text file, so the last position matches either a character or the end of the line. Columns 23-46 carry three codes of eight characters on an identification line, but the same columns carry the data attributes, format and field location of a field description line. The two are told apart by columns 7-20, which hold the file name or AND/OR on an identification line and are always blank on a field description line. The alternation asserts that those columns are not all blank; it is written out because Oniguruma requires a lookbehind to be of fixed length and rejects a lookahead inside one."
             },
             {
               "include": "#rpglecommon"
@@ -724,7 +821,8 @@
             },
             {
               "name": "constant.language.rpgle.fixed.c.ctrl",
-              "match": "(?i)(?<=((?<=^.{5}C).{0}))((L[0-9])|LR|SR|AN)"
+              "match": "(?i)(?<=^.{5}C)((L[0-9])|LR|SR|AN|OR)",
+              "comment": "Calculation specification positions 7-8, control level. L0 is total calculation time, L1-L9 a control break, LR after the last record, SR a subroutine, and AN or OR continue the conditioning indicators from the line above."
             },
             {
               "name": "constant.language.rpgle.fixed.c.n01",
@@ -732,7 +830,7 @@
             },
             {
               "name": "keyword.other.rpgle.fixed.c.extfactor2",
-              "begin": "(?i)(?<=((?<=^.{5}C).{19}))((\\s{10})|CALLP|WHEN\\s{2}|RETURN|ON-ERROR|IF\\s{2}|FOR|EVALR|EVAL|ELSEIF|DOW\\s{2}|DOU\\s{2})",
+              "begin": "(?i)(?<=(?<=^.{5}C).{19})((\\s{10})|ON\\-ERROR|FOR\\-EACH|WHEN\\-IN|WHEN\\-IS|DATA\\-INTO|DATA\\-GEN|XML\\-INTO|XML\\-SAX|CALLP|RETURN|EVAL\\-CORR|EVALR|EVAL|ELSEIF|WHEN\\s{2}|IF\\s{2}|DOW\\s{2}|DOU\\s{2}|FOR)(\\(\\s*([ADEHMNPRTZC]{1,4})\\s*\\))?(?![A-Za-z\\-])",
               "end": "(?<=\\n)",
               "patterns": [
                 {
@@ -742,25 +840,31 @@
                   "include": "#rpglecommon"
                 },
                 {
-                  "name": "keyword.other.rpgle",
-                  "match": "((?i)(AND|COMP|CAB|CAS|DOU|DOW|FOR|IF|OR|WHEN)(GT|LT|EQ|NE|GE|LE|(\\s{2})))"
+                  "name": "keyword.other.rpgle.fixed.c.operation",
+                  "match": "((?i)(AND|COMP|CAB|CAS|DOU|DOW|FOR|IF|OR|WHEN)(GT|LT|EQ|NE|GE|LE|(\\s{2})))",
+                  "comment": "Calculation specification positions 26-35, an operation code carrying a comparison suffix. The suffix is GT, LT, EQ, NE, GE or LE, or two blanks for the unsuffixed form of CAB and CAS."
                 },
                 {
                   "name": "variable.other",
                   "match": "((?i)[a-zA-Z_#@$§ÆØÅÄÖ£Ñ¥àÐŞİ][a-zA-Z0-9_#@$§ÆØÅÄÖ£Ñ¥àÐŞİ]*)|\\(|\\)|\\%"
                 }
-              ]
-            },
-            {
-              "include": "#rpglecommon"
-            },
-            {
-              "name": "keyword.other.rpgle",
-              "match": "((?i)\\b(AND|COMP|CAB|CAS|DOU|DOW|IF|OR|WHEN)(GT|LT|EQ|NE|GE|LE|(\\s{2})))"
+              ],
+              "comment": "An operation taking an expression, which occupies positions 36-80 rather than the separate factor 2, result and length entries. The longer names are listed before the shorter ones they begin with, so FOR-EACH is not read as FOR, and an optional extender in parentheses is taken with the operation. A letter or hyphen may not follow the name, so FOR does not open the block on a FORCE operation, which is an ordinary calculation.",
+              "beginCaptures": {
+                "4": {
+                  "name": "constant.language.rpgle.fixed.c.extender"
+                }
+              }
             },
             {
               "name": "keyword.other.rpgle.fixed.c.operation",
-              "match": "(?i)(?<=((?<=^.{5}C).{19}))(Z\\-SUB|Z\\-ADD|XML\\-SAX|XML\\-INTO|XLATE|XFOOT|WRITE|WHEN|UPDATE|UNLOCK|TIME|TESTZ|TESTN|TESTB|TEST|TAG|SUBST|SUBDUR|SUB|SQRT|SORTA|SND\\-MSG|SHTDN|SETON|SETOFF|SETLL|SETGT|SELECT|SCAN|ROLBK|RETURN|RESET|REL|REALLOC|READPE|READP|READE|READC|READ|POST|PLIST|PARM|OUT|OTHER|OR|OPEN|ON\\-EXIT|ON\\-EXCP|ON\\-ERROR|OCCUR|NEXT|MVR|MULT|MOVEL|MOVEA|MOVE|MONITOR|MLLZO|MLHZO|MHLZO|MHHZO|LOOKUP|LEAVESR|LEAVE|KLIST|KFLD|ITER|IN|IF|GOTO|FORCE|FOR|FEOD|EXTRCT|EXSR|EXFMT|EXCEPT|EVAL-CORR|EVALR|EVAL|ENDSR|ENDSL|ENDMON|ENDIF|ENDFOR|ENDDO|ENDCS|END|ELSEIF|ELSE|DUMP|DSPLY|DOW|DOU|DO|DIV|DELETE|DEFINE|DEALLOC|DATA-INTO|DATA-GEN|COMP|COMMIT|CLOSE|CLEAR|CHECKR|CHECK|CHAIN|CAT|CAS|CALLP|CALLB|CALL|CAB|BITON|BITOFF|BEGSR|ASSERT\\-(F|T)|AND|ALLOC|ADDUR|ADD|ACQ)"
+              "match": "((?i)\\b(AND|COMP|CAB|CAS|DOU|DOW|IF|OR|WHEN)(GT|LT|EQ|NE|GE|LE|(\\s{2})))",
+              "comment": "Calculation specification positions 26-35, an operation code carrying a comparison suffix. The suffix is GT, LT, EQ, NE, GE or LE, or two blanks for the unsuffixed form of CAB and CAS."
+            },
+            {
+              "name": "keyword.other.rpgle.fixed.c.operation",
+              "match": "(?i)(?<=((?<=^.{5}C).{19}))(Z\\-SUB|Z\\-ADD|XML\\-SAX|XML\\-INTO|XLATE|XFOOT|WRITE|WHEN\\-IS|WHEN\\-IN|WHEN|UPDATE|UNLOCK|TIME|TESTZ|TESTN|TESTB|TEST|TAG|SUBST|SUBDUR|SUB|SQRT|SORTA|SND\\-MSG|SHTDN|SETON|SETOFF|SETLL|SETGT|SELECT|SCAN|ROLBK|RETURN|RESET|REL|REALLOC|READPE|READP|READE|READC|READ|POST|PLIST|PARM|OUT|OTHER|OR|OPEN|ON\\-EXIT|ON\\-EXCP|ON\\-ERROR|OCCUR|NEXT|MVR|MULT|MOVEL|MOVEA|MOVE|MONITOR|MLLZO|MLHZO|MHLZO|MHHZO|LOOKUP|LEAVESR|LEAVE|KLIST|KFLD|ITER|IN|IF|GOTO|FORCE|FOR\\-EACH|FOR|FEOD|EXTRCT|EXSR|EXFMT|EXCEPT|EVALR|EVAL\\-CORR|EVAL|ENDSR|ENDSL|ENDMON|ENDIF|ENDFOR|ENDDO|ENDCS|END|ELSEIF|ELSE|DUMP|DSPLY|DOW|DOU|DO|DIV|DELETE|DEFINE|DEALLOC|DATA\\-INTO|DATA\\-GEN|COMP|COMMIT|CLOSE|CLEAR|CHECKR|CHECK|CHAIN|CAT|CAS|CALLP|CALLB|CALL|CAB|BITON|BITOFF|BEGSR|ASSERT\\-T|ASSERT\\-F|AND|ALLOC|ADDDUR|ADD|ACQ)(?![A-Za-z\\-])",
+              "comment": "Calculation specification positions 26-35, the operation code. Sorted in reverse so a longer code is tried before a shorter one it begins with, as with ADDDUR before ADD and FOR-EACH before FOR. A letter or hyphen may not follow the code, so END is not matched inside a misspelling such as end-monitor."
             },
             {
               "name": "constant.language.rpgle.fixed.c.len",
@@ -772,15 +876,30 @@
             },
             {
               "name": "constant.language.rpgle.fixed.c.hi",
-              "match": "(?i)(?<=((?<=^.{5}C).{64}))(([0-9]{2})|(K[A-N])|(K[P-Y])|((H|L)[1-9])|LR|MR|(U[1-8])|(O[A-G])|OV)"
+              "match": "(?i)(?<=(?<=^.{5}C).{64})(([0-9]{2})|(K[A-N])|(K[P-Y])|((H|L)[1-9])|LR|MR|RT|(U[1-8])|(O[A-G])|OV)",
+              "comment": "Calculation specification the high resulting indicator. 01-99, KA-KN and KP-KY function keys, H1-H9, L1-L9, LR, MR, OA-OG and OV overflow, U1-U8, or RT."
             },
             {
               "name": "constant.language.rpgle.fixed.c.lo",
-              "match": "(?i)(?<=((?<=^.{5}C).{66}))(([0-9]{2})|(K[A-N])|(K[P-Y])|((H|L)[1-9])|LR|MR|(U[1-8])|(O[A-G])|OV)"
+              "match": "(?i)(?<=(?<=^.{5}C).{66})(([0-9]{2})|(K[A-N])|(K[P-Y])|((H|L)[1-9])|LR|MR|RT|(U[1-8])|(O[A-G])|OV)",
+              "comment": "Calculation specification the low resulting indicator. 01-99, KA-KN and KP-KY function keys, H1-H9, L1-L9, LR, MR, OA-OG and OV overflow, U1-U8, or RT."
             },
             {
               "name": "constant.language.rpgle.fixed.c.eq",
-              "match": "(?i)(?<=((?<=^.{5}C).{68}))(([0-9]{2})|(K[A-N])|(K[P-Y])|((H|L)[1-9])|LR|MR|(U[1-8])|(O[A-G])|OV)"
+              "match": "(?i)(?<=(?<=^.{5}C).{68})(([0-9]{2})|(K[A-N])|(K[P-Y])|((H|L)[1-9])|LR|MR|RT|(U[1-8])|(O[A-G])|OV)",
+              "comment": "Calculation specification the equal resulting indicator. 01-99, KA-KN and KP-KY function keys, H1-H9, L1-L9, LR, MR, OA-OG and OV overflow, U1-U8, or RT."
+            },
+            {
+              "comment": "An operation extender, in positions 26-35 to the right of the operation code and inside parentheses. The eleven extenders are a closed set: A always or ascending, H half adjust, N no lock, P pad, D operational descriptors or date or descending, T time, Z timestamp, M default precision, R result decimal precision, E error handling and C current procedure. Only the letters are scoped; the reference allows blanks for readability, so MULT(H), MULT (H) and MULT ( H ) are all valid.",
+              "match": "(?i)(?<=(?<=^.{5}C)(?:.{21}|.{22}|.{23}|.{24}|.{25}|.{26}|.{27}|.{28}))\\(\\s*([ADEHMNPRTZC]{1,4})\\s*\\)",
+              "captures": {
+                "1": {
+                  "name": "constant.language.rpgle.fixed.c.extender"
+                }
+              }
+            },
+            {
+              "include": "#rpglecommon"
             }
           ]
         },
@@ -795,6 +914,11 @@
             {
               "name": "constant.language.rpgle.fixed.o.type",
               "match": "(?i)(?<=((?<=^.{5}O).{10}))(H|D|T|E)"
+            },
+            {
+              "comment": "Positions 18-20, record addition and deletion. ADD is valid for input, output and update files; DEL only for update DISK files. These occupy the same position 18 that holds fetch overflow or release, so a line carries one or the other.",
+              "name": "constant.language.rpgle.fixed.o.addel",
+              "match": "(?i)(?<=((?<=^.{5}O).{11}))(ADD|DEL)"
             },
             {
               "name": "constant.language.rpgle.fixed.o.fetch",
@@ -813,20 +937,44 @@
               "match": "(?i)(?<=((?<=^.{5}O).{20}))((N|\\s)(([0-9]{2})|(K[A-N])|(K[P-Y])|((H|L)[1-9])|LR|MR|RT|1P|(U[1-8])|(O[A-G])|OV))"
             },
             {
+              "comment": "Positions 40-42, space before. Only a record identification line has these; on a field description line the same columns hold the edit code, blank after and end position, so the look-behind requires a non-blank somewhere in 7-20. At least one digit is required so a run of blanks is not scoped.",
               "name": "constant.language.rpgle.fixed.o.spacebefore",
-              "match": "(?i)(?<=((?<=^.{5}O).{33}))([0-9]|\\s){3}"
+              "match": "(?i)(?<=(?<=^.{5}O)(?:[^ ].{13}|\\s{1}[^ ].{12}|\\s{2}[^ ].{11}|\\s{3}[^ ].{10}|\\s{4}[^ ].{9}|\\s{5}[^ ].{8}|\\s{6}[^ ].{7}|\\s{7}[^ ].{6}|\\s{8}[^ ].{5}|\\s{9}[^ ].{4}|\\s{10}[^ ].{3}|\\s{11}[^ ].{2}|\\s{12}[^ ].{1}|\\s{13}[^ ]).{19})(?=[0-9 ]{0,2}[0-9])[0-9 ]{3}"
             },
             {
+              "comment": "Positions 43-45, space after. Only a record identification line has these; on a field description line the same columns hold the edit code, blank after and end position, so the look-behind requires a non-blank somewhere in 7-20. At least one digit is required so a run of blanks is not scoped.",
               "name": "constant.language.rpgle.fixed.o.spaceafter",
-              "match": "(?i)(?<=((?<=^.{5}O).{36}))([0-9]|\\s){3}"
+              "match": "(?i)(?<=(?<=^.{5}O)(?:[^ ].{13}|\\s{1}[^ ].{12}|\\s{2}[^ ].{11}|\\s{3}[^ ].{10}|\\s{4}[^ ].{9}|\\s{5}[^ ].{8}|\\s{6}[^ ].{7}|\\s{7}[^ ].{6}|\\s{8}[^ ].{5}|\\s{9}[^ ].{4}|\\s{10}[^ ].{3}|\\s{11}[^ ].{2}|\\s{12}[^ ].{1}|\\s{13}[^ ]).{22})(?=[0-9 ]{0,2}[0-9])[0-9 ]{3}"
             },
             {
+              "comment": "Positions 46-48, skip before. Only a record identification line has these; on a field description line the same columns hold the edit code, blank after and end position, so the look-behind requires a non-blank somewhere in 7-20. At least one digit is required so a run of blanks is not scoped.",
               "name": "constant.language.rpgle.fixed.o.skipbefore",
-              "match": "(?i)(?<=((?<=^.{5}O).{39}))([0-9]|\\s){3}"
+              "match": "(?i)(?<=(?<=^.{5}O)(?:[^ ].{13}|\\s{1}[^ ].{12}|\\s{2}[^ ].{11}|\\s{3}[^ ].{10}|\\s{4}[^ ].{9}|\\s{5}[^ ].{8}|\\s{6}[^ ].{7}|\\s{7}[^ ].{6}|\\s{8}[^ ].{5}|\\s{9}[^ ].{4}|\\s{10}[^ ].{3}|\\s{11}[^ ].{2}|\\s{12}[^ ].{1}|\\s{13}[^ ]).{25})(?=[0-9 ]{0,2}[0-9])[0-9 ]{3}"
             },
             {
+              "comment": "Positions 49-51, skip after. Only a record identification line has these; on a field description line the same columns hold the edit code, blank after and end position, so the look-behind requires a non-blank somewhere in 7-20. At least one digit is required so a run of blanks is not scoped.",
               "name": "constant.language.rpgle.fixed.o.skipafter",
-              "match": "(?i)(?<=((?<=^.{5}O).{42}))([0-9]|\\s){3}"
+              "match": "(?i)(?<=(?<=^.{5}O)(?:[^ ].{13}|\\s{1}[^ ].{12}|\\s{2}[^ ].{11}|\\s{3}[^ ].{10}|\\s{4}[^ ].{9}|\\s{5}[^ ].{8}|\\s{6}[^ ].{7}|\\s{7}[^ ].{6}|\\s{8}[^ ].{5}|\\s{9}[^ ].{4}|\\s{10}[^ ].{3}|\\s{11}[^ ].{2}|\\s{12}[^ ].{1}|\\s{13}[^ ]).{28})(?=[0-9 ]{0,2}[0-9])[0-9 ]{3}"
+            },
+            {
+              "comment": "Position 52, data format. Blank writes a numeric field as zoned decimal and a character field as stored. A field description line is the one that leaves positions 7-20 blank, which is what separates these from the space and skip entries occupying the same columns on a record identification line.",
+              "name": "constant.language.rpgle.fixed.o.dataformat",
+              "match": "(?i)(?<=(?<=^.{5}O)\\s{14}.{31})[ACGBFILNPRSUDTZ]"
+            },
+            {
+              "comment": "Positions 47-51, the end position of the field in the output record. At least one digit is required so a run of blanks is not scoped. A field description line is the one that leaves positions 7-20 blank, which is what separates these from the space and skip entries occupying the same columns on a record identification line.",
+              "name": "constant.language.rpgle.fixed.o.endpos",
+              "match": "(?i)(?<=(?<=^.{5}O)\\s{14}.{26})(?=[0-9 ]{0,4}[0-9])[0-9 ]{5}"
+            },
+            {
+              "comment": "Position 45, blank after. B resets the field once it has been written. A field description line is the one that leaves positions 7-20 blank, which is what separates these from the space and skip entries occupying the same columns on a record identification line.",
+              "name": "constant.language.rpgle.fixed.o.blankafter",
+              "match": "(?i)(?<=(?<=^.{5}O)\\s{14}.{24})B"
+            },
+            {
+              "comment": "Position 44, edit code. 1-4 combine commas and zero balances, A-D add a CR sign, J-M a trailing minus and N-Q a leading minus; 5-9 are the user-defined codes; X forces a hexadecimal F sign, Y edits a date and Z suppresses leading zeros. A field description line is the one that leaves positions 7-20 blank, which is what separates these from the space and skip entries occupying the same columns on a record identification line.",
+              "name": "constant.language.rpgle.fixed.o.editcode",
+              "match": "(?i)(?<=(?<=^.{5}O)\\s{14}.{23})[1-9A-DJ-QXYZ]"
             },
             {
               "include": "#rpglecommon"
@@ -842,12 +990,18 @@
               "include": "#fixedcomment"
             },
             {
+              "comment": "A continued name line. Any procedure name may be split by ending the partial name with an ellipsis, and one longer than the fifteen positions of the name entry has to be. The whole partial name is taken together with its ellipsis so the three dots are not read as punctuation, which matches how the definition specification handles the same construct.",
+              "name": "variable.other.rpgle.fixed.p.extended.name",
+              "match": "(?i)(?<=^.{5}P).[a-zA-Z_][a-zA-Z0-9_]{1,71}[.]{3}"
+            },
+            {
               "name": "constant.language.rpgle.fixed.p.beginend",
               "match": "(?i)(?<=((?<=^.{5}P).{17}))(B|E)"
             },
             {
+              "comment": "The four procedure keywords, in positions 44-80, and only a begin line may carry them. The look-behind matches the first keyword, which starts in 44; the word boundary matches the ones after it, because more than one keyword may appear on the same line. This is the same shape the control specification uses, and like the definition and file specifications it will also match a name that happens to be spelled like a keyword.",
               "name": "entity.name.function.rpgle.fixed.p.keywords",
-              "match": "(?i)(?<=((?<=^.{5}P).{37}))(SERIALIZE|REQPROTO|PGMINFO|EXPORT)"
+              "match": "(?i)(?:(?<=(?<=^.{5}P).{37})|\\b)(SERIALIZE|REQPROTO|PGMINFO|EXPORT)"
             },
             {
               "include": "#rpglecommon"
@@ -1082,24 +1236,26 @@
         {
           "name": "string.other.rpgle.hex",
           "begin": "(?i)x'",
-          "end": "'",
+          "end": "'|[^-+\\s]\\s*$|[^-+\\s]\\s*(?<=^.{80})",
           "patterns": [
             {
               "name": "comment.line.rpgle.free",
               "match": "^\\s*//.*"
             }
-          ]
+          ],
+          "comment": "A literal closes on its quote, or at the end of the line, but not where the line ends in a hyphen or a plus, which the reference defines as continuing it on the next line. The third alternative handles a line that carries a comment in 81-100: the literal ends at the last non-blank of the specification area rather than of the line, so a continuation character followed by padding out to column 80 still continues even with a comment to its right."
         },
         {
           "name": "string.quoted.single.rpgle",
           "begin": "'",
-          "end": "'",
+          "end": "'|[^-+\\s]\\s*$|[^-+\\s]\\s*(?<=^.{80})",
           "patterns": [
             {
               "name": "comment.line.rpgle.free",
               "match": "^\\s*//.*"
             }
-          ]
+          ],
+          "comment": "A literal closes on its quote, or at the end of the line, but not where the line ends in a hyphen or a plus, which the reference defines as continuing it on the next line. The third alternative handles a line that carries a comment in 81-100: the literal ends at the last non-blank of the specification area rather than of the line, so a continuation character followed by padding out to column 80 still continues even with a comment to its right."
         }
       ]
     },
@@ -1109,7 +1265,7 @@
         {
           "name": "string.other.rpgle.hex",
           "begin": "(?i)x'",
-          "end": "'",
+          "end": "'|[^-+\\s]\\s*$|[^-+\\s]\\s*(?<=^.{80})",
           "patterns": [
             {
               "name": "comment.line.rpgle.free",
@@ -1119,12 +1275,13 @@
             {
               "include": "#fixedcomment"
             }
-          ]
+          ],
+          "comment": "A literal closes on its quote, or at the end of the line, but not where the line ends in a hyphen or a plus, which the reference defines as continuing it on the next line. The third alternative handles a line that carries a comment in 81-100: the literal ends at the last non-blank of the specification area rather than of the line, so a continuation character followed by padding out to column 80 still continues even with a comment to its right."
         },
         {
           "name": "string.quoted.single.rpgle",
           "begin": "'",
-          "end": "'",
+          "end": "'|[^-+\\s]\\s*$|[^-+\\s]\\s*(?<=^.{80})",
           "patterns": [
             {
               "name": "comment.line.rpgle.free",
@@ -1134,7 +1291,8 @@
             {
               "include": "#fixedcomment"
             }
-          ]
+          ],
+          "comment": "A literal closes on its quote, or at the end of the line, but not where the line ends in a hyphen or a plus, which the reference defines as continuing it on the next line. The third alternative handles a line that carries a comment in 81-100: the literal ends at the last non-blank of the specification area rather than of the line, so a continuation character followed by padding out to column 80 still continues even with a comment to its right."
         }
       ]
     },
