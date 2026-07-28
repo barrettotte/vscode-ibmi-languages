@@ -86,6 +86,65 @@
 #     ^ source.dds.dspf string.quoted.single.dds.dspf keyword.other.dds.dspf.spec
 #      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.dds.dspf string.quoted.single.dds.dspf
 #                                                        ^ source.dds.dspf string.quoted.single.dds.dspf
+>     A* A comment line may also sit inside the literal itself.
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.dds.dspf comment.line.dds.dspf
+>00072A                                  7  2'first half of-
+#^^^^^ source.dds.dspf comment.gutter
+#     ^ source.dds.dspf keyword.other.dds.dspf.spec
+#      ^^^^^^^^^^^^^^^^^^^^^^^ source.dds.dspf
+#                             ^^^^^ source.dds.dspf constant.language.dds.dspf.len
+#                                  ^ source.dds.dspf
+#                                   ^^ source.dds.dspf constant.language.dds.dspf.decpos
+#                                     ^ source.dds.dspf
+#                                      ^^^ source.dds.dspf constant.language.dds.dspf.locline
+#                                         ^^^ source.dds.dspf constant.language.dds.dspf.locpos
+#                                            ^ source.dds.dspf string.quoted.single.dds.dspf
+#                                             ^^^^^^^^^^^^^ source.dds.dspf string.quoted.single.dds.dspf
+#                                                          ^ source.dds.dspf string.quoted.single.dds.dspf keyword.other.dds.dspf
+>     A* a comment between the two halves
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.dds.dspf string.quoted.single.dds.dspf comment.line.dds.dspf
+>     A                                      the literal'
+#^^^^^ source.dds.dspf string.quoted.single.dds.dspf comment.gutter
+#     ^ source.dds.dspf string.quoted.single.dds.dspf keyword.other.dds.dspf.spec
+#      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.dds.dspf string.quoted.single.dds.dspf
+#                                                       ^ source.dds.dspf string.quoted.single.dds.dspf
+>     A* A sign may also continue between parameter values rather than
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.dds.dspf comment.line.dds.dspf
+>     A* inside a literal, and a comment line may interrupt the two halves.
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.dds.dspf comment.line.dds.dspf
+>00075A            PICKONE        2A  B  9  2VALUES('AA' -
+#^^^^^ source.dds.dspf comment.gutter
+#     ^ source.dds.dspf keyword.other.dds.dspf.spec
+#      ^^^^^^^^^^^^^^^^^^^^^^^ source.dds.dspf
+#                             ^^^^^ source.dds.dspf constant.language.dds.dspf.len
+#                                  ^ source.dds.dspf constant.language.dds.dspf.dataType
+#                                   ^^ source.dds.dspf constant.language.dds.dspf.decpos
+#                                     ^ source.dds.dspf constant.language.dds.dspf.usage
+#                                      ^^^ source.dds.dspf constant.language.dds.dspf.locline
+#                                         ^^^ source.dds.dspf constant.language.dds.dspf.locpos
+#                                            ^^^^^^ source.dds.dspf keyword.other.dds.dspf.funcs
+#                                                  ^ source.dds.dspf
+#                                                   ^ source.dds.dspf string.quoted.single.dds.dspf
+#                                                    ^^ source.dds.dspf string.quoted.single.dds.dspf
+#                                                      ^ source.dds.dspf string.quoted.single.dds.dspf
+#                                                       ^ source.dds.dspf
+#                                                        ^ source.dds.dspf keyword.other.dds.dspf
+>     A* this comment sits between the two halves
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.dds.dspf comment.line.dds.dspf
+>     A                                      'BB')
+#^^^^^ source.dds.dspf comment.gutter
+#     ^ source.dds.dspf keyword.other.dds.dspf.spec
+#      ^^^^^^^^^^^^^^^^^^^^^^^ source.dds.dspf
+#                             ^^^^^ source.dds.dspf constant.language.dds.dspf.len
+#                                  ^ source.dds.dspf
+#                                   ^^ source.dds.dspf constant.language.dds.dspf.decpos
+#                                     ^ source.dds.dspf
+#                                      ^^^ source.dds.dspf constant.language.dds.dspf.locline
+#                                         ^^^ source.dds.dspf constant.language.dds.dspf.locpos
+#                                            ^ source.dds.dspf string.quoted.single.dds.dspf
+#                                             ^^ source.dds.dspf string.quoted.single.dds.dspf
+#                                               ^ source.dds.dspf string.quoted.single.dds.dspf
+#                                                ^^ source.dds.dspf
 >     A*
 #^^^^^^^ source.dds.dspf comment.line.dds.dspf
 >     A* Hexadecimal constants.

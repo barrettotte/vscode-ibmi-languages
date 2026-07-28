@@ -162,6 +162,40 @@
 #                                          ^^^^^ source.rpg constant.language.rpg
 >     C*
 #^^^^^^^ source.rpg comment.line.rpg
+>     C* A field of the programmer's own may end in a reserved word,
+#^^^^^^^ source.rpg comment.line.rpg
+#       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpg comment.line.rpg
+>     C* and PAGE8 is not one of the eight page fields. Neither is the
+#^^^^^^^ source.rpg comment.line.rpg
+#       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpg comment.line.rpg
+>     C* reserved word, even though the operation code before factor 2
+#^^^^^^^ source.rpg comment.line.rpg
+#       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpg comment.line.rpg
+>     C* butts against it and leaves no word boundary to find.
+#^^^^^^^ source.rpg comment.line.rpg
+#       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpg comment.line.rpg
+>     C                     Z-ADD*ZERO     NUPAGE
+#^^^^^ source.rpg comment.gutter
+#     ^ source.rpg keyword.other.rpg
+#      ^^^^^^^^^^^^^^^^^^^^^ source.rpg
+#                           ^^^^^ source.rpg keyword.other.rpg
+#                                ^^^^^ source.rpg constant.language.rpg
+#                                     ^^^^^^^^^^^^ source.rpg
+>     C                     Z-ADD*ZERO     PAGE8
+#^^^^^ source.rpg comment.gutter
+#     ^ source.rpg keyword.other.rpg
+#      ^^^^^^^^^^^^^^^^^^^^^ source.rpg
+#                           ^^^^^ source.rpg keyword.other.rpg
+#                                ^^^^^ source.rpg constant.language.rpg
+#                                     ^^^^^^^^^^^ source.rpg
+>     C           XUDATE    Z-ADDNUPAGE    WRKNUM
+#^^^^^ source.rpg comment.gutter
+#     ^ source.rpg keyword.other.rpg
+#      ^^^^^^^^^^^^^^^^^^^^^ source.rpg
+#                           ^^^^^ source.rpg keyword.other.rpg
+#                                ^^^^^^^^^^^^^^^^^ source.rpg
+>     C*
+#^^^^^^^ source.rpg comment.line.rpg
 >     C* Figurative constants are implied literals: no length needed.
 #^^^^^^^ source.rpg comment.line.rpg
 #       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpg comment.line.rpg

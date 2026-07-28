@@ -1,0 +1,18 @@
+      * https://github.com/barrettotte/vscode-ibmi-languages/issues/167
+      *
+      * Columns 1-5 carry a member identifier on some lines and are blank
+      * on others. Positions 60-80 of a calculation specification are its
+      * comment area, and here they hold the diagram drawn beside the IF
+      * group. The report is that the comment area stops being highlighted
+      * as one once columns 1-5 are not blank.
+      *
+     C           K$IAT     CHAINSGSIAT05             25        |
+MGV03C           *IN25     IFEQ '1'                         <--+|
+MGV03C           W$PER     IFEQ P$PER                       <-+||
+MGV03C                     MOVE '1'       ESTCOF              |||
+MGV03C                     UPDATSGSCOF                        |||
+MGV03C                     ENDIF                            <-+||
+MGV03C                     ITER                                ||
+MGV03C                     ENDIF                            <--+|
+      *
+     C                     CALL 'SGG05220'                     |

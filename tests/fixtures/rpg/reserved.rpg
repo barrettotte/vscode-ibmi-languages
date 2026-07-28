@@ -29,6 +29,14 @@
      C                     Z-ADD*ZERO     PAGE6
      C                     Z-ADD*ZERO     PAGE7
      C*
+     C* A field of the programmer's own may end in a reserved word,
+     C* and PAGE8 is not one of the eight page fields. Neither is the
+     C* reserved word, even though the operation code before factor 2
+     C* butts against it and leaves no word boundary to find.
+     C                     Z-ADD*ZERO     NUPAGE
+     C                     Z-ADD*ZERO     PAGE8
+     C           XUDATE    Z-ADDNUPAGE    WRKNUM
+     C*
      C* Figurative constants are implied literals: no length needed.
      C           *BLANK    MOVE           CHRFLD
      C           *BLANKS   MOVE           CHRFLD

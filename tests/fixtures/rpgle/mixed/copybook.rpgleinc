@@ -1,0 +1,52 @@
+       //
+       // A copy member that mixes the two formats. A copy file is
+       // column-limited unless **FREE stands on its own first line, and a
+       // column-limited member may hold both fixed specifications and
+       // free-form statements.
+       //
+       // Member: MIXINC   Compilable: no (declarations only)
+       // Source: ILE RPG Reference SC09-2508, fully free-form statements.
+       // Retrieved: 2026-07-28
+       //
+       //
+       // Named constants, declared both ways.
+     DORDER_OPEN       C                   CONST('O')
+       dcl-c ORDER_SHIPPED 'S';
+     DMAX_LINES        C                   CONST(999)
+       //
+       // A template data structure, in fixed specifications.
+     Dorder_t          DS                  QUALIFIED TEMPLATE
+     D number                         7P 0
+     D customer                      30A
+     D status                         1A   INZ(ORDER_OPEN)
+       //
+       // The same shape again as a free-form declaration.
+       dcl-ds line_t qualified template;
+         item char(15);
+         quantity packed(7 : 0);
+         price packed(11 : 2);
+       end-ds;
+       //
+       // Prototypes, one each way.
+     Dorder_load       PR              N   EXTPROC('ORDER_LOAD')
+     D number                         7P 0 CONST
+     D order                               LIKEDS(order_t)
+       //
+       dcl-pr order_total packed(11 : 2) extproc('ORDER_TOTAL');
+         order likeds(order_t) const;
+       end-pr;
+       //
+       // Input and output specifications have no free-form spelling, so
+       // a fully free-form program keeps them in a copy member like
+       // this one. That is what the reference tells you to do.
+     IORDREC        01
+     I                             A    1    7  ORDNBR
+     I                             A    8   37  ORDCUS
+     OORDPRT    E            DETAIL
+     O                       ORDNBR               8
+     O                       ORDCUS              40
+       //
+       // A copy member may itself copy another one, and the directive
+       // may be written against a form type or without one.
+     D/COPY QRPGLESRC,ERRORPR
+      /INCLUDE QRPGLESRC,CONSTANTS

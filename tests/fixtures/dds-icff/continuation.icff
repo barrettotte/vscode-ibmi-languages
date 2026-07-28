@@ -10,6 +10,13 @@
      A* - continues, preserving leading blanks on the next line
 00030A                                      TEXT('A description that runs -
      A                                      across two source lines')
+     A* + continues a literal, discarding leading blanks
+00035A                                      TEXT('A description that +
+     A                                      continues on the next line')
+     A* a comment may also sit inside the literal itself
+00037A                                      TEXT('first half of-
+     A* a comment between the two halves
+     A                                      the literal')
      A* a comment may interrupt a continued keyword
 00040A                                      EVOKE(MYLIB/ -
      A* this comment sits between the two halves

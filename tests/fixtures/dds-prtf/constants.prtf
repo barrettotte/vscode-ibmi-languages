@@ -19,6 +19,18 @@
 00070A                                     2'PRESERVED    -
 00080A                                           SPACING'
      A*
+     A* A comment line may also sit inside the literal itself.
+00082A                                     2'first half of-
+     A* a comment between the two halves
+     A                                      the literal'
+     A*
+     A* A sign may also continue between parameter values rather than
+     A* inside a literal, and a comment line may interrupt the two halves.
+00085A                                     2'SIZED'
+     A                                      CHRSIZ(2 -
+     A* this comment sits between the two halves
+     A                                      2)
+     A*
      A* An apostrophe inside a literal is doubled.
 00090A                                     2'CUSTOMER''S NAME'
      A*

@@ -14,6 +14,18 @@
      A* - continues a literal, preserving leading blanks.
 00060A            ACDESC        50A         TEXT('PRESERVED    -
 00070A                                           SPACING')
+     A* A comment line may sit inside the literal itself.
+00072A            ACSPLIT       60A         TEXT('first half of-
+     A* a comment between the two halves
+     A                                      the literal')
+     A* + inside a literal.
+00075A            ACLONG        60A         TEXT('A description that +
+00076A                                      continues on the next line')
+     A* A sign may also continue between parameter values rather than
+     A* inside a literal, and a comment line may interrupt the two halves.
+00077A            ACCMP2         3A         COMP(EQ -
+     A* this comment sits between the two halves
+     A                                      X'F1F2F3')
      A* Hexadecimal constants.
 00080A            ACFLAG         1A         DFT(X'40')
 00090A            ACCODE         2A         VALUES(X'C1C1' X'C2C2')

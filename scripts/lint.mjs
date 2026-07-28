@@ -413,7 +413,7 @@ for (const entry of grammars) {
 // Remove a language from this list when its fixtures land. Doing so turns both
 // checks on for it, which is the point: the list only ever shrinks, and a
 // language cannot be called done while either check would fail.
-const PENDING_LANGUAGES = new Set(["pnlgrp", "rpgle"]);
+const PENDING_LANGUAGES = new Set(["pnlgrp"]);
 
 // =================================== DOCUMENTATION ==================================
 //
@@ -453,6 +453,20 @@ for (const entry of grammars) {
     if (carriesRegex && typeof node.comment !== "string") {
       const scope = typeof node.name === "string" ? ` ("${node.name}")` : "";
       fail("documentation", `${file}: rule at ${path}${scope} has no comment`);
+    }
+
+    // The comment goes first so a rule reads as prose before regex. Editing a
+    // grammar with a script appends new keys to the end, which is how rules
+    // drift into carrying their explanation underneath the pattern it explains.
+    if (
+      typeof node.comment === "string" &&
+      Object.keys(node)[0] !== "comment"
+    ) {
+      const scope = typeof node.name === "string" ? ` ("${node.name}")` : "";
+      fail(
+        "documentation",
+        `${file}: rule at ${path}${scope} has "comment" after "${Object.keys(node)[0]}"; it must be the first key`,
+      );
     }
 
     for (const [key, value] of Object.entries(node)) {

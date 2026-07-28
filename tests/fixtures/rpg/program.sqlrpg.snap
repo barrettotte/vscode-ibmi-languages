@@ -46,11 +46,11 @@
 #^^^^^ source.rpg comment.gutter
 #     ^ source.rpg keyword.other.rpg
 #      ^^^^^^^^ source.rpg
-#              ^ source.rpg constant.numeric.rpg
+#              ^ source.rpg constant.language.rpg.h.debug
 #               ^^^ source.rpg
 #                  ^ source.rpg constant.language.rpg.h.datefmt
 #                   ^ source.rpg
-#                    ^ source.rpg constant.language.rpg.h.invprint
+#                    ^ source.rpg constant.language.rpg.h.decnotation
 #                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpg
 >     F*
 #^^^^^^^ source.rpg comment.line.rpg

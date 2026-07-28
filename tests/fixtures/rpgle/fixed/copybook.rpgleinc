@@ -1,0 +1,31 @@
+     D*
+     D* A copy member in column-limited mode, which is what a copy file is
+     D* assumed to be when its first line is not **FREE. The declarations
+     D* are the same ones the fully free-form copy member carries.
+     D*
+     D* Member: RPGLEINC  Compilable: no (declarations only)
+     D* Source: ILE RPG Reference SC09-2508, fully free-form statements.
+     D* Retrieved: 2026-07-27
+     D*
+     D*
+     D* Named constants.
+     DORDER_OPEN       C                   CONST('O')
+     DORDER_SHIPPED    C                   CONST('S')
+     DMAX_LINES        C                   CONST(999)
+     D*
+     D* A template data structure.
+     Dorder_t          DS                  QUALIFIED TEMPLATE
+     D number                         7P 0
+     D customer                      30A
+     D status                         1A   INZ(ORDER_OPEN)
+     D*
+     D* Prototypes.
+     Dorder_load       PR              N   EXTPROC('ORDER_LOAD')
+     D number                         7P 0 CONST
+     D order                               LIKEDS(order_t)
+     D*
+     Dorder_total      PR            11P 2 EXTPROC('ORDER_TOTAL')
+     D order                               LIKEDS(order_t) CONST
+     D*
+     D* A nested copy, with the directive in position 7.
+      /COPY QRPGLESRC,ERRORPR

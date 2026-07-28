@@ -154,10 +154,10 @@
     "strings": {
       "patterns": [
         {
-          "comment": "Hexadecimal constant, X'hhhh'. Must be tried before the plain quoted literal so the X prefix is included in the token rather than left unscoped.",
+          "comment": "A literal closes on its quote, or at the end of the line, so one missing quote cannot run on through the rest of the file. It does not close where the line ends in a minus or a plus, which the DDS reference defines as continuing the keyword and its parameter values on the next line; a minus resumes at position 45 and a plus at the first non-blank of the functions field. Blanks are excluded from the class because the sign must be the last non-blank character in the field. A comment line is consumed whole by the rule below, which leaves nothing for the end pattern to match, so a comment sitting between two halves of a literal does not close it.",
           "name": "string.other.dds.prtf.hex",
           "begin": "(?i)x'",
-          "end": "'",
+          "end": "'|[^-+\\s]\\s*$",
           "patterns": [
             {
               "comment": "Continuation character ending an unterminated literal. DDS discards it and joins the lines, so it is not part of the literal's value. Anchored to end of line, so a hyphen or plus inside the text is unaffected.",
@@ -182,10 +182,10 @@
           ]
         },
         {
-          "comment": "Quoted literal constant or keyword parameter. A literal may continue across lines, so the nested rules re-apply the gutter and form type on each continuation line. A doubled apostrophe inside a literal represents a single one.",
+          "comment": "A literal closes on its quote, or at the end of the line, so one missing quote cannot run on through the rest of the file. It does not close where the line ends in a minus or a plus, which the DDS reference defines as continuing the keyword and its parameter values on the next line; a minus resumes at position 45 and a plus at the first non-blank of the functions field. Blanks are excluded from the class because the sign must be the last non-blank character in the field. A comment line is consumed whole by the rule below, which leaves nothing for the end pattern to match, so a comment sitting between two halves of a literal does not close it.",
           "name": "string.quoted.single.dds.prtf",
           "begin": "'",
-          "end": "'",
+          "end": "'|[^-+\\s]\\s*$",
           "patterns": [
             {
               "comment": "Continuation character ending an unterminated literal. DDS discards it and joins the lines, so it is not part of the literal's value. Anchored to end of line, so a hyphen or plus inside the text is unaffected.",
