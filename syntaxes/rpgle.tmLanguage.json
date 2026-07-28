@@ -3,11 +3,13 @@
   "name": "RPGLE",
   "patterns": [
     {
+      "comment": "Fully free-form source, which **FREE on the first line opens. The end pattern can never match, so the block runs to the end of the member: a fully free-form member cannot revert to columns part way through.",
       "name": "rpgle.free.allfree",
       "begin": "(?i)(?=(\\*\\*(FREE)))",
       "end": "(E-\\*-O-\\*-F)",
       "patterns": [
         {
+          "comment": "**FREE itself, which may appear only in column 1 of the first line and must be the only thing on it.",
           "name": "keyword.other.rpgle.free.precompiler.allfree",
           "match": "(?i)^\\*\\*FREE"
         },
@@ -26,6 +28,7 @@
       ]
     },
     {
+      "comment": "A whole-line comment: an asterisk in position 7, whatever form type position 6 holds. It runs to the newline.",
       "name": "comment.line.rpgle.fixed",
       "begin": "(?i)^.{5}.[*]",
       "end": "\n"
@@ -40,7 +43,7 @@
       "include": "#fixedfreeSQL"
     },
     {
-      "include": "#precompiler"
+      "include": "#fixedprecompiler"
     },
     {
       "include": "#ctarrays"
@@ -62,6 +65,7 @@
     "comments": {
       "patterns": [
         {
+          "comment": "A // comment, which runs to the end of the line.",
           "name": "comment.line.rpgle.free",
           "match": "(//).*"
         }
@@ -70,11 +74,12 @@
     "constants": {
       "patterns": [
         {
+          "comment": "*IN is the indicator array, *INxx a single indicator and *IN(xx) an indexed one. The name may be numbered or one of the named indicators, the same set the fixed-format specifications accept; the rule took only digits, so *INLR and *INOF fell through to the general rule for asterisk words.",
           "name": "constant.language.rpgle.indicator",
-          "match": "(?i)[*]IN([0-9]{2}|K[A-N]|K[P-Y]|[HL][1-9]|LR|MR|RT|U[1-8]|O[A-G]|OV|1P)?(?![A-Z0-9])",
-          "comment": "*IN is the indicator array, *INxx a single indicator and *IN(xx) an indexed one. The name may be numbered or one of the named indicators, the same set the fixed-format specifications accept; the rule took only digits, so *INLR and *INOF fell through to the general rule for asterisk words."
+          "match": "(?i)[*]IN([0-9]{2}|K[A-N]|K[P-Y]|[HL][1-9]|LR|MR|RT|U[1-8]|O[A-G]|OV|1P)?(?![A-Z0-9])"
         },
         {
+          "comment": "A figurative constant or other reserved value, which is written with a leading asterisk: *BLANKS and *ZEROS, *ON and *OFF, *ISO and the rest.",
           "name": "constant.language.rpgle",
           "match": "[*][a-zA-Z][a-zA-Z0-9]*"
         },
@@ -93,6 +98,7 @@
     "sqlvariables": {
       "patterns": [
         {
+          "comment": "The fields of the SQL communications area, which the precompiler brings into the program and SQL sets after every statement.",
           "name": "variable.language.rpgle.sql",
           "match": "(?i)\\b(SQLWRN|SQLWNA|SQLWN9|SQLWN8|SQLWN7|SQLWN6|SQLWN5|SQLWN4|SQLWN3|SQLWN2|SQLWN1|SQLWN0|SQLWARN|SQLSTT|SQLSTATE|SQLCODE|SQLCOD|SQLERRP|SQLERRML|SQLERRMC|SQLERRD|SQLERR|SQLERP|SQLERM|SQLERL|SQLER6|SQLER5|SQLER4|SQLER3|SQLER2|SQLER1)\\b"
         }
@@ -117,7 +123,7 @@
           "include": "#constants"
         },
         {
-          "include": "#precompiler"
+          "include": "#fixedprecompiler"
         },
         {
           "include": "#keywords"
@@ -143,7 +149,7 @@
           "include": "#constants"
         },
         {
-          "include": "#precompiler"
+          "include": "#freeprecompiler"
         },
         {
           "include": "#keywords"
@@ -164,18 +170,27 @@
           "end": "\\*/"
         },
         {
+          "comment": "The global variables Db2 for i supplies, such as JOB_NAME and CLIENT_IPADDR.",
           "name": "constant.language.rpgle.sql.globals",
           "match": "(?i)\\b(CLIENT_HOST|CLIENT_IPADDR|CLIENT_PORT|JOB_NAME|PACKAGE_NAME|PACKAGE_SCHEMA|PACKAGE_VERSION|PROCESS_ID|ROUTINE_SCHEMA|ROUTINE_SPECIFIC_NAME|ROUTINE_TYPE|SERVER_MODE_JOB_NAME|THREAD_ID)\\b"
         },
         {
+          "comment": "The built-in data types, from the built-in-type diagram in the Db2 for i SQL reference. They are matched before the function rule because a type written with a length, as in VARCHAR(30), would otherwise be taken for a function call, and before the reserved word rule because DATE, TIME, TIMESTAMP and CHAR are reserved words as well as types. Sorted in reverse so a type is tried before any type it begins with, as with INTEGER before INT.",
+          "name": "storage.type.rpgle.sql",
+          "match": "(?i)\\b(XML|VARYING|VARGRAPHIC|VARCHAR|VARBINARY|TIMESTAMP|TIME|SMALLINT|ROWID|REAL|PRECISION|OBJECT|NVARCHAR|NUMERIC|NCLOB|NCHAR|LARGE|INTEGER|INT|GRAPHIC|FLOAT|DOUBLE|DECIMAL|DECFLOAT|DEC|DBCLOB|DATE|DATALINK|CLOB|CHARACTER|CHAR|BOOLEAN|BLOB|BINARY|BIGINT)\\b"
+        },
+        {
+          "comment": "A name immediately followed by an opening parenthesis, which is how a function call is told apart from an ordinary name.",
           "name": "support.function.rpgle.sql",
           "match": "[a-zA-Z_#@$§ÆØÅÄÖ£Ñ¥àÐŞİ][a-zA-Z0-9_#@$§ÆØÅÄÖ£Ñ¥àÐŞİ]*(?=\\()"
         },
         {
+          "comment": "A name qualified by its schema, written with either a dot or a slash.",
           "name": "constant.language.rpgle.sql.schema",
           "match": "[a-zA-Z_#@$§ÆØÅÄÖ£Ñ¥àÐŞİ][a-zA-Z0-9_#@$§ÆØÅÄÖ£Ñ¥àÐŞİ]*(\\.|\\/)[a-zA-Z_#@$§ÆØÅÄÖ£Ñ¥àÐŞİ][a-zA-Z0-9_#@$§ÆØÅÄÖ£Ñ¥àÐŞİ]*"
         },
         {
+          "comment": "A host variable, which SQL reads and writes by name and which carries a leading colon.",
           "name": "variable.parameter.rpgle.sql",
           "match": "[:][a-zA-Z_#@$§ÆØÅÄÖ£Ñ¥àÐŞİ][a-zA-Z0-9_#@$§ÆØÅÄÖ£Ñ¥àÐŞİ\\.]*"
         },
@@ -195,8 +210,9 @@
           "match": "(?i)\\*[A-Z][A-Z0-9]*"
         },
         {
+          "comment": "The Db2 for i reserved words, Table 1 of Reserved words in the SQL reference, plus AT, FOUND, SQLERROR and SQLWARNING, which embedded SQL uses in CONNECT and WHENEVER but which are not reserved. Sorted in reverse so a word is tried before any word it begins with, as with YEARS before YEAR. Words that are keywords in a clause but are not reserved, such as PRECEDING, DEFERRED or TEMPORARY, are deliberately left out: a reserved word can never be an identifier, so matching it is safe, while a word that is only a keyword may also be a column name.",
           "name": "keyword.operator.rpgle.sql.reserved",
-          "match": "(?i)\\b(ZONE|YES|YEARS|YEAR|XSROBJECT|XSLTRANSFORM|XMLVALIDATE|XMLTEXT|XMLTABLE|XMLSERIALIZE|XMLROW|XMLPI|XMLPARSE|XMLNAMESPACES|XMLGROUP|XMLFOREST|XMLELEMENT|XMLDOCUMENT|XMLCONCAT|XMLCOMMENT|XMLCAST|XMLATTRIBUTES|XMLAGG|WRKSTNNAME|WRITE|WRAPPER|WRAPPED|WITHOUT|WITHIN|WITH|WHILE|WHERE|WHENEVER|WHEN|WAIT|VOLATILE|VIEW|VERSION|VCAT|VARIANT|VARIABLE|VALUES|VALUE|USING|USERID|USER|USE|USAGE|URI|UPDATING|UPDATE|UNTIL|UNNEST|UNIT|UNIQUE|UNION|UNDO|TYPE|TRUNCATE|TRIM_ARRAY|TRIM|TRIGGER|TRANSFER|TRANSACTION|TO|TIMESTAMP|TIME|THREADSAFE|THEN|TABLESPACES|TABLESPACE|TABLE|SYSTEM_USER|SYNONYM|SUMMARY|SUBSTRING|STOGROUP|STATIC|STATEMENT|STARTING|START|STACKED|SQLWARNING|SQLID|SQLERROR|SQL|SPECIFIC|SOURCE|SOME|SNAN|SKIP|SIMPLE|SIGNAL|SET|SESSION_USER|SESSION|SEQUENCE|SENSITIVE|SELECT|SECURED|SECQTY|SECONDS|SECOND|SEARCH|SCROLL|SCRATCHPAD|SCHEMA|SBCS|SAVEPOINT|RUN|RRN|ROW_NUMBER|ROWS|ROWNUMBER|ROW|ROUTINE|ROLLUP|ROLLBACK|RIGHT|RID|REVOKE|RETURNS|RETURNING|RETURN|RESULT_SET_LOCATOR|RESULT|RESTART|RESIGNAL|RESET|REPEAT|RENAME|RELEASE|REGEXP_LIKE|REFRESH|REFERENCING|REFERENCES|RECOVERY|READS|READ|RCDFMT|RANK|RANGE|QUERY|PROGRAMID|PROGRAM|PROCEDURE|PRIVILEGES|PRIQTY|PRIOR|PRIMARY|PREVVAL|PREPARE|POSITION|PLAN|PIPE|PIECESIZE|PERMISSION|PCTFREE|PATH|PASSWORD|PASSING|PARTITIONS|PARTITIONING|PARTITIONED|PARTITION|PART|PARAMETER|PAGESIZE|PAGE|PADDED|PACKAGE|OVERRIDING|OVERLAY|OVER|OUTER|OUT|ORGANIZE|ORDINALITY|ORDER|OR|OPTION|OPTIMIZE|OPEN|ONLY|ON|OMIT|OLD_TABLE|OLD|OFFSET|OF|OBID|NVARCHAR|NULLS|NULL|NOT|NORMALIZED|NOORDER|NONE|NOMINVALUE|NOMAXVALUE|NODENUMBER|NODENAME|NOCYCLE|NOCACHE|NO|NEXTVAL|NEW_TABLE|NEW|NESTED|NCLOB|NCHAR|NATIONAL|NAN|NAMESPACE|MONTHS|MONTH|MODIFIES|MODE|MIXED|MINVALUE|MINUTES|MINUTE|MINPCTUSED|MICROSECONDS|MICROSECOND|MERGE|MAXVALUE|MATERIALIZED|MATCHED|MASK|MAINTAINED|LOOP|LONG|LOGGED|LOG|LOCKSIZE|LOCK|LOCATOR|LOCATION|LOCALTIMESTAMP|LOCALTIME|LOCALDATE|LOCAL|LISTAGG|LINKTYPE|LIMIT|LIKE|LEVEL2|LEFT|LEAVE|LATERAL|LANGUAGE|LABEL|KEY|KEEP|JSON_VALUE|JSON_TABLE|JSON_QUERY|JSON_OBJECTAGG|JSON_OBJECT|JSON_EXISTS|JSON_ARRAYAGG|JSON_ARRAY|JOIN|JAVA|ITERATE|ISOLATION|IS|INTO|INTERSECT|INTEGRITY|INSERTING|INSERT|INSENSITIVE|INOUT|INNER|INLINE|INHERIT|INFINITY|INF|INDICATOR|INDEXBP|INDEX|INCREMENT|INCLUSIVE|INCLUDING|INCLUDE|IMPLICITLY|IMMEDIATE|IGNORE|IF|IDENTITY|ID|HOURS|HOUR|HOLD|HINT|HAVING|HASHED_VALUE|HASH|HANDLER|GROUP|GRAPHIC|GRANT|GOTO|GO|GLOBAL|GET|GENERATED|GENERAL|GBPCACHE|FUNCTION|FULL|FROM|FREEPAGE|FREE|FOUND|FORMAT|FOREIGN|FOR|FINAL|FILE|FIELDPROC|FETCH|FENCED|EXTRACT|EXTERNAL|EXTEND|EXIT|EXISTS|EXECUTE|EXCLUSIVE|EXCLUDING|EXCEPTION|EXCEPT|EVERY|ESCAPE|ERROR|ENFORCED|ENDING|END|ENCRYPTION|ENCODING|ENABLE|EMPTY|ELSEIF|ELSE|EACH|DYNAMIC|DROP|DOUBLE|DOCUMENT|DO|DISTINCT|DISCONNECT|DISALLOW|DISABLE|DIAGNOSTICS|DETERMINISTIC|DESCRIPTOR|DESCRIBE|DESC|DENSE_RANK|DENSERANK|DELETING|DELETE|DEFINITION|DEFINE|DEFER|DEFAULTS|DEFAULT|DECLARE|DEALLOCATE|DEACTIVATE|DBPARTITIONNUM|DBPARTITIONNAME|DBINFO|DB2SQL|DB2GENRL|DB2GENERAL|DAYS|DAY|DATE|DATAPARTITIONNUM|DATAPARTITIONNAME|DATABASE|DATA|CYCLE|CURSOR|CURRENT_USER|CURRENT_TIMEZONE|CURRENT_TIMESTAMP|CURRENT_TIME|CURRENT_SERVER|CURRENT_SCHEMA|CURRENT_PATH|CURRENT_DATE|CURRENT|CUBE|CROSS|CREATEIN|CREATE|COUNT_BIG|COUNT|COPY|CONTINUE|CONTENT|CONTAINS|CONSTRAINT|CONSTANT|CONNECT_BY_ROOT|CONNECTION|CONNECT|CONDITION|CONCURRENT|CONCAT|COMPRESS|COMPACT|COMMIT|COMMENT|COLUMN|COLLECTION|COLLECT|CLUSTER|CLOSE|CL|CHECK|CHARACTER|CHAR|CCSID|CAST|CASE|CARDINALITY|CALLED|CALL|CACHE|BY|BUFFERPOOL|BIT|BIND|BINARY|BETWEEN|BEGIN|BEFORE|AUTONOMOUS|AUTHORIZATION|ATTRIBUTES|ATOMIC|AT|ASSOCIATE|ASENSITIVE|ASC|AS|ARRAY_AGG|ARRAY|APPLNAME|APPEND|ANY|AND|ALTER|ALLOW|ALLOCATE|ALL|ALIAS|ADD|ACTIVATE|ACTION|ACCTNG|ACCORDING|ABSENT)\\b"
+          "match": "(?i)\\b(ZONE|YES|YEARS|YEAR|XSROBJECT|XSLTRANSFORM|XMLVALIDATE|XMLTEXT|XMLTABLE|XMLSERIALIZE|XMLROW|XMLPI|XMLPARSE|XMLNAMESPACES|XMLGROUP|XMLFOREST|XMLELEMENT|XMLDOCUMENT|XMLCONCAT|XMLCOMMENT|XMLCAST|XMLATTRIBUTES|XMLAGG|WRKSTNNAME|WRITE|WRAPPER|WRAPPED|WITHOUT|WITHIN|WITH|WHILE|WHERE|WHENEVER|WHEN|WAIT|VOLATILE|VIEW|VERSIONING|VERSION|VCAT|VARIANT|VARIABLE|VALUES|VALUE|USING|USERID|USER|USE|USAGE|URI|UPDATING|UPDATE|UNTIL|UNNEST|UNKNOWN|UNIT|UNIQUE|UNION|UNDO|TYPE|TRY_CAST|TRUNCATE|TRUE|TRIM_ARRAY|TRIM|TRIGGER|TRANSFER|TRANSACTION|TO|TIMESTAMP|TIME|THREADSAFE|THEN|TAG|TABLESPACES|TABLESPACE|TABLE|SYSTEM_USER|SYSTEM_TIME|SYNONYM|SUMMARY|SUBSTRING|STOGROUP|STATIC|STATEMENT|STARTING|START|STACKED|SQLWARNING|SQLIND_UNASSIGNED|SQLIND_DEFAULT|SQLID|SQLERROR|SQL|SPECIFIC|SOURCE|SOME|SNAN|SKIP|SIMPLE|SIGNAL|SET|SESSION_USER|SESSION|SEQUENCE|SENSITIVE|SELECT|SECURED|SECQTY|SECONDS|SECOND|SEARCH|SCROLL|SCRATCHPAD|SCHEMA|SCALAR|SBCS|SAVEPOINT|RUN|RRN|ROW_NUMBER|ROWS|ROWNUMBER|ROW|ROUTINE|ROLLUP|ROLLBACK|RIGHT|RID|REVOKE|RETURNS|RETURNING|RETURN|RESULT_SET_LOCATOR|RESULT|RESTRICT|RESTART|RESIGNAL|RESET|REPEAT|RENAME|RELEASE|REGEXP_LIKE|REFRESH|REFERENCING|REFERENCES|RECOVERY|READS|READ|RCDFMT|RATIO_TO_REPORT|RANK|RANGE|QUERY|PROGRAMID|PROGRAM|PROCEDURE|PRIVILEGES|PRIQTY|PRIOR|PRIMARY|PREVVAL|PREPARE|POSITION|PLAN|PIPE|PIECESIZE|PERMISSION|PERIOD|PERCENT_RANK|PERCENTILE_DISC|PERCENTILE_CONT|PCTFREE|PATH|PASSWORD|PASSING|PARTITIONS|PARTITIONING|PARTITIONED|PARTITION|PART|PARAMETER|PAGESIZE|PAGE|PADDED|PACKAGE|OVERRIDING|OVERLAY|OVER|OUTER|OUT|ORGANIZE|ORDINALITY|ORDER|OR|OPTION|OPTIMIZE|OPEN|ONLY|ON|OMIT|OLD_TABLE|OLD|OFFSET|OFF|OF|OBJECT|OBID|NVARCHAR|NULLS|NULL|NTILE|NTH_VALUE|NOTNULL|NOT|NORMALIZED|NOORDER|NONE|NOMINVALUE|NOMAXVALUE|NODENUMBER|NODENAME|NOCYCLE|NOCACHE|NO|NEXTVAL|NEW_TABLE|NEW|NESTED|NCLOB|NCHAR|NATIONAL|NAN|NAMESPACE|MONTHS|MONTH|MODIFIES|MODE|MIXED|MIRROR|MINVALUE|MINUTES|MINUTE|MINPCTUSED|MICROSECONDS|MICROSECOND|MERGE|MAXVALUE|MATERIALIZED|MATCHED|MASK|MAINTAINED|LOOP|LONG|LOGGED|LOG|LOCKSIZE|LOCK|LOCATOR|LOCATION|LOCALTIMESTAMP|LOCALTIME|LOCALDATE|LOCAL|LISTAGG|LINKTYPE|LIMIT|LIKE|LEVEL2|LEFT|LEAVE|LEAD|LATERAL|LAST_VALUE|LANGUAGE|LAG|LABEL|KEYS|KEY|KEEP|JSON_VALUE|JSON_TABLE|JSON_QUERY|JSON_OBJECTAGG|JSON_OBJECT|JSON_EXISTS|JSON_ARRAYAGG|JSON_ARRAY|JSON|JOIN|JAVA|ITERATE|ISOLATION|ISNULL|IS|INTO|INTERSECT|INTERPRET|INTEGRITY|INSERTING|INSERT|INSENSITIVE|INOUT|INNER|INLINE|INHERIT|INFINITY|INF|INDICATOR|INDEXBP|INDEX|INCREMENT|INCLUSIVE|INCLUDING|INCLUDE|IN|IMPLICITLY|IMMEDIATE|IGNORE|IF|IDENTITY|ID|HOURS|HOUR|HOLD|HINT|HAVING|HASH_ROW|HASHED_VALUE|HASH|HANDLER|GROUP|GRAPHIC|GRANT|GOTO|GO|GLOBAL|GET|GENERATED|GENERAL|GBPCACHE|FUNCTION|FULL|FROM|FREEPAGE|FREE|FOUND|FORMAT|FOREIGN|FOR|FIRST_VALUE|FINAL|FILE|FIELDPROC|FETCH|FENCED|FALSE|EXTRACT|EXTERNAL|EXTEND|EXIT|EXISTS|EXECUTE|EXCLUSIVE|EXCLUDING|EXCEPTION|EXCEPT|EVERY|ESCAPE|ERROR|ENFORCED|ENDING|END|ENCRYPTION|ENCODING|ENABLE|EMPTY|ELSEIF|ELSE|EACH|DYNAMIC|DROP|DOUBLE|DOCUMENT|DO|DISTINCT|DISCONNECT|DISALLOW|DISABLE|DIAGNOSTICS|DETERMINISTIC|DETACH|DESCRIPTOR|DESCRIBE|DESC|DENSE_RANK|DENSERANK|DELETING|DELETE|DEFINITION|DEFINE|DEFER|DEFAULTS|DEFAULT|DECLARE|DEALLOCATE|DEACTIVATE|DBPARTITIONNUM|DBPARTITIONNAME|DBINFO|DB2SQL|DB2GENRL|DB2GENERAL|DAYS|DAY|DATE|DATAPARTITIONNUM|DATAPARTITIONNAME|DATABASE|DATA|CYCLE|CURSOR|CURRENT_USER|CURRENT_TIMEZONE|CURRENT_TIMESTAMP|CURRENT_TIME|CURRENT_SERVER|CURRENT_SCHEMA|CURRENT_PATH|CURRENT_DATE|CURRENT|CUME_DIST|CUBE|CROSS|CREATEIN|CREATE|COUNT_BIG|COUNT|COPY|CONTINUE|CONTENT|CONTAINS|CONSTRAINT|CONSTANT|CONNECT_BY_ROOT|CONNECTION|CONNECT|CONDITION|CONCURRENT|CONCAT|COMPRESS|COMPARISONS|COMPACT|COMMIT|COMMENT|COLUMN|COLLECTION|COLLECT|CLUSTER|CLOSE|CL|CHECK|CHARACTER|CHAR|CCSID|CAST|CASE|CARDINALITY|CALLED|CALL|CACHE|BY|BUFFERPOOL|BSON|BOOLEAN|BIT|BIND|BINARY|BETWEEN|BEGIN|BEFORE|AUTONOMOUS|AUTHORIZATION|ATTRIBUTES|ATTACH|ATOMIC|AT|ASSOCIATE|ASENSITIVE|ASC|AS|ARRAY_TRIM|ARRAY_AGG|ARRAY|APPLNAME|APPEND|ANY|AND|ALTER|ALLOW|ALLOCATE|ALL|ALIAS|ADD|ACTIVATE|ACTION|ACCTNG|ACCORDING|ABSENT)\\b"
         },
         {
           "include": "#sqlvariables"
@@ -219,10 +235,12 @@
     "ctarrays": {
       "patterns": [
         {
+          "comment": "Program data at the end of the member. Two asterisks open it, and the look-ahead keeps **FREE out because that opens a fully free-form member.",
           "begin": "(?=^(\\*{2})(?!free))",
           "end": "(E-\\*-O-\\*-F)",
           "patterns": [
             {
+              "comment": "The ** form that names what follows: ** on its own, or **CTDATA with the name of the array the records below it load.",
               "name": "string.other.rpgle.ctarray",
               "begin": "^(\\*{2}(\\ |CTDATA))",
               "end": ""
@@ -234,6 +252,7 @@
     "freedefkeywords": {
       "patterns": [
         {
+          "comment": "The keywords a free-form declaration may carry. Sorted in reverse so a keyword is tried before any keyword it begins with.",
           "name": "entity.name.function.rpgle.free.definition.keywords",
           "match": "(?i)\\b(ZONED|VARYING|VARUCS2|VARGRAPH|VARCHAR|VALUE|UNS|UCS2|TOFILE|TIMFMT|TIMESTAMP|TIME|TEMPLATE|STATIC|SQLTYPE|SERIALIZE|SAMEPOS|RTNPARM|REQPROTO|QUALIFIED|PSDS|PROCPTR|PREFIX|POS|POINTER|PGMINFO|PERRCD|PACKEVEN|PACKED|OVERLOAD|OVERLAY|OPTIONS|OPDESC|OCCURS|OBJECT|NULLIND|NOOPT|LIKEREC|LIKEFILE|LIKEDS|LIKE|LEN|INZ|IND|INT|IMPORT|GRAPH|FROMFILE|FLOAT|EXTPROC|EXTPGM|EXTNAME|EXTFMT|EXTFLD|EXT|EXPORT|DTAARA|DIM|DFT|DESCEND|DATFMT|DATE|CTDATA|CONST|CLASS|CHAR|CCSID|BINDEC|BASED|ASCEND|ALTSEQ|ALT|ALIGN|ALIAS)\\b"
         }
@@ -263,15 +282,21 @@
       "comment": "Free-format statements for **FREE (fully free-format) source. Uses freerpglecommon throughout.",
       "patterns": [
         {
+          "comment": "The control statement, from CTL-OPT to the semicolon that ends it. The look-ahead opens the block without consuming the word, so that CTL-OPT and its keywords can be scoped separately by the rules inside.",
           "name": "rpgle.free.control",
           "begin": "(?i)\\b(?=CTL\\-OPT)\\b",
           "end": ";",
           "patterns": [
             {
+              "include": "#freestmtconditional"
+            },
+            {
+              "comment": "CTL-OPT itself, the word that opens a control statement.",
               "name": "storage.type.rpgle.free.control",
               "match": "(?i)\\b(CTL\\-OPT)\\b"
             },
             {
+              "comment": "The keywords a control statement may carry. Sorted in reverse so a keyword is tried before any keyword it begins with.",
               "name": "entity.name.function.rpgle.free.control.keywords",
               "match": "(?i)\\b(VALIDATE|USRPRF|TRUNCNBR|TIMFMT|THREAD|TEXT|STGMDL|SRTSEQ|REQPREXP|PRFDTA|PGMINFO|OPTION|OPTIMIZE|OPENOPT|NOMAIN|MAIN|LANGID|INTPREC|INDENT|GENLVL|FTRANS|FORMSALIGN|FLTDIV|FIXNBR|EXTBININT|EXPROPTS|ENBPFRCOL|DFTNAME|DFTACTGRP|DECPREC|DECEDIT|DEBUG|DATFMT|DATEYY|DATEDIT|DCLOPT|CVTOPT|CURSYM|COPYRIGHT|COPYNEST|CHARCOUNTTYPES|CHARCOUNT|CCSIDCVT|CCSID|BNDDIR|ASSERT|AUT|ALWNULL|ALTSEQ|ACTGRP|ALLOC)\\b"
             },
@@ -281,15 +306,21 @@
           ]
         },
         {
+          "comment": "A file statement, from DCL-F to the semicolon that ends it. As with the control statement the look-ahead leaves the word for the rule inside.",
           "name": "rpgle.free.file",
           "begin": "(?i)\\b(?=DCL\\-F)\\b",
           "end": ";",
           "patterns": [
             {
+              "include": "#freestmtconditional"
+            },
+            {
+              "comment": "DCL-F itself, the word that opens a file statement.",
               "name": "storage.type.rpgle.free.file",
               "match": "(?i)\\b(DCL\\-F)\\b"
             },
             {
+              "comment": "The keywords a file statement may carry. Sorted in reverse so a keyword is tried before any keyword it begins with.",
               "name": "entity.name.function.rpgle.free.file.keywords",
               "match": "(?i)\\b(WORKSTN|USROPN|USAGE|TIMFMT|TEMPLATE|STATIC|SPECIAL|SLN|SFILE|SEQ|SAVEIND|SAVEDS|RENAME|RECNO|RAFDATA|QUALIFIED|PRTCTL|PRINTER|PREFIX|PLIST|PGMNAME|PASS|OFLIND|MAXDEV|LIKEFILE|KEYLOC|KEYED|INFSR|INFDS|INDDS|INCLUDE|IGNORE|HANDLER|FORMOFL|FORMLEN|EXTMBR|EXTIND|EXTFILE|EXTDESC|DISK|DEVID|DATFMT|DATA|COMMIT|CHARCOUNT|BLOCK|ALIAS)\\b"
             },
@@ -299,15 +330,18 @@
           ]
         },
         {
+          "comment": "BEGSR and ENDSR, which open and close a subroutine. Only the prefix differs, so the two are matched together.",
           "name": "storage.type.rpgle.free.definition.subr",
           "match": "(?i)\\b(BEG|END)SR\\b"
         },
         {
+          "comment": "A declaration that has no matching END word: DCL-S, DCL-C, DCL-PARM and DCL-SUBF. The block ends at the newline, so it covers the line the declaration opens on; a declaration continued onto further lines is picked up by the same rules at the outer level.",
           "name": "rpgle.free.definition.simple",
           "begin": "(?i)(?=(\\b(DCL\\-)(S|C|PARM|SUBF)\\b))",
           "end": "\n",
           "patterns": [
             {
+              "comment": "The DCL- word that opens a declaration with no matching END.",
               "name": "storage.type.rpgle.free.definition.simple",
               "match": "(?i)\\b(DCL\\-)(S|C|PARM|SUBF)\\b"
             },
@@ -321,21 +355,25 @@
               "include": "#freeidentifiers"
             },
             {
+              "comment": "A // comment ending the declaration line.",
               "name": "comment.line.rpgle.free",
               "match": "(//).*"
             }
           ]
         },
         {
+          "comment": "A declaration closed by a matching END word: DCL-DS, DCL-ENUM, DCL-PROC, DCL-PR and DCL-PI. The block ends at the newline, so a one-line form such as DCL-DS ... END-DS is scoped here while the subfields of a multi-line one are scoped at the outer level.",
           "name": "rpgle.free.definition.complex",
           "begin": "(?i)(?=(\\b(DCL\\-)(DS|ENUM|PROC|PR|PI)\\b))",
           "end": "\n",
           "patterns": [
             {
+              "comment": "The DCL- word that opens a declaration with a matching END.",
               "name": "storage.type.rpgle.free.definition.complex.dcl",
               "match": "(?i)\\b(DCL\\-)(DS|ENUM|PROC|PR|PI)\\b"
             },
             {
+              "comment": "The END word when it is written on the same line as the declaration it closes.",
               "name": "storage.type.rpgle.free.definition.complex.dcl",
               "match": "(?i)\\b(END\\-)(DS|ENUM|PROC|PR|PI)\\b"
             },
@@ -346,26 +384,46 @@
               "include": "#freerpglecommon"
             },
             {
+              "comment": "A name on the declaration line: the item being declared, and on a one-line data structure its subfields. An RPG name may begin with a letter, an underscore, or one of the currency and national characters.",
               "name": "variable.other.rpgle.free.definition.identifier",
               "match": "\\b[a-zA-Z_#@$§ÆØÅÄÖ£Ñ¥àÐŞİ][a-zA-Z0-9_#@$§ÆØÅÄÖ£Ñ¥àÐŞİ]*\\b"
             }
           ]
         },
         {
-          "name": "storage.type.rpgle.free.definition.complex.dcl",
-          "match": "(?i)\\b(END\\-)(DS|ENUM|PROC|PR|PI)\\b"
+          "comment": "A free-form calculation statement that runs onto another line. The reference states that no directive may be specified within a single free-form calculation statement, and that a line inside one which begins with what looks like a directive is read instead as a slash followed by a name, so that x = y on one line and /title + 5; on the next is a division by a variable called title. This block is what keeps the directive rules away from those lines: it opens only on an assignment whose line carries no semicolon, which is what makes the statement continue, and it holds the ordinary calculation rules with the directives left out. A statement that ends on the line it starts on never opens it.",
+          "name": "rpgle.free.calculation.continued",
+          "begin": "(?i)^(?=\\s*[A-Za-z#$@][A-Za-z0-9_#$@.]*(\\([^()]*\\))?\\s*(\\*\\*=|\\+=|\\-=|\\*=|/=|=(?!=))[^;]*$)",
+          "end": ";",
+          "patterns": [
+            {
+              "include": "#strings"
+            },
+            {
+              "include": "#comments"
+            },
+            {
+              "include": "#freedefkeywords"
+            },
+            {
+              "include": "#sqlvariables"
+            },
+            {
+              "include": "#constants"
+            },
+            {
+              "include": "#keywords"
+            },
+            {
+              "include": "#freeopcodes"
+            },
+            {
+              "include": "#freeidentifiers"
+            }
+          ]
         },
         {
-          "comment": "The operation codes that free-form calculations accept, which is Table 124 of the reference. ADDDUR, ALLOC, REALLOC and SHTDN are traditional-syntax only and are written as the built-in functions %ALLOC, %REALLOC and %SHTDN or as duration arithmetic in free form, so they are not here. AND and OR are kept because they read as operators inside an expression. The optional trailing group is the operation extender, the same closed set the fixed-format calculations use. Only the letters are scoped, leaving the parentheses to the surrounding context, which is how the fixed-format extender rule treats them.",
-          "match": "(?i)(?<![A-Z0-9_#@$§ÆØÅÄÖ£Ñ¥àÐŞİ])(ACQ|AND|ASSERT\\-(F|T)|BEGSR|CALLP|CHAIN|CLEAR|CLOSE|COMMIT|DATA\\-GEN|DATA\\-INTO|DEALLOC|DELETE|DOU|DOW|DSPLY|DUMP|ELSEIF|ELSE|ENDDO|ENDFOR|ENDIF|ENDMON|ENDSL|ENDSR|EVAL\\-CORR|EVALR|EVAL|EXCEPT|EXFMT|EXSR|FEOD|FOR\\-EACH|FOR|FORCE|IF|IN|ITER|LEAVESR|LEAVE|MONITOR|NEXT|ON\\-ERROR|ON\\-EXCP|ON\\-EXIT|OPEN|OR|OTHER|OUT|POST|READC|READE|READP|READPE|READ|REL|RESET|RETURN|ROLBK|SELECT|SETGT|SETLL|SND\\-MSG|SORTA|TEST|UNLOCK|UPDATE|WHEN\\-IN|WHEN\\-IS|WHEN|WRITE|XML\\-INTO|XML\\-SAX)(?![-A-Z0-9_#@$§ÆØÅÄÖ£Ñ¥àÐŞİ])(?:(\\s*\\(\\s*)([ADEHMNPRTZC]{1,5})(\\s*\\)))?",
-          "captures": {
-            "1": {
-              "name": "keyword.other.rpgle.free"
-            },
-            "4": {
-              "name": "constant.language.rpgle.free.extender"
-            }
-          }
+          "include": "#freeopcodes"
         },
         {
           "include": "#freeidentifiers"
@@ -375,55 +433,91 @@
         }
       ]
     },
+    "freeopcodes": {
+      "patterns": [
+        {
+          "comment": "The END word of a declaration written over more than one line. It is reached at the outer level because the declaration block above ends at the newline.",
+          "name": "storage.type.rpgle.free.definition.complex.dcl",
+          "match": "(?i)\\b(END\\-)(DS|ENUM|PROC|PR|PI)\\b"
+        },
+        {
+          "comment": "The operation codes that free-form calculations accept, which is Table 124 of the reference. ADDDUR, ALLOC, REALLOC and SHTDN are traditional-syntax only and are written as the built-in functions %ALLOC, %REALLOC and %SHTDN or as duration arithmetic in free form, so they are not here. AND and OR are not here either. Free form dropped the ANDxx and ORxx forms in favour of expressions, so the two words join an expression rather than begin a statement and the connective rule scopes them, alongside NOT. The optional trailing group is the operation extender, the same closed set the fixed-format calculations use. Only the letters are scoped, leaving the parentheses to the surrounding context, which is how the fixed-format extender rule treats them.",
+          "match": "(?i)(?<![A-Z0-9_#@$§ÆØÅÄÖ£Ñ¥àÐŞİ])(ACQ|ASSERT\\-(F|T)|BEGSR|CALLP|CHAIN|CLEAR|CLOSE|COMMIT|DATA\\-GEN|DATA\\-INTO|DEALLOC|DELETE|DOU|DOW|DSPLY|DUMP|ELSEIF|ELSE|ENDDO|ENDFOR|ENDIF|ENDMON|ENDSL|ENDSR|EVAL\\-CORR|EVALR|EVAL|EXCEPT|EXFMT|EXSR|FEOD|FOR\\-EACH|FOR|FORCE|IF|IN|ITER|LEAVESR|LEAVE|MONITOR|NEXT|ON\\-ERROR|ON\\-EXCP|ON\\-EXIT|OPEN|OTHER|OUT|POST|READC|READE|READP|READPE|READ|REL|RESET|RETURN|ROLBK|SELECT|SETGT|SETLL|SND\\-MSG|SORTA|TEST|UNLOCK|UPDATE|WHEN\\-IN|WHEN\\-IS|WHEN|WRITE|XML\\-INTO|XML\\-SAX)(?![-A-Z0-9_#@$§ÆØÅÄÖ£Ñ¥àÐŞİ])(?:(\\s*\\(\\s*)([ADEHMNPRTZC]{1,5})(\\s*\\)))?",
+          "captures": {
+            "1": {
+              "name": "keyword.other.rpgle.free"
+            },
+            "4": {
+              "name": "constant.language.rpgle.free.extender"
+            }
+          }
+        }
+      ]
+    },
     "fixedfreeformat": {
       "comment": "Free-format statements for fixed-format source (including mixed-mode files). Uses rpglecommon throughout for gutter awareness.",
       "patterns": [
         {
+          "comment": "The control statement, from CTL-OPT to the semicolon that ends it. The look-ahead opens the block without consuming the word, so that CTL-OPT and its keywords can be scoped separately by the rules inside.",
           "name": "rpgle.free.control",
           "begin": "(?i)\\b(?=CTL\\-OPT)\\b",
           "end": ";",
           "patterns": [
             {
+              "include": "#fixedstmtconditional"
+            },
+            {
               "include": "#rpglecommon"
             },
             {
+              "comment": "CTL-OPT itself, the word that opens a control statement.",
               "name": "storage.type.rpgle.free.control",
               "match": "(?i)\\b(CTL\\-OPT)\\b"
             },
             {
+              "comment": "The keywords a control statement may carry. Sorted in reverse so a keyword is tried before any keyword it begins with.",
               "name": "entity.name.function.rpgle.free.control.keywords",
               "match": "(?i)\\b(VALIDATE|USRPRF|TRUNCNBR|TIMFMT|THREAD|TEXT|STGMDL|SRTSEQ|REQPREXP|PRFDTA|PGMINFO|OPTION|OPTIMIZE|OPENOPT|NOMAIN|MAIN|LANGID|INTPREC|INDENT|GENLVL|FTRANS|FORMSALIGN|FLTDIV|FIXNBR|EXTBININT|EXPROPTS|ENBPFRCOL|DFTNAME|DFTACTGRP|DECPREC|DECEDIT|DEBUG|DATFMT|DATEYY|DATEDIT|DCLOPT|CVTOPT|CURSYM|COPYRIGHT|COPYNEST|CHARCOUNTTYPES|CHARCOUNT|CCSIDCVT|CCSID|BNDDIR|ASSERT|AUT|ALWNULL|ALTSEQ|ACTGRP|ALLOC)\\b"
             }
           ]
         },
         {
+          "comment": "A file statement, from DCL-F to the semicolon that ends it. As with the control statement the look-ahead leaves the word for the rule inside.",
           "name": "rpgle.free.file",
           "begin": "(?i)\\b(?=DCL\\-F)\\b",
           "end": ";",
           "patterns": [
             {
+              "include": "#fixedstmtconditional"
+            },
+            {
               "include": "#rpglecommon"
             },
             {
+              "comment": "DCL-F itself, the word that opens a file statement.",
               "name": "storage.type.rpgle.free.file",
               "match": "(?i)\\b(DCL\\-F)\\b"
             },
             {
+              "comment": "The keywords a file statement may carry. Sorted in reverse so a keyword is tried before any keyword it begins with.",
               "name": "entity.name.function.rpgle.free.file.keywords",
               "match": "(?i)\\b(WORKSTN|USROPN|USAGE|TIMFMT|TEMPLATE|STATIC|SPECIAL|SLN|SFILE|SEQ|SAVEIND|SAVEDS|RENAME|RECNO|RAFDATA|QUALIFIED|PRTCTL|PRINTER|PREFIX|PLIST|PGMNAME|PASS|OFLIND|MAXDEV|LIKEFILE|KEYLOC|KEYED|INFSR|INFDS|INDDS|INCLUDE|IGNORE|HANDLER|FORMOFL|FORMLEN|EXTMBR|EXTIND|EXTFILE|EXTDESC|DISK|DEVID|DATFMT|DATA|COMMIT|CHARCOUNT|BLOCK|ALIAS)\\b"
             }
           ]
         },
         {
+          "comment": "BEGSR and ENDSR, which open and close a subroutine. Only the prefix differs, so the two are matched together.",
           "name": "storage.type.rpgle.free.definition.subr",
           "match": "(?i)\\b(BEG|END)SR\\b"
         },
         {
+          "comment": "A declaration that has no matching END word: DCL-S, DCL-C, DCL-PARM and DCL-SUBF. The block ends at the newline, so it covers the line the declaration opens on; a declaration continued onto further lines is picked up by the same rules at the outer level.",
           "name": "rpgle.free.definition.simple",
           "begin": "(?i)(?=(\\b(DCL\\-)(S|C|PARM|SUBF)\\b))",
           "end": "\n",
           "patterns": [
             {
+              "comment": "The DCL- word that opens a declaration with no matching END.",
               "name": "storage.type.rpgle.free.definition.simple",
               "match": "(?i)\\b(DCL\\-)(S|C|PARM|SUBF)\\b"
             },
@@ -437,21 +531,25 @@
               "include": "#fixedfreeidentifiers"
             },
             {
+              "comment": "A // comment ending the declaration line.",
               "name": "comment.line.rpgle.free",
               "match": "(//).*"
             }
           ]
         },
         {
+          "comment": "A declaration closed by a matching END word: DCL-DS, DCL-ENUM, DCL-PROC, DCL-PR and DCL-PI. The block ends at the newline, so a one-line form such as DCL-DS ... END-DS is scoped here while the subfields of a multi-line one are scoped at the outer level.",
           "name": "rpgle.free.definition.complex",
           "begin": "(?i)(?=(\\b(DCL\\-)(DS|ENUM|PROC|PR|PI)\\b))",
           "end": "\n",
           "patterns": [
             {
+              "comment": "The DCL- word that opens a declaration with a matching END.",
               "name": "storage.type.rpgle.free.definition.complex.dcl",
               "match": "(?i)\\b(DCL\\-)(DS|ENUM|PROC|PR|PI)\\b"
             },
             {
+              "comment": "The END word when it is written on the same line as the declaration it closes.",
               "name": "storage.type.rpgle.free.definition.complex.dcl",
               "match": "(?i)\\b(END\\-)(DS|ENUM|PROC|PR|PI)\\b"
             },
@@ -462,26 +560,52 @@
               "include": "#rpglecommon"
             },
             {
+              "comment": "A name on the declaration line: the item being declared, and on a one-line data structure its subfields. An RPG name may begin with a letter, an underscore, or one of the currency and national characters.",
               "name": "variable.other.rpgle.free.definition.identifier",
               "match": "\\b[a-zA-Z_#@$§ÆØÅÄÖ£Ñ¥àÐŞİ][a-zA-Z0-9_#@$§ÆØÅÄÖ£Ñ¥àÐŞİ]*\\b"
             }
           ]
         },
         {
-          "name": "storage.type.rpgle.free.definition.complex.dcl",
-          "match": "(?i)\\b(END\\-)(DS|ENUM|PROC|PR|PI)\\b"
+          "comment": "A free-form calculation statement that runs onto another line. The reference states that no directive may be specified within a single free-form calculation statement, and that a line inside one which begins with what looks like a directive is read instead as a slash followed by a name, so that x = y on one line and /title + 5; on the next is a division by a variable called title. This block is what keeps the directive rules away from those lines: it opens only on an assignment whose line carries no semicolon, which is what makes the statement continue, and it holds the ordinary calculation rules with the directives left out. A statement that ends on the line it starts on never opens it. It is anchored after the gutter rather than at the line start, because the gutter rule matches from column 1 and would otherwise take the line start away from it. Positions 6 and 7 must be blank, as they must be for any free-form statement in a column-limited member.",
+          "name": "rpgle.fixed.calculation.continued",
+          "begin": "(?i)(?<=^.{5})(?=[ ]{2}\\s*[A-Za-z#$@][A-Za-z0-9_#$@.]*(\\([^()]*\\))?\\s*(\\*\\*=|\\+=|\\-=|\\*=|/=|=(?!=))[^;]*$)",
+          "end": ";",
+          "patterns": [
+            {
+              "include": "#fixedcomment"
+            },
+            {
+              "include": "#fixedstrings"
+            },
+            {
+              "include": "#comments"
+            },
+            {
+              "include": "#sqlvariables"
+            },
+            {
+              "include": "#constants"
+            },
+            {
+              "include": "#keywords"
+            },
+            {
+              "include": "#freeopcodes"
+            },
+            {
+              "include": "#freedefkeywords"
+            },
+            {
+              "include": "#fixedfreeidentifiers"
+            }
+          ]
         },
         {
-          "comment": "The operation codes that free-form calculations accept, which is Table 124 of the reference. ADDDUR, ALLOC, REALLOC and SHTDN are traditional-syntax only and are written as the built-in functions %ALLOC, %REALLOC and %SHTDN or as duration arithmetic in free form, so they are not here. AND and OR are kept because they read as operators inside an expression. The optional trailing group is the operation extender, the same closed set the fixed-format calculations use. Only the letters are scoped, leaving the parentheses to the surrounding context, which is how the fixed-format extender rule treats them.",
-          "match": "(?i)(?<![A-Z0-9_#@$§ÆØÅÄÖ£Ñ¥àÐŞİ])(ACQ|AND|ASSERT\\-(F|T)|BEGSR|CALLP|CHAIN|CLEAR|CLOSE|COMMIT|DATA\\-GEN|DATA\\-INTO|DEALLOC|DELETE|DOU|DOW|DSPLY|DUMP|ELSEIF|ELSE|ENDDO|ENDFOR|ENDIF|ENDMON|ENDSL|ENDSR|EVAL\\-CORR|EVALR|EVAL|EXCEPT|EXFMT|EXSR|FEOD|FOR\\-EACH|FOR|FORCE|IF|IN|ITER|LEAVESR|LEAVE|MONITOR|NEXT|ON\\-ERROR|ON\\-EXCP|ON\\-EXIT|OPEN|OR|OTHER|OUT|POST|READC|READE|READP|READPE|READ|REL|RESET|RETURN|ROLBK|SELECT|SETGT|SETLL|SND\\-MSG|SORTA|TEST|UNLOCK|UPDATE|WHEN\\-IN|WHEN\\-IS|WHEN|WRITE|XML\\-INTO|XML\\-SAX)(?![-A-Z0-9_#@$§ÆØÅÄÖ£Ñ¥àÐŞİ])(?:(\\s*\\(\\s*)([ADEHMNPRTZC]{1,5})(\\s*\\)))?",
-          "captures": {
-            "1": {
-              "name": "keyword.other.rpgle.free"
-            },
-            "4": {
-              "name": "constant.language.rpgle.free.extender"
-            }
-          }
+          "include": "#freeopcodes"
+        },
+        {
+          "include": "#freedefkeywords"
         },
         {
           "include": "#fixedfreeidentifiers"
@@ -495,10 +619,12 @@
       "comment": "Handles /FREE.../END-FREE blocks within fixed-format source. Uses fixedfreeformat and fixedfreeSQL for gutter awareness.",
       "patterns": [
         {
+          "comment": "A /FREE block in a column-limited member. The reference records the directive as no longer needed, but the compiler still checks it and real source still carries it.",
           "begin": "(?i)(?=((\\/FREE\\b)))",
           "end": "(?i)(?=((\\/END-FREE\\b)))",
           "patterns": [
             {
+              "comment": "The /FREE directive that opens the block, taking the gutter and form type ahead of it with it.",
               "name": "keyword.control.rpgle.precompiler",
               "match": "(?i)^.*(\\/FREE\\b)"
             },
@@ -514,19 +640,22 @@
           ]
         },
         {
+          "comment": "The directive that closes a /FREE block. Matched at the directive itself rather than from the start of the line: anchored to the line start it won on leftmost position over the rule that scopes a directive and its form type separately, so /END-FREE came out as one span where /FREE came out as two.",
           "name": "keyword.control.rpgle.precompiler",
-          "match": "^.*(\\/END-FREE\\b)"
+          "match": "(?i)\\/END-FREE\\b"
         }
       ]
     },
     "fixedcomment": {
       "patterns": [
         {
+          "comment": "A whole-line comment: an asterisk in position 7, whatever form type position 6 holds.",
           "name": "comment.line.rpgle.fixed",
           "begin": "(?i)^.{5}.[*]",
           "end": "\n"
         },
         {
+          "comment": "Positions 1-5, the page and line number, which the compiler ignores.",
           "name": "comment.gutter",
           "match": "^.{1,5}"
         },
@@ -546,13 +675,18 @@
     "fixedformat": {
       "patterns": [
         {
+          "include": "#fixedprecompiler"
+        },
+        {
           "include": "#fixedcomment"
         },
         {
+          "comment": "The form type in position 6, which is what makes a line fixed-format and decides which specification's rules apply to the rest of it.",
           "name": "keyword.other.rpgle.fixed.specs",
           "match": "(?i)(?<=^.{5})[H|F|D|I|C|O|P]"
         },
         {
+          "comment": "Everything after the form type on a control specification. The block opens just past position 6 and closes at the newline, so each entry rule inside it counts its columns from the form type.",
           "name": "rpgle.fixed.h",
           "begin": "(?i)(?<=^.{5}H)",
           "end": "(?<=\\n)",
@@ -571,6 +705,7 @@
           ]
         },
         {
+          "comment": "Everything after the form type on a file specification. The block opens just past position 6 and closes at the newline, so each entry rule inside it counts its columns from the form type.",
           "name": "rpgle.fixed.f",
           "begin": "(?i)(?<=^.{5}F)",
           "end": "(?<=\\n)",
@@ -579,54 +714,67 @@
               "include": "#fixedcomment"
             },
             {
+              "comment": "File specification position 17, the file type: I for input, O for output, U for update and C for combined.",
               "name": "constant.language.rpgle.fixed.f.type",
               "match": "(?i)(?=(?<=((?<=^.{5}F).{10})))(I|O|U|C)"
             },
             {
+              "comment": "File specification position 18, the file designation: P for primary, S for secondary, R for record address, T for table or array, F for full procedural.",
               "name": "constant.language.rpgle.fixed.f.designation",
               "match": "(?i)(?=(?<=((?<=^.{5}F).{11})).{3})(P|S|R|T|F)"
             },
             {
+              "comment": "File specification position 19, E when the file is to signal end of file.",
               "name": "constant.language.rpgle.fixed.f.eof",
               "match": "(?i)(?=(?<=((?<=^.{5}F).{12})).{2})E"
             },
             {
+              "comment": "File specification position 20, A when records may be added to the file.",
               "name": "constant.language.rpgle.fixed.f.addition",
               "match": "(?i)(?=(?<=((?<=^.{5}F).{13})).{2})A"
             },
             {
+              "comment": "File specification position 21, the sequence in which a match-field file is read: A for ascending, D for descending.",
               "name": "constant.language.rpgle.fixed.f.sequence",
               "match": "(?i)(?=(?<=((?<=^.{5}F).{14})).{2})(A|D)"
             },
             {
+              "comment": "File specification position 22, the file format: E when the file is externally described, F when the program describes it.",
               "name": "constant.language.rpgle.fixed.f.format",
               "match": "(?i)(?=(?<=((?<=^.{5}F).{15})).{2})(E|F)"
             },
             {
+              "comment": "File specification positions 23-27, the record length. Only a program described file has one, so the F in position 22 is required first.",
               "name": "constant.language.rpgle.fixed.fi.recordlen",
               "match": "(?i)(?<=(?<=(?<=^.{5}F).{10}).{5}F)([0-9]|\\s){5}"
             },
             {
+              "comment": "File specification position 28, L when the file is read by limits.",
               "name": "constant.language.rpgle.fixed.f.limitproc",
               "match": "(?i)(?<=(?<=(?<=^.{5}F).{10}).{5}(F|E).{5})L"
             },
             {
+              "comment": "File specification positions 29-33, the length of the key field. Only a program described file gives one, hence the F in position 22.",
               "name": "constant.language.rpgle.fixed.fi.keyfieldlen",
               "match": "(?i)(?<=(?<=(?<=^.{5}F).{10}).{5}(F).{6})([0-9]|\\s){5}"
             },
             {
+              "comment": "File specification position 34, the record address type, which says how the key is held: K for keyed, A, P, G, D, T, Z and F for the rest.",
               "name": "constant.language.rpgle.fixed.f.addrtype",
               "match": "(?i)(?<=(?<=(?<=^.{5}F).{10}).{5}(F|E).{11})(A|D|F|G|K|P|T|Z)"
             },
             {
+              "comment": "File specification position 35, the organisation of a program described file: I for indexed, T for record address.",
               "name": "constant.language.rpgle.fixed.fi.fileorg",
               "match": "(?i)(?<=(?<=(?<=^.{5}F).{10}).{5}F.{12})(?i)(I|T)"
             },
             {
+              "comment": "File specification positions 36-42, the device the file is attached to.",
               "name": "constant.language.rpgle.fixed.f.device",
               "match": "(?i)(?<=(?<=(?<=^.{5}F).{10}).{5}(F|E).{13})(PRINTER|DISK|WORKSTN|SPECIAL|SEQ)"
             },
             {
+              "comment": "The keywords a file specification may carry in positions 44-80. Sorted in reverse so a keyword is tried before any keyword it begins with.",
               "name": "entity.name.function.rpgle.fixed.f",
               "match": "\\b(?i)(WORKSTN|USROPN|USAGE|TIMFMT|TEMPLATE|STATIC|SPECIAL|SLN|SFILE|SEQ|SAVEIND|SAVEDS|RENAME|RECNO|RAFDATA|QUALIFIED|PRTCTL|PRINTER|PREFIX|PLIST|PGMNAME|PASS|OFLIND|MAXDEV|LIKEFILE|KEYLOC|KEYED|INFSR|INFDS|INDDS|INCLUDE|IGNORE|HANDLER|FORMOFL|FORMLEN|EXTMBR|EXTIND|EXTFILE|EXTDESC|DISK|DEVID|DATFMT|DATA|COMMIT|CHARCOUNT|BLOCK|ALIAS)\\b"
             },
@@ -636,6 +784,7 @@
           ]
         },
         {
+          "comment": "Everything after the form type on a definition specification. The block opens just past position 6 and closes at the newline, so each entry rule inside it counts its columns from the form type.",
           "name": "rpgle.fixed.d",
           "begin": "(?i)(?<=^.{5}D)",
           "end": "(?<=\\n)",
@@ -669,6 +818,7 @@
                   }
                 },
                 {
+                  "comment": "The form type in position 6, matched again inside a specification block so that a continued line carrying its own form type is scoped.",
                   "name": "keyword.other.rpgle.fixed.specs",
                   "match": "(?i)(?<=^.{5})[H|F|D|I|C|O|P]"
                 },
@@ -678,18 +828,22 @@
               ]
             },
             {
+              "comment": "A name too long for positions 7-21, or one the programmer chose to split, written on a continued name line that ends in an ellipsis.",
               "name": "variable.other.rpgle.fixed.d.extended.name",
               "match": "(?i)(?<=^.{5}D).[a-zA-Z_][a-zA-Z0-9_]{1,71}[.]{3}"
             },
             {
+              "comment": "Definition specification position 22, E when the item is externally described.",
               "name": "constant.language.rpgle.fixed.d.external",
               "match": "(?i)(?<=((?<=^.{5}D).{15}))E"
             },
             {
+              "comment": "Definition specification position 23, the kind of data structure: S for the program status structure, U for a data area.",
               "name": "constant.language.rpgle.fixed.d.dstype",
               "match": "(?i)(?<=((?<=^.{5}D).{16}))(S|U)"
             },
             {
+              "comment": "Definition specification positions 24-25, what is being defined: DS, PI, PR, S for a standalone field or C for a named constant.",
               "name": "constant.language.rpgle.fixed.d.dectype",
               "match": "(?i)(?<=((?<=^.{5}D).{17}))(DS|PI|PR|(S\\s)|(C\\s))"
             },
@@ -709,6 +863,7 @@
               "match": "(?i)(?<=((?<=^.{5}D).{33}))(A|B|C|D|F|G|I|N|O|P|S|T|U|Z|\\*)"
             },
             {
+              "comment": "Definition specification positions 41-42, the number of decimal positions.",
               "name": "constant.language.rpgle.fixed.d.decpos",
               "match": "(?i)(?<=((?<=^.{5}D).{34}))([0-9]|\\s){2}"
             },
@@ -723,6 +878,7 @@
           ]
         },
         {
+          "comment": "Everything after the form type on a input specification. The block opens just past position 6 and closes at the newline, so each entry rule inside it counts its columns from the form type.",
           "name": "rpgle.fixed.i",
           "begin": "(?i)(?<=^.{5}I)",
           "end": "(?<=\\n)",
@@ -791,6 +947,7 @@
               "include": "#fixedcomment"
             },
             {
+              "comment": "Input specification positions 17-18, the sequence, which orders the record types of a program described file.",
               "name": "constant.language.rpgle.fixed.i.seq",
               "match": "(?i)(?<=((?<=^.{5}I).{10}))[A-Za-z0-9]{2}"
             },
@@ -800,6 +957,7 @@
               "match": "(?i)(?<=(?<=^.{5}I).{12})(1|N)"
             },
             {
+              "comment": "Input specification position 20, O when the record type is optional.",
               "name": "constant.language.rpgle.fixed.i.option",
               "match": "(?i)(?<=((?<=^.{5}I).{13}))O"
             },
@@ -874,6 +1032,7 @@
           ]
         },
         {
+          "comment": "Everything after the form type on a calculation specification. The block opens just past position 6 and closes at the newline, so each entry rule inside it counts its columns from the form type.",
           "name": "rpgle.fixed.c",
           "begin": "(?i)(?<=^.{5}C)",
           "end": "(?<=\\n)",
@@ -887,6 +1046,7 @@
               "match": "(?i)(?<=^.{5}C)((L[0-9])|LR|SR|AN|OR)"
             },
             {
+              "comment": "Calculation specification positions 9-11, the conditioning indicator, optionally negated by N in the first of them.",
               "name": "constant.language.rpgle.fixed.c.n01",
               "match": "(?i)(?<=((?<=^.{5}C).{2}))((N|\\s)(([0-9]{2})|(K[A-N])|(K[P-Y])|((H|L)[1-9])|LR|MR|RT|(U[1-8])|(O[A-G])|OV))"
             },
@@ -908,6 +1068,7 @@
                   "match": "((?i)(AND|COMP|CAB|CAS|DOU|DOW|FOR|IF|OR|WHEN)(GT|LT|EQ|NE|GE|LE|(\\s{2})))"
                 },
                 {
+                  "comment": "A name, a parenthesis or the per cent that opens a built-in function, anywhere in the calculation entries. RPG names may start with the currency and national characters as well as a letter.",
                   "name": "variable.other",
                   "match": "((?i)[a-zA-Z_#@$§ÆØÅÄÖ£Ñ¥àÐŞİ][a-zA-Z0-9_#@$§ÆØÅÄÖ£Ñ¥àÐŞİ]*)|\\(|\\)|\\%"
                 }
@@ -929,10 +1090,12 @@
               "match": "(?i)(?<=((?<=^.{5}C).{19}))(Z\\-SUB|Z\\-ADD|XML\\-SAX|XML\\-INTO|XLATE|XFOOT|WRITE|WHEN\\-IS|WHEN\\-IN|WHEN|UPDATE|UNLOCK|TIME|TESTZ|TESTN|TESTB|TEST|TAG|SUBST|SUBDUR|SUB|SQRT|SORTA|SND\\-MSG|SHTDN|SETON|SETOFF|SETLL|SETGT|SELECT|SCAN|ROLBK|RETURN|RESET|REL|REALLOC|READPE|READP|READE|READC|READ|POST|PLIST|PARM|OUT|OTHER|OR|OPEN|ON\\-EXIT|ON\\-EXCP|ON\\-ERROR|OCCUR|NEXT|MVR|MULT|MOVEL|MOVEA|MOVE|MONITOR|MLLZO|MLHZO|MHLZO|MHHZO|LOOKUP|LEAVESR|LEAVE|KLIST|KFLD|ITER|IN|IF|GOTO|FORCE|FOR\\-EACH|FOR|FEOD|EXTRCT|EXSR|EXFMT|EXCEPT|EVALR|EVAL\\-CORR|EVAL|ENDSR|ENDSL|ENDMON|ENDIF|ENDFOR|ENDDO|ENDCS|END|ELSEIF|ELSE|DUMP|DSPLY|DOW|DOU|DO|DIV|DELETE|DEFINE|DEALLOC|DATA\\-INTO|DATA\\-GEN|COMP|COMMIT|CLOSE|CLEAR|CHECKR|CHECK|CHAIN|CAT|CAS|CALLP|CALLB|CALL|CAB|BITON|BITOFF|BEGSR|ASSERT\\-T|ASSERT\\-F|AND|ALLOC|ADDDUR|ADD|ACQ)(?![A-Za-z\\-])"
             },
             {
+              "comment": "Calculation specification positions 64-68, the length of the result field when the calculation defines it.",
               "name": "constant.language.rpgle.fixed.c.len",
               "match": "(?i)(?<=((?<=^.{5}C).{57}))([0-9]|\\s){5}"
             },
             {
+              "comment": "Calculation specification positions 69-70, the decimal positions of the result field.",
               "name": "constant.language.rpgle.fixed.c.decpos",
               "match": "(?i)(?<=((?<=^.{5}C).{62}))([0-9]|\\s){2}"
             },
@@ -966,6 +1129,7 @@
           ]
         },
         {
+          "comment": "Everything after the form type on a output specification. The block opens just past position 6 and closes at the newline, so each entry rule inside it counts its columns from the form type.",
           "name": "rpgle.fixed.o",
           "begin": "(?i)(?<=^.{5}O)",
           "end": "(?<=\\n)",
@@ -974,6 +1138,7 @@
               "include": "#fixedcomment"
             },
             {
+              "comment": "Output specification position 17, the record type: H for heading, D for detail, T for total and E for exception.",
               "name": "constant.language.rpgle.fixed.o.type",
               "match": "(?i)(?<=((?<=^.{5}O).{10}))(H|D|T|E)"
             },
@@ -983,18 +1148,22 @@
               "match": "(?i)(?<=((?<=^.{5}O).{11}))(ADD|DEL)"
             },
             {
+              "comment": "Output specification position 18, F to fetch the overflow routine or R to release the record.",
               "name": "constant.language.rpgle.fixed.o.fetch",
               "match": "(?i)(?<=((?<=^.{5}O).{11}))(F|R)"
             },
             {
+              "comment": "Output specification positions 21-23, the first output indicator.",
               "name": "constant.language.rpgle.fixed.o.n01",
               "match": "(?i)(?<=((?<=^.{5}O).{14}))((N|\\s)(([0-9]{2})|(K[A-N])|(K[P-Y])|((H|L)[1-9])|LR|MR|RT|1P|(U[1-8])|(O[A-G])|OV))"
             },
             {
+              "comment": "Output specification positions 24-26, the second output indicator.",
               "name": "constant.language.rpgle.fixed.o.n02",
               "match": "(?i)(?<=((?<=^.{5}O).{17}))((N|\\s)(([0-9]{2})|(K[A-N])|(K[P-Y])|((H|L)[1-9])|LR|MR|RT|1P|(U[1-8])|(O[A-G])|OV))"
             },
             {
+              "comment": "Output specification positions 27-29, the third output indicator.",
               "name": "constant.language.rpgle.fixed.o.n03",
               "match": "(?i)(?<=((?<=^.{5}O).{20}))((N|\\s)(([0-9]{2})|(K[A-N])|(K[P-Y])|((H|L)[1-9])|LR|MR|RT|1P|(U[1-8])|(O[A-G])|OV))"
             },
@@ -1044,6 +1213,7 @@
           ]
         },
         {
+          "comment": "Everything after the form type on a procedure specification. The block opens just past position 6 and closes at the newline, so each entry rule inside it counts its columns from the form type.",
           "name": "rpgle.fixed.p",
           "begin": "(?i)(?<=^.{5}P)",
           "end": "(?<=\\n)",
@@ -1057,6 +1227,7 @@
               "match": "(?i)(?<=^.{5}P).[a-zA-Z_][a-zA-Z0-9_]{1,71}[.]{3}"
             },
             {
+              "comment": "Procedure specification position 24, B on the line that begins a subprocedure and E on the line that ends it.",
               "name": "constant.language.rpgle.fixed.p.beginend",
               "match": "(?i)(?<=((?<=^.{5}P).{17}))(B|E)"
             },
@@ -1075,10 +1246,12 @@
     "fixedSQL": {
       "patterns": [
         {
+          "comment": "An SQL statement in the traditional form. The look-ahead opens the block without consuming C/EXEC SQL, leaving it to the rule inside.",
           "begin": "(?i)(?=(^.{5}(C)(\\/EXEC)\\s+(SQL)\\b))",
           "end": "(?i)(?=(^.{5}(C)(\\/END\\-EXEC)\\b))",
           "patterns": [
             {
+              "comment": "C/EXEC SQL, which opens a traditional embedded SQL statement.",
               "name": "keyword.other.rpgle.sql",
               "match": "(?i)(C)(\\/EXEC)\\s+(sql)\\b"
             },
@@ -1086,6 +1259,7 @@
               "include": "#fixedcomment"
             },
             {
+              "comment": "The C+ that continues a traditional SQL statement and the C/ that ends it.",
               "name": "keyword.other.rpgle.fixed.specs",
               "match": "(?i)(C[\\+|\\/])"
             },
@@ -1095,17 +1269,18 @@
           ]
         },
         {
+          "comment": "The marker that closes a fixed-format SQL statement. The form type is taken with it, the way C/EXEC SQL takes its own, so the two ends of the statement read alike.",
           "name": "keyword.other.rpgle.sql",
-          "match": "(?i)(C\\/END\\-EXEC)",
-          "comment": "The marker that closes a fixed-format SQL statement. The form type is taken with it, the way C/EXEC SQL takes its own, so the two ends of the statement read alike."
+          "match": "(?i)(C\\/END\\-EXEC)"
         }
       ]
     },
-    "precompiler": {
+    "fixedprecompiler": {
       "patterns": [
         {
+          "comment": "/TITLE, which names the heading printed at the top of each page of the compiler listing. The directive begins in column 7 or later, so the capture ahead of the slash takes the form type in position 6 and any blanks after it.",
           "name": "rpgle.fixed.precompiler.title",
-          "begin": "(?i)(?<=^.{5})(H|F|D|I|C|O|P|\\s)(\\/TITLE)",
+          "begin": "(?i)(?<=^.{5})([HFDICOP ] *)(\\/TITLE)",
           "beginCaptures": {
             "1": {
               "name": "keyword.other.rpgle.fixed.precompiler.title"
@@ -1117,30 +1292,16 @@
           "end": "\n",
           "patterns": [
             {
+              "comment": "The heading text, which is the rest of the line. The reference has it printed on the listing rather than read as code.",
               "name": "comment.line.rpgle.fixed.precompiler.title",
               "match": ".*"
             }
           ]
         },
         {
-          "name": "rpgle.free.precompiler.title",
-          "begin": "(?i)^\\s*(\\/TITLE)",
-          "beginCaptures": {
-            "1": {
-              "name": "keyword.control.rpgle.free.precompiler.title"
-            }
-          },
-          "end": "\n",
-          "patterns": [
-            {
-              "name": "comment.line.rpgle.free.precompiler.title",
-              "match": ".*"
-            }
-          ]
-        },
-        {
+          "comment": "/COPY or /INCLUDE, which name a member whose records are inserted here. The two spellings mean the same thing to the compiler and differ only in how the SQL precompiler treats them. The whole line is taken in one pattern so the member name comes out as a single span. The directive begins in column 7 or later, so the capture ahead of the slash takes the form type in position 6 and any blanks after it.",
           "name": "rpgle.fixed.precompiler.include",
-          "begin": "(?i)(?<=^.{5})(H|F|D|I|C|O|P|\\s)(\\/(INCLUDE|COPY))\\s",
+          "begin": "(?i)(?<=^.{5})([HFDICOP ] *)(\\/(INCLUDE|COPY))\\s+(\\S+)(.*)",
           "end": "\n",
           "beginCaptures": {
             "1": {
@@ -1148,124 +1309,176 @@
             },
             "2": {
               "name": "keyword.control.rpgle.fixed.precompiler.include"
-            }
-          },
-          "patterns": [
-            {
-              "name": "string.other.rpgle.precompiler.include",
-              "begin": "\\S",
-              "end": "\\s"
-            },
-            {
-              "name": "comment.other.rpgle.precompiler.include",
-              "match": ".*"
-            }
-          ]
-        },
-        {
-          "name": "rpgle.free.precompiler.include",
-          "begin": "(?i)^\\s*(\\/(INCLUDE|COPY))\\s+(\\S+)(.*)",
-          "end": "\n",
-          "beginCaptures": {
-            "1": {
-              "name": "keyword.control.rpgle.free.precompiler.include"
-            },
-            "3": {
-              "name": "string.other.rpgle.precompiler.include"
             },
             "4": {
+              "comment": "The member being brought in, which may be qualified by the file and library it lives in, or given as a path.",
+              "name": "string.other.rpgle.precompiler.include"
+            },
+            "5": {
+              "comment": "Anything after the member name, which the reference records as an optional comment.",
               "name": "comment.other.rpgle.precompiler.include"
             }
           }
         },
         {
-          "comment": "A conditional directive on a column-limited line, where the form type sits in position 6 and the directive follows it. Written as a container with its parts as separate rules, the way the free-form conditional already was: as a single pattern it could never match, because the word boundary after /IF left no room for the blank before DEFINED and equally forbade the spelling without one. The block takes in its own /ENDIF rather than stopping short of it, so the directive that closes it is scoped like the one that opened it.",
+          "comment": "A conditional compilation block. Both /IF and /ENDIF are consumed by the block rather than left to be matched elsewhere, so the directive that closes it is scoped like the one that opened it and a nested block pairs with its own /ENDIF. /ELSEIF and /ELSE are matched from inside because they do not open a block of their own. The directive begins in column 7 or later, so the capture ahead of the slash takes the form type in position 6 and any blanks after it. A block brackets whatever the member itself may hold, so it reaches the same rules the root patterns do and in the same order. Compile-time data is the one thing left out: the reference allows any source line except that one between the directives of a block.",
           "name": "rpgle.fixed.precompiler.conditional",
-          "begin": "(?i)(?=^.{5}[HFDICOP\\s]\\/(ELSEIF|IF)\\b)",
-          "end": "(?i)^.{5}([HFDICOP\\s])(\\/ENDIF)\\b",
+          "begin": "(?i)^(.{5})([HFDICOP ] *)(\\/IF)\\b",
+          "beginCaptures": {
+            "1": {
+              "name": "comment.gutter"
+            },
+            "2": {
+              "name": "keyword.other.rpgle.fixed.precompiler.conditional"
+            },
+            "3": {
+              "name": "keyword.control.rpgle.fixed.precompiler.conditional"
+            }
+          },
+          "end": "(?i)^(.{5})([HFDICOP ] *)(\\/ENDIF)\\b",
+          "endCaptures": {
+            "1": {
+              "name": "comment.gutter"
+            },
+            "2": {
+              "name": "keyword.other.rpgle.fixed.precompiler.conditional"
+            },
+            "3": {
+              "name": "keyword.control.rpgle.fixed.precompiler.conditional"
+            }
+          },
           "patterns": [
             {
-              "comment": "The form type the directive is written against.",
-              "name": "keyword.other.rpgle.fixed.precompiler.conditional",
-              "match": "(?i)(?<=^.{5})[HFDICOP]"
+              "comment": "/ELSEIF and /ELSE, which continue the block the enclosing /IF opened. ELSEIF comes first so the longer word wins.",
+              "match": "(?i)(?<=^.{5})([HFDICOP ] *)(\\/(ELSEIF|ELSE))\\b",
+              "captures": {
+                "1": {
+                  "name": "keyword.other.rpgle.fixed.precompiler.conditional"
+                },
+                "2": {
+                  "name": "keyword.control.rpgle.fixed.precompiler.conditional"
+                }
+              }
             },
             {
-              "comment": "The directive itself. ELSEIF comes before ELSE so the longer word wins.",
-              "name": "keyword.control.rpgle.fixed.precompiler.conditional",
-              "match": "(?i)(?<=^.{5}.)\\/(ELSEIF|ELSE|IF)\\b"
-            },
-            {
-              "comment": "The condition being tested.",
+              "comment": "The condition being tested, which asks whether a name has been defined.",
               "name": "keyword.other.rpgle.fixed.precompiler.defcheck",
               "match": "(?i)\\b(NOT|UNDEFINED|DEFINED)\\b"
             },
             {
+              "include": "#tempfreeformat"
+            },
+            {
+              "include": "#fixedSQL"
+            },
+            {
+              "include": "#fixedfreeSQL"
+            },
+            {
               "include": "#fixedformat"
+            },
+            {
+              "include": "#rpglecommon"
+            },
+            {
+              "include": "#fixedfreeformat"
             }
-          ],
-          "endCaptures": {
+          ]
+        },
+        {
+          "comment": "/CHARCOUNT, which sets how the compiler counts the characters of a literal. Those two values are the whole set. The directive begins in column 7 or later, so the capture ahead of the slash takes the form type in position 6 and any blanks after it.",
+          "name": "rpgle.fixed.precompiler.charcount",
+          "begin": "(?i)(?<=^.{5})([HFDICOP ] *)(\\/CHARCOUNT)\\b *(NATURAL|STDCHARSIZE)?",
+          "end": "\n",
+          "beginCaptures": {
             "1": {
-              "name": "keyword.other.rpgle.fixed.precompiler.conditional"
+              "name": "keyword.other.rpgle.fixed.precompiler.charcount"
             },
             "2": {
-              "name": "keyword.control.rpgle.fixed.precompiler.conditional"
+              "name": "keyword.control.rpgle.fixed.precompiler.charcount"
+            },
+            "3": {
+              "name": "keyword.other.rpgle.fixed.precompiler.charcount.mode"
             }
           }
         },
         {
-          "name": "rpgle.free.precompiler.conditional",
-          "begin": "(?i)(?=(^[\\s]*\\/IF))",
-          "end": "(?i)(?=(^[\\s]*\\/ENDIF))",
-          "patterns": [
-            {
-              "name": "keyword.control.rpgle.precompiler.if",
-              "match": "(?i)^[\\s]*\\/(ELSEIF|IF)"
+          "comment": "/OVERLOAD, which asks the compiler to report how it chose between the candidate prototypes of an overloaded call. Those two values are the whole set. The directive begins in column 7 or later, so the capture ahead of the slash takes the form type in position 6 and any blanks after it.",
+          "name": "rpgle.fixed.precompiler.overload",
+          "begin": "(?i)(?<=^.{5})([HFDICOP ] *)(\\/OVERLOAD)\\b *(NODETAIL|DETAIL)?",
+          "end": "\n",
+          "beginCaptures": {
+            "1": {
+              "name": "keyword.other.rpgle.fixed.precompiler.overload"
             },
-            {
-              "name": "keyword.other.rpgle.precompiler.defcheck",
-              "match": "(?i)\\s*\\b(NOT|UNDEFINED|DEFINED)\\b"
+            "2": {
+              "name": "keyword.control.rpgle.fixed.precompiler.overload"
             },
-            {
-              "include": "#freeformat"
+            "3": {
+              "name": "keyword.other.rpgle.fixed.precompiler.overload.mode"
             }
-          ]
+          }
         },
         {
-          "name": "rpgle.precompiler.charcount",
-          "begin": "(?i)(?=(^[\\s]*\\/CHARCOUNT))",
+          "comment": "/EJECT, which starts a new page of the compiler listing. It takes no operand: the reference requires at least two blanks after it and records the remaining columns as a comment, so the rest of the line is scoped as one. The directive begins in column 7 or later, so the capture ahead of the slash takes the form type in position 6 and any blanks after it.",
+          "name": "rpgle.fixed.precompiler.eject",
+          "begin": "(?i)(?<=^.{5})([HFDICOP ] *)(\\/EJECT)\\b(.*)",
+          "end": "\n",
+          "beginCaptures": {
+            "1": {
+              "name": "keyword.other.rpgle.fixed.precompiler.eject"
+            },
+            "2": {
+              "name": "keyword.control.rpgle.fixed.precompiler.eject"
+            },
+            "3": {
+              "name": "comment.other.rpgle.precompiler.eject"
+            }
+          }
+        },
+        {
+          "comment": "/SPACE, which spaces the compiler listing by a count of 1 through 112. The count is followed by at least two blanks and the reference records the remaining columns as a comment, so the rest of the line is scoped as one. The count is optional in the pattern only so that a line missing it still highlights as a directive. The directive begins in column 7 or later, so the capture ahead of the slash takes the form type in position 6 and any blanks after it.",
+          "name": "rpgle.fixed.precompiler.space",
+          "begin": "(?i)(?<=^.{5})([HFDICOP ] *)(\\/SPACE)\\b *(\\d*)(.*)",
+          "end": "\n",
+          "beginCaptures": {
+            "1": {
+              "name": "keyword.other.rpgle.fixed.precompiler.space"
+            },
+            "2": {
+              "name": "keyword.control.rpgle.fixed.precompiler.space"
+            },
+            "3": {
+              "name": "constant.numeric.rpgle"
+            },
+            "4": {
+              "name": "comment.other.rpgle.precompiler.space"
+            }
+          }
+        },
+        {
+          "comment": "/DEFINE and /UNDEFINE, which add a condition name to the list of currently defined conditions or take it off again. The name is the one /IF DEFINED tests, so it is scoped the same way there and here. The reference requires the rest of the line to be blank, and the predefined conditions the compiler supplies cannot be used with either directive. The directive begins in column 7 or later, so the capture ahead of the slash takes the form type in position 6 and any blanks after it.",
+          "name": "rpgle.fixed.precompiler.define",
+          "begin": "(?i)(?<=^.{5})([HFDICOP ] *)(\\/(UNDEFINE|DEFINE))\\b",
+          "beginCaptures": {
+            "1": {
+              "name": "keyword.other.rpgle.fixed.precompiler.define"
+            },
+            "2": {
+              "name": "keyword.control.rpgle.fixed.precompiler.define"
+            }
+          },
           "end": "\n",
           "patterns": [
             {
-              "name": "keyword.control.rpgle.precompiler.charcount",
-              "match": "(?i)^[\\s]*\\/CHARCOUNT"
-            },
-            {
-              "name": "keyword.other.rpgle.precompiler.charcount.mode",
-              "match": "(?i)\\s*\\b(NATURAL|STDCHARSIZE)\\b"
+              "include": "#fixedfreeidentifiers"
             }
           ]
         },
         {
-          "comment": "The /OVERLOAD directive asks the compiler to report how it chose between the candidate prototypes of an overloaded call. DETAIL and NODETAIL are the whole set.",
-          "name": "rpgle.precompiler.overload",
-          "begin": "(?i)(?=(^[\\s]*\\/OVERLOAD))",
-          "end": "(?=\\n)",
-          "patterns": [
-            {
-              "comment": "The directive itself.",
-              "name": "keyword.control.rpgle.precompiler.overload",
-              "match": "(?i)^[\\s]*\\/OVERLOAD"
-            },
-            {
-              "comment": "Its two documented values.",
-              "name": "keyword.other.rpgle.precompiler.overload.mode",
-              "match": "(?i)\\s*\\b(NODETAIL|DETAIL)\\b"
-            }
-          ]
-        },
-        {
+          "comment": "The directives that take no special handling. The ones with an operand of their own are listed above and match first; what is left either takes a name, a control keyword, or nothing at all. The directive begins in column 7 or later, so the capture ahead of the slash takes the form type in position 6 and any blanks after it.",
           "name": "rpgle.fixed.precompiler.misc",
-          "begin": "(?i)(?<=^.{5})(H|F|D|I|C|O|P|\\s)(\\/(UNDEFINE|SET|RESTORE|OVERLOAD|SPACE|FREE|EOF|END-FREE|ELSE|EJECT|DEFINE|CHARCOUNT))\\b",
+          "begin": "(?i)(?<=^.{5})([HFDICOP ] *)(\\/(SET|RESTORE|FREE|EOF|ENDIF|END-FREE|ELSE))\\b",
           "beginCaptures": {
             "1": {
               "name": "keyword.other.rpgle.fixed.precompiler.misc"
@@ -1277,24 +1490,267 @@
           "end": "\n",
           "patterns": [
             {
+              "comment": "The rest of the directive line, which is the operand it takes.",
               "name": "keyword.control.rpgle.precompiler",
+              "match": ".*"
+            }
+          ]
+        }
+      ]
+    },
+    "fixedstmtconditional": {
+      "patterns": [
+        {
+          "comment": "A conditional directive written inside a single free-form statement, which the reference allows for /IF, /ELSEIF, /ELSE and /ENDIF and for no other directive. It matches one line instead of opening a block, because a block would run past the semicolon that ends the statement and take the statement apart. The block form cannot match here: it is anchored at column 1 so that it can carry the gutter, and inside a statement the gutter rule has already taken those columns.",
+          "name": "rpgle.fixed.precompiler.conditional",
+          "begin": "(?i)(?<=^.{5})([HFDICOP ] *)(\\/(ELSEIF|ELSE|ENDIF|IF))\\b",
+          "beginCaptures": {
+            "1": {
+              "name": "keyword.other.rpgle.fixed.precompiler.conditional"
+            },
+            "2": {
+              "name": "keyword.control.rpgle.fixed.precompiler.conditional"
+            }
+          },
+          "end": "\n",
+          "patterns": [
+            {
+              "comment": "The condition being tested, which asks whether a name has been defined.",
+              "name": "keyword.other.rpgle.fixed.precompiler.defcheck",
+              "match": "(?i)\\b(NOT|UNDEFINED|DEFINED)\\b"
+            },
+            {
+              "include": "#constants"
+            },
+            {
+              "include": "#fixedfreeidentifiers"
+            }
+          ]
+        }
+      ]
+    },
+    "freeprecompiler": {
+      "patterns": [
+        {
+          "comment": "/TITLE, which names the heading printed at the top of each page of the compiler listing. In fully free-form source a directive may begin in column 1 or later.",
+          "name": "rpgle.free.precompiler.title",
+          "begin": "(?i)^(\\s*)(\\/TITLE)",
+          "beginCaptures": {
+            "1": {
+              "name": "keyword.other.rpgle.free.precompiler.title"
+            },
+            "2": {
+              "name": "keyword.control.rpgle.free.precompiler.title"
+            }
+          },
+          "end": "\n",
+          "patterns": [
+            {
+              "comment": "The heading text, which is the rest of the line. The reference has it printed on the listing rather than read as code.",
+              "name": "comment.line.rpgle.free.precompiler.title",
               "match": ".*"
             }
           ]
         },
         {
-          "name": "rpgle.free.precompiler.misc",
-          "begin": "(?i)^[\\s]*(\\/(UNDEFINE|SET|RESTORE|OVERLOAD|TITLE|SPACE|INCLUDE|FREE|EOF|ENDIF|END-FREE|ELSE|EJECT|DEFINE|COPY|CHARCOUNT))\\b",
+          "comment": "/COPY or /INCLUDE, which name a member whose records are inserted here. The two spellings mean the same thing to the compiler and differ only in how the SQL precompiler treats them. The whole line is taken in one pattern so the member name comes out as a single span. In fully free-form source a directive may begin in column 1 or later.",
+          "name": "rpgle.free.precompiler.include",
+          "begin": "(?i)^(\\s*)(\\/(INCLUDE|COPY))\\s+(\\S+)(.*)",
+          "end": "\n",
           "beginCaptures": {
             "1": {
+              "name": "keyword.other.rpgle.free.precompiler.include"
+            },
+            "2": {
+              "name": "keyword.control.rpgle.free.precompiler.include"
+            },
+            "4": {
+              "comment": "The member being brought in, which may be qualified by the file and library it lives in, or given as a path.",
+              "name": "string.other.rpgle.precompiler.include"
+            },
+            "5": {
+              "comment": "Anything after the member name, which the reference records as an optional comment.",
+              "name": "comment.other.rpgle.precompiler.include"
+            }
+          }
+        },
+        {
+          "comment": "A conditional compilation block. Both /IF and /ENDIF are consumed by the block rather than left to be matched elsewhere, so the directive that closes it is scoped like the one that opened it and a nested block pairs with its own /ENDIF. /ELSEIF and /ELSE are matched from inside because they do not open a block of their own. A block brackets whatever the member itself may hold, so it reaches the same rules the root patterns do and in the same order. Compile-time data is the one thing left out: the reference allows any source line except that one between the directives of a block.",
+          "name": "rpgle.free.precompiler.conditional",
+          "begin": "(?i)^(\\s*)(\\/IF)\\b",
+          "beginCaptures": {
+            "2": {
+              "name": "keyword.control.rpgle.free.precompiler.conditional"
+            }
+          },
+          "end": "(?i)^(\\s*)(\\/ENDIF)\\b",
+          "endCaptures": {
+            "2": {
+              "name": "keyword.control.rpgle.free.precompiler.conditional"
+            }
+          },
+          "patterns": [
+            {
+              "comment": "/ELSEIF and /ELSE, which continue the block the enclosing /IF opened. ELSEIF comes first so the longer word wins.",
+              "match": "(?i)^(\\s*)(\\/(ELSEIF|ELSE))\\b",
+              "captures": {
+                "2": {
+                  "name": "keyword.control.rpgle.free.precompiler.conditional"
+                }
+              }
+            },
+            {
+              "comment": "The condition being tested, which asks whether a name has been defined.",
+              "name": "keyword.other.rpgle.free.precompiler.defcheck",
+              "match": "(?i)\\b(NOT|UNDEFINED|DEFINED)\\b"
+            },
+            {
+              "include": "#freeSQL"
+            },
+            {
+              "include": "#freerpglecommon"
+            },
+            {
+              "include": "#freeformat"
+            }
+          ]
+        },
+        {
+          "comment": "/CHARCOUNT, which sets how the compiler counts the characters of a literal. Those two values are the whole set.",
+          "name": "rpgle.free.precompiler.charcount",
+          "begin": "(?i)^(\\s*)(\\/CHARCOUNT)\\b *(NATURAL|STDCHARSIZE)?",
+          "end": "\n",
+          "beginCaptures": {
+            "1": {
+              "name": "keyword.other.rpgle.free.precompiler.charcount"
+            },
+            "2": {
+              "name": "keyword.control.rpgle.free.precompiler.charcount"
+            },
+            "3": {
+              "name": "keyword.other.rpgle.free.precompiler.charcount.mode"
+            }
+          }
+        },
+        {
+          "comment": "/OVERLOAD, which asks the compiler to report how it chose between the candidate prototypes of an overloaded call. Those two values are the whole set.",
+          "name": "rpgle.free.precompiler.overload",
+          "begin": "(?i)^(\\s*)(\\/OVERLOAD)\\b *(NODETAIL|DETAIL)?",
+          "end": "\n",
+          "beginCaptures": {
+            "1": {
+              "name": "keyword.other.rpgle.free.precompiler.overload"
+            },
+            "2": {
+              "name": "keyword.control.rpgle.free.precompiler.overload"
+            },
+            "3": {
+              "name": "keyword.other.rpgle.free.precompiler.overload.mode"
+            }
+          }
+        },
+        {
+          "comment": "/EJECT, which starts a new page of the compiler listing. It takes no operand: the reference requires at least two blanks after it and records the remaining columns as a comment, so the rest of the line is scoped as one.",
+          "name": "rpgle.free.precompiler.eject",
+          "begin": "(?i)^(\\s*)(\\/EJECT)\\b(.*)",
+          "end": "\n",
+          "beginCaptures": {
+            "1": {
+              "name": "keyword.other.rpgle.free.precompiler.eject"
+            },
+            "2": {
+              "name": "keyword.control.rpgle.free.precompiler.eject"
+            },
+            "3": {
+              "name": "comment.other.rpgle.precompiler.eject"
+            }
+          }
+        },
+        {
+          "comment": "/SPACE, which spaces the compiler listing by a count of 1 through 112. The count is followed by at least two blanks and the reference records the remaining columns as a comment, so the rest of the line is scoped as one. The count is optional in the pattern only so that a line missing it still highlights as a directive.",
+          "name": "rpgle.free.precompiler.space",
+          "begin": "(?i)^(\\s*)(\\/SPACE)\\b *(\\d*)(.*)",
+          "end": "\n",
+          "beginCaptures": {
+            "1": {
+              "name": "keyword.other.rpgle.free.precompiler.space"
+            },
+            "2": {
+              "name": "keyword.control.rpgle.free.precompiler.space"
+            },
+            "3": {
+              "name": "constant.numeric.rpgle"
+            },
+            "4": {
+              "name": "comment.other.rpgle.precompiler.space"
+            }
+          }
+        },
+        {
+          "comment": "/DEFINE and /UNDEFINE, which add a condition name to the list of currently defined conditions or take it off again. The name is the one /IF DEFINED tests, so it is scoped the same way there and here. The reference requires the rest of the line to be blank, and the predefined conditions the compiler supplies cannot be used with either directive.",
+          "name": "rpgle.free.precompiler.define",
+          "begin": "(?i)^(\\s*)(\\/(UNDEFINE|DEFINE))\\b",
+          "beginCaptures": {
+            "1": {
+              "name": "keyword.other.rpgle.free.precompiler.define"
+            },
+            "2": {
+              "name": "keyword.control.rpgle.free.precompiler.define"
+            }
+          },
+          "end": "\n",
+          "patterns": [
+            {
+              "include": "#freeidentifiers"
+            }
+          ]
+        },
+        {
+          "comment": "The directives that take no special handling. The ones with an operand of their own are listed above and match first; what is left either takes a name, a control keyword, or nothing at all.",
+          "name": "rpgle.free.precompiler.misc",
+          "begin": "(?i)^(\\s*)(\\/(SET|RESTORE|FREE|EOF|ENDIF|END-FREE|ELSE))\\b",
+          "beginCaptures": {
+            "1": {
+              "name": "keyword.other.rpgle.free.precompiler.misc"
+            },
+            "2": {
               "name": "keyword.control.rpgle.free.precompiler.misc"
             }
           },
           "end": "\n",
           "patterns": [
             {
+              "comment": "The rest of the directive line, which is the operand it takes.",
               "name": "keyword.control.rpgle.precompiler",
               "match": ".*"
+            }
+          ]
+        }
+      ]
+    },
+    "freestmtconditional": {
+      "patterns": [
+        {
+          "comment": "A conditional directive written inside a single free-form statement, which the reference allows for /IF, /ELSEIF, /ELSE and /ENDIF and for no other directive. It matches one line instead of opening a block, because a block would run past the semicolon that ends the statement and take the statement apart. The block form cannot match here: it is anchored at column 1 so that it can carry the gutter, and inside a statement the gutter rule has already taken those columns.",
+          "name": "rpgle.free.precompiler.conditional",
+          "begin": "(?i)^(\\s*)(\\/(ELSEIF|ELSE|ENDIF|IF))\\b",
+          "beginCaptures": {
+            "2": {
+              "name": "keyword.control.rpgle.free.precompiler.conditional"
+            }
+          },
+          "end": "\n",
+          "patterns": [
+            {
+              "comment": "The condition being tested, which asks whether a name has been defined.",
+              "name": "keyword.other.rpgle.free.precompiler.defcheck",
+              "match": "(?i)\\b(NOT|UNDEFINED|DEFINED)\\b"
+            },
+            {
+              "include": "#constants"
+            },
+            {
+              "include": "#freeidentifiers"
             }
           ]
         }
@@ -1303,6 +1759,7 @@
     "keywords": {
       "patterns": [
         {
+          "comment": "The arithmetic, comparison and assignment operators, including the compound forms such as += and **=.",
           "name": "keyword.operator.rpgle",
           "match": "\\*{1,2}(=)?|=|<>|((<|>|\\+|\\-|\\/)(=)?)"
         },
@@ -1312,6 +1769,7 @@
           "match": ":|\\.|\\,|((\\b(?i)(TO|BY|DOWNTO|IN(?!\\s*\\()|AND|OR|NOT)\\b))"
         },
         {
+          "comment": "The built-in functions, which all begin with a per cent sign. Sorted in reverse so a function is tried before any function it begins with.",
           "name": "support.function.rpgle.bif",
           "match": "[%](?i)(YEARS|XML|XLATE|XFOOT|UPPER|UNSH|UNS|UCS2|TRIMR|TRIML|TRIM|TLOOKUPNE|TLOOKUPLT|TLOOKUPLE|TLOOKUPGT|TLOOKUPGE|TLOOKUP|TIMESTAMP|TIME|THIS|TARGET|SUBST|SUBDT|SUBARR|STR|STATUS|SQRT|SPLIT|SIZE|SHTDN|SECONDS|SCANRPL|SCANR|SCAN|RIGHT|REPLACE|REM|REALLOC|RANGE|PROC|PASSED|PARSER|PARMNUM|PARMS|PADDR|OPEN|OMITTED|OCCUR|NULLIND|MSG|MSECONDS|MONTHS|MINUTES|MINARR|MIN|MAXARR|MAX|LOWER|LOVAL|LOOKUPNE|LOOKUPLT|LOOKUPLE|LOOKUPGT|LOOKUPGE|LOOKUP|LIST|LEN|LEFT|KDS|INTH|INT|HOURS|HIVAL|HANDLER|GRAPH|GEN|FOUND|FLOAT|FIELDS|ERROR|EQUAL|EOF|ELEM|EDITW|EDITFLT|EDITC|DIV|DIFF|DECPOS|DECH|DEC|DAYS|DATE|DATA|CONCATARR|CONCAT|CHECKR|CHECK|CHARCOUNT|CHAR|BITXOR|BITOR|BITNOT|BITAND|ALLOC|ADDR|ABS)"
         }
@@ -1341,6 +1799,7 @@
               }
             },
             {
+              "comment": "A // comment on a line of its own inside a continued literal. The compiler skips it without ending the literal.",
               "name": "comment.line.rpgle.free",
               "match": "^\\s*//.*"
             }
@@ -1367,6 +1826,7 @@
               }
             },
             {
+              "comment": "A // comment on a line of its own inside a continued literal. The compiler skips it without ending the literal.",
               "name": "comment.line.rpgle.free",
               "match": "^\\s*//.*"
             }
@@ -1398,6 +1858,7 @@
               }
             },
             {
+              "comment": "A // comment on a line of its own inside a continued literal in a column-limited member, which the compiler skips without ending it.",
               "name": "comment.line.rpgle.free",
               "begin": "^.{5}.\\s*//",
               "end": "\\n"
@@ -1428,6 +1889,7 @@
               }
             },
             {
+              "comment": "A // comment on a line of its own inside a continued literal in a column-limited member, which the compiler skips without ending it.",
               "name": "comment.line.rpgle.free",
               "begin": "^.{5}.\\s*//",
               "end": "\\n"
@@ -1443,10 +1905,12 @@
       "comment": "EXEC SQL...;  blocks in **FREE (fully free-format) source.",
       "patterns": [
         {
+          "comment": "An SQL statement in fully free-form source, opened by EXEC SQL and closed by the semicolon that ends it.",
           "begin": "(?i)(?=(^\\s*(EXEC)\\s+(SQL)\\b))",
           "end": "(;)",
           "patterns": [
             {
+              "comment": "EXEC SQL, the words that open the statement.",
               "name": "keyword.other.rpgle.sql",
               "match": "(?i)(EXEC)\\s+(SQL)\\b"
             },
@@ -1466,6 +1930,7 @@
       "comment": "EXEC SQL...;  blocks in fixed-format source (including /FREE blocks). Nests fixedcomment so the sequence-number gutter on continuation lines is not consumed as SQL content.",
       "patterns": [
         {
+          "comment": "An SQL statement written free-form in a column-limited member, so it begins past the gutter rather than in column 1.",
           "begin": "(?i)(?=(^.{5}\\s*(EXEC)\\s+(SQL)\\b))",
           "end": "(;)",
           "patterns": [
@@ -1473,6 +1938,7 @@
               "include": "#fixedcomment"
             },
             {
+              "comment": "EXEC SQL, the words that open the statement.",
               "name": "keyword.other.rpgle.sql",
               "match": "(?i)(EXEC)\\s+(SQL)\\b"
             },

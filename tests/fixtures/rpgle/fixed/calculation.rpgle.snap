@@ -1723,5 +1723,34 @@
 #                                                                    ^^ source.rpgle rpgle.fixed.c constant.language.rpgle.fixed.c.decpos
 #                                                                      ^^^^ source.rpgle rpgle.fixed.c
 #                                                                          ^^ source.rpgle rpgle.fixed.c constant.language.rpgle.fixed.c.eq
+>05020C     *BLANKS       MOVE                    MSG                            numbered + comment
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^ source.rpgle rpgle.fixed.c
+#           ^^^^^^^ source.rpgle rpgle.fixed.c constant.language.rpgle
+#                  ^^^^^^^ source.rpgle rpgle.fixed.c
+#                         ^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.operation
+#                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.c
+#                                                               ^^^^^ source.rpgle rpgle.fixed.c constant.language.rpgle.fixed.c.len
+#                                                                    ^^ source.rpgle rpgle.fixed.c constant.language.rpgle.fixed.c.decpos
+#                                                                      ^^^^^^^^^^ source.rpgle rpgle.fixed.c
+#                                                                                ^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.c comment.block.line.rpgle.fixed
+>05030C                   EVAL      TOTAL = TOTAL + 1                            and after an expr
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.c
+#                         ^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                             ^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                   ^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
+#                                        ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                         ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 keyword.operator.rpgle
+#                                          ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                           ^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
+#                                                ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                                 ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 keyword.operator.rpgle
+#                                                  ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                                   ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 constant.numeric.rpgle
+#                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                                                                ^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 comment.block.line.rpgle.fixed
 >
 #^ source.rpgle

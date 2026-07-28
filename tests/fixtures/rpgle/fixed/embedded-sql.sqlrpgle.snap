@@ -394,7 +394,9 @@
 #     ^^ source.rpgle keyword.other.rpgle.fixed.specs
 #       ^ source.rpgle
 #        ^^^ source.rpgle keyword.operator.rpgle.sql.reserved
-#           ^^^^^^^^^^^^ source.rpgle
+#           ^^^^^^^^ source.rpgle
+#                   ^^ source.rpgle keyword.operator.rpgle.sql.reserved
+#                     ^^ source.rpgle
 #                       ^^^ source.rpgle string.quoted.single.rpgle.sql
 #                          ^^ source.rpgle
 #                            ^^^ source.rpgle string.quoted.single.rpgle.sql

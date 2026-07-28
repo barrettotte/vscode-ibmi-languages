@@ -527,6 +527,14 @@
 #                                    ^^^^^ source.rpgle rpgle.fixed.i constant.language.rpgle.fixed.i.from
 #                                         ^^^^^ source.rpgle rpgle.fixed.i constant.language.rpgle.fixed.i.to
 #                                              ^^^^^^^^^ source.rpgle rpgle.fixed.i
+>04030I                                 11   40  SEQNOTE                         numbered + comment
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.i
+#                                    ^^^^^ source.rpgle rpgle.fixed.i constant.language.rpgle.fixed.i.from
+#                                         ^^^^^ source.rpgle rpgle.fixed.i constant.language.rpgle.fixed.i.to
+#                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.i
+#                                                                                ^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.i comment.block.line.rpgle.fixed
 >     I                                  1   10  NOTEFLD                         input spec comment
 #^^^^^ source.rpgle comment.gutter
 #     ^ source.rpgle keyword.other.rpgle.fixed.specs

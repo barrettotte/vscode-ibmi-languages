@@ -1,0 +1,36 @@
+       //
+       // A copy member that is column-limited, because its first line is not
+       // **FREE, but whose declarations are free-form statements written in
+       // columns 8-80. The declarations are the same ones the other two copy
+       // members carry.
+       //
+       // Member: CLINC   Compilable: no (declarations only)
+       // Source: ILE RPG Reference SC09-2508, fully free-form statements.
+       // Retrieved: 2026-07-28
+       //
+       //
+       // Named constants shared by the programs that copy this in.
+       dcl-c ORDER_OPEN 'O';
+       dcl-c ORDER_SHIPPED 'S';
+       dcl-c MAX_LINES 999;
+       //
+       // A template, which defines a shape without allocating storage.
+       dcl-ds order_t qualified template;
+         number packed(7 : 0);
+         customer char(30);
+         status char(1) inz(ORDER_OPEN);
+       end-ds;
+       //
+       // Prototypes for the procedures the service program exports.
+       dcl-pr order_load ind extproc('ORDER_LOAD');
+         number packed(7 : 0) const;
+         order likeds(order_t);
+       end-pr;
+
+       dcl-pr order_total packed(11 : 2) extproc('ORDER_TOTAL');
+         order likeds(order_t) const;
+       end-pr;
+       //
+       // A copy member may itself copy another one. The directive
+       // begins in column 7, one ahead of a statement.
+      /COPY QRPGLESRC,ERRORPR

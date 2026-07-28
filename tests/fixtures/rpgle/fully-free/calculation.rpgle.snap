@@ -2552,34 +2552,111 @@
 #           ^^ source.rpgle rpgle.free.allfree constant.numeric.rpgle
 #             ^^^ source.rpgle rpgle.free.allfree
 >string = 'abc // not-comment 3  +
-#^^^^^^ source.rpgle rpgle.free.allfree variable.other.rpgle.free.definition.identifier
-#      ^ source.rpgle rpgle.free.allfree
-#       ^ source.rpgle rpgle.free.allfree keyword.operator.rpgle
-#        ^ source.rpgle rpgle.free.allfree
-#         ^ source.rpgle rpgle.free.allfree string.quoted.single.rpgle
-#          ^^^^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.free.allfree string.quoted.single.rpgle
-#                                ^ source.rpgle rpgle.free.allfree string.quoted.single.rpgle keyword.other.rpgle.continuation
+#^^^^^^ source.rpgle rpgle.free.allfree rpgle.free.calculation.continued variable.other.rpgle.free.definition.identifier
+#      ^ source.rpgle rpgle.free.allfree rpgle.free.calculation.continued
+#       ^ source.rpgle rpgle.free.allfree rpgle.free.calculation.continued keyword.operator.rpgle
+#        ^ source.rpgle rpgle.free.allfree rpgle.free.calculation.continued
+#         ^ source.rpgle rpgle.free.allfree rpgle.free.calculation.continued string.quoted.single.rpgle
+#          ^^^^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.free.allfree rpgle.free.calculation.continued string.quoted.single.rpgle
+#                                ^ source.rpgle rpgle.free.allfree rpgle.free.calculation.continued string.quoted.single.rpgle keyword.other.rpgle.continuation
 >         def'; // comment 4
-#^^^^^^^^^^^^ source.rpgle rpgle.free.allfree string.quoted.single.rpgle
-#            ^ source.rpgle rpgle.free.allfree string.quoted.single.rpgle
-#             ^^ source.rpgle rpgle.free.allfree
+#^^^^^^^^^^^^ source.rpgle rpgle.free.allfree rpgle.free.calculation.continued string.quoted.single.rpgle
+#            ^ source.rpgle rpgle.free.allfree rpgle.free.calculation.continued string.quoted.single.rpgle
+#             ^ source.rpgle rpgle.free.allfree rpgle.free.calculation.continued
+#              ^ source.rpgle rpgle.free.allfree
 #               ^^^^^^^^^^^^ source.rpgle rpgle.free.allfree comment.line.rpgle.free
 >string = 'ghi // not-comment 5 ' +
-#^^^^^^ source.rpgle rpgle.free.allfree variable.other.rpgle.free.definition.identifier
-#      ^ source.rpgle rpgle.free.allfree
-#       ^ source.rpgle rpgle.free.allfree keyword.operator.rpgle
-#        ^ source.rpgle rpgle.free.allfree
-#         ^ source.rpgle rpgle.free.allfree string.quoted.single.rpgle
-#          ^^^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.free.allfree string.quoted.single.rpgle
-#                               ^ source.rpgle rpgle.free.allfree string.quoted.single.rpgle
-#                                ^ source.rpgle rpgle.free.allfree
-#                                 ^ source.rpgle rpgle.free.allfree keyword.operator.rpgle
+#^^^^^^ source.rpgle rpgle.free.allfree rpgle.free.calculation.continued variable.other.rpgle.free.definition.identifier
+#      ^ source.rpgle rpgle.free.allfree rpgle.free.calculation.continued
+#       ^ source.rpgle rpgle.free.allfree rpgle.free.calculation.continued keyword.operator.rpgle
+#        ^ source.rpgle rpgle.free.allfree rpgle.free.calculation.continued
+#         ^ source.rpgle rpgle.free.allfree rpgle.free.calculation.continued string.quoted.single.rpgle
+#          ^^^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.free.allfree rpgle.free.calculation.continued string.quoted.single.rpgle
+#                               ^ source.rpgle rpgle.free.allfree rpgle.free.calculation.continued string.quoted.single.rpgle
+#                                ^ source.rpgle rpgle.free.allfree rpgle.free.calculation.continued
+#                                 ^ source.rpgle rpgle.free.allfree rpgle.free.calculation.continued keyword.operator.rpgle
 >         'jkl'; // comment 6
-#^^^^^^^^^ source.rpgle rpgle.free.allfree
-#         ^ source.rpgle rpgle.free.allfree string.quoted.single.rpgle
-#          ^^^ source.rpgle rpgle.free.allfree string.quoted.single.rpgle
-#             ^ source.rpgle rpgle.free.allfree string.quoted.single.rpgle
-#              ^^ source.rpgle rpgle.free.allfree
+#^^^^^^^^^ source.rpgle rpgle.free.allfree rpgle.free.calculation.continued
+#         ^ source.rpgle rpgle.free.allfree rpgle.free.calculation.continued string.quoted.single.rpgle
+#          ^^^ source.rpgle rpgle.free.allfree rpgle.free.calculation.continued string.quoted.single.rpgle
+#             ^ source.rpgle rpgle.free.allfree rpgle.free.calculation.continued string.quoted.single.rpgle
+#              ^ source.rpgle rpgle.free.allfree rpgle.free.calculation.continued
+#               ^ source.rpgle rpgle.free.allfree
 #                ^^^^^^^^^^^^ source.rpgle rpgle.free.allfree comment.line.rpgle.free
+>//
+#^^ source.rpgle rpgle.free.allfree comment.line.rpgle.free
+>// A literal continued over several lines, with both continuation
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.free.allfree comment.line.rpgle.free
+>// characters. A + resumes at the first non-blank of the next
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.free.allfree comment.line.rpgle.free
+>// line and a - resumes at position 1, so the leading blanks are
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.free.allfree comment.line.rpgle.free
+>// kept or dropped accordingly.
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.free.allfree comment.line.rpgle.free
+>MySQLStmt = ' with +
+#^^^^^^^^^ source.rpgle rpgle.free.allfree rpgle.free.calculation.continued variable.other.rpgle.free.definition.identifier
+#         ^ source.rpgle rpgle.free.allfree rpgle.free.calculation.continued
+#          ^ source.rpgle rpgle.free.allfree rpgle.free.calculation.continued keyword.operator.rpgle
+#           ^ source.rpgle rpgle.free.allfree rpgle.free.calculation.continued
+#            ^ source.rpgle rpgle.free.allfree rpgle.free.calculation.continued string.quoted.single.rpgle
+#             ^^^^^^ source.rpgle rpgle.free.allfree rpgle.free.calculation.continued string.quoted.single.rpgle
+#                   ^ source.rpgle rpgle.free.allfree rpgle.free.calculation.continued string.quoted.single.rpgle keyword.other.rpgle.continuation
+>P+
+#^ source.rpgle rpgle.free.allfree rpgle.free.calculation.continued string.quoted.single.rpgle
+# ^ source.rpgle rpgle.free.allfree rpgle.free.calculation.continued string.quoted.single.rpgle keyword.other.rpgle.continuation
+>     new line added +
+#^^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.free.allfree rpgle.free.calculation.continued string.quoted.single.rpgle
+#                    ^ source.rpgle rpgle.free.allfree rpgle.free.calculation.continued string.quoted.single.rpgle keyword.other.rpgle.continuation
+>     duplicate of above +
+#^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.free.allfree rpgle.free.calculation.continued string.quoted.single.rpgle
+#                        ^ source.rpgle rpgle.free.allfree rpgle.free.calculation.continued string.quoted.single.rpgle keyword.other.rpgle.continuation
+>     another line added -
+#^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.free.allfree rpgle.free.calculation.continued string.quoted.single.rpgle
+#                        ^ source.rpgle rpgle.free.allfree rpgle.free.calculation.continued string.quoted.single.rpgle keyword.other.rpgle.continuation
+>     another duplication of above -
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.free.allfree rpgle.free.calculation.continued string.quoted.single.rpgle
+#                                  ^ source.rpgle rpgle.free.allfree rpgle.free.calculation.continued string.quoted.single.rpgle keyword.other.rpgle.continuation
+>)';
+#^ source.rpgle rpgle.free.allfree rpgle.free.calculation.continued string.quoted.single.rpgle
+# ^ source.rpgle rpgle.free.allfree rpgle.free.calculation.continued string.quoted.single.rpgle
+#  ^ source.rpgle rpgle.free.allfree rpgle.free.calculation.continued
+>//
+#^^ source.rpgle rpgle.free.allfree comment.line.rpgle.free
+>// No directive may be written inside a single free-form
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.free.allfree comment.line.rpgle.free
+>// calculation statement. A line inside one that begins with what
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.free.allfree comment.line.rpgle.free
+>// looks like a directive is read as a slash followed by a name,
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.free.allfree comment.line.rpgle.free
+>// so the statement below divides by a variable called title.
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.free.allfree comment.line.rpgle.free
+>dcl-s title int(10) inz(2);
+#^^^^^ source.rpgle rpgle.free.allfree rpgle.free.definition.simple storage.type.rpgle.free.definition.simple
+#     ^ source.rpgle rpgle.free.allfree rpgle.free.definition.simple
+#      ^^^^^ source.rpgle rpgle.free.allfree rpgle.free.definition.simple variable.other.rpgle.free.definition.identifier
+#           ^ source.rpgle rpgle.free.allfree rpgle.free.definition.simple
+#            ^^^ source.rpgle rpgle.free.allfree rpgle.free.definition.simple entity.name.function.rpgle.free.definition.keywords
+#               ^ source.rpgle rpgle.free.allfree rpgle.free.definition.simple
+#                ^^ source.rpgle rpgle.free.allfree rpgle.free.definition.simple constant.numeric.rpgle
+#                  ^^ source.rpgle rpgle.free.allfree rpgle.free.definition.simple
+#                    ^^^ source.rpgle rpgle.free.allfree rpgle.free.definition.simple entity.name.function.rpgle.free.definition.keywords
+#                       ^ source.rpgle rpgle.free.allfree rpgle.free.definition.simple
+#                        ^ source.rpgle rpgle.free.allfree rpgle.free.definition.simple constant.numeric.rpgle
+#                         ^^ source.rpgle rpgle.free.allfree rpgle.free.definition.simple
+>x = y
+#^ source.rpgle rpgle.free.allfree rpgle.free.calculation.continued variable.other.rpgle.free.definition.identifier
+# ^ source.rpgle rpgle.free.allfree rpgle.free.calculation.continued
+#  ^ source.rpgle rpgle.free.allfree rpgle.free.calculation.continued keyword.operator.rpgle
+#   ^ source.rpgle rpgle.free.allfree rpgle.free.calculation.continued
+#    ^ source.rpgle rpgle.free.allfree rpgle.free.calculation.continued variable.other.rpgle.free.definition.identifier
+>  /title + 5;
+#^^ source.rpgle rpgle.free.allfree rpgle.free.calculation.continued
+#  ^ source.rpgle rpgle.free.allfree rpgle.free.calculation.continued keyword.operator.rpgle
+#   ^^^^^ source.rpgle rpgle.free.allfree rpgle.free.calculation.continued variable.other.rpgle.free.definition.identifier
+#        ^ source.rpgle rpgle.free.allfree rpgle.free.calculation.continued
+#         ^ source.rpgle rpgle.free.allfree rpgle.free.calculation.continued keyword.operator.rpgle
+#          ^ source.rpgle rpgle.free.allfree rpgle.free.calculation.continued
+#           ^ source.rpgle rpgle.free.allfree rpgle.free.calculation.continued constant.numeric.rpgle
+#            ^ source.rpgle rpgle.free.allfree rpgle.free.calculation.continued
 >
 #^ source.rpgle rpgle.free.allfree

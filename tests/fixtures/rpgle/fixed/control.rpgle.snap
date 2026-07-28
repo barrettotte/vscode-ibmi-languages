@@ -537,6 +537,14 @@
 #               ^ source.rpgle rpgle.fixed.h
 #                ^^^ source.rpgle rpgle.fixed.h constant.language.rpgle
 #                   ^^ source.rpgle rpgle.fixed.h
+>01020HOPTION(*SRCSTMT)                                                          numbered + comment
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^ source.rpgle rpgle.fixed.h entity.name.function.rpgle.fixed.h.keywords
+#            ^ source.rpgle rpgle.fixed.h
+#             ^^^^^^^^ source.rpgle rpgle.fixed.h constant.language.rpgle
+#                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.h
+#                                                                                ^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.h comment.block.line.rpgle.fixed
 >     H*
 #^^^^^^^ source.rpgle comment.line.rpgle.fixed
 >     H* Positions 81-100 are a comment area.

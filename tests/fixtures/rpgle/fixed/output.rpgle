@@ -159,5 +159,6 @@
      O* Positions 81-100 are a comment area.
 06010OPRINT     D    01
 06020O                       CUSTNM              30
+06030O                       SEQNOTE             60                             numbered + comment
      OPRINT     D    01                                                         output spec comment
      O                       ORDNBR              40                             field line comment

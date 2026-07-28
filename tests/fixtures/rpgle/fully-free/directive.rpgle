@@ -14,6 +14,11 @@
 /eject
 /space 2
 //
+// The reference records the columns after /EJECT, and after the
+// count /SPACE takes, as a comment.
+/eject  a comment may follow the directive
+/space 3  and after the count as well
+//
 // Bringing in other members. The two spellings mean the same,
 // and the member may be qualified by its file.
 /copy QRPGLESRC,PROTOTYPES

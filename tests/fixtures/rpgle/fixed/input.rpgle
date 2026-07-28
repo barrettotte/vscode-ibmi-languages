@@ -88,4 +88,5 @@
      I* comment area on any specification.
 04010ISEQFILE       30    1 CS
 04020I                                  1   10  SEQFLD
+04030I                                 11   40  SEQNOTE                         numbered + comment
      I                                  1   10  NOTEFLD                         input spec comment

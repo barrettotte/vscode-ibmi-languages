@@ -239,6 +239,7 @@
      D*
      D* A page and line number in 1-5 does not disturb the columns.
 03010DSEQFLD           S             10A
+03020DSEQNOTE          S              7P 2                                      numbered + comment
      D*
      D* A name may begin in any position of 7-21, and a name too
      D* long for the field is continued with three dots.

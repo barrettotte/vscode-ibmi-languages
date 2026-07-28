@@ -900,6 +900,13 @@
 #     ^ source.rpgle keyword.other.rpgle.fixed.specs
 #      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.o
 #                                              ^^^^^ source.rpgle rpgle.fixed.o constant.language.rpgle.fixed.o.endpos
+>06030O                       SEQNOTE             60                             numbered + comment
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.o
+#                                              ^^^^^ source.rpgle rpgle.fixed.o constant.language.rpgle.fixed.o.endpos
+#                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.o
+#                                                                                ^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.o comment.block.line.rpgle.fixed
 >     OPRINT     D    01                                                         output spec comment
 #^^^^^ source.rpgle comment.gutter
 #     ^ source.rpgle keyword.other.rpgle.fixed.specs

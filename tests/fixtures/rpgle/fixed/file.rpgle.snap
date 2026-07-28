@@ -925,6 +925,21 @@
 #                                 ^ source.rpgle rpgle.fixed.f constant.language.rpgle.fixed.f.addrtype
 #                                  ^ source.rpgle rpgle.fixed.f
 #                                   ^^^^ source.rpgle rpgle.fixed.f constant.language.rpgle.fixed.f.device
+>02020FSEQNOTE   OF   F  132        PRINTER                                      numbered + comment
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^ source.rpgle rpgle.fixed.f
+#                ^ source.rpgle rpgle.fixed.f constant.language.rpgle.fixed.f.type
+#                 ^ source.rpgle rpgle.fixed.f constant.language.rpgle.fixed.f.designation
+#                  ^^^ source.rpgle rpgle.fixed.f
+#                     ^ source.rpgle rpgle.fixed.f constant.language.rpgle.fixed.f.format
+#                      ^^^^^ source.rpgle rpgle.fixed.f constant.language.rpgle.fixed.fi.recordlen
+#                           ^ source.rpgle rpgle.fixed.f
+#                            ^^^^^ source.rpgle rpgle.fixed.f constant.language.rpgle.fixed.fi.keyfieldlen
+#                                 ^^ source.rpgle rpgle.fixed.f
+#                                   ^^^^^^^ source.rpgle rpgle.fixed.f constant.language.rpgle.fixed.f.device
+#                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.f
+#                                                                                ^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.f comment.block.line.rpgle.fixed
 >     F*
 #^^^^^^^ source.rpgle comment.line.rpgle.fixed
 >     F* Positions 81-100 are a comment area. A keyword list may run to

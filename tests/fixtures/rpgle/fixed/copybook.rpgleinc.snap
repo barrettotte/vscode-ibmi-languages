@@ -177,9 +177,10 @@
 #^^^^^^^ source.rpgle comment.line.rpgle.fixed
 #       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle comment.line.rpgle.fixed
 >      /COPY QRPGLESRC,ERRORPR
-#^^^^^^ source.rpgle rpgle.free.precompiler.include
-#      ^^^^^ source.rpgle rpgle.free.precompiler.include keyword.control.rpgle.free.precompiler.include
-#           ^ source.rpgle rpgle.free.precompiler.include
-#            ^^^^^^^^^^^^^^^^^ source.rpgle rpgle.free.precompiler.include string.other.rpgle.precompiler.include
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle rpgle.fixed.precompiler.include keyword.other.rpgle.fixed.precompiler.include
+#      ^^^^^ source.rpgle rpgle.fixed.precompiler.include keyword.control.rpgle.fixed.precompiler.include
+#           ^ source.rpgle rpgle.fixed.precompiler.include
+#            ^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.precompiler.include string.other.rpgle.precompiler.include
 >
 #^ source.rpgle

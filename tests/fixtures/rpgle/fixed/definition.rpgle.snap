@@ -2154,6 +2154,17 @@
 #                         ^^^^^^^ source.rpgle rpgle.fixed.d
 #                                ^^^^^^^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.to
 #                                       ^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.datatype
+>03020DSEQNOTE          S              7P 2                                      numbered + comment
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.d
+#                       ^^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.dectype
+#                         ^^^^^^^ source.rpgle rpgle.fixed.d
+#                                ^^^^^^^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.to
+#                                       ^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.datatype
+#                                        ^^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.decpos
+#                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.d
+#                                                                                ^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.d comment.block.line.rpgle.fixed
 >     D*
 #^^^^^^^ source.rpgle comment.line.rpgle.fixed
 >     D* A name may begin in any position of 7-21, and a name too

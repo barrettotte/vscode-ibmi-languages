@@ -3,12 +3,14 @@
 #^^^^^^ source.rpgle rpgle.free.allfree keyword.other.rpgle.free.precompiler.allfree
 >//
 #^^ source.rpgle rpgle.free.allfree comment.line.rpgle.free
->// A whole program with embedded SQL. A cursor drives the report, the
+>// A whole program with embedded SQL. A temporary table is built from
 #^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.free.allfree comment.line.rpgle.free
->// rows come back into host variables declared above, and a
-#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.free.allfree comment.line.rpgle.free
->// subprocedure does a single-row select of its own.
-#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.free.allfree comment.line.rpgle.free
+>// a common table expression, a cursor drives the report, the rows
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.free.allfree comment.line.rpgle.free
+>// come back into a host structure, and the work is committed only if
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.free.allfree comment.line.rpgle.free
+>// nothing went wrong.
+#^^^^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.free.allfree comment.line.rpgle.free
 >//
 #^^ source.rpgle rpgle.free.allfree comment.line.rpgle.free
 >// Member: SQLREGF   Compilable: complete program, but not built; its
@@ -43,7 +45,7 @@
 #                                      ^^^^ source.rpgle rpgle.free.allfree rpgle.free.control entity.name.function.rpgle.free.control.keywords
 #                                          ^^^^^^^^^^^^^^^ source.rpgle rpgle.free.allfree rpgle.free.control
 #                                                         ^ source.rpgle rpgle.free.allfree rpgle.free.control
->ctl-opt option(*srcstmt : *nodebugio);
+>ctl-opt option(*srcstmt : *nodebugio) datfmt(*iso);
 #^^^^^^^ source.rpgle rpgle.free.allfree rpgle.free.control storage.type.rpgle.free.control
 #       ^ source.rpgle rpgle.free.allfree rpgle.free.control
 #        ^^^^^^ source.rpgle rpgle.free.allfree rpgle.free.control entity.name.function.rpgle.free.control.keywords
@@ -53,8 +55,12 @@
 #                        ^ source.rpgle rpgle.free.allfree rpgle.free.control keyword.other.rpgle
 #                         ^ source.rpgle rpgle.free.allfree rpgle.free.control
 #                          ^^^^^^^^^^ source.rpgle rpgle.free.allfree rpgle.free.control constant.language.rpgle
-#                                    ^ source.rpgle rpgle.free.allfree rpgle.free.control
-#                                     ^ source.rpgle rpgle.free.allfree rpgle.free.control
+#                                    ^^ source.rpgle rpgle.free.allfree rpgle.free.control
+#                                      ^^^^^^ source.rpgle rpgle.free.allfree rpgle.free.control entity.name.function.rpgle.free.control.keywords
+#                                            ^ source.rpgle rpgle.free.allfree rpgle.free.control
+#                                             ^^^^ source.rpgle rpgle.free.allfree rpgle.free.control constant.language.rpgle
+#                                                 ^ source.rpgle rpgle.free.allfree rpgle.free.control
+#                                                  ^ source.rpgle rpgle.free.allfree rpgle.free.control
 >dcl-f BALPRT printer(132) oflind(*inof);
 #^^^^^ source.rpgle rpgle.free.allfree rpgle.free.file storage.type.rpgle.free.file
 #     ^^^^^^^^ source.rpgle rpgle.free.allfree rpgle.free.file
@@ -69,8 +75,12 @@
 #                                       ^ source.rpgle rpgle.free.allfree rpgle.free.file
 >//
 #^^ source.rpgle rpgle.free.allfree comment.line.rpgle.free
->// Host variables. SQL reads into these by name, with a colon.
-#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.free.allfree comment.line.rpgle.free
+>// Host variables. SQL reads into these by name, with a colon. A
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.free.allfree comment.line.rpgle.free
+>// structure may be used in place of a list of them, and an array
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.free.allfree comment.line.rpgle.free
+>// of structures receives a blocked fetch.
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.free.allfree comment.line.rpgle.free
 >dcl-s custNbr packed(7 : 0);
 #^^^^^ source.rpgle rpgle.free.allfree rpgle.free.definition.simple storage.type.rpgle.free.definition.simple
 #     ^ source.rpgle rpgle.free.allfree rpgle.free.definition.simple
@@ -84,15 +94,6 @@
 #                        ^ source.rpgle rpgle.free.allfree rpgle.free.definition.simple
 #                         ^ source.rpgle rpgle.free.allfree rpgle.free.definition.simple constant.numeric.rpgle
 #                          ^^ source.rpgle rpgle.free.allfree rpgle.free.definition.simple
->dcl-s custNm char(30);
-#^^^^^ source.rpgle rpgle.free.allfree rpgle.free.definition.simple storage.type.rpgle.free.definition.simple
-#     ^ source.rpgle rpgle.free.allfree rpgle.free.definition.simple
-#      ^^^^^^ source.rpgle rpgle.free.allfree rpgle.free.definition.simple variable.other.rpgle.free.definition.identifier
-#            ^ source.rpgle rpgle.free.allfree rpgle.free.definition.simple
-#             ^^^^ source.rpgle rpgle.free.allfree rpgle.free.definition.simple entity.name.function.rpgle.free.definition.keywords
-#                 ^ source.rpgle rpgle.free.allfree rpgle.free.definition.simple
-#                  ^^ source.rpgle rpgle.free.allfree rpgle.free.definition.simple constant.numeric.rpgle
-#                    ^^ source.rpgle rpgle.free.allfree rpgle.free.definition.simple
 >dcl-s custBal packed(11 : 2);
 #^^^^^ source.rpgle rpgle.free.allfree rpgle.free.definition.simple storage.type.rpgle.free.definition.simple
 #     ^ source.rpgle rpgle.free.allfree rpgle.free.definition.simple
@@ -145,6 +146,37 @@
 #                          ^ source.rpgle rpgle.free.allfree rpgle.free.definition.simple
 #                           ^ source.rpgle rpgle.free.allfree rpgle.free.definition.simple constant.numeric.rpgle
 #                            ^^ source.rpgle rpgle.free.allfree rpgle.free.definition.simple
+>dcl-s rowsUpd int(10) inz(0);
+#^^^^^ source.rpgle rpgle.free.allfree rpgle.free.definition.simple storage.type.rpgle.free.definition.simple
+#     ^ source.rpgle rpgle.free.allfree rpgle.free.definition.simple
+#      ^^^^^^^ source.rpgle rpgle.free.allfree rpgle.free.definition.simple variable.other.rpgle.free.definition.identifier
+#             ^ source.rpgle rpgle.free.allfree rpgle.free.definition.simple
+#              ^^^ source.rpgle rpgle.free.allfree rpgle.free.definition.simple entity.name.function.rpgle.free.definition.keywords
+#                 ^ source.rpgle rpgle.free.allfree rpgle.free.definition.simple
+#                  ^^ source.rpgle rpgle.free.allfree rpgle.free.definition.simple constant.numeric.rpgle
+#                    ^^ source.rpgle rpgle.free.allfree rpgle.free.definition.simple
+#                      ^^^ source.rpgle rpgle.free.allfree rpgle.free.definition.simple entity.name.function.rpgle.free.definition.keywords
+#                         ^ source.rpgle rpgle.free.allfree rpgle.free.definition.simple
+#                          ^ source.rpgle rpgle.free.allfree rpgle.free.definition.simple constant.numeric.rpgle
+#                           ^^ source.rpgle rpgle.free.allfree rpgle.free.definition.simple
+>dcl-s runDate date(*iso);
+#^^^^^ source.rpgle rpgle.free.allfree rpgle.free.definition.simple storage.type.rpgle.free.definition.simple
+#     ^ source.rpgle rpgle.free.allfree rpgle.free.definition.simple
+#      ^^^^^^^ source.rpgle rpgle.free.allfree rpgle.free.definition.simple variable.other.rpgle.free.definition.identifier
+#             ^ source.rpgle rpgle.free.allfree rpgle.free.definition.simple
+#              ^^^^ source.rpgle rpgle.free.allfree rpgle.free.definition.simple entity.name.function.rpgle.free.definition.keywords
+#                  ^ source.rpgle rpgle.free.allfree rpgle.free.definition.simple
+#                   ^^^^ source.rpgle rpgle.free.allfree rpgle.free.definition.simple constant.language.rpgle
+#                       ^^ source.rpgle rpgle.free.allfree rpgle.free.definition.simple
+>dcl-s errText varchar(132);
+#^^^^^ source.rpgle rpgle.free.allfree rpgle.free.definition.simple storage.type.rpgle.free.definition.simple
+#     ^ source.rpgle rpgle.free.allfree rpgle.free.definition.simple
+#      ^^^^^^^ source.rpgle rpgle.free.allfree rpgle.free.definition.simple variable.other.rpgle.free.definition.identifier
+#             ^ source.rpgle rpgle.free.allfree rpgle.free.definition.simple
+#              ^^^^^^^ source.rpgle rpgle.free.allfree rpgle.free.definition.simple entity.name.function.rpgle.free.definition.keywords
+#                     ^ source.rpgle rpgle.free.allfree rpgle.free.definition.simple
+#                      ^^^ source.rpgle rpgle.free.allfree rpgle.free.definition.simple constant.numeric.rpgle
+#                         ^^ source.rpgle rpgle.free.allfree rpgle.free.definition.simple
 >dcl-c MIN_BALANCE 100.00;
 #^^^^^ source.rpgle rpgle.free.allfree rpgle.free.definition.simple storage.type.rpgle.free.definition.simple
 #     ^ source.rpgle rpgle.free.allfree rpgle.free.definition.simple
@@ -152,6 +184,98 @@
 #                 ^ source.rpgle rpgle.free.allfree rpgle.free.definition.simple
 #                  ^^^^^^ source.rpgle rpgle.free.allfree rpgle.free.definition.simple constant.numeric.rpgle
 #                        ^ source.rpgle rpgle.free.allfree rpgle.free.definition.simple
+>
+#^ source.rpgle rpgle.free.allfree
+>dcl-ds custRow qualified;
+#^^^^^^ source.rpgle rpgle.free.allfree rpgle.free.definition.complex storage.type.rpgle.free.definition.complex.dcl
+#      ^ source.rpgle rpgle.free.allfree rpgle.free.definition.complex
+#       ^^^^^^^ source.rpgle rpgle.free.allfree rpgle.free.definition.complex variable.other.rpgle.free.definition.identifier
+#              ^ source.rpgle rpgle.free.allfree rpgle.free.definition.complex
+#               ^^^^^^^^^ source.rpgle rpgle.free.allfree rpgle.free.definition.complex entity.name.function.rpgle.free.definition.keywords
+#                        ^ source.rpgle rpgle.free.allfree rpgle.free.definition.complex
+>  number packed(7 : 0);
+#^^ source.rpgle rpgle.free.allfree
+#  ^^^^^^ source.rpgle rpgle.free.allfree variable.other.rpgle.free.definition.identifier
+#        ^ source.rpgle rpgle.free.allfree
+#         ^^^^^^ source.rpgle rpgle.free.allfree entity.name.function.rpgle.free.definition.keywords
+#               ^ source.rpgle rpgle.free.allfree
+#                ^ source.rpgle rpgle.free.allfree constant.numeric.rpgle
+#                 ^ source.rpgle rpgle.free.allfree
+#                  ^ source.rpgle rpgle.free.allfree keyword.other.rpgle
+#                   ^ source.rpgle rpgle.free.allfree
+#                    ^ source.rpgle rpgle.free.allfree constant.numeric.rpgle
+#                     ^^^ source.rpgle rpgle.free.allfree
+>  name char(30);
+#^^ source.rpgle rpgle.free.allfree
+#  ^^^^ source.rpgle rpgle.free.allfree variable.other.rpgle.free.definition.identifier
+#      ^ source.rpgle rpgle.free.allfree
+#       ^^^^ source.rpgle rpgle.free.allfree entity.name.function.rpgle.free.definition.keywords
+#           ^ source.rpgle rpgle.free.allfree
+#            ^^ source.rpgle rpgle.free.allfree constant.numeric.rpgle
+#              ^^^ source.rpgle rpgle.free.allfree
+>  balance packed(11 : 2);
+#^^ source.rpgle rpgle.free.allfree
+#  ^^^^^^^ source.rpgle rpgle.free.allfree variable.other.rpgle.free.definition.identifier
+#         ^ source.rpgle rpgle.free.allfree
+#          ^^^^^^ source.rpgle rpgle.free.allfree entity.name.function.rpgle.free.definition.keywords
+#                ^ source.rpgle rpgle.free.allfree
+#                 ^^ source.rpgle rpgle.free.allfree constant.numeric.rpgle
+#                   ^ source.rpgle rpgle.free.allfree
+#                    ^ source.rpgle rpgle.free.allfree keyword.other.rpgle
+#                     ^ source.rpgle rpgle.free.allfree
+#                      ^ source.rpgle rpgle.free.allfree constant.numeric.rpgle
+#                       ^^^ source.rpgle rpgle.free.allfree
+>  band char(1);
+#^^ source.rpgle rpgle.free.allfree
+#  ^^^^ source.rpgle rpgle.free.allfree variable.other.rpgle.free.definition.identifier
+#      ^ source.rpgle rpgle.free.allfree
+#       ^^^^ source.rpgle rpgle.free.allfree entity.name.function.rpgle.free.definition.keywords
+#           ^ source.rpgle rpgle.free.allfree
+#            ^ source.rpgle rpgle.free.allfree constant.numeric.rpgle
+#             ^^^ source.rpgle rpgle.free.allfree
+>end-ds;
+#^^^^^^ source.rpgle rpgle.free.allfree storage.type.rpgle.free.definition.complex.dcl
+#      ^^ source.rpgle rpgle.free.allfree
+>
+#^ source.rpgle rpgle.free.allfree
+>dcl-ds topRows qualified dim(10);
+#^^^^^^ source.rpgle rpgle.free.allfree rpgle.free.definition.complex storage.type.rpgle.free.definition.complex.dcl
+#      ^ source.rpgle rpgle.free.allfree rpgle.free.definition.complex
+#       ^^^^^^^ source.rpgle rpgle.free.allfree rpgle.free.definition.complex variable.other.rpgle.free.definition.identifier
+#              ^ source.rpgle rpgle.free.allfree rpgle.free.definition.complex
+#               ^^^^^^^^^ source.rpgle rpgle.free.allfree rpgle.free.definition.complex entity.name.function.rpgle.free.definition.keywords
+#                        ^ source.rpgle rpgle.free.allfree rpgle.free.definition.complex
+#                         ^^^ source.rpgle rpgle.free.allfree rpgle.free.definition.complex entity.name.function.rpgle.free.definition.keywords
+#                            ^ source.rpgle rpgle.free.allfree rpgle.free.definition.complex
+#                             ^^ source.rpgle rpgle.free.allfree rpgle.free.definition.complex constant.numeric.rpgle
+#                               ^^ source.rpgle rpgle.free.allfree rpgle.free.definition.complex
+>  number packed(7 : 0);
+#^^ source.rpgle rpgle.free.allfree
+#  ^^^^^^ source.rpgle rpgle.free.allfree variable.other.rpgle.free.definition.identifier
+#        ^ source.rpgle rpgle.free.allfree
+#         ^^^^^^ source.rpgle rpgle.free.allfree entity.name.function.rpgle.free.definition.keywords
+#               ^ source.rpgle rpgle.free.allfree
+#                ^ source.rpgle rpgle.free.allfree constant.numeric.rpgle
+#                 ^ source.rpgle rpgle.free.allfree
+#                  ^ source.rpgle rpgle.free.allfree keyword.other.rpgle
+#                   ^ source.rpgle rpgle.free.allfree
+#                    ^ source.rpgle rpgle.free.allfree constant.numeric.rpgle
+#                     ^^^ source.rpgle rpgle.free.allfree
+>  balance packed(11 : 2);
+#^^ source.rpgle rpgle.free.allfree
+#  ^^^^^^^ source.rpgle rpgle.free.allfree variable.other.rpgle.free.definition.identifier
+#         ^ source.rpgle rpgle.free.allfree
+#          ^^^^^^ source.rpgle rpgle.free.allfree entity.name.function.rpgle.free.definition.keywords
+#                ^ source.rpgle rpgle.free.allfree
+#                 ^^ source.rpgle rpgle.free.allfree constant.numeric.rpgle
+#                   ^ source.rpgle rpgle.free.allfree
+#                    ^ source.rpgle rpgle.free.allfree keyword.other.rpgle
+#                     ^ source.rpgle rpgle.free.allfree
+#                      ^ source.rpgle rpgle.free.allfree constant.numeric.rpgle
+#                       ^^^ source.rpgle rpgle.free.allfree
+>end-ds;
+#^^^^^^ source.rpgle rpgle.free.allfree storage.type.rpgle.free.definition.complex.dcl
+#      ^^ source.rpgle rpgle.free.allfree
 >//
 #^^ source.rpgle rpgle.free.allfree comment.line.rpgle.free
 >// A prototype for the subprocedure below.
@@ -188,10 +312,12 @@
 #      ^^ source.rpgle rpgle.free.allfree
 >//
 #^^ source.rpgle rpgle.free.allfree comment.line.rpgle.free
->// The main procedure. SQLCODE and SQLSTATE come from the SQLCA that
-#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.free.allfree comment.line.rpgle.free
->// the precompiler brings in.
-#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.free.allfree comment.line.rpgle.free
+>// The main procedure. It takes the company and the as-of date as
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.free.allfree comment.line.rpgle.free
+>// parameters. SQLCODE and SQLSTATE come from the SQLCA that the
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.free.allfree comment.line.rpgle.free
+>// precompiler brings in.
+#^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.free.allfree comment.line.rpgle.free
 >dcl-proc balanceReport;
 #^^^^^^^^ source.rpgle rpgle.free.allfree rpgle.free.definition.complex storage.type.rpgle.free.definition.complex.dcl
 #        ^ source.rpgle rpgle.free.allfree rpgle.free.definition.complex
@@ -203,6 +329,26 @@
 #        ^ source.rpgle rpgle.free.allfree rpgle.free.definition.complex
 #         ^^ source.rpgle rpgle.free.allfree rpgle.free.definition.complex constant.language.rpgle
 #           ^ source.rpgle rpgle.free.allfree rpgle.free.definition.complex
+>    company char(3) const;
+#^^^^ source.rpgle rpgle.free.allfree
+#    ^^^^^^^ source.rpgle rpgle.free.allfree variable.other.rpgle.free.definition.identifier
+#           ^ source.rpgle rpgle.free.allfree
+#            ^^^^ source.rpgle rpgle.free.allfree entity.name.function.rpgle.free.definition.keywords
+#                ^ source.rpgle rpgle.free.allfree
+#                 ^ source.rpgle rpgle.free.allfree constant.numeric.rpgle
+#                  ^^ source.rpgle rpgle.free.allfree
+#                    ^^^^^ source.rpgle rpgle.free.allfree entity.name.function.rpgle.free.definition.keywords
+#                         ^^ source.rpgle rpgle.free.allfree
+>    asOfDate date(*iso) const;
+#^^^^ source.rpgle rpgle.free.allfree
+#    ^^^^^^^^ source.rpgle rpgle.free.allfree variable.other.rpgle.free.definition.identifier
+#            ^ source.rpgle rpgle.free.allfree
+#             ^^^^ source.rpgle rpgle.free.allfree entity.name.function.rpgle.free.definition.keywords
+#                 ^ source.rpgle rpgle.free.allfree
+#                  ^^^^ source.rpgle rpgle.free.allfree constant.language.rpgle
+#                      ^^ source.rpgle rpgle.free.allfree
+#                        ^^^^^ source.rpgle rpgle.free.allfree entity.name.function.rpgle.free.definition.keywords
+#                             ^^ source.rpgle rpgle.free.allfree
 >  end-pi;
 #^^ source.rpgle rpgle.free.allfree
 #  ^^^^^^ source.rpgle rpgle.free.allfree storage.type.rpgle.free.definition.complex.dcl
@@ -223,9 +369,19 @@
 #                         ^ source.rpgle rpgle.free.allfree rpgle.free.definition.simple
 #                          ^ source.rpgle rpgle.free.allfree rpgle.free.definition.simple constant.numeric.rpgle
 #                           ^^ source.rpgle rpgle.free.allfree rpgle.free.definition.simple
+>  dcl-s idx int(10);
+#^^ source.rpgle rpgle.free.allfree
+#  ^^^^^ source.rpgle rpgle.free.allfree rpgle.free.definition.simple storage.type.rpgle.free.definition.simple
+#       ^ source.rpgle rpgle.free.allfree rpgle.free.definition.simple
+#        ^^^ source.rpgle rpgle.free.allfree rpgle.free.definition.simple variable.other.rpgle.free.definition.identifier
+#           ^ source.rpgle rpgle.free.allfree rpgle.free.definition.simple
+#            ^^^ source.rpgle rpgle.free.allfree rpgle.free.definition.simple entity.name.function.rpgle.free.definition.keywords
+#               ^ source.rpgle rpgle.free.allfree rpgle.free.definition.simple
+#                ^^ source.rpgle rpgle.free.allfree rpgle.free.definition.simple constant.numeric.rpgle
+#                  ^^ source.rpgle rpgle.free.allfree rpgle.free.definition.simple
 >
 #^ source.rpgle rpgle.free.allfree
->  exec sql set option commit = *none, closqlcsr = *endmod;
+>  exec sql set option commit = *chg, closqlcsr = *endmod;
 #^^ source.rpgle rpgle.free.allfree
 #  ^^^^^^^^ source.rpgle rpgle.free.allfree keyword.other.rpgle.sql
 #          ^ source.rpgle rpgle.free.allfree
@@ -237,12 +393,12 @@
 #                            ^ source.rpgle rpgle.free.allfree
 #                             ^ source.rpgle rpgle.free.allfree keyword.operator.rpgle.sql
 #                              ^ source.rpgle rpgle.free.allfree
-#                               ^^^^^ source.rpgle rpgle.free.allfree constant.language.rpgle.sql
-#                                    ^^^^^^^^^^^^ source.rpgle rpgle.free.allfree
-#                                                ^ source.rpgle rpgle.free.allfree keyword.operator.rpgle.sql
-#                                                 ^ source.rpgle rpgle.free.allfree
-#                                                  ^^^^^^^ source.rpgle rpgle.free.allfree constant.language.rpgle.sql
-#                                                         ^ source.rpgle rpgle.free.allfree punctuation.terminator.rpgle.sql
+#                               ^^^^ source.rpgle rpgle.free.allfree constant.language.rpgle.sql
+#                                   ^^^^^^^^^^^^ source.rpgle rpgle.free.allfree
+#                                               ^ source.rpgle rpgle.free.allfree keyword.operator.rpgle.sql
+#                                                ^ source.rpgle rpgle.free.allfree
+#                                                 ^^^^^^^ source.rpgle rpgle.free.allfree constant.language.rpgle.sql
+#                                                        ^ source.rpgle rpgle.free.allfree punctuation.terminator.rpgle.sql
 >  exec sql whenever sqlerror continue;
 #^^ source.rpgle rpgle.free.allfree
 #  ^^^^^^^^ source.rpgle rpgle.free.allfree keyword.other.rpgle.sql
@@ -253,8 +409,287 @@
 #                            ^ source.rpgle rpgle.free.allfree
 #                             ^^^^^^^^ source.rpgle rpgle.free.allfree keyword.operator.rpgle.sql.reserved
 #                                     ^ source.rpgle rpgle.free.allfree punctuation.terminator.rpgle.sql
+>  exec sql values current date into :runDate;
+#^^ source.rpgle rpgle.free.allfree
+#  ^^^^^^^^ source.rpgle rpgle.free.allfree keyword.other.rpgle.sql
+#          ^ source.rpgle rpgle.free.allfree
+#           ^^^^^^ source.rpgle rpgle.free.allfree keyword.operator.rpgle.sql.reserved
+#                 ^ source.rpgle rpgle.free.allfree
+#                  ^^^^^^^ source.rpgle rpgle.free.allfree keyword.operator.rpgle.sql.reserved
+#                         ^ source.rpgle rpgle.free.allfree
+#                          ^^^^ source.rpgle rpgle.free.allfree storage.type.rpgle.sql
+#                              ^ source.rpgle rpgle.free.allfree
+#                               ^^^^ source.rpgle rpgle.free.allfree keyword.operator.rpgle.sql.reserved
+#                                   ^ source.rpgle rpgle.free.allfree
+#                                    ^^^^^^^^ source.rpgle rpgle.free.allfree variable.parameter.rpgle.sql
+#                                            ^ source.rpgle rpgle.free.allfree punctuation.terminator.rpgle.sql
+>//
+#^^ source.rpgle rpgle.free.allfree comment.line.rpgle.free
+>// A temporary table holds the working set, filled from a common
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.free.allfree comment.line.rpgle.free
+>// table expression joined to the orders and grouped.
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.free.allfree comment.line.rpgle.free
+>  exec sql
+#^^ source.rpgle rpgle.free.allfree
+#  ^^^^^^^^ source.rpgle rpgle.free.allfree keyword.other.rpgle.sql
+>    declare global temporary table session.balwork (
+#^^^^ source.rpgle rpgle.free.allfree
+#    ^^^^^^^ source.rpgle rpgle.free.allfree keyword.operator.rpgle.sql.reserved
+#           ^ source.rpgle rpgle.free.allfree
+#            ^^^^^^ source.rpgle rpgle.free.allfree keyword.operator.rpgle.sql.reserved
+#                  ^^^^^^^^^^^ source.rpgle rpgle.free.allfree
+#                             ^^^^^ source.rpgle rpgle.free.allfree keyword.operator.rpgle.sql.reserved
+#                                  ^ source.rpgle rpgle.free.allfree
+#                                   ^^^^^^^^^^^^^^^ source.rpgle rpgle.free.allfree constant.language.rpgle.sql.schema
+#                                                  ^^^ source.rpgle rpgle.free.allfree
+>      cusnbr decimal(7, 0) not null,
+#^^^^^^^^^^^^^ source.rpgle rpgle.free.allfree
+#             ^^^^^^^ source.rpgle rpgle.free.allfree storage.type.rpgle.sql
+#                    ^ source.rpgle rpgle.free.allfree
+#                     ^ source.rpgle rpgle.free.allfree constant.numeric.rpgle.sql
+#                      ^^ source.rpgle rpgle.free.allfree
+#                        ^ source.rpgle rpgle.free.allfree constant.numeric.rpgle.sql
+#                         ^^ source.rpgle rpgle.free.allfree
+#                           ^^^ source.rpgle rpgle.free.allfree keyword.operator.rpgle.sql.reserved
+#                              ^ source.rpgle rpgle.free.allfree
+#                               ^^^^ source.rpgle rpgle.free.allfree keyword.operator.rpgle.sql.reserved
+#                                   ^^ source.rpgle rpgle.free.allfree
+>      cusnam char(30) not null,
+#^^^^^^^^^^^^^ source.rpgle rpgle.free.allfree
+#             ^^^^ source.rpgle rpgle.free.allfree storage.type.rpgle.sql
+#                 ^ source.rpgle rpgle.free.allfree
+#                  ^^ source.rpgle rpgle.free.allfree constant.numeric.rpgle.sql
+#                    ^^ source.rpgle rpgle.free.allfree
+#                      ^^^ source.rpgle rpgle.free.allfree keyword.operator.rpgle.sql.reserved
+#                         ^ source.rpgle rpgle.free.allfree
+#                          ^^^^ source.rpgle rpgle.free.allfree keyword.operator.rpgle.sql.reserved
+#                              ^^ source.rpgle rpgle.free.allfree
+>      cusbal decimal(11, 2) not null default 0,
+#^^^^^^^^^^^^^ source.rpgle rpgle.free.allfree
+#             ^^^^^^^ source.rpgle rpgle.free.allfree storage.type.rpgle.sql
+#                    ^ source.rpgle rpgle.free.allfree
+#                     ^^ source.rpgle rpgle.free.allfree constant.numeric.rpgle.sql
+#                       ^^ source.rpgle rpgle.free.allfree
+#                         ^ source.rpgle rpgle.free.allfree constant.numeric.rpgle.sql
+#                          ^^ source.rpgle rpgle.free.allfree
+#                            ^^^ source.rpgle rpgle.free.allfree keyword.operator.rpgle.sql.reserved
+#                               ^ source.rpgle rpgle.free.allfree
+#                                ^^^^ source.rpgle rpgle.free.allfree keyword.operator.rpgle.sql.reserved
+#                                    ^ source.rpgle rpgle.free.allfree
+#                                     ^^^^^^^ source.rpgle rpgle.free.allfree keyword.operator.rpgle.sql.reserved
+#                                            ^ source.rpgle rpgle.free.allfree
+#                                             ^ source.rpgle rpgle.free.allfree constant.numeric.rpgle.sql
+#                                              ^^ source.rpgle rpgle.free.allfree
+>      bandcd char(1) not null
+#^^^^^^^^^^^^^ source.rpgle rpgle.free.allfree
+#             ^^^^ source.rpgle rpgle.free.allfree storage.type.rpgle.sql
+#                 ^ source.rpgle rpgle.free.allfree
+#                  ^ source.rpgle rpgle.free.allfree constant.numeric.rpgle.sql
+#                   ^^ source.rpgle rpgle.free.allfree
+#                     ^^^ source.rpgle rpgle.free.allfree keyword.operator.rpgle.sql.reserved
+#                        ^ source.rpgle rpgle.free.allfree
+#                         ^^^^ source.rpgle rpgle.free.allfree keyword.operator.rpgle.sql.reserved
+>    ) with replace on commit preserve rows;
+#^^^^^^ source.rpgle rpgle.free.allfree
+#      ^^^^ source.rpgle rpgle.free.allfree keyword.operator.rpgle.sql.reserved
+#          ^^^^^^^^^ source.rpgle rpgle.free.allfree
+#                   ^^ source.rpgle rpgle.free.allfree keyword.operator.rpgle.sql.reserved
+#                     ^ source.rpgle rpgle.free.allfree
+#                      ^^^^^^ source.rpgle rpgle.free.allfree keyword.operator.rpgle.sql.reserved
+#                            ^^^^^^^^^^ source.rpgle rpgle.free.allfree
+#                                      ^^^^ source.rpgle rpgle.free.allfree keyword.operator.rpgle.sql.reserved
+#                                          ^ source.rpgle rpgle.free.allfree punctuation.terminator.rpgle.sql
 >
 #^ source.rpgle rpgle.free.allfree
+>  exec sql
+#^^ source.rpgle rpgle.free.allfree
+#  ^^^^^^^^ source.rpgle rpgle.free.allfree keyword.other.rpgle.sql
+>    insert into session.balwork
+#^^^^ source.rpgle rpgle.free.allfree
+#    ^^^^^^ source.rpgle rpgle.free.allfree keyword.operator.rpgle.sql.reserved
+#          ^ source.rpgle rpgle.free.allfree
+#           ^^^^ source.rpgle rpgle.free.allfree keyword.operator.rpgle.sql.reserved
+#               ^ source.rpgle rpgle.free.allfree
+#                ^^^^^^^^^^^^^^^ source.rpgle rpgle.free.allfree constant.language.rpgle.sql.schema
+>      with active as (
+#^^^^^^ source.rpgle rpgle.free.allfree
+#      ^^^^ source.rpgle rpgle.free.allfree keyword.operator.rpgle.sql.reserved
+#          ^^^^^^^^ source.rpgle rpgle.free.allfree
+#                  ^^ source.rpgle rpgle.free.allfree keyword.operator.rpgle.sql.reserved
+#                    ^^^ source.rpgle rpgle.free.allfree
+>        select cusnbr, cusnam
+#^^^^^^^^ source.rpgle rpgle.free.allfree
+#        ^^^^^^ source.rpgle rpgle.free.allfree keyword.operator.rpgle.sql.reserved
+#              ^^^^^^^^^^^^^^^^ source.rpgle rpgle.free.allfree
+>          from custmast
+#^^^^^^^^^^ source.rpgle rpgle.free.allfree
+#          ^^^^ source.rpgle rpgle.free.allfree keyword.operator.rpgle.sql.reserved
+#              ^^^^^^^^^^ source.rpgle rpgle.free.allfree
+>         where cussts = 'A' and cuscmp = :company
+#^^^^^^^^^ source.rpgle rpgle.free.allfree
+#         ^^^^^ source.rpgle rpgle.free.allfree keyword.operator.rpgle.sql.reserved
+#              ^^^^^^^^ source.rpgle rpgle.free.allfree
+#                      ^ source.rpgle rpgle.free.allfree keyword.operator.rpgle.sql
+#                       ^ source.rpgle rpgle.free.allfree
+#                        ^^^ source.rpgle rpgle.free.allfree string.quoted.single.rpgle.sql
+#                           ^ source.rpgle rpgle.free.allfree
+#                            ^^^ source.rpgle rpgle.free.allfree keyword.operator.rpgle.sql.reserved
+#                               ^^^^^^^^ source.rpgle rpgle.free.allfree
+#                                       ^ source.rpgle rpgle.free.allfree keyword.operator.rpgle.sql
+#                                        ^ source.rpgle rpgle.free.allfree
+#                                         ^^^^^^^^ source.rpgle rpgle.free.allfree variable.parameter.rpgle.sql
+>      )
+#^^^^^^^^ source.rpgle rpgle.free.allfree
+>      select a.cusnbr,
+#^^^^^^ source.rpgle rpgle.free.allfree
+#      ^^^^^^ source.rpgle rpgle.free.allfree keyword.operator.rpgle.sql.reserved
+#            ^ source.rpgle rpgle.free.allfree
+#             ^^^^^^^^ source.rpgle rpgle.free.allfree constant.language.rpgle.sql.schema
+#                     ^^ source.rpgle rpgle.free.allfree
+>             a.cusnam,
+#^^^^^^^^^^^^^ source.rpgle rpgle.free.allfree
+#             ^^^^^^^^ source.rpgle rpgle.free.allfree constant.language.rpgle.sql.schema
+#                     ^^ source.rpgle rpgle.free.allfree
+>             sum(o.ordamt),
+#^^^^^^^^^^^^^ source.rpgle rpgle.free.allfree
+#             ^^^ source.rpgle rpgle.free.allfree support.function.rpgle.sql
+#                ^ source.rpgle rpgle.free.allfree
+#                 ^^^^^^^^ source.rpgle rpgle.free.allfree constant.language.rpgle.sql.schema
+#                         ^^^ source.rpgle rpgle.free.allfree
+>             case when sum(o.ordamt) >= 1000 then 'A'
+#^^^^^^^^^^^^^ source.rpgle rpgle.free.allfree
+#             ^^^^ source.rpgle rpgle.free.allfree keyword.operator.rpgle.sql.reserved
+#                 ^ source.rpgle rpgle.free.allfree
+#                  ^^^^ source.rpgle rpgle.free.allfree keyword.operator.rpgle.sql.reserved
+#                      ^ source.rpgle rpgle.free.allfree
+#                       ^^^ source.rpgle rpgle.free.allfree support.function.rpgle.sql
+#                          ^ source.rpgle rpgle.free.allfree
+#                           ^^^^^^^^ source.rpgle rpgle.free.allfree constant.language.rpgle.sql.schema
+#                                   ^^ source.rpgle rpgle.free.allfree
+#                                     ^^ source.rpgle rpgle.free.allfree keyword.operator.rpgle.sql
+#                                       ^ source.rpgle rpgle.free.allfree
+#                                        ^^^^ source.rpgle rpgle.free.allfree constant.numeric.rpgle.sql
+#                                            ^ source.rpgle rpgle.free.allfree
+#                                             ^^^^ source.rpgle rpgle.free.allfree keyword.operator.rpgle.sql.reserved
+#                                                 ^ source.rpgle rpgle.free.allfree
+#                                                  ^^^ source.rpgle rpgle.free.allfree string.quoted.single.rpgle.sql
+>                  when sum(o.ordamt) >= 100  then 'B'
+#^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.free.allfree
+#                  ^^^^ source.rpgle rpgle.free.allfree keyword.operator.rpgle.sql.reserved
+#                      ^ source.rpgle rpgle.free.allfree
+#                       ^^^ source.rpgle rpgle.free.allfree support.function.rpgle.sql
+#                          ^ source.rpgle rpgle.free.allfree
+#                           ^^^^^^^^ source.rpgle rpgle.free.allfree constant.language.rpgle.sql.schema
+#                                   ^^ source.rpgle rpgle.free.allfree
+#                                     ^^ source.rpgle rpgle.free.allfree keyword.operator.rpgle.sql
+#                                       ^ source.rpgle rpgle.free.allfree
+#                                        ^^^ source.rpgle rpgle.free.allfree constant.numeric.rpgle.sql
+#                                           ^^ source.rpgle rpgle.free.allfree
+#                                             ^^^^ source.rpgle rpgle.free.allfree keyword.operator.rpgle.sql.reserved
+#                                                 ^ source.rpgle rpgle.free.allfree
+#                                                  ^^^ source.rpgle rpgle.free.allfree string.quoted.single.rpgle.sql
+>                  else 'C'
+#^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.free.allfree
+#                  ^^^^ source.rpgle rpgle.free.allfree keyword.operator.rpgle.sql.reserved
+#                      ^ source.rpgle rpgle.free.allfree
+#                       ^^^ source.rpgle rpgle.free.allfree string.quoted.single.rpgle.sql
+>             end
+#^^^^^^^^^^^^^ source.rpgle rpgle.free.allfree
+#             ^^^ source.rpgle rpgle.free.allfree keyword.operator.rpgle.sql.reserved
+>        from active a
+#^^^^^^^^ source.rpgle rpgle.free.allfree
+#        ^^^^ source.rpgle rpgle.free.allfree keyword.operator.rpgle.sql.reserved
+#            ^^^^^^^^^^ source.rpgle rpgle.free.allfree
+>             inner join orders o
+#^^^^^^^^^^^^^ source.rpgle rpgle.free.allfree
+#             ^^^^^ source.rpgle rpgle.free.allfree keyword.operator.rpgle.sql.reserved
+#                  ^ source.rpgle rpgle.free.allfree
+#                   ^^^^ source.rpgle rpgle.free.allfree keyword.operator.rpgle.sql.reserved
+#                       ^^^^^^^^^^ source.rpgle rpgle.free.allfree
+>                     on o.cusnbr = a.cusnbr
+#^^^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.free.allfree
+#                     ^^ source.rpgle rpgle.free.allfree keyword.operator.rpgle.sql.reserved
+#                       ^ source.rpgle rpgle.free.allfree
+#                        ^^^^^^^^ source.rpgle rpgle.free.allfree constant.language.rpgle.sql.schema
+#                                ^ source.rpgle rpgle.free.allfree
+#                                 ^ source.rpgle rpgle.free.allfree keyword.operator.rpgle.sql
+#                                  ^ source.rpgle rpgle.free.allfree
+#                                   ^^^^^^^^ source.rpgle rpgle.free.allfree constant.language.rpgle.sql.schema
+>       where o.orddat <= :asOfDate
+#^^^^^^^ source.rpgle rpgle.free.allfree
+#       ^^^^^ source.rpgle rpgle.free.allfree keyword.operator.rpgle.sql.reserved
+#            ^ source.rpgle rpgle.free.allfree
+#             ^^^^^^^^ source.rpgle rpgle.free.allfree constant.language.rpgle.sql.schema
+#                     ^ source.rpgle rpgle.free.allfree
+#                      ^^ source.rpgle rpgle.free.allfree keyword.operator.rpgle.sql
+#                        ^ source.rpgle rpgle.free.allfree
+#                         ^^^^^^^^^ source.rpgle rpgle.free.allfree variable.parameter.rpgle.sql
+>       group by a.cusnbr, a.cusnam
+#^^^^^^^ source.rpgle rpgle.free.allfree
+#       ^^^^^ source.rpgle rpgle.free.allfree keyword.operator.rpgle.sql.reserved
+#            ^ source.rpgle rpgle.free.allfree
+#             ^^ source.rpgle rpgle.free.allfree keyword.operator.rpgle.sql.reserved
+#               ^ source.rpgle rpgle.free.allfree
+#                ^^^^^^^^ source.rpgle rpgle.free.allfree constant.language.rpgle.sql.schema
+#                        ^^ source.rpgle rpgle.free.allfree
+#                          ^^^^^^^^ source.rpgle rpgle.free.allfree constant.language.rpgle.sql.schema
+>      having sum(o.ordamt) >= :MIN_BALANCE;
+#^^^^^^ source.rpgle rpgle.free.allfree
+#      ^^^^^^ source.rpgle rpgle.free.allfree keyword.operator.rpgle.sql.reserved
+#            ^ source.rpgle rpgle.free.allfree
+#             ^^^ source.rpgle rpgle.free.allfree support.function.rpgle.sql
+#                ^ source.rpgle rpgle.free.allfree
+#                 ^^^^^^^^ source.rpgle rpgle.free.allfree constant.language.rpgle.sql.schema
+#                         ^^ source.rpgle rpgle.free.allfree
+#                           ^^ source.rpgle rpgle.free.allfree keyword.operator.rpgle.sql
+#                             ^ source.rpgle rpgle.free.allfree
+#                              ^^^^^^^^^^^^ source.rpgle rpgle.free.allfree variable.parameter.rpgle.sql
+#                                          ^ source.rpgle rpgle.free.allfree punctuation.terminator.rpgle.sql
+>
+#^ source.rpgle rpgle.free.allfree
+>  if sqlcode < 0;
+#^^ source.rpgle rpgle.free.allfree
+#  ^^ source.rpgle rpgle.free.allfree keyword.other.rpgle.free
+#    ^ source.rpgle rpgle.free.allfree
+#     ^^^^^^^ source.rpgle rpgle.free.allfree variable.language.rpgle.sql
+#            ^ source.rpgle rpgle.free.allfree
+#             ^ source.rpgle rpgle.free.allfree keyword.operator.rpgle
+#              ^ source.rpgle rpgle.free.allfree
+#               ^ source.rpgle rpgle.free.allfree constant.numeric.rpgle
+#                ^^ source.rpgle rpgle.free.allfree
+>    exsr sqlFailed;
+#^^^^ source.rpgle rpgle.free.allfree
+#    ^^^^ source.rpgle rpgle.free.allfree keyword.other.rpgle.free
+#        ^ source.rpgle rpgle.free.allfree
+#         ^^^^^^^^^ source.rpgle rpgle.free.allfree variable.other.rpgle.free.definition.identifier
+#                  ^^ source.rpgle rpgle.free.allfree
+>    return;
+#^^^^ source.rpgle rpgle.free.allfree
+#    ^^^^^^ source.rpgle rpgle.free.allfree keyword.other.rpgle.free
+#          ^^ source.rpgle rpgle.free.allfree
+>  endif;
+#^^ source.rpgle rpgle.free.allfree
+#  ^^^^^ source.rpgle rpgle.free.allfree keyword.other.rpgle.free
+#       ^^ source.rpgle rpgle.free.allfree
+>  exec sql get diagnostics :rowsUpd = row_count;
+#^^ source.rpgle rpgle.free.allfree
+#  ^^^^^^^^ source.rpgle rpgle.free.allfree keyword.other.rpgle.sql
+#          ^ source.rpgle rpgle.free.allfree
+#           ^^^ source.rpgle rpgle.free.allfree keyword.operator.rpgle.sql.reserved
+#              ^ source.rpgle rpgle.free.allfree
+#               ^^^^^^^^^^^ source.rpgle rpgle.free.allfree keyword.operator.rpgle.sql.reserved
+#                          ^ source.rpgle rpgle.free.allfree
+#                           ^^^^^^^^ source.rpgle rpgle.free.allfree variable.parameter.rpgle.sql
+#                                   ^ source.rpgle rpgle.free.allfree
+#                                    ^ source.rpgle rpgle.free.allfree keyword.operator.rpgle.sql
+#                                     ^^^^^^^^^^ source.rpgle rpgle.free.allfree
+#                                               ^ source.rpgle rpgle.free.allfree punctuation.terminator.rpgle.sql
+>//
+#^^ source.rpgle rpgle.free.allfree comment.line.rpgle.free
+>// The cursor and its fetch loop. The row comes back into a
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.free.allfree comment.line.rpgle.free
+>// structure rather than a list of separate variables.
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.free.allfree comment.line.rpgle.free
 >  exec sql
 #^^ source.rpgle rpgle.free.allfree
 #  ^^^^^^^^ source.rpgle rpgle.free.allfree keyword.other.rpgle.sql
@@ -265,23 +700,15 @@
 #                      ^^^^^^ source.rpgle rpgle.free.allfree keyword.operator.rpgle.sql.reserved
 #                            ^ source.rpgle rpgle.free.allfree
 #                             ^^^ source.rpgle rpgle.free.allfree keyword.operator.rpgle.sql.reserved
->      select cusnbr, cusnam, cusbal
+>      select cusnbr, cusnam, cusbal, bandcd
 #^^^^^^ source.rpgle rpgle.free.allfree
 #      ^^^^^^ source.rpgle rpgle.free.allfree keyword.operator.rpgle.sql.reserved
-#            ^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.free.allfree
->        from custmast
+#            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.free.allfree
+>        from session.balwork
 #^^^^^^^^ source.rpgle rpgle.free.allfree
 #        ^^^^ source.rpgle rpgle.free.allfree keyword.operator.rpgle.sql.reserved
-#            ^^^^^^^^^^ source.rpgle rpgle.free.allfree
->       where cusbal >= :MIN_BALANCE   -- only the ones that matter
-#^^^^^^^ source.rpgle rpgle.free.allfree
-#       ^^^^^ source.rpgle rpgle.free.allfree keyword.operator.rpgle.sql.reserved
-#            ^^^^^^^^ source.rpgle rpgle.free.allfree
-#                    ^^ source.rpgle rpgle.free.allfree keyword.operator.rpgle.sql
-#                      ^ source.rpgle rpgle.free.allfree
-#                       ^^^^^^^^^^^^ source.rpgle rpgle.free.allfree variable.parameter.rpgle.sql
-#                                   ^^^ source.rpgle rpgle.free.allfree
-#                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.free.allfree comment.line.rpgle.sql
+#            ^ source.rpgle rpgle.free.allfree
+#             ^^^^^^^^^^^^^^^ source.rpgle rpgle.free.allfree constant.language.rpgle.sql.schema
 >       order by cusbal desc
 #^^^^^^^ source.rpgle rpgle.free.allfree
 #       ^^^^^ source.rpgle rpgle.free.allfree keyword.operator.rpgle.sql.reserved
@@ -316,11 +743,11 @@
 #              ^ source.rpgle rpgle.free.allfree
 #               ^ source.rpgle rpgle.free.allfree constant.numeric.rpgle
 #                ^^ source.rpgle rpgle.free.allfree
->    except sqlFail;
+>    exsr sqlFailed;
 #^^^^ source.rpgle rpgle.free.allfree
-#    ^^^^^^ source.rpgle rpgle.free.allfree keyword.other.rpgle.free
-#          ^ source.rpgle rpgle.free.allfree
-#           ^^^^^^^ source.rpgle rpgle.free.allfree variable.other.rpgle.free.definition.identifier
+#    ^^^^ source.rpgle rpgle.free.allfree keyword.other.rpgle.free
+#        ^ source.rpgle rpgle.free.allfree
+#         ^^^^^^^^^ source.rpgle rpgle.free.allfree variable.other.rpgle.free.definition.identifier
 #                  ^^ source.rpgle rpgle.free.allfree
 >    return;
 #^^^^ source.rpgle rpgle.free.allfree
@@ -348,28 +775,19 @@
 #               ^ source.rpgle rpgle.free.allfree
 #                ^ source.rpgle rpgle.free.allfree constant.numeric.rpgle
 #                 ^^ source.rpgle rpgle.free.allfree
->    exec sql
+>    exec sql fetch next from balCursor into :custRow;
 #^^^^ source.rpgle rpgle.free.allfree
 #    ^^^^^^^^ source.rpgle rpgle.free.allfree keyword.other.rpgle.sql
->      fetch next from balCursor
-#^^^^^^ source.rpgle rpgle.free.allfree
-#      ^^^^^ source.rpgle rpgle.free.allfree keyword.operator.rpgle.sql.reserved
-#           ^^^^^^ source.rpgle rpgle.free.allfree
-#                 ^^^^ source.rpgle rpgle.free.allfree keyword.operator.rpgle.sql.reserved
-#                     ^^^^^^^^^^^ source.rpgle rpgle.free.allfree
->       into :custNbr, :custNm, :custBal :balInd;
-#^^^^^^^ source.rpgle rpgle.free.allfree
-#       ^^^^ source.rpgle rpgle.free.allfree keyword.operator.rpgle.sql.reserved
-#           ^ source.rpgle rpgle.free.allfree
-#            ^^^^^^^^ source.rpgle rpgle.free.allfree variable.parameter.rpgle.sql
-#                    ^^ source.rpgle rpgle.free.allfree
-#                      ^^^^^^^ source.rpgle rpgle.free.allfree variable.parameter.rpgle.sql
-#                             ^^ source.rpgle rpgle.free.allfree
-#                               ^^^^^^^^ source.rpgle rpgle.free.allfree variable.parameter.rpgle.sql
-#                                       ^ source.rpgle rpgle.free.allfree
-#                                        ^^^^^^^ source.rpgle rpgle.free.allfree variable.parameter.rpgle.sql
-#                                               ^ source.rpgle rpgle.free.allfree punctuation.terminator.rpgle.sql
->    if sqlcode <> 0;
+#            ^ source.rpgle rpgle.free.allfree
+#             ^^^^^ source.rpgle rpgle.free.allfree keyword.operator.rpgle.sql.reserved
+#                  ^^^^^^ source.rpgle rpgle.free.allfree
+#                        ^^^^ source.rpgle rpgle.free.allfree keyword.operator.rpgle.sql.reserved
+#                            ^^^^^^^^^^^ source.rpgle rpgle.free.allfree
+#                                       ^^^^ source.rpgle rpgle.free.allfree keyword.operator.rpgle.sql.reserved
+#                                           ^ source.rpgle rpgle.free.allfree
+#                                            ^^^^^^^^ source.rpgle rpgle.free.allfree variable.parameter.rpgle.sql
+#                                                    ^ source.rpgle rpgle.free.allfree punctuation.terminator.rpgle.sql
+>    if sqlcode <> 0 or sqlstate = '02000';
 #^^^^ source.rpgle rpgle.free.allfree
 #    ^^ source.rpgle rpgle.free.allfree keyword.other.rpgle.free
 #      ^ source.rpgle rpgle.free.allfree
@@ -378,7 +796,17 @@
 #               ^^ source.rpgle rpgle.free.allfree keyword.operator.rpgle
 #                 ^ source.rpgle rpgle.free.allfree
 #                  ^ source.rpgle rpgle.free.allfree constant.numeric.rpgle
-#                   ^^ source.rpgle rpgle.free.allfree
+#                   ^ source.rpgle rpgle.free.allfree
+#                    ^^ source.rpgle rpgle.free.allfree keyword.other.rpgle
+#                      ^ source.rpgle rpgle.free.allfree
+#                       ^^^^^^^^ source.rpgle rpgle.free.allfree variable.language.rpgle.sql
+#                               ^ source.rpgle rpgle.free.allfree
+#                                ^ source.rpgle rpgle.free.allfree keyword.operator.rpgle
+#                                 ^ source.rpgle rpgle.free.allfree
+#                                  ^ source.rpgle rpgle.free.allfree string.quoted.single.rpgle
+#                                   ^^^^^ source.rpgle rpgle.free.allfree string.quoted.single.rpgle
+#                                        ^ source.rpgle rpgle.free.allfree string.quoted.single.rpgle
+#                                         ^^ source.rpgle rpgle.free.allfree
 >      leave;
 #^^^^^^ source.rpgle rpgle.free.allfree
 #      ^^^^^ source.rpgle rpgle.free.allfree keyword.other.rpgle.free
@@ -397,6 +825,26 @@
 #               ^ source.rpgle rpgle.free.allfree
 #                ^ source.rpgle rpgle.free.allfree constant.numeric.rpgle
 #                 ^^ source.rpgle rpgle.free.allfree
+>    custNbr = custRow.number;
+#^^^^ source.rpgle rpgle.free.allfree
+#    ^^^^^^^ source.rpgle rpgle.free.allfree variable.other.rpgle.free.definition.identifier
+#           ^ source.rpgle rpgle.free.allfree
+#            ^ source.rpgle rpgle.free.allfree keyword.operator.rpgle
+#             ^ source.rpgle rpgle.free.allfree
+#              ^^^^^^^ source.rpgle rpgle.free.allfree variable.other.rpgle.free.definition.identifier
+#                     ^ source.rpgle rpgle.free.allfree keyword.other.rpgle
+#                      ^^^^^^ source.rpgle rpgle.free.allfree variable.other.rpgle.free.definition.identifier
+#                            ^^ source.rpgle rpgle.free.allfree
+>    custBal = custRow.balance;
+#^^^^ source.rpgle rpgle.free.allfree
+#    ^^^^^^^ source.rpgle rpgle.free.allfree variable.other.rpgle.free.definition.identifier
+#           ^ source.rpgle rpgle.free.allfree
+#            ^ source.rpgle rpgle.free.allfree keyword.operator.rpgle
+#             ^ source.rpgle rpgle.free.allfree
+#              ^^^^^^^ source.rpgle rpgle.free.allfree variable.other.rpgle.free.definition.identifier
+#                     ^ source.rpgle rpgle.free.allfree keyword.other.rpgle
+#                      ^^^^^^^ source.rpgle rpgle.free.allfree variable.other.rpgle.free.definition.identifier
+#                             ^^ source.rpgle rpgle.free.allfree
 >    limit = creditLimit(custNbr);
 #^^^^ source.rpgle rpgle.free.allfree
 #    ^^^^^ source.rpgle rpgle.free.allfree variable.other.rpgle.free.definition.identifier
@@ -415,6 +863,40 @@
 #                 ^ source.rpgle rpgle.free.allfree
 #                  ^^^^^^^ source.rpgle rpgle.free.allfree variable.other.rpgle.free.definition.identifier
 #                         ^^ source.rpgle rpgle.free.allfree
+>
+#^ source.rpgle rpgle.free.allfree
+>    exec sql
+#^^^^ source.rpgle rpgle.free.allfree
+#    ^^^^^^^^ source.rpgle rpgle.free.allfree keyword.other.rpgle.sql
+>      update custmast
+#^^^^^^ source.rpgle rpgle.free.allfree
+#      ^^^^^^ source.rpgle rpgle.free.allfree keyword.operator.rpgle.sql.reserved
+#            ^^^^^^^^^^ source.rpgle rpgle.free.allfree
+>         set cusbnd = :custRow.band,
+#^^^^^^^^^ source.rpgle rpgle.free.allfree
+#         ^^^ source.rpgle rpgle.free.allfree keyword.operator.rpgle.sql.reserved
+#            ^^^^^^^^ source.rpgle rpgle.free.allfree
+#                    ^ source.rpgle rpgle.free.allfree keyword.operator.rpgle.sql
+#                     ^ source.rpgle rpgle.free.allfree
+#                      ^^^^^^^^^^^^^ source.rpgle rpgle.free.allfree variable.parameter.rpgle.sql
+#                                   ^^ source.rpgle rpgle.free.allfree
+>             cuschg = current timestamp
+#^^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.free.allfree
+#                    ^ source.rpgle rpgle.free.allfree keyword.operator.rpgle.sql
+#                     ^ source.rpgle rpgle.free.allfree
+#                      ^^^^^^^ source.rpgle rpgle.free.allfree keyword.operator.rpgle.sql.reserved
+#                             ^ source.rpgle rpgle.free.allfree
+#                              ^^^^^^^^^ source.rpgle rpgle.free.allfree storage.type.rpgle.sql
+>       where cusnbr = :custNbr;
+#^^^^^^^ source.rpgle rpgle.free.allfree
+#       ^^^^^ source.rpgle rpgle.free.allfree keyword.operator.rpgle.sql.reserved
+#            ^^^^^^^^ source.rpgle rpgle.free.allfree
+#                    ^ source.rpgle rpgle.free.allfree keyword.operator.rpgle.sql
+#                     ^ source.rpgle rpgle.free.allfree
+#                      ^^^^^^^^ source.rpgle rpgle.free.allfree variable.parameter.rpgle.sql
+#                              ^ source.rpgle rpgle.free.allfree punctuation.terminator.rpgle.sql
+>
+#^ source.rpgle rpgle.free.allfree
 >    except detail;
 #^^^^ source.rpgle rpgle.free.allfree
 #    ^^^^^^ source.rpgle rpgle.free.allfree keyword.other.rpgle.free
@@ -425,8 +907,6 @@
 #^^ source.rpgle rpgle.free.allfree
 #  ^^^^^ source.rpgle rpgle.free.allfree keyword.other.rpgle.free
 #       ^^ source.rpgle rpgle.free.allfree
->
-#^ source.rpgle rpgle.free.allfree
 >  exec sql close balCursor;
 #^^ source.rpgle rpgle.free.allfree
 #  ^^^^^^^^ source.rpgle rpgle.free.allfree keyword.other.rpgle.sql
@@ -434,16 +914,307 @@
 #           ^^^^^ source.rpgle rpgle.free.allfree keyword.operator.rpgle.sql.reserved
 #                ^^^^^^^^^^ source.rpgle rpgle.free.allfree
 #                          ^ source.rpgle rpgle.free.allfree punctuation.terminator.rpgle.sql
+>//
+#^^ source.rpgle rpgle.free.allfree comment.line.rpgle.free
+>// A blocked fetch brings ten rows back at once, into an array of
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.free.allfree comment.line.rpgle.free
+>// structures. The union puts the two sources in one result.
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.free.allfree comment.line.rpgle.free
+>  exec sql
+#^^ source.rpgle rpgle.free.allfree
+#  ^^^^^^^^ source.rpgle rpgle.free.allfree keyword.other.rpgle.sql
+>    declare topCursor cursor for
+#^^^^ source.rpgle rpgle.free.allfree
+#    ^^^^^^^ source.rpgle rpgle.free.allfree keyword.operator.rpgle.sql.reserved
+#           ^^^^^^^^^^^ source.rpgle rpgle.free.allfree
+#                      ^^^^^^ source.rpgle rpgle.free.allfree keyword.operator.rpgle.sql.reserved
+#                            ^ source.rpgle rpgle.free.allfree
+#                             ^^^ source.rpgle rpgle.free.allfree keyword.operator.rpgle.sql.reserved
+>      select cusnbr, cusbal from session.balwork
+#^^^^^^ source.rpgle rpgle.free.allfree
+#      ^^^^^^ source.rpgle rpgle.free.allfree keyword.operator.rpgle.sql.reserved
+#            ^^^^^^^^^^^^^^^^ source.rpgle rpgle.free.allfree
+#                            ^^^^ source.rpgle rpgle.free.allfree keyword.operator.rpgle.sql.reserved
+#                                ^ source.rpgle rpgle.free.allfree
+#                                 ^^^^^^^^^^^^^^^ source.rpgle rpgle.free.allfree constant.language.rpgle.sql.schema
+>       where bandcd = 'A'
+#^^^^^^^ source.rpgle rpgle.free.allfree
+#       ^^^^^ source.rpgle rpgle.free.allfree keyword.operator.rpgle.sql.reserved
+#            ^^^^^^^^ source.rpgle rpgle.free.allfree
+#                    ^ source.rpgle rpgle.free.allfree keyword.operator.rpgle.sql
+#                     ^ source.rpgle rpgle.free.allfree
+#                      ^^^ source.rpgle rpgle.free.allfree string.quoted.single.rpgle.sql
+>      union all
+#^^^^^^ source.rpgle rpgle.free.allfree
+#      ^^^^^ source.rpgle rpgle.free.allfree keyword.operator.rpgle.sql.reserved
+#           ^ source.rpgle rpgle.free.allfree
+#            ^^^ source.rpgle rpgle.free.allfree keyword.operator.rpgle.sql.reserved
+>      select cusnbr, cusbal from session.balhist
+#^^^^^^ source.rpgle rpgle.free.allfree
+#      ^^^^^^ source.rpgle rpgle.free.allfree keyword.operator.rpgle.sql.reserved
+#            ^^^^^^^^^^^^^^^^ source.rpgle rpgle.free.allfree
+#                            ^^^^ source.rpgle rpgle.free.allfree keyword.operator.rpgle.sql.reserved
+#                                ^ source.rpgle rpgle.free.allfree
+#                                 ^^^^^^^^^^^^^^^ source.rpgle rpgle.free.allfree constant.language.rpgle.sql.schema
+>       where bandcd = 'A' and hstyer = year(:asOfDate)
+#^^^^^^^ source.rpgle rpgle.free.allfree
+#       ^^^^^ source.rpgle rpgle.free.allfree keyword.operator.rpgle.sql.reserved
+#            ^^^^^^^^ source.rpgle rpgle.free.allfree
+#                    ^ source.rpgle rpgle.free.allfree keyword.operator.rpgle.sql
+#                     ^ source.rpgle rpgle.free.allfree
+#                      ^^^ source.rpgle rpgle.free.allfree string.quoted.single.rpgle.sql
+#                         ^ source.rpgle rpgle.free.allfree
+#                          ^^^ source.rpgle rpgle.free.allfree keyword.operator.rpgle.sql.reserved
+#                             ^^^^^^^^ source.rpgle rpgle.free.allfree
+#                                     ^ source.rpgle rpgle.free.allfree keyword.operator.rpgle.sql
+#                                      ^ source.rpgle rpgle.free.allfree
+#                                       ^^^^ source.rpgle rpgle.free.allfree support.function.rpgle.sql
+#                                           ^ source.rpgle rpgle.free.allfree
+#                                            ^^^^^^^^^ source.rpgle rpgle.free.allfree variable.parameter.rpgle.sql
+#                                                     ^^ source.rpgle rpgle.free.allfree
+>       order by 2 desc
+#^^^^^^^ source.rpgle rpgle.free.allfree
+#       ^^^^^ source.rpgle rpgle.free.allfree keyword.operator.rpgle.sql.reserved
+#            ^ source.rpgle rpgle.free.allfree
+#             ^^ source.rpgle rpgle.free.allfree keyword.operator.rpgle.sql.reserved
+#               ^ source.rpgle rpgle.free.allfree
+#                ^ source.rpgle rpgle.free.allfree constant.numeric.rpgle.sql
+#                 ^ source.rpgle rpgle.free.allfree
+#                  ^^^^ source.rpgle rpgle.free.allfree keyword.operator.rpgle.sql.reserved
+>       fetch first 10 rows only;
+#^^^^^^^ source.rpgle rpgle.free.allfree
+#       ^^^^^ source.rpgle rpgle.free.allfree keyword.operator.rpgle.sql.reserved
+#            ^^^^^^^ source.rpgle rpgle.free.allfree
+#                   ^^ source.rpgle rpgle.free.allfree constant.numeric.rpgle.sql
+#                     ^ source.rpgle rpgle.free.allfree
+#                      ^^^^ source.rpgle rpgle.free.allfree keyword.operator.rpgle.sql.reserved
+#                          ^ source.rpgle rpgle.free.allfree
+#                           ^^^^ source.rpgle rpgle.free.allfree keyword.operator.rpgle.sql.reserved
+#                               ^ source.rpgle rpgle.free.allfree punctuation.terminator.rpgle.sql
+>
+#^ source.rpgle rpgle.free.allfree
+>  exec sql open topCursor;
+#^^ source.rpgle rpgle.free.allfree
+#  ^^^^^^^^ source.rpgle rpgle.free.allfree keyword.other.rpgle.sql
+#          ^ source.rpgle rpgle.free.allfree
+#           ^^^^ source.rpgle rpgle.free.allfree keyword.operator.rpgle.sql.reserved
+#               ^^^^^^^^^^ source.rpgle rpgle.free.allfree
+#                         ^ source.rpgle rpgle.free.allfree punctuation.terminator.rpgle.sql
+>  exec sql fetch topCursor for 10 rows into :topRows;
+#^^ source.rpgle rpgle.free.allfree
+#  ^^^^^^^^ source.rpgle rpgle.free.allfree keyword.other.rpgle.sql
+#          ^ source.rpgle rpgle.free.allfree
+#           ^^^^^ source.rpgle rpgle.free.allfree keyword.operator.rpgle.sql.reserved
+#                ^^^^^^^^^^^ source.rpgle rpgle.free.allfree
+#                           ^^^ source.rpgle rpgle.free.allfree keyword.operator.rpgle.sql.reserved
+#                              ^ source.rpgle rpgle.free.allfree
+#                               ^^ source.rpgle rpgle.free.allfree constant.numeric.rpgle.sql
+#                                 ^ source.rpgle rpgle.free.allfree
+#                                  ^^^^ source.rpgle rpgle.free.allfree keyword.operator.rpgle.sql.reserved
+#                                      ^ source.rpgle rpgle.free.allfree
+#                                       ^^^^ source.rpgle rpgle.free.allfree keyword.operator.rpgle.sql.reserved
+#                                           ^ source.rpgle rpgle.free.allfree
+#                                            ^^^^^^^^ source.rpgle rpgle.free.allfree variable.parameter.rpgle.sql
+#                                                    ^ source.rpgle rpgle.free.allfree punctuation.terminator.rpgle.sql
+>  for idx = 1 to %min(10 : rowsRead);
+#^^ source.rpgle rpgle.free.allfree
+#  ^^^ source.rpgle rpgle.free.allfree keyword.other.rpgle.free
+#     ^ source.rpgle rpgle.free.allfree
+#      ^^^ source.rpgle rpgle.free.allfree variable.other.rpgle.free.definition.identifier
+#         ^ source.rpgle rpgle.free.allfree
+#          ^ source.rpgle rpgle.free.allfree keyword.operator.rpgle
+#           ^ source.rpgle rpgle.free.allfree
+#            ^ source.rpgle rpgle.free.allfree constant.numeric.rpgle
+#             ^ source.rpgle rpgle.free.allfree
+#              ^^ source.rpgle rpgle.free.allfree keyword.other.rpgle
+#                ^ source.rpgle rpgle.free.allfree
+#                 ^^^^ source.rpgle rpgle.free.allfree support.function.rpgle.bif
+#                     ^ source.rpgle rpgle.free.allfree
+#                      ^^ source.rpgle rpgle.free.allfree constant.numeric.rpgle
+#                        ^ source.rpgle rpgle.free.allfree
+#                         ^ source.rpgle rpgle.free.allfree keyword.other.rpgle
+#                          ^ source.rpgle rpgle.free.allfree
+#                           ^^^^^^^^ source.rpgle rpgle.free.allfree variable.other.rpgle.free.definition.identifier
+#                                   ^^^ source.rpgle rpgle.free.allfree
+>    if topRows(idx).balance > 0;
+#^^^^ source.rpgle rpgle.free.allfree
+#    ^^ source.rpgle rpgle.free.allfree keyword.other.rpgle.free
+#      ^ source.rpgle rpgle.free.allfree
+#       ^^^^^^^ source.rpgle rpgle.free.allfree variable.other.rpgle.free.definition.identifier
+#              ^ source.rpgle rpgle.free.allfree
+#               ^^^ source.rpgle rpgle.free.allfree variable.other.rpgle.free.definition.identifier
+#                  ^ source.rpgle rpgle.free.allfree
+#                   ^ source.rpgle rpgle.free.allfree keyword.other.rpgle
+#                    ^^^^^^^ source.rpgle rpgle.free.allfree variable.other.rpgle.free.definition.identifier
+#                           ^ source.rpgle rpgle.free.allfree
+#                            ^ source.rpgle rpgle.free.allfree keyword.operator.rpgle
+#                             ^ source.rpgle rpgle.free.allfree
+#                              ^ source.rpgle rpgle.free.allfree constant.numeric.rpgle
+#                               ^^ source.rpgle rpgle.free.allfree
+>      except toprow;
+#^^^^^^ source.rpgle rpgle.free.allfree
+#      ^^^^^^ source.rpgle rpgle.free.allfree keyword.other.rpgle.free
+#            ^ source.rpgle rpgle.free.allfree
+#             ^^^^^^ source.rpgle rpgle.free.allfree variable.other.rpgle.free.definition.identifier
+#                   ^^ source.rpgle rpgle.free.allfree
+>    endif;
+#^^^^ source.rpgle rpgle.free.allfree
+#    ^^^^^ source.rpgle rpgle.free.allfree keyword.other.rpgle.free
+#         ^^ source.rpgle rpgle.free.allfree
+>  endfor;
+#^^ source.rpgle rpgle.free.allfree
+#  ^^^^^^ source.rpgle rpgle.free.allfree keyword.other.rpgle.free
+#        ^^ source.rpgle rpgle.free.allfree
+>  exec sql close topCursor;
+#^^ source.rpgle rpgle.free.allfree
+#  ^^^^^^^^ source.rpgle rpgle.free.allfree keyword.other.rpgle.sql
+#          ^ source.rpgle rpgle.free.allfree
+#           ^^^^^ source.rpgle rpgle.free.allfree keyword.operator.rpgle.sql.reserved
+#                ^^^^^^^^^^ source.rpgle rpgle.free.allfree
+#                          ^ source.rpgle rpgle.free.allfree punctuation.terminator.rpgle.sql
+>//
+#^^ source.rpgle rpgle.free.allfree comment.line.rpgle.free
+>// Tidying up: the empty rows go, a logging procedure is called,
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.free.allfree comment.line.rpgle.free
+>// and the unit of work is committed or rolled back.
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.free.allfree comment.line.rpgle.free
+>  exec sql delete from session.balwork where cusbal = 0;
+#^^ source.rpgle rpgle.free.allfree
+#  ^^^^^^^^ source.rpgle rpgle.free.allfree keyword.other.rpgle.sql
+#          ^ source.rpgle rpgle.free.allfree
+#           ^^^^^^ source.rpgle rpgle.free.allfree keyword.operator.rpgle.sql.reserved
+#                 ^ source.rpgle rpgle.free.allfree
+#                  ^^^^ source.rpgle rpgle.free.allfree keyword.operator.rpgle.sql.reserved
+#                      ^ source.rpgle rpgle.free.allfree
+#                       ^^^^^^^^^^^^^^^ source.rpgle rpgle.free.allfree constant.language.rpgle.sql.schema
+#                                      ^ source.rpgle rpgle.free.allfree
+#                                       ^^^^^ source.rpgle rpgle.free.allfree keyword.operator.rpgle.sql.reserved
+#                                            ^^^^^^^^ source.rpgle rpgle.free.allfree
+#                                                    ^ source.rpgle rpgle.free.allfree keyword.operator.rpgle.sql
+#                                                     ^ source.rpgle rpgle.free.allfree
+#                                                      ^ source.rpgle rpgle.free.allfree constant.numeric.rpgle.sql
+#                                                       ^ source.rpgle rpgle.free.allfree punctuation.terminator.rpgle.sql
+>  exec sql call logrun(:company, :rowsRead, :grandTotal);
+#^^ source.rpgle rpgle.free.allfree
+#  ^^^^^^^^ source.rpgle rpgle.free.allfree keyword.other.rpgle.sql
+#          ^ source.rpgle rpgle.free.allfree
+#           ^^^^ source.rpgle rpgle.free.allfree keyword.operator.rpgle.sql.reserved
+#               ^ source.rpgle rpgle.free.allfree
+#                ^^^^^^ source.rpgle rpgle.free.allfree support.function.rpgle.sql
+#                      ^ source.rpgle rpgle.free.allfree
+#                       ^^^^^^^^ source.rpgle rpgle.free.allfree variable.parameter.rpgle.sql
+#                               ^^ source.rpgle rpgle.free.allfree
+#                                 ^^^^^^^^^ source.rpgle rpgle.free.allfree variable.parameter.rpgle.sql
+#                                          ^^ source.rpgle rpgle.free.allfree
+#                                            ^^^^^^^^^^^ source.rpgle rpgle.free.allfree variable.parameter.rpgle.sql
+#                                                       ^ source.rpgle rpgle.free.allfree
+#                                                        ^ source.rpgle rpgle.free.allfree punctuation.terminator.rpgle.sql
+>
+#^ source.rpgle rpgle.free.allfree
+>  if sqlcode < 0;
+#^^ source.rpgle rpgle.free.allfree
+#  ^^ source.rpgle rpgle.free.allfree keyword.other.rpgle.free
+#    ^ source.rpgle rpgle.free.allfree
+#     ^^^^^^^ source.rpgle rpgle.free.allfree variable.language.rpgle.sql
+#            ^ source.rpgle rpgle.free.allfree
+#             ^ source.rpgle rpgle.free.allfree keyword.operator.rpgle
+#              ^ source.rpgle rpgle.free.allfree
+#               ^ source.rpgle rpgle.free.allfree constant.numeric.rpgle
+#                ^^ source.rpgle rpgle.free.allfree
+>    exec sql rollback;
+#^^^^ source.rpgle rpgle.free.allfree
+#    ^^^^^^^^ source.rpgle rpgle.free.allfree keyword.other.rpgle.sql
+#            ^ source.rpgle rpgle.free.allfree
+#             ^^^^^^^^ source.rpgle rpgle.free.allfree keyword.operator.rpgle.sql.reserved
+#                     ^ source.rpgle rpgle.free.allfree punctuation.terminator.rpgle.sql
+>    exsr sqlFailed;
+#^^^^ source.rpgle rpgle.free.allfree
+#    ^^^^ source.rpgle rpgle.free.allfree keyword.other.rpgle.free
+#        ^ source.rpgle rpgle.free.allfree
+#         ^^^^^^^^^ source.rpgle rpgle.free.allfree variable.other.rpgle.free.definition.identifier
+#                  ^^ source.rpgle rpgle.free.allfree
+>  else;
+#^^ source.rpgle rpgle.free.allfree
+#  ^^^^ source.rpgle rpgle.free.allfree keyword.other.rpgle.free
+#      ^^ source.rpgle rpgle.free.allfree
+>    exec sql commit;
+#^^^^ source.rpgle rpgle.free.allfree
+#    ^^^^^^^^ source.rpgle rpgle.free.allfree keyword.other.rpgle.sql
+#            ^ source.rpgle rpgle.free.allfree
+#             ^^^^^^ source.rpgle rpgle.free.allfree keyword.operator.rpgle.sql.reserved
+#                   ^ source.rpgle rpgle.free.allfree punctuation.terminator.rpgle.sql
+>  endif;
+#^^ source.rpgle rpgle.free.allfree
+#  ^^^^^ source.rpgle rpgle.free.allfree keyword.other.rpgle.free
+#       ^^ source.rpgle rpgle.free.allfree
+>
+#^ source.rpgle rpgle.free.allfree
 >  except totals;
 #^^ source.rpgle rpgle.free.allfree
 #  ^^^^^^ source.rpgle rpgle.free.allfree keyword.other.rpgle.free
 #        ^ source.rpgle rpgle.free.allfree
 #         ^^^^^^ source.rpgle rpgle.free.allfree variable.other.rpgle.free.definition.identifier
 #               ^^ source.rpgle rpgle.free.allfree
+>  *inlr = *on;
+#^^ source.rpgle rpgle.free.allfree
+#  ^^^^^ source.rpgle rpgle.free.allfree constant.language.rpgle.indicator
+#       ^ source.rpgle rpgle.free.allfree
+#        ^ source.rpgle rpgle.free.allfree keyword.operator.rpgle
+#         ^ source.rpgle rpgle.free.allfree
+#          ^^^ source.rpgle rpgle.free.allfree constant.language.rpgle
+#             ^^ source.rpgle rpgle.free.allfree
 >  return;
 #^^ source.rpgle rpgle.free.allfree
 #  ^^^^^^ source.rpgle rpgle.free.allfree keyword.other.rpgle.free
 #        ^^ source.rpgle rpgle.free.allfree
+>
+#^ source.rpgle rpgle.free.allfree
+>  // The one place SQLCODE and SQLSTATE are turned into text.
+#^^ source.rpgle rpgle.free.allfree
+#  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.free.allfree comment.line.rpgle.free
+>  begsr sqlFailed;
+#^^ source.rpgle rpgle.free.allfree
+#  ^^^^^ source.rpgle rpgle.free.allfree storage.type.rpgle.free.definition.subr
+#       ^ source.rpgle rpgle.free.allfree
+#        ^^^^^^^^^ source.rpgle rpgle.free.allfree variable.other.rpgle.free.definition.identifier
+#                 ^^ source.rpgle rpgle.free.allfree
+>    errText = 'SQLCODE ' + %char(sqlcode) +
+#^^^^ source.rpgle rpgle.free.allfree rpgle.free.calculation.continued
+#    ^^^^^^^ source.rpgle rpgle.free.allfree rpgle.free.calculation.continued variable.other.rpgle.free.definition.identifier
+#           ^ source.rpgle rpgle.free.allfree rpgle.free.calculation.continued
+#            ^ source.rpgle rpgle.free.allfree rpgle.free.calculation.continued keyword.operator.rpgle
+#             ^ source.rpgle rpgle.free.allfree rpgle.free.calculation.continued
+#              ^ source.rpgle rpgle.free.allfree rpgle.free.calculation.continued string.quoted.single.rpgle
+#               ^^^^^^^^ source.rpgle rpgle.free.allfree rpgle.free.calculation.continued string.quoted.single.rpgle
+#                       ^ source.rpgle rpgle.free.allfree rpgle.free.calculation.continued string.quoted.single.rpgle
+#                        ^ source.rpgle rpgle.free.allfree rpgle.free.calculation.continued
+#                         ^ source.rpgle rpgle.free.allfree rpgle.free.calculation.continued keyword.operator.rpgle
+#                          ^ source.rpgle rpgle.free.allfree rpgle.free.calculation.continued
+#                           ^^^^^ source.rpgle rpgle.free.allfree rpgle.free.calculation.continued support.function.rpgle.bif
+#                                ^ source.rpgle rpgle.free.allfree rpgle.free.calculation.continued
+#                                 ^^^^^^^ source.rpgle rpgle.free.allfree rpgle.free.calculation.continued variable.language.rpgle.sql
+#                                        ^^ source.rpgle rpgle.free.allfree rpgle.free.calculation.continued
+#                                          ^ source.rpgle rpgle.free.allfree rpgle.free.calculation.continued keyword.operator.rpgle
+>              ' SQLSTATE ' + sqlstate;
+#^^^^^^^^^^^^^^ source.rpgle rpgle.free.allfree rpgle.free.calculation.continued
+#              ^ source.rpgle rpgle.free.allfree rpgle.free.calculation.continued string.quoted.single.rpgle
+#               ^^^^^^^^^^ source.rpgle rpgle.free.allfree rpgle.free.calculation.continued string.quoted.single.rpgle
+#                         ^ source.rpgle rpgle.free.allfree rpgle.free.calculation.continued string.quoted.single.rpgle
+#                          ^ source.rpgle rpgle.free.allfree rpgle.free.calculation.continued
+#                           ^ source.rpgle rpgle.free.allfree rpgle.free.calculation.continued keyword.operator.rpgle
+#                            ^ source.rpgle rpgle.free.allfree rpgle.free.calculation.continued
+#                             ^^^^^^^^ source.rpgle rpgle.free.allfree rpgle.free.calculation.continued variable.language.rpgle.sql
+#                                     ^ source.rpgle rpgle.free.allfree rpgle.free.calculation.continued
+>    except sqlfail;
+#^^^^ source.rpgle rpgle.free.allfree
+#    ^^^^^^ source.rpgle rpgle.free.allfree keyword.other.rpgle.free
+#          ^ source.rpgle rpgle.free.allfree
+#           ^^^^^^^ source.rpgle rpgle.free.allfree variable.other.rpgle.free.definition.identifier
+#                  ^^ source.rpgle rpgle.free.allfree
+>  endsr;
+#^^ source.rpgle rpgle.free.allfree
+#  ^^^^^ source.rpgle rpgle.free.allfree storage.type.rpgle.free.definition.subr
+#       ^^ source.rpgle rpgle.free.allfree
 >end-proc;
 #^^^^^^^^ source.rpgle rpgle.free.allfree storage.type.rpgle.free.definition.complex.dcl
 #        ^^ source.rpgle rpgle.free.allfree
@@ -538,6 +1309,21 @@
 #                  ^ source.rpgle rpgle.free.allfree keyword.operator.rpgle.sql
 #                   ^ source.rpgle rpgle.free.allfree
 #                    ^^^^^^^^^^^^ source.rpgle rpgle.free.allfree variable.parameter.rpgle.sql
+>       and cast(crdsts as char(1)) = 'A'
+#^^^^^^^ source.rpgle rpgle.free.allfree
+#       ^^^ source.rpgle rpgle.free.allfree keyword.operator.rpgle.sql.reserved
+#          ^ source.rpgle rpgle.free.allfree
+#           ^^^^ source.rpgle rpgle.free.allfree support.function.rpgle.sql
+#               ^^^^^^^^ source.rpgle rpgle.free.allfree
+#                       ^^ source.rpgle rpgle.free.allfree keyword.operator.rpgle.sql.reserved
+#                         ^ source.rpgle rpgle.free.allfree
+#                          ^^^^ source.rpgle rpgle.free.allfree storage.type.rpgle.sql
+#                              ^ source.rpgle rpgle.free.allfree
+#                               ^ source.rpgle rpgle.free.allfree constant.numeric.rpgle.sql
+#                                ^^^ source.rpgle rpgle.free.allfree
+#                                   ^ source.rpgle rpgle.free.allfree keyword.operator.rpgle.sql
+#                                    ^ source.rpgle rpgle.free.allfree
+#                                     ^^^ source.rpgle rpgle.free.allfree string.quoted.single.rpgle.sql
 >       fetch first 1 row only;
 #^^^^^^^ source.rpgle rpgle.free.allfree
 #       ^^^^^ source.rpgle rpgle.free.allfree keyword.operator.rpgle.sql.reserved

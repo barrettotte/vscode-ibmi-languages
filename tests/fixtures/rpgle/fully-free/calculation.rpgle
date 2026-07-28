@@ -296,3 +296,23 @@ string = 'abc // not-comment 3  +
          def'; // comment 4
 string = 'ghi // not-comment 5 ' +
          'jkl'; // comment 6
+//
+// A literal continued over several lines, with both continuation
+// characters. A + resumes at the first non-blank of the next
+// line and a - resumes at position 1, so the leading blanks are
+// kept or dropped accordingly.
+MySQLStmt = ' with +
+P+
+     new line added +
+     duplicate of above +
+     another line added -
+     another duplication of above -
+)';
+//
+// No directive may be written inside a single free-form
+// calculation statement. A line inside one that begins with what
+// looks like a directive is read as a slash followed by a name,
+// so the statement below divides by a variable called title.
+dcl-s title int(10) inz(2);
+x = y
+  /title + 5;

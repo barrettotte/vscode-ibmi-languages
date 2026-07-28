@@ -93,6 +93,7 @@
      H*
      H* A page and line number in 1-5 does not disturb the columns.
 01010HDFTACTGRP(*NO)
+01020HOPTION(*SRCSTMT)                                                          numbered + comment
      H*
      H* Positions 81-100 are a comment area.
      HDFTACTGRP(*NO)                                                            control spec comment

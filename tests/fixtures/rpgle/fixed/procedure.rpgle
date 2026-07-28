@@ -76,6 +76,9 @@
 07010PNUMBERED         B                   EXPORT
 07020D                 PI
 07030PNUMBERED         E
+07040PSEQNOTE          B                   EXPORT                               numbered + comment
+07050D                 PI
+07060PSEQNOTE          E                                                        and on the end
      PNOTED            B                   EXPORT                               begin procedure
      D                 PI
      PNOTED            E                                                        end procedure

@@ -359,6 +359,27 @@
 #     ^ source.rpgle keyword.other.rpgle.fixed.specs
 #      ^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.p
 #                       ^ source.rpgle rpgle.fixed.p constant.language.rpgle.fixed.p.beginend
+>07040PSEQNOTE          B                   EXPORT                               numbered + comment
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.p
+#                       ^ source.rpgle rpgle.fixed.p constant.language.rpgle.fixed.p.beginend
+#                        ^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.p
+#                                           ^^^^^^ source.rpgle rpgle.fixed.p entity.name.function.rpgle.fixed.p.keywords
+#                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.p
+#                                                                                ^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.p comment.block.line.rpgle.fixed
+>07050D                 PI
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.d
+#                       ^^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.dectype
+>07060PSEQNOTE          E                                                        and on the end
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.p
+#                       ^ source.rpgle rpgle.fixed.p constant.language.rpgle.fixed.p.beginend
+#                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.p
+#                                                                                ^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.p comment.block.line.rpgle.fixed
 >     PNOTED            B                   EXPORT                               begin procedure
 #^^^^^ source.rpgle comment.gutter
 #     ^ source.rpgle keyword.other.rpgle.fixed.specs

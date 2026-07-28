@@ -4,20 +4,26 @@
 >      * A whole RPG IV program rather than a single specification: the main
 #^^^^^^^ source.rpgle comment.line.rpgle.fixed
 #       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle comment.line.rpgle.fixed
->      * source section in the order the compiler requires, two subprocedures
+>      * source section in the order the compiler requires, three
 #^^^^^^^ source.rpgle comment.line.rpgle.fixed
-#       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle comment.line.rpgle.fixed
->      * with their own local files and definitions, and compile-time data.
+#       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle comment.line.rpgle.fixed
+>      * subprocedures with their own local files and definitions, and
 #^^^^^^^ source.rpgle comment.line.rpgle.fixed
-#       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle comment.line.rpgle.fixed
+#       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle comment.line.rpgle.fixed
+>      * compile-time data.
+#^^^^^^^ source.rpgle comment.line.rpgle.fixed
+#       ^^^^^^^^^^^^^^^^^^^ source.rpgle comment.line.rpgle.fixed
 >      *
 #^^^^^^^ source.rpgle comment.line.rpgle.fixed
->      * Prints an order register grouped by customer, taking the tax rate
+>      * Prints an order register grouped by customer, bands each line,
+#^^^^^^^ source.rpgle comment.line.rpgle.fixed
+#       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle comment.line.rpgle.fixed
+>      * writes an audit row per order and logs anything that looks stale.
 #^^^^^^^ source.rpgle comment.line.rpgle.fixed
 #       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle comment.line.rpgle.fixed
->      * from a compile-time array and the line total from a subprocedure.
+>      * fully-free/program.rpgle tells the same story in free form.
 #^^^^^^^ source.rpgle comment.line.rpgle.fixed
-#       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle comment.line.rpgle.fixed
+#       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle comment.line.rpgle.fixed
 >      *
 #^^^^^^^ source.rpgle comment.line.rpgle.fixed
 >      * Member: ORDREG   Compilable: complete program, but not built; its
@@ -29,7 +35,7 @@
 >      * Source: ILE RPG Reference SC09-2508, RPG IV specification types.
 #^^^^^^^ source.rpgle comment.line.rpgle.fixed
 #       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle comment.line.rpgle.fixed
->      * Retrieved: 2026-07-26
+>      * Retrieved: 2026-07-27
 #^^^^^^^ source.rpgle comment.line.rpgle.fixed
 #       ^^^^^^^^^^^^^^^^^^^^^^ source.rpgle comment.line.rpgle.fixed
 >      *
@@ -67,6 +73,38 @@
 #                                         ^ source.rpgle rpgle.fixed.h
 #                                          ^^^^ source.rpgle rpgle.fixed.h constant.language.rpgle
 #                                              ^^ source.rpgle rpgle.fixed.h
+>     HDATFMT(*ISO) TIMFMT(*HMS) DECEDIT('0.')
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^ source.rpgle rpgle.fixed.h entity.name.function.rpgle.fixed.h.keywords
+#            ^ source.rpgle rpgle.fixed.h
+#             ^^^^ source.rpgle rpgle.fixed.h constant.language.rpgle
+#                 ^^ source.rpgle rpgle.fixed.h
+#                   ^^^^^^ source.rpgle rpgle.fixed.h entity.name.function.rpgle.fixed.h.keywords
+#                         ^ source.rpgle rpgle.fixed.h
+#                          ^^^^ source.rpgle rpgle.fixed.h constant.language.rpgle
+#                              ^^ source.rpgle rpgle.fixed.h
+#                                ^^^^^^^ source.rpgle rpgle.fixed.h entity.name.function.rpgle.fixed.h.keywords
+#                                       ^ source.rpgle rpgle.fixed.h
+#                                        ^ source.rpgle rpgle.fixed.h string.quoted.single.rpgle
+#                                         ^^ source.rpgle rpgle.fixed.h string.quoted.single.rpgle
+#                                           ^ source.rpgle rpgle.fixed.h string.quoted.single.rpgle
+#                                            ^^ source.rpgle rpgle.fixed.h
+>     HBNDDIR('ORDBND') COPYRIGHT('(C) Example Corp')
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^ source.rpgle rpgle.fixed.h entity.name.function.rpgle.fixed.h.keywords
+#            ^ source.rpgle rpgle.fixed.h
+#             ^ source.rpgle rpgle.fixed.h string.quoted.single.rpgle
+#              ^^^^^^ source.rpgle rpgle.fixed.h string.quoted.single.rpgle
+#                    ^ source.rpgle rpgle.fixed.h string.quoted.single.rpgle
+#                     ^^ source.rpgle rpgle.fixed.h
+#                       ^^^^^^^^^ source.rpgle rpgle.fixed.h entity.name.function.rpgle.fixed.h.keywords
+#                                ^ source.rpgle rpgle.fixed.h
+#                                 ^ source.rpgle rpgle.fixed.h string.quoted.single.rpgle
+#                                  ^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.h string.quoted.single.rpgle
+#                                                  ^ source.rpgle rpgle.fixed.h string.quoted.single.rpgle
+#                                                   ^^ source.rpgle rpgle.fixed.h
 >      *
 #^^^^^^^ source.rpgle comment.line.rpgle.fixed
 >      * File and definition specifications may be intermixed, which is
@@ -75,9 +113,12 @@
 >      * the only place in the source where two form types share a
 #^^^^^^^ source.rpgle comment.line.rpgle.fixed
 #       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle comment.line.rpgle.fixed
->      * section without an order between them.
+>      * section without an order between them. A keyword field too
 #^^^^^^^ source.rpgle comment.line.rpgle.fixed
-#       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle comment.line.rpgle.fixed
+#       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle comment.line.rpgle.fixed
+>      * long for one line continues with F in 6 and 7-43 blank.
+#^^^^^^^ source.rpgle comment.line.rpgle.fixed
+#       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle comment.line.rpgle.fixed
 >     FORDHDR    IF   E           K DISK    USROPN
 #^^^^^ source.rpgle comment.gutter
 #     ^ source.rpgle keyword.other.rpgle.fixed.specs
@@ -92,6 +133,12 @@
 #                                   ^^^^ source.rpgle rpgle.fixed.f constant.language.rpgle.fixed.f.device
 #                                       ^^^^ source.rpgle rpgle.fixed.f
 #                                           ^^^^^^ source.rpgle rpgle.fixed.f entity.name.function.rpgle.fixed.f
+>     F                                     INFDS(ORDHDRIN)
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.f
+#                                           ^^^^^ source.rpgle rpgle.fixed.f entity.name.function.rpgle.fixed.f
+#                                                ^^^^^^^^^^^ source.rpgle rpgle.fixed.f
 >     DORDCOUNT         S              5I 0
 #^^^^^ source.rpgle comment.gutter
 #     ^ source.rpgle keyword.other.rpgle.fixed.specs
@@ -122,6 +169,28 @@
 #                                ^^^^^^^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.to
 #                                       ^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.datatype
 #                                        ^^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.decpos
+>     FORDAUD    UF A E           K DISK
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^ source.rpgle rpgle.fixed.f
+#                ^ source.rpgle rpgle.fixed.f constant.language.rpgle.fixed.f.type
+#                 ^ source.rpgle rpgle.fixed.f constant.language.rpgle.fixed.f.designation
+#                  ^ source.rpgle rpgle.fixed.f
+#                   ^ source.rpgle rpgle.fixed.f constant.language.rpgle.fixed.f.addition
+#                    ^ source.rpgle rpgle.fixed.f
+#                     ^ source.rpgle rpgle.fixed.f constant.language.rpgle.fixed.f.format
+#                      ^^^^^^^^^^^ source.rpgle rpgle.fixed.f
+#                                 ^ source.rpgle rpgle.fixed.f constant.language.rpgle.fixed.f.addrtype
+#                                  ^ source.rpgle rpgle.fixed.f
+#                                   ^^^^ source.rpgle rpgle.fixed.f constant.language.rpgle.fixed.f.device
+>     DERRMSG           S             80A
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.d
+#                       ^^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.dectype
+#                         ^^^^^^^ source.rpgle rpgle.fixed.d
+#                                ^^^^^^^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.to
+#                                       ^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.datatype
 >     FORDPRT    OF   F  132        PRINTER OFLIND(*INOF)
 #^^^^^ source.rpgle comment.gutter
 #     ^ source.rpgle keyword.other.rpgle.fixed.specs
@@ -140,7 +209,149 @@
 #                                                 ^ source.rpgle rpgle.fixed.f
 #                                                  ^^^^^ source.rpgle rpgle.fixed.f constant.language.rpgle.indicator
 #                                                       ^^ source.rpgle rpgle.fixed.f
+>      *
+#^^^^^^^ source.rpgle comment.line.rpgle.fixed
+>      * The two parameters the program is called with, and the work
+#^^^^^^^ source.rpgle comment.line.rpgle.fixed
+#       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle comment.line.rpgle.fixed
+>      * fields the calculations use.
+#^^^^^^^ source.rpgle comment.line.rpgle.fixed
+#       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle comment.line.rpgle.fixed
+>     DCOMPANY          S              3A
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.d
+#                       ^^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.dectype
+#                         ^^^^^^^ source.rpgle rpgle.fixed.d
+#                                ^^^^^^^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.to
+#                                       ^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.datatype
+>     DRPTDATE          S               D   DATFMT(*ISO)
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.d
+#                       ^^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.dectype
+#                         ^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.d
+#                                       ^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.datatype
+#                                        ^^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.decpos
+#                                          ^ source.rpgle rpgle.fixed.d
+#                                           ^^^^^^ source.rpgle rpgle.fixed.d entity.name.function.rpgle.fixed.d.keywords
+#                                                 ^ source.rpgle rpgle.fixed.d
+#                                                  ^^^^ source.rpgle rpgle.fixed.d constant.language.rpgle
+#                                                      ^^ source.rpgle rpgle.fixed.d
+>     DSAVEDKEY         S              7P 0
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.d
+#                       ^^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.dectype
+#                         ^^^^^^^ source.rpgle rpgle.fixed.d
+#                                ^^^^^^^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.to
+#                                       ^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.datatype
+#                                        ^^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.decpos
+>     DDAYSOLD          S             10I 0
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.d
+#                       ^^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.dectype
+#                         ^^^^^^^ source.rpgle rpgle.fixed.d
+#                                ^^^^^^^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.to
+#                                       ^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.datatype
+#                                        ^^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.decpos
+>      *
+#^^^^^^^ source.rpgle comment.line.rpgle.fixed
+>      * Named constants, then the three compile-time arrays.
+#^^^^^^^ source.rpgle comment.line.rpgle.fixed
+#       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle comment.line.rpgle.fixed
+>     DRPTTITLE         C                   CONST('ORDER REGISTER')
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.d
+#                       ^^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.dectype
+#                         ^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.d
+#                                        ^^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.decpos
+#                                          ^ source.rpgle rpgle.fixed.d
+#                                           ^^^^^ source.rpgle rpgle.fixed.d entity.name.function.rpgle.fixed.d.keywords
+#                                                ^ source.rpgle rpgle.fixed.d
+#                                                 ^ source.rpgle rpgle.fixed.d string.quoted.single.rpgle.fixed
+#                                                  ^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.d string.quoted.single.rpgle.fixed
+#                                                                ^ source.rpgle rpgle.fixed.d string.quoted.single.rpgle.fixed
+#                                                                 ^^ source.rpgle rpgle.fixed.d
+>     DBANDAFLR         C                   CONST(1000.00)
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.d
+#                       ^^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.dectype
+#                         ^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.d
+#                                        ^^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.decpos
+#                                          ^ source.rpgle rpgle.fixed.d
+#                                           ^^^^^ source.rpgle rpgle.fixed.d entity.name.function.rpgle.fixed.d.keywords
+#                                                ^ source.rpgle rpgle.fixed.d
+#                                                 ^^^^^^^ source.rpgle rpgle.fixed.d constant.numeric.rpgle
+#                                                        ^^ source.rpgle rpgle.fixed.d
+>     DBANDBFLR         C                   CONST(100.00)
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.d
+#                       ^^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.dectype
+#                         ^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.d
+#                                        ^^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.decpos
+#                                          ^ source.rpgle rpgle.fixed.d
+#                                           ^^^^^ source.rpgle rpgle.fixed.d entity.name.function.rpgle.fixed.d.keywords
+#                                                ^ source.rpgle rpgle.fixed.d
+#                                                 ^^^^^^ source.rpgle rpgle.fixed.d constant.numeric.rpgle
+#                                                       ^^ source.rpgle rpgle.fixed.d
+>     DSTALEDAY         C                   CONST(90)
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.d
+#                       ^^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.dectype
+#                         ^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.d
+#                                        ^^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.decpos
+#                                          ^ source.rpgle rpgle.fixed.d
+#                                           ^^^^^ source.rpgle rpgle.fixed.d entity.name.function.rpgle.fixed.d.keywords
+#                                                ^ source.rpgle rpgle.fixed.d
+#                                                 ^^ source.rpgle rpgle.fixed.d constant.numeric.rpgle
+#                                                   ^^ source.rpgle rpgle.fixed.d
 >     DTAXRATE          S              5P 3 DIM(4) CTDATA PERRCD(1)
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.d
+#                       ^^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.dectype
+#                         ^^^^^^^ source.rpgle rpgle.fixed.d
+#                                ^^^^^^^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.to
+#                                       ^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.datatype
+#                                        ^^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.decpos
+#                                          ^ source.rpgle rpgle.fixed.d
+#                                           ^^^ source.rpgle rpgle.fixed.d entity.name.function.rpgle.fixed.d.keywords
+#                                              ^ source.rpgle rpgle.fixed.d
+#                                               ^ source.rpgle rpgle.fixed.d constant.numeric.rpgle
+#                                                ^^ source.rpgle rpgle.fixed.d
+#                                                  ^^^^^^ source.rpgle rpgle.fixed.d entity.name.function.rpgle.fixed.d.keywords
+#                                                        ^ source.rpgle rpgle.fixed.d
+#                                                         ^^^^^^ source.rpgle rpgle.fixed.d entity.name.function.rpgle.fixed.d.keywords
+#                                                               ^ source.rpgle rpgle.fixed.d
+#                                                                ^ source.rpgle rpgle.fixed.d constant.numeric.rpgle
+#                                                                 ^^ source.rpgle rpgle.fixed.d
+>     DQTYBREAK         S              5P 0 DIM(4) CTDATA PERRCD(1)
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.d
+#                       ^^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.dectype
+#                         ^^^^^^^ source.rpgle rpgle.fixed.d
+#                                ^^^^^^^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.to
+#                                       ^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.datatype
+#                                        ^^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.decpos
+#                                          ^ source.rpgle rpgle.fixed.d
+#                                           ^^^ source.rpgle rpgle.fixed.d entity.name.function.rpgle.fixed.d.keywords
+#                                              ^ source.rpgle rpgle.fixed.d
+#                                               ^ source.rpgle rpgle.fixed.d constant.numeric.rpgle
+#                                                ^^ source.rpgle rpgle.fixed.d
+#                                                  ^^^^^^ source.rpgle rpgle.fixed.d entity.name.function.rpgle.fixed.d.keywords
+#                                                        ^ source.rpgle rpgle.fixed.d
+#                                                         ^^^^^^ source.rpgle rpgle.fixed.d entity.name.function.rpgle.fixed.d.keywords
+#                                                               ^ source.rpgle rpgle.fixed.d
+#                                                                ^ source.rpgle rpgle.fixed.d constant.numeric.rpgle
+#                                                                 ^^ source.rpgle rpgle.fixed.d
+>     DBANDNAME         S             10A   DIM(3) CTDATA PERRCD(1)
 #^^^^^ source.rpgle comment.gutter
 #     ^ source.rpgle keyword.other.rpgle.fixed.specs
 #      ^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.d
@@ -162,15 +373,152 @@
 #                                                                 ^^ source.rpgle rpgle.fixed.d
 >      *
 #^^^^^^^ source.rpgle comment.line.rpgle.fixed
+>      * A qualified structure for the line being printed, then the two
+#^^^^^^^ source.rpgle comment.line.rpgle.fixed
+#       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle comment.line.rpgle.fixed
+>      * the system fills in. S in 23 with DS in 24-25 marks the program
+#^^^^^^^ source.rpgle comment.line.rpgle.fixed
+#       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle comment.line.rpgle.fixed
+>      * status structure, whose subfields are given by position.
+#^^^^^^^ source.rpgle comment.line.rpgle.fixed
+#       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle comment.line.rpgle.fixed
+>     DORDINFO          DS                  QUALIFIED
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.d
+#                       ^^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.dectype
+#                         ^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.d
+#                                        ^^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.decpos
+#                                          ^ source.rpgle rpgle.fixed.d
+#                                           ^^^^^^^^^ source.rpgle rpgle.fixed.d entity.name.function.rpgle.fixed.d.keywords
+>     D NUMBER                         7P 0
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.d
+#                                ^^^^^^^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.to
+#                                       ^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.datatype
+#                                        ^^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.decpos
+>     D CUSTOMER                      30A
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.d
+#                                ^^^^^^^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.to
+#                                       ^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.datatype
+>     D LINETOT                       11P 2
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.d
+#                                ^^^^^^^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.to
+#                                       ^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.datatype
+#                                        ^^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.decpos
+>     D BAND                           1A
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.d
+#                                ^^^^^^^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.to
+#                                       ^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.datatype
+>     DPGMSTAT         SDS
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.d
+#                      ^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.dstype
+#                       ^^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.dectype
+>     D PROCNAM                 1     10A
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.d
+#                         ^^^^^^^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.from
+#                                ^^^^^^^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.to
+#                                       ^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.datatype
+>     D STATCD                 11     15S 0
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.d
+#                         ^^^^^^^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.from
+#                                ^^^^^^^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.to
+#                                       ^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.datatype
+#                                        ^^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.decpos
+>     D ROUTINE                29     36A
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.d
+#                         ^^^^^^^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.from
+#                                ^^^^^^^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.to
+#                                       ^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.datatype
+>     D PARMCNT                37     39S 0
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.d
+#                         ^^^^^^^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.from
+#                                ^^^^^^^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.to
+#                                       ^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.datatype
+#                                        ^^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.decpos
+>     D EXCPID                 40     46A
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.d
+#                         ^^^^^^^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.from
+#                                ^^^^^^^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.to
+#                                       ^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.datatype
+>     D PGMNAM                334    343A
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.d
+#                         ^^^^^^^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.from
+#                                ^^^^^^^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.to
+#                                       ^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.datatype
+>     D USRNAM                358    367A
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.d
+#                         ^^^^^^^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.from
+#                                ^^^^^^^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.to
+#                                       ^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.datatype
+>     DORDHDRIN         DS
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.d
+#                       ^^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.dectype
+>     D FILENAME                1      8A
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.d
+#                         ^^^^^^^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.from
+#                                ^^^^^^^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.to
+#                                       ^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.datatype
+>     D OPENIND                 9      9N
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.d
+#                         ^^^^^^^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.from
+#                                ^^^^^^^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.to
+#                                       ^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.datatype
+>     D FSTATUS                11     15S 0
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.d
+#                         ^^^^^^^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.from
+#                                ^^^^^^^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.to
+#                                       ^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.datatype
+#                                        ^^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.decpos
+>     D FOPCODE                38     43A
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.d
+#                         ^^^^^^^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.from
+#                                ^^^^^^^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.to
+#                                       ^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.datatype
+>      *
+#^^^^^^^ source.rpgle comment.line.rpgle.fixed
 >      * A prototype for each subprocedure, so the calls below are
 #^^^^^^^ source.rpgle comment.line.rpgle.fixed
 #       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle comment.line.rpgle.fixed
->      * checked. The subprocedures themselves come after the main
+>      * checked, then one for a program and one for a bound procedure
 #^^^^^^^ source.rpgle comment.line.rpgle.fixed
-#       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle comment.line.rpgle.fixed
->      * section.
+#       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle comment.line.rpgle.fixed
+>      * called by name.
 #^^^^^^^ source.rpgle comment.line.rpgle.fixed
-#       ^^^^^^^^^ source.rpgle comment.line.rpgle.fixed
+#       ^^^^^^^^^^^^^^^^ source.rpgle comment.line.rpgle.fixed
 >     DlineTotal        PR            11P 2
 #^^^^^ source.rpgle comment.gutter
 #     ^ source.rpgle keyword.other.rpgle.fixed.specs
@@ -215,6 +563,97 @@
 #                                        ^^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.decpos
 #                                          ^ source.rpgle rpgle.fixed.d
 #                                           ^^^^^ source.rpgle rpgle.fixed.d entity.name.function.rpgle.fixed.d.keywords
+>     DfmtAmount        PR            20A   VARYING
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.d
+#                       ^^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.dectype
+#                         ^^^^^^^ source.rpgle rpgle.fixed.d
+#                                ^^^^^^^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.to
+#                                       ^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.datatype
+#                                        ^^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.decpos
+#                                          ^ source.rpgle rpgle.fixed.d
+#                                           ^^^^^^^ source.rpgle rpgle.fixed.d entity.name.function.rpgle.fixed.d.keywords
+>     Damount                         11P 2 VALUE
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.d
+#                                ^^^^^^^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.to
+#                                       ^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.datatype
+#                                        ^^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.decpos
+#                                          ^ source.rpgle rpgle.fixed.d
+#                                           ^^^^^ source.rpgle rpgle.fixed.d entity.name.function.rpgle.fixed.d.keywords
+>     DwithSign                        1N   VALUE OPTIONS(*NOPASS)
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.d
+#                                ^^^^^^^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.to
+#                                       ^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.datatype
+#                                        ^^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.decpos
+#                                          ^ source.rpgle rpgle.fixed.d
+#                                           ^^^^^ source.rpgle rpgle.fixed.d entity.name.function.rpgle.fixed.d.keywords
+#                                                ^ source.rpgle rpgle.fixed.d
+#                                                 ^^^^^^^ source.rpgle rpgle.fixed.d entity.name.function.rpgle.fixed.d.keywords
+#                                                        ^ source.rpgle rpgle.fixed.d
+#                                                         ^^^^^^^ source.rpgle rpgle.fixed.d constant.language.rpgle
+#                                                                ^^ source.rpgle rpgle.fixed.d
+>     DlogError         PR                  EXTPGM('ERRLOG')
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.d
+#                       ^^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.dectype
+#                         ^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.d
+#                                        ^^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.decpos
+#                                          ^ source.rpgle rpgle.fixed.d
+#                                           ^^^^^^ source.rpgle rpgle.fixed.d entity.name.function.rpgle.fixed.d.keywords
+#                                                 ^ source.rpgle rpgle.fixed.d
+#                                                  ^ source.rpgle rpgle.fixed.d string.quoted.single.rpgle.fixed
+#                                                   ^^^^^^ source.rpgle rpgle.fixed.d string.quoted.single.rpgle.fixed
+#                                                         ^ source.rpgle rpgle.fixed.d string.quoted.single.rpgle.fixed
+#                                                          ^^ source.rpgle rpgle.fixed.d
+>     Dmessage                        80A   CONST
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.d
+#                                ^^^^^^^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.to
+#                                       ^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.datatype
+#                                        ^^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.decpos
+#                                          ^ source.rpgle rpgle.fixed.d
+#                                           ^^^^^ source.rpgle rpgle.fixed.d entity.name.function.rpgle.fixed.d.keywords
+>     DfromPgm                        10A   CONST
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.d
+#                                ^^^^^^^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.to
+#                                       ^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.datatype
+#                                        ^^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.decpos
+#                                          ^ source.rpgle rpgle.fixed.d
+#                                           ^^^^^ source.rpgle rpgle.fixed.d entity.name.function.rpgle.fixed.d.keywords
+>     DtoUpper          PR            30A   EXTPROC('CVTUPPER')
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.d
+#                       ^^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.dectype
+#                         ^^^^^^^ source.rpgle rpgle.fixed.d
+#                                ^^^^^^^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.to
+#                                       ^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.datatype
+#                                        ^^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.decpos
+#                                          ^ source.rpgle rpgle.fixed.d
+#                                           ^^^^^^^ source.rpgle rpgle.fixed.d entity.name.function.rpgle.fixed.d.keywords
+#                                                  ^ source.rpgle rpgle.fixed.d
+#                                                   ^ source.rpgle rpgle.fixed.d string.quoted.single.rpgle.fixed
+#                                                    ^^^^^^^^ source.rpgle rpgle.fixed.d string.quoted.single.rpgle.fixed
+#                                                            ^ source.rpgle rpgle.fixed.d string.quoted.single.rpgle.fixed
+#                                                             ^^ source.rpgle rpgle.fixed.d
+>     Dtext                           30A   CONST
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.d
+#                                ^^^^^^^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.to
+#                                       ^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.datatype
+#                                        ^^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.decpos
+#                                          ^ source.rpgle rpgle.fixed.d
+#                                           ^^^^^ source.rpgle rpgle.fixed.d entity.name.function.rpgle.fixed.d.keywords
 >      *
 #^^^^^^^ source.rpgle comment.line.rpgle.fixed
 >      * Input specifications rename the externally described fields.
@@ -225,10 +664,14 @@
 #     ^ source.rpgle keyword.other.rpgle.fixed.specs
 #      ^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.i
 #                    ^^ source.rpgle rpgle.fixed.i constant.language.rpgle.fixed.i.recordid
->     I              CUSTOMERNAME                CUSTNM
+>     I              CUSTOMERNM                  ORDCUST
 #^^^^^ source.rpgle comment.gutter
 #     ^ source.rpgle keyword.other.rpgle.fixed.specs
-#      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.i
+#      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.i
+>     I              ORDERDATE                   ORDDATE
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.i
 >     IORDDTL        02
 #^^^^^ source.rpgle comment.gutter
 #     ^ source.rpgle keyword.other.rpgle.fixed.specs
@@ -240,18 +683,164 @@
 #      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.i
 >      *
 #^^^^^^^ source.rpgle comment.line.rpgle.fixed
->      * Calculations. The cycle reads ORDHDR; the detail loop calls
+>      * Calculations. The entry list names the parameters the program
 #^^^^^^^ source.rpgle comment.line.rpgle.fixed
-#       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle comment.line.rpgle.fixed
->      * the subprocedures defined further down.
+#       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle comment.line.rpgle.fixed
+>      * is called with, and the key list is the composite key the
 #^^^^^^^ source.rpgle comment.line.rpgle.fixed
-#       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle comment.line.rpgle.fixed
+#       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle comment.line.rpgle.fixed
+>      * audit file is read by. Neither has a free-form spelling.
+#^^^^^^^ source.rpgle comment.line.rpgle.fixed
+#       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle comment.line.rpgle.fixed
+>     C     *ENTRY        PLIST
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^ source.rpgle rpgle.fixed.c
+#           ^^^^^^ source.rpgle rpgle.fixed.c constant.language.rpgle
+#                 ^^^^^^^^ source.rpgle rpgle.fixed.c
+#                         ^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.operation
+>     C                   PARM                    COMPANY
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.c
+#                         ^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.operation
+#                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.c
+>     C                   PARM                    RPTDATE
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.c
+#                         ^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.operation
+#                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.c
+>     C     AUDKEY        KLIST
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.c
+#                         ^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.operation
+>     C                   KFLD                    COMPANY
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.c
+#                         ^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.operation
+#                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.c
+>     C                   KFLD                    SAVEDKEY
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.c
+#                         ^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.operation
+#                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.c
+>      *
+#^^^^^^^ source.rpgle comment.line.rpgle.fixed
+>      * Opening a USROPN file can fail, so it is guarded. %STATUS
+#^^^^^^^ source.rpgle comment.line.rpgle.fixed
+#       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle comment.line.rpgle.fixed
+>      * reports what went wrong and the program gives up cleanly.
+#^^^^^^^ source.rpgle comment.line.rpgle.fixed
+#       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle comment.line.rpgle.fixed
+>     C                   MONITOR
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.c
+#                         ^^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.operation
 >     C                   OPEN      ORDHDR
 #^^^^^ source.rpgle comment.gutter
 #     ^ source.rpgle keyword.other.rpgle.fixed.specs
 #      ^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.c
 #                         ^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.operation
 #                             ^^^^^^^^^^^^^ source.rpgle rpgle.fixed.c
+>     C                   ON-ERROR
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.c
+#                         ^^^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+>     C                   EVAL      ERRMSG = 'Open failed: ' + %CHAR(%STATUS)
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.c
+#                         ^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                             ^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                   ^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
+#                                         ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                          ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 keyword.operator.rpgle
+#                                           ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                            ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 string.quoted.single.rpgle
+#                                             ^^^^^^^^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 string.quoted.single.rpgle
+#                                                          ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 string.quoted.single.rpgle
+#                                                           ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                                            ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 keyword.operator.rpgle
+#                                                             ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                                              ^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 support.function.rpgle.bif
+#                                                                   ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
+#                                                                    ^^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 support.function.rpgle.bif
+#                                                                           ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
+>     C                   CALLP     logError(ERRMSG : PGMSTAT.PGMNAM)
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.c
+#                         ^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                              ^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                   ^^^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
+#                                           ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
+#                                            ^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
+#                                                  ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                                   ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 keyword.other.rpgle
+#                                                    ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                                     ^^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
+#                                                            ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 keyword.other.rpgle
+#                                                             ^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
+#                                                                   ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
+>     C                   SETON                                            LR
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.c
+#                         ^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.operation
+#                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.c
+#                                                               ^^^^^ source.rpgle rpgle.fixed.c constant.language.rpgle.fixed.c.len
+#                                                                    ^^ source.rpgle rpgle.fixed.c constant.language.rpgle.fixed.c.decpos
+#                                                                      ^^^^ source.rpgle rpgle.fixed.c
+#                                                                          ^^ source.rpgle rpgle.fixed.c constant.language.rpgle.fixed.c.eq
+>     C                   RETURN
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.c
+#                         ^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+>     C                   ENDMON
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.c
+#                         ^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.operation
+>     C                   EXCEPT    HEADINGS
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.c
+#                         ^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.operation
+#                               ^^^^^^^^^^^^^ source.rpgle rpgle.fixed.c
+>      *
+#^^^^^^^ source.rpgle comment.line.rpgle.fixed
+>      * The order loop. Each header is read, its details are totalled
+#^^^^^^^ source.rpgle comment.line.rpgle.fixed
+#       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle comment.line.rpgle.fixed
+>      * and banded, and an audit row is written for the order.
+#^^^^^^^ source.rpgle comment.line.rpgle.fixed
+#       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle comment.line.rpgle.fixed
+>     C                   READ      ORDHDR                                 90
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.c
+#                         ^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.operation
+#                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.c
+#                                                               ^^^^^ source.rpgle rpgle.fixed.c constant.language.rpgle.fixed.c.len
+#                                                                    ^^ source.rpgle rpgle.fixed.c constant.language.rpgle.fixed.c.decpos
+#                                                                      ^^^^ source.rpgle rpgle.fixed.c
+#                                                                          ^^ source.rpgle rpgle.fixed.c constant.language.rpgle.fixed.c.eq
+>     C                   DOW       NOT *IN90
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.c
+#                         ^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                              ^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                   ^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 keyword.other.rpgle
+#                                      ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                       ^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 constant.language.rpgle.indicator
 >     C   01              EVAL      ORDCOUNT = ORDCOUNT + 1
 #^^^^^ source.rpgle comment.gutter
 #     ^ source.rpgle keyword.other.rpgle.fixed.specs
@@ -269,32 +858,47 @@
 #                                                       ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 keyword.operator.rpgle
 #                                                        ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
 #                                                         ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 constant.numeric.rpgle
->     C     ORDNBR        SETLL     ORDDTL
+>     C                   EVAL      SAVEDKEY = ORDNBR
 #^^^^^ source.rpgle comment.gutter
 #     ^ source.rpgle keyword.other.rpgle.fixed.specs
 #      ^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.c
-#                         ^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.operation
-#                              ^^^^^^^^^^^^ source.rpgle rpgle.fixed.c
->     C     ORDNBR        READE     ORDDTL                                 90
+#                         ^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                             ^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                   ^^^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
+#                                           ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                            ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 keyword.operator.rpgle
+#                                             ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                              ^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
+>     C                   EVAL      ORDINFO.NUMBER = ORDNBR
 #^^^^^ source.rpgle comment.gutter
 #     ^ source.rpgle keyword.other.rpgle.fixed.specs
 #      ^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.c
-#                         ^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.operation
-#                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.c
-#                                                               ^^^^^ source.rpgle rpgle.fixed.c constant.language.rpgle.fixed.c.len
-#                                                                    ^^ source.rpgle rpgle.fixed.c constant.language.rpgle.fixed.c.decpos
-#                                                                      ^^^^ source.rpgle rpgle.fixed.c
-#                                                                          ^^ source.rpgle rpgle.fixed.c constant.language.rpgle.fixed.c.eq
->     C                   DOW       NOT *IN90
+#                         ^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                             ^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                   ^^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
+#                                          ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 keyword.other.rpgle
+#                                           ^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
+#                                                 ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                                  ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 keyword.operator.rpgle
+#                                                   ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                                    ^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
+>     C                   EVAL      ORDINFO.CUSTOMER = toUpper(ORDCUST)
 #^^^^^ source.rpgle comment.gutter
 #     ^ source.rpgle keyword.other.rpgle.fixed.specs
 #      ^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.c
-#                         ^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
-#                              ^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
-#                                   ^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 keyword.other.rpgle
-#                                      ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
-#                                       ^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 constant.language.rpgle.indicator
->     C                   EVAL      LINETOT = lineTotal(ORDQTY : ORDPRC)
+#                         ^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                             ^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                   ^^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
+#                                          ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 keyword.other.rpgle
+#                                           ^^^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
+#                                                   ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                                    ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 keyword.operator.rpgle
+#                                                     ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                                      ^^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
+#                                                             ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
+#                                                              ^^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
+#                                                                     ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
+>     C                   EVAL      DAYSOLD = %DIFF(RPTDATE : ORDDATE : *D)
 #^^^^^ source.rpgle comment.gutter
 #     ^ source.rpgle keyword.other.rpgle.fixed.specs
 #      ^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.c
@@ -304,15 +908,104 @@
 #                                          ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
 #                                           ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 keyword.operator.rpgle
 #                                            ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
-#                                             ^^^^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
-#                                                      ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
-#                                                       ^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
-#                                                             ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
-#                                                              ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 keyword.other.rpgle
-#                                                               ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
-#                                                                ^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
-#                                                                      ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
->     C                   EVAL      GRANDTOT = GRANDTOT + LINETOT
+#                                             ^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 support.function.rpgle.bif
+#                                                  ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
+#                                                   ^^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
+#                                                          ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                                           ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 keyword.other.rpgle
+#                                                            ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                                             ^^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
+#                                                                    ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                                                     ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 keyword.other.rpgle
+#                                                                      ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                                                       ^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 constant.language.rpgle
+#                                                                         ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
+>     C                   IF        DAYSOLD > STALEDAY
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.c
+#                         ^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                             ^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                   ^^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
+#                                          ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                           ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 keyword.operator.rpgle
+#                                            ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                             ^^^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
+>     C                   EXSR      STALEORD
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.c
+#                         ^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.operation
+#                             ^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.c
+>     C                   ENDIF
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.c
+#                         ^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.operation
+>     C     SAVEDKEY      SETLL     ORDDTL
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.c
+#                         ^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.operation
+#                              ^^^^^^^^^^^^ source.rpgle rpgle.fixed.c
+>     C     SAVEDKEY      READE     ORDDTL                                 91
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.c
+#                         ^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.operation
+#                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.c
+#                                                               ^^^^^ source.rpgle rpgle.fixed.c constant.language.rpgle.fixed.c.len
+#                                                                    ^^ source.rpgle rpgle.fixed.c constant.language.rpgle.fixed.c.decpos
+#                                                                      ^^^^ source.rpgle rpgle.fixed.c
+#                                                                          ^^ source.rpgle rpgle.fixed.c constant.language.rpgle.fixed.c.eq
+>     C                   DOW       NOT *IN91
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.c
+#                         ^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                              ^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                   ^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 keyword.other.rpgle
+#                                      ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                       ^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 constant.language.rpgle.indicator
+>     C                   EVAL      ORDINFO.LINETOT = lineTotal(ORDQTY : ORDPRC)
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.c
+#                         ^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                             ^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                   ^^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
+#                                          ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 keyword.other.rpgle
+#                                           ^^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
+#                                                  ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                                   ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 keyword.operator.rpgle
+#                                                    ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                                     ^^^^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
+#                                                              ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
+#                                                               ^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
+#                                                                     ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                                                      ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 keyword.other.rpgle
+#                                                                       ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                                                        ^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
+#                                                                              ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
+>     C                   EVAL      ORDINFO.BAND = bandFor(ORDINFO.LINETOT)
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.c
+#                         ^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                             ^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                   ^^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
+#                                          ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 keyword.other.rpgle
+#                                           ^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
+#                                               ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                                ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 keyword.operator.rpgle
+#                                                 ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                                  ^^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
+#                                                         ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
+#                                                          ^^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
+#                                                                 ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 keyword.other.rpgle
+#                                                                  ^^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
+#                                                                         ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
+>     C                   EVAL      GRANDTOT = GRANDTOT + ORDINFO.LINETOT
 #^^^^^ source.rpgle comment.gutter
 #     ^ source.rpgle keyword.other.rpgle.fixed.specs
 #      ^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.c
@@ -327,27 +1020,44 @@
 #                                                       ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 keyword.operator.rpgle
 #                                                        ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
 #                                                         ^^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
->     C                   EVAL      BAND = bandFor(LINETOT)
+#                                                                ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 keyword.other.rpgle
+#                                                                 ^^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
+>     C                   IF        *INOF
 #^^^^^ source.rpgle comment.gutter
 #     ^ source.rpgle keyword.other.rpgle.fixed.specs
 #      ^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.c
 #                         ^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
 #                             ^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
-#                                   ^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
-#                                       ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
-#                                        ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 keyword.operator.rpgle
-#                                         ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
-#                                          ^^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
-#                                                 ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
-#                                                  ^^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
-#                                                         ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
+#                                   ^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 constant.language.rpgle.indicator
+>     C                   EXCEPT    HEADINGS
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.c
+#                         ^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.operation
+#                               ^^^^^^^^^^^^^ source.rpgle rpgle.fixed.c
+>     C                   EVAL      *INOF = *OFF
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.c
+#                         ^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                             ^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                   ^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 constant.language.rpgle.indicator
+#                                        ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                         ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 keyword.operator.rpgle
+#                                          ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                           ^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 constant.language.rpgle
+>     C                   ENDIF
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.c
+#                         ^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.operation
 >     C                   EXCEPT    DETAIL
 #^^^^^ source.rpgle comment.gutter
 #     ^ source.rpgle keyword.other.rpgle.fixed.specs
 #      ^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.c
 #                         ^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.operation
 #                               ^^^^^^^^^^^ source.rpgle rpgle.fixed.c
->     C     ORDNBR        READE     ORDDTL                                 90
+>     C     SAVEDKEY      READE     ORDDTL                                 91
 #^^^^^ source.rpgle comment.gutter
 #     ^ source.rpgle keyword.other.rpgle.fixed.specs
 #      ^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.c
@@ -362,12 +1072,31 @@
 #     ^ source.rpgle keyword.other.rpgle.fixed.specs
 #      ^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.c
 #                         ^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.operation
->     C   LR              EXCEPT    TOTALS
+>     C                   EXSR      WRITEAUD
 #^^^^^ source.rpgle comment.gutter
 #     ^ source.rpgle keyword.other.rpgle.fixed.specs
-#      ^^ source.rpgle rpgle.fixed.c
-#        ^^^ source.rpgle rpgle.fixed.c constant.language.rpgle.fixed.c.n01
-#           ^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.c
+#      ^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.c
+#                         ^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.operation
+#                             ^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.c
+>     C                   READ      ORDHDR                                 90
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.c
+#                         ^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.operation
+#                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.c
+#                                                               ^^^^^ source.rpgle rpgle.fixed.c constant.language.rpgle.fixed.c.len
+#                                                                    ^^ source.rpgle rpgle.fixed.c constant.language.rpgle.fixed.c.decpos
+#                                                                      ^^^^ source.rpgle rpgle.fixed.c
+#                                                                          ^^ source.rpgle rpgle.fixed.c constant.language.rpgle.fixed.c.eq
+>     C                   ENDDO
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.c
+#                         ^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.operation
+>     C                   EXCEPT    TOTALS
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.c
 #                         ^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.operation
 #                               ^^^^^^^^^^^ source.rpgle rpgle.fixed.c
 >     C                   CLOSE     ORDHDR
@@ -386,11 +1115,205 @@
 #                                                                    ^^ source.rpgle rpgle.fixed.c constant.language.rpgle.fixed.c.decpos
 #                                                                      ^^^^ source.rpgle rpgle.fixed.c
 #                                                                          ^^ source.rpgle rpgle.fixed.c constant.language.rpgle.fixed.c.eq
+>     C                   RETURN
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.c
+#                         ^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
 >      *
 #^^^^^^^ source.rpgle comment.line.rpgle.fixed
->      * Output specifications close the main source section.
+>      * Subroutines. They are part of the main source section and see
 #^^^^^^^ source.rpgle comment.line.rpgle.fixed
-#       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle comment.line.rpgle.fixed
+#       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle comment.line.rpgle.fixed
+>      * everything declared in it.
+#^^^^^^^ source.rpgle comment.line.rpgle.fixed
+#       ^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle comment.line.rpgle.fixed
+>     C     STALEORD      BEGSR
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.c
+#                         ^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.operation
+>     C                   EVAL      ERRMSG = 'Stale order ' + %CHAR(SAVEDKEY)
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.c
+#                         ^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                             ^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                   ^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
+#                                         ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                          ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 keyword.operator.rpgle
+#                                           ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                            ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 string.quoted.single.rpgle
+#                                             ^^^^^^^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 string.quoted.single.rpgle
+#                                                         ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 string.quoted.single.rpgle
+#                                                          ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                                           ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 keyword.operator.rpgle
+#                                                            ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                                             ^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 support.function.rpgle.bif
+#                                                                  ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
+#                                                                   ^^^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
+#                                                                           ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
+>     C                   CALLP     logError(ERRMSG : PGMSTAT.PGMNAM)
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.c
+#                         ^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                              ^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                   ^^^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
+#                                           ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
+#                                            ^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
+#                                                  ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                                   ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 keyword.other.rpgle
+#                                                    ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                                     ^^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
+#                                                            ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 keyword.other.rpgle
+#                                                             ^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
+#                                                                   ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
+>     C                   ENDSR
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.c
+#                         ^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.operation
+>     C     WRITEAUD      BEGSR
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.c
+#                         ^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.operation
+>     C     AUDKEY        CHAIN     ORDAUD                             99
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.c
+#                         ^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.operation
+#                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.c
+#                                                               ^^^^^ source.rpgle rpgle.fixed.c constant.language.rpgle.fixed.c.len
+#                                                                    ^^ source.rpgle rpgle.fixed.c constant.language.rpgle.fixed.c.decpos
+#                                                                      ^^ source.rpgle rpgle.fixed.c constant.language.rpgle.fixed.c.hi
+>     C   99              EVAL      ERRMSG = 'Audit chain failed'
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^ source.rpgle rpgle.fixed.c
+#        ^^^ source.rpgle rpgle.fixed.c constant.language.rpgle.fixed.c.n01
+#           ^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.c
+#                         ^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                             ^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                   ^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
+#                                         ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                          ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 keyword.operator.rpgle
+#                                           ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                            ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 string.quoted.single.rpgle
+#                                             ^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 string.quoted.single.rpgle
+#                                                               ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 string.quoted.single.rpgle
+>     C                   IF        NOT *IN99 AND %FOUND(ORDAUD)
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.c
+#                         ^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                             ^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                   ^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 keyword.other.rpgle
+#                                      ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                       ^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 constant.language.rpgle.indicator
+#                                            ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                             ^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 keyword.other.rpgle
+#                                                ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                                 ^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 support.function.rpgle.bif
+#                                                       ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
+#                                                        ^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
+#                                                              ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
+>     C                   EVAL      AUDTOTAL = GRANDTOT
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.c
+#                         ^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                             ^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                   ^^^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
+#                                           ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                            ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 keyword.operator.rpgle
+#                                             ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                              ^^^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
+>     C                   IF        AUDTOTAL = 0
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.c
+#                         ^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                             ^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                   ^^^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
+#                                           ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                            ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 keyword.operator.rpgle
+#                                             ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                              ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 constant.numeric.rpgle
+>     C                   DELETE    ORDAUDR
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.c
+#                         ^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.operation
+#                               ^^^^^^^^^^^^ source.rpgle rpgle.fixed.c
+>     C                   ELSE
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.c
+#                         ^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.operation
+>     C                   UPDATE    ORDAUDR
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.c
+#                         ^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.operation
+#                               ^^^^^^^^^^^^ source.rpgle rpgle.fixed.c
+>     C                   ENDIF
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.c
+#                         ^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.operation
+>     C                   ELSE
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.c
+#                         ^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.operation
+>     C                   EVAL      AUDORDER = SAVEDKEY
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.c
+#                         ^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                             ^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                   ^^^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
+#                                           ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                            ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 keyword.operator.rpgle
+#                                             ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                              ^^^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
+>     C                   EVAL      AUDTOTAL = GRANDTOT
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.c
+#                         ^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                             ^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                   ^^^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
+#                                           ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                            ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 keyword.operator.rpgle
+#                                             ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                              ^^^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
+>     C                   WRITE     ORDAUDR
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.c
+#                         ^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.operation
+#                              ^^^^^^^^^^^^^ source.rpgle rpgle.fixed.c
+>     C                   ENDIF
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.c
+#                         ^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.operation
+>     C                   ENDSR
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.c
+#                         ^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.operation
+>      *
+#^^^^^^^ source.rpgle comment.line.rpgle.fixed
+>      * Output specifications close the main source section. The
+#^^^^^^^ source.rpgle comment.line.rpgle.fixed
+#       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle comment.line.rpgle.fixed
+>      * overflow indicator reprints the heading on a new page.
+#^^^^^^^ source.rpgle comment.line.rpgle.fixed
+#       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle comment.line.rpgle.fixed
 >     OORDPRT    HF   1P                     2
 #^^^^^ source.rpgle comment.gutter
 #     ^ source.rpgle keyword.other.rpgle.fixed.specs
@@ -410,6 +1333,42 @@
 #                                                    ^ source.rpgle rpgle.fixed.o string.quoted.single.rpgle
 #                                                     ^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.o string.quoted.single.rpgle
 #                                                                   ^ source.rpgle rpgle.fixed.o string.quoted.single.rpgle
+>     O                       *DATE         Y     60
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.o
+#                             ^^^^^ source.rpgle rpgle.fixed.o constant.language.rpgle
+#                                  ^^^^^^^^^ source.rpgle rpgle.fixed.o
+#                                           ^ source.rpgle rpgle.fixed.o constant.language.rpgle.fixed.o.editcode
+#                                            ^^ source.rpgle rpgle.fixed.o
+#                                              ^^^^^ source.rpgle rpgle.fixed.o constant.language.rpgle.fixed.o.endpos
+>     O                       PAGE          1     70
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.o
+#                             ^^^^ source.rpgle rpgle.fixed.o constant.language.rpgle
+#                                 ^^^^^^^^^^ source.rpgle rpgle.fixed.o
+#                                           ^ source.rpgle rpgle.fixed.o constant.language.rpgle.fixed.o.editcode
+#                                            ^^ source.rpgle rpgle.fixed.o
+#                                              ^^^^^ source.rpgle rpgle.fixed.o constant.language.rpgle.fixed.o.endpos
+>     OORDPRT    H    OF                     2
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^ source.rpgle rpgle.fixed.o
+#                ^ source.rpgle rpgle.fixed.o constant.language.rpgle.fixed.o.type
+#                 ^^^ source.rpgle rpgle.fixed.o
+#                    ^^^ source.rpgle rpgle.fixed.o constant.language.rpgle.fixed.o.n01
+#                       ^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.o
+#                                          ^^^ source.rpgle rpgle.fixed.o constant.language.rpgle.fixed.o.spaceafter
+>     O                                           40 'ORDER REGISTER'
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.o
+#                                              ^^^^^ source.rpgle rpgle.fixed.o constant.language.rpgle.fixed.o.endpos
+#                                                   ^ source.rpgle rpgle.fixed.o
+#                                                    ^ source.rpgle rpgle.fixed.o string.quoted.single.rpgle
+#                                                     ^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.o string.quoted.single.rpgle
+#                                                                   ^ source.rpgle rpgle.fixed.o string.quoted.single.rpgle
 >     OORDPRT    E            DETAIL         1
 #^^^^^ source.rpgle comment.gutter
 #     ^ source.rpgle keyword.other.rpgle.fixed.specs
@@ -417,7 +1376,7 @@
 #                ^ source.rpgle rpgle.fixed.o constant.language.rpgle.fixed.o.type
 #                 ^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.o
 #                                          ^^^ source.rpgle rpgle.fixed.o constant.language.rpgle.fixed.o.spaceafter
->     O                       CUSTNM              30
+>     O                       CUSTOMER            30
 #^^^^^ source.rpgle comment.gutter
 #     ^ source.rpgle keyword.other.rpgle.fixed.specs
 #      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.o
@@ -451,6 +1410,13 @@
 #                                                     ^^^^^^^^^^^ source.rpgle rpgle.fixed.o string.quoted.single.rpgle
 #                                                                ^ source.rpgle rpgle.fixed.o string.quoted.single.rpgle
 >     O                       GRANDTOT      1     48
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.o
+#                                           ^ source.rpgle rpgle.fixed.o constant.language.rpgle.fixed.o.editcode
+#                                            ^^ source.rpgle rpgle.fixed.o
+#                                              ^^^^^ source.rpgle rpgle.fixed.o constant.language.rpgle.fixed.o.endpos
+>     O                       ORDCOUNT      1     64
 #^^^^^ source.rpgle comment.gutter
 #     ^ source.rpgle keyword.other.rpgle.fixed.specs
 #      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.o
@@ -511,6 +1477,15 @@
 #                                ^^^^^^^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.to
 #                                       ^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.datatype
 #                                        ^^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.decpos
+>     Didx              S             10I 0
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.d
+#                       ^^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.dectype
+#                         ^^^^^^^ source.rpgle rpgle.fixed.d
+#                                ^^^^^^^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.to
+#                                       ^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.datatype
+#                                        ^^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.decpos
 >     C                   EVAL      gross = qty * price
 #^^^^^ source.rpgle comment.gutter
 #     ^ source.rpgle keyword.other.rpgle.fixed.specs
@@ -526,7 +1501,55 @@
 #                                               ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 keyword.operator.rpgle
 #                                                ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
 #                                                 ^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
->     C                   RETURN    gross + (gross * TAXRATE(1))
+>     C                   EVAL      idx = %LOOKUPGE(qty : QTYBREAK)
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.c
+#                         ^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                             ^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                   ^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
+#                                      ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                       ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 keyword.operator.rpgle
+#                                        ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                         ^^^^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 support.function.rpgle.bif
+#                                                  ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
+#                                                   ^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
+#                                                      ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                                       ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 keyword.other.rpgle
+#                                                        ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                                         ^^^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
+#                                                                 ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
+>     C                   IF        idx = 0
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.c
+#                         ^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                             ^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                   ^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
+#                                      ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                       ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 keyword.operator.rpgle
+#                                        ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                         ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 constant.numeric.rpgle
+>     C                   EVAL      idx = %ELEM(TAXRATE)
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.c
+#                         ^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                             ^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                   ^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
+#                                      ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                       ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 keyword.operator.rpgle
+#                                        ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                         ^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 support.function.rpgle.bif
+#                                              ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
+#                                               ^^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
+#                                                      ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
+>     C                   ENDIF
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.c
+#                         ^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.operation
+>     C                   RETURN    gross + (gross * TAXRATE(idx))
 #^^^^^ source.rpgle comment.gutter
 #     ^ source.rpgle keyword.other.rpgle.fixed.specs
 #      ^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.c
@@ -543,9 +1566,9 @@
 #                                                   ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
 #                                                    ^^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
 #                                                           ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
-#                                                            ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 constant.numeric.rpgle
-#                                                             ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
-#                                                              ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
+#                                                            ^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
+#                                                               ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
+#                                                                ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
 >     PlineTotal        E
 #^^^^^ source.rpgle comment.gutter
 #     ^ source.rpgle keyword.other.rpgle.fixed.specs
@@ -556,9 +1579,12 @@
 >      * The second subprocedure opens a file of its own. A file
 #^^^^^^^ source.rpgle comment.line.rpgle.fixed
 #       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle comment.line.rpgle.fixed
->      * defined here is not visible to the main source section.
+>      * defined here is not visible to the main source section. A
 #^^^^^^^ source.rpgle comment.line.rpgle.fixed
-#       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle comment.line.rpgle.fixed
+#       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle comment.line.rpgle.fixed
+>      * SELECT group picks the band.
+#^^^^^^^ source.rpgle comment.line.rpgle.fixed
+#       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle comment.line.rpgle.fixed
 >     PbandFor          B                   EXPORT
 #^^^^^ source.rpgle comment.gutter
 #     ^ source.rpgle keyword.other.rpgle.fixed.specs
@@ -613,7 +1639,36 @@
 #                                                ^ source.rpgle rpgle.fixed.d string.quoted.single.rpgle.fixed
 #                                                 ^ source.rpgle rpgle.fixed.d string.quoted.single.rpgle.fixed
 #                                                  ^^ source.rpgle rpgle.fixed.d
->     C                   IF        amount >= 1000
+>     C                   MONITOR
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.c
+#                         ^^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.operation
+>     C     amount        CHAIN(E)  BANDREF
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.c
+#                         ^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.operation
+#                              ^ source.rpgle rpgle.fixed.c
+#                               ^ source.rpgle rpgle.fixed.c constant.language.rpgle.fixed.c.extender
+#                                ^ source.rpgle rpgle.fixed.c
+#                                 ^^^^^^^^^^ source.rpgle rpgle.fixed.c
+>     C                   SELECT
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.c
+#                         ^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.operation
+>     C                   WHEN      %FOUND(BANDREF)
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.c
+#                         ^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                               ^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                   ^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 support.function.rpgle.bif
+#                                         ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
+#                                          ^^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
+#                                                 ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
+>     C                   EVAL      result = BANDCODE
 #^^^^^ source.rpgle comment.gutter
 #     ^ source.rpgle keyword.other.rpgle.fixed.specs
 #      ^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.c
@@ -621,9 +1676,20 @@
 #                             ^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
 #                                   ^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
 #                                         ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                          ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 keyword.operator.rpgle
+#                                           ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                            ^^^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
+>     C                   WHEN      amount >= BANDAFLR
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.c
+#                         ^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                               ^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                   ^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
+#                                         ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
 #                                          ^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 keyword.operator.rpgle
 #                                            ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
-#                                             ^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 constant.numeric.rpgle
+#                                             ^^^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
 >     C                   EVAL      result = 'A'
 #^^^^^ source.rpgle comment.gutter
 #     ^ source.rpgle keyword.other.rpgle.fixed.specs
@@ -637,7 +1703,7 @@
 #                                            ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 string.quoted.single.rpgle
 #                                             ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 string.quoted.single.rpgle
 #                                              ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 string.quoted.single.rpgle
->     C                   ELSEIF    amount >= 100
+>     C                   WHEN      amount >= BANDBFLR
 #^^^^^ source.rpgle comment.gutter
 #     ^ source.rpgle keyword.other.rpgle.fixed.specs
 #      ^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.c
@@ -647,7 +1713,7 @@
 #                                         ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
 #                                          ^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 keyword.operator.rpgle
 #                                            ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
-#                                             ^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 constant.numeric.rpgle
+#                                             ^^^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
 >     C                   EVAL      result = 'B'
 #^^^^^ source.rpgle comment.gutter
 #     ^ source.rpgle keyword.other.rpgle.fixed.specs
@@ -661,11 +1727,72 @@
 #                                            ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 string.quoted.single.rpgle
 #                                             ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 string.quoted.single.rpgle
 #                                              ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 string.quoted.single.rpgle
->     C                   ENDIF
+>     C                   OTHER
 #^^^^^ source.rpgle comment.gutter
 #     ^ source.rpgle keyword.other.rpgle.fixed.specs
 #      ^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.c
 #                         ^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.operation
+>     C                   EVAL      result = 'C'
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.c
+#                         ^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                             ^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                   ^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
+#                                         ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                          ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 keyword.operator.rpgle
+#                                           ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                            ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 string.quoted.single.rpgle
+#                                             ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 string.quoted.single.rpgle
+#                                              ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 string.quoted.single.rpgle
+>     C                   ENDSL
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.c
+#                         ^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.operation
+>     C                   ON-ERROR  *FILE
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.c
+#                         ^^^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                 ^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                   ^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 constant.language.rpgle
+>     C                   EVAL      result = '?'
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.c
+#                         ^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                             ^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                   ^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
+#                                         ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                          ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 keyword.operator.rpgle
+#                                           ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                            ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 string.quoted.single.rpgle
+#                                             ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 string.quoted.single.rpgle
+#                                              ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 string.quoted.single.rpgle
+>     C                   ON-ERROR
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.c
+#                         ^^^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+>     C                   EVAL      result = '!'
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.c
+#                         ^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                             ^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                   ^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
+#                                         ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                          ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 keyword.operator.rpgle
+#                                           ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                            ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 string.quoted.single.rpgle
+#                                             ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 string.quoted.single.rpgle
+#                                              ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 string.quoted.single.rpgle
+>     C                   ENDMON
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.c
+#                         ^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.operation
 >     C                   RETURN    result
 #^^^^^ source.rpgle comment.gutter
 #     ^ source.rpgle keyword.other.rpgle.fixed.specs
@@ -674,6 +1801,227 @@
 #                               ^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
 #                                   ^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
 >     PbandFor          E
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.p
+#                       ^ source.rpgle rpgle.fixed.p constant.language.rpgle.fixed.p.beginend
+>      *
+#^^^^^^^ source.rpgle comment.line.rpgle.fixed
+>      * The third takes an optional parameter, so it has to ask
+#^^^^^^^ source.rpgle comment.line.rpgle.fixed
+#       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle comment.line.rpgle.fixed
+>      * whether it was passed before reading it.
+#^^^^^^^ source.rpgle comment.line.rpgle.fixed
+#       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle comment.line.rpgle.fixed
+>     PfmtAmount        B                   EXPORT
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.p
+#                       ^ source.rpgle rpgle.fixed.p constant.language.rpgle.fixed.p.beginend
+#                        ^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.p
+#                                           ^^^^^^ source.rpgle rpgle.fixed.p entity.name.function.rpgle.fixed.p.keywords
+>     DfmtAmount        PI            20A   VARYING
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.d
+#                       ^^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.dectype
+#                         ^^^^^^^ source.rpgle rpgle.fixed.d
+#                                ^^^^^^^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.to
+#                                       ^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.datatype
+#                                        ^^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.decpos
+#                                          ^ source.rpgle rpgle.fixed.d
+#                                           ^^^^^^^ source.rpgle rpgle.fixed.d entity.name.function.rpgle.fixed.d.keywords
+>     Damount                         11P 2 VALUE
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.d
+#                                ^^^^^^^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.to
+#                                       ^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.datatype
+#                                        ^^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.decpos
+#                                          ^ source.rpgle rpgle.fixed.d
+#                                           ^^^^^ source.rpgle rpgle.fixed.d entity.name.function.rpgle.fixed.d.keywords
+>     DwithSign                        1N   VALUE OPTIONS(*NOPASS)
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.d
+#                                ^^^^^^^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.to
+#                                       ^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.datatype
+#                                        ^^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.decpos
+#                                          ^ source.rpgle rpgle.fixed.d
+#                                           ^^^^^ source.rpgle rpgle.fixed.d entity.name.function.rpgle.fixed.d.keywords
+#                                                ^ source.rpgle rpgle.fixed.d
+#                                                 ^^^^^^^ source.rpgle rpgle.fixed.d entity.name.function.rpgle.fixed.d.keywords
+#                                                        ^ source.rpgle rpgle.fixed.d
+#                                                         ^^^^^^^ source.rpgle rpgle.fixed.d constant.language.rpgle
+#                                                                ^^ source.rpgle rpgle.fixed.d
+>     Dedited           S             20A
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.d
+#                       ^^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.dectype
+#                         ^^^^^^^ source.rpgle rpgle.fixed.d
+#                                ^^^^^^^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.to
+#                                       ^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.datatype
+>     Dsigned           S              1N   INZ(*OFF)
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.d
+#                       ^^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.dectype
+#                         ^^^^^^^ source.rpgle rpgle.fixed.d
+#                                ^^^^^^^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.to
+#                                       ^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.datatype
+#                                        ^^ source.rpgle rpgle.fixed.d constant.language.rpgle.fixed.d.decpos
+#                                          ^ source.rpgle rpgle.fixed.d
+#                                           ^^^ source.rpgle rpgle.fixed.d entity.name.function.rpgle.fixed.d.keywords
+#                                              ^ source.rpgle rpgle.fixed.d
+#                                               ^^^^ source.rpgle rpgle.fixed.d constant.language.rpgle
+#                                                   ^^ source.rpgle rpgle.fixed.d
+>     C                   IF        %PARMS >= %PARMNUM(withSign)
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.c
+#                         ^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                             ^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                   ^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 support.function.rpgle.bif
+#                                         ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                          ^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 keyword.operator.rpgle
+#                                            ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                             ^^^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 support.function.rpgle.bif
+#                                                     ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
+#                                                      ^^^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
+#                                                              ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
+>     C                   EVAL      signed = withSign
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.c
+#                         ^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                             ^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                   ^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
+#                                         ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                          ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 keyword.operator.rpgle
+#                                           ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                            ^^^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
+>     C                   ENDIF
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.c
+#                         ^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.operation
+>     C                   EVAL      edited = %EDITC(amount : '1')
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.c
+#                         ^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                             ^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                   ^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
+#                                         ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                          ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 keyword.operator.rpgle
+#                                           ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                            ^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 support.function.rpgle.bif
+#                                                  ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
+#                                                   ^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
+#                                                         ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                                          ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 keyword.other.rpgle
+#                                                           ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                                            ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 string.quoted.single.rpgle
+#                                                             ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 string.quoted.single.rpgle
+#                                                              ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 string.quoted.single.rpgle
+#                                                               ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
+>     C                   IF        signed AND amount < 0
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.c
+#                         ^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                             ^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                   ^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
+#                                         ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                          ^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 keyword.other.rpgle
+#                                             ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                              ^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
+#                                                    ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                                     ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 keyword.operator.rpgle
+#                                                      ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                                       ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 constant.numeric.rpgle
+>     C                   EVAL      edited = '-' + %TRIML(edited)
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.c
+#                         ^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                             ^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                   ^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
+#                                         ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                          ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 keyword.operator.rpgle
+#                                           ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                            ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 string.quoted.single.rpgle
+#                                             ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 string.quoted.single.rpgle
+#                                              ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 string.quoted.single.rpgle
+#                                               ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                                ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 keyword.operator.rpgle
+#                                                 ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                                  ^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 support.function.rpgle.bif
+#                                                        ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
+#                                                         ^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
+#                                                               ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
+>     C                   ENDIF
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.c
+#                         ^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.operation
+>     C                   IF        %SCAN('.' : edited) = 0
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.c
+#                         ^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                             ^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                   ^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 support.function.rpgle.bif
+#                                        ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
+#                                         ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 string.quoted.single.rpgle
+#                                          ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 string.quoted.single.rpgle
+#                                           ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 string.quoted.single.rpgle
+#                                            ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                             ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 keyword.other.rpgle
+#                                              ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                               ^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
+#                                                     ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
+#                                                      ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                                       ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 keyword.operator.rpgle
+#                                                        ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                                         ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 constant.numeric.rpgle
+>     C                   EVAL      edited = %TRIMR(edited) + '.00'
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.c
+#                         ^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                             ^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                   ^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
+#                                         ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                          ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 keyword.operator.rpgle
+#                                           ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                            ^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 support.function.rpgle.bif
+#                                                  ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
+#                                                   ^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
+#                                                         ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
+#                                                          ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                                           ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 keyword.operator.rpgle
+#                                                            ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                                             ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 string.quoted.single.rpgle
+#                                                              ^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 string.quoted.single.rpgle
+#                                                                 ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 string.quoted.single.rpgle
+>     C                   ENDIF
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.c
+#                         ^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.operation
+>     C                   RETURN    %TRIM(edited)
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.c
+#                         ^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                               ^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                   ^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 support.function.rpgle.bif
+#                                        ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
+#                                         ^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
+#                                               ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
+>     PfmtAmount        E
 #^^^^^ source.rpgle comment.gutter
 #     ^ source.rpgle keyword.other.rpgle.fixed.specs
 #      ^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.p
@@ -696,6 +2044,24 @@
 >0.065
 #^^^^^^ source.rpgle string.other.rpgle.ctarray
 >0.000
+#^^^^^^ source.rpgle string.other.rpgle.ctarray
+>**CTDATA QTYBREAK
+#^^^^^^^^^^^^^^^^^^ source.rpgle string.other.rpgle.ctarray
+>00010
+#^^^^^^ source.rpgle string.other.rpgle.ctarray
+>00050
+#^^^^^^ source.rpgle string.other.rpgle.ctarray
+>00100
+#^^^^^^ source.rpgle string.other.rpgle.ctarray
+>00500
+#^^^^^^ source.rpgle string.other.rpgle.ctarray
+>**CTDATA BANDNAME
+#^^^^^^^^^^^^^^^^^^ source.rpgle string.other.rpgle.ctarray
+>PREMIUM
+#^^^^^^^^ source.rpgle string.other.rpgle.ctarray
+>STANDARD
+#^^^^^^^^^ source.rpgle string.other.rpgle.ctarray
+>BASIC
 #^^^^^^ source.rpgle string.other.rpgle.ctarray
 >
 #^ source.rpgle string.other.rpgle.ctarray

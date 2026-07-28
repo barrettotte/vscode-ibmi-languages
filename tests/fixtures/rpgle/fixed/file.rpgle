@@ -93,6 +93,7 @@
      F*
      F* A page and line number in 1-5 does not disturb the columns.
 02010FSEQFILE   IF   E           K DISK
+02020FSEQNOTE   OF   F  132        PRINTER                                      numbered + comment
      F*
      F* Positions 81-100 are a comment area. A keyword list may run to
      F* column 80, so a comment there still begins at 81.

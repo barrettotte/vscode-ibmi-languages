@@ -27,10 +27,25 @@
 #^^^^^^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.title keyword.control.rpgle.free.precompiler.title
 #      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.title comment.line.rpgle.free.precompiler.title
 >/eject
-#^^^^^^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.misc keyword.control.rpgle.free.precompiler.misc
+#^^^^^^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.eject keyword.control.rpgle.free.precompiler.eject
 >/space 2
-#^^^^^^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.misc keyword.control.rpgle.free.precompiler.misc
-#      ^^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.misc keyword.control.rpgle.precompiler
+#^^^^^^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.space keyword.control.rpgle.free.precompiler.space
+#      ^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.space
+#       ^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.space constant.numeric.rpgle
+>//
+#^^ source.rpgle rpgle.free.allfree comment.line.rpgle.free
+>// The reference records the columns after /EJECT, and after the
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.free.allfree comment.line.rpgle.free
+>// count /SPACE takes, as a comment.
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.free.allfree comment.line.rpgle.free
+>/eject  a comment may follow the directive
+#^^^^^^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.eject keyword.control.rpgle.free.precompiler.eject
+#      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.eject comment.other.rpgle.precompiler.eject
+>/space 3  and after the count as well
+#^^^^^^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.space keyword.control.rpgle.free.precompiler.space
+#      ^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.space
+#       ^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.space constant.numeric.rpgle
+#        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.space comment.other.rpgle.precompiler.space
 >//
 #^^ source.rpgle rpgle.free.allfree comment.line.rpgle.free
 >// Bringing in other members. The two spellings mean the same,
@@ -73,17 +88,21 @@
 >// Diagnostics. Both of these carry a closed set of values.
 #^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.free.allfree comment.line.rpgle.free
 >/overload detail
-#^^^^^^^^^ source.rpgle rpgle.free.allfree rpgle.precompiler.overload keyword.control.rpgle.precompiler.overload
-#         ^^^^^^^ source.rpgle rpgle.free.allfree rpgle.precompiler.overload keyword.other.rpgle.precompiler.overload.mode
+#^^^^^^^^^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.overload keyword.control.rpgle.free.precompiler.overload
+#         ^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.overload
+#          ^^^^^^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.overload keyword.other.rpgle.free.precompiler.overload.mode
 >/overload nodetail
-#^^^^^^^^^ source.rpgle rpgle.free.allfree rpgle.precompiler.overload keyword.control.rpgle.precompiler.overload
-#         ^^^^^^^^^ source.rpgle rpgle.free.allfree rpgle.precompiler.overload keyword.other.rpgle.precompiler.overload.mode
+#^^^^^^^^^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.overload keyword.control.rpgle.free.precompiler.overload
+#         ^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.overload
+#          ^^^^^^^^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.overload keyword.other.rpgle.free.precompiler.overload.mode
 >/charcount natural
-#^^^^^^^^^^ source.rpgle rpgle.free.allfree rpgle.precompiler.charcount keyword.control.rpgle.precompiler.charcount
-#          ^^^^^^^^ source.rpgle rpgle.free.allfree rpgle.precompiler.charcount keyword.other.rpgle.precompiler.charcount.mode
+#^^^^^^^^^^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.charcount keyword.control.rpgle.free.precompiler.charcount
+#          ^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.charcount
+#           ^^^^^^^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.charcount keyword.other.rpgle.free.precompiler.charcount.mode
 >/charcount stdcharsize
-#^^^^^^^^^^ source.rpgle rpgle.free.allfree rpgle.precompiler.charcount keyword.control.rpgle.precompiler.charcount
-#          ^^^^^^^^^^^^ source.rpgle rpgle.free.allfree rpgle.precompiler.charcount keyword.other.rpgle.precompiler.charcount.mode
+#^^^^^^^^^^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.charcount keyword.control.rpgle.free.precompiler.charcount
+#          ^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.charcount
+#           ^^^^^^^^^^^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.charcount keyword.other.rpgle.free.precompiler.charcount.mode
 >//
 #^^ source.rpgle rpgle.free.allfree comment.line.rpgle.free
 >// Conditional compilation. A condition is defined, tested with
@@ -91,14 +110,17 @@
 >// DEFINED or NOT DEFINED, and may be undefined again.
 #^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.free.allfree comment.line.rpgle.free
 >/define DEBUGMODE
-#^^^^^^^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.misc keyword.control.rpgle.free.precompiler.misc
-#       ^^^^^^^^^^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.misc keyword.control.rpgle.precompiler
+#^^^^^^^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.define keyword.control.rpgle.free.precompiler.define
+#       ^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.define
+#        ^^^^^^^^^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.define variable.other.rpgle.free.definition.identifier
 >/define PRODUCTION
-#^^^^^^^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.misc keyword.control.rpgle.free.precompiler.misc
-#       ^^^^^^^^^^^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.misc keyword.control.rpgle.precompiler
+#^^^^^^^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.define keyword.control.rpgle.free.precompiler.define
+#       ^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.define
+#        ^^^^^^^^^^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.define variable.other.rpgle.free.definition.identifier
 >/if defined(DEBUGMODE)
-#^^^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.conditional keyword.control.rpgle.precompiler.if
-#   ^^^^^^^^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.conditional keyword.other.rpgle.precompiler.defcheck
+#^^^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.conditional keyword.control.rpgle.free.precompiler.conditional
+#   ^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.conditional
+#    ^^^^^^^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.conditional keyword.other.rpgle.free.precompiler.defcheck
 #           ^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.conditional
 #            ^^^^^^^^^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.conditional variable.other.rpgle.free.definition.identifier
 #                     ^^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.conditional
@@ -116,8 +138,9 @@
 #                             ^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.conditional rpgle.free.definition.simple constant.numeric.rpgle
 #                              ^^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.conditional rpgle.free.definition.simple
 >/elseif defined(PRODUCTION)
-#^^^^^^^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.conditional keyword.control.rpgle.precompiler.if
-#       ^^^^^^^^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.conditional keyword.other.rpgle.precompiler.defcheck
+#^^^^^^^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.conditional keyword.control.rpgle.free.precompiler.conditional
+#       ^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.conditional
+#        ^^^^^^^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.conditional keyword.other.rpgle.free.precompiler.defcheck
 #               ^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.conditional
 #                ^^^^^^^^^^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.conditional variable.other.rpgle.free.definition.identifier
 #                          ^^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.conditional
@@ -135,9 +158,11 @@
 #                             ^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.conditional rpgle.free.definition.simple constant.numeric.rpgle
 #                              ^^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.conditional rpgle.free.definition.simple
 >/elseif not defined(DEBUGMODE)
-#^^^^^^^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.conditional keyword.control.rpgle.precompiler.if
-#       ^^^^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.conditional keyword.other.rpgle.precompiler.defcheck
-#           ^^^^^^^^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.conditional keyword.other.rpgle.precompiler.defcheck
+#^^^^^^^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.conditional keyword.control.rpgle.free.precompiler.conditional
+#       ^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.conditional
+#        ^^^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.conditional keyword.other.rpgle.free.precompiler.defcheck
+#           ^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.conditional
+#            ^^^^^^^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.conditional keyword.other.rpgle.free.precompiler.defcheck
 #                   ^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.conditional
 #                    ^^^^^^^^^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.conditional variable.other.rpgle.free.definition.identifier
 #                             ^^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.conditional
@@ -155,7 +180,7 @@
 #                             ^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.conditional rpgle.free.definition.simple constant.numeric.rpgle
 #                              ^^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.conditional rpgle.free.definition.simple
 >/else
-#^^^^^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.conditional rpgle.free.precompiler.misc keyword.control.rpgle.free.precompiler.misc
+#^^^^^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.conditional keyword.control.rpgle.free.precompiler.conditional
 >dcl-s traceLevel int(10) inz(5);
 #^^^^^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.conditional rpgle.free.definition.simple storage.type.rpgle.free.definition.simple
 #     ^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.conditional rpgle.free.definition.simple
@@ -170,41 +195,44 @@
 #                             ^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.conditional rpgle.free.definition.simple constant.numeric.rpgle
 #                              ^^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.conditional rpgle.free.definition.simple
 >/endif
-#^^^^^^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.misc keyword.control.rpgle.free.precompiler.misc
+#^^^^^^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.conditional keyword.control.rpgle.free.precompiler.conditional
 >/undefine DEBUGMODE
-#^^^^^^^^^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.misc keyword.control.rpgle.free.precompiler.misc
-#         ^^^^^^^^^^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.misc keyword.control.rpgle.precompiler
+#^^^^^^^^^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.define keyword.control.rpgle.free.precompiler.define
+#         ^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.define
+#          ^^^^^^^^^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.define variable.other.rpgle.free.definition.identifier
 >//
 #^^ source.rpgle rpgle.free.allfree comment.line.rpgle.free
 >// Nesting, and the predefined conditions the compiler supplies.
 #^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.free.allfree comment.line.rpgle.free
 >/if defined(*CRTBNDRPG)
-#^^^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.conditional keyword.control.rpgle.precompiler.if
-#   ^^^^^^^^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.conditional keyword.other.rpgle.precompiler.defcheck
+#^^^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.conditional keyword.control.rpgle.free.precompiler.conditional
+#   ^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.conditional
+#    ^^^^^^^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.conditional keyword.other.rpgle.free.precompiler.defcheck
 #           ^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.conditional
 #            ^^^^^^^^^^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.conditional constant.language.rpgle
 #                      ^^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.conditional
 >/if defined(*V7R5M0)
-#^^^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.conditional keyword.control.rpgle.precompiler.if
-#   ^^^^^^^^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.conditional keyword.other.rpgle.precompiler.defcheck
-#           ^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.conditional
-#            ^^^^^^^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.conditional constant.language.rpgle
-#                   ^^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.conditional
+#^^^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.conditional rpgle.free.precompiler.conditional keyword.control.rpgle.free.precompiler.conditional
+#   ^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.conditional rpgle.free.precompiler.conditional
+#    ^^^^^^^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.conditional rpgle.free.precompiler.conditional keyword.other.rpgle.free.precompiler.defcheck
+#           ^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.conditional rpgle.free.precompiler.conditional
+#            ^^^^^^^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.conditional rpgle.free.precompiler.conditional constant.language.rpgle
+#                   ^^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.conditional rpgle.free.precompiler.conditional
 >dcl-s onSevenFive ind inz(*on);
-#^^^^^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.conditional rpgle.free.definition.simple storage.type.rpgle.free.definition.simple
-#     ^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.conditional rpgle.free.definition.simple
-#      ^^^^^^^^^^^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.conditional rpgle.free.definition.simple variable.other.rpgle.free.definition.identifier
-#                 ^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.conditional rpgle.free.definition.simple
-#                  ^^^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.conditional rpgle.free.definition.simple entity.name.function.rpgle.free.definition.keywords
-#                     ^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.conditional rpgle.free.definition.simple
-#                      ^^^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.conditional rpgle.free.definition.simple entity.name.function.rpgle.free.definition.keywords
-#                         ^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.conditional rpgle.free.definition.simple
-#                          ^^^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.conditional rpgle.free.definition.simple constant.language.rpgle
-#                             ^^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.conditional rpgle.free.definition.simple
+#^^^^^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.conditional rpgle.free.precompiler.conditional rpgle.free.definition.simple storage.type.rpgle.free.definition.simple
+#     ^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.conditional rpgle.free.precompiler.conditional rpgle.free.definition.simple
+#      ^^^^^^^^^^^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.conditional rpgle.free.precompiler.conditional rpgle.free.definition.simple variable.other.rpgle.free.definition.identifier
+#                 ^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.conditional rpgle.free.precompiler.conditional rpgle.free.definition.simple
+#                  ^^^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.conditional rpgle.free.precompiler.conditional rpgle.free.definition.simple entity.name.function.rpgle.free.definition.keywords
+#                     ^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.conditional rpgle.free.precompiler.conditional rpgle.free.definition.simple
+#                      ^^^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.conditional rpgle.free.precompiler.conditional rpgle.free.definition.simple entity.name.function.rpgle.free.definition.keywords
+#                         ^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.conditional rpgle.free.precompiler.conditional rpgle.free.definition.simple
+#                          ^^^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.conditional rpgle.free.precompiler.conditional rpgle.free.definition.simple constant.language.rpgle
+#                             ^^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.conditional rpgle.free.precompiler.conditional rpgle.free.definition.simple
 >/endif
-#^^^^^^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.misc keyword.control.rpgle.free.precompiler.misc
+#^^^^^^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.conditional rpgle.free.precompiler.conditional keyword.control.rpgle.free.precompiler.conditional
 >/endif
-#^^^^^^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.misc keyword.control.rpgle.free.precompiler.misc
+#^^^^^^ source.rpgle rpgle.free.allfree rpgle.free.precompiler.conditional keyword.control.rpgle.free.precompiler.conditional
 >//
 #^^ source.rpgle rpgle.free.allfree comment.line.rpgle.free
 >// /EOF stops the compiler reading the rest of the member, so it
