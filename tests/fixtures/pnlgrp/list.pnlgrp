@@ -1,0 +1,73 @@
+.*
+.* A list area: the definition that names its columns, the views and
+.* groups that arrange them, and the actions offered against a row.
+.*
+.* Member: PNLLIST
+.* Source: Application Display Programming SC41-5715 (V6R1), appendix A.
+.* Retrieved: 2026-07-28
+.*
+:pnlgrp.
+.*
+.* The variables the list definition names, which the example
+.* assumes are already defined.
+:class name=text25 basetype='*CHAR 25'.
+:eclass.
+:var name=seq class=text25.
+:var name=colname class=text25.
+:var name=more class=text25.
+:var name=table class=text25.
+:var name=text class=text25.
+.*
+.* From "Example: List Column Group" in the reference.
+.* The book writes the panel tag as "panel-attributes";
+.* real attributes stand in its place here.
+:listdef name=list1
+  vars='seq colname more table text'.
+:panel name=selcol help=hselcol keyl=small.Select and Sequence Columns
+:list listdef=list1
+      depth='*'
+      maxhead=3.
+:topinst.Type sequence numbers (1-999) to select
+columns, press Enter.
+:listcol var=seq
+         usage=inout
+         maxwidth=3
+         help=hseq.Seq
+:listgrp col=column
+         colsep=1
+         help=hlistgrp.
+:listcol var=colname
+         usage=out
+         maxwidth=18.Column
+:listcol var=more
+         usage=out
+         maxwidth=1.
+:elistgrp.
+:listcol var=table
+         usage=out
+         maxwidth=20
+         help=htable.Table
+:listcol var=text
+         usage=out
+         maxwidth=25
+         help=htext.Text
+:listview layout=1
+          cols='seq column table text'.
+.*
+.* From "Example: List Actions" in the reference.
+:listact option=2
+          help='option/2'
+          enter='CALL CHGPGM'
+          .2=Change
+:listact option=4
+          help='option/4'
+          enter='CALL DLTPGM'
+          confirm=CONFDLT
+          .4=Delete
+:listact option=5
+          help='option/5'
+          enter='CALL DSPPGM'
+          .5=Display
+:elist.
+:epanel.
+:epnlgrp.
