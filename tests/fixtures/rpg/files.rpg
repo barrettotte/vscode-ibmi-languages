@@ -78,3 +78,13 @@
      F* A page and line number in 1-5 does not disturb the columns.
 02010FSEQFILE IF  E           K        DISK                               seq
 02020F                                              KINFDS SEQFDS         seq
+     F*
+     F* File translation records, which come after the program with
+     F* the other compile-time data. *EQUATE occupies positions 1-7
+     F* and position 8 is blank; the first record names the files and
+     F* the ones after it give the character pairs, each as two
+     F* hexadecimal values.
+**
+*EQUATE SEQFILE,PRINTER
+*EQUATE 5B4A
+*EQUATE 7B7C

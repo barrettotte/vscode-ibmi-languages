@@ -1,0 +1,67 @@
+/* The binder source of a service program as it stands after three       */
+/* releases. This is what binder language is for: the current block       */
+/* describes the interface callers bind to now, and a previous block is   */
+/* kept for every signature ever shipped, so that programs bound against  */
+/* an older release keep working without being rebound.                   */
+/*                                                                        */
+/* Member: ORDERSVC   Compilable: yes (CRTSRVPGM SRCMBR)                  */
+/* Source: IBM i 7.5 ILE Concepts - Binder Language                       */
+/*   https://www.ibm.com/docs/en/i/7.5?topic=concepts-binder-language     */
+/* Retrieved: 2026-07-28                                                  */
+
+/* A signature is generated from the names of the procedures and data     */
+/* items and from the order in which they are given. That is why a        */
+/* compatible change adds a name to the end of the list and never in the  */
+/* middle: inserting one would renumber everything after it and change    */
+/* the signature, which is what a previous block exists to avoid.         */
+
+/* Release 2.0, the current interface. Only one block may be *CURRENT.    */
+STRPGMEXP PGMLVL(*CURRENT) SIGNATURE('ORDERSVC 2.0')
+  /* 1.0, in the order they were first shipped.                          */
+  EXPORT SYMBOL('ORDER_open')
+  EXPORT SYMBOL('ORDER_close')
+  EXPORT SYMBOL('ORDER_read')
+  /* added at 1.1                                                        */
+  EXPORT SYMBOL('ORDER_write')
+  EXPORT SYMBOL('ORDER_delete')
+  /* added at 2.0                                                        */
+  EXPORT SYMBOL('ORDER_total')
+  EXPORT SYMBOL('ORDER_tax')
+  /* exported data, which is signed the same way a procedure is          */
+  EXPORT SYMBOL('ORDER_version')
+ENDPGMEXP
+
+/* Release 1.1. The signature was generated rather than named, so it is   */
+/* repeated here exactly as it was shipped.                              */
+STRPGMEXP PGMLVL(*PRV) SIGNATURE(X'8A3C1F04E7B29D5600000000000000C1')
+  EXPORT SYMBOL('ORDER_open')
+  EXPORT SYMBOL('ORDER_close')
+  EXPORT SYMBOL('ORDER_read')
+  EXPORT SYMBOL('ORDER_write')
+  EXPORT SYMBOL('ORDER_delete')
+ENDPGMEXP
+
+/* Release 1.0, the first interface shipped. Its block is shorter than    */
+/* the ones after it because the later names had not been added yet.      */
+STRPGMEXP PGMLVL(*PRV) SIGNATURE('ORDERSVC 1.0')
+  EXPORT SYMBOL('ORDER_open')
+  EXPORT SYMBOL('ORDER_close')
+  EXPORT SYMBOL('ORDER_read')
+ENDPGMEXP
+
+/* A block written across several lines, continued with a trailing plus.  */
+/* The reference requires SIGNATURE(*GEN) when level checking is turned   */
+/* off, so the two are given together.                                    */
+STRPGMEXP PGMLVL(*PRV) +
+          SIGNATURE(*GEN) +
+          LVLCHK(*NO)
+  EXPORT SYMBOL('ORDER_open')
+  EXPORT SYMBOL('ORDER_close')
+ENDPGMEXP
+
+-- A comment may also be written with two hyphens, which is the form the
+-- binder accepts alongside the slash-asterisk pairs used above.
+
+/* The service program's private procedures are simply left out. A name   */
+/* that is not exported cannot be bound to, which is how the interface is */
+/* kept to the procedures the service program means to publish.           */

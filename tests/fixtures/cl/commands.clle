@@ -1,0 +1,67 @@
+/*                                                                           */
+/* The command names. The grammar splits them into alternations of a          */
+/* hundred, so one command is taken from each: a break in any one of          */
+/* them shows up here rather than going unnoticed.                            */
+/*                                                                           */
+/* Member: CLCMD   Compilable: no (commands named, not run in order)          */
+/* Source: IBM i 7.5 CL commands.                                             */
+/* Retrieved: 2026-07-28                                                      */
+/*                                                                           */
+
+             PGM
+
+/*  One command from each alternation the rule is split into.                 */
+             WRKRMTDFN
+             WRKIMGCLGE
+             VFYCMN
+             STRLOGSVR
+             SETRTVBRM
+             RTVDTAARA
+             RMVPGM
+             RMVACC
+             PMTCTL
+             GENCKMKSFE
+             ENDCHTSVR
+             DSPNWSUSRA
+             DSPCICSTCT
+             DLTPEXDTA
+             CVTRPCSRC
+             CRTLINDDI
+             CPYTOTAP
+             CHGTCPA
+             CHGNWSCFG
+             CHGDLOAUT
+             CFGTCPTELN
+             ADDPFCST
+
+/*  The commands a program of any size actually uses.                         */
+             CHGCURLIB
+             CHGJOB
+             CHGVAR
+             CLRPFM
+             CPYF
+             CRTDUPOBJ
+             DLTF
+             DLTOVR
+             DSPFD
+             DSPOBJD
+             ENDJOB
+             GRTOBJAUT
+             MOVOBJ
+             OPNQRYF
+             OVRDBF
+             OVRPRTF
+             RGZPFM
+             RMVLIBLE
+             RNMOBJ
+             RTVJOBA
+             RTVOBJD
+             SBMJOB
+             SNDPGMMSG
+             STRPGMEXP
+             WRKACTJOB
+             WRKOBJ
+             WRKSPLF
+             WRKSBMJOB
+
+             ENDPGM

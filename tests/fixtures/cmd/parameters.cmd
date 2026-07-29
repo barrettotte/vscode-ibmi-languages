@@ -46,3 +46,18 @@
                           DSPINPUT(*NO) ALWUNPRT(*NO) ALWVAR(*NO)
              PARM       KWD(A10) TYPE(*CHAR) LEN(10) KEYPARM(*YES) +
                           PROMPT('Prompt text' 10)
+
+/* Variant characters. The three code points that vary by CCSID are    */
+/* valid in a name, so a name may both contain them and begin with     */
+/* the letters of a statement name without being that statement.       */
+             PARM       KWD(V01) TYPE(QUAL@#$)
+QUAL@#$:     QUAL       TYPE(*NAME) LEN(10)
+             QUAL       TYPE(*NAME) LEN(10) PROMPT('Library')
+             PARM       KWD(V02) TYPE(QUAL§£$)
+QUAL§£$:     QUAL       TYPE(*NAME) LEN(10)
+             PARM       KWD(V03) TYPE(QUAL@Ñ¥)
+QUAL@Ñ¥:     QUAL       TYPE(*NAME) LEN(10)
+             PARM       KWD(&@te@st@) TYPE(*CHAR) LEN(1)
+             PARM       KWD(&ØteÆstÅ) TYPE(*CHAR) LEN(1)
+             PARM       KWD(V04) TYPE(*CHAR) LEN(10) +
+                          CHOICEPGM(MYLIB@#$/MYPGM§£$)

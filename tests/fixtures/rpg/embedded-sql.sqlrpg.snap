@@ -826,5 +826,541 @@
 #                                ^ source.rpg constant.numeric.rpg
 #                                 ^^^^^^^^^^^^^^^^^^^^^^^^ source.rpg
 #                                                         ^^ source.rpg constant.language.rpg.c.eq
+>     C*
+#^^^^^^^ source.rpg comment.line.rpg
+>     C* The SQL communications area. Every field the precompiler
+#^^^^^^^ source.rpg comment.line.rpg
+#       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpg comment.line.rpg
+>     C* defines appears, in the short six character spelling the
+#^^^^^^^ source.rpg comment.line.rpg
+#       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpg comment.line.rpg
+>     C* RPG/400 program sees and in the long SQL spelling.
+#^^^^^^^ source.rpg comment.line.rpg
+#       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpg comment.line.rpg
+>     C                     Z-ADD*ZERO     SQLWRN
+#^^^^^ source.rpg comment.gutter
+#     ^ source.rpg keyword.other.rpg
+#      ^^^^^^^^^^^^^^^^^^^^^ source.rpg
+#                           ^^^^^ source.rpg keyword.other.rpg
+#                                ^^^^^ source.rpg constant.language.rpg
+#                                     ^^^^^ source.rpg
+#                                          ^^^^^^ source.rpg variable.language.rpg.sql
+>     C                     Z-ADD*ZERO     SQLWNA
+#^^^^^ source.rpg comment.gutter
+#     ^ source.rpg keyword.other.rpg
+#      ^^^^^^^^^^^^^^^^^^^^^ source.rpg
+#                           ^^^^^ source.rpg keyword.other.rpg
+#                                ^^^^^ source.rpg constant.language.rpg
+#                                     ^^^^^ source.rpg
+#                                          ^^^^^^ source.rpg variable.language.rpg.sql
+>     C                     Z-ADD*ZERO     SQLWN9
+#^^^^^ source.rpg comment.gutter
+#     ^ source.rpg keyword.other.rpg
+#      ^^^^^^^^^^^^^^^^^^^^^ source.rpg
+#                           ^^^^^ source.rpg keyword.other.rpg
+#                                ^^^^^ source.rpg constant.language.rpg
+#                                     ^^^^^ source.rpg
+#                                          ^^^^^^ source.rpg variable.language.rpg.sql
+>     C                     Z-ADD*ZERO     SQLWN8
+#^^^^^ source.rpg comment.gutter
+#     ^ source.rpg keyword.other.rpg
+#      ^^^^^^^^^^^^^^^^^^^^^ source.rpg
+#                           ^^^^^ source.rpg keyword.other.rpg
+#                                ^^^^^ source.rpg constant.language.rpg
+#                                     ^^^^^ source.rpg
+#                                          ^^^^^^ source.rpg variable.language.rpg.sql
+>     C                     Z-ADD*ZERO     SQLWN7
+#^^^^^ source.rpg comment.gutter
+#     ^ source.rpg keyword.other.rpg
+#      ^^^^^^^^^^^^^^^^^^^^^ source.rpg
+#                           ^^^^^ source.rpg keyword.other.rpg
+#                                ^^^^^ source.rpg constant.language.rpg
+#                                     ^^^^^ source.rpg
+#                                          ^^^^^^ source.rpg variable.language.rpg.sql
+>     C                     Z-ADD*ZERO     SQLWN6
+#^^^^^ source.rpg comment.gutter
+#     ^ source.rpg keyword.other.rpg
+#      ^^^^^^^^^^^^^^^^^^^^^ source.rpg
+#                           ^^^^^ source.rpg keyword.other.rpg
+#                                ^^^^^ source.rpg constant.language.rpg
+#                                     ^^^^^ source.rpg
+#                                          ^^^^^^ source.rpg variable.language.rpg.sql
+>     C                     Z-ADD*ZERO     SQLWN5
+#^^^^^ source.rpg comment.gutter
+#     ^ source.rpg keyword.other.rpg
+#      ^^^^^^^^^^^^^^^^^^^^^ source.rpg
+#                           ^^^^^ source.rpg keyword.other.rpg
+#                                ^^^^^ source.rpg constant.language.rpg
+#                                     ^^^^^ source.rpg
+#                                          ^^^^^^ source.rpg variable.language.rpg.sql
+>     C                     Z-ADD*ZERO     SQLWN4
+#^^^^^ source.rpg comment.gutter
+#     ^ source.rpg keyword.other.rpg
+#      ^^^^^^^^^^^^^^^^^^^^^ source.rpg
+#                           ^^^^^ source.rpg keyword.other.rpg
+#                                ^^^^^ source.rpg constant.language.rpg
+#                                     ^^^^^ source.rpg
+#                                          ^^^^^^ source.rpg variable.language.rpg.sql
+>     C                     Z-ADD*ZERO     SQLWN3
+#^^^^^ source.rpg comment.gutter
+#     ^ source.rpg keyword.other.rpg
+#      ^^^^^^^^^^^^^^^^^^^^^ source.rpg
+#                           ^^^^^ source.rpg keyword.other.rpg
+#                                ^^^^^ source.rpg constant.language.rpg
+#                                     ^^^^^ source.rpg
+#                                          ^^^^^^ source.rpg variable.language.rpg.sql
+>     C                     Z-ADD*ZERO     SQLWN2
+#^^^^^ source.rpg comment.gutter
+#     ^ source.rpg keyword.other.rpg
+#      ^^^^^^^^^^^^^^^^^^^^^ source.rpg
+#                           ^^^^^ source.rpg keyword.other.rpg
+#                                ^^^^^ source.rpg constant.language.rpg
+#                                     ^^^^^ source.rpg
+#                                          ^^^^^^ source.rpg variable.language.rpg.sql
+>     C                     Z-ADD*ZERO     SQLWN1
+#^^^^^ source.rpg comment.gutter
+#     ^ source.rpg keyword.other.rpg
+#      ^^^^^^^^^^^^^^^^^^^^^ source.rpg
+#                           ^^^^^ source.rpg keyword.other.rpg
+#                                ^^^^^ source.rpg constant.language.rpg
+#                                     ^^^^^ source.rpg
+#                                          ^^^^^^ source.rpg variable.language.rpg.sql
+>     C                     Z-ADD*ZERO     SQLWN0
+#^^^^^ source.rpg comment.gutter
+#     ^ source.rpg keyword.other.rpg
+#      ^^^^^^^^^^^^^^^^^^^^^ source.rpg
+#                           ^^^^^ source.rpg keyword.other.rpg
+#                                ^^^^^ source.rpg constant.language.rpg
+#                                     ^^^^^ source.rpg
+#                                          ^^^^^^ source.rpg variable.language.rpg.sql
+>     C                     Z-ADD*ZERO     SQLSTT
+#^^^^^ source.rpg comment.gutter
+#     ^ source.rpg keyword.other.rpg
+#      ^^^^^^^^^^^^^^^^^^^^^ source.rpg
+#                           ^^^^^ source.rpg keyword.other.rpg
+#                                ^^^^^ source.rpg constant.language.rpg
+#                                     ^^^^^ source.rpg
+#                                          ^^^^^^ source.rpg variable.language.rpg.sql
+>     C                     Z-ADD*ZERO     SQLCOD
+#^^^^^ source.rpg comment.gutter
+#     ^ source.rpg keyword.other.rpg
+#      ^^^^^^^^^^^^^^^^^^^^^ source.rpg
+#                           ^^^^^ source.rpg keyword.other.rpg
+#                                ^^^^^ source.rpg constant.language.rpg
+#                                     ^^^^^ source.rpg
+#                                          ^^^^^^ source.rpg variable.language.rpg.sql
+>     C                     Z-ADD*ZERO     SQLERR
+#^^^^^ source.rpg comment.gutter
+#     ^ source.rpg keyword.other.rpg
+#      ^^^^^^^^^^^^^^^^^^^^^ source.rpg
+#                           ^^^^^ source.rpg keyword.other.rpg
+#                                ^^^^^ source.rpg constant.language.rpg
+#                                     ^^^^^ source.rpg
+#                                          ^^^^^^ source.rpg variable.language.rpg.sql
+>     C                     Z-ADD*ZERO     SQLERP
+#^^^^^ source.rpg comment.gutter
+#     ^ source.rpg keyword.other.rpg
+#      ^^^^^^^^^^^^^^^^^^^^^ source.rpg
+#                           ^^^^^ source.rpg keyword.other.rpg
+#                                ^^^^^ source.rpg constant.language.rpg
+#                                     ^^^^^ source.rpg
+#                                          ^^^^^^ source.rpg variable.language.rpg.sql
+>     C                     Z-ADD*ZERO     SQLERM
+#^^^^^ source.rpg comment.gutter
+#     ^ source.rpg keyword.other.rpg
+#      ^^^^^^^^^^^^^^^^^^^^^ source.rpg
+#                           ^^^^^ source.rpg keyword.other.rpg
+#                                ^^^^^ source.rpg constant.language.rpg
+#                                     ^^^^^ source.rpg
+#                                          ^^^^^^ source.rpg variable.language.rpg.sql
+>     C                     Z-ADD*ZERO     SQLERL
+#^^^^^ source.rpg comment.gutter
+#     ^ source.rpg keyword.other.rpg
+#      ^^^^^^^^^^^^^^^^^^^^^ source.rpg
+#                           ^^^^^ source.rpg keyword.other.rpg
+#                                ^^^^^ source.rpg constant.language.rpg
+#                                     ^^^^^ source.rpg
+#                                          ^^^^^^ source.rpg variable.language.rpg.sql
+>     C                     Z-ADD*ZERO     SQLER6
+#^^^^^ source.rpg comment.gutter
+#     ^ source.rpg keyword.other.rpg
+#      ^^^^^^^^^^^^^^^^^^^^^ source.rpg
+#                           ^^^^^ source.rpg keyword.other.rpg
+#                                ^^^^^ source.rpg constant.language.rpg
+#                                     ^^^^^ source.rpg
+#                                          ^^^^^^ source.rpg variable.language.rpg.sql
+>     C                     Z-ADD*ZERO     SQLER5
+#^^^^^ source.rpg comment.gutter
+#     ^ source.rpg keyword.other.rpg
+#      ^^^^^^^^^^^^^^^^^^^^^ source.rpg
+#                           ^^^^^ source.rpg keyword.other.rpg
+#                                ^^^^^ source.rpg constant.language.rpg
+#                                     ^^^^^ source.rpg
+#                                          ^^^^^^ source.rpg variable.language.rpg.sql
+>     C                     Z-ADD*ZERO     SQLER4
+#^^^^^ source.rpg comment.gutter
+#     ^ source.rpg keyword.other.rpg
+#      ^^^^^^^^^^^^^^^^^^^^^ source.rpg
+#                           ^^^^^ source.rpg keyword.other.rpg
+#                                ^^^^^ source.rpg constant.language.rpg
+#                                     ^^^^^ source.rpg
+#                                          ^^^^^^ source.rpg variable.language.rpg.sql
+>     C                     Z-ADD*ZERO     SQLER3
+#^^^^^ source.rpg comment.gutter
+#     ^ source.rpg keyword.other.rpg
+#      ^^^^^^^^^^^^^^^^^^^^^ source.rpg
+#                           ^^^^^ source.rpg keyword.other.rpg
+#                                ^^^^^ source.rpg constant.language.rpg
+#                                     ^^^^^ source.rpg
+#                                          ^^^^^^ source.rpg variable.language.rpg.sql
+>     C                     Z-ADD*ZERO     SQLER2
+#^^^^^ source.rpg comment.gutter
+#     ^ source.rpg keyword.other.rpg
+#      ^^^^^^^^^^^^^^^^^^^^^ source.rpg
+#                           ^^^^^ source.rpg keyword.other.rpg
+#                                ^^^^^ source.rpg constant.language.rpg
+#                                     ^^^^^ source.rpg
+#                                          ^^^^^^ source.rpg variable.language.rpg.sql
+>     C                     Z-ADD*ZERO     SQLER1
+#^^^^^ source.rpg comment.gutter
+#     ^ source.rpg keyword.other.rpg
+#      ^^^^^^^^^^^^^^^^^^^^^ source.rpg
+#                           ^^^^^ source.rpg keyword.other.rpg
+#                                ^^^^^ source.rpg constant.language.rpg
+#                                     ^^^^^ source.rpg
+#                                          ^^^^^^ source.rpg variable.language.rpg.sql
+>     C*
+#^^^^^^^ source.rpg comment.line.rpg
+>     C* The longer spellings do not fit a result field, so they are
+#^^^^^^^ source.rpg comment.line.rpg
+#       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpg comment.line.rpg
+>     C* written where SQL itself refers to them.
+#^^^^^^^ source.rpg comment.line.rpg
+#       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpg comment.line.rpg
+>     C/EXEC SQL SET :WRKFLD = SQLWARN
+#^^^^^ source.rpg comment.gutter
+#     ^ source.rpg keyword.other.rpg
+#      ^^^^^^^^^ source.rpg variable.other.rpg.sql keyword.other.rpg.sql.precompiler
+#               ^ source.rpg variable.other.rpg.sql
+#                ^^^ source.rpg variable.other.rpg.sql keyword.operator.rpg.sql.reserved
+#                   ^ source.rpg variable.other.rpg.sql
+#                    ^^^^^^^ source.rpg variable.other.rpg.sql variable.parameter.rpg.sql
+#                           ^ source.rpg variable.other.rpg.sql
+#                            ^ source.rpg variable.other.rpg.sql keyword.operator.rpg.sql
+#                             ^ source.rpg variable.other.rpg.sql
+#                              ^^^^^^^ source.rpg variable.other.rpg.sql variable.language.rpg.sql
+>     C/END-EXEC
+#^^^^^ source.rpg variable.other.rpg.sql comment.gutter
+#     ^ source.rpg variable.other.rpg.sql keyword.other.rpg.sql.c
+#      ^^^^^^^^^ source.rpg keyword.other.rpg.sql.precompiler
+>     C/EXEC SQL SET :WRKFLD = SQLSTATE
+#^^^^^ source.rpg comment.gutter
+#     ^ source.rpg keyword.other.rpg
+#      ^^^^^^^^^ source.rpg variable.other.rpg.sql keyword.other.rpg.sql.precompiler
+#               ^ source.rpg variable.other.rpg.sql
+#                ^^^ source.rpg variable.other.rpg.sql keyword.operator.rpg.sql.reserved
+#                   ^ source.rpg variable.other.rpg.sql
+#                    ^^^^^^^ source.rpg variable.other.rpg.sql variable.parameter.rpg.sql
+#                           ^ source.rpg variable.other.rpg.sql
+#                            ^ source.rpg variable.other.rpg.sql keyword.operator.rpg.sql
+#                             ^ source.rpg variable.other.rpg.sql
+#                              ^^^^^^^^ source.rpg variable.other.rpg.sql variable.language.rpg.sql
+>     C/END-EXEC
+#^^^^^ source.rpg variable.other.rpg.sql comment.gutter
+#     ^ source.rpg variable.other.rpg.sql keyword.other.rpg.sql.c
+#      ^^^^^^^^^ source.rpg keyword.other.rpg.sql.precompiler
+>     C/EXEC SQL SET :WRKFLD = SQLCODE
+#^^^^^ source.rpg comment.gutter
+#     ^ source.rpg keyword.other.rpg
+#      ^^^^^^^^^ source.rpg variable.other.rpg.sql keyword.other.rpg.sql.precompiler
+#               ^ source.rpg variable.other.rpg.sql
+#                ^^^ source.rpg variable.other.rpg.sql keyword.operator.rpg.sql.reserved
+#                   ^ source.rpg variable.other.rpg.sql
+#                    ^^^^^^^ source.rpg variable.other.rpg.sql variable.parameter.rpg.sql
+#                           ^ source.rpg variable.other.rpg.sql
+#                            ^ source.rpg variable.other.rpg.sql keyword.operator.rpg.sql
+#                             ^ source.rpg variable.other.rpg.sql
+#                              ^^^^^^^ source.rpg variable.other.rpg.sql variable.language.rpg.sql
+>     C/END-EXEC
+#^^^^^ source.rpg variable.other.rpg.sql comment.gutter
+#     ^ source.rpg variable.other.rpg.sql keyword.other.rpg.sql.c
+#      ^^^^^^^^^ source.rpg keyword.other.rpg.sql.precompiler
+>     C/EXEC SQL SET :WRKFLD = SQLERRP
+#^^^^^ source.rpg comment.gutter
+#     ^ source.rpg keyword.other.rpg
+#      ^^^^^^^^^ source.rpg variable.other.rpg.sql keyword.other.rpg.sql.precompiler
+#               ^ source.rpg variable.other.rpg.sql
+#                ^^^ source.rpg variable.other.rpg.sql keyword.operator.rpg.sql.reserved
+#                   ^ source.rpg variable.other.rpg.sql
+#                    ^^^^^^^ source.rpg variable.other.rpg.sql variable.parameter.rpg.sql
+#                           ^ source.rpg variable.other.rpg.sql
+#                            ^ source.rpg variable.other.rpg.sql keyword.operator.rpg.sql
+#                             ^ source.rpg variable.other.rpg.sql
+#                              ^^^^^^^ source.rpg variable.other.rpg.sql variable.language.rpg.sql
+>     C/END-EXEC
+#^^^^^ source.rpg variable.other.rpg.sql comment.gutter
+#     ^ source.rpg variable.other.rpg.sql keyword.other.rpg.sql.c
+#      ^^^^^^^^^ source.rpg keyword.other.rpg.sql.precompiler
+>     C/EXEC SQL SET :WRKFLD = SQLERRML
+#^^^^^ source.rpg comment.gutter
+#     ^ source.rpg keyword.other.rpg
+#      ^^^^^^^^^ source.rpg variable.other.rpg.sql keyword.other.rpg.sql.precompiler
+#               ^ source.rpg variable.other.rpg.sql
+#                ^^^ source.rpg variable.other.rpg.sql keyword.operator.rpg.sql.reserved
+#                   ^ source.rpg variable.other.rpg.sql
+#                    ^^^^^^^ source.rpg variable.other.rpg.sql variable.parameter.rpg.sql
+#                           ^ source.rpg variable.other.rpg.sql
+#                            ^ source.rpg variable.other.rpg.sql keyword.operator.rpg.sql
+#                             ^ source.rpg variable.other.rpg.sql
+#                              ^^^^^^^^ source.rpg variable.other.rpg.sql variable.language.rpg.sql
+>     C/END-EXEC
+#^^^^^ source.rpg variable.other.rpg.sql comment.gutter
+#     ^ source.rpg variable.other.rpg.sql keyword.other.rpg.sql.c
+#      ^^^^^^^^^ source.rpg keyword.other.rpg.sql.precompiler
+>     C/EXEC SQL SET :WRKFLD = SQLERRMC
+#^^^^^ source.rpg comment.gutter
+#     ^ source.rpg keyword.other.rpg
+#      ^^^^^^^^^ source.rpg variable.other.rpg.sql keyword.other.rpg.sql.precompiler
+#               ^ source.rpg variable.other.rpg.sql
+#                ^^^ source.rpg variable.other.rpg.sql keyword.operator.rpg.sql.reserved
+#                   ^ source.rpg variable.other.rpg.sql
+#                    ^^^^^^^ source.rpg variable.other.rpg.sql variable.parameter.rpg.sql
+#                           ^ source.rpg variable.other.rpg.sql
+#                            ^ source.rpg variable.other.rpg.sql keyword.operator.rpg.sql
+#                             ^ source.rpg variable.other.rpg.sql
+#                              ^^^^^^^^ source.rpg variable.other.rpg.sql variable.language.rpg.sql
+>     C/END-EXEC
+#^^^^^ source.rpg variable.other.rpg.sql comment.gutter
+#     ^ source.rpg variable.other.rpg.sql keyword.other.rpg.sql.c
+#      ^^^^^^^^^ source.rpg keyword.other.rpg.sql.precompiler
+>     C/EXEC SQL SET :WRKFLD = SQLERRD
+#^^^^^ source.rpg comment.gutter
+#     ^ source.rpg keyword.other.rpg
+#      ^^^^^^^^^ source.rpg variable.other.rpg.sql keyword.other.rpg.sql.precompiler
+#               ^ source.rpg variable.other.rpg.sql
+#                ^^^ source.rpg variable.other.rpg.sql keyword.operator.rpg.sql.reserved
+#                   ^ source.rpg variable.other.rpg.sql
+#                    ^^^^^^^ source.rpg variable.other.rpg.sql variable.parameter.rpg.sql
+#                           ^ source.rpg variable.other.rpg.sql
+#                            ^ source.rpg variable.other.rpg.sql keyword.operator.rpg.sql
+#                             ^ source.rpg variable.other.rpg.sql
+#                              ^^^^^^^ source.rpg variable.other.rpg.sql variable.language.rpg.sql
+>     C/END-EXEC
+#^^^^^ source.rpg variable.other.rpg.sql comment.gutter
+#     ^ source.rpg variable.other.rpg.sql keyword.other.rpg.sql.c
+#      ^^^^^^^^^ source.rpg keyword.other.rpg.sql.precompiler
+>     C*
+#^^^^^^^ source.rpg comment.line.rpg
+>     C* The SQL global variables, each read into a host variable.
+#^^^^^^^ source.rpg comment.line.rpg
+#       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpg comment.line.rpg
+>     C/EXEC SQL SET :WRKFLD = CLIENT_HOST
+#^^^^^ source.rpg comment.gutter
+#     ^ source.rpg keyword.other.rpg
+#      ^^^^^^^^^ source.rpg variable.other.rpg.sql keyword.other.rpg.sql.precompiler
+#               ^ source.rpg variable.other.rpg.sql
+#                ^^^ source.rpg variable.other.rpg.sql keyword.operator.rpg.sql.reserved
+#                   ^ source.rpg variable.other.rpg.sql
+#                    ^^^^^^^ source.rpg variable.other.rpg.sql variable.parameter.rpg.sql
+#                           ^ source.rpg variable.other.rpg.sql
+#                            ^ source.rpg variable.other.rpg.sql keyword.operator.rpg.sql
+#                             ^ source.rpg variable.other.rpg.sql
+#                              ^^^^^^^^^^^ source.rpg variable.other.rpg.sql constant.language.rpg.sql.globals
+>     C/END-EXEC
+#^^^^^ source.rpg variable.other.rpg.sql comment.gutter
+#     ^ source.rpg variable.other.rpg.sql keyword.other.rpg.sql.c
+#      ^^^^^^^^^ source.rpg keyword.other.rpg.sql.precompiler
+>     C/EXEC SQL SET :WRKFLD = CLIENT_IPADDR
+#^^^^^ source.rpg comment.gutter
+#     ^ source.rpg keyword.other.rpg
+#      ^^^^^^^^^ source.rpg variable.other.rpg.sql keyword.other.rpg.sql.precompiler
+#               ^ source.rpg variable.other.rpg.sql
+#                ^^^ source.rpg variable.other.rpg.sql keyword.operator.rpg.sql.reserved
+#                   ^ source.rpg variable.other.rpg.sql
+#                    ^^^^^^^ source.rpg variable.other.rpg.sql variable.parameter.rpg.sql
+#                           ^ source.rpg variable.other.rpg.sql
+#                            ^ source.rpg variable.other.rpg.sql keyword.operator.rpg.sql
+#                             ^ source.rpg variable.other.rpg.sql
+#                              ^^^^^^^^^^^^^ source.rpg variable.other.rpg.sql constant.language.rpg.sql.globals
+>     C/END-EXEC
+#^^^^^ source.rpg variable.other.rpg.sql comment.gutter
+#     ^ source.rpg variable.other.rpg.sql keyword.other.rpg.sql.c
+#      ^^^^^^^^^ source.rpg keyword.other.rpg.sql.precompiler
+>     C/EXEC SQL SET :WRKFLD = CLIENT_PORT
+#^^^^^ source.rpg comment.gutter
+#     ^ source.rpg keyword.other.rpg
+#      ^^^^^^^^^ source.rpg variable.other.rpg.sql keyword.other.rpg.sql.precompiler
+#               ^ source.rpg variable.other.rpg.sql
+#                ^^^ source.rpg variable.other.rpg.sql keyword.operator.rpg.sql.reserved
+#                   ^ source.rpg variable.other.rpg.sql
+#                    ^^^^^^^ source.rpg variable.other.rpg.sql variable.parameter.rpg.sql
+#                           ^ source.rpg variable.other.rpg.sql
+#                            ^ source.rpg variable.other.rpg.sql keyword.operator.rpg.sql
+#                             ^ source.rpg variable.other.rpg.sql
+#                              ^^^^^^^^^^^ source.rpg variable.other.rpg.sql constant.language.rpg.sql.globals
+>     C/END-EXEC
+#^^^^^ source.rpg variable.other.rpg.sql comment.gutter
+#     ^ source.rpg variable.other.rpg.sql keyword.other.rpg.sql.c
+#      ^^^^^^^^^ source.rpg keyword.other.rpg.sql.precompiler
+>     C/EXEC SQL SET :WRKFLD = JOB_NAME
+#^^^^^ source.rpg comment.gutter
+#     ^ source.rpg keyword.other.rpg
+#      ^^^^^^^^^ source.rpg variable.other.rpg.sql keyword.other.rpg.sql.precompiler
+#               ^ source.rpg variable.other.rpg.sql
+#                ^^^ source.rpg variable.other.rpg.sql keyword.operator.rpg.sql.reserved
+#                   ^ source.rpg variable.other.rpg.sql
+#                    ^^^^^^^ source.rpg variable.other.rpg.sql variable.parameter.rpg.sql
+#                           ^ source.rpg variable.other.rpg.sql
+#                            ^ source.rpg variable.other.rpg.sql keyword.operator.rpg.sql
+#                             ^ source.rpg variable.other.rpg.sql
+#                              ^^^^^^^^ source.rpg variable.other.rpg.sql constant.language.rpg.sql.globals
+>     C/END-EXEC
+#^^^^^ source.rpg variable.other.rpg.sql comment.gutter
+#     ^ source.rpg variable.other.rpg.sql keyword.other.rpg.sql.c
+#      ^^^^^^^^^ source.rpg keyword.other.rpg.sql.precompiler
+>     C/EXEC SQL SET :WRKFLD = PACKAGE_NAME
+#^^^^^ source.rpg comment.gutter
+#     ^ source.rpg keyword.other.rpg
+#      ^^^^^^^^^ source.rpg variable.other.rpg.sql keyword.other.rpg.sql.precompiler
+#               ^ source.rpg variable.other.rpg.sql
+#                ^^^ source.rpg variable.other.rpg.sql keyword.operator.rpg.sql.reserved
+#                   ^ source.rpg variable.other.rpg.sql
+#                    ^^^^^^^ source.rpg variable.other.rpg.sql variable.parameter.rpg.sql
+#                           ^ source.rpg variable.other.rpg.sql
+#                            ^ source.rpg variable.other.rpg.sql keyword.operator.rpg.sql
+#                             ^ source.rpg variable.other.rpg.sql
+#                              ^^^^^^^^^^^^ source.rpg variable.other.rpg.sql constant.language.rpg.sql.globals
+>     C/END-EXEC
+#^^^^^ source.rpg variable.other.rpg.sql comment.gutter
+#     ^ source.rpg variable.other.rpg.sql keyword.other.rpg.sql.c
+#      ^^^^^^^^^ source.rpg keyword.other.rpg.sql.precompiler
+>     C/EXEC SQL SET :WRKFLD = PACKAGE_SCHEMA
+#^^^^^ source.rpg comment.gutter
+#     ^ source.rpg keyword.other.rpg
+#      ^^^^^^^^^ source.rpg variable.other.rpg.sql keyword.other.rpg.sql.precompiler
+#               ^ source.rpg variable.other.rpg.sql
+#                ^^^ source.rpg variable.other.rpg.sql keyword.operator.rpg.sql.reserved
+#                   ^ source.rpg variable.other.rpg.sql
+#                    ^^^^^^^ source.rpg variable.other.rpg.sql variable.parameter.rpg.sql
+#                           ^ source.rpg variable.other.rpg.sql
+#                            ^ source.rpg variable.other.rpg.sql keyword.operator.rpg.sql
+#                             ^ source.rpg variable.other.rpg.sql
+#                              ^^^^^^^^^^^^^^ source.rpg variable.other.rpg.sql constant.language.rpg.sql.globals
+>     C/END-EXEC
+#^^^^^ source.rpg variable.other.rpg.sql comment.gutter
+#     ^ source.rpg variable.other.rpg.sql keyword.other.rpg.sql.c
+#      ^^^^^^^^^ source.rpg keyword.other.rpg.sql.precompiler
+>     C/EXEC SQL SET :WRKFLD = PACKAGE_VERSION
+#^^^^^ source.rpg comment.gutter
+#     ^ source.rpg keyword.other.rpg
+#      ^^^^^^^^^ source.rpg variable.other.rpg.sql keyword.other.rpg.sql.precompiler
+#               ^ source.rpg variable.other.rpg.sql
+#                ^^^ source.rpg variable.other.rpg.sql keyword.operator.rpg.sql.reserved
+#                   ^ source.rpg variable.other.rpg.sql
+#                    ^^^^^^^ source.rpg variable.other.rpg.sql variable.parameter.rpg.sql
+#                           ^ source.rpg variable.other.rpg.sql
+#                            ^ source.rpg variable.other.rpg.sql keyword.operator.rpg.sql
+#                             ^ source.rpg variable.other.rpg.sql
+#                              ^^^^^^^^^^^^^^^ source.rpg variable.other.rpg.sql constant.language.rpg.sql.globals
+>     C/END-EXEC
+#^^^^^ source.rpg variable.other.rpg.sql comment.gutter
+#     ^ source.rpg variable.other.rpg.sql keyword.other.rpg.sql.c
+#      ^^^^^^^^^ source.rpg keyword.other.rpg.sql.precompiler
+>     C/EXEC SQL SET :WRKFLD = PROCESS_ID
+#^^^^^ source.rpg comment.gutter
+#     ^ source.rpg keyword.other.rpg
+#      ^^^^^^^^^ source.rpg variable.other.rpg.sql keyword.other.rpg.sql.precompiler
+#               ^ source.rpg variable.other.rpg.sql
+#                ^^^ source.rpg variable.other.rpg.sql keyword.operator.rpg.sql.reserved
+#                   ^ source.rpg variable.other.rpg.sql
+#                    ^^^^^^^ source.rpg variable.other.rpg.sql variable.parameter.rpg.sql
+#                           ^ source.rpg variable.other.rpg.sql
+#                            ^ source.rpg variable.other.rpg.sql keyword.operator.rpg.sql
+#                             ^ source.rpg variable.other.rpg.sql
+#                              ^^^^^^^^^^ source.rpg variable.other.rpg.sql constant.language.rpg.sql.globals
+>     C/END-EXEC
+#^^^^^ source.rpg variable.other.rpg.sql comment.gutter
+#     ^ source.rpg variable.other.rpg.sql keyword.other.rpg.sql.c
+#      ^^^^^^^^^ source.rpg keyword.other.rpg.sql.precompiler
+>     C/EXEC SQL SET :WRKFLD = ROUTINE_SCHEMA
+#^^^^^ source.rpg comment.gutter
+#     ^ source.rpg keyword.other.rpg
+#      ^^^^^^^^^ source.rpg variable.other.rpg.sql keyword.other.rpg.sql.precompiler
+#               ^ source.rpg variable.other.rpg.sql
+#                ^^^ source.rpg variable.other.rpg.sql keyword.operator.rpg.sql.reserved
+#                   ^ source.rpg variable.other.rpg.sql
+#                    ^^^^^^^ source.rpg variable.other.rpg.sql variable.parameter.rpg.sql
+#                           ^ source.rpg variable.other.rpg.sql
+#                            ^ source.rpg variable.other.rpg.sql keyword.operator.rpg.sql
+#                             ^ source.rpg variable.other.rpg.sql
+#                              ^^^^^^^^^^^^^^ source.rpg variable.other.rpg.sql constant.language.rpg.sql.globals
+>     C/END-EXEC
+#^^^^^ source.rpg variable.other.rpg.sql comment.gutter
+#     ^ source.rpg variable.other.rpg.sql keyword.other.rpg.sql.c
+#      ^^^^^^^^^ source.rpg keyword.other.rpg.sql.precompiler
+>     C/EXEC SQL SET :WRKFLD = ROUTINE_SPECIFIC_NAME
+#^^^^^ source.rpg comment.gutter
+#     ^ source.rpg keyword.other.rpg
+#      ^^^^^^^^^ source.rpg variable.other.rpg.sql keyword.other.rpg.sql.precompiler
+#               ^ source.rpg variable.other.rpg.sql
+#                ^^^ source.rpg variable.other.rpg.sql keyword.operator.rpg.sql.reserved
+#                   ^ source.rpg variable.other.rpg.sql
+#                    ^^^^^^^ source.rpg variable.other.rpg.sql variable.parameter.rpg.sql
+#                           ^ source.rpg variable.other.rpg.sql
+#                            ^ source.rpg variable.other.rpg.sql keyword.operator.rpg.sql
+#                             ^ source.rpg variable.other.rpg.sql
+#                              ^^^^^^^^^^^^^^^^^^^^^ source.rpg variable.other.rpg.sql constant.language.rpg.sql.globals
+>     C/END-EXEC
+#^^^^^ source.rpg variable.other.rpg.sql comment.gutter
+#     ^ source.rpg variable.other.rpg.sql keyword.other.rpg.sql.c
+#      ^^^^^^^^^ source.rpg keyword.other.rpg.sql.precompiler
+>     C/EXEC SQL SET :WRKFLD = ROUTINE_TYPE
+#^^^^^ source.rpg comment.gutter
+#     ^ source.rpg keyword.other.rpg
+#      ^^^^^^^^^ source.rpg variable.other.rpg.sql keyword.other.rpg.sql.precompiler
+#               ^ source.rpg variable.other.rpg.sql
+#                ^^^ source.rpg variable.other.rpg.sql keyword.operator.rpg.sql.reserved
+#                   ^ source.rpg variable.other.rpg.sql
+#                    ^^^^^^^ source.rpg variable.other.rpg.sql variable.parameter.rpg.sql
+#                           ^ source.rpg variable.other.rpg.sql
+#                            ^ source.rpg variable.other.rpg.sql keyword.operator.rpg.sql
+#                             ^ source.rpg variable.other.rpg.sql
+#                              ^^^^^^^^^^^^ source.rpg variable.other.rpg.sql constant.language.rpg.sql.globals
+>     C/END-EXEC
+#^^^^^ source.rpg variable.other.rpg.sql comment.gutter
+#     ^ source.rpg variable.other.rpg.sql keyword.other.rpg.sql.c
+#      ^^^^^^^^^ source.rpg keyword.other.rpg.sql.precompiler
+>     C/EXEC SQL SET :WRKFLD = SERVER_MODE_JOB_NAME
+#^^^^^ source.rpg comment.gutter
+#     ^ source.rpg keyword.other.rpg
+#      ^^^^^^^^^ source.rpg variable.other.rpg.sql keyword.other.rpg.sql.precompiler
+#               ^ source.rpg variable.other.rpg.sql
+#                ^^^ source.rpg variable.other.rpg.sql keyword.operator.rpg.sql.reserved
+#                   ^ source.rpg variable.other.rpg.sql
+#                    ^^^^^^^ source.rpg variable.other.rpg.sql variable.parameter.rpg.sql
+#                           ^ source.rpg variable.other.rpg.sql
+#                            ^ source.rpg variable.other.rpg.sql keyword.operator.rpg.sql
+#                             ^ source.rpg variable.other.rpg.sql
+#                              ^^^^^^^^^^^^^^^^^^^^ source.rpg variable.other.rpg.sql constant.language.rpg.sql.globals
+>     C/END-EXEC
+#^^^^^ source.rpg variable.other.rpg.sql comment.gutter
+#     ^ source.rpg variable.other.rpg.sql keyword.other.rpg.sql.c
+#      ^^^^^^^^^ source.rpg keyword.other.rpg.sql.precompiler
+>     C/EXEC SQL SET :WRKFLD = THREAD_ID
+#^^^^^ source.rpg comment.gutter
+#     ^ source.rpg keyword.other.rpg
+#      ^^^^^^^^^ source.rpg variable.other.rpg.sql keyword.other.rpg.sql.precompiler
+#               ^ source.rpg variable.other.rpg.sql
+#                ^^^ source.rpg variable.other.rpg.sql keyword.operator.rpg.sql.reserved
+#                   ^ source.rpg variable.other.rpg.sql
+#                    ^^^^^^^ source.rpg variable.other.rpg.sql variable.parameter.rpg.sql
+#                           ^ source.rpg variable.other.rpg.sql
+#                            ^ source.rpg variable.other.rpg.sql keyword.operator.rpg.sql
+#                             ^ source.rpg variable.other.rpg.sql
+#                              ^^^^^^^^^ source.rpg variable.other.rpg.sql constant.language.rpg.sql.globals
+>     C/END-EXEC
+#^^^^^ source.rpg variable.other.rpg.sql comment.gutter
+#     ^ source.rpg variable.other.rpg.sql keyword.other.rpg.sql.c
+#      ^^^^^^^^^ source.rpg keyword.other.rpg.sql.precompiler
 >
 #^ source.rpg

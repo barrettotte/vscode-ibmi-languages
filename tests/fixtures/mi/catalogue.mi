@@ -1,0 +1,272 @@
+/********************************************************************/
+/* Every instruction the reference gives an operand count for, written */
+/* with that many operands. The count comes from the op-code table in */
+/* the reference rather than from guesswork.                        */
+/********************************************************************/
+/* Member: MICAT                                                    */
+/* Compilable: no - an instruction catalogue, not a working program. */
+/* Source: IBM i 7.5 Machine Interface functional reference.        */
+/* Retrieved: 2026-07-28                                            */
+/********************************************************************/
+
+/* The operands these instructions take are declared once and       */
+/* reused, so that the instruction name is what varies.             */
+DCL     DD         R            PKD(15,5)  AUTO;
+DCL     DD         A            PKD(15,5)  AUTO;
+DCL     DD         B            PKD(15,5)  AUTO;
+DCL     DD         C            PKD(15,5)  AUTO;
+
+/********************************************************************/
+/* Instructions the reference gives no operands.                    */
+        CLRIEXIT;
+        END;
+        NOOP;
+        YIELD;
+/********************************************************************/
+/* Instructions the reference gives one operand.                    */
+        CPRDATA    R;
+        DCPDATA    R;
+        DEACTPG    R;
+        DESHS      R;
+        DESINX     R;
+        DESS       R;
+        ENSOBJ     R;
+        FREHSS     R;
+        FREHSSMK   R;
+        GENUUID    R;
+        LOCK       R;
+        MATPRAGP   R;
+        MODINVAU   R;
+        NOOPS      R;
+        RINZSTAT   R;
+        RTNEXCP    R;
+        RTX        R;
+        SETACST    R;
+        STPLLEN    R;
+        UNLOCK     R;
+        WAITTIME   R;
+        XLATEMB    R;
+/********************************************************************/
+/* Instructions the reference gives 2 operands.                     */
+        ACTBPGM    R, A;
+        ACTPG      R, A;
+        CLRBTS     R, A;
+        CPYBLA     R, A;
+        CPYBOLA    R, A;
+        CPYBRA     R, A;
+        CPYBREP    R, A;
+        CPYBWP     R, A;
+        CPYHEXNN   R, A;
+        CPYHEXNZ   R, A;
+        CPYHEXZN   R, A;
+        CPYHEXZZ   R, A;
+        CPYNV      R, A;
+        CRTHS      R, A;
+        CRTINX     R, A;
+        CRTS       R, A;
+        CVTCH      R, A;
+        CVTHC      R, A;
+        ECSCAN     R, A;
+        EXCHBY     R, A;
+        EXTREXP    R, A;
+        EXTRMAG    R, A;
+        LOCKSL     R, A;
+        MATAGAT    R, A;
+        MATAOL     R, A;
+        MATBPGM    R, A;
+        MATDMPS    R, A;
+        MATDRECL   R, A;
+        MATINAT    R, A;
+        MATINV     R, A;
+        MATINVS    R, A;
+        MATINXAT   R, A;
+        MATJOAT    R, A;
+        MATJPAT    R, A;
+        MATJSAT    R, A;
+        MATMATR    R, A;
+        MATMDATA   R, A;
+        MATOBJLK   R, A;
+        MATPG      R, A;
+        MATPRECL   R, A;
+        MATPRLK    R, A;
+        MATPTR     R, A;
+        MATQAT     R, A;
+        MATRMD     R, A;
+        MATS       R, A;
+        MATSELLK   R, A;
+        MATSOBJ    R, A;
+        MATUP      R, A;
+        MATUPID    R, A;
+        MODASA     R, A;
+        MODINX     R, A;
+        MODS       R, A;
+        NEG        R, A;
+        NOT        R, A;
+        OVRPGATR   R, A;
+        REALCHSS   R, A;
+        RETEXCPD   R, A;
+        SCANWC     R, A;
+        SEARCH     R, A;
+        SETALLEN   R, A;
+        SETBTS     R, A;
+        SETDP      R, A;
+        SETDPADR   R, A;
+        SETDPAT    R, A;
+        SETHSSMK   R, A;
+        SETIEXIT   R, A;
+        SETIP      R, A;
+        SETSPFP    R, A;
+        SETSPP     R, A;
+        SETSPPFP   R, A;
+        SETSPPO    R, A;
+        STSPPO     R, A;
+        TESTTOBJ   R, A;
+        TSTRPLC    R, A;
+        UNLKMTX    R, A;
+        UNLOCKSL   R, A;
+        XCTL       R, A;
+        XFRLOCK    R, A;
+/********************************************************************/
+/* Instructions the reference gives 3 operands.                     */
+        ADDLC      R, A, B;
+        ADDN       R, A, B;
+        ADDSPP     R, A, B;
+        ALCHSS     R, A, B;
+        AND        R, A, B;
+        CALLI      R, A, B;
+        CALLX      R, A, B;
+        CAT        R, A, B;
+        CIPHER     R, A, B;
+        CMF1       R, A, B;
+        CMF2       R, A, B;
+        CMPBLA     R, A, B;
+        CMPBRA     R, A, B;
+        CMPNV      R, A, B;
+        CMPPSPAD   R, A, B;
+        CMPPTRA    R, A, B;
+        CMPPTRE    R, A, B;
+        CMPPTRT    R, A, B;
+        CMPSPAD    R, A, B;
+        CPYBLAP    R, A, B;
+        CPYBOLAP   R, A, B;
+        CPYBRAP    R, A, B;
+        CPYBTLLS   R, A, B;
+        CPYBTRAS   R, A, B;
+        CPYBTRLS   R, A, B;
+        CPYECLAP   R, A, B;
+        CRTMTX     R, A, B;
+        CVTBC      R, A, B;
+        CVTCB      R, A, B;
+        CVTCM      R, A, B;
+        CVTCN      R, A, B;
+        CVTCS      R, A, B;
+        CVTD       R, A, B;
+        CVTDFFP    R, A, B;
+        CVTEFN     R, A, B;
+        CVTFPDF    R, A, B;
+        CVTMC      R, A, B;
+        CVTNC      R, A, B;
+        CVTSC      R, A, B;
+        CVTT       R, A, B;
+        CVTTS      R, A, B;
+        DESMTX     R, A, B;
+        DIV        R, A, B;
+        EDIT       R, A, B;
+        ENQ        R, A, B;
+        FNDRINVN   R, A, B;
+        INSINXEN   R, A, B;
+        LOCKMTX    R, A, B;
+        MATACTAT   R, A, B;
+        MATAGPAT   R, A, B;
+        MATAL      R, A, B;
+        MATAU      R, A, B;
+        MATAUOBJ   R, A, B;
+        MATAUU     R, A, B;
+        MATCTX     R, A, B;
+        MATEXCPD   R, A, B;
+        MATHSAT    R, A, B;
+        MATINVAT   R, A, B;
+        MATINVE    R, A, B;
+        MATJOBJ    R, A, B;
+        MATPRATR   R, A, B;
+        MATPTRIF   R, A, B;
+        MATPTRL    R, A, B;
+        MATQMSG    R, A, B;
+        MODEXCPD   R, A, B;
+        MULT       R, A, B;
+        OR         R, A, B;
+        REM        R, A, B;
+        RSLVDP     R, A, B;
+        SCALE      R, A, B;
+        SCAN       R, A, B;
+        SETSPPD    R, A, B;
+        SIGEXCP    R, A, B;
+        SNSEXCPD   R, A, B;
+        SSCA       R, A, B;
+        SUBLC      R, A, B;
+        SUBN       R, A, B;
+        SUBSPP     R, A, B;
+        SUBSPPFO   R, A, B;
+        TESTAU     R, A, B;
+        TESTEAU    R, A, B;
+        TESTEXCP   R, A, B;
+        TESTULA    R, A, B;
+        TRIML      R, A, B;
+        TSTBTS     R, A, B;
+        TSTBUM     R, A, B;
+        VERIFY     R, A, B;
+        XLATEWT    R, A, B;
+        XLATWTDS   R, A, B;
+        XOR        R, A, B;
+/********************************************************************/
+/* Instructions the reference gives 4 operands.                     */
+        CAI        R, A, B, C;
+        CDD        R, A, B, C;
+        CMPBLAP    R, A, B, C;
+        CMPBRAP    R, A, B, C;
+        CMPSW      R, A, B, C;
+        CPYBBTA    R, A, B, C;
+        CPYBBTL    R, A, B, C;
+        CPYBTA     R, A, B, C;
+        CPYBTL     R, A, B, C;
+        CTD        R, A, B, C;
+        CTSD       R, A, B, C;
+        DECD       R, A, B, C;
+        DECT       R, A, B, C;
+        DECTS      R, A, B, C;
+        DEQ        R, A, B, C;
+        FNDINXEN   R, A, B, C;
+        INCD       R, A, B, C;
+        INCT       R, A, B, C;
+        INCTS      R, A, B, C;
+        MATPRMSG   R, A, B, C;
+        RMVINXEN   R, A, B, C;
+        RSLVSP     R, A, B, C;
+        XLATE      R, A, B, C;
+
+/********************************************************************/
+/* The remaining instructions are the bound program built-ins,      */
+/* which the reference documents as a call returning a value        */
+/* rather than as a statement, so they are named here but not       */
+/* written as statements:                                           */
+/*   ACOS       ADDR       ANDCSTR    ANDSTR     ASIN       ATAN      */
+/*   ATANH      ATMCADD    ATMCAND    ATMCOR     BITPERM    CALLPGMV  */
+/*   CHKLKVAL   CLRINVF    CLRLKVAL   CMPSWP     CMPTOPAD   CNT       */
+/*   CNTLZ4     CNTLZ8     COMSTR     COS        COSH       COT       */
+/*   CPYBO      CPYBYTES   DCL        DEQWAIT    DIVREM     EDITPD    */
+/*   EEXP       ENTRY      EXT        FINDBYTE   INITEHCA   INVP      */
+/*   LBCPYNV    LBCPYNVR   LBEDIT     LIST       LN         LOCKTSL   */
+/*   MATACTEX   MATMATR1   MATMIF     MATMTX     MATOBJLCK  MATPGMNM  */
+/*   MATPRMTX   MATQMSGQ   MATTODAT   MEMCHR     MEMCMP     MEMCPY    */
+/*   MEMMOVE    MEMUSEHINT  MODS1      MODS2      MPYADD     MPYSUB    */
+/*   MVLICOPT   NPM        OPM        ORSTR      PARM       PARMLIST  */
+/*   PCOPTR     PCOPTR2    PEND       POPCNT4    POPCNT8    POPCNTB   */
+/*   POPPAR4    POPPAR8    POWER      PROPB      QUANTIZEBE  QUANTIZEBV */
+/*   RETCA      RETINVF    RETTHCNT   RETTHID    RETTSADR   SCANX     */
+/*   SETCA      SETINVF    SIN        SINH       STRCHRNULL  STRCMPNULL */
+/*   STRCPYNULL  STRLENNULL  STRNCMPNULL  STRNCPYNULL  STRNCPYNULLPAD  SYNCADDF  */
+/*   SYNCANDF   SYNCBCMPSW  SYNCCLR    SYNCCMPSW  SYNCFADD   SYNCFAND  */
+/*   SYNCFNAND  SYNCFOR    SYNCFSUB   SYNCFXOR   SYNCNANDF  SYNCORF   */
+/*   SYNCSTG    SYNCSTO    SYNCSUBF   SYNCXORF   TAN        TANH      */
+/*   TESTINTR   TESTPDC    TESTPTR    TESTRPL    TESTSUBSET  TSTINLTH  */
+/*   UNLCKTSL   XLATEB     XLATEB1    XORSTR                        */

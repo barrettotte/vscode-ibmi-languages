@@ -26,7 +26,6 @@ DCL     SPCPTR     P@           AUTO;
 /* Character string handling.                                       */
         CPYBLA     C, A;
         CPYBLAP    C, A;
-        CATB       C, A, B;
         SCANB      C, A, B;
         XLATEB     C, A, B;
 
@@ -39,10 +38,10 @@ DCL     SPCPTR     P@           AUTO;
         CALLX      OBJ@, PARM_LIST, *NULL;
         RTX        *NULL;
 
-EQUAL:  NOP;
-LOWER:  NOP;
-HIGHER: NOP;
-SAME:   NOP;
+EQUAL:  NOOP;
+LOWER:  NOOP;
+HIGHER: NOOP;
+SAME:   NOOP;
 DONE:   RTX        *NULL;
 
 /* Atomic instructions, added in IBM i 7.5.                         */

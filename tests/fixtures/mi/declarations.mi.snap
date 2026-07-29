@@ -69,7 +69,9 @@
 #^^^ source.mi keyword.other.mi
 #   ^^^^^ source.mi
 #        ^^^^^^ source.mi support.type.mi
-#              ^^^^^^^^^^^^^^^^^^^^^^^^ source.mi
+#              ^^^^^^^^^^^^^^^^^^ source.mi
+#                                ^^^^ source.mi storage.modifier.mi
+#                                    ^^ source.mi
 >
 #^ source.mi
 >/* An operand list names the parameters passed to the program.      */
@@ -111,7 +113,7 @@
 #                                      ^ source.mi
 #                                       ^ source.mi constant.numeric.mi
 #                                        ^^^ source.mi
-#                                           ^^^ source.mi support.function.mi
+#                                           ^^^ source.mi storage.modifier.mi
 #                                              ^^^^^^^^^ source.mi
 >DCL     DD         ARG2         PKD(15,5)  BAS(ARG2@);
 #^^^ source.mi keyword.other.mi
@@ -124,7 +126,7 @@
 #                                      ^ source.mi
 #                                       ^ source.mi constant.numeric.mi
 #                                        ^^^ source.mi
-#                                           ^^^ source.mi support.function.mi
+#                                           ^^^ source.mi storage.modifier.mi
 #                                              ^^^^^^^^^ source.mi
 >DCL     DD         RESULT       PKD(15,5)  BAS(RESULT@);
 #^^^ source.mi keyword.other.mi
@@ -137,7 +139,7 @@
 #                                      ^ source.mi
 #                                       ^ source.mi constant.numeric.mi
 #                                        ^^^ source.mi
-#                                           ^^^ source.mi support.function.mi
+#                                           ^^^ source.mi storage.modifier.mi
 #                                              ^^^^^^^^^^^ source.mi
 >DCL     DD         COUNTER      BIN(4)     AUTO   INIT(0);
 #^^^ source.mi keyword.other.mi
@@ -147,8 +149,10 @@
 #                                ^^^ source.mi support.function.mi
 #                                   ^ source.mi
 #                                    ^ source.mi constant.numeric.mi
-#                                     ^^^^^^^^^^^^^ source.mi
-#                                                  ^^^^ source.mi support.function.mi
+#                                     ^^^^^^ source.mi
+#                                           ^^^^ source.mi storage.modifier.mi
+#                                               ^^^ source.mi
+#                                                  ^^^^ source.mi storage.modifier.mi
 #                                                      ^ source.mi
 #                                                       ^ source.mi constant.numeric.mi
 #                                                        ^^^ source.mi
@@ -160,8 +164,10 @@
 #                                ^^^^ source.mi support.function.mi
 #                                    ^ source.mi
 #                                     ^^ source.mi constant.numeric.mi
-#                                       ^^^^^^^^^^^ source.mi
-#                                                  ^^^^ source.mi support.function.mi
+#                                       ^^^^ source.mi
+#                                           ^^^^ source.mi storage.modifier.mi
+#                                               ^^^ source.mi
+#                                                  ^^^^ source.mi storage.modifier.mi
 #                                                      ^ source.mi
 #                                                       ^ source.mi string.quoted.single.mi
 #                                                        ^ source.mi string.quoted.single.mi

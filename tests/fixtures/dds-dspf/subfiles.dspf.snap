@@ -321,7 +321,9 @@
 #                                      ^^^ source.dds.dspf constant.language.dds.dspf.locline
 #                                         ^^^ source.dds.dspf constant.language.dds.dspf.locpos
 #                                            ^^^^^^^^^ source.dds.dspf keyword.other.dds.dspf.funcs
-#                                                     ^^^^^^^^^^ source.dds.dspf
+#                                                     ^ source.dds.dspf
+#                                                      ^^^^^^^ source.dds.dspf variable.other.dds.dspf.field
+#                                                             ^^ source.dds.dspf
 >00250A                                      SFLSCROLL(&SCRFLD)
 #^^^^^ source.dds.dspf comment.gutter
 #     ^ source.dds.dspf keyword.other.dds.dspf.spec
@@ -333,7 +335,9 @@
 #                                      ^^^ source.dds.dspf constant.language.dds.dspf.locline
 #                                         ^^^ source.dds.dspf constant.language.dds.dspf.locpos
 #                                            ^^^^^^^^^ source.dds.dspf keyword.other.dds.dspf.funcs
-#                                                     ^^^^^^^^^^ source.dds.dspf
+#                                                     ^ source.dds.dspf
+#                                                      ^^^^^^^ source.dds.dspf variable.other.dds.dspf.field
+#                                                             ^^ source.dds.dspf
 >00260A                                      SFLMODE(&MODEFLD)
 #^^^^^ source.dds.dspf comment.gutter
 #     ^ source.dds.dspf keyword.other.dds.dspf.spec
@@ -345,7 +349,9 @@
 #                                      ^^^ source.dds.dspf constant.language.dds.dspf.locline
 #                                         ^^^ source.dds.dspf constant.language.dds.dspf.locpos
 #                                            ^^^^^^^ source.dds.dspf keyword.other.dds.dspf.funcs
-#                                                   ^^^^^^^^^^^ source.dds.dspf
+#                                                   ^ source.dds.dspf
+#                                                    ^^^^^^^^ source.dds.dspf variable.other.dds.dspf.field
+#                                                            ^^ source.dds.dspf
 >00270A                                      SFLENTER(CF06)
 #^^^^^ source.dds.dspf comment.gutter
 #     ^ source.dds.dspf keyword.other.dds.dspf.spec

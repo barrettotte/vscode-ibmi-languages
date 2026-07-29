@@ -520,7 +520,9 @@
 #                                   ^^ source.dds.icff constant.language.dds.icff.decpos
 #                                     ^^^^^^^ source.dds.icff
 #                                            ^^^^^^ source.dds.icff keyword.other.dds.icff.funcs
-#                                                  ^^^^^^^^^^ source.dds.icff
+#                                                  ^ source.dds.icff
+#                                                   ^^^^^^^ source.dds.icff variable.other.dds.icff.field
+#                                                          ^^ source.dds.icff
 >00120A                                      FLTPCN(*SINGLE)
 #^^^^^ source.dds.icff comment.gutter
 #     ^ source.dds.icff keyword.other.dds.icff.spec
@@ -542,7 +544,9 @@
 #                                   ^^ source.dds.icff constant.language.dds.icff.decpos
 #                                     ^^^^^^^ source.dds.icff
 #                                            ^^^^^^^ source.dds.icff keyword.other.dds.icff.funcs
-#                                                   ^^^^^^^^^^ source.dds.icff
+#                                                   ^ source.dds.icff
+#                                                    ^^^^^^^ source.dds.icff variable.other.dds.icff.field
+#                                                           ^^ source.dds.icff
 >00140A                                      CTLDTA
 #^^^^^ source.dds.icff comment.gutter
 #     ^ source.dds.icff keyword.other.dds.icff.spec

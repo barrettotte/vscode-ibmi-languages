@@ -1,0 +1,43 @@
+     A*
+     A* The order header physical file. It is keyed on the order number,
+     A* takes its field definitions from a field reference file where it
+     A* can, and carries the validity checking the application relies on.
+     A*
+     A* Member: ORDHDR   Compilable: yes (CRTPF)
+     A* Source: DDS for physical and logical files, IBM i 7.5.
+     A* Retrieved: 2026-07-28
+     A*
+     A*
+     A* File level. The reference file supplies field definitions to
+     A* every specification that carries R in position 29.
+     A                                      UNIQUE
+     A                                      REF(ORDREF)
+     A                                      LIFO
+     A*
+     A* The record format and its fields.
+     A          R ORDREC                    TEXT('Order header')
+     A                                      FORMAT(ORDFMT)
+     A            ORDNBR         7P 0       TEXT('Order number')
+     A                                      COLHDG('Order' 'number')
+     A                                      CHECK(MF)
+     A            ORDCUS         6P 0       TEXT('Customer number')
+     A                                      COLHDG('Customer')
+     A                                      RANGE(1 999999)
+     A            ORDNAM    R               REFFLD(CUSNAM ORDREF)
+     A                                      TEXT('Customer name')
+     A            ORDDAT        10L         DATFMT(*ISO) TEXT('Order date')
+     A            ORDTIM         8T         TIMFMT(*HMS) TEXT('Order time')
+     A            ORDAMT        11P 2       TEXT('Order amount')
+     A                                      EDTCDE(J)
+     A            ORDSTS         1A         TEXT('Status')
+     A                                      VALUES('O' 'S' 'C' 'X')
+     A                                      DFT('O')
+     A            ORDTAX         5P 3       TEXT('Tax rate') DFT(0)
+     A            ORDNTE        50A         VARLEN TEXT('Free text note')
+     A                                      ALWNULL
+     A            ORDTS         26Z         TEXT('Written at')
+     A*
+     A* The key. A descending second key breaks ties by the most
+     A* recent order first.
+     A          K ORDNBR
+     A          K ORDDAT                    DESCEND

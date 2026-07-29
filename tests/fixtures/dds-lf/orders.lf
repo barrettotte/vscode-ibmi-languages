@@ -1,0 +1,36 @@
+     A*
+     A* A logical view of the order header file: the open orders only,
+     A* keyed by customer, with the customer name joined in from the
+     A* customer master.
+     A*
+     A* Member: ORDOPN   Compilable: yes (CRTLF)
+     A* Source: DDS for physical and logical files, IBM i 7.5.
+     A* Retrieved: 2026-07-28
+     A*
+     A*
+     A* A joined record format takes its fields from two files. The
+     A* join specification names them in the order they are read.
+     A          R ORDJRC                    JFILE(ORDHDR CUSMAS)
+     A          J                           JOIN(ORDHDR CUSMAS)
+     A                                      JFLD(ORDCUS CUSNBR)
+     A                                      JDFTVAL
+     A*
+     A* Fields, one of them renamed and one concatenated from two.
+     A            ORDNBR                    JREF(ORDHDR)
+     A            ORDCUS                    JREF(ORDHDR)
+     A            CUSNAM                    JREF(CUSMAS)
+     A            ORDAMT                    JREF(ORDHDR)
+     A            ORDDAT                    JREF(ORDHDR)
+     A            ORDSTS                    JREF(ORDHDR)
+     A            CUSKEY                    RENAME(CUSNBR)
+     A                                      JREF(CUSMAS)
+     A*
+     A* Keyed by customer, then by order within the customer.
+     A          K ORDCUS
+     A          K ORDNBR
+     A*
+     A* Select and omit. A record is taken when it passes the select
+     A* tests and is not caught by an omit.
+     A          S ORDSTS                    COMP(EQ 'O')
+     A          S ORDAMT                    COMP(GT 0)
+     A          O ORDCUS                    RANGE(900000 999999)

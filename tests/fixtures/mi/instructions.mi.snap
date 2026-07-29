@@ -37,7 +37,9 @@
 #                                    ^^ source.mi constant.numeric.mi
 #                                      ^ source.mi
 #                                       ^ source.mi constant.numeric.mi
-#                                        ^^^^^^^^^ source.mi
+#                                        ^^^ source.mi
+#                                           ^^^^ source.mi storage.modifier.mi
+#                                               ^^ source.mi
 >DCL     DD         B            PKD(15,5)  AUTO;
 #^^^ source.mi keyword.other.mi
 #   ^^^^^ source.mi
@@ -49,7 +51,9 @@
 #                                    ^^ source.mi constant.numeric.mi
 #                                      ^ source.mi
 #                                       ^ source.mi constant.numeric.mi
-#                                        ^^^^^^^^^ source.mi
+#                                        ^^^ source.mi
+#                                           ^^^^ source.mi storage.modifier.mi
+#                                               ^^ source.mi
 >DCL     DD         C            PKD(15,5)  AUTO;
 #^^^ source.mi keyword.other.mi
 #   ^^^^^ source.mi
@@ -60,12 +64,16 @@
 #                                    ^^ source.mi constant.numeric.mi
 #                                      ^ source.mi
 #                                       ^ source.mi constant.numeric.mi
-#                                        ^^^^^^^^^ source.mi
+#                                        ^^^ source.mi
+#                                           ^^^^ source.mi storage.modifier.mi
+#                                               ^^ source.mi
 >DCL     SPCPTR     P@           AUTO;
 #^^^ source.mi keyword.other.mi
 #   ^^^^^ source.mi
 #        ^^^^^^ source.mi support.type.mi
-#              ^^^^^^^^^^^^^^^^^^^^^^^^ source.mi
+#              ^^^^^^^^^^^^^^^^^^ source.mi
+#                                ^^^^ source.mi storage.modifier.mi
+#                                    ^^ source.mi
 >
 #^ source.mi
 >/* Computation.                                                     */
@@ -147,12 +155,10 @@
 #^^^^^^^^ source.mi
 #        ^^^^^^^ source.mi keyword.other.mi
 #               ^^^^^^^^^^ source.mi
->        CATB       C, A, B;
-#^^^^^^^^^^^^^^^^^^^^^^^^ source.mi
-#                        ^^ source.mi keyword.other.mi
-#                          ^^ source.mi
 >        SCANB      C, A, B;
-#^^^^^^^^^^^^^^^^^^^^^^^^ source.mi
+#^^^^^^^^ source.mi
+#        ^^^^^ source.mi keyword.other.mi
+#             ^^^^^^^^^^^ source.mi
 #                        ^^ source.mi keyword.other.mi
 #                          ^^ source.mi
 >        XLATEB     C, A, B;
@@ -205,18 +211,26 @@
 #                        ^^ source.mi
 >
 #^ source.mi
->EQUAL:  NOP;
+>EQUAL:  NOOP;
 #^^^^^^ source.mi keyword.control.mi.label
-#      ^^^^^^^ source.mi
->LOWER:  NOP;
+#      ^^ source.mi
+#        ^^^^ source.mi keyword.other.mi
+#            ^^ source.mi
+>LOWER:  NOOP;
 #^^^^^^ source.mi keyword.control.mi.label
-#      ^^^^^^^ source.mi
->HIGHER: NOP;
+#      ^^ source.mi
+#        ^^^^ source.mi keyword.other.mi
+#            ^^ source.mi
+>HIGHER: NOOP;
 #^^^^^^^ source.mi keyword.control.mi.label
-#       ^^^^^^ source.mi
->SAME:   NOP;
+#       ^ source.mi
+#        ^^^^ source.mi keyword.other.mi
+#            ^^ source.mi
+>SAME:   NOOP;
 #^^^^^ source.mi keyword.control.mi.label
-#     ^^^^^^^^ source.mi
+#     ^^^ source.mi
+#        ^^^^ source.mi keyword.other.mi
+#            ^^ source.mi
 >DONE:   RTX        *NULL;
 #^^^^^ source.mi keyword.control.mi.label
 #     ^^^ source.mi

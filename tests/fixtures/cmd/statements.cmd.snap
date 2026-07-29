@@ -205,7 +205,7 @@
 #                                     ^^^^^^^ source.cmd
 #                                            ^^^^^^^ source.cmd support.function.cmd
 #                                                   ^ source.cmd
-#                                                    ^^^ source.cmd constant.language.cmd
+#                                                    ^^^ source.cmd keyword.other.cmd
 #                                                       ^ source.cmd
 #                                                        ^ source.cmd constant.numeric.cmd
 #                                                         ^^ source.cmd
@@ -225,7 +225,7 @@
 #                           ^^^^^^^ source.cmd
 #                                  ^^^^ source.cmd support.function.cmd
 #                                      ^^ source.cmd
-#                                        ^^^ source.cmd constant.language.cmd
+#                                        ^^^ source.cmd keyword.other.cmd
 #                                           ^ source.cmd
 #                                            ^^^^^^ source.cmd constant.language.cmd
 #                                                  ^^^ source.cmd
