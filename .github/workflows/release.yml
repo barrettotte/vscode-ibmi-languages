@@ -1,0 +1,92 @@
+name: Release
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      targets:
+        description: Which marketplaces to publish to
+        type: choice
+        default: both
+        options:
+          - both
+          - vsce
+          - ovsx
+
+permissions:
+  contents: write # to attach the packaged extension to the release
+
+jobs:
+  release:
+    name: Package and publish
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      # The same checks CI runs.
+      - name: Check formatting
+        run: npm run format:check
+
+      - name: Run repository checks
+        run: npm run lint
+
+      - name: Run grammar tests
+        run: npm test
+
+      # Packaged once and published from that same file, so the marketplaces
+      # and the release asset are known to hold identical bytes.
+      - name: Package the extension
+        id: package
+        run: |
+          version=$(node -p "require('./package.json').version")
+          vsix="ibmi-languages-${version}.vsix"
+          npx vsce package --out "$vsix"
+          echo "vsix=$vsix" >> "$GITHUB_OUTPUT"
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+
+      - name: Check the tag matches package.json
+        if: github.event_name == 'release'
+        run: |
+          tag="${{ github.event.release.tag_name }}"
+          version="${{ steps.package.outputs.version }}"
+          if [ "${tag#v}" != "$version" ]; then
+            echo "::error::release tag $tag does not match package.json version $version"
+            exit 1
+          fi
+
+      - name: Attach the extension to the release
+        if: github.event_name == 'release'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release upload "${{ github.event.release.tag_name }}" \
+            "${{ steps.package.outputs.vsix }}" --clobber
+
+      # No continue-on-error: if the first publish fails the job stops and the
+      # second never runs, so a run publishes to both marketplaces or to
+      # neither. The case that cannot be undone is the first succeeding and the
+      # second failing, since a publish cannot be rolled back. Recover from that
+      # by running this workflow by hand with targets set to whichever
+      # marketplace still needs it; re-running both would fail on the one that
+      # already has the version.
+      - name: Publish to the VS Code Marketplace
+        if: inputs.targets != 'ovsx'
+        run: |
+          npx vsce publish --packagePath "${{ steps.package.outputs.vsix }}" \
+            -p "${{ secrets.VSCE_TOKEN }}"
+
+      - name: Publish to Open VSX
+        if: inputs.targets != 'vsce'
+        run: |
+          npx ovsx publish "${{ steps.package.outputs.vsix }}" \
+            -p "${{ secrets.OPEN_VSX }}"

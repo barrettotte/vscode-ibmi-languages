@@ -1,0 +1,143 @@
+name: Highlighting problem
+description: Something is highlighted wrongly, or not highlighted at all
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting this.
+
+        The two things that matter most are the **source** and the **file name**.
+        The file name decides which grammar runs: the same source is read one way
+        in `.rpg` and another in `.rpgle`, and DDS keywords differ between
+        `.pf`, `.lf`, `.dspf`, `.prtf` and `.icff`. A report without the extension
+        is harder to reproduce.
+
+  - type: input
+    id: filename
+    attributes:
+      label: Source file name, with its extension
+      description: >
+        The name the file has in VS Code. If the member is in the IFS or was
+        downloaded from a source physical file, give the name as VS Code sees it.
+      placeholder: MYFILE.rpgle
+    validations:
+      required: true
+
+  - type: textarea
+    id: source
+    attributes:
+      label: Source that fails
+      description: >
+        Enough source to reproduce it, pasted **exactly** as it is in the file.
+        Do not re-indent or trim leading blanks: in the fixed-format languages the
+        column a character sits in is what the grammar keys on, so source that has
+        been realigned describes a different problem from the one you are seeing.
+      render: text
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: What is wrong
+      description: >
+        Which part is highlighted wrongly, and what you expected instead. Naming
+        the line and the word is enough.
+      placeholder: |
+        Line 3, `qual@#$` - only `qual` is coloured and `@#$` is left plain.
+        It is one name, so the whole of it should be.
+    validations:
+      required: true
+
+  - type: dropdown
+    id: language
+    attributes:
+      label: Language
+      options:
+        - RPGLE / SQLRPGLE (.rpgle, .sqlrpgle, .rpgleinc)
+        - RPG/400 (.rpg, .rpg38, .sqlrpg)
+        - Control Language (.cl, .clle, .clp, .clp38)
+        - Command definition (.cmd)
+        - DDS physical file (.pf, .pf38, .dds)
+        - DDS logical file (.lf, .lf38)
+        - DDS display file (.dspf, .dspf38)
+        - DDS printer file (.prtf, .prtf38)
+        - DDS ICF file (.icff)
+        - UIM panel group (.pnlgrp)
+        - Binder language (.bnd)
+        - Machine interface (.mi)
+        - Not sure
+    validations:
+      required: false
+
+  - type: dropdown
+    id: sourcemode
+    attributes:
+      label: For RPGLE only - is the first line of the member `**FREE`?
+      description: >
+        This decides everything else. With `**FREE` the member is fully free-form
+        and code starts in column 1; without it the member is column-limited, a
+        statement lives in columns 8-80, and columns 1-5 are the sequence number.
+        The two are highlighted by different rules, and a snippet on its own does
+        not say which applies.
+      options:
+        - "Yes - the member starts with **FREE"
+        - "No - the member does not start with **FREE"
+        - Not applicable
+    validations:
+      required: false
+
+  - type: textarea
+    id: screenshot
+    attributes:
+      label: Screenshot
+      description: >
+        Optional, but it shows at a glance what the description has to spell out.
+        Drag the image in here.
+    validations:
+      required: false
+
+  - type: input
+    id: theme
+    attributes:
+      label: Colour theme
+      description: >
+        Optional. A scope can be correct and still look wrong if the theme does
+        not style it.
+      placeholder: Default Dark Modern
+    validations:
+      required: false
+
+  - type: input
+    id: extversion
+    attributes:
+      label: Extension version
+      description: Optional. Shown on the extension's page in VS Code.
+      placeholder: 0.7.0
+    validations:
+      required: false
+
+  - type: dropdown
+    id: osversion
+    attributes:
+      label: IBM i version
+      description: >
+        Optional. The grammars are built from the 7.5 references, so a keyword
+        added or withdrawn in another release is worth knowing about.
+      options:
+        - "7.6"
+        - "7.5"
+        - "7.4"
+        - "7.3"
+        - Older
+        - Not sure
+    validations:
+      required: false
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Anything else
+    validations:
+      required: false

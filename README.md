@@ -2,9 +2,9 @@
 
 Syntax highlighting for IBMi languages such as RPG, CL, DDS, MI, and RPGLE fixed/free.
 
-**Please consider downloading [code-for-ibmi](https://github.com/halcyon-tech/code-for-ibmi) to edit RPG, RPGLE, and CL directly in VS Code!**
+**Please consider downloading [Code for IBM i](https://github.com/codefori/vscode-ibmi) to edit RPG, RPGLE, and CL directly in VS Code!**
 
-There's probably a few syntax bugs. Please submit a pull request or issue if you see something amiss.
+There are probably a few syntax bugs left. Please open an issue or a pull request if you see something amiss.
 
 ## Contributors
 
@@ -14,6 +14,7 @@ There's probably a few syntax bugs. Please submit a pull request or issue if you
 * [@GajenderI](https://github.com/GajenderI)
 * [@lildude](https://github.com/lildude)
 * [@richardm90](https://github.com/richardm90)
+* [@JH-JTBaldwin](https://github.com/JH-JTBaldwin)
 
 ## Features
 
@@ -38,7 +39,7 @@ For each source type, I lumped legacy (system/38) source types together with the
 
 | Extension(s)                  | Description        |
 | ----------------------------- | ------------------ |
-| .cl, .clp, .clp38 .clle       | Control Language (CL) |
+| .cl, .clp, .clp38, .clle      | Control Language (CL) |
 | .cmd                          | Command Definition (CMD) |
 | .pnlgrp                       | UIM Panel Group (PNLGRP) |
 | .dspf, .dspf38                | DDS Display file   |
@@ -47,7 +48,7 @@ For each source type, I lumped legacy (system/38) source types together with the
 | .pf, .pf38, .dds              | DDS Physical file  |
 | .prtf, .prtf38                | DDS Printer file   |
 | .rpg, .rpg38, .sqlrpg         | RPG/400            |
-| .rpgle, .sqlrpgle             | RPGLE and SQLRPGLE |
+| .rpgle, .rpgleinc, .sqlrpgle  | RPGLE and SQLRPGLE |
 | .bnd                          | Binder Language    |
 | .mi                           | Machine Interface (MI) |
 
@@ -91,19 +92,39 @@ See **screenshots/** for more examples of syntax highlighting.
 
 ![MI](https://raw.githubusercontent.com/barrettotte/vscode-ibmi-languages/master/screenshots/mi.PNG)
 
-## Publishing
+## Contributing
 
-### VS Code Marketplace
+See [CONTRIBUTING.md](CONTRIBUTING.md) for how to build, test and change a
+grammar, and [tests/README.md](tests/README.md) for how the snapshot tests
+work.
 
-* `npm install -g vsce`
-* `vsce package`
-* `vsce publish -p VSCE_SECRET`
+```bash
+npm ci
+npm test              # tokenize every fixture, compare against its snapshot
+npm run lint          # repository checks
+npm run format:check  # prettier
+```
 
-### OpenVSX
+## Hints & Tips
 
-This extension is also deployed to [Open VSX](https://open-vsx.org/extension/barrettotte/ibmi-languages)
+### tmLanguage Scope Names
 
-* `npx ovsx publish -p OPEN_VSX_SECRET`
+The colours used in VS Code are determined by the scope names assigned in the
+relevant tmLanguage file, which are then mapped to colors by the active colours
+theme.
+
+To see the actual scope at a cursor position:
+
+1. Place your cursor on the word (e.g. TIME)
+1. Press Ctrl+Shift+P (or Cmd+Shift+P on Mac)
+1. Type and select: Developer: Inspect Editor Tokens and Scopes
+1. This shows you the exact scope name and the colours applied by your theme
+
+## Releasing
+
+Publishing a GitHub release packages the extension and publishes it to the
+VS Code Marketplace and to [Open VSX](https://open-vsx.org/extension/barrettotte/ibmi-languages). 
+See [docs/RELEASING.md](docs/RELEASING.md).
 
 ## Changelog
 
@@ -112,12 +133,6 @@ See [CHANGELOG.md](https://github.com/barrettotte/vscode-ibmi-languages/blob/mas
 ## Known Bugs / Future Improvements
 
 See [issues](https://github.com/barrettotte/vscode-ibmi-languages/issues).
-
-## Featured In
-
-* <https://www.itjungle.com/2020/12/09/vs-code-provides-another-coding-option-for-ibm-i/>
-* <https://www.anandk.dev/2020/11/VSCode-IBMi-AS400.html>
-* <https://github.com/halcyon-tech/code-for-ibmi>
 
 ## References
 
@@ -155,20 +170,3 @@ offline, which is how the keyword lists are checked for omissions.
 * [Regex tool](https://regexr.com/)
 * [VS Code Language extensions](https://code.visualstudio.com/api/language-extensions/overview)
 
-
-
-## Hints & Tips
-
-
-### tmLanguage Scope Names
-
-The colours used in VS Code are determined by the scope names assigned in the
-relevant tmLanguage file, which are then mapped to colors by the active colours
-theme.
-
-To see the actual scope at a cursor position:
-
-1. Place your cursor on the word (e.g. TIME)
-1. Press Ctrl+Shift+P (or Cmd+Shift+P on Mac)
-1. Type and select: Developer: Inspect Editor Tokens and Scopes
-1. This shows you the exact scope name and the colours applied by your theme
