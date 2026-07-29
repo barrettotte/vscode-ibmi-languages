@@ -1,0 +1,21 @@
+      *
+      *Embedded SQL in an OPM COBOL member. The statement layout is the
+      *same as in ILE COBOL: EXEC SQL on one line, END-EXEC to close.
+      *
+      *Member: SQLOPM   Compilable: no (calculations only, no files)
+      *Source: IBM i 7.5 Embedded SQL programming, coding SQL statements
+      *        in COBOL applications.
+      *Retrieved: 2026-07-29
+      *
+       IDENTIFICATION DIVISION.
+       PROGRAM-ID. SQLOPM.
+       DATA DIVISION.
+       WORKING-STORAGE SECTION.
+           EXEC SQL INCLUDE SQLCA END-EXEC.
+       01  CUST-NAME               PIC X(30).
+       PROCEDURE DIVISION.
+       GET-NAME.
+           EXEC SQL
+             SELECT CUSNAM INTO :CUST-NAME FROM CUSTMAST
+           END-EXEC.
+           STOP RUN.

@@ -24,6 +24,7 @@ There are probably a few syntax bugs left. Please open an issue or a pull reques
 * Syntax highlighting for UIM Panel Group (PNLGRP)
 * Syntax highlighting for DDS files - physical, logical, display, printer, and ICF
 * Syntax highlighting for Machine Interface (MI)
+* Syntax highlighting for ILE COBOL and COBOL/400, with embedded SQL
 * Syntax highlighting for RPGLE fixed - H,F,D,I,C,O,P specs
 * Syntax highlighting for RPGLE free
 * Syntax highlighting for embedded SQL in SQLRPG and SQLRPGLE
@@ -39,6 +40,7 @@ For each source type, I lumped legacy (system/38) source types together with the
 
 | Extension(s)                  | Description        |
 | ----------------------------- | ------------------ |
+| .cbl, .cbl38, .cblle, .sqlcbl, .sqlcblle | COBOL (ILE and COBOL/400) |
 | .cl, .clp, .clp38, .clle      | Control Language (CL) |
 | .cmd                          | Command Definition (CMD) |
 | .pnlgrp                       | UIM Panel Group (PNLGRP) |
@@ -91,6 +93,10 @@ See **screenshots/** for more examples of syntax highlighting.
 ### Machine Interface (MI)
 
 ![MI](https://raw.githubusercontent.com/barrettotte/vscode-ibmi-languages/master/screenshots/mi.PNG)
+
+### COBOL
+
+![COBOL](https://raw.githubusercontent.com/barrettotte/vscode-ibmi-languages/master/screenshots/cobol.png)
 
 ## Contributing
 
@@ -151,6 +157,8 @@ offline, which is how the keyword lists are checked for omissions.
 | DDS ICF files (`.icff`) | [DDS for ICF files](https://www.ibm.com/docs/en/i/7.5?topic=files-dds-icf) &middot; [PDF](https://www.ibm.com/docs/en/ssw_ibm_i_75/rzake/rzakepdf.pdf) |
 | DDS concepts (all DDS types) | [DDS concepts](https://www.ibm.com/docs/en/i/7.5?topic=dds-concepts) |
 | Binder language (`.bnd`) | [Binder language](https://www.ibm.com/docs/en/i/7.5?topic=concepts-binder-language) &middot; [ILE Concepts PDF](https://www.ibm.com/docs/en/ssw_ibm_i_75/ilec/sc415606.pdf) |
+| ILE COBOL (`.cblle`, `.sqlcblle`) and COBOL/400 (`.cbl`, `.cbl38`, `.sqlcbl`) | [ILE COBOL Language Reference](https://www.ibm.com/docs/en/ssw_ibm_i_75/pdf/sc092539.pdf) (SC09-2539) &middot; [Programmer's Guide PDF](https://www.ibm.com/docs/en/ssw_ibm_i_75/pdf/sc092540.pdf) (SC09-2540) &middot; the reference format and Appendix E reserved word list are what the grammar is built from. IBM no longer hosts the COBOL/400 reference (SC09-1813) |
+| Embedded SQL in COBOL (`.sqlcbl`, `.sqlcblle`) | [Embedding SQL statements in COBOL applications](https://www.ibm.com/docs/en/i/7.5.0?topic=cssica-embedding-sql-statements-in-cobol-applications-that-use-sql) &middot; [Embedded SQL programming PDF](https://www.ibm.com/docs/en/ssw_ibm_i_75/pdf/rzajppdf.pdf) |
 | Control Language (`.cl`, `.clle`, `.clp`, `.clp38`) | [CL overview and concepts](https://www.ibm.com/docs/en/i/7.5?topic=programming-control-language) &middot; [PDF](https://www.ibm.com/docs/en/ssw_ibm_i_75/rbam6/rbam6pdf.pdf) &middot; [CL commands](https://www.ibm.com/docs/en/i/7.5?topic=concepts-cl-commands) |
 | Command definition (`.cmd`) | [Command definition statements](https://www.ibm.com/docs/en/i/7.5?topic=programming-control-language) &middot; [PDF](https://www.ibm.com/docs/en/ssw_ibm_i_75/rbam6/rbam6pdf.pdf) |
 | Machine Interface (`.mi`) | [Machine interface instructions](https://www.ibm.com/docs/en/i/7.5?topic=programming-machine-interface-instructions) &middot; [Machine Interface introduction](https://www.ibm.com/docs/en/i/7.5?topic=interface-machine-introduction) |

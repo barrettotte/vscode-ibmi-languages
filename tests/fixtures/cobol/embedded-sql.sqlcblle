@@ -1,0 +1,72 @@
+      *
+      *Embedded SQL. A statement begins with EXEC SQL, on one line, and
+      *ends with END-EXEC; the period after END-EXEC belongs to COBOL.
+      *
+      *Member: ORDSQL   Compilable: no (calculations only, no files)
+      *Source: IBM i 7.5 Embedded SQL programming, coding SQL statements
+      *        in COBOL applications.
+      *Retrieved: 2026-07-29
+      *
+       IDENTIFICATION DIVISION.
+       PROGRAM-ID. ORDSQL.
+       DATA DIVISION.
+       WORKING-STORAGE SECTION.
+           EXEC SQL INCLUDE SQLCA END-EXEC.
+       01  CUST-NBR                  PIC S9(6) BINARY.
+       01  CUST-NAME                 PIC X(30).
+       01  CUST-BAL                  PIC S9(9)V99 PACKED-DECIMAL.
+       01  BAL-IND                   PIC S9(4) BINARY.
+       01  WS-WARN                   PIC X(11).
+      *
+       PROCEDURE DIVISION.
+       FETCH-BALANCES.
+      *A single-row select into host variables, whose names carry
+      *hyphens the way COBOL data names do.
+           EXEC SQL
+             SELECT CUSNAM, CUSBAL
+               INTO :CUST-NAME, :CUST-BAL :BAL-IND
+               FROM CUSTMAST
+               WHERE CUSNBR = :CUST-NBR
+           END-EXEC.
+      *
+      *A cursor, from declaration through to close. SQL's own
+      *comment and a COBOL comment line both sit inside one.
+           EXEC SQL
+             DECLARE ORDER-CURSOR CURSOR FOR
+               SELECT ORDNBR, ORDAMT   -- header only
+      *the customer's open orders
+                 FROM ORDHDR
+                 WHERE ORDSTS = 'O'
+                 ORDER BY ORDNBR
+           END-EXEC.
+           EXEC SQL OPEN ORDER-CURSOR END-EXEC.
+           PERFORM UNTIL SQLCODE NOT = 0
+             EXEC SQL
+               FETCH ORDER-CURSOR INTO :CUST-NBR, :CUST-BAL
+             END-EXEC
+           END-PERFORM
+           EXEC SQL CLOSE ORDER-CURSOR END-EXEC.
+      *
+      *Changing rows, and the transaction boundary.
+           EXEC SQL
+             UPDATE CUSTMAST SET CUSBAL = CUSBAL + :CUST-BAL
+               WHERE CUSNBR = :CUST-NBR
+           END-EXEC.
+           EXEC SQL COMMIT END-EXEC.
+           EXEC SQL WHENEVER SQLERROR CONTINUE END-EXEC.
+      *
+      *The fields of the communication area, which INCLUDE SQLCA
+      *defines, tested in ordinary COBOL code.
+           IF SQLSTATE = "00000" CONTINUE END-IF
+           IF SQLCAID = SPACES OR SQLCABC = 136 CONTINUE END-IF
+           IF SQLCADE = 0 AND SQLSTOTE = SPACES CONTINUE END-IF
+           IF SQLERRML > 0 DISPLAY SQLERRMC END-IF
+           DISPLAY SQLERRM SQLERRP
+           IF SQLERRD(1) = 0 CONTINUE END-IF
+           IF SQLWARN0 = "W" OR SQLWARN1 = "W" OR SQLWARN2 = "W"
+              OR SQLWARN3 = "W" OR SQLWARN4 = "W" OR SQLWARN5 = "W"
+              OR SQLWARN6 = "W" OR SQLWARN7 = "W" OR SQLWARN8 = "W"
+              OR SQLWARN9 = "W" OR SQLWARNA = "W"
+              MOVE SQLWARN TO WS-WARN
+           END-IF
+           GOBACK.
