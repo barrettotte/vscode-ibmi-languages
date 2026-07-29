@@ -3,6 +3,11 @@
   "name": "DDS.DSPF",
   "patterns": [
     {
+      "comment": "A field reference in the functions area. The reference gives &field-name as one of the forms a keyword parameter may take, the field holding the value the keyword would otherwise be given directly. Anchored past column 44 so an ampersand in a quoted constant is not mistaken for one.",
+      "name": "variable.other.dds.dspf.field",
+      "match": "(?i)(?<=^.{44}.{0,35})&[A-Z][A-Z0-9_@#$]{0,9}"
+    },
+    {
       "include": "#comments"
     },
     {

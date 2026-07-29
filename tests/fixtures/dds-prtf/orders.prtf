@@ -1,0 +1,51 @@
+     A*
+     A* The order register the application prints: a page heading that
+     A* repeats, a detail line for each order, a total when the customer
+     A* changes and a total at the end of the report.
+     A*
+     A* Member: ORDPRT   Compilable: yes (CRTPRTF)
+     A* Source: DDS for printer files, IBM i 7.5.
+     A* Retrieved: 2026-07-28
+     A*
+     A*
+     A* File level: the page size, the reference file and the
+     A* indicator the overflow line sets.
+     A                                      REF(ORDREF)
+     A                                      INDARA
+     A                                      CHRSIZ(1 1)
+     A*
+     A* The page heading, printed at the top of each page.
+     A          R PRTHDR                    SKIPB(1)
+     A                                      SPACEA(2)
+     A                                  1  5'ORDER REGISTER'
+     A                                      UNDERLINE
+     A                                  1 60DATE EDTCDE(Y)
+     A                                  1 72'Page'
+     A            PAGNBR         4S 0O  1 77PAGNBR EDTCDE(Z)
+     A                                  3  5'Order'
+     A                                  3 15'Customer'
+     A                                  3 45'Date'
+     A                                  3 60'Amount'
+     A*
+     A* A detail line for each order.
+     A          R PRTDTL                    SPACEA(1)
+     A            ORDNBR    R        O     5EDTCDE(Z)
+     A            ORDCUS    R        O    15EDTCDE(Z)
+     A            ORDNAM    R        O    24
+     A            ORDDAT    R        O    45
+     A            ORDAMT    R        O    58EDTCDE(J)
+     A  71                                72'*HOLD'
+     A  71                                  HIGHLIGHT
+     A*
+     A* A total when the customer changes, and the report total.
+     A          R PRTCTOT                   SPACEB(1) SPACEA(2)
+     A                                    24'Customer total'
+     A            CUSTOT        13P 2O    55EDTCDE(J)
+     A                                      UNDERLINE
+     A*
+     A          R PRTGTOT                   SKIPB(60)
+     A                                    24'Report total'
+     A            GRDTOT        15P 2O    53EDTCDE(J)
+     A                                      EDTWRD('    $  ,   ,   ,   . ')
+     A                                     5'* * *  E N D  O F  R E -
+     A                                      P O R T  * * *'

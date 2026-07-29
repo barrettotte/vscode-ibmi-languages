@@ -1,0 +1,74 @@
+     A*
+     A* The display that maintains an order: a subfile of the orders
+     A* found, the control record that drives it, a detail record for one
+     A* order, and a window that confirms a delete.
+     A*
+     A* Member: ORDDSP   Compilable: yes (CRTDSPF)
+     A* Source: DDS for display files, IBM i 7.5.
+     A* Retrieved: 2026-07-28
+     A*
+     A*
+     A* File level: the indicator area, the help key and the print
+     A* key are all set once for every format in the file.
+     A                                      DSPSIZ(24 80 *DS3)
+     A                                      REF(ORDREF)
+     A                                      INDARA
+     A                                      CA03(03 'Exit')
+     A                                      CA12(12 'Cancel')
+     A                                      PRINT
+     A                                      HELP
+     A                                      ERRSFL
+     A*
+     A* The subfile and the control record that displays it.
+     A          R ORDSFL                    SFL
+     A            SFLSEL         1A  B  8  3VALUES(' ' '2' '4' '5')
+     A            ORDNBR    R        O  8  7
+     A            ORDCUS    R        O  8 17
+     A            ORDNAM    R        O  8 26
+     A            ORDAMT    R        O  8 50EDTCDE(J)
+     A            ORDSTS    R        O  8 65
+     A  40        ORDSTS    R        O  8 65DSPATR(HI)
+     A*
+     A          R ORDCTL                    SFLCTL(ORDSFL)
+     A                                      SFLSIZ(0012)
+     A                                      SFLPAG(0011)
+     A                                      OVERLAY
+     A  31                                  SFLDSP
+     A  32                                  SFLDSPCTL
+     A  33                                  SFLCLR
+     A  34                                  SFLEND(*MORE)
+     A                                      ROLLUP(25 'Page forward')
+     A            CTLRRN         4S 0H      SFLRCDNBR(CURSOR)
+     A                                  1  2'Work with orders'
+     A                                      DSPATR(HI)
+     A                                  1 71DATE EDTCDE(Y)
+     A                                  2 71TIME
+     A            FLTCUS    R        B  4 20OVRDTA
+     A  50                              4 20DSPATR(RI PC)
+     A                                  6  3'Opt'
+     A                                      DSPATR(UL)
+     A                                  6  7'Order'
+     A                                      DSPATR(UL)
+     A                                  6 26'Customer'
+     A                                      DSPATR(UL)
+     A                                 23  3'F3=Exit  F12=Cancel'
+     A                                      COLOR(BLU)
+     A*
+     A* The detail record, one order to a screen.
+     A          R ORDDTL                    OVERLAY
+     A                                      CF05(05 'Refresh')
+     A            ORDNBR    R        O  4 20
+     A            ORDCUS    R        B  6 20CHECK(RB)
+     A  61                              6 20ERRMSG('Customer not found' 61)
+     A            ORDDAT    R        B  8 20
+     A            ORDAMT    R        B 10 20EDTCDE(J) CHECK(RZ)
+     A            ORDNTE    R        B 12 20CNTFLD(50)
+     A  62                             22  3MSGID(USR0001 USRMSG)
+     A*
+     A* A window, which the compiler places relative to the cursor.
+     A          R ORDWIN                    WINDOW(*DFT 7 40)
+     A                                      WDWTITLE((*TEXT 'Confirm delete')+
+     A                                      (*COLOR RED))
+     A                                  2  3'Delete this order?'
+     A            CFMANS         1A  B  4  3VALUES('Y' 'N')
+     A                                      DSPATR(RI)

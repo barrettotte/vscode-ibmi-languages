@@ -1,0 +1,51 @@
+     A*
+     A* The ICF file the application sends an order over: a record it
+     A* writes to the remote program, one it reads back, and the
+     A* responses the communications support returns in the indicators.
+     A*
+     A* Member: ORDICF   Compilable: yes (CRTICFF)
+     A* Source: DDS for ICF files, IBM i 7.5.
+     A* Retrieved: 2026-07-28
+     A*
+     A*
+     A* File level: the indicator area, and the keyword that sends
+     A* the record format name to the remote program on output.
+     A* FMTNAME takes no parameters.
+     A                                      INDARA
+     A                                      FMTNAME
+     A*
+     A* The record sent to the remote program. EVOKE starts it and
+     A* the invite lets the program read from it later.
+     A          R ORDOUT                    EVOKE(&LIB/&PGM)
+     A                                      SECURITY(1 &USR 2 &PWD)
+     A                                      SYNLVL(*CONFIRM)
+     A                                      INVITE
+     A* Data fields carry B or a blank usage. The reference allows
+     A* no other value: I and O belong to display and printer files.
+     A            ORDNBR         7P 0B
+     A            ORDAMT        11P 2
+     A*
+     A* Program-to-system fields carry P and must be defined after
+     A* every data field. They supply the values the keywords name.
+     A            LIB           10A  P
+     A            PGM           10A  P
+     A            USR           10A  P
+     A            PWD           10A  P
+     A*
+     A* The record read back, and the responses the support sets.
+     A          R ORDIN                     RCVENDGRP(21)
+     A                                      RCVCONFIRM(22)
+     A                                      RCVDETACH(23)
+     A                                      RCVFAIL(24)
+     A                                      RCVTRNRND(25)
+     A                                      TIMER
+     A            RSPCOD         2A  B
+     A            RSPTXT        50A
+     A*
+     A* Control operations, each on a record of its own.
+     A          R ORDCNF                    CONFIRM
+     A          R ORDDTC                    DETACH
+     A          R ORDFAI                    FAIL
+     A          R ORDNEG                    NEGRSP
+     A          R ORDRQW                    RQSWRT
+     A          R ORDEOG                    ENDGRP

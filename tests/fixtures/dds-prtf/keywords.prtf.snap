@@ -341,7 +341,9 @@
 #                                                      ^ source.dds.prtf string.quoted.single.dds.prtf
 #                                                       ^^^^^^^ source.dds.prtf string.quoted.single.dds.prtf
 #                                                              ^ source.dds.prtf string.quoted.single.dds.prtf
-#                                                               ^^^^^^^ source.dds.prtf
+#                                                               ^ source.dds.prtf
+#                                                                ^^^^ source.dds.prtf variable.other.dds.prtf.field
+#                                                                    ^^ source.dds.prtf
 >00250A                                      DTASTMCMD('cmd')
 #^^^^^ source.dds.prtf comment.gutter
 #     ^ source.dds.prtf keyword.other.dds.prtf.spec
