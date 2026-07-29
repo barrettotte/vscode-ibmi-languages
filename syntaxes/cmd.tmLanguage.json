@@ -12,6 +12,9 @@
       "include": "#variables"
     },
     {
+      "include": "#operators"
+    },
+    {
       "include": "#constants"
     },
     {
@@ -51,6 +54,15 @@
         }
       ]
     },
+    "operators": {
+      "patterns": [
+        {
+          "comment": "Symbolic operators: concatenation, logical and relational. They are reached before the special values, because a special value is written the same way and its rule would otherwise take *EQ and the rest before this one is tried. The bare asterisk operator stays with the other symbols, after the special values, so that it does not take the asterisk off a value such as *BLANK. The guard after the word is what keeps it from taking the front of a longer special value: without it *GE matches the first three characters of *GENERIC.",
+          "name": "keyword.other.cmd",
+          "match": "(?i)[*](CAT|TCAT|BCAT|AND|OR|NOT|EQ|GT|LT|GE|LE|NE|NG|NL)(?![a-zA-Z0-9_@#$§ÆØÅÄÖ£Ñ¥àÐŞİ])"
+        }
+      ]
+    },
     "keywords": {
       "patterns": [
         {
@@ -62,11 +74,6 @@
           "comment": "The six command definition statements: CMD, PARM, ELEM, QUAL, DEP and PMTCTL. The guards spell out the characters a name may contain rather than using a word boundary, because the variant characters are not word characters and a boundary would let a statement name match the front of a longer name: QUAL would match the first four characters of qual@#$.",
           "name": "keyword.other.cmd",
           "match": "(?i)(?<![a-zA-Z0-9_@#$§ÆØÅÄÖ£Ñ¥àÐŞİ])(QUAL|PMTCTL|PARM|ELEM|DEP|CMD)(?![a-zA-Z0-9_@#$§ÆØÅÄÖ£Ñ¥àÐŞİ])"
-        },
-        {
-          "comment": "Symbolic operators: concatenation, logical and relational. Written with a leading asterisk to distinguish them from names.",
-          "name": "keyword.other.cmd",
-          "match": "(?i)[*](CAT|TCAT|BCAT|AND|OR|NOT|EQ|GT|LT|GE|LE|NE|NG|NL)"
         },
         {
           "comment": "Qualified name separator, as in MYLIB/MYPGM or *LIBL/QCMD. Matched before the arithmetic operators so a library qualifier is not read as division. Both sides list the characters a name may contain, the variant ones included, so that a qualified name carrying them still separates.",
