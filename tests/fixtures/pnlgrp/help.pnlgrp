@@ -1,0 +1,206 @@
+.*
+.* Help modules and the text markup they carry, together with the
+.* comment line, the imbed directive and the symbols that stand for
+.* characters the markup would otherwise read as its own.
+.*
+.* Member: PNLHELP
+.* Source: Application Display Programming SC41-5715 (V6R1), appendix A.
+.* Retrieved: 2026-07-28
+.*
+:pnlgrp schidx=ordidx enbgui=yes.
+.*
+.* A name defined elsewhere is brought in by IMPORT.
+:import name=commonh pnlgrp=commonpg.
+:import name=sharedh newname=localh pnlgrp=commonpg prdlib=mylib.
+.*
+.* From "Example: Hypertext Link" in the reference.
+:HELP NAME='hyper/help'.Hypertext in i5/OS
+:P.
+Hypertext lets users explore
+the online help information in a way that is most
+natural for them.
+Hypertext links can be used within :LINK
+PERFORM='DSPHELP item/specific/help'
+    .item specific help:ELINK.,
+:LINK PERFORM='dsphelp extended/help'
+    .extended help:ELINK., and
+:LINK PERFORM='dsphelp index/search'
+    .index search help:ELINK..
+:EHELP.
+:HELP NAME='item/specific/help'
+    .Definition of Item Specific Help
+:P.
+Item specific help is . . .
+:EHELP.
+.*
+.* A link may be conditioned. UNLESSn and LINKWHEN take a
+.* conditional expression, which joins the built-in functions
+.* with the logical operators.
+:help name='cond/help'.Conditioned links
+:p.See :LINK PERFORM='DSPHELP extended/help'
+   LINKWHEN='CHKUSRCLS(*SECOFR) *OR CHKPGM("MYLIB/MYPGM")'
+   UNLESS1='*NOT CHKOBJ("MYLIB/ORDFILE","*FILE","*USE")'
+   THENDO1='DSPHELP no/authority'
+   .the extended help:ELINK.
+:ehelp.
+.*
+.* From "Example: Heading Tags" in the reference.
+:help name=headhlp.Headings
+:H1.A One Heading
+:p.Here's a paragraph.
+:H2.A Two Heading
+:p.Another paragraph.
+:H3.A Three Heading
+:p.Still another paragraph.
+:H4.A Four Heading
+:p.Still another paragraph.
+.*
+.* From "Example: Sample Headings" in the reference.
+:XH1.Main Subject
+:p.Here's a paragraph.
+:XH2.Topic
+:p.Another paragraph.
+:XH3.Subtopic
+:p.Still another paragraph.
+:XH4.A Four Heading
+:p.Still another paragraph.
+:ehelp.
+.*
+.* From "Example: Paragraph Tag" in the reference.
+.* and "Example: Using a Note".
+:help name=parahlp.Paragraphs
+:P.Here's a paragraph.
+Lines are formatted to
+fill the column.
+:P.Here's another
+paragraph.
+:NT.
+Here's the first paragraph
+of the note.
+:P.
+Here's the second paragraph
+of the note.
+:ENT.
+.*
+.* From "Example: Paragraph Continuation" in the reference.
+:p.If you enter the following
+command
+:xmp.
+WRKSPLF
+:exmp.
+:pc.a listing of all my spool files
+appears on the
+terminal.
+:ehelp.
+.*
+.* From "Example: Ordered List" in the reference.
+.* with "Simple Lists", "Unordered Lists" and "List Part".
+:help name=listhlp.Lists
+:ol.
+:li.First item (number)
+:ol.
+:li.First item (letter)
+:li.Second item (letter)
+:eol.
+:lp.This is a list part.
+:li.Second item (number)
+:eol.
+:sl.
+:li.First item
+:sl.
+:li.First item
+:li.Second item
+:esl.
+:li.Second item
+:esl.
+:ul.
+:li.First item (bullet)
+:ul.
+:li.First item (hyphen)
+:li.Second item (hyphen)
+:eul.
+:li.Second item (bullet)
+:eul.
+.*
+.* From "Example: Parameter List" in the reference.
+:PARML.
+:PT.TERM
+:PD.This is a description of
+the term. :PK.Term:EPK. is
+a programming keyword.
+:PT.:PK def.DEFAULT:EPK.
+:PD.This is a sample default
+parameter.
+:PT.:PV.variable:EPV.
+:PD.This is a parameter variable.
+:EPARML.
+:ehelp.
+.*
+.* From "Example: Sample Figure" in the reference.
+.* with "Unformatted Lines" and "Formatting an Example".
+:help name=fighlp.Figures
+:FIG frame=rule.
+some
+   sample
+      text
+:FIGCAP.A Sample Figure
+:EFIG.
+:LINES.
+First line
+Second line
+:ELINES.
+:xmp.
+This is an example
+right here
+:exmp.
+.*
+.* The remaining phrase tags: a highlighted phrase, a title
+.* citation and reverse text.
+:p.The :HP2.order number:EHP2. is required.
+:p.See :CIT.Application Display Programming:ECIT. for more.
+:p.Right to left text is written :RT.abc:ERT. this way.
+:imhelp name=commonh.
+:ehelp.
+.*
+.* From "Example: Index Search Synonyms" in the reference.
+.* with the index search entry and subtopics they belong to.
+:isch roots='order entry'.Entering an order
+:ischsubt topics='hyper/help headhlp'.
+:ISCHSYN ROOT='copy'.copy copying copies
+:ISCHSYN ROOT='delete'.delete deleting deletes
+:ISCHSYN ROOT='delete'.remove removes removing
+:ISCHSYN ROOT='folder'.folder folders
+.*
+.* From "Examples: Translation List" in the reference.
+:tl msgid=MMM0001 msgf='*LIBL/QCPFMSG'.
+:ti value=1.Blue
+:ti value=1.BLUE
+:ti value=2.Red
+:ti value=2.RED
+:ti value=3.Green
+:ti value=3.GREEN
+:ti value=4.Turquoise
+:ti value=4.TURQUOISE
+:etl.
+.*
+.* A printed panel, and "Example: Trailer Message".
+:prthead name=ordprth title='Order register' width=132 prtdate=yes prttime=yes.
+:eprthead.
+:prtpnl name=ordprt title='Orders' width=132.
+:p.One line for each order.
+:prttrail.E N D   O F   L I S T I N G
+:eprtpnl.
+:copyr.(C) Example Ltd 2026
+.*
+.* The symbols stand for characters the markup reads as its
+.* own: an ampersand, a colon, a period and a message.
+:help name=symhlp.Symbols
+:p.Use &amp. for an ampersand and &colon. for a colon.
+:p.A period is &period. and a soft line break is &slr.
+:p.The message reads &msg(USR0001,USRMSG).
+:p.A continued line ends with &cont.
+:ehelp.
+.*
+.* The imbed directive brings in another member.
+.im COMMONPG
+:epnlgrp.

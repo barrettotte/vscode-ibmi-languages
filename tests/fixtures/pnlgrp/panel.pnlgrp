@@ -1,0 +1,106 @@
+.*
+.* A display panel, its key list, the classes its variables belong to
+.* and the conditions that control it.
+.*
+.* Member: PNLPANEL
+.* Source: Application Display Programming SC41-5715 (V6R1), appendix A.
+.* Retrieved: 2026-07-28
+.*
+:pnlgrp submsgf='*LIBL/QCPFMSG'.
+.*
+.* From "Example: Validity Checking" in the reference.
+.* wrapped in the class definitions the checks belong to.
+:class name=qty basetype='*DEC 5 0'.
+:CHECK RANGE='1 10' REL='= 99' MSGID=USR0234.
+:CHECK REL='< 5' REL='> 10' MSGID=USR1234.
+:eclass.
+:class name=answer basetype='*CHAR 4'.
+:CHECK VALUES='"*YES" "*NO"'
+MSGID=MMM0001 MSGF=USRMSGF.
+:eclass.
+.*
+.* The reference gives the special values as the spelling to
+.* prefer for a relational operator, because the not character
+.* is outside the invariant character set.
+:class name=seqnbr basetype='*DEC 3 0'.
+:check rel='*GE 1' rel='*LE 999' msgid=USR0002 msgf='*LIBL/USRMSG'.
+:eclass.
+.*
+.* Variables, and the record an application exchanges.
+:var name=ordqty class=qty errvar=qtyerr.
+:var name=confirm class=answer.
+:var name=seq class=seqnbr.
+:varrcd name=ordrcd vars='ordqty confirm seq'.
+.*
+.* From "Example: Truth Table" in the reference.
+.* with the conditions its columns name defined first.
+:cond name=A expr='ordqty > 0'.
+:cond name=B expr='confirm = "*YES"'.
+:cond name=C expr='seq > 0'.
+:tt name=tt1 conds='A B C'.
+:ttrow      values='1 0 0'.
+:ttrow      values='0 1 0'.
+:ttrow      values='0 0 1'.
+:ett.
+.*
+.* From "Example: Key Definitions" in the reference.
+:keyl name=keylist
+          help=hkeylist.
+:keyi key=f3
+          action='exit set'
+          help=exit
+          .F3=End task
+:keyi key=f5
+          action='return 5'
+          help=refresh
+          .F5=Refresh
+:keyi key=f11
+          action=chgview
+          help=chgview
+          .F11=Alternate view
+:keyi key=f12
+          action='cancel set'
+          help=cancel
+          .F12=Cancel
+:ekeyl.
+.*
+.* From "Example: Menu Bar" in the reference.
+.* completed with the choices and pull-down fields the book
+.* shows in its displayed output.
+.* Menu bar for Work with Programs panel
+:mbar name=mbarpgm
+        help='mbarpgm/'
+        maxbarl=40.
+:mbarc help='mbarpgm/file'.File
+:pdfld.
+:pdfldc option=1 help='pdfld/change' action='CMD CHGPGM'.Change
+:pdaccel.F4
+:pdfldc option=9 help='pdfld/exit' action='EXIT'.Exit
+:epdfld.
+:embarc.
+:embar.
+.*
+.* The panel, its areas and the items in them.
+:panel name=ordpnl help=hordpnl keyl=keylist mbar=mbarpgm topsep=space.Order entry
+:data depth='*' help=hdata layout=1.
+:topinst.Type choices, press Enter.
+:datacol width=20.
+:datagrp help=hgrp name=ordg grpsep=space.
+:datai var=ordqty usage=inout help=hqty required=yes.Quantity
+:dataix var=seq usage=inout newline=no itemsep=space.Sequence
+:edatagrp.
+:dataslt type=single var=confirm help=hconf required=yes.Confirm
+:datasltc choice=1 option='*YES' help=hyes.Yes
+:datasltc choice=2 option='*NO' help=hno.No
+:datac.More choices
+:botinst.Press F1 for help on any field.
+:edata.
+:info depth=4 botsep=space scroll=yes.
+:p.Orders are held for seven days before they are released.
+:einfo.
+:text var=ordnote row=3 col=2.
+:appfmt var=ordarea width=20 depth=4 usrexit='CALL ORDFMT'.
+:optline name=ordopt.
+:cmdline size=long name=ordcmd.Selection or command
+:epanel.
+:epnlgrp.

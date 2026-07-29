@@ -1,0 +1,42 @@
+.*
+.* A menu panel group, which is what the CRTMNU command compiles.
+.*
+.* Member: PNLMENU
+.* Source: Application Display Programming SC41-5715 (V6R1), appendix A.
+.* Retrieved: 2026-07-28
+.*
+:pnlgrp.
+.*
+.* From "Example: Panel Definition" in the reference.
+:panel name=main
+       help=hmain
+       panelid=zmenu
+       keyl=small
+       .My Main Menu
+:menu depth='*'.
+:topinst.Select one of the following:
+:menui help=MNUSER option=1
+       action='CMD MENU X'
+       .Display menu X
+:menui help=MNSYS
+       option=2
+       action='CMD MENU SYSOPR'
+       .System operations
+:menui help=MNOFF
+       option=90
+       action='CMD SIGNOFF'
+       .Sign off
+:emenu.
+:cmdline size=long.Selection or command
+:epanel.
+.*
+.* MI is the short spelling of MENUI, and a menu group holds
+.* the items shown together.
+:panel name=admin help=hadmin keyl=small.Administration
+:menu depth='*'.
+:menugrp cond=isadmin.
+:mi help=MNJOB option=1 action='CMD WRKACTJOB'.Work with jobs
+:emenugrp.
+:emenu.
+:epanel.
+:epnlgrp.

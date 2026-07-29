@@ -19,6 +19,7 @@
     "comments": {
       "patterns": [
         {
+          "comment": "A comment line, which a period and an asterisk in the first two positions open and the line ending closes. Source: Application Display Programming SC41-5715, UIM tag reference.",
           "name": "comment.line.pnlgrp",
           "begin": "^(\\.\\*).*",
           "end": "\n"
@@ -37,11 +38,13 @@
     "directives": {
       "patterns": [
         {
+          "comment": "The imbed (.IM) directive, which brings in another source member at this point. Source: Application Display Programming SC41-5715, UIM tag reference.",
           "name": "keyword.other.pnlgrp.directives.imbed",
           "begin": "(?i)(?<=\\.)(IM)[ ]",
           "end": "\n",
           "patterns": [
             {
+              "comment": "The member being brought in, whose name follows the directive.",
               "name": "string.other.pnlgrp.directives.imbed.member",
               "match": "(?i)([A-Z][A-Z0-9#@$]{1,9}[ ]*$)"
             }
@@ -52,1046 +55,1305 @@
     "tags": {
       "patterns": [
         {
+          "comment": "The application formatted area (APPFMT) tag is an optional tag which defines an area in the upper right corner of a menu area to be formatted by the application. The block runs from the tag to the period that closes it. Source: Application Display Programming SC41-5715, UIM tag reference.",
           "name": "keyword.other.pnlgrp.appfmt",
           "begin": "(?i)(?<=(:(APPFMT)[ ]))",
           "end": "\\.",
           "patterns": [
             {
+              "comment": "The tag itself, which opens the block.",
               "name": "support.function.pnlgrp.appfmt",
               "match": "(?i)\\b(:(APPFMT)[ ])"
             },
             {
+              "comment": "The attribute names the tag accepts: VAR, WIDTH, DEPTH, USREXIT.",
               "name": "support.function.pnlgrp.appfmt.attribute.name",
               "match": "(?i)\\b(VAR|WIDTH|DEPTH|USREXIT)[=]"
             },
             {
+              "comment": "The value given to an attribute, either bare or in single quotes.",
               "name": "support.variable.pnlgrp.appfmt.attribute.value",
               "match": "(?i)([A-Z0-9]{1,32}|[']([A-Z0-9_\\/]{1,32})[']|[0-9]{1,2])"
             }
           ]
         },
         {
+          "comment": "The bottom instruction (BOTINST) tag specifies the bottom instruction lines for an area of the panel. The block runs from the tag to the period that closes it. Source: Application Display Programming SC41-5715, UIM tag reference.",
           "name": "keyword.other.pnlgrp.botinst",
           "begin": "(?i)(?<=(:(BOTINST)[ ]))",
           "end": "\\.",
           "patterns": [
             {
+              "comment": "The tag itself, which opens the block.",
               "name": "support.function.pnlgrp.botinst",
               "match": "(?i)\\b(:(BOTINST)[ ])"
             },
             {
+              "comment": "The attribute names the tag accepts: INST.",
               "name": "support.function.pnlgrp.botinst.attribute.name",
               "match": "(?i)\\b(INST)[=]"
             },
             {
+              "comment": "The value given to an attribute, either bare or in single quotes.",
               "name": "support.variable.pnlgrp.botinst.attribute.value",
               "match": "(?i)([A-Z0-9]{1,32}|[']([A-Z0-9_\\/]{1,32})['])"
             }
           ]
         },
         {
+          "comment": "The validity checking (CHECK) tag is used within a class definition to specify validity checks associated with variables of that class. The block runs from the tag to the period that closes it. Source: Application Display Programming SC41-5715, UIM tag reference.",
           "name": "keyword.other.pnlgrp.check",
           "begin": "(?i)(?<=(:(CHECK)[ ]))",
           "end": "\\.",
           "patterns": [
             {
+              "comment": "The tag itself, which opens the block.",
               "name": "support.function.pnlgrp.check",
               "match": "(?i)\\b(:(CHECK)[ ])"
             },
             {
+              "comment": "The attribute names the tag accepts: MSGID, MSGF, RANGE, REL, VALUES.",
               "name": "support.function.pnlgrp.check.attribute.name",
               "match": "(?i)\\b(MSGID|MSGF|RANGE|REL|VALUES)[=]"
             },
             {
-              "comment": "TODO: Regexp does not yet support values for RANGE, REL and VALUES",
+              "comment": "The message identifier MSGID names, which the reference gives as three alphabetic characters followed by four hexadecimal ones.",
               "name": "support.variable.pnlgrp.check.attribute.value",
-              "match": "(?i)([A-F]{3}[0-9A-F]{4}|['][A-Z][A-Z0-9#@$]{0,9}/[A-Z][A-Z0-9#@$]{0,9}['])"
+              "match": "(?i)\\b([A-Z]{3}[0-9A-F]{4})\\b"
+            },
+            {
+              "comment": "The quoted value of MSGF, RANGE, REL or VALUES. RANGE takes two values, REL a relational operator and a value, and VALUES a list of up to fifty; character values are quoted again inside. Written as a block so the relational operator inside it can be scoped on its own. Source: Application Display Programming SC41-5715, UIM tag reference.",
+              "name": "support.variable.pnlgrp.check.attribute.value",
+              "begin": "'",
+              "end": "'",
+              "patterns": [
+                {
+                  "comment": "The relational operators REL accepts. The reference gives the special values as the spelling to prefer, because the not character is outside the invariant character set.",
+                  "name": "keyword.operator.pnlgrp.check",
+                  "match": "(?i)(\\*EQ|\\*NE|\\*GT|\\*LT|\\*GE|\\*LE|¬=|>=|<=|=|>|<)"
+                },
+                {
+                  "comment": "A character value, which the reference requires to be quoted inside the attribute's own quotes.",
+                  "name": "string.quoted.double.pnlgrp",
+                  "match": "\"[^\"]*\""
+                }
+              ]
             }
           ]
         },
         {
+          "comment": "The CLASS tags, matched together because they take no attributes of their own. The block runs from the tag to the period that closes it. Source: Application Display Programming SC41-5715, UIM tag reference.",
           "name": "keyword.other.pnlgrp.class",
           "begin": "(?i)(?<=(:(CLASS)[ ]))",
           "end": "\\.",
           "patterns": [
             {
+              "comment": "The tag itself, which opens the block.",
               "name": "support.function.pnlgrp.class",
               "match": "(?i)\\b(:(CLASS)[ ])"
             },
             {
+              "comment": "The attribute names the tag accepts: NAME, BASETYPE, WIDTH, CHRID, SHIFT, CASE, BLANKS, SUBST, BIDI, CONTXTREV, NBRSHAPE, SYMSWAP.",
               "name": "support.function.pnlgrp.class.attribute.name",
               "match": "(?i)\\b(NAME|BASETYPE|WIDTH|CHRID|SHIFT|CASE|BLANKS|SUBST|BIDI|CONTXTREV|NBRSHAPE|SYMSWAP)[=]"
             },
             {
+              "comment": "The value given to an attribute, either bare or in single quotes.",
               "name": "support.variable.pnlgrp.class.attribute.value",
               "match": "(?i)([A-Z0-9]{1,32}|[']([A-Z0-9_\\/]{1,32}|\\*)['])"
             }
           ]
         },
         {
+          "comment": "The command line (CMDLINE) tag specifies that the panel has a command line and provides additional command line information. The block runs from the tag to the period that closes it. Source: Application Display Programming SC41-5715, UIM tag reference.",
           "name": "keyword.other.pnlgrp.cmdline",
           "begin": "(?i)(?<=(:(CMDLINE)[ ]))",
           "end": "\\.",
           "patterns": [
             {
+              "comment": "The tag itself, which opens the block.",
               "name": "support.function.pnlgrp.cmdline",
               "match": "(?i)\\b(:(CMDLINE)[ ])"
             },
             {
+              "comment": "The attribute names the tag accepts: SIZE, NAME.",
               "name": "support.function.pnlgrp.cmdline.attribute.name",
               "match": "(?i)\\b(SIZE|NAME)[=]"
             },
             {
+              "comment": "The value given to an attribute, either bare or in single quotes.",
               "name": "support.variable.pnlgrp.cmdline.attribute.value",
               "match": "(?i)(SHORT|LONG|[A-Z0-9]{1,32})"
             }
           ]
         },
         {
+          "comment": "The condition definition (COND) tag defines a condition that must be true if certain processing is to take place. The block runs from the tag to the period that closes it. Source: Application Display Programming SC41-5715, UIM tag reference.",
           "name": "keyword.other.pnlgrp.cond",
           "begin": "(?i)(?<=(:(COND)[ ]))",
           "end": "\\.",
           "patterns": [
             {
+              "comment": "The tag itself, which opens the block.",
               "name": "support.function.pnlgrp.cond",
               "match": "(?i)\\b(:(COND)[ ])"
             },
             {
+              "comment": "The attribute names the tag accepts: NAME, EXPR, EVAL.",
               "name": "support.function.pnlgrp.cond.attribute.name",
               "match": "(?i)\\b(NAME|EXPR|EVAL)[=]"
             },
             {
+              "comment": "The value given to an attribute, either bare or in single quotes.",
               "name": "support.variable.pnlgrp.cond.attribute.value",
               "match": "(?i)([A-Z0-9]{1,32}|['](.*)[']|ALWAYS|ONCE)"
             }
           ]
         },
         {
+          "comment": "The data presentation area (DATA) tag describes a data presentation area in a panel. The block runs from the tag to the period that closes it. Source: Application Display Programming SC41-5715, UIM tag reference.",
           "name": "keyword.other.pnlgrp.data",
           "begin": "(?i)(?<=(:(DATA)[ ]))",
           "end": "\\.",
           "patterns": [
             {
+              "comment": "The tag itself, which opens the block.",
               "name": "support.function.pnlgrp.data",
               "match": "(?i)\\b(:(DATA)[ ])"
             },
             {
+              "comment": "The attribute names the tag accepts: (DEPTH, HELP, BOTSEP, SCROLL, LAYOUT, MAXHEAD, BODYSEP, TYPE.",
               "name": "support.function.pnlgrp.data.attribute.name",
               "match": "(?i)\\b((DEPTH|HELP|BOTSEP|SCROLL|LAYOUT|MAXHEAD|BODYSEP|TYPE)[=]|COMPACT)"
             },
             {
+              "comment": "The value given to an attribute, either bare or in single quotes.",
               "name": "support.variable.pnlgrp.data.attribute.value",
               "match": "(?i)(([A-Z][A-Z0-9#@$]{1,9}/[A-Z][A-Z0-9#@$]{1,9})|SPACE|NONE|NO|YES|HORIZ|SPACE|INDENT|BOTH|NONE|PROLOG|([0-4]{1})|'\\*')"
             }
           ]
         },
         {
+          "comment": "The data item choices (DATAC) tag provides the text for the possible choices column of a data presentation area. The block runs from the tag to the period that closes it. Source: Application Display Programming SC41-5715, UIM tag reference.",
           "name": "keyword.other.pnlgrp.datac",
           "begin": "(?i)(?<=(:(DATAC)[ ]))",
           "end": "\\.",
           "patterns": [
             {
+              "comment": "The tag itself, which opens the block.",
               "name": "support.function.pnlgrp.datac",
               "match": "(?i)\\b(:(DATAC)[ ])"
             },
             {
+              "comment": "The attribute names the tag accepts: CHOICE.",
               "name": "support.function.pnlgrp.datac.attribute.name",
               "match": "(?i)\\b(CHOICE)[=]"
             },
             {
+              "comment": "The value given to an attribute, either bare or in single quotes.",
               "name": "support.variable.pnlgrp.datac.attribute.value",
               "match": "(?i)([A-Z0-9]{1,32})"
             }
           ]
         },
         {
+          "comment": "The data column (DATACOL) tag specifies the width of the item, choice, and possible choices columns, and can also provide column headings. The block runs from the tag to the period that closes it. Source: Application Display Programming SC41-5715, UIM tag reference.",
           "name": "keyword.other.pnlgrp.datacol",
           "begin": "(?i)(?<=(:(DATACOL)[ ]))",
           "end": "\\.",
           "patterns": [
             {
+              "comment": "The tag itself, which opens the block.",
               "name": "support.function.pnlgrp.datacol",
               "match": "(?i)\\b(:(DATACOL)[ ])"
             },
             {
+              "comment": "The attribute names the tag accepts: WIDTH.",
               "name": "support.function.pnlgrp.datacol.attribute.name",
               "match": "(?i)\\b(WIDTH)[=]"
             },
             {
+              "comment": "The value given to an attribute, either bare or in single quotes.",
               "name": "support.variable.pnlgrp.datacol.attribute.value",
               "match": "(?i)([0-9]{1,3}|'\\*')"
             }
           ]
         },
         {
+          "comment": "The data group (DATAGRP) tag is used to group data items and data selection fields in a data presentation area. The block runs from the tag to the period that closes it. Source: Application Display Programming SC41-5715, UIM tag reference.",
           "name": "keyword.other.pnlgrp.datagrp",
           "begin": "(?i)(?<=(:(DATAGRP)[ ]))",
           "end": "\\.",
           "patterns": [
             {
+              "comment": "The tag itself, which opens the block.",
               "name": "support.function.pnlgrp.datagrp",
               "match": "(?i)\\b(:(DATAGRP)[ ])"
             },
             {
+              "comment": "The attribute names the tag accepts: (HELP, NAME, GRPSEP, COND.",
               "name": "support.function.pnlgrp.datagrp.attribute.name",
               "match": "(?i)\\b((HELP|NAME|GRPSEP|COND)[=]|COMPACT)"
             },
             {
+              "comment": "The value given to an attribute, either bare or in single quotes.",
               "name": "support.variable.pnlgrp.datagrp.attribute.value",
               "match": "(?i)(([A-Z][A-Z0-9#@$]{1,9}/[A-Z][A-Z0-9#@$]{1,9})|([A-Z0-9]{1,32})|INDENT|QINDENT|NONE)"
             }
           ]
         },
         {
+          "comment": "The data item (DATAI) tag defines an item placed in a data presentation area. The block runs from the tag to the period that closes it. Source: Application Display Programming SC41-5715, UIM tag reference.",
           "name": "keyword.other.pnlgrp.datai",
           "begin": "(?i)(?<=(:(DATAI)[ ]))",
           "end": "\\.",
           "patterns": [
             {
+              "comment": "The tag itself, which opens the block.",
               "name": "support.function.pnlgrp.datai",
               "match": "(?i)\\b(:(DATAI)[ ])"
             },
             {
+              "comment": "The attribute names the tag accepts: VAR, USAGE, HELP, NAME, PMTLOC, CHCLOC, ALIGN, JUSTIFY, REQUIRED, CSRLOC, DISPLAY, AUTOENTR, COND, PROMPT, DSPVALUE.",
               "name": "support.function.pnlgrp.datai.attribute.name",
               "match": "(?i)\\b(VAR|USAGE|HELP|NAME|PMTLOC|CHCLOC|ALIGN|JUSTIFY|REQUIRED|CSRLOC|DISPLAY|AUTOENTR|COND|PROMPT|DSPVALUE)[=]"
             },
             {
+              "comment": "The value given to an attribute, either bare or in single quotes.",
               "name": "support.variable.pnlgrp.datai.attribute.value",
               "match": "(?i)(([A-Z0-9]{1,32})|(['][A-Z][A-Z0-9#@$]{1,9}/[A-Z][A-Z0-9#@$]{1,9}['])|OUT|INOUT|BEFORE|ABOVE|AFTER|LEFT|RIGHT|START|END|NO|YES|'\\*')"
             }
           ]
         },
         {
+          "comment": "The data item extender (DATAIX) tag can be used to specify additional dialog variables, which are displayed as part of the data item. The block runs from the tag to the period that closes it. Source: Application Display Programming SC41-5715, UIM tag reference.",
           "name": "keyword.other.pnlgrp.dataix",
           "begin": "(?i)(?<=(:(DATAIX)[ ]))",
           "end": "\\.",
           "patterns": [
             {
+              "comment": "The tag itself, which opens the block.",
               "name": "support.function.pnlgrp.dataix",
               "match": "(?i)\\b(:(DATAIX)[ ])"
             },
             {
+              "comment": "The attribute names the tag accepts: VAR, USAGE, NEWLINE, ITEMSEP, ALIGN, JUSTIFY, REQUIRED, DISPLAY, PROMPT, DSPVALUE, AUTOENTR.",
               "name": "support.function.pnlgrp.dataix.attribute.name",
               "match": "(?i)\\b(VAR|USAGE|NEWLINE|ITEMSEP|ALIGN|JUSTIFY|REQUIRED|DISPLAY|PROMPT|DSPVALUE|AUTOENTR)[=]"
             },
             {
+              "comment": "The value given to an attribute, either bare or in single quotes.",
               "name": "support.variable.pnlgrp.dataix.attribute.value",
               "match": "(?i)(([A-Z0-9]{1,32})|OUT|INOUT|CALC|NO|YES|[0-9]+|LEFT|RIGHT|START|END|['].*['])"
             }
           ]
         },
         {
+          "comment": "The data selection field (DATASLT) tag defines a selection field in the data presentation area. The block runs from the tag to the period that closes it. Source: Application Display Programming SC41-5715, UIM tag reference.",
           "name": "keyword.other.pnlgrp.dataslt",
           "begin": "(?i)(?<=(:(DATASLT)[ ]))",
           "end": "\\.",
           "patterns": [
             {
+              "comment": "The tag itself, which opens the block.",
               "name": "support.function.pnlgrp.dataslt",
               "match": "(?i)\\b(:(DATASLT)[ ])"
             },
             {
+              "comment": "The attribute names the tag accepts: TYPE, VAR, HELP, NAME, PMTLOC, REQUIRED, AUTOENTR, COND.",
               "name": "support.function.pnlgrp.dataslt.attribute.name",
               "match": "(?i)\\b(TYPE|VAR|HELP|NAME|PMTLOC|REQUIRED|AUTOENTR|COND)[=]"
             },
             {
+              "comment": "The value given to an attribute, either bare or in single quotes.",
               "name": "support.variable.pnlgrp.dataslt.attribute.value",
               "match": "(?i)(([A-Z0-9]{1,32})|SINGLE|MULTI|BEFORE|ABOVE|NO|YES)"
             }
           ]
         },
         {
+          "comment": "The data selection field choice (DATASLTC) tag specifies the choices for the selection field. The block runs from the tag to the period that closes it. Source: Application Display Programming SC41-5715, UIM tag reference.",
           "name": "keyword.other.pnlgrp.datasltc",
           "begin": "(?i)(?<=(:(DATASLTC)[ ]))",
           "end": "\\.",
           "patterns": [
             {
+              "comment": "The tag itself, which opens the block.",
               "name": "support.function.pnlgrp.datasltc",
               "match": "(?i)\\b(:(DATASLTC)[ ])"
             },
             {
+              "comment": "The attribute names the tag accepts: CHOICE, OPTION, VAR, HELP, COND, AVAIL, AVLMSGID, AVLMSGF.",
               "name": "support.function.pnlgrp.datasltc.attribute.name",
               "match": "(?i)\\b(CHOICE|OPTION|VAR|HELP|COND|AVAIL|AVLMSGID|AVLMSGF)[=]"
             },
             {
+              "comment": "The value given to an attribute, either bare or in single quotes.",
               "name": "support.variable.pnlgrp.datasltc.attribute.value",
               "match": "(?i)(([A-Z0-9]{1,32})|([0-9]{1,2})|([A-F]{3}[0-9A-F]{4})|(['][A-Z][A-Z0-9#@$]{0,9}/[A-Z][A-Z0-9#@$]{0,9}[']))"
             }
           ]
         },
         {
+          "comment": "The figure (FIG) tag identifies a diagram, chart, or other illustration. The block runs from the tag to the period that closes it. Source: Application Display Programming SC41-5715, UIM tag reference.",
           "name": "keyword.other.pnlgrp.fig",
           "begin": "(?i)(?<=(:(FIG)[ ]))",
           "end": "\\.",
           "patterns": [
             {
+              "comment": "The tag itself, which opens the block.",
               "name": "support.function.pnlgrp.fig",
               "match": "(?i)\\b(:(FIG)[ ])"
             },
             {
+              "comment": "The attribute names the tag accepts: FRAME.",
               "name": "support.function.pnlgrp.fig.attribute.name",
               "match": "(?i)\\b(FRAME)[=]"
             },
             {
+              "comment": "The value given to an attribute, either bare or in single quotes.",
               "name": "support.variable.pnlgrp.fig.attribute.value",
               "match": "(?i)(RULE|NONE)"
             }
           ]
         },
         {
+          "comment": "The help module (HELP) tag indicates the beginning of a help module. The block runs from the tag to the period that closes it. Source: Application Display Programming SC41-5715, UIM tag reference.",
           "name": "keyword.other.pnlgrp.help",
           "begin": "(?i)(?<=(:(HELP)[ ]))",
           "end": "\\.",
           "patterns": [
             {
+              "comment": "The tag itself, which opens the block.",
               "name": "support.function.pnlgrp.help",
               "match": "(?i)\\b(:(HELP)[ ])"
             },
             {
+              "comment": "The attribute names the tag accepts: NAME, WIDTH, DEPTH.",
               "name": "support.function.pnlgrp.help.attribute.name",
               "match": "(?i)\\b(NAME|WIDTH|DEPTH)[=]"
             },
             {
+              "comment": "The value given to an attribute, either bare or in single quotes.",
               "name": "support.variable.pnlgrp.help.attribute.value",
               "match": "(?i)([A-Z0-9]{1,32}|[']([A-Z0-9_\\/]{1,32}|\\*)['])"
             }
           ]
         },
         {
+          "comment": "The IMHELP tags, matched together because they take no attributes of their own. The block runs from the tag to the period that closes it. Source: Application Display Programming SC41-5715, UIM tag reference.",
           "name": "keyword.other.pnlgrp.imhelp",
           "begin": "(?i)(?<=(:(IMHELP)[ ]))",
           "end": "\\.",
           "patterns": [
             {
+              "comment": "The tag itself, which opens the block.",
               "name": "support.function.pnlgrp.imhelp",
               "match": "(?i)\\b(:(IMHELP)[ ])"
             },
             {
+              "comment": "The attribute names the tag accepts: NAME.",
               "name": "support.function.pnlgrp.imhelp.attribute.name",
               "match": "(?i)\\b(NAME)[=]"
             },
             {
+              "comment": "The value given to an attribute, either bare or in single quotes.",
               "name": "support.variable.pnlgrp.imhelp.attribute.value",
               "match": "(?i)([A-Z0-9]{1,32})"
             }
           ]
         },
         {
+          "comment": "The import (IMPORT) tag makes help modules defined in another panel group object available in the current panel group. The block runs from the tag to the period that closes it. Source: Application Display Programming SC41-5715, UIM tag reference.",
           "name": "keyword.other.pnlgrp.import",
           "begin": "(?i)(?<=(:(IMPORT)[ ]))",
           "end": "\\.",
           "patterns": [
             {
+              "comment": "The tag itself, which opens the block.",
               "name": "support.function.pnlgrp.import",
               "match": "(?i)\\b(:(IMPORT)[ ])"
             },
             {
+              "comment": "The attribute names the tag accepts: NEWNAME, NAME, PNLGRP, PRDLIB.",
               "name": "support.function.pnlgrp.import.attribute.name",
               "match": "(?i)\\b(NEWNAME|NAME|PNLGRP|PRDLIB)[=]"
             },
             {
+              "comment": "The value given to an attribute, either bare or in single quotes.",
               "name": "support.variable.pnlgrp.import.attribute.value",
               "match": "(?i)([A-Z0-9]{1,32}|[']([A-Z0-9_\\/]{1,32}|\\*)['])"
             }
           ]
         },
         {
+          "comment": "The INFO tags, matched together because they take no attributes of their own. The block runs from the tag to the period that closes it. Source: Application Display Programming SC41-5715, UIM tag reference.",
           "name": "keyword.other.pnlgrp.info",
           "begin": "(?i)(?<=(:(INFO)[ ]))",
           "end": "\\.",
           "patterns": [
             {
+              "comment": "The tag itself, which opens the block.",
               "name": "support.function.pnlgrp.info",
               "match": "(?i)\\b(:(INFO)[ ])"
             },
             {
+              "comment": "The attribute names the tag accepts: DEPTH, BOTSEP, SCROLL, TYPE.",
               "name": "support.function.pnlgrp.info.attribute.name",
               "match": "(?i)\\b(DEPTH|BOTSEP|SCROLL|TYPE)[=]"
             },
             {
+              "comment": "The value given to an attribute, either bare or in single quotes.",
               "name": "support.variable.pnlgrp.info.attribute.value",
               "match": "(?i)([0-9]{2,2}|[']\\*[']|SPACE|NONE|RULE|YES|NO|NORMAL|PROLOG)"
             }
           ]
         },
         {
+          "comment": "The index search (ISCH) tag identifies the text displayed by the index search function if the user enters a word that matches a synonym. The block runs from the tag to the period that closes it. Source: Application Display Programming SC41-5715, UIM tag reference.",
           "name": "keyword.other.pnlgrp.isch",
           "begin": "(?i)(?<=(:(ISCH)[ ]))",
           "end": "\\.",
           "patterns": [
             {
+              "comment": "The tag itself, which opens the block.",
               "name": "support.function.pnlgrp.isch",
               "match": "(?i)\\b(:(ISCH)[ ])"
             },
             {
+              "comment": "The attribute names the tag accepts: ROOTS.",
               "name": "support.function.pnlgrp.isch.attribute.name",
               "match": "(?i)\\b(ROOTS)[=]"
             },
             {
+              "comment": "The value given to an attribute, either bare or in single quotes.",
               "name": "support.variable.pnlgrp.isch.attribute.value",
               "match": "(?i)(['](([A-Z0-9]{1,20}[ ]*){1,50})['])"
             }
           ]
         },
         {
+          "comment": "The index search subtopic (ISCHSUBT) tag identifies the help modules within the same panel group that are subtopics under the preceding topic specified on an index search (ISCH) tag. The block runs from the tag to the period that closes it. Source: Application Display Programming SC41-5715, UIM tag reference.",
           "name": "keyword.other.pnlgrp.ischsubt",
           "begin": "(?i)(?<=(:(ISCHSUBT)[ ]))",
           "end": "\\.",
           "patterns": [
             {
+              "comment": "The tag itself, which opens the block.",
               "name": "support.function.pnlgrp.ischsubt",
               "match": "(?i)\\b(:(ISCHSUBT)[ ])"
             },
             {
+              "comment": "The attribute names the tag accepts: TOPICS.",
               "name": "support.function.pnlgrp.ischsubt.attribute.name",
               "match": "(?i)\\b(TOPICS)[=]"
             },
             {
+              "comment": "The value given to an attribute, either bare or in single quotes.",
               "name": "support.variable.pnlgrp.ischsubt.attribute.value",
               "match": "(?i)(['](([A-Z0-9_\\/]{1,32}[ ]*){1,16})['])"
             }
           ]
         },
         {
+          "comment": "The index search synonym (ISCHSYN) tag identifies the variations and synonyms for the root words used in the index search function. The block runs from the tag to the period that closes it. Source: Application Display Programming SC41-5715, UIM tag reference.",
           "name": "keyword.other.pnlgrp.ischsyn",
           "begin": "(?i)(?<=(:(ISCHSYN)[ ]))",
           "end": "\\.",
           "patterns": [
             {
+              "comment": "The tag itself, which opens the block.",
               "name": "support.function.pnlgrp.ischsyn",
               "match": "(?i)\\b(:(ISCHSYN)[ ])"
             },
             {
+              "comment": "The attribute names the tag accepts: ROOT.",
               "name": "support.function.pnlgrp.ischsyn.attribute.name",
               "match": "(?i)\\b(ROOT)[=]"
             },
             {
+              "comment": "The value given to an attribute, either bare or in single quotes.",
               "name": "support.variable.pnlgrp.ischsyn.attribute.value",
               "match": "(?i)(['](([A-Z0-9]{1,20}){1})['])"
             }
           ]
         },
         {
+          "comment": "The key list item (KEYI) tag defines a single function key. The block runs from the tag to the period that closes it. Source: Application Display Programming SC41-5715, UIM tag reference.",
           "name": "keyword.other.pnlgrp.keyi",
           "begin": "(?i)(?<=(:(KEYI)[ ]))",
           "end": "\\.",
           "patterns": [
             {
+              "comment": "The tag itself, which opens the block.",
               "name": "support.function.pnlgrp.keyi",
               "match": "(?i)\\b(:(KEYI)[ ])"
             },
             {
+              "comment": "The attribute names the tag accepts: KEY, HELP, ACTION, COND, VARUPD, PRIORITY.",
               "name": "support.function.pnlgrp.keyi.attribute.name",
               "match": "(?i)\\b(KEY|HELP|ACTION|COND|VARUPD|PRIORITY)[=]"
             },
             {
+              "comment": "The value given to an attribute, either bare or in single quotes.",
               "name": "support.variable.pnlgrp.keyi.attribute.value",
               "match": "(?i)([A-Z0-9]{1,32}|[']([A-Z0-9_\\/]{1,32})['])"
             }
           ]
         },
         {
+          "comment": "The key list (KEYL) tag indicates the beginning of a list of key definitions. The block runs from the tag to the period that closes it. Source: Application Display Programming SC41-5715, UIM tag reference.",
           "name": "keyword.other.pnlgrp.keyl",
           "begin": "(?i)(?<=(:(KEYL)[ ]))",
           "end": "\\.",
           "patterns": [
             {
+              "comment": "The tag itself, which opens the block.",
               "name": "support.function.pnlgrp.keyl",
               "match": "(?i)\\b(:(KEYL)[ ])"
             },
             {
+              "comment": "The attribute names the tag accepts: NAME, HELP.",
               "name": "support.function.pnlgrp.keyl.attribute.name",
               "match": "(?i)\\b(NAME|HELP)[=]"
             },
             {
+              "comment": "The value given to an attribute, either bare or in single quotes.",
               "name": "support.variable.pnlgrp.keyl.attribute.value",
               "match": "(?i)([A-Z0-9]{1,32}|[']([A-Z0-9_\\/]{1,32}|\\*)['])"
             }
           ]
         },
         {
-          "comment": "TODO: Regex for attribute value is not complete - missing logical operators.",
+          "comment": "The hypertext link definition (LINK) tag identifies a reference phrase and the action taken when it is selected. PERFORM and THENDOn take an action, and UNLESSn and LINKWHEN take a conditional expression. The block runs from the tag to the period that closes it. Source: Application Display Programming SC41-5715, UIM tag reference.",
           "name": "keyword.other.pnlgrp.link",
           "begin": "(?i)(?<=(:(LINK)[ ]))",
           "end": "\\.",
           "patterns": [
             {
+              "comment": "The tag itself, which opens the block.",
               "name": "support.function.pnlgrp.link",
               "match": "(?i)\\b(:(LINK)[ ])"
             },
             {
+              "comment": "The attribute names the tag accepts: PERFORM, UNLESS[1-4], THENDO[1-4], LINKWHEN.",
               "name": "support.function.pnlgrp.link.attribute.name",
               "match": "(?i)\\b(PERFORM|UNLESS[1-4]|THENDO[1-4]|LINKWHEN)[=]"
             },
             {
+              "comment": "The quoted value of an attribute: DSPHELP and the module it shows for PERFORM and THENDOn, or a conditional expression for UNLESSn and LINKWHEN. A conditional expression joins the three built-in functions with the logical operators, so the block scopes those parts rather than trying to match the whole expression at once. Source: Application Display Programming SC41-5715, UIM tag reference.",
               "name": "support.variable.pnlgrp.link.attribute.value",
-              "match": "(?i)'((DSPHELP ([A-Z0-9_/]{1,32})([ ]+[A-Z][A-Z0-9@#$]{0,9}/[A-Z][A-Z0-9@#$]{0,9}([ ]+[A-Z][A-Z0-9@#$]{0,9})?)?)|(CHKOBJ\\(\"[A-Z][A-Z0-9@#$]{0,9}\",\"\\*[A-Z]{0,9}\"(,\"(\\*(CHANGE|ALL|USE|EXCLUDE|AUTLMGT)|(\\*(OBJEXIST|OBJMGT|OBJOPR|OBJALTER|OBJREF|ADD|DLT|READ|UPD|EXECUTE)[ ]*){1,7})?\")\\))|(CHKPGM\\(\"(\\*LIBL/|[A-Z][A-Z0-9@#$]{0,9}/)?[A-Z][A-Z0-9@#$]{0,9}\"\\))|(CHKUSRCLS\\(\\*(SECOFR|SECADM|PGMR|SYSOPR|USER)\\)))'"
+              "begin": "'",
+              "end": "'",
+              "patterns": [
+                {
+                  "comment": "DSPHELP, the only action the reference allows on PERFORM and THENDOn.",
+                  "name": "keyword.control.pnlgrp.link.action",
+                  "match": "(?i)\\b(DSPHELP)\\b"
+                },
+                {
+                  "comment": "The three built-in functions a conditional expression may call.",
+                  "name": "support.function.pnlgrp.link.builtin",
+                  "match": "(?i)\\b(CHKOBJ|CHKPGM|CHKUSRCLS)\\b"
+                },
+                {
+                  "comment": "The logical operators that join an expression. The reference gives the special values as the spelling to prefer, because the OR and NOT characters are outside the invariant character set.",
+                  "name": "keyword.operator.pnlgrp.link",
+                  "match": "(?i)(\\*AND|\\*OR|\\*NOT|&|\\||¬)"
+                },
+                {
+                  "comment": "An argument to a built-in function, which the reference requires to be in double quotation marks.",
+                  "name": "string.quoted.double.pnlgrp",
+                  "match": "\"[^\"]*\""
+                }
+              ]
             }
           ]
         },
         {
+          "comment": "The ordered list (OL) tag identifies an ordered list of items. The block runs from the tag to the period that closes it. Source: Application Display Programming SC41-5715, UIM tag reference.",
           "name": "keyword.other.pnlgrp.list_tags",
           "begin": "(?i)(?<=(:(DL|OL|SL|UL)[ ]))",
           "end": "\\.",
           "patterns": [
             {
+              "comment": "The tag itself, which opens the block.",
               "name": "support.function.pnlgrp.list_tags",
               "match": "(?i)\\b(:(DL|OL|SL|UL)[ ])"
             },
             {
+              "comment": "The attribute names the tag accepts: its attributes.",
               "name": "support.function.pnlgrp.list_tags.attribute.name",
               "match": "(?i)\\b(COMPACT)"
             }
           ]
         },
         {
+          "comment": "The list area (LIST) tag defines a list area on a panel. The block runs from the tag to the period that closes it. Source: Application Display Programming SC41-5715, UIM tag reference.",
           "name": "keyword.other.pnlgrp.list",
           "begin": "(?i)(?<=(:(LIST)[ ]))",
           "end": "\\.",
           "patterns": [
             {
+              "comment": "The tag itself, which opens the block.",
               "name": "support.function.pnlgrp.list",
               "match": "(?i)\\b(:(LIST)[ ])"
             },
             {
+              "comment": "The attribute names the tag accepts: DEPTH, LISTDEF, BOTSEP, SCROLL, MAXHEAD, BODYSEP, VIEW, ACTOR, EXTACT, SELECT, MAXACTL, PARMS, HEADSIZE.",
               "name": "support.function.pnlgrp.list.attribute.name",
               "match": "(?i)\\b(DEPTH|LISTDEF|BOTSEP|SCROLL|MAXHEAD|BODYSEP|VIEW|ACTOR|EXTACT|SELECT|MAXACTL|PARMS|HEADSIZE)[=]"
             },
             {
+              "comment": "The value given to an attribute, either bare or in single quotes.",
               "name": "support.variable.pnlgrp.list.attribute.value",
               "match": "(?i)([A-Z0-9]{1,32}|[']\\*[']|SPACE|NONE|RULE|YES|NO|[0-4]{1}|INDENT|BOTH|UIM|CALLER|SINGLE|MULTI)"
             }
           ]
         },
         {
+          "comment": "The list action (LISTACT) tag defines an operation which takes place on individual items of a list. The block runs from the tag to the period that closes it. Source: Application Display Programming SC41-5715, UIM tag reference.",
           "name": "keyword.other.pnlgrp.listact",
           "begin": "(?i)(?<=(:(LISTACT)[ ]))",
           "end": "\\.",
           "patterns": [
             {
+              "comment": "The tag itself, which opens the block.",
               "name": "support.function.pnlgrp.listact",
               "match": "(?i)\\b(:(LISTACT)[ ])"
             },
             {
+              "comment": "The attribute names the tag accepts: HELP, OPTION, ACTFOR, CONFIRM, ENTER, EXTENTER, PROMPT, EXTPROMPT, NOCMD, NOEXT, USREXIT, EXTMSGID, EXTMSGF, COND, AVAIL, AVLMSGID, AVLMSGF.",
               "name": "support.function.pnlgrp.listact.attribute.name",
               "match": "(?i)\\b(HELP|OPTION|ACTFOR|CONFIRM|ENTER|EXTENTER|PROMPT|EXTPROMPT|NOCMD|NOEXT|USREXIT|EXTMSGID|EXTMSGF|COND|AVAIL|AVLMSGID|AVLMSGF)[=]"
             },
             {
+              "comment": "The value given to an attribute, either bare or in single quotes.",
               "name": "support.variable.pnlgrp.listact.attribute.value",
               "match": "(?i)([A-Z0-9]{1,32}|[']([A-Z0-9_\\/]{1,32}|\\*)[']|[0-9]{1,3}|BOTH|LISTE|EXACTE|['](.*)[']|ENTER|PROMPT|MSG)"
             }
           ]
         },
         {
+          "comment": "The list column (LISTCOL) tag defines a column that may belong to any of several list views. The block runs from the tag to the period that closes it. Source: Application Display Programming SC41-5715, UIM tag reference.",
           "name": "keyword.other.pnlgrp.listcol",
           "begin": "(?i)(?<=(:(LISTCOL)[ ]))",
           "end": "\\.",
           "patterns": [
             {
+              "comment": "The tag itself, which opens the block.",
               "name": "support.function.pnlgrp.listcol",
               "match": "(?i)\\b(:(LISTCOL)[ ])"
             },
             {
+              "comment": "The attribute names the tag accepts: VAR, MAXWIDTH, USAGE, HELP, COL, NAME, JUSTIFY, EXTACT, PROMPT, DSPVALUE, COLHEAD, DISPLAY, AUTOSKIP.",
               "name": "support.function.pnlgrp.listcol.attribute.name",
               "match": "(?i)\\b(VAR|MAXWIDTH|USAGE|HELP|COL|NAME|JUSTIFY|EXTACT|PROMPT|DSPVALUE|COLHEAD|DISPLAY|AUTOSKIP)[=]"
             },
             {
+              "comment": "The value given to an attribute, either bare or in single quotes.",
               "name": "support.variable.pnlgrp.listcol.attribute.value",
               "match": "(?i)([A-Z0-9]{1,32}|[']([A-Z0-9_\\/]{1,32}|\\*)[']|OUT|INOUT|LEFT|RIGHT|START|END|NO|YES|['](.*)['])"
             }
           ]
         },
         {
+          "comment": "The list definition (LISTDEF) tag defines UIM lists which are data structures maintained by the UIM. The block runs from the tag to the period that closes it. Source: Application Display Programming SC41-5715, UIM tag reference.",
           "name": "keyword.other.pnlgrp.listdef",
           "begin": "(?i)(?<=(:(LISTDEF)[ ]))",
           "end": "\\.",
           "patterns": [
             {
+              "comment": "The tag itself, which opens the block.",
               "name": "support.function.pnlgrp.listdef",
               "match": "(?i)\\b(:(LISTDEF)[ ])"
             },
             {
+              "comment": "The attribute names the tag accepts: NAME, VARS, CHGVAR, MSGID, MSGIDVAR, MSGF, PRTFLAG, EMPHASIS, PROTECT.",
               "name": "support.function.pnlgrp.listdef.attribute.name",
               "match": "(?i)\\b(NAME|VARS|CHGVAR|MSGID|MSGIDVAR|MSGF|PRTFLAG|EMPHASIS|PROTECT)[=]"
             },
             {
+              "comment": "The value given to an attribute, either bare or in single quotes.",
               "name": "support.variable.pnlgrp.listdef.attribute.value",
               "match": "(?i)([A-Z0-9]{1,32}|[']([A-Z0-9_\\/]{1,32}|\\*)['])"
             }
           ]
         },
         {
+          "comment": "The list column group (LISTGRP) tag groups columns in a list area together under a single heading that applies to all the columns. The block runs from the tag to the period that closes it. Source: Application Display Programming SC41-5715, UIM tag reference.",
           "name": "keyword.other.pnlgrp.listgrp",
           "begin": "(?i)(?<=(:(LISTGRP)[ ]))",
           "end": "\\.",
           "patterns": [
             {
+              "comment": "The tag itself, which opens the block.",
               "name": "support.function.pnlgrp.listgrp",
               "match": "(?i)\\b(:(LISTGRP)[ ])"
             },
             {
+              "comment": "The attribute names the tag accepts: COL, HELP, NAME, COLSEP.",
               "name": "support.function.pnlgrp.listgrp.attribute.name",
               "match": "(?i)\\b(COL|HELP|NAME|COLSEP)[=]"
             },
             {
+              "comment": "The value given to an attribute, either bare or in single quotes.",
               "name": "support.variable.pnlgrp.listgrp.attribute.value",
               "match": "(?i)([A-Z0-9]{1,32}|[']([A-Z0-9_\\/]{1,32}|\\*)[']|\\*)"
             }
           ]
         },
         {
+          "comment": "The list view (LISTVIEW) tag defines one of the views of a list presented in a list area. The block runs from the tag to the period that closes it. Source: Application Display Programming SC41-5715, UIM tag reference.",
           "name": "keyword.other.pnlgrp.listview",
           "begin": "(?i)(?<=(:(LISTVIEW)[ ]))",
           "end": "\\.",
           "patterns": [
             {
+              "comment": "The tag itself, which opens the block.",
               "name": "support.function.pnlgrp.listview",
               "match": "(?i)\\b(:(LISTVIEW)[ ])"
             },
             {
+              "comment": "The attribute names the tag accepts: COLS, LAYOUT.",
               "name": "support.function.pnlgrp.listview.attribute.name",
               "match": "(?i)\\b(COLS|LAYOUT)[=]"
             },
             {
+              "comment": "The value given to an attribute, either bare or in single quotes.",
               "name": "support.variable.pnlgrp.listview.attribute.value",
               "match": "(?i)([']([A-Z0-9]{1,32}|\\s)+[']|[0-9]{1,2})"
             }
           ]
         },
         {
+          "comment": "The menu bar (MBAR) tag defines a menu bar area of a panel. The block runs from the tag to the period that closes it. Source: Application Display Programming SC41-5715, UIM tag reference.",
           "name": "keyword.other.pnlgrp.mbar",
           "begin": "(?i)(?<=(:(MBAR)[ ]))",
           "end": "\\.",
           "patterns": [
             {
+              "comment": "The tag itself, which opens the block.",
               "name": "support.function.pnlgrp.mbar",
               "match": "(?i)\\b(:(MBAR)[ ])"
             },
             {
+              "comment": "The attribute names the tag accepts: NAME, HELP, MAXBARL.",
               "name": "support.function.pnlgrp.mbar.attribute.name",
               "match": "(?i)\\b(NAME|HELP|MAXBARL)[=]"
             },
             {
+              "comment": "The value given to an attribute, either bare or in single quotes.",
               "name": "support.variable.pnlgrp.mbar.attribute.value",
               "match": "(?i)([A-Z]{1}[A-Z0-9]{0,9}|[A-Z/_]{1}[A-Z0-9/_]{1,31}|[123])"
             }
           ]
         },
         {
+          "comment": "The menu bar choice (MBARC) tag defines one choice within a menu bar. The block runs from the tag to the period that closes it. Source: Application Display Programming SC41-5715, UIM tag reference.",
           "name": "keyword.other.pnlgrp.mbarc",
           "begin": "(?i)(?<=(:(MBARC)[ ]))",
           "end": "\\.",
           "patterns": [
             {
+              "comment": "The tag itself, which opens the block.",
               "name": "support.function.pnlgrp.mbarc",
               "match": "(?i)\\b(:(MBARC)[ ])"
             },
             {
+              "comment": "The attribute names the tag accepts: HELP.",
               "name": "support.function.pnlgrp.mbarc.attribute.name",
               "match": "(?i)\\b(HELP)[=]"
             },
             {
+              "comment": "The value given to an attribute, either bare or in single quotes.",
               "name": "support.variable.pnlgrp.mbarc.attribute.value",
               "match": "(?i)([A-Z/_]{1}[A-Z0-9/_]{1,31})"
             }
           ]
         },
         {
+          "comment": "The menu area (MENU) tag defines a menu area. The block runs from the tag to the period that closes it. Source: Application Display Programming SC41-5715, UIM tag reference.",
           "name": "keyword.other.pnlgrp.menu",
           "begin": "(?i)(?<=(:(MENU)[ ]))",
           "end": "\\.",
           "patterns": [
             {
+              "comment": "The tag itself, which opens the block.",
               "name": "support.function.pnlgrp.menu",
               "match": "(?i)\\b(:(MENU)[ ])"
             },
             {
+              "comment": "The attribute names the tag accepts: DEPTH, BOTSEP, SCROLL.",
               "name": "support.function.pnlgrp.menu.attribute.name",
               "match": "(?i)\\b(DEPTH|BOTSEP|SCROLL)[=]"
             },
             {
+              "comment": "The value given to an attribute, either bare or in single quotes.",
               "name": "support.variable.pnlgrp.menu.attribute.value",
               "match": "(?i)(([0-9]{1,2}|'\\*')|(SPACE|NONE|RULE)|(NO|YES))"
             }
           ]
         },
         {
+          "comment": "The menu group (MENUGRP) tag groups menu items of a menu area together and supplies a heading for the group. The block runs from the tag to the period that closes it. Source: Application Display Programming SC41-5715, UIM tag reference.",
           "name": "keyword.other.pnlgrp.menugrp",
           "begin": "(?i)(?<=(:(MENUGRP)[ ]))",
           "end": "\\.",
           "patterns": [
             {
+              "comment": "The tag itself, which opens the block.",
               "name": "support.function.pnlgrp.menugrp",
               "match": "(?i)\\b(:(MENUGRP)[ ])"
             },
             {
+              "comment": "The attribute names the tag accepts: COND.",
               "name": "support.function.pnlgrp.menugrp.attribute.name",
               "match": "(?i)\\b(COND)[=]"
             },
             {
+              "comment": "The value given to an attribute, either bare or in single quotes.",
               "name": "support.variable.pnlgrp.menugrp.attribute.value",
               "match": "(?i)([A-Z0-9]{1,32})"
             }
           ]
         },
         {
+          "comment": "The MENUI tags, matched together because they take no attributes of their own. The block runs from the tag to the period that closes it. Source: Application Display Programming SC41-5715, UIM tag reference.",
           "name": "keyword.other.pnlgrp.menui",
           "begin": "(?i)(?<=(:(MENUI)[ ]))",
           "end": "\\.",
           "patterns": [
             {
+              "comment": "The tag itself, which opens the block.",
               "name": "support.function.pnlgrp.menui",
               "match": "(?i)\\b(:(MENUI)[ ])"
             },
             {
+              "comment": "The attribute names the tag accepts: HELP, OPTION, ACTION, NAME, COND, AVAIL, AVLMSGID, AVLMSGF, MARKER, ITEM.",
               "name": "support.function.pnlgrp.menui.attribute.name",
               "match": "(?i)\\b(HELP|OPTION|ACTION|NAME|COND|AVAIL|AVLMSGID|AVLMSGF|MARKER|ITEM)[=]"
             },
             {
+              "comment": "The value given to an attribute, either bare or in single quotes.",
               "name": "support.variable.pnlgrp.menui.attribute.value",
               "match": "(?i)([A-Z0-9]{1,32}|[0-9]{1,3}|[']((CALL .*)|CANCEL|(CMD .*)|EXIT|(MENU .* (NO)?RTNPNT)|RETURN)['])"
             }
           ]
         },
         {
+          "comment": "The MI tags, matched together because they take no attributes of their own. The block runs from the tag to the period that closes it. Source: Application Display Programming SC41-5715, UIM tag reference.",
           "name": "keyword.other.pnlgrp.mi",
           "begin": "(?i)(?<=(:(MI)[ ]))",
           "end": "\\.",
           "patterns": [
             {
+              "comment": "The tag itself, which opens the block.",
               "name": "support.function.pnlgrp.mi",
               "match": "(?i)\\b(:(MI)[ ])"
             },
             {
+              "comment": "The attribute names the tag accepts: HELP, OPTION, ACTION, NAME, COND, AVAIL, AVLMSGID, AVLMSGF, MARKER, ITEM.",
               "name": "support.function.pnlgrp.mi.attribute.name",
               "match": "(?i)\\b(HELP|OPTION|ACTION|NAME|COND|AVAIL|AVLMSGID|AVLMSGF|MARKER|ITEM)[=]"
             },
             {
+              "comment": "The value given to an attribute, either bare or in single quotes.",
               "name": "support.variable.pnlgrp.mi.attribute.value",
               "match": "(?i)([A-Z0-9]{1,32}|[0-9]{1,3}|[']((CALL .*)|CANCEL|(CMD .*)|EXIT|(MENU .* (NO)?RTNPNT)|RETURN)['])"
             }
           ]
         },
         {
+          "comment": "The option line (OPTLINE) tag specifies that a panel has a menu option field as opposed to a command line which allows commands or options to be entered. The block runs from the tag to the period that closes it. Source: Application Display Programming SC41-5715, UIM tag reference.",
           "name": "keyword.other.pnlgrp.optline",
           "begin": "(?i)(?<=(:(OPTLINE)[ ]))",
           "end": "\\.",
           "patterns": [
             {
+              "comment": "The tag itself, which opens the block.",
               "name": "support.function.pnlgrp.optline",
               "match": "(?i)\\b(:(OPTLINE)[ ])"
             },
             {
+              "comment": "The attribute names the tag accepts: NAME.",
               "name": "support.function.pnlgrp.optline.attribute.name",
               "match": "(?i)\\b(NAME)[=]"
             },
             {
+              "comment": "The value given to an attribute, either bare or in single quotes.",
               "name": "support.variable.pnlgrp.optline.attribute.value",
               "match": "(?i)([A-Z0-9]{1,32})"
             }
           ]
         },
         {
+          "comment": "The extended help is defined on the HELP attribute of the display panel (PANEL) tag. The block runs from the tag to the period that closes it. Source: Application Display Programming SC41-5715, UIM tag reference.",
           "name": "keyword.other.pnlgrp.panel",
           "begin": "(?i)(?<=(:(PANEL)[ ]))",
           "end": "\\.",
           "patterns": [
             {
+              "comment": "The tag itself, which opens the block.",
               "name": "support.function.pnlgrp.panel",
               "match": "(?i)\\b(:(PANEL)[ ])"
             },
             {
+              "comment": "The attribute names the tag accepts: NAME, HELP, KEYL, PANELID, TITLE, WIDTH, DEPTH, MBAR, MSGL, TOPSEP, DATE, TIME, ENBGUI, ENTER, SELECT, USREXIT, TT, CSRVAR, CSRPOS, CSRLST, CSREID, CSRNAME.",
               "name": "support.function.pnlgrp.panel.attribute.name",
               "match": "(?i)\\b(NAME|HELP|KEYL|PANELID|TITLE|WIDTH|DEPTH|MBAR|MSGL|TOPSEP|DATE|TIME|ENBGUI|ENTER|SELECT|USREXIT|TT|CSRVAR|CSRPOS|CSRLST|CSREID|CSRNAME)[=]"
             },
             {
+              "comment": "The value given to an attribute, either bare or in single quotes.",
               "name": "support.variable.pnlgrp.panel.attribute.value",
               "match": "(?i)([A-Z0-9]{1,32})"
             }
           ]
         },
         {
+          "comment": "The pull-down field (PDFLD) tag defines a selection field within the menu bar pull-down. The block runs from the tag to the period that closes it. Source: Application Display Programming SC41-5715, UIM tag reference.",
           "name": "keyword.other.pnlgrp.pdfld",
           "begin": "(?i)(?<=(:(PDFLD)[ ]))",
           "end": "\\.",
           "patterns": [
             {
+              "comment": "The tag itself, which opens the block.",
               "name": "support.function.pnlgrp.pdfld",
               "match": "(?i)\\b(:(PDFLD)[ ])"
             },
             {
+              "comment": "The attribute names the tag accepts: NAME.",
               "name": "support.function.pnlgrp.pdfld.attribute.name",
               "match": "(?i)\\b(NAME)[=]"
             },
             {
+              "comment": "The value given to an attribute, either bare or in single quotes.",
               "name": "support.variable.pnlgrp.pdfld.attribute.value",
               "match": "(?i)([A-Z]{1}[A-Z0-9]{0,9})"
             }
           ]
         },
         {
+          "comment": "The pull-down field choice (PDFLDC) tag defines one choice within a pull-down field. The block runs from the tag to the period that closes it. Source: Application Display Programming SC41-5715, UIM tag reference.",
           "name": "keyword.other.pnlgrp.pdfldc",
           "begin": "(?i)(?<=(:(PDFLDC)[ ]))",
           "end": "\\.",
           "patterns": [
             {
+              "comment": "The tag itself, which opens the block.",
               "name": "support.function.pnlgrp.pdfldc",
               "match": "(?i)\\b(:(PDFLDC)[ ])"
             },
             {
+              "comment": "The attribute names the tag accepts: OPTION, HELP, ACTION, ACTFOR, CONFIRM, USREXIT, VARUPD, COND, AVAIL, AVLMSGID, AVLMSGF, CHOICE.",
               "name": "support.function.pnlgrp.pdfldc.attribute.name",
               "match": "(?i)\\b(OPTION|HELP|ACTION|ACTFOR|CONFIRM|USREXIT|VARUPD|COND|AVAIL|AVLMSGID|AVLMSGF|CHOICE)[=]"
             },
             {
+              "comment": "The value given to an attribute, either bare or in single quotes.",
               "name": "support.variable.pnlgrp.pdfldc.attribute.value",
               "match": "(?i)([0-9]{1,2}|[A-Z]{1}[A-Z0-9]{0,9}|PANEL|LIST|['](CALL .*)[']|[A-Z/_]{1}[A-Z0-9/_]{1,31}|[A-F]{3}[0-9A-F]{4}|['][A-Z][A-Z0-9#@$]{0,9}/[A-Z][A-Z0-9#@$]{0,9}['])"
             }
           ]
         },
         {
+          "comment": "The programming keyword (PK) tag identifies a programming keyword. The block runs from the tag to the period that closes it. Source: Application Display Programming SC41-5715, UIM tag reference.",
           "name": "keyword.other.pnlgrp.pk",
           "begin": "(?i)(?<=(:(PK)[ ]))",
           "end": "\\.",
           "patterns": [
             {
+              "comment": "The attribute names the tag accepts: its attributes.",
               "name": "support.function.pnlgrp.pk.attribute.name",
               "match": "(?i)\\b(DEF)"
             }
           ]
         },
         {
+          "comment": "The panel group (PNLGRP) tag begins the definition of a panel group. The block runs from the tag to the period that closes it. Source: Application Display Programming SC41-5715, UIM tag reference.",
           "name": "keyword.other.pnlgrp.pnlgrp",
           "begin": "(?i)(?<=(:(PNLGRP)[ ]))",
           "end": "\\.",
           "patterns": [
             {
+              "comment": "The tag itself, which opens the block.",
               "name": "support.function.pnlgrp.pnlgrp",
               "match": "(?i)\\b(:(PNLGRP)[ ])"
             },
             {
+              "comment": "The attribute names the tag accepts: SCHIDX, ENBGUI, TXTMODE, TXTCHRID, BIDI, NBRSHAPE, DFTMSGF, SUBMSGF.",
               "name": "support.function.pnlgrp.pnlgrp.attribute.name",
               "match": "(?i)\\b(SCHIDX|ENBGUI|TXTMODE|TXTCHRID|BIDI|NBRSHAPE|DFTMSGF|SUBMSGF)[=]"
             },
             {
+              "comment": "The value given to an attribute, either bare or in single quotes.",
               "name": "support.variable.pnlgrp.pnlgrp.attribute.value",
               "match": "(?i)(([A-Z][A-Z0-9#@$]{1,9}/[A-Z][A-Z0-9#@$]{1,9})|NONE|NO|YES|SBCS|DBCS|LTR|RTL|ARABIC|HINDI|('[0-9]{2,5}'))"
             }
           ]
         },
         {
+          "comment": "The PRTHEAD tags, matched together because they take no attributes of their own. The block runs from the tag to the period that closes it. Source: Application Display Programming SC41-5715, UIM tag reference.",
           "name": "keyword.other.pnlgrp.prthead",
           "begin": "(?i)(?<=(:(PRTHEAD)[ ]))",
           "end": "\\.",
           "patterns": [
             {
+              "comment": "The tag itself, which opens the block.",
               "name": "support.function.pnlgrp.prthead",
               "match": "(?i)\\b(:(PRTHEAD)[ ])"
             },
             {
+              "comment": "The attribute names the tag accepts: NAME, PRODINFO, PRTDATE, PRTTIME, TITLE, TT, WIDTH, OBJ, OBJLIB.",
               "name": "support.function.pnlgrp.prthead.attribute.name",
               "match": "(?i)\\b(NAME|PRODINFO|PRTDATE|PRTTIME|TITLE|TT|WIDTH|OBJ|OBJLIB)[=]"
             },
             {
+              "comment": "The value given to an attribute, either bare or in single quotes.",
               "name": "support.variable.pnlgrp.prthead.attribute.value",
               "match": "(?i)([A-Z0-9]{1,32}|80|132)"
             }
           ]
         },
         {
+          "comment": "The PRTPNL tags, matched together because they take no attributes of their own. The block runs from the tag to the period that closes it. Source: Application Display Programming SC41-5715, UIM tag reference.",
           "name": "keyword.other.pnlgrp.prtpnl",
           "begin": "(?i)(?<=(:(PRTPNL)[ ]))",
           "end": "\\.",
           "patterns": [
             {
+              "comment": "The tag itself, which opens the block.",
               "name": "support.function.pnlgrp.prtpnl",
               "match": "(?i)\\b(:(PRTPNL)[ ])"
             },
             {
+              "comment": "The attribute names the tag accepts: NAME, TITLE, TT, WIDTH.",
               "name": "support.function.pnlgrp.prtpnl.attribute.name",
               "match": "(?i)\\b(NAME|TITLE|TT|WIDTH)[=]"
             },
             {
+              "comment": "The value given to an attribute, either bare or in single quotes.",
               "name": "support.variable.pnlgrp.prtpnl.attribute.value",
               "match": "(?i)([A-Z0-9]{1,32}|80|132)"
             }
           ]
         },
         {
+          "comment": "The text area (TEXT) tag defines a text area in a panel to be formatted by the application. The block runs from the tag to the period that closes it. Source: Application Display Programming SC41-5715, UIM tag reference.",
           "name": "keyword.other.pnlgrp.text",
           "begin": "(?i)(?<=(:(TEXT)[ ]))",
           "end": "\\.",
           "patterns": [
             {
+              "comment": "The tag itself, which opens the block.",
               "name": "support.function.pnlgrp.text",
               "match": "(?i)\\b(:(TEXT)[ ])"
             },
             {
+              "comment": "The attribute names the tag accepts: VAR, USREXIT, ROW, COL.",
               "name": "support.function.pnlgrp.text.attribute.name",
               "match": "(?i)\\b(VAR|USREXIT|ROW|COL)[=]"
             },
             {
+              "comment": "The value given to an attribute, either bare or in single quotes.",
               "name": "support.variable.pnlgrp.text.attribute.value",
               "match": "(?i)([A-Z]{1}[A-Z0-9]{0,9}|['](CALL .*)['])"
             }
           ]
         },
         {
+          "comment": "The translation list item (TI) tag specifies a list item in a translation list. The block runs from the tag to the period that closes it. Source: Application Display Programming SC41-5715, UIM tag reference.",
           "name": "keyword.other.pnlgrp.ti",
           "begin": "(?i)(?<=(:(TI)[ ]))",
           "end": "\\.",
           "patterns": [
             {
+              "comment": "The tag itself, which opens the block.",
               "name": "support.function.pnlgrp.ti",
               "match": "(?i)\\b(:(TI)[ ])"
             },
             {
+              "comment": "The attribute names the tag accepts: VALUE.",
               "name": "support.function.pnlgrp.ti.attribute.name",
               "match": "(?i)\\b(VALUE)[=]"
             },
             {
+              "comment": "The value given to an attribute, either bare or in single quotes.",
               "name": "support.variable.pnlgrp.ti.attribute.value",
               "match": "(?i)(['](.+)['])"
             }
           ]
         },
         {
+          "comment": "The translation list (TL) tag allows the specification of a translation list for a class, shielding the variable pool from the values actually entered on the display. The block runs from the tag to the period that closes it. Source: Application Display Programming SC41-5715, UIM tag reference.",
           "name": "keyword.other.pnlgrp.tl",
           "begin": "(?i)(?<=(:(TL)[ ]))",
           "end": "\\.",
           "patterns": [
             {
+              "comment": "The tag itself, which opens the block.",
               "name": "support.function.pnlgrp.tl",
               "match": "(?i)\\b(:(TL)[ ])"
             },
             {
+              "comment": "The attribute names the tag accepts: CASE, MSGID, MSGF.",
               "name": "support.function.pnlgrp.tl.attribute.name",
               "match": "(?i)\\b(CASE|MSGID|MSGF)[=]"
             },
             {
+              "comment": "The value given to an attribute, either bare or in single quotes.",
               "name": "support.variable.pnlgrp.tl.attribute.value",
               "match": "(?i)(UPPER|MIXED|[A-F]{3}[0-9A-F]{4}|['][A-Z][A-Z0-9#@$]{0,9}/[A-Z][A-Z0-9#@$]{0,9}['])"
             }
           ]
         },
         {
+          "comment": "The top instruction (TOPINST) tag of an area specifies the top instruction lines. The block runs from the tag to the period that closes it. Source: Application Display Programming SC41-5715, UIM tag reference.",
           "name": "keyword.other.pnlgrp.topinst",
           "begin": "(?i)(?<=(:(TOPINST)[ ]))",
           "end": "\\.",
           "patterns": [
             {
+              "comment": "The tag itself, which opens the block.",
               "name": "support.function.pnlgrp.topinst",
               "match": "(?i)\\b(:(TOPINST)[ ])"
             },
             {
+              "comment": "The attribute names the tag accepts: INST.",
               "name": "support.function.pnlgrp.topinst.attribute.name",
               "match": "(?i)\\b(INST)[=]"
             },
             {
+              "comment": "The value given to an attribute, either bare or in single quotes.",
               "name": "support.variable.pnlgrp.topinst.attribute.value",
               "match": "(?i)([A-Z0-9]{1,32})"
             }
           ]
         },
         {
+          "comment": "The truth table (TT) tag begins the definition of a truth table used by the compiler when processing panel definitions. The block runs from the tag to the period that closes it. Source: Application Display Programming SC41-5715, UIM tag reference.",
           "name": "keyword.other.pnlgrp.tt",
           "begin": "(?i)(?<=(:(TT)[ ]))",
           "end": "\\.",
           "patterns": [
             {
+              "comment": "The tag itself, which opens the block.",
               "name": "support.function.pnlgrp.tt",
               "match": "(?i)\\b(:(TT)[ ])"
             },
             {
+              "comment": "The attribute names the tag accepts: NAME, CONDS.",
               "name": "support.function.pnlgrp.tt.attribute.name",
               "match": "(?i)\\b(NAME|CONDS)[=]"
             },
             {
+              "comment": "The value given to an attribute, either bare or in single quotes.",
               "name": "support.variable.pnlgrp.tt.attribute.value",
               "match": "(?i)([A-Z0-9]{1,32}|[']([A-Z0-9_\\/]{1,32}|\\*)['])"
             }
           ]
         },
         {
+          "comment": "The truth table row (TTROW) tag defines a row in a truth table used by the compiler when processing panel definitions. The block runs from the tag to the period that closes it. Source: Application Display Programming SC41-5715, UIM tag reference.",
           "name": "keyword.other.pnlgrp.ttrow",
           "begin": "(?i)(?<=(:(TTROW)[ ]))",
           "end": "\\.",
           "patterns": [
             {
+              "comment": "The tag itself, which opens the block.",
               "name": "support.function.pnlgrp.ttrow",
               "match": "(?i)\\b(:(TTROW)[ ])"
             },
             {
+              "comment": "The attribute names the tag accepts: VALUES.",
               "name": "support.function.pnlgrp.ttrow.attribute.name",
               "match": "(?i)\\b(VALUES)[=]"
             },
             {
+              "comment": "The value given to an attribute, either bare or in single quotes.",
               "name": "support.variable.pnlgrp.ttrow.attribute.value",
               "match": "(?i)(['](.*)['])"
             }
           ]
         },
         {
+          "comment": "The variable definition (VAR) tag declares a dialog variable in the panel group. The block runs from the tag to the period that closes it. Source: Application Display Programming SC41-5715, UIM tag reference.",
           "name": "keyword.other.pnlgrp.var",
           "begin": "(?i)(?<=(:(VAR)[ ]))",
           "end": "\\.",
           "patterns": [
             {
+              "comment": "The tag itself, which opens the block.",
               "name": "support.function.pnlgrp.var",
               "match": "(?i)\\b(:(VAR)[ ])"
             },
             {
+              "comment": "The attribute names the tag accepts: NAME, CLASS, ERRVAR.",
               "name": "support.function.pnlgrp.var.attribute.name",
               "match": "(?i)\\b(NAME|CLASS|ERRVAR)[=]"
             },
             {
+              "comment": "The value given to an attribute, either bare or in single quotes.",
               "name": "support.variable.pnlgrp.var.attribute.value",
               "match": "(?i)([A-Z0-9]{1,32})"
             }
           ]
         },
         {
+          "comment": "The variable record definition (VARRCD) tag does not allow nested tags, and must be placed after the last variable definition (VAR) tag and before the first list definition (LISTDEF) tag. The block runs from the tag to the period that closes it. Source: Application Display Programming SC41-5715, UIM tag reference.",
           "name": "keyword.other.pnlgrp.varrcd",
           "begin": "(?i)(?<=(:(VARRCD)[ ]))",
           "end": "\\.",
           "patterns": [
             {
+              "comment": "The tag itself, which opens the block.",
               "name": "support.function.pnlgrp.varrcd",
               "match": "(?i)\\b(:(VARRCD)[ ])"
             },
             {
+              "comment": "The attribute names the tag accepts: NAME, VARS, NOPUT, NOGET.",
               "name": "support.function.pnlgrp.varrcd.attribute.name",
               "match": "(?i)\\b(NAME|VARS|NOPUT|NOGET)[=]"
             },
             {
+              "comment": "The value given to an attribute, either bare or in single quotes.",
               "name": "support.variable.pnlgrp.varrcd.attribute.value",
               "match": "(?i)([']?)([A-Z0-9]{1,32}(['])?)"
             }
           ]
         },
         {
+          "comment": "The XMP, XH, VARRCD, VAR, UL, TTROW, TT, TOPINST tags, which take no attributes and are matched as one alternation. Source: Application Display Programming SC41-5715, UIM tag reference.",
           "name": "keyword.other.pnlgrp",
           "match": "(?i)(:(XMP|XH[1-4]|VARRCD|VAR|UL|TTROW|TT|TOPINST|TL|TI|TEXT|SL|RT|PV|PT|PT|PRTTRAIL|PRTPNL|PRTHEAD|PNLGRP).?)"
         },
         {
+          "comment": "The PK, PDFLDC, PDFLD, PDACCEL, PD, PC, PARML, PANEL tags, which take no attributes and are matched as one alternation. Source: Application Display Programming SC41-5715, UIM tag reference.",
           "name": "keyword.other.pnlgrp",
           "match": "(?i)(:(PK|PDFLDC|PDFLD|PDACCEL|PD|PC|PARML|PANEL|P|OPTLINE|OL|NT|NOTE|MI|MENUI|MENUGRP|MENU|MBARC|MBAR|LP).?)"
         },
         {
+          "comment": "The LISTVIEW, LISTGRP, LISTDEF, LISTCOL, LISTACT, LIST, LINK, LINES tags, which take no attributes and are matched as one alternation. Source: Application Display Programming SC41-5715, UIM tag reference.",
           "name": "keyword.other.pnlgrp",
           "match": "(?i)(:(LISTVIEW|LISTGRP|LISTDEF|LISTCOL|LISTACT|LIST|LINK|LINES|LI|KEYL|KEYI|ISCHSYN|ISCHSUBT|ISCH|INFO).?)"
         },
         {
+          "comment": "The IMPORT, IMHELP, HP, HELP, FIG, EXMP, EUL, ETT tags, which take no attributes and are matched as one alternation. Source: Application Display Programming SC41-5715, UIM tag reference.",
           "name": "keyword.other.pnlgrp",
           "match": "(?i)(:(IMPORT|IMHELP|HP[0-9]|HELP|H[1-4]|FIG|EXMP|EUL|ETT|ETL|ESL|ERT|EPV|EPT|EPRTPNL|EPRTHEAD|EPNLGRP|EPK).?)"
         },
         {
+          "comment": "The EPDFLD, EPARML, EPANEL, EOL, ENT, ENOTE, EMENUGRP, EMENU tags, which take no attributes and are matched as one alternation. Source: Application Display Programming SC41-5715, UIM tag reference.",
           "name": "keyword.other.pnlgrp",
           "match": "(?i)(:(EPDFLD|EPARML|EPANEL|EOL|ENT|ENOTE|EMENUGRP|EMENU|EMBARC|EMBAR|ELISTGRP|ELIST|ELINK|ELINES|EKEYL|EINFO).?)"
         },
         {
+          "comment": "The EHP, EHELP, EFIG, EDL, EDATAGRP, EDATA, ECLASS, ECIT tags, which take no attributes and are matched as one alternation. Source: Application Display Programming SC41-5715, UIM tag reference.",
           "name": "keyword.other.pnlgrp",
           "match": "(?i)(:(EHP[0-9]|EHELP|EFIG|EDL|EDATAGRP|EDATA|ECLASS|ECIT|DTHD|DT|DL|DDHD|DD|DATASLTC|DATASLT|DATAIX|DATAI).?)"
         },
         {
+          "comment": "The DATAGRP, DATACOL, DATAC, DATA, COPYR, COND, CMDLINE, CLASS tags, which take no attributes and are matched as one alternation. Source: Application Display Programming SC41-5715, UIM tag reference.",
           "name": "keyword.other.pnlgrp",
           "match": "(?i)(:(DATAGRP|DATACOL|DATAC|DATA|COPYR|COND|CMDLINE|CLASS|CIT|CHECK|BOTINST|APPFMT).?)"
         }
