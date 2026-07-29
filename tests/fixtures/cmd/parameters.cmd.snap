@@ -584,3 +584,151 @@
 #                                                 ^^ source.cmd
 >
 #^ source.cmd
+>/* Variant characters. The three code points that vary by CCSID are    */
+#^^ source.cmd comment.line.cmd
+#  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.cmd comment.line.cmd
+#                                                                       ^^ source.cmd comment.line.cmd
+>/* valid in a name, so a name may both contain them and begin with     */
+#^^ source.cmd comment.line.cmd
+#  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.cmd comment.line.cmd
+#                                                                       ^^ source.cmd comment.line.cmd
+>/* the letters of a statement name without being that statement.       */
+#^^ source.cmd comment.line.cmd
+#  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.cmd comment.line.cmd
+#                                                                       ^^ source.cmd comment.line.cmd
+>             PARM       KWD(V01) TYPE(QUAL@#$)
+#^^^^^^^^^^^^^ source.cmd
+#             ^^^^ source.cmd keyword.other.cmd
+#                 ^^^^^^^ source.cmd
+#                        ^^^ source.cmd support.function.cmd
+#                           ^^^^^^ source.cmd
+#                                 ^^^^ source.cmd support.function.cmd
+#                                     ^^^^^^^^^^ source.cmd
+>QUAL@#$:     QUAL       TYPE(*NAME) LEN(10)
+#^^^^^^^^ source.cmd keyword.control.cmd.label
+#        ^^^^^ source.cmd
+#             ^^^^ source.cmd keyword.other.cmd
+#                 ^^^^^^^ source.cmd
+#                        ^^^^ source.cmd support.function.cmd
+#                            ^ source.cmd
+#                             ^^^^^ source.cmd constant.language.cmd
+#                                  ^^ source.cmd
+#                                    ^^^ source.cmd support.function.cmd
+#                                       ^ source.cmd
+#                                        ^^ source.cmd constant.numeric.cmd
+#                                          ^^ source.cmd
+>             QUAL       TYPE(*NAME) LEN(10) PROMPT('Library')
+#^^^^^^^^^^^^^ source.cmd
+#             ^^^^ source.cmd keyword.other.cmd
+#                 ^^^^^^^ source.cmd
+#                        ^^^^ source.cmd support.function.cmd
+#                            ^ source.cmd
+#                             ^^^^^ source.cmd constant.language.cmd
+#                                  ^^ source.cmd
+#                                    ^^^ source.cmd support.function.cmd
+#                                       ^ source.cmd
+#                                        ^^ source.cmd constant.numeric.cmd
+#                                          ^^ source.cmd
+#                                            ^^^^^^ source.cmd support.function.cmd
+#                                                  ^ source.cmd
+#                                                   ^ source.cmd string.quoted.single.cmd
+#                                                    ^^^^^^^ source.cmd string.quoted.single.cmd
+#                                                           ^ source.cmd string.quoted.single.cmd
+#                                                            ^^ source.cmd
+>             PARM       KWD(V02) TYPE(QUAL§£$)
+#^^^^^^^^^^^^^ source.cmd
+#             ^^^^ source.cmd keyword.other.cmd
+#                 ^^^^^^^ source.cmd
+#                        ^^^ source.cmd support.function.cmd
+#                           ^^^^^^ source.cmd
+#                                 ^^^^ source.cmd support.function.cmd
+#                                     ^^^^^^^^^^ source.cmd
+>QUAL§£$:     QUAL       TYPE(*NAME) LEN(10)
+#^^^^^^^^ source.cmd keyword.control.cmd.label
+#        ^^^^^ source.cmd
+#             ^^^^ source.cmd keyword.other.cmd
+#                 ^^^^^^^ source.cmd
+#                        ^^^^ source.cmd support.function.cmd
+#                            ^ source.cmd
+#                             ^^^^^ source.cmd constant.language.cmd
+#                                  ^^ source.cmd
+#                                    ^^^ source.cmd support.function.cmd
+#                                       ^ source.cmd
+#                                        ^^ source.cmd constant.numeric.cmd
+#                                          ^^ source.cmd
+>             PARM       KWD(V03) TYPE(QUAL@Ñ¥)
+#^^^^^^^^^^^^^ source.cmd
+#             ^^^^ source.cmd keyword.other.cmd
+#                 ^^^^^^^ source.cmd
+#                        ^^^ source.cmd support.function.cmd
+#                           ^^^^^^ source.cmd
+#                                 ^^^^ source.cmd support.function.cmd
+#                                     ^^^^^^^^^^ source.cmd
+>QUAL@Ñ¥:     QUAL       TYPE(*NAME) LEN(10)
+#^^^^^^^^ source.cmd keyword.control.cmd.label
+#        ^^^^^ source.cmd
+#             ^^^^ source.cmd keyword.other.cmd
+#                 ^^^^^^^ source.cmd
+#                        ^^^^ source.cmd support.function.cmd
+#                            ^ source.cmd
+#                             ^^^^^ source.cmd constant.language.cmd
+#                                  ^^ source.cmd
+#                                    ^^^ source.cmd support.function.cmd
+#                                       ^ source.cmd
+#                                        ^^ source.cmd constant.numeric.cmd
+#                                          ^^ source.cmd
+>             PARM       KWD(&@te@st@) TYPE(*CHAR) LEN(1)
+#^^^^^^^^^^^^^ source.cmd
+#             ^^^^ source.cmd keyword.other.cmd
+#                 ^^^^^^^ source.cmd
+#                        ^^^ source.cmd support.function.cmd
+#                           ^ source.cmd
+#                            ^^^^^^^^ source.cmd variable.parameter.cmd
+#                                    ^^ source.cmd
+#                                      ^^^^ source.cmd support.function.cmd
+#                                          ^ source.cmd
+#                                           ^^^^^ source.cmd constant.language.cmd
+#                                                ^^ source.cmd
+#                                                  ^^^ source.cmd support.function.cmd
+#                                                     ^ source.cmd
+#                                                      ^ source.cmd constant.numeric.cmd
+#                                                       ^^ source.cmd
+>             PARM       KWD(&ØteÆstÅ) TYPE(*CHAR) LEN(1)
+#^^^^^^^^^^^^^ source.cmd
+#             ^^^^ source.cmd keyword.other.cmd
+#                 ^^^^^^^ source.cmd
+#                        ^^^ source.cmd support.function.cmd
+#                           ^ source.cmd
+#                            ^^^^^^^^ source.cmd variable.parameter.cmd
+#                                    ^^ source.cmd
+#                                      ^^^^ source.cmd support.function.cmd
+#                                          ^ source.cmd
+#                                           ^^^^^ source.cmd constant.language.cmd
+#                                                ^^ source.cmd
+#                                                  ^^^ source.cmd support.function.cmd
+#                                                     ^ source.cmd
+#                                                      ^ source.cmd constant.numeric.cmd
+#                                                       ^^ source.cmd
+>             PARM       KWD(V04) TYPE(*CHAR) LEN(10) +
+#^^^^^^^^^^^^^ source.cmd
+#             ^^^^ source.cmd keyword.other.cmd
+#                 ^^^^^^^ source.cmd
+#                        ^^^ source.cmd support.function.cmd
+#                           ^^^^^^ source.cmd
+#                                 ^^^^ source.cmd support.function.cmd
+#                                     ^ source.cmd
+#                                      ^^^^^ source.cmd constant.language.cmd
+#                                           ^^ source.cmd
+#                                             ^^^ source.cmd support.function.cmd
+#                                                ^ source.cmd
+#                                                 ^^ source.cmd constant.numeric.cmd
+#                                                   ^^ source.cmd
+#                                                     ^ source.cmd keyword.other.cmd
+>                          CHOICEPGM(MYLIB@#$/MYPGM§£$)
+#^^^^^^^^^^^^^^^^^^^^^^^^^^ source.cmd
+#                          ^^^^^^^^^ source.cmd support.function.cmd
+#                                   ^^^^^^^^^ source.cmd
+#                                            ^ source.cmd punctuation.separator.cmd
+#                                             ^^^^^^^^^^ source.cmd
+>
+#^ source.cmd

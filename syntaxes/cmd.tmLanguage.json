@@ -59,9 +59,9 @@
           "match": "^\\s*[a-zA-Z_@#$§ÆØÅÄÖ£Ñ¥àÐŞİ][a-zA-Z0-9_@#$§ÆØÅÄÖ£Ñ¥àÐŞİ]*:"
         },
         {
-          "comment": "The six command definition statements: CMD, PARM, ELEM, QUAL, DEP and PMTCTL.",
+          "comment": "The six command definition statements: CMD, PARM, ELEM, QUAL, DEP and PMTCTL. The guards spell out the characters a name may contain rather than using a word boundary, because the variant characters are not word characters and a boundary would let a statement name match the front of a longer name: QUAL would match the first four characters of qual@#$.",
           "name": "keyword.other.cmd",
-          "match": "(?i)\\b(QUAL|PMTCTL|PARM|ELEM|DEP|CMD)\\b"
+          "match": "(?i)(?<![a-zA-Z0-9_@#$§ÆØÅÄÖ£Ñ¥àÐŞİ])(QUAL|PMTCTL|PARM|ELEM|DEP|CMD)(?![a-zA-Z0-9_@#$§ÆØÅÄÖ£Ñ¥àÐŞİ])"
         },
         {
           "comment": "Symbolic operators: concatenation, logical and relational. Written with a leading asterisk to distinguish them from names.",
@@ -69,9 +69,9 @@
           "match": "(?i)[*](CAT|TCAT|BCAT|AND|OR|NOT|EQ|GT|LT|GE|LE|NE|NG|NL)"
         },
         {
-          "comment": "Qualified name separator, as in MYLIB/MYPGM or *LIBL/QCMD. Matched before the arithmetic operators so a library qualifier is not scoped as division. CL division does not require spaces, so an unspaced &A/&B is scoped as a separator too; the reference writes division spaced, and qualified names are far commoner in practice.",
+          "comment": "Qualified name separator, as in MYLIB/MYPGM or *LIBL/QCMD. Matched before the arithmetic operators so a library qualifier is not read as division. Both sides list the characters a name may contain, the variant ones included, so that a qualified name carrying them still separates.",
           "name": "punctuation.separator.cmd",
-          "match": "(?<=[A-Za-z0-9_$#@])\\/(?=[A-Za-z0-9_$#@*&])"
+          "match": "(?<=[a-zA-Z0-9_@#$§ÆØÅÄÖ£Ñ¥àÐŞİ])\\/(?=[a-zA-Z0-9_@#$§ÆØÅÄÖ£Ñ¥àÐŞİ*&])"
         },
         {
           "comment": "Arithmetic, comparison and concatenation operators written as symbols.",
