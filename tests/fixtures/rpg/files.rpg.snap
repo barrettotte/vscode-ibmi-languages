@@ -527,5 +527,30 @@
 #                                                     ^^^^^ source.rpg support.function.rpg.f.option
 #                                                          ^^^^^^^^^^^^^^^^ source.rpg
 #                                                                          ^^^ source.rpg comment.line.rpg
+>     F*
+#^^^^^^^ source.rpg comment.line.rpg
+>     F* File translation records, which come after the program with
+#^^^^^^^ source.rpg comment.line.rpg
+#       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpg comment.line.rpg
+>     F* the other compile-time data. *EQUATE occupies positions 1-7
+#^^^^^^^ source.rpg comment.line.rpg
+#       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpg comment.line.rpg
+>     F* and position 8 is blank; the first record names the files and
+#^^^^^^^ source.rpg comment.line.rpg
+#       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpg comment.line.rpg
+>     F* the ones after it give the character pairs, each as two
+#^^^^^^^ source.rpg comment.line.rpg
+#       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpg comment.line.rpg
+>     F* hexadecimal values.
+#^^^^^^^ source.rpg comment.line.rpg
+#       ^^^^^^^^^^^^^^^^^^^^ source.rpg comment.line.rpg
+>**
+#^^ source.rpg variable.other.rpg.ctarrays string.other.rpg.ctarray
+>*EQUATE SEQFILE,PRINTER
+#^^^^^^^^^^^^^^^^^^^^^^^^ source.rpg variable.other.rpg.ctarrays string.other.rpg.ctarray
+>*EQUATE 5B4A
+#^^^^^^^^^^^^^ source.rpg variable.other.rpg.ctarrays string.other.rpg.ctarray
+>*EQUATE 7B7C
+#^^^^^^^^^^^^^ source.rpg variable.other.rpg.ctarrays string.other.rpg.ctarray
 >
-#^ source.rpg
+#^ source.rpg variable.other.rpg.ctarrays string.other.rpg.ctarray

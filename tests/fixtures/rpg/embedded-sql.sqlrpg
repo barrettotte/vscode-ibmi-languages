@@ -129,3 +129,76 @@
 08040C+ WHERE CUSNBR = :CUSNBR AND CUSBAL > 0
 08050C/END-EXEC
 08060C           SQLCOD    COMP 0                        92
+     C*
+     C* The SQL communications area. Every field the precompiler
+     C* defines appears, in the short six character spelling the
+     C* RPG/400 program sees and in the long SQL spelling.
+     C                     Z-ADD*ZERO     SQLWRN
+     C                     Z-ADD*ZERO     SQLWNA
+     C                     Z-ADD*ZERO     SQLWN9
+     C                     Z-ADD*ZERO     SQLWN8
+     C                     Z-ADD*ZERO     SQLWN7
+     C                     Z-ADD*ZERO     SQLWN6
+     C                     Z-ADD*ZERO     SQLWN5
+     C                     Z-ADD*ZERO     SQLWN4
+     C                     Z-ADD*ZERO     SQLWN3
+     C                     Z-ADD*ZERO     SQLWN2
+     C                     Z-ADD*ZERO     SQLWN1
+     C                     Z-ADD*ZERO     SQLWN0
+     C                     Z-ADD*ZERO     SQLSTT
+     C                     Z-ADD*ZERO     SQLCOD
+     C                     Z-ADD*ZERO     SQLERR
+     C                     Z-ADD*ZERO     SQLERP
+     C                     Z-ADD*ZERO     SQLERM
+     C                     Z-ADD*ZERO     SQLERL
+     C                     Z-ADD*ZERO     SQLER6
+     C                     Z-ADD*ZERO     SQLER5
+     C                     Z-ADD*ZERO     SQLER4
+     C                     Z-ADD*ZERO     SQLER3
+     C                     Z-ADD*ZERO     SQLER2
+     C                     Z-ADD*ZERO     SQLER1
+     C*
+     C* The longer spellings do not fit a result field, so they are
+     C* written where SQL itself refers to them.
+     C/EXEC SQL SET :WRKFLD = SQLWARN
+     C/END-EXEC
+     C/EXEC SQL SET :WRKFLD = SQLSTATE
+     C/END-EXEC
+     C/EXEC SQL SET :WRKFLD = SQLCODE
+     C/END-EXEC
+     C/EXEC SQL SET :WRKFLD = SQLERRP
+     C/END-EXEC
+     C/EXEC SQL SET :WRKFLD = SQLERRML
+     C/END-EXEC
+     C/EXEC SQL SET :WRKFLD = SQLERRMC
+     C/END-EXEC
+     C/EXEC SQL SET :WRKFLD = SQLERRD
+     C/END-EXEC
+     C*
+     C* The SQL global variables, each read into a host variable.
+     C/EXEC SQL SET :WRKFLD = CLIENT_HOST
+     C/END-EXEC
+     C/EXEC SQL SET :WRKFLD = CLIENT_IPADDR
+     C/END-EXEC
+     C/EXEC SQL SET :WRKFLD = CLIENT_PORT
+     C/END-EXEC
+     C/EXEC SQL SET :WRKFLD = JOB_NAME
+     C/END-EXEC
+     C/EXEC SQL SET :WRKFLD = PACKAGE_NAME
+     C/END-EXEC
+     C/EXEC SQL SET :WRKFLD = PACKAGE_SCHEMA
+     C/END-EXEC
+     C/EXEC SQL SET :WRKFLD = PACKAGE_VERSION
+     C/END-EXEC
+     C/EXEC SQL SET :WRKFLD = PROCESS_ID
+     C/END-EXEC
+     C/EXEC SQL SET :WRKFLD = ROUTINE_SCHEMA
+     C/END-EXEC
+     C/EXEC SQL SET :WRKFLD = ROUTINE_SPECIFIC_NAME
+     C/END-EXEC
+     C/EXEC SQL SET :WRKFLD = ROUTINE_TYPE
+     C/END-EXEC
+     C/EXEC SQL SET :WRKFLD = SERVER_MODE_JOB_NAME
+     C/END-EXEC
+     C/EXEC SQL SET :WRKFLD = THREAD_ID
+     C/END-EXEC
