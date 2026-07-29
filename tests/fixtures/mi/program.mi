@@ -1,0 +1,70 @@
+/********************************************************************/
+/* A working MI program: it takes two packed operands and a result  */
+/* pointer, adds them under a monitor, counts the calls in static   */
+/* storage and returns.                                             */
+/********************************************************************/
+/* Member: MIADD   Compilable: yes (CRTMIPGM)                       */
+/* Source: IBM i 7.5 Machine Interface functional reference.        */
+/* Retrieved: 2026-07-28                                            */
+/********************************************************************/
+
+/* The entry point and the parameters it is passed.                 */
+ENTRY   *          (PARM_LIST)  EXT;
+
+DCL     SPCPTR     ARG1@        PARM;
+DCL     SPCPTR     ARG2@        PARM;
+DCL     SPCPTR     RESULT@      PARM;
+
+DCL     OL         PARM_LIST
+                   (ARG1@,
+                    ARG2@,
+                    RESULT@)
+                    PARM        EXT;
+
+/* The parameters, addressed through the pointers above.            */
+DCL     DD         ARG1         PKD(15,5)  BAS(ARG1@);
+DCL     DD         ARG2         PKD(15,5)  BAS(ARG2@);
+DCL     DD         RESULT       PKD(15,5)  BAS(RESULT@);
+
+/* Working storage. STATIC keeps its value between calls.           */
+DCL     DD         CALLS        BIN(4)     STATIC INIT(0);
+DCL     DD         WORK         PKD(15,5)  AUTO;
+DCL     DD         ZERO         PKD(15,5)  AUTO   INIT(0);
+DCL     DD         MSGID        CHAR(7)    AUTO   INIT('CPF9999');
+DCL     SYSPTR     PGM@         AUTO;
+
+/* An exception description, and the monitor that names it.         */
+DCL     EXCM       BADNUM       (X'0C01')
+                   EXCP_HDLR    OVERFLOW;
+
+/********************************************************************/
+/* The program proper.                                              */
+        CPYNV      CALLS, CALLS;
+        ADDN(S)    CALLS, CALLS, 1;
+
+/* Add the two parameters, rounding the result.                     */
+        ADDN(SR)   WORK, ARG1, ARG2;
+
+/* Branch on the comparison rather than testing afterwards.         */
+        CMPNV(B)   WORK, ZERO / LO(NEGATIVE), EQ(ZEROSUM);
+        CPYNV      RESULT, WORK;
+        B          FINISHED;
+
+NEGATIVE:
+        CPYNV      RESULT, ZERO;
+        B          FINISHED;
+
+ZEROSUM:
+        CPYNV      RESULT, ZERO;
+
+FINISHED:
+        RTX        *;
+
+/********************************************************************/
+/* The exception handler the monitor names.                         */
+OVERFLOW:
+        CPYNV      RESULT, ZERO;
+        SIGEXCP    MSGID, *;
+        RTX        *;
+
+PEND;
