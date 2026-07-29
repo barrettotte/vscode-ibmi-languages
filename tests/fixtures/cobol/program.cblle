@@ -1,0 +1,122 @@
+      *
+      *A whole ILE COBOL program: an order register that reads a file,
+      *totals by customer, and prints. Every division appears, in the
+      *order the compiler requires.
+      *
+      *Member: ORDREG   Compilable: complete program, but not built; the
+      *        files it names are not defined here (CRTBNDCBL)
+      *Source: ILE COBOL Language Reference SC09-2539.
+      *Retrieved: 2026-07-29
+      *
+       PROCESS NOMONOPRC OPTIONS.
+      *
+       IDENTIFICATION DIVISION.
+       PROGRAM-ID. ORDREG.
+       AUTHOR. EXAMPLE LTD.
+      *
+       ENVIRONMENT DIVISION.
+       CONFIGURATION SECTION.
+       SOURCE-COMPUTER. IBM-ISERIES.
+       OBJECT-COMPUTER. IBM-ISERIES.
+       SPECIAL-NAMES.
+           CURRENCY SIGN IS "$".
+       INPUT-OUTPUT SECTION.
+       FILE-CONTROL.
+           SELECT ORDER-FILE ASSIGN TO DATABASE-ORDHDR
+             ORGANIZATION IS INDEXED
+             ACCESS MODE IS SEQUENTIAL
+             RECORD KEY IS EXTERNALLY-DESCRIBED-KEY
+             FILE STATUS IS WS-STATUS.
+           SELECT PRINT-FILE ASSIGN TO PRINTER-QPRINT.
+      *
+       DATA DIVISION.
+       FILE SECTION.
+       FD  ORDER-FILE.
+       01  ORDER-RECORD.
+               COPY DDS-ALL-FORMATS OF ORDHDR.
+       FD  PRINT-FILE.
+       01  PRINT-RECORD              PIC X(132).
+      *
+       WORKING-STORAGE SECTION.
+       77  WS-STATUS                 PIC XX.
+           88  END-OF-FILE           VALUE "10".
+       01  WS-TOTALS.
+               05  WS-CUST-TOTAL     PIC S9(9)V99 PACKED-DECIMAL.
+               05  WS-GRAND-TOTAL    PIC S9(11)V99 PACKED-DECIMAL.
+               05  WS-COUNT          PIC 9(7) BINARY VALUE ZERO.
+       01  WS-HEADING.
+               05  FILLER        PIC X(14) VALUE "ORDER REGISTER".
+               05  WS-RUN-DATE   PIC X(10).
+       01  WS-WHEN                   PIC X(21).
+       66  WS-ALL-TOTALS RENAMES WS-CUST-TOTAL THRU WS-GRAND-TOTAL.
+      *
+       LINKAGE SECTION.
+       01  LK-COMPANY                PIC X(3).
+      *
+       PROCEDURE DIVISION USING LK-COMPANY.
+       MAIN-LINE.
+               PERFORM INITIALIZE-RUN
+               PERFORM PROCESS-ORDERS UNTIL END-OF-FILE
+               PERFORM PRINT-TOTALS
+               GOBACK.
+      *
+       INITIALIZE-RUN.
+               OPEN INPUT ORDER-FILE
+                    OUTPUT PRINT-FILE
+               MOVE WHEN-COMPILED TO WS-WHEN
+               MOVE FUNCTION CURRENT-DATE (1:10) TO WS-RUN-DATE
+               INITIALIZE WS-TOTALS                                     reset
+               READ ORDER-FILE
+                 AT END SET END-OF-FILE TO TRUE
+               END-READ.
+      *
+      *The register itself. EVALUATE picks the handling, and the
+      *arithmetic carries ON SIZE ERROR for the total overflowing.
+       PROCESS-ORDERS.
+               EVALUATE TRUE
+                 WHEN ORDSTS = "X"
+                   CONTINUE                                             skip
+                 WHEN ORDAMT > 0
+                   ADD ORDAMT TO WS-CUST-TOTAL
+                     ON SIZE ERROR
+                       DISPLAY "total overflow" UPON SYSOUT
+                   END-ADD
+                   ADD 1 TO WS-COUNT
+                 WHEN OTHER
+                   SUBTRACT ORDAMT FROM WS-CUST-TOTAL
+               END-EVALUATE
+               COMPUTE WS-GRAND-TOTAL = WS-GRAND-TOTAL
+                   + FUNCTION MAX(ORDAMT 0)
+               READ ORDER-FILE
+                 AT END SET END-OF-FILE TO TRUE
+               END-READ.
+      *
+      *A literal continued onto the next line: the hyphen indicator
+      *resumes it, and the first nonblank character is the quote.
+       PRINT-TOTALS.
+               MOVE SPACES TO PRINT-RECORD
+               STRING "Orders: " DELIMITED BY SIZE
+                      WS-COUNT DELIMITED BY SIZE
+                      INTO PRINT-RECORD
+               END-STRING
+               WRITE PRINT-RECORD AFTER ADVANCING PAGE
+               DISPLAY "register complete for a very long messag
+      -    "e indeed" UPON SYSOUT
+      D        DISPLAY "debug only" UPON SYSOUT
+               CLOSE ORDER-FILE PRINT-FILE
+               MOVE ZERO TO RETURN-CODE.
+      *
+      *Conditional compilation, an IBM extension: a compilation
+      *variable is defined and the lines to compile chosen by it.
+           >>DEFINE DEBUG AS B"1"
+           >>IF DEBUG IS DEFINED
+               DISPLAY "debug build" UPON SYSOUT
+           >>ELSE
+               CONTINUE
+           >>END-IF
+           >>EVALUATE TRUE
+           >>WHEN DEBUG IS DEFINED
+               DISPLAY "still debug" UPON SYSOUT
+           >>END-EVALUATE
+      *
+       END PROGRAM ORDREG.
