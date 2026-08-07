@@ -3,7 +3,7 @@
 ### 0.7.0
 
 - General 2026 repo refresh / quality of life. Fixes grammar gaps and adds grammar tests for all languages by [@barrettotte](https://github.com/barrettotte) in PRs 184-192
-- Fixes RPGLE syntax highlighting bug on stirng/SQL tokens in fixed-format source by [@JH-JTBaldwin](https://github.com/JH-JTBaldwin) in [169](https://github.com/barrettotte/vscode-ibmi-languages/pull/169)
+- Fixes RPGLE syntax highlighting bug on string/SQL tokens in fixed-format source by [@JH-JTBaldwin](https://github.com/JH-JTBaldwin) in [169](https://github.com/barrettotte/vscode-ibmi-languages/pull/169)
 
 ### 0.6.26
 
