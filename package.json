@@ -2,7 +2,7 @@
   "name": "ibmi-languages",
   "displayName": "IBMi Languages",
   "description": "Syntax highlighting for IBM i languages such as RPG, CL, DDS, MI, and RPGLE fixed/free.",
-  "version": "0.6.26",
+  "version": "0.7.0",
   "publisher": "barrettotte",
   "author": {
     "name": "Barrett Otte"
@@ -58,22 +58,6 @@
           ".cmd"
         ],
         "configuration": "./configurations/cmd.language-configuration.json"
-      },
-      {
-        "id": "cobol",
-        "aliases": [
-          "COBOL",
-          "CBLLE",
-          "ILE COBOL"
-        ],
-        "extensions": [
-          ".cbl",
-          ".cbl38",
-          ".cblle",
-          ".sqlcbl",
-          ".sqlcblle"
-        ],
-        "configuration": "./configurations/cobol.language-configuration.json"
       },
       {
         "id": "dds.dspf",
@@ -199,11 +183,6 @@
         "path": "./syntaxes/cmd.tmLanguage.json"
       },
       {
-        "language": "cobol",
-        "scopeName": "source.cobol",
-        "path": "./syntaxes/cobol.tmLanguage.json"
-      },
-      {
         "language": "dds.dspf",
         "scopeName": "source.dds.dspf",
         "path": "./syntaxes/dds.dspf.tmLanguage.json"
@@ -254,7 +233,7 @@
   "scripts": {
     "lint": "node scripts/lint.mjs",
     "test": "npm run test:snap",
-    "test:snap": "textmate-grammar-snap \"tests/fixtures/**/*.{bnd,cbl,cbl38,cblle,cl,clle,clp,clp38,cmd,dds,dspf,dspf38,icff,lf,lf38,mi,pf,pf38,pnlgrp,prtf,prtf38,rpg,rpg38,rpgle,rpgleinc,sqlcbl,sqlcblle,sqlrpg,sqlrpgle}\"",
+    "test:snap": "textmate-grammar-snap \"tests/fixtures/**/*.{bnd,cl,clle,clp,clp38,cmd,dds,dspf,dspf38,icff,lf,lf38,mi,pf,pf38,pnlgrp,prtf,prtf38,rpg,rpg38,rpgle,rpgleinc,sqlrpg,sqlrpgle}\"",
     "test:snap:update": "npm run test:snap -- --updateSnapshot",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
@@ -279,8 +258,7 @@
     "MI",
     "MACHINE INTERFACE",
     "ISERIES",
-    "BINDER LANGUAGE",
-    "COBOL"
+    "BINDER LANGUAGE"
   ],
   "license": "MIT",
   "repository": {
