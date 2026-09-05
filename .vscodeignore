@@ -8,5 +8,7 @@
 !CHANGELOG.md
 !LICENSE
 !images/icon.png
+!extension.js
+!src/dspfFolding.js
 !syntaxes/*.tmLanguage.json
 !configurations/*.language-configuration.json

@@ -1,5 +1,6 @@
 {
   "name": "ibmi-languages",
+  "main": "./extension.js",
   "displayName": "IBMi Languages",
   "description": "Syntax highlighting for IBM i languages such as RPG, CL, DDS, MI, and RPGLE fixed/free.",
   "version": "0.7.0",
@@ -233,6 +234,7 @@
   "scripts": {
     "lint": "node scripts/lint.mjs",
     "test": "npm run test:snap",
+    "test:folding": "node --test tests/dspf-folding.test.js",
     "test:snap": "textmate-grammar-snap \"tests/fixtures/**/*.{bnd,cl,clle,clp,clp38,cmd,dds,dspf,dspf38,icff,lf,lf38,mi,pf,pf38,pnlgrp,prtf,prtf38,rpg,rpg38,rpgle,rpgleinc,sqlrpg,sqlrpgle}\"",
     "test:snap:update": "npm run test:snap -- --updateSnapshot",
     "format": "prettier --write .",
