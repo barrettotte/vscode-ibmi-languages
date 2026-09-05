@@ -16,6 +16,7 @@ There are probably a few syntax bugs left. Please open an issue or a pull reques
 * [@lildude](https://github.com/lildude)
 * [@richardm90](https://github.com/richardm90)
 * [@JH-JTBaldwin](https://github.com/JH-JTBaldwin)
+* [@Balrocj](https://github.com/Balrocj)
 
 ## Features
 
