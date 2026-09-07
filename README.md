@@ -33,6 +33,12 @@ There are probably a few syntax bugs left. Please open an issue or a pull reques
 * Support for binder language
 * Support for DB2 SQL keywords in embedded SQL
 
+### DSPF record-format folding
+
+Folding for DDS display file record formats is available as an opt-in feature.
+Enable `ibmi-languages.dspf.recordFormatFolding` in VS Code settings to fold
+the fields and keywords belonging to each `R` record format.
+
 Last updated to **July 2026 PTF enhancements for 7.6 and 7.5**
 
 ## File Types (case insensitive)

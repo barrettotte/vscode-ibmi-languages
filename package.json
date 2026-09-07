@@ -228,12 +228,22 @@
         "scopeName": "source.rpgle",
         "path": "./syntaxes/rpgle.tmLanguage.json"
       }
-    ]
+    ],
+    "configuration": {
+      "title": "IBMi Languages",
+      "properties": {
+        "ibmi-languages.dspf.recordFormatFolding": {
+          "type": "boolean",
+          "default": false,
+          "description": "Enable folding for DDS display file record formats."
+        }
+      }
+    }
   },
   "icon": "images/icon.png",
   "scripts": {
     "lint": "node scripts/lint.mjs",
-    "test": "npm run test:snap",
+    "test": "npm run test:folding && npm run test:snap",
     "test:folding": "node --test tests/dspf-folding.test.js",
     "test:snap": "textmate-grammar-snap \"tests/fixtures/**/*.{bnd,cl,clle,clp,clp38,cmd,dds,dspf,dspf38,icff,lf,lf38,mi,pf,pf38,pnlgrp,prtf,prtf38,rpg,rpg38,rpgle,rpgleinc,sqlrpg,sqlrpgle}\"",
     "test:snap:update": "npm run test:snap -- --updateSnapshot",

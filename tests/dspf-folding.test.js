@@ -35,3 +35,10 @@ test(`does not create a range for an empty record format`, () => {
     { startLine: 1, endLine: 2 },
   ]);
 });
+
+test(`returns undefined when no foldable record format exists`, () => {
+  assert.equal(getDdsRecordFoldingRanges([
+    `     A* comment`,
+    `00010A          R FIRST`,
+  ]), undefined);
+});
