@@ -4,7 +4,15 @@ const { getDdsRecordFoldingRanges } = require(`./src/dspfFolding`);
 function activate(context) {
   let foldingProvider;
 
-  const updateFoldingProvider = () => {
+  const unfoldActiveDspfEditor = async () => {
+    if (vscode.window.activeTextEditor?.document.languageId !== `dds.dspf`) {
+      return;
+    }
+
+    await vscode.commands.executeCommand(`editor.unfoldAll`);
+  };
+
+  const updateFoldingProvider = async (unfoldWhenDisabled = false) => {
     foldingProvider?.dispose();
     foldingProvider = undefined;
 
@@ -13,6 +21,9 @@ function activate(context) {
       .get(`recordFormatFolding`, false);
 
     if (!enabled) {
+      if (unfoldWhenDisabled) {
+        await unfoldActiveDspfEditor();
+      }
       return;
     }
 
@@ -44,7 +55,7 @@ function activate(context) {
       if (
         event.affectsConfiguration(`ibmi-languages.dspf.recordFormatFolding`)
       ) {
-        updateFoldingProvider();
+        void updateFoldingProvider(true);
       }
     }),
   );
