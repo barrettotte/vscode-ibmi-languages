@@ -1,6 +1,6 @@
 # Contributing
 
-This is a syntax-highlighting extension: it ships TextMate grammars and language configurations, and no runtime code.
+This extension ships TextMate grammars, language configurations, and a small runtime provider for DSPF record-format folding.
 
 ```bash
 npm ci
