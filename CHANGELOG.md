@@ -2,6 +2,7 @@
 
 ### 0.7.1
 
+- Fixes long strings restricted to 80 columns in RPGLE fully free by [@barrettotte](https://github.com/barrettotte) in [203](https://github.com/barrettotte/vscode-ibmi-languages/pull/203)
 - Adds optional folding support for DDS display file record formats by [@Balrocj](https://github.com/Balrocj) in [200](https://github.com/barrettotte/vscode-ibmi-languages/pull/200)
 
 ### 0.7.0
