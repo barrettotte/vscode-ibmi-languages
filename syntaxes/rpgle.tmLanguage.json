@@ -1776,27 +1776,18 @@
       ]
     },
     "strings": {
-      "comment": "String literals for **FREE (fully free-format) source. A // comment line nested first so any ' inside a comment cannot prematurely close the string.",
+      "comment": "String literals for **FREE (fully free-format) source, where every column is available for code. Nested // comment lines keep quotes in comments from ending a continued literal.",
       "patterns": [
         {
-          "comment": "A literal closes on its quote, or at the end of the line, but not where the line ends in a hyphen or a plus, which the reference defines as continuing it on the next line. The third alternative handles a line that carries a comment in 81-100: the literal ends at the last non-blank of the specification area rather than of the line, so a continuation character followed by padding out to column 80 still continues even with a comment to its right.",
+          "comment": "A fully free-form hexadecimal literal closes on its quote, or at the physical end of a line whose last nonblank character is neither a hyphen nor a plus. Those characters continue the literal onto the next line. Column 80 has no special meaning in **FREE source.",
           "name": "string.other.rpgle.hex",
           "begin": "(?i)x'",
-          "end": "'|[^-+\\s]\\s*$|[^-+\\s]\\s*(?<=^.{80})",
+          "end": "'|[^-+\\s]\\s*$",
           "patterns": [
             {
               "comment": "The continuation character that carries a literal onto the next line, where it is the last non-blank of the line.",
               "name": "keyword.other.rpgle.continuation",
               "match": "[-+](?=\\s*$)"
-            },
-            {
-              "comment": "The same, on a fixed-format line that pads out to column 80 and carries a comment in 81-100. Only the character is scoped.",
-              "match": "([-+])\\s*(?<=^.{80})",
-              "captures": {
-                "1": {
-                  "name": "keyword.other.rpgle.continuation"
-                }
-              }
             },
             {
               "comment": "A // comment on a line of its own inside a continued literal. The compiler skips it without ending the literal.",
@@ -1806,24 +1797,15 @@
           ]
         },
         {
-          "comment": "A literal closes on its quote, or at the end of the line, but not where the line ends in a hyphen or a plus, which the reference defines as continuing it on the next line. The third alternative handles a line that carries a comment in 81-100: the literal ends at the last non-blank of the specification area rather than of the line, so a continuation character followed by padding out to column 80 still continues even with a comment to its right.",
+          "comment": "A fully free-form character literal closes on its quote, or at the physical end of a line whose last nonblank character is neither a hyphen nor a plus. Those characters continue the literal onto the next line. Column 80 has no special meaning in **FREE source.",
           "name": "string.quoted.single.rpgle",
           "begin": "'",
-          "end": "'|[^-+\\s]\\s*$|[^-+\\s]\\s*(?<=^.{80})",
+          "end": "'|[^-+\\s]\\s*$",
           "patterns": [
             {
               "comment": "The continuation character that carries a literal onto the next line, where it is the last non-blank of the line.",
               "name": "keyword.other.rpgle.continuation",
               "match": "[-+](?=\\s*$)"
-            },
-            {
-              "comment": "The same, on a fixed-format line that pads out to column 80 and carries a comment in 81-100. Only the character is scoped.",
-              "match": "([-+])\\s*(?<=^.{80})",
-              "captures": {
-                "1": {
-                  "name": "keyword.other.rpgle.continuation"
-                }
-              }
             },
             {
               "comment": "A // comment on a line of its own inside a continued literal. The compiler skips it without ending the literal.",
