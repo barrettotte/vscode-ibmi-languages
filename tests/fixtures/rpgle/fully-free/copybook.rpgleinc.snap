@@ -172,37 +172,6 @@
 >end-pr;
 #^^^^^^ source.rpgle rpgle.free.allfree storage.type.rpgle.free.definition.complex.dcl
 #      ^^ source.rpgle rpgle.free.allfree
->
-#^ source.rpgle rpgle.free.allfree
->dcl-ds order likeds(order_t);
-#^^^^^^ source.rpgle rpgle.free.allfree rpgle.free.definition.simple storage.type.rpgle.free.definition.simple
-#      ^ source.rpgle rpgle.free.allfree rpgle.free.definition.simple
-#       ^^^^^ source.rpgle rpgle.free.allfree rpgle.free.definition.simple variable.other.rpgle.free.definition.identifier
-#            ^ source.rpgle rpgle.free.allfree rpgle.free.definition.simple
-#             ^^^^^^ source.rpgle rpgle.free.allfree rpgle.free.definition.simple entity.name.function.rpgle.free.definition.keywords
-#                   ^ source.rpgle rpgle.free.allfree rpgle.free.definition.simple
-#                    ^^^^^^^ source.rpgle rpgle.free.allfree rpgle.free.definition.simple variable.other.rpgle.free.definition.identifier
-#                           ^^ source.rpgle rpgle.free.allfree rpgle.free.definition.simple
->
-#^ source.rpgle rpgle.free.allfree
->dcl-ds order likerec(order_t);
-#^^^^^^ source.rpgle rpgle.free.allfree rpgle.free.definition.simple storage.type.rpgle.free.definition.simple
-#      ^ source.rpgle rpgle.free.allfree rpgle.free.definition.simple
-#       ^^^^^ source.rpgle rpgle.free.allfree rpgle.free.definition.simple variable.other.rpgle.free.definition.identifier
-#            ^ source.rpgle rpgle.free.allfree rpgle.free.definition.simple
-#             ^^^^^^^ source.rpgle rpgle.free.allfree rpgle.free.definition.simple entity.name.function.rpgle.free.definition.keywords
-#                    ^ source.rpgle rpgle.free.allfree rpgle.free.definition.simple
-#                     ^^^^^^^ source.rpgle rpgle.free.allfree rpgle.free.definition.simple variable.other.rpgle.free.definition.identifier
-#                            ^^ source.rpgle rpgle.free.allfree rpgle.free.definition.simple
->
-#^ source.rpgle rpgle.free.allfree
->dcl-ds myds;
-#^^^^^^ source.rpgle rpgle.free.allfree rpgle.free.definition.complex storage.type.rpgle.free.definition.complex.dcl
-#      ^ source.rpgle rpgle.free.allfree rpgle.free.definition.complex
-#       ^^^^ source.rpgle rpgle.free.allfree rpgle.free.definition.complex variable.other.rpgle.free.definition.identifier
-#           ^ source.rpgle rpgle.free.allfree rpgle.free.definition.complex
->
-#^ source.rpgle rpgle.free.allfree
 >//
 #^^ source.rpgle rpgle.free.allfree comment.line.rpgle.free
 >// A copy member may itself copy another one.
