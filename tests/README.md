@@ -40,6 +40,28 @@ To check a single file while iterating:
 npx textmate-grammar-snap "tests/fixtures/bnd/wildcards.bnd"
 ```
 
+## Editor bracket checks
+
+[bracket-matching.test.js](bracket-matching.test.js) checks VS Code's Go to Bracket command in both directions. 
+It runs separately from `npm test`, since grammar snapshots cannot exercise the editor's bracket engine.
+
+With `code` on your PATH, run from the repository root in a POSIX shell:
+
+```bash
+bracket_test_dir="$(mktemp -d)"
+code --wait --disable-extensions --skip-welcome --skip-release-notes \
+  --user-data-dir "$bracket_test_dir/user" \
+  --extensions-dir "$bracket_test_dir/extensions" \
+  --extensionDevelopmentPath "$PWD" \
+  --extensionTestsPath "$PWD/tests/bracket-matching.test.js"
+```
+
+The isolated test window closes when finished. Coverage includes RPG/RPGLE control blocks, declarations, embedded SQL, 
+and parentheses across source formats and keyword casing. Cases check nesting, strings, comments, and directive boundaries.
+
+Dedicated compiler-directive pairs and `CASxx` groups are unsupported because they do not consistently form nested pairs. 
+`/IF` and `/ENDIF` may match through ordinary `IF` rules; compilation conditions are not evaluated.
+
 ## Reviewing a change
 
 **The `.snap` diff is the point.** It is the evidence that a grammar edit did what it claimed and nothing more:
