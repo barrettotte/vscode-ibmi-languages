@@ -10,7 +10,7 @@ same checks CI runs, packages the extension once, attaches that `.vsix` to the r
    The lock file records the package's own version in two places, and `npm run lint` fails if either disagrees with `package.json`:
    ```txt
    version:
-     package-lock.json is 0.6.26 but package.json is 0.7.0
+     package-lock.json is 0.7.1 but package.json is 0.7.2
    ```
 
    Editing the three fields directly is enough; there is no need to run `npm install`, which would also re-resolve dependencies.
@@ -21,8 +21,8 @@ same checks CI runs, packages the extension once, attaches that `.vsix` to the r
 3. **Open a pull request and let CI pass.** The release workflow repeats these
    checks, but failing here is cheaper than failing mid-publish.
 
-4. **Publish a GitHub release** with the tag `v<version>` - `v0.7.0` for
-   version `0.7.0`. The workflow refuses to publish when the tag and `package.json` 
+4. **Publish a GitHub release** with the tag `v<version>` - `v0.7.2` for
+   version `0.7.2`. The workflow refuses to publish when the tag and `package.json`
    disagree, so a mistyped tag stops before anything reaches a marketplace.
 
 ## What the workflow does

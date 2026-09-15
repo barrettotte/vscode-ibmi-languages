@@ -1,5 +1,9 @@
 # Changelog
 
+### 0.7.2
+
+- Fixes RPG/RPGLE bracket matching by [@barrettotte](https://github.com/barrettotte) in [204](https://github.com/barrettotte/vscode-ibmi-languages/pull/204)
+
 ### 0.7.1
 
 - Fixes long strings restricted to 80 columns in RPGLE fully free by [@barrettotte](https://github.com/barrettotte) in [203](https://github.com/barrettotte/vscode-ibmi-languages/pull/203)
