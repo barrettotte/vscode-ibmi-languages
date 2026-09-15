@@ -239,7 +239,8 @@
           "constant.language.rpgle.sql.schema",
           "support.function.rpgle.sql",
           "keyword.control.rpgle.fixed.precompiler.misc",
-          "keyword.control.rpgle.free.precompiler.misc"
+          "keyword.control.rpgle.free.precompiler.misc",
+          "storage.type.rpgle.free.definition.simple"
         ]
       }
     ],
