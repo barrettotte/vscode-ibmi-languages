@@ -1,14 +1,13 @@
 // Run in a VS Code Extension Development Host; see tests/README.md.
-// These tests exercise the editor's bracket engine, which grammar snapshots cannot cover.
-// The snippets isolate matching and omit program declarations.
+// Snippets isolate editor matching and omit program declarations.
 
 const assert = require("node:assert/strict");
 const vscode = require("vscode");
 
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-const fixed = (language, opcode) => "     C".padEnd(language === "rpg" ? 27 : 25) + opcode;
+const fixed = (language, text) => "     C".padEnd(language === "rpg" ? 27 : 25) + text;
 
-async function checkPair(language, markedSource, label) {
+async function checkBrackets(language, markedSource, label, shouldMatch) {
   const first = markedSource.indexOf("|");
   const second = markedSource.indexOf("|", first + 1);
   assert.ok(first >= 0 && second > first, `Missing markers: ${label}`);
@@ -18,347 +17,123 @@ async function checkPair(language, markedSource, label) {
     content: markedSource.replaceAll("|", ""),
   });
   const editor = await vscode.window.showTextDocument(document);
-  const opening = document.positionAt(first);
-  const closing = document.positionAt(second - 1);
+  const positions = [document.positionAt(first), document.positionAt(second - 1)];
 
   try {
-    // Retry briefly while language configuration and tokenization reach the editor.
-    // A missing pair must still fail after this bounded wait.
-    let matched = false;
-    for (let attempt = 0; attempt < 20; attempt++) {
-      editor.selection = new vscode.Selection(opening, opening);
-      await vscode.commands.executeCommand("editor.action.jumpToBracket");
-
-      if (editor.selection.active.isEqual(closing)) {
-        matched = true;
-        break;
-      }
-      await delay(50);
+    // Positive cases warm up each language before the negative cases run.
+    // Let tokenization settle before checking that a position has no match.
+    if (!shouldMatch) {
+      await delay(200);
     }
-    assert.ok(matched, `Opening bracket did not match: ${label}`);
 
-    editor.selection = new vscode.Selection(closing, closing);
-    await vscode.commands.executeCommand("editor.action.jumpToBracket");
-    assert.ok(editor.selection.active.isEqual(opening), `Closing bracket did not match: ${label}`);
+    for (const [index, position] of positions.entries()) {
+      const expected = shouldMatch ? positions[1 - index] : position;
+      let passed = false;
 
+      for (let attempt = 0; attempt < (shouldMatch ? 20 : 1); attempt++) {
+        editor.selection = new vscode.Selection(position, position);
+        await vscode.commands.executeCommand("editor.action.jumpToBracket");
+
+        if (editor.selection.active.isEqual(expected)) {
+          passed = true;
+          break;
+        }
+        await delay(50);
+      }
+      assert.ok(passed, `${label}: unexpected jump from ${index === 0 ? "first" : "second"} marker`);
+    }
   } finally {
     await vscode.commands.executeCommand("workbench.action.closeActiveEditor");
   }
 }
 
 exports.run = async () => {
-  const cases = [
-    ["rpgle", "**FREE\n", "", "if", "endif"],
-    ["rpgle", "**FREE\n", "", "dow", "enddo"],
-    ["rpgle", "**FREE\n", "", "dou", "enddo"],
-    ["rpgle", "**FREE\n", "", "select", "endsl"],
-    ["rpgle", "**FREE\n", "", "for", "endfor"],
-    ["rpgle", "**FREE\n", "", "for-each", "endfor"],
-    ["rpgle", "**FREE\n", "", "monitor", "endmon"],
-    ["rpgle", "**FREE\n", "", "begsr", "endsr"],
-    ["rpgle", "**FREE\n", "", "dcl-ds", "end-ds"],
-    ["rpgle", "**FREE\n", "", "dcl-enum", "end-enum"],
-    ["rpgle", "**FREE\n", "", "dcl-pr", "end-pr"],
-    ["rpgle", "**FREE\n", "", "dcl-pi", "end-pi"],
-    ["rpgle", "**FREE\n", "", "dcl-proc", "end-proc"],
-    ["rpgle", "**FREE\n", "", "exec sql", ";"],
-  ];
-
-  // Traditional calculation opcodes begin in column 26 for RPGLE and 28 for RPG/400.
-  for (const language of ["rpgle", "rpg"]) {
-    for (const [open, close] of [
-      ["ifeq", "endif"],
-      ["ifne", "end"],
-      ["doweq", "enddo"],
-      ["doueq", "enddo"],
-      ["doueq", "end"],
-      ["do", "end"],
-      [language === "rpg" ? "selec" : "select", "endsl"],
-      [language === "rpg" ? "selec" : "select", "end"],
-      ["begsr", "endsr"],
-    ]) {
-      cases.push([language, "", fixed(language, ""), open, close]);
-    }
-  }
-
-  for (const language of ["rpgle", "rpg"]) {
-    const prefix = language === "rpgle" ? "**FREE\n" : "";
-    const column = language === "rpg" ? fixed(language, "") : "";
-    await checkPair(language, `${prefix}${column}|(value|)`, `${language}: ()`);
-  }
-
-  let count = 2;
-  for (const [language, header, column, open, close] of cases) {
-    for (const [left, right] of [
-      [open, close],
-      [open.toUpperCase(), close.toUpperCase()],
-      [open[0].toUpperCase() + open.slice(1), close.toUpperCase()],
-    ]) {
-      await checkPair(
-        language,
-        `${header}${column}|${left}\n${column}|${right}\n`,
-        `${language}: ${left}/${right}`,
-      );
-      count++;
-    }
-  }
-
-  await checkPair(
-    "rpgle",
-    "**FREE\n|If ready;\n  endifFlag = 1;\n  text = 'endif';\n  // ENDIF\n  if nested;\n  endif;\n|ENDIF;\n",
-    "Nested blocks, identifiers, strings and comments",
-  );
-  count++;
-
-  // IBM ILE RPG Reference: Enumerations, Conditional Compilation Directives,
-  // and /FREE ... /END-FREE. Retrieved 2026-09-14.
-  // https://www.ibm.com/docs/en/i/7.6.0?topic=definitions-enumerations
-  // https://www.ibm.com/docs/it/ssw_ibm_i_76/pdf/sc092508.pdf
-  const declarationCases = [
-    [
-      "Enumeration constants and comments cannot close the enumeration",
-      [
-        "**FREE",
-        "|dcl-enum words qualified;",
-        "  closing 'end-enum';",
-        "  // end-enum;",
-        "|end-enum words;",
-      ],
-    ],
-    [
-      "An enumeration does not interfere with its enclosing procedure",
-      [
-        "**FREE",
-        "|dcl-proc process;",
-        "  dcl-enum colours qualified;",
-        "    red 1;",
-        "    green 2;",
-        "  end-enum;",
-        "|end-proc;",
-      ],
-    ],
-    [
-      // IBM ILE RPG Reference SC09-2508: LIKEDS and LIKEREC take the data structure's
-      // layout from elsewhere, so END-DS is not coded for them. A DCL-DS in that form
-      // must not be treated as a block opener, or it can steal the END-DS meant for a
-      // later, unrelated DCL-DS.
-      "A DCL-DS using LIKEDS does not interfere with a later DCL-DS block",
-      [
-        "**FREE",
-        "dcl-ds order likeds(order_t);",
-        "|dcl-ds real",
-        "  field1 char(1);",
-        "|end-ds;",
-      ],
-    ],
-    [
-      "A DCL-DS using LIKEREC does not interfere with a later DCL-DS block",
-      [
-        "**FREE",
-        "dcl-ds order likerec(order_t);",
-        "|dcl-ds real",
-        "  field1 char(1);",
-        "|end-ds;",
-      ],
-    ],
-    [
-      "Nested compilation directives still match their IF and ENDIF keywords",
-      [
-        "**FREE",
-        "/|if defined(DEBUG)",
-        "/if defined(NESTED)",
-        "if ready;",
-        "endif;",
-        "/endif",
-        "/|endif",
-      ],
-    ],
-    [
-      "An IF ending inside conditional branches keeps its existing match",
-      [
-        "**FREE",
-        "|if ready;",
-        "/if defined(DEBUG)",
-        "endif;",
-        "/else",
-        "|endif;",
-        "/endif",
-      ],
-    ],
-    [
-      "Directive operands retain parenthesis matching",
-      ["      /set ccsid|(*char : *utf8|)", "      /restore ccsid(*char)"],
-    ],
-    [
-      "Fully free directive operands retain parenthesis matching",
-      ["**FREE", "/set ccsid|(*char : *utf8|)", "/restore ccsid(*char)"],
-    ],
-  ];
-  for (const prefix of ["      ", "     C", "08010C"]) {
-    declarationCases.push([
-      "IF can span free and fixed sections without END-FREE closing it",
-      [
-        prefix + "/free",
-        "       |if ready;",
-        prefix + "/end-free",
-        fixed("rpgle", "EVAL      value = 1"),
-        prefix + "/free",
-        "       |endif;",
-        prefix + "/end-free",
-      ],
-    ]);
-    declarationCases.push([
-      "A fixed IF can contain a free section",
-      [
-        fixed("rpgle", "|IF        ready"),
-        prefix + "/free",
-        "       value = 1;",
-        prefix + "/end-free",
-        fixed("rpgle", "|ENDIF"),
-      ],
-    ]);
-  }
-  for (const [label, lines] of declarationCases) {
-    const source = lines.join("\n") + "\n";
-    for (const content of [source, source.toUpperCase()]) {
-      await checkPair("rpgle", content, label);
-      count++;
-    }
-  }
-
-  const sqlCases = [
-    [
-      "RPG SELECT around SQL SELECT, subqueries and CASE END",
-      [
-        "**FREE",
-        "|select;",
-        "when ready;",
-        "  exec sql select case when id > 0 then 1 else 0 end",
-        "    into :result from items",
-        "    where id in (select id from other_items);",
-        "other;",
-        "  exec sql values case when 1 = 1 then 1 else 0 end into :result;",
-        "|endsl;",
-      ],
-    ],
-    [
-      "Nested RPG SELECT blocks with SQL between them",
-      [
-        "**FREE",
-        "|select;",
-        "when ready;",
-        "  select;",
-        "  when nested;",
-        "    exec sql select count(*) into :result from items;",
-        "  endsl;",
-        "|endsl;",
-      ],
-    ],
-    [
-      "SQL CASE END cannot close an enclosing RPG IF",
-      [
-        "**FREE",
-        "|if ready;",
-        "  exec sql values case when 1 = 1 then 1 else 0 end into :result;",
-        "|endif;",
-      ],
-    ],
-    [
-      "SQL SELECT and CASE END preserve EXEC SQL matching",
-      [
-        "**FREE",
-        "|exec sql select case when id > 0 then 1 else 0 end",
-        "  into :result from items|;",
-      ],
-    ],
-    [
-      "SQL host variables named SELECT and END are not RPG delimiters",
-      ["**FREE", "|exec sql values :select into :end|;"],
-    ],
-    [
-      "SQL parentheses still match around CASE END",
-      [
-        "**FREE",
-        "exec sql select sum|(case when id > 0 then 1 else 0 end|)",
-        "  into :result from items;",
-      ],
-    ],
-    [
-      "SQL parentheses still match around a SELECT subquery",
-      [
-        "**FREE",
-        "exec sql select count(*) into :result from items",
-        "  where id in |(select id from other_items|);",
-      ],
-    ],
-    [
-      "Column-limited free RPG SELECT around SQL SELECT",
-      [
-        "       |select;",
-        "       when ready;",
-        "         exec sql select count(*) into :result from items;",
-        "       |endsl;",
-      ],
-    ],
-  ];
-  for (const [label, lines] of sqlCases) {
-    await checkPair("rpgle", lines.join("\n") + "\n", label);
+  let count = 0;
+  const check = async (language, source, label, shouldMatch) => {
+    await checkBrackets(language, source, label, shouldMatch);
     count++;
-  }
+  };
 
-  // .sqlrpg uses the rpg grammar; .sqlrpgle uses rpgle. Exercise both SQL scope sets.
-  for (const language of ["rpgle", "rpg"]) {
-    const traditionalSqlCases = [
-      [
-        "RPG SELECT END around C/EXEC SQL",
-        [
-          fixed(language, language === "rpg" ? "|SELEC" : "|SELECT"),
-          fixed(language, "OTHER"),
-          "     C/EXEC SQL",
-          "     C+ SELECT CASE WHEN ID > 0 THEN 1 ELSE 0 END",
-          "     C+ INTO :RESULT FROM ITEMS",
-          "     C/END-EXEC",
-          fixed(language, "|END"),
-        ],
-      ],
-      [
-        "SQL terminators match their own opener",
-        [
-          "     C/|EXEC SQL",
-          "     C+ SELECT CASE WHEN ID > 0 THEN 1 ELSE 0 END",
-          "     C+ INTO :RESULT FROM ITEMS",
-          "     C/|END-EXEC",
-        ],
-      ],
-      [
-        "SQL host variables named SELECT and END are not RPG delimiters",
-        [
-          "     C/|EXEC SQL VALUES :SELECT INTO :END",
-          "     C/|END-EXEC",
-        ],
-      ],
-      [
-        "SQL parentheses match around a subquery containing CASE END",
-        [
-          "     C/EXEC SQL SELECT COUNT(*) INTO :RESULT FROM ITEMS",
-          "     C+ WHERE ID IN |(SELECT CASE WHEN ID > 0 THEN 1 ELSE 0 END",
-          "     C+ FROM OTHER_ITEMS|)",
-          "     C/END-EXEC",
-        ],
-      ],
-    ];
-    for (const [label, lines] of traditionalSqlCases) {
-      const source = lines.join("\n") + "\n";
-      for (const content of [
-        source,
-        source.toLowerCase(),
-        source.replaceAll("SELEC", "Selec").replaceAll("EXEC", "Exec"),
-      ]) {
-        await checkPair(language, content, `${language}: ${label}`);
-        count++;
-      }
+  // Exercise each punctuation pair in fully free, column-limited and fixed source.
+  for (const [language, header, prefix] of [
+    ["rpgle", "**FREE\n", ""],
+    ["rpgle", "", "       "],
+    ["rpgle", "", fixed("rpgle", "EVAL      ")],
+    ["rpg", "", fixed("rpg", "")],
+  ]) {
+    for (const [open, close] of [["(", ")"], ["[", "]"], ["{", "}"]]) {
+      await check(language, `${header}${prefix}|${open}value|${close}`, `${language}: ${open}${close}`, true);
     }
   }
-  console.log(`Bracket matching: ${count} editor checks passed.`);
 
+  for (const [label, source] of [
+    ["Nested expressions", "**FREE\nresult = |(1 + (2 * 3)|);"],
+    ["Strings and comments", "**FREE\nresult = %trim|(')' +\n  // )\n  text|);"],
+    ["LIKEDS declaration", "**FREE\ndcl-ds order likeds|(order_t|);"],
+    ["LIKEREC declaration", "       dcl-ds order likerec|(ORDREC : *input|);"],
+    ["Prototype declaration", "**FREE\ndcl-pr choose int|(10|) overload(first : second);"],
+    ["Fully free directive", "**FREE\n/set ccsid|(*char : *utf8|)"],
+    ["Column-limited directive", "      /set ccsid|(*char : *utf8|)"],
+    ["SQL CASE expression", "**FREE\nexec sql select sum|(case when id > 0 then 1 else 0 end|)\n  into :result from items;"],
+    ["SQL subquery", "       exec sql select id into :result from items\n         where id in |(select id from other_items|);"],
+    ["Mixed source with file flags", "     FORDDTL    IF   F  120        DISK\n       result = |(1 + 2|);"],
+  ]) {
+    await check("rpgle", source, label, true);
+  }
+
+  for (const language of ["rpg", "rpgle"]) {
+    await check(language, [
+      "     C/EXEC SQL SELECT COUNT(*) INTO :RESULT FROM ITEMS",
+      "     C+ WHERE ID IN |(SELECT CASE WHEN ID > 0 THEN 1 ELSE 0 END",
+      "     C+ FROM OTHER_ITEMS|)",
+      "     C/END-EXEC",
+    ].join("\n"), `${language}: fixed SQL subquery`, true);
+  }
+
+  // Keywords must not participate in the native matcher, even when paired.
+  // Keep these snippets free of punctuation pairs so Go to Bracket has no fallback.
+  for (const [open, close] of [
+    ["if", "endif"], ["if", "end"], ["dow", "enddo"], ["dou", "enddo"],
+    ["select", "endsl"], ["for", "endfor"], ["for-each", "endfor"],
+    ["monitor", "endmon"], ["begsr", "endsr"], ["dcl-ds", "end-ds"],
+    ["dcl-enum", "end-enum"], ["dcl-pr", "end-pr"], ["dcl-pi", "end-pi"],
+    ["dcl-proc", "end-proc"], ["exec sql", ";"],
+  ]) {
+    for (const [header, prefix] of [["**FREE\n", ""], ["", "       "]]) {
+      const source = `${header}${prefix}|${open}\n${prefix}|${close}\n`;
+      await check("rpgle", source, `RPGLE keywords: ${open}/${close}`, false);
+    }
+  }
+
+  for (const language of ["rpg", "rpgle"]) {
+    for (const [open, close] of [
+      ["IFEQ", "ENDIF"], ["IFNE", "END"], ["DOWLT", "ENDDO"],
+      ["DOUGE", "END"], ["DO", "END"],
+      [language === "rpg" ? "SELEC" : "SELECT", "ENDSL"], ["BEGSR", "ENDSR"],
+    ]) {
+      await check(language, [
+        fixed(language, "|" + open),
+        fixed(language, "|" + close),
+      ].join("\n"), `${language} fixed keywords: ${open}/${close}`, false);
+    }
+    await check(language,
+      "     C/|EXEC SQL VALUES 1 INTO :RESULT\n     C/|END-EXEC",
+      `${language}: SQL delimiters`, false);
+  }
+
+  for (const [language, label, source] of [
+    ["rpgle", "Mixed program file flags", "     FORDDTL    |IF   F  120        DISK\n       |ENDIF;"],
+    ["rpgle", "Mixed transitions file flags", "     FORDHDR    |IF   E           K DISK\n       |ENDIF;"],
+    ["rpg", "RPG/400 file flags", "     FORDDTL  |IF   F 120        DISK\n" + fixed("rpg", "|ENDIF")],
+    ["rpgle", "Fixed definition name", fixed("rpgle", "|IF") + "\n     D|END#1            S              5A"],
+    ["rpgle", "Compiler directives", "**FREE\n/|IF DEFINED\n/|ENDIF"],
+    ["rpgle", "Format directives", "     C/|FREE\n     C/|END-FREE"],
+    ["rpgle", "String punctuation", "**FREE\ntext = '|(value|)';"],
+    ["rpgle", "Comment punctuation", "**FREE\n// |(value|)"],
+    ["rpg", "Fixed comment punctuation", "     C* |(value|)"],
+  ]) {
+    await check(language, source, label, false);
+  }
+
+  console.log(`Bracket matching: ${count} editor checks passed.`);
 };

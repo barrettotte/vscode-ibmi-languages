@@ -362,7 +362,7 @@
           ]
         },
         {
-          "comment": "DCL-DS with LIKEDS or LIKEREC takes its layout from another data structure or record format and so has no matching END-DS, unless END-DS is written anyway. Matched ahead of the general DCL-DS rule so the keyword is scoped like DCL-S (no END word expected) rather than as a block opener, which keeps the editor's bracket matching from expecting a closing END-DS that will never come.",
+          "comment": "A DCL-DS declaration with LIKEDS or LIKEREC and no explicit END-DS on the statement line. Match before the general DCL-DS rule and scope the keyword like a simple declaration.",
           "name": "rpgle.free.definition.simple",
           "begin": "(?i)(?=\\bDCL\\-DS\\b(?=(?:(?!;)[\\s\\S])*\\b(LIKEDS|LIKEREC)\\b)(?!(?:(?!;)[\\s\\S])*\\bEND\\-DS\\b))",
           "end": "\n",
@@ -565,7 +565,7 @@
           ]
         },
         {
-          "comment": "DCL-DS with LIKEDS or LIKEREC takes its layout from another data structure or record format and so has no matching END-DS, unless END-DS is written anyway. Matched ahead of the general DCL-DS rule so the keyword is scoped like DCL-S (no END word expected) rather than as a block opener, which keeps the editor's bracket matching from expecting a closing END-DS that will never come.",
+          "comment": "A DCL-DS declaration with LIKEDS or LIKEREC and no explicit END-DS on the statement line. Match before the general DCL-DS rule and scope the keyword like a simple declaration.",
           "name": "rpgle.free.definition.simple",
           "begin": "(?i)(?=\\bDCL\\-DS\\b(?=(?:(?!;)[\\s\\S])*\\b(LIKEDS|LIKEREC)\\b)(?!(?:(?!;)[\\s\\S])*\\bEND\\-DS\\b))",
           "end": "\n",
