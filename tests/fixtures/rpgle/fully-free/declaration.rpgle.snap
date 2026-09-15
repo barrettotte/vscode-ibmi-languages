@@ -873,14 +873,14 @@
 >
 #^ source.rpgle rpgle.free.allfree
 >dcl-ds likeDs likeds(templDs);
-#^^^^^^ source.rpgle rpgle.free.allfree rpgle.free.definition.complex storage.type.rpgle.free.definition.complex.dcl
-#      ^ source.rpgle rpgle.free.allfree rpgle.free.definition.complex
-#       ^^^^^^ source.rpgle rpgle.free.allfree rpgle.free.definition.complex entity.name.function.rpgle.free.definition.keywords
-#             ^ source.rpgle rpgle.free.allfree rpgle.free.definition.complex
-#              ^^^^^^ source.rpgle rpgle.free.allfree rpgle.free.definition.complex entity.name.function.rpgle.free.definition.keywords
-#                    ^ source.rpgle rpgle.free.allfree rpgle.free.definition.complex
-#                     ^^^^^^^ source.rpgle rpgle.free.allfree rpgle.free.definition.complex variable.other.rpgle.free.definition.identifier
-#                            ^^ source.rpgle rpgle.free.allfree rpgle.free.definition.complex
+#^^^^^^ source.rpgle rpgle.free.allfree rpgle.free.definition.simple storage.type.rpgle.free.definition.simple
+#      ^ source.rpgle rpgle.free.allfree rpgle.free.definition.simple
+#       ^^^^^^ source.rpgle rpgle.free.allfree rpgle.free.definition.simple entity.name.function.rpgle.free.definition.keywords
+#             ^ source.rpgle rpgle.free.allfree rpgle.free.definition.simple
+#              ^^^^^^ source.rpgle rpgle.free.allfree rpgle.free.definition.simple entity.name.function.rpgle.free.definition.keywords
+#                    ^ source.rpgle rpgle.free.allfree rpgle.free.definition.simple
+#                     ^^^^^^^ source.rpgle rpgle.free.allfree rpgle.free.definition.simple variable.other.rpgle.free.definition.identifier
+#                            ^^ source.rpgle rpgle.free.allfree rpgle.free.definition.simple
 >
 #^ source.rpgle rpgle.free.allfree
 >dcl-ds multiDs occurs(20) qualified;

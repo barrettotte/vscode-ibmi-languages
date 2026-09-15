@@ -138,6 +138,30 @@ exports.run = async () => {
       ],
     ],
     [
+      // IBM ILE RPG Reference SC09-2508: LIKEDS and LIKEREC take the data structure's
+      // layout from elsewhere, so END-DS is not coded for them. A DCL-DS in that form
+      // must not be treated as a block opener, or it can steal the END-DS meant for a
+      // later, unrelated DCL-DS.
+      "A DCL-DS using LIKEDS does not interfere with a later DCL-DS block",
+      [
+        "**FREE",
+        "dcl-ds order likeds(order_t);",
+        "|dcl-ds real",
+        "  field1 char(1);",
+        "|end-ds;",
+      ],
+    ],
+    [
+      "A DCL-DS using LIKEREC does not interfere with a later DCL-DS block",
+      [
+        "**FREE",
+        "dcl-ds order likerec(order_t);",
+        "|dcl-ds real",
+        "  field1 char(1);",
+        "|end-ds;",
+      ],
+    ],
+    [
       "Nested compilation directives still match their IF and ENDIF keywords",
       [
         "**FREE",

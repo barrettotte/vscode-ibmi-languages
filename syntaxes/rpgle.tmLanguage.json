@@ -362,6 +362,33 @@
           ]
         },
         {
+          "comment": "DCL-DS with LIKEDS or LIKEREC takes its layout from another data structure or record format and so has no matching END-DS, unless END-DS is written anyway. Matched ahead of the general DCL-DS rule so the keyword is scoped like DCL-S (no END word expected) rather than as a block opener, which keeps the editor's bracket matching from expecting a closing END-DS that will never come.",
+          "name": "rpgle.free.definition.simple",
+          "begin": "(?i)(?=\\bDCL\\-DS\\b(?=(?:(?!;)[\\s\\S])*\\b(LIKEDS|LIKEREC)\\b)(?!(?:(?!;)[\\s\\S])*\\bEND\\-DS\\b))",
+          "end": "\n",
+          "patterns": [
+            {
+              "comment": "The DCL-DS word when LIKEDS or LIKEREC means no END-DS follows.",
+              "name": "storage.type.rpgle.free.definition.simple",
+              "match": "(?i)\\bDCL\\-DS\\b"
+            },
+            {
+              "include": "#freedefkeywords"
+            },
+            {
+              "include": "#freerpglecommon"
+            },
+            {
+              "include": "#freeidentifiers"
+            },
+            {
+              "comment": "A // comment ending the declaration line.",
+              "name": "comment.line.rpgle.free",
+              "match": "(//).*"
+            }
+          ]
+        },
+        {
           "comment": "A declaration closed by a matching END word: DCL-DS, DCL-ENUM, DCL-PROC, DCL-PR and DCL-PI. The block ends at the newline, so a one-line form such as DCL-DS ... END-DS is scoped here while the subfields of a multi-line one are scoped at the outer level.",
           "name": "rpgle.free.definition.complex",
           "begin": "(?i)(?=(\\b(DCL\\-)(DS|ENUM|PROC|PR|PI)\\b))",
@@ -520,6 +547,33 @@
               "comment": "The DCL- word that opens a declaration with no matching END.",
               "name": "storage.type.rpgle.free.definition.simple",
               "match": "(?i)\\b(DCL\\-)(S|C|PARM|SUBF)\\b"
+            },
+            {
+              "include": "#freedefkeywords"
+            },
+            {
+              "include": "#rpglecommon"
+            },
+            {
+              "include": "#fixedfreeidentifiers"
+            },
+            {
+              "comment": "A // comment ending the declaration line.",
+              "name": "comment.line.rpgle.free",
+              "match": "(//).*"
+            }
+          ]
+        },
+        {
+          "comment": "DCL-DS with LIKEDS or LIKEREC takes its layout from another data structure or record format and so has no matching END-DS, unless END-DS is written anyway. Matched ahead of the general DCL-DS rule so the keyword is scoped like DCL-S (no END word expected) rather than as a block opener, which keeps the editor's bracket matching from expecting a closing END-DS that will never come.",
+          "name": "rpgle.free.definition.simple",
+          "begin": "(?i)(?=\\bDCL\\-DS\\b(?=(?:(?!;)[\\s\\S])*\\b(LIKEDS|LIKEREC)\\b)(?!(?:(?!;)[\\s\\S])*\\bEND\\-DS\\b))",
+          "end": "\n",
+          "patterns": [
+            {
+              "comment": "The DCL-DS word when LIKEDS or LIKEREC means no END-DS follows.",
+              "name": "storage.type.rpgle.free.definition.simple",
+              "match": "(?i)\\bDCL\\-DS\\b"
             },
             {
               "include": "#freedefkeywords"
