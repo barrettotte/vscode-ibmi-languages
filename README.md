@@ -35,6 +35,12 @@ Last updated to support **July 2026 PTF enhancements for 7.6 and 7.5**
 * Support for binder language
 * Support for DB2 SQL keywords in embedded SQL
 
+### RPG and RPGLE bracket matching
+
+This extension provides matching and colorization for `()`, `[]`, and `{}`, including in embedded SQL.
+Keyword block matching, navigation, and error detection are left to language tools such as
+[RPGLE language tools](https://github.com/codefori/vscode-rpgle).
+
 ### DSPF record-format folding
 
 Folding for DDS display file record formats is available as an opt-in feature.

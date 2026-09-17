@@ -1,67 +1,9 @@
 {
-  // VS Code looks up keyword brackets in lowercase, even for uppercase or
-  // mixed-case source. Keep these entries lowercase.
+  // Match punctuation only. Keyword blocks are handled by language tools.
   "brackets": [
     ["{", "}"],
     ["[", "]"],
-    ["(", ")"],
-
-    ["if", "endif"],
-    ["if", "end"],
-    ["ifeq", "endif"],
-    ["ifeq", "end"],
-    ["ifge", "endif"],
-    ["ifge", "end"],
-    ["ifgt", "endif"],
-    ["ifgt", "end"],
-    ["ifle", "endif"],
-    ["ifle", "end"],
-    ["iflt", "endif"],
-    ["iflt", "end"],
-    ["ifne", "endif"],
-    ["ifne", "end"],
-
-    ["dow", "enddo"],
-    ["dow", "end"],
-    ["doweq", "enddo"],
-    ["doweq", "end"],
-    ["dowge", "enddo"],
-    ["dowge", "end"],
-    ["dowgt", "enddo"],
-    ["dowgt", "end"],
-    ["dowle", "enddo"],
-    ["dowle", "end"],
-    ["dowlt", "enddo"],
-    ["dowlt", "end"],
-    ["downe", "enddo"],
-    ["downe", "end"],
-
-    ["dou", "enddo"],
-    ["dou", "end"],
-    ["doueq", "enddo"],
-    ["doueq", "end"],
-    ["douge", "enddo"],
-    ["douge", "end"],
-    ["dougt", "enddo"],
-    ["dougt", "end"],
-    ["doule", "enddo"],
-    ["doule", "end"],
-    ["doult", "enddo"],
-    ["doult", "end"],
-    ["doune", "enddo"],
-    ["doune", "end"],
-
-    ["do", "enddo"],
-    ["do", "end"],
-    // RPG/400 spells the five-column operation SELEC.
-    ["selec", "endsl"],
-    ["selec", "end"],
-
-    ["begsr", "endsr"],
-
-    // package.json excludes SQL keyword and identifier scopes from RPG matching.
-    // Match END-EXEC as a whole so its END cannot close an outer RPG block.
-    ["exec sql", "end-exec"]
+    ["(", ")"]
   ],
   // symbols that are auto closed when typing
   "autoClosingPairs": [

@@ -56,11 +56,13 @@ code --wait --disable-extensions --skip-welcome --skip-release-notes \
   --extensionTestsPath "$PWD/tests/bracket-matching.test.js"
 ```
 
-The isolated test window closes when finished. Coverage includes RPG/RPGLE control blocks, declarations, embedded SQL, 
-and parentheses across source formats and keyword casing. Cases check nesting, strings, comments, and directive boundaries.
+The isolated test window closes when finished. Checks cover punctuation in RPG/RPGLE, declarations, directives, and
+embedded SQL, and verify that keywords and file-specification flags do not participate in matching.
 
-Dedicated compiler-directive pairs and `CASxx` groups are unsupported because they do not consistently form nested pairs. 
-`/IF` and `/ENDIF` may match through ordinary `IF` rules; compilation conditions are not evaluated.
+For visual checks, enable bracket colorization: punctuation should retain its colors and matching boxes; keywords
+should retain their syntax colors even when unmatched. 
+
+Keyword matching and error detection belong to language tools.
 
 ## Reviewing a change
 

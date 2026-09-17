@@ -221,27 +221,12 @@
       {
         "language": "rpg",
         "scopeName": "source.rpg",
-        "path": "./syntaxes/rpg.tmLanguage.json",
-        "unbalancedBracketScopes": [
-          "keyword.operator.rpg.sql.reserved",
-          "variable.parameter.rpg.sql",
-          "constant.language.rpg.sql.schema",
-          "support.function.rpg.sql"
-        ]
+        "path": "./syntaxes/rpg.tmLanguage.json"
       },
       {
         "language": "rpgle",
         "scopeName": "source.rpgle",
-        "path": "./syntaxes/rpgle.tmLanguage.json",
-        "unbalancedBracketScopes": [
-          "keyword.operator.rpgle.sql.reserved",
-          "variable.parameter.rpgle.sql",
-          "constant.language.rpgle.sql.schema",
-          "support.function.rpgle.sql",
-          "keyword.control.rpgle.fixed.precompiler.misc",
-          "keyword.control.rpgle.free.precompiler.misc",
-          "storage.type.rpgle.free.definition.simple"
-        ]
+        "path": "./syntaxes/rpgle.tmLanguage.json"
       }
     ],
     "configuration": {
