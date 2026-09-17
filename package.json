@@ -3,7 +3,7 @@
   "main": "./extension.js",
   "displayName": "IBMi Languages",
   "description": "Syntax highlighting for IBM i languages such as RPG, CL, DDS, MI, and RPGLE fixed/free.",
-  "version": "0.7.2",
+  "version": "0.7.3",
   "publisher": "barrettotte",
   "author": {
     "name": "Barrett Otte"
