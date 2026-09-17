@@ -1,5 +1,9 @@
 # Changelog
 
+### 0.7.3
+
+- Reverts RPG and RPGLE keyword based bracket matching by [@barrettotte](https://github.com/barrettotte) in [209](https://github.com/barrettotte/vscode-ibmi-languages/pull/209)
+
 ### 0.7.2
 
 - Fixes RPG/RPGLE bracket matching by [@barrettotte](https://github.com/barrettotte) in [204](https://github.com/barrettotte/vscode-ibmi-languages/pull/204)

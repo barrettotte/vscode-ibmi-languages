@@ -114,7 +114,7 @@ body:
     attributes:
       label: Extension version
       description: Optional. Shown on the extension's page in VS Code.
-      placeholder: 0.7.2
+      placeholder: 0.7.3
     validations:
       required: false
 
