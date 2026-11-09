@@ -1752,5 +1752,25 @@
 #                                                   ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 constant.numeric.rpgle
 #                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
 #                                                                                ^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 comment.block.line.rpgle.fixed
+>     C* The %INFO built-in function can return information about the program or the job.
+#^^^^^^^ source.rpgle comment.line.rpgle.fixed
+#       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle comment.line.rpgle.fixed
+>     C* The first parameter is a special word that indicates the type of information to return.
+#^^^^^^^ source.rpgle comment.line.rpgle.fixed
+#       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle comment.line.rpgle.fixed
+>     C                   EVAL      P = %INFO(*PGM)
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.c
+#                         ^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                             ^^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                   ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
+#                                    ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                     ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 keyword.operator.rpgle
+#                                      ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2
+#                                       ^^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 support.function.rpgle.bif
+#                                            ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
+#                                             ^^^^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 constant.language.rpgle
+#                                                 ^ source.rpgle rpgle.fixed.c keyword.other.rpgle.fixed.c.extfactor2 variable.other
 >
 #^ source.rpgle

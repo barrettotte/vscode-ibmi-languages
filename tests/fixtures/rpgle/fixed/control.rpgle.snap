@@ -558,5 +558,27 @@
 #                ^^^ source.rpgle rpgle.fixed.h constant.language.rpgle
 #                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.h
 #                                                                                ^^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.fixed.h comment.block.line.rpgle.fixed
+>     H*
+#^^^^^^^ source.rpgle comment.line.rpgle.fixed
+>     H* The ALWUPD keyword controls whether to allow an update,
+#^^^^^^^ source.rpgle comment.line.rpgle.fixed
+#       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle comment.line.rpgle.fixed
+>     H* using the Update Program (UPDPGM) command, of the program being created.
+#^^^^^^^ source.rpgle comment.line.rpgle.fixed
+#       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle comment.line.rpgle.fixed
+>     HALWUPD(*YES)
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^ source.rpgle rpgle.fixed.h entity.name.function.rpgle.fixed.h.keywords
+#            ^ source.rpgle rpgle.fixed.h
+#             ^^^^ source.rpgle rpgle.fixed.h constant.language.rpgle
+#                 ^^ source.rpgle rpgle.fixed.h
+>     HALWUPD(*NO)
+#^^^^^ source.rpgle comment.gutter
+#     ^ source.rpgle keyword.other.rpgle.fixed.specs
+#      ^^^^^^ source.rpgle rpgle.fixed.h entity.name.function.rpgle.fixed.h.keywords
+#            ^ source.rpgle rpgle.fixed.h
+#             ^^^ source.rpgle rpgle.fixed.h constant.language.rpgle
+#                ^^ source.rpgle rpgle.fixed.h
 >
 #^ source.rpgle

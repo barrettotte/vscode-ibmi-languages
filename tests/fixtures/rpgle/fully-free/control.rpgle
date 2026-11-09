@@ -166,3 +166,8 @@ ctl-opt assert(*call : assertHandler);
 ctl-opt              // the keywords continue below
     option(*nodebugio)
     text('spread over four lines');
+//
+// The ALWUPD keyword controls whether to allow an update,
+// using the Update Program (UPDPGM) command, of the program being created.
+ctl-opt alwupd(*yes);
+ctl-opt alwupd(*no);
