@@ -1,5 +1,9 @@
 # Changelog
 
+### 0.7.4
+
+- Add support for RPGLE Fall 2026 enhancements by [@chrjorgensen](https://github.com/chrjorgensen) in [216](https://github.com/barrettotte/vscode-ibmi-languages/pull/216)
+
 ### 0.7.3
 
 - Reverts RPG and RPGLE keyword based bracket matching by [@barrettotte](https://github.com/barrettotte) in [209](https://github.com/barrettotte/vscode-ibmi-languages/pull/209)

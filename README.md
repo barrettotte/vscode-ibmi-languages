@@ -7,7 +7,7 @@ This extension pack includes this extension, Code for IBM i, COBOL support, RPGL
 
 There are probably a few syntax bugs left. Please open an issue or a pull request if you see something amiss.
 
-Last updated to support **July 2026 PTF enhancements for 7.6 and 7.5**
+Last updated to support **Fall 2026 PTF enhancements for 7.6 and 7.5**
 
 ## Contributors
 
