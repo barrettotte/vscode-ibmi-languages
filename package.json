@@ -3,7 +3,7 @@
   "main": "./extension.js",
   "displayName": "IBMi Languages",
   "description": "Syntax highlighting for IBM i languages such as RPG, CL, DDS, MI, and RPGLE fixed/free.",
-  "version": "0.7.3",
+  "version": "0.7.4",
   "publisher": "barrettotte",
   "author": {
     "name": "Barrett Otte"
@@ -252,9 +252,9 @@
     "package": "vsce package"
   },
   "devDependencies": {
-    "@vscode/vsce": "^3.2.0",
-    "prettier": "^3.9.6",
-    "textmate-grammar-test": "^0.7.0"
+    "@vscode/vsce": "^4.1.1",
+    "prettier": "^3.10.1",
+    "textmate-grammar-test": "^0.7.1"
   },
   "keywords": [
     "RPG",
