@@ -1152,5 +1152,27 @@
 #                                ^ source.rpgle rpgle.free.allfree rpgle.free.control string.quoted.single.rpgle
 #                                 ^ source.rpgle rpgle.free.allfree rpgle.free.control
 #                                  ^ source.rpgle rpgle.free.allfree rpgle.free.control
+>//
+#^^ source.rpgle rpgle.free.allfree comment.line.rpgle.free
+>// The ALWUPD keyword controls whether to allow an update,
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.free.allfree comment.line.rpgle.free
+>// using the Update Program (UPDPGM) command, of the program being created.
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.rpgle rpgle.free.allfree comment.line.rpgle.free
+>ctl-opt alwupd(*yes);
+#^^^^^^^ source.rpgle rpgle.free.allfree rpgle.free.control storage.type.rpgle.free.control
+#       ^ source.rpgle rpgle.free.allfree rpgle.free.control
+#        ^^^^^^ source.rpgle rpgle.free.allfree rpgle.free.control entity.name.function.rpgle.free.control.keywords
+#              ^ source.rpgle rpgle.free.allfree rpgle.free.control
+#               ^^^^ source.rpgle rpgle.free.allfree rpgle.free.control constant.language.rpgle
+#                   ^ source.rpgle rpgle.free.allfree rpgle.free.control
+#                    ^ source.rpgle rpgle.free.allfree rpgle.free.control
+>ctl-opt alwupd(*no);
+#^^^^^^^ source.rpgle rpgle.free.allfree rpgle.free.control storage.type.rpgle.free.control
+#       ^ source.rpgle rpgle.free.allfree rpgle.free.control
+#        ^^^^^^ source.rpgle rpgle.free.allfree rpgle.free.control entity.name.function.rpgle.free.control.keywords
+#              ^ source.rpgle rpgle.free.allfree rpgle.free.control
+#               ^^^ source.rpgle rpgle.free.allfree rpgle.free.control constant.language.rpgle
+#                  ^ source.rpgle rpgle.free.allfree rpgle.free.control
+#                   ^ source.rpgle rpgle.free.allfree rpgle.free.control
 >
 #^ source.rpgle rpgle.free.allfree

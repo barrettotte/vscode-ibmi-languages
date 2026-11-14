@@ -97,3 +97,8 @@
      H*
      H* Positions 81-100 are a comment area.
      HDFTACTGRP(*NO)                                                            control spec comment
+     H*
+     H* The ALWUPD keyword controls whether to allow an update,
+     H* using the Update Program (UPDPGM) command, of the program being created.
+     HALWUPD(*YES)
+     HALWUPD(*NO)

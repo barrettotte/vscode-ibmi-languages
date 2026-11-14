@@ -1521,6 +1521,15 @@
 #               ^ source.rpgle rpgle.free.allfree
 #                ^ source.rpgle rpgle.free.allfree constant.numeric.rpgle
 #                 ^^^ source.rpgle rpgle.free.allfree
+>result = %info(*pgm);
+#^^^^^^ source.rpgle rpgle.free.allfree variable.other.rpgle.free.definition.identifier
+#      ^ source.rpgle rpgle.free.allfree
+#       ^ source.rpgle rpgle.free.allfree keyword.operator.rpgle
+#        ^ source.rpgle rpgle.free.allfree
+#         ^^^^^ source.rpgle rpgle.free.allfree support.function.rpgle.bif
+#              ^ source.rpgle rpgle.free.allfree
+#               ^^^^ source.rpgle rpgle.free.allfree constant.language.rpgle
+#                   ^^^ source.rpgle rpgle.free.allfree
 >result = %int(amount);
 #^^^^^^ source.rpgle rpgle.free.allfree variable.other.rpgle.free.definition.identifier
 #      ^ source.rpgle rpgle.free.allfree

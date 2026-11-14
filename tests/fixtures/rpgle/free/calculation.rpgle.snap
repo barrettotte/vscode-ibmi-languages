@@ -1032,6 +1032,17 @@
 #     ^^ source.rpgle
 #       ^^^^^ source.rpgle keyword.other.rpgle.free
 #            ^^ source.rpgle
+>       result = %info(*lib);
+#^^^^^ source.rpgle comment.gutter
+#     ^^ source.rpgle
+#       ^^^^^^ source.rpgle variable.other.rpgle.free.definition.identifier
+#             ^ source.rpgle
+#              ^ source.rpgle keyword.operator.rpgle
+#               ^ source.rpgle
+#                ^^^^^ source.rpgle support.function.rpgle.bif
+#                     ^ source.rpgle
+#                      ^^^^ source.rpgle constant.language.rpgle
+#                          ^^^ source.rpgle
 >     C/END-FREE
 #^^^^^ source.rpgle comment.gutter
 #     ^ source.rpgle rpgle.fixed.precompiler.misc keyword.other.rpgle.fixed.precompiler.misc
@@ -1167,5 +1178,20 @@
 #                 ^ source.rpgle rpgle.fixed.calculation.continued
 #                  ^ source.rpgle rpgle.fixed.calculation.continued constant.numeric.rpgle
 #                   ^ source.rpgle rpgle.fixed.calculation.continued
+>       //
+#^^^^^ source.rpgle comment.gutter
+#     ^^ source.rpgle
+#       ^^ source.rpgle comment.line.rpgle.free
+>       result = %info(*pgm);
+#^^^^^ source.rpgle comment.gutter
+#     ^^ source.rpgle
+#       ^^^^^^ source.rpgle variable.other.rpgle.free.definition.identifier
+#             ^ source.rpgle
+#              ^ source.rpgle keyword.operator.rpgle
+#               ^ source.rpgle
+#                ^^^^^ source.rpgle support.function.rpgle.bif
+#                     ^ source.rpgle
+#                      ^^^^ source.rpgle constant.language.rpgle
+#                          ^^^ source.rpgle
 >
 #^ source.rpgle

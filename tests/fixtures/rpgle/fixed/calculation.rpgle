@@ -228,3 +228,6 @@
 05010C                   SETON                                            LR
 05020C     *BLANKS       MOVE                    MSG                            numbered + comment
 05030C                   EVAL      TOTAL = TOTAL + 1                            and after an expr
+     C* The %INFO built-in function can return information about the program or the job.
+     C* The first parameter is a special word that indicates the type of information to return.
+     C                   EVAL      P = %INFO(*PGM)

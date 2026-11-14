@@ -184,6 +184,7 @@ result = %graph(text);
 result = %handler(saxProc : parmDs);
 result = %hival;
 result = %hours(2);
+result = %info(*pgm);
 result = %int(amount);
 result = %inth(amount);
 result = %kds(keyDs);

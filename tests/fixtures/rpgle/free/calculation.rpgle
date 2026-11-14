@@ -121,6 +121,7 @@
        if total > 0;
          except detail;
        endif;
+       result = %info(*lib);
      C/END-FREE
        //
        // Comments: a whole line, the end of one, and the // that falls
@@ -142,3 +143,5 @@
        dcl-s title int(10) inz(2);
        x = y
          /title + 5;
+       //
+       result = %info(*pgm);
